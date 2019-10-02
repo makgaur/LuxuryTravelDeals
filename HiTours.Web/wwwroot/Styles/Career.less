@@ -1,0 +1,533 @@
+﻿@import "fonts.less";
+@import "variables.less";
+@import "UIElements.css";
+@import "helperstyles.less";
+
+/*----------Career_banner---------*/
+
+.career-banner {
+    padding: 0px;
+
+    .career-banner-container {
+        position: relative;
+        height: 77vh;
+
+        @media screen {
+            @media (min-width:0px) and (max-width:767px) {
+                height: 90vh;
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 77vh;
+
+            @media screen {
+                @media (min-width:0px) and (max-width:767px) {
+                    height: 90vh;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        .banner-caption-container {
+            text-align: center;
+            padding: 0px 302px;
+            position: absolute;
+            top: 144px;
+            width: 100%;
+
+            @media screen {
+                @media (min-width:0px) and (max-width:767px) {
+                    padding: 0px 60px;
+                }
+            }
+
+            .banner-caption {
+                display: block;
+                overflow: hidden;
+                font-family: Abhaya Libre;
+                font-size: 62px;
+                color: #FFFFFF;
+                font-weight: 700;
+                //position: absolute;
+                //top: 144px;
+                line-height: 71px;
+                //top: calc((77vh - 86px)/2);
+                width: 100%;
+
+
+                @media screen {
+                    @media (min-width:0px) and (max-width:767px) {
+                        font-size: 40px;
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        top: 117px;
+                        line-height: 48px;
+                    }
+                }
+            }
+
+            .opening-text {
+                font-family: 'IBM Plex Sans';
+                font-size: 15px;
+                font-weight: 500;
+                color: #ffffff;
+                line-height: 20px;
+                margin-top: 6px;
+                margin-bottom: 25px;
+
+                @media screen {
+                    @media (min-width:0px) and (max-width:767px) {
+                        margin-top: 24px;
+                        margin-bottom: 34px;
+                        line-height: 20px;
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            .explore-btn {
+                font-family: 'IBM Plex Sans';
+                font-size: 15px;
+                font-weight: 500;
+                color: #ffffff;
+                line-height: 20px;
+                padding: 15px 25px 16px 27px;
+                background-color: #660666;
+                border-radius: 2px;
+                width: 147px;
+                margin: 0 auto;
+                cursor: pointer;
+
+                @media screen {
+                    @media (min-width:0px) and (max-width:767px) {
+                        width: 163px;
+                        border-radius: 5px;
+                        padding: 10px 34px;
+                    }
+                }
+
+                button {
+                    background-color: transparent;
+                    outline: none;
+                    border: none;
+                    padding: 0px;
+                }
+            }
+        }
+    }
+
+    .banner-caption-bottom {
+        text-align: center;
+        padding: 50px 90px;
+        color: #973E94;
+        font-family: Abhaya Libre;
+        font-size: 30px;
+        height: 172px;
+        background-color: #fafafa;
+        font-weight: 500;
+
+        @media screen {
+            @media (min-width:0px) and (max-width:767px) {
+                text-align: center;
+                padding: 21px 10px 22px 9px;
+                color: #973E94;
+                font-family: Abhaya Libre;
+                font-size: 20px;
+                height: unset;
+                line-height: 25px;
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+
+
+/*----------Career_gallery---------*/
+
+.career-gallery-heading {
+    display: block;
+    text-align: center;
+    padding-top: 50px;
+    //margin-bottom: 50px;
+    padding-bottom:30px;
+
+    @media screen {
+        @media (min-width: 0px) and (max-width: 767px) {
+           // margin-bottom: 20px;
+            padding-top: 16px;
+            padding-bottom:26px;
+        }
+    }
+
+    &:after {
+        display: block;
+        content: "";
+        width: 150px;
+        height: 4px;
+        margin: 10px auto 0px auto;
+        background: #fca32b;
+        /*left: 44.5%;
+            position: absolute;*/
+        @media screen {
+            @media (min-width: 0px) and (max-width: 767px) {
+                height: 4px;
+                margin: 5px auto 0px auto;
+                width: 48px;
+            }
+
+            @media (min-width: 768px) and (max-width: 991px) {
+                width: 130px;
+            }
+        }
+    }
+
+    .career-gallery-text {
+        font-size: 40px;
+        font-family: 'Abhaya Libre';
+        color: #505050;
+        font-weight: 500;
+        line-height: 50px;
+
+        @media screen {
+            @media (min-width: 0px) and (max-width: 767px) {
+                font-size: 30px;
+                line-height: 40px;
+            }
+
+            @media (min-width: 768px) and (max-width: 991px) {
+                font-size: 35px;
+                line-height: 40px;
+            }
+        }
+    }
+
+   
+}
+
+/*----------Opportunity---------*/
+
+.opportunity-container {
+    clear: both;
+
+    .opportunity-heading {
+        display: block;
+        text-align: center;
+        padding-top: 50px;
+        //margin-bottom: 50px;
+        padding-bottom: 30px;
+
+        @media screen {
+            @media (min-width: 0px) and (max-width: 767px) {
+                //margin-bottom: 20px;
+                padding-top: 20px;
+                padding-bottom: 34px;
+            }
+        }
+
+        &:after {
+            display: block;
+            content: "";
+            width: 150px;
+            height: 4px;
+            margin: 10px auto 0px auto;
+            background: #fca32b;
+            /*left: 44.5%;
+            position: absolute;*/
+            @media screen {
+                @media (min-width: 0px) and (max-width: 767px) {
+                    height: 4px;
+                    margin: 5px auto 0px auto;
+                    width: 48px;
+                }
+
+                @media (min-width: 768px) and (max-width: 991px) {
+                    width: 130px;
+                }
+            }
+        }
+
+        .opportunity-text {
+            font-size: 40px;
+            font-family: 'Abhaya Libre';
+            color: #505050;
+            font-weight: 500;
+            line-height: 50px;
+
+            @media screen {
+                @media (min-width: 0px) and (max-width: 767px) {
+                    font-size: 30px;
+                    line-height: 40px;
+                }
+
+                @media (min-width: 768px) and (max-width: 991px) {
+                    font-size: 35px;
+                    line-height: 40px;
+                }
+            }
+        }
+    }
+
+    .opportunity-content-container {
+        padding-left: 90px;
+        padding-right: 90px;
+
+        @media screen {
+            @media (min-width: 0px) and (max-width: 767px) {
+                padding-left: 9px;
+                padding-right: 10px;
+            }
+        }
+
+        .opportunity-content {
+            padding-left: 0px;
+            padding-right: 0px;
+
+            .designation {
+                border: 1px solid @border-color;
+                height: 700px;
+                display: table;
+                padding-left: 0px;
+                padding-right: 0px;
+                border-bottom: none;
+                border-right: none;
+
+                @media screen {
+                    @media (min-width: 0px) and (max-width: 767px) {
+                        border: 1px solid @border-color;
+                    }
+                }
+
+                .desg-heading-container {
+                    padding: 32px 33px 30px 14px;
+
+                    @media screen {
+                        @media (min-width: 0px) and (max-width: 767px) {
+                            padding: 32px 22px 30px 24px;
+                        }
+                    }
+
+                    .department {
+                        display: table-cell;
+                        padding-left: 0px;
+                        padding-right: 0px;
+
+                        .desg-heading {
+                            font-family: 'IBM Plex Sans';
+                            font-weight: 500;
+                            font-size: 30px;
+                            line-height: 20px;
+                            color: #660666;
+
+                            @media screen {
+                                @media (min-width: 0px) and (max-width: 767px) {
+                                    font-size: 18px;
+                                }
+                            }
+                        }
+                    }
+
+                    .dept-location {
+                        .department();
+                    }
+
+                    .dept-sign {
+                        .department();
+                    }
+                }
+
+
+                .desg-list-container {
+                    padding-bottom: 23px;
+
+                    @media screen {
+                        @media (min-width: 0px) and (max-width: 767px) {
+                            padding-bottom: 0px;
+                        }
+                    }
+
+                    .desg-list {
+                        padding: 20px 33px 17px 14px;
+                        display: table;
+                        border-bottom: 1px solid @border-color;
+
+                        @media screen {
+                            @media (min-width: 0px) and (max-width: 767px) {
+                                padding: 32px 22px 30px 24px;
+                            }
+                        }
+
+                        .dept-title {
+                            display: table-cell;
+                            font-family: 'Abhaya Libre';
+                            font-size: 20px;
+                            font-weight: 500;
+                            color: #505050;
+                            padding-left: 0px;
+                            padding-right: 0px;
+
+                            @media screen {
+                                @media (min-width: 0px) and (max-width: 767px) {
+                                    font-size: 14px;
+                                }
+                            }
+
+                            span {
+                                color: #FCA32B;
+                            }
+                        }
+
+                        .loc-title {
+                            display: table-cell;
+                            font-family: 'Abhaya Libre';
+                            font-size: 20px;
+                            font-weight: 500;
+                            color: #505050;
+                            padding-left: 0px;
+                            padding-right: 0px;
+
+                            @media screen {
+                                @media (min-width: 0px) and (max-width: 767px) {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+
+                        .sign-title {
+                            display: table-cell;
+                            font-family: 'Abhaya Libre';
+                            font-size: 20px;
+                            font-weight: 500;
+                            color: #505050;
+                            padding-left: 0px;
+                            padding-right: 0px;
+                            text-align: right;
+
+                            @media screen {
+                                @media (min-width: 0px) and (max-width: 767px) {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                    }
+
+                    .desg-list:last-child {
+                        border-bottom: none;
+                    }
+                }
+            }
+
+            .opportunity-images {
+                padding-left: 0px;
+                padding-right: 0px;
+                height: 700px;
+
+                @media screen {
+                    @media (min-width: 0px) and (max-width: 767px) {
+                        margin-top: 6px;
+                        height: unset;
+                        margin-bottom: 6px;
+                    }
+                }
+
+                .opportunity-images-content {
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    height: 50%;
+                    width: 100%;
+                    position: relative;
+
+                    @media screen {
+                        @media (min-width: 0px) and (max-width: 767px) {
+                            height: 100%;
+                        }
+                    }
+
+                    img {
+                        width: 100%;
+                    }
+
+                    .opportunity-image-text {
+                        position: absolute;
+                        padding: 0px 32.5px 15px 30.5px;
+                        bottom: 0px;
+
+                        @media screen {
+                            @media (min-width: 0px) and (max-width: 767px) {
+                                padding: 0px 9px 15px 13px;
+                            }
+                        }
+
+                        .title1 {
+                            font-family: 'Abhaya Libre';
+                            font-size: 25px;
+                            font-weight: 700;
+                            color: #FFFFFF;
+                            line-height: 25px;
+                            margin-bottom: 20px;
+
+                            @media screen {
+                                @media (min-width: 0px) and (max-width: 767px) {
+                                    margin-bottom: 10px;
+                                }
+                            }
+                        }
+
+                        .title2 {
+                            font-family: 'IBM Plex Sans';
+                            font-size: 14px;
+                            font-weight: 500;
+                            color: #FFFFFF;
+                            line-height: 12px;
+
+                            @media screen {
+                                @media (min-width: 0px) and (max-width: 767px) {
+                                    line-height: 20px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+/*----------Mobile_View---------*/
+
+
+.career-header-xs {
+    display: inline-block;
+    padding: 17px 10px 17px 9px;
+    font-family: 'IBM Plex Sans';
+    font-size: 16px;
+    font-weight: 400;
+    color: #323232;
+    line-height: 20px;
+    height: 54px;
+    position: sticky;
+    margin-bottom: 5px;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    text-transform: uppercase;
+    z-index: 1;
+    text-align: center;
+    box-shadow: 0px 0px 5px 0px rgba(100,100,100,0.15);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(100,100,100,0.15);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(100,100,100,0.15);
+
+
+
+    .left-arrow {
+        float: left;
+    }
+
+    .share-icon-xs{
+        float:right;
+    }
+}

@@ -1,0 +1,40 @@
+﻿@model List<CancellationPolicyViewModel>;
+
+<form asp-antiforgery="true" id="formCancellationPolicy" action="@Url.Action("AddCancellationPolicies", "CancellationPolicy")" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="DealTypeIdentifier" value="@this.ViewBag.DealType" />
+    <div class="col-sm-12 col-xs-12">
+        <div class="form-group">
+            <div class="tax-tabel-wrap">
+                <div class="table-responsive">
+                    <table id="tpimages" class="table table-standard table-bordered invoice-tabel-2">
+                        <thead>
+                            <tr>
+                                <th>From Days</th>
+                                <th>To Days</th>
+                                <th style="width:200px;">Deduction Type</th>
+                                <th>Deduction Charge</th>
+                                <th><i class="fa fa-trash-o"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (this.Model != null && this.Model.Count > 0)
+                            {
+                                @foreach (var file in Model)
+                                {
+                                    @this.Html.Partial("_CancellationPolicyRow", file)
+                                }
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" style="text-align:right"><a href="javascript:void(0);" data-addpackageimage="true" title="Add Booking Date" class="btn btn-primary add_button">+ Add Policy</a></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload)})
+    @*@this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })*@
+</form>

@@ -1,0 +1,126 @@
+﻿@model TalkToExpertViewModel
+<div class="talkExpert">
+    <div class="heaDing">
+        <span>Talk to our Holiday Expert</span>
+        <a href="tel:18001080808">1800-108-0808</a>
+    </div>
+    @*<div class="midSection">
+        <p>
+            Give us your details. Our expert will get in touch with
+            you within 30 minutes.
+        </p>
+        <form id="frmTalkExpert2" action='https://crm.zoho.com/crm/WebToLeadForm' name=WebToLeads2951943000000505001 method='POST' onSubmit='javascript:document.charset="UTF-8"; return checkMandatory()' accept-charset='UTF-8'>
+            <!-- Do not remove this code. -->
+            <input type='text' style='display:none;' name='xnQsjsdp' value='b81b0a9bd05df24e119e2cbfd8701905841260953794e923e7a3883a8f0c75bb' />
+            <input type='hidden' name='zc_gad' id='zc_gad' value='' />
+            <input type='text' style='display:none;' name='xmIwtLD' value='877c0b66da7493104c834b7d71fa26298443b704fca78de91585eabccb4a548a' />
+            <input type='text' style='display:none;' name='actionType' value='TGVhZHM=' />
+
+            <input type='text' style='display:none;' name='returnURL' value='https://www.luxurytravel.deals/home/thankyou' />
+            <!-- Do not remove this code. -->
+            @*<input name='Last Name' asp-for="Name" class="input-custm" placeholder="Name" type="text" required="required">*@
+    @* <input name='Last Name' class="input-custm" placeholder="Name" type="text" required="required">
+                <span class="field-validation-error" data-valmsg-for="Last Name" data-valmsg-replace="true"></span>
+                <input name="Email" class="input-custm" placeholder="Email Address" type="email" required="required">
+                <span class="field-validation-error" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                <input name="Mobile" maxlength="20" class="input-custm numericOnly" placeholder="Mobile No." type="text" required="required">
+                <span class="field-validation-error" data-valmsg-for="Mobile" data-valmsg-replace="true"></span>
+                <span style="display:none">
+                    <select style='width:250px;' name='Lead Source'>
+                        <option value='-None-'>None</option>
+                        <option selected value='Website'>Website</option>
+                        <option value='Google'>Google</option>
+                        <option value='Facebook'>Facebook</option>
+                        <option value='LinkedIn'>LinkedIn</option>
+                        <option value='Walkin'>Walkin</option>
+                        <option value='Referral'>Referral</option>
+                        <option value='Newspaper'>Newspaper</option>
+                        <option value='Travel&#x20;Agency'>Travel Agency</option>
+                    </select>
+                    <select style='width:250px;' name='LEADCF8'>
+                        <option value='-None-'>-None-</option>
+                        <option value='hi.tours'>hi.tours</option>
+                        <option selected value='luxurytravel.deals'>luxurytravel.deals</option>
+                        <option value='hitours.in'>hitours.in</option>
+                        <option value='hi-tours.com'>hi-tours.com</option>
+                        <option value='hi-tours.es'>hi-tours.es</option>
+                        <option value='hi-tours.de'>hi-tours.de</option>
+                        <option value='hi-tours.fr'>hi-tours.fr</option>
+                        <option value='hi-tours.it'>hi-tours.it</option>
+                        <option value='hi-tours.nl'>hi-tours.nl</option>
+                        <option value='hi-tours.pt'>hi-tours.pt</option>
+                        <option value='hi-tours.ru'>hi-tours.ru</option>
+                        <option value='hi-tours.cn'>hi-tours.cn</option>
+                        <option value='hi-tours.ae'>hi-tours.ae</option>
+                    </select>
+                    <select style='width:250px;' name='Lead Status'>
+                        <option value='-None-'>None</option>
+                        <option selected value='Not&#x20;Contacted'>Not Contacted</option>
+                        <option value='Contacted'>Contacted</option>
+                        <option value='Interested'>Interested</option>
+                        <option value='Lost&#x20;Lead'>Lost Lead</option>
+                        <option value='Junk&#x20;Lead'>Junk Lead</option>
+                    </select>
+                </span>
+                <a href="/home/termandcondtion" class="textContatme">I have read the T&C  to contact me</a>
+                <button type="submit" class="call-me-button">Call Me Back</button>
+
+                <script>
+                    var mndFileds = new Array('First Name', 'Name', 'Mobile', 'Email');
+                    var fldLangVal = new Array('First Name', 'Name', 'Mobile Number', 'Email Id');
+                    var name = '';
+                    var email = '';
+
+                    function checkMandatory() {
+                        for (i = 0; i < mndFileds.length; i++) {
+                            var fieldObj = document.forms['WebToLeads2951943000000505001'][mndFileds[i]];
+                            if (fieldObj) {
+                                if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length == 0) {
+                                    if (fieldObj.type == 'file') {
+                                        //alert('Please select a file to upload.');
+                                        fieldObj.focus();
+                                        return false;
+                                    }
+                                    //alert(fldLangVal[i] + ' cannot be empty.');
+                                    fieldObj.focus();
+                                    return false;
+                                } else if (fieldObj.nodeName == 'SELECT') {
+                                    if (fieldObj.options[fieldObj.selectedIndex].value == '-None-') {
+                                        //alert(fldLangVal[i] + ' cannot be none.');
+                                        fieldObj.focus();
+                                        return false;
+                                    }
+                                } else if (fieldObj.type == 'checkbox') {
+                                    if (fieldObj.checked == false) {
+                                        //alert('Please accept  ' + fldLangVal[i]);
+                                        fieldObj.focus();
+                                        return false;
+                                    }
+                                }
+                                try {
+                                    if (fieldObj.name == 'Last Name') {
+                                        name = fieldObj.value;
+                                    }
+                                } catch (e) { }
+                            }
+                        }
+                        smartech('create', 'ADGMOT35CHFLVDHBJNIG50K969M2CP4N22UB4JPT4SRLRK91B7CG');
+
+                        var formData = {
+                            'pk^email': $("#frmTalkExpert2 [name=Email]").val(),
+                            'mobile': $("#frmTalkExpert2 [name=Mobile]").val(),
+                            'Last Name': $("#frmTalkExpert2 [name='Last Name']").val(),
+                            'LEADSCORE': 20
+                        };
+                        smartech('contact', 75, formData);
+
+                        //url = window.location.href + "?ref=https://www.luxurytravel.deals/home/thankyou&ThankYoupopup=true";
+                        url = "https://www.luxurytravel.deals/home/thankyou?ref=" + window.location.href;
+                        $('[name="returnURL"]').val(url);
+                    }
+
+
+                </script>
+            </form>
+        </div>*@
+</div>

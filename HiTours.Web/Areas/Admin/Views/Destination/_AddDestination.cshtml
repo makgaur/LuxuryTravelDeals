@@ -1,0 +1,154 @@
+﻿@model DestinationAddViewModel
+<form asp-antiforgery="true" id="formAddDestination" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="D_Id" />
+    <input type="hidden" asp-for="D_PackageId" />
+    <input type="hidden" asp-for="D_IsActive" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <div class="box-header with-border">
+        <h5 class="box-title">Add Destination</h5>
+    </div>
+    @{
+        var countryctrl = Guid.NewGuid().ToString("N");
+        var statectrl = Guid.NewGuid().ToString("N");
+        var cityctrl = Guid.NewGuid().ToString("N");
+    }
+    <div class="box-body">
+        <div class="form-group col-sm-12">
+            <label asp-for="D_VendorId"></label>
+            <div class="input-group">
+                <select asp-for="D_VendorId" selected="@Model.D_VendorId" class="form-control" id="vendorId" asp-items="Model.VendorItems"
+                        select2-value="@Model.D_VendorId" select2-Url="/selectlist/GetVendorsDropdownList" select2-Placeholder="Choose Vendor"></select>
+                <div class="input-group-addon">
+                    <a href="@Url.Action("Manage","Vendor",new { @area="Admin" ,@id = 0 })" target="_blank"><i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+
+            <span asp-validation-for="D_VendorId"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="D_Region"></label>
+            <select asp-for="D_Region"
+                    selected="@Model.D_Region"
+                    class="form-control"
+                    id="RegionId"
+                    asp-items="Model.RegionItems"
+                    select2-value="@Model.D_Region"
+                    select2-Url="/selectlist/GetPackageRegionList"
+                    select2-Dependent="true"
+                    select2-Dependent-Control=".@(countryctrl)"></select>
+            <span asp-validation-for="D_Region"></span>
+        </div>
+
+        <div class="form-group col-md-3">
+            <label asp-for="D_Country"></label>
+            <select class="form-control @(countryctrl)"
+                    asp-for="D_Country"
+                    id="CountryId"
+                    asp-items="Model.CountryItems"
+                    select2-value="@Model.D_Country"
+                    select2-Url="/selectlist/GetTourPackageCountryByReagionId"
+                    select2-Dependent="true"
+                    select2-Dependent-Control=".@(statectrl)"></select>
+            <span asp-validation-for="D_Country"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="D_State"></label>
+            <select asp-for="D_State"
+                    selected="@Model.D_State"
+                    id="StateId"
+                    class="form-control @(statectrl)"
+                    asp-items="Model.StateItems"
+                    select2-Dependent-OtherControl=".@countryctrl"
+                    select2-value="@Model.D_State"
+                    select2-Url="/selectlist/GetTourPackageStatesByCountrId"
+                    select2-Dependent="true"
+                    select2-Dependent-Control=".@(cityctrl)"></select>
+            <span asp-validation-for="D_State"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="D_City"></label>
+            <select asp-for="D_City"
+                    selected="@Model.D_City"
+                    id="CityId"
+                    class="form-control packagecitydes @(cityctrl)"
+                    asp-items="Model.CityItems"
+                    select2-value="@Model.D_City"
+                    select2-Dependent="true"
+                    select2-Dependent-Control=".tourpackagehotel"
+                    select2-Url="/selectlist/GetTourPackageCityByCounryIdorStateIdAsync"></select>
+            <span asp-validation-for="D_City"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="D_IATACode"></label>
+            <input asp-for="D_IATACode" class="form-control" style="text-transform:uppercase;" />
+            <span asp-validation-for="D_IATACode"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="D_Nights"></label>
+            <input asp-for="D_Nights" class="form-control" />
+            <span asp-validation-for="D_Nights"></span>
+        </div>
+    </div>
+    <div class="box-footer" align="center">
+        <button type="button" id="DestinationClick" class="btn btn-primary">Save</button><br />
+    </div>
+</form>
+<script>
+    $(document).off("click", '#DestinationClick')
+        .on("click", '#DestinationClick', function (e) {
+            var $form = $("#formAddDestination");
+            if ($form.valid()) {
+                showWaitProcess();
+                var model = {}
+                model = $form.serialize();
+                var ErrorMsg = "";
+                $(".text-blank").each(function () {
+                    ErrorMsg += $(this).text();
+                })
+                if (ErrorMsg != "") {
+                    hideWaitProcess();
+                    return false;
+                }
+                else {
+                    $.ajax({
+                        url: '@Url.Action("AddDestination", "Destination")',
+                        type: "JOSN",
+                        method: "POST",
+                        data: model,
+                        success: function (data) {
+                            hideWaitProcess();
+                            if (data == "success") {
+                                swal('', 'Successfully Inserted', 'success');
+                                $(".replaceView").click();
+                                return false;
+                            }
+                            else if (data == "update") {
+                                swal('', 'Successfully Updated', 'success');
+                                $(".replaceView").click();
+                                return false;
+                            }
+                            else
+                            {
+                                var errors = JSON.parse(data);
+                                $.each(errors, function (i, obj) {
+                                    var $span = $('span[data-valmsg-for="' + obj.key + '"]');
+                                    $span.addClass("field-validation-error").html('<span for="' + obj.key + '" class="field-validation-error">' + obj.error + '</span>');
+                                    $span.attr("data-valmsg-replace", "false");
+                                })
+
+                                 setTimeout(function () {
+                                        $("[data-valmsg-replace]").each(function () {
+                                            $(this).attr("data-valmsg-replace", "true");
+                                        })
+                                    }, 3000);
+                                return false;
+                            }
+                        }
+                    });
+                }
+            }
+    })
+</script>

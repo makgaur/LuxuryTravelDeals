@@ -1,0 +1,76 @@
+﻿@model IList<RecentViewModel>
+
+@if (this.Model != null && this.Model.Count > 0)
+{
+    <div class="container">
+        <div class="recently-home"><h1 class="mainHeading">Recently Viewed</h1></div>
+        <div class="set-paddind">
+
+            <section class="regular slider" data-afterimages="3">
+                @foreach (var item in Model)
+                {
+                    var redirectController = item.Type == Enums.CurrentDealType.Package ? Constants.Package : Constants.Deal;
+                    var ispackage = item.Type == Enums.CurrentDealType.Package;
+                    <div class="deal-recent-view-box-slider">
+                        <a href="/@(redirectController)/details/@(ispackage?item.UrlTitle.ToLower() : item.Id + "/" + SpecialChars.Remove(item.PackageName))">
+
+
+                            @if (!string.IsNullOrEmpty(item.ImageName))
+                            {
+                                <img src="~/packages/@item.ImageName" class="img-responsive" onerror="this.src='/images/not-found.jpg'"
+                                     auto-resize="true" width="360" height="232" asp-append-version="true" mode="Stretch" alt="deal-package-image" title="" is-src="true" />
+                            }
+                            else
+                            {
+                                <img src="~/images/not-found.jpg" class="img-responsive"
+                                     auto-resize="true" width="360" height="232" asp-append-version="true" mode="Stretch" alt="deal-package-image" title="" is-src="true" />
+
+                            }
+
+
+
+                            <div class="hotel-text"><h5>@item.HotelName</h5> <p>@item.CityName</p></div>
+                        </a>
+                    </div>
+
+
+
+                }
+            </section>
+        </div>
+
+        <div class="set-paddind mobile-slider-box">
+
+            <section class="regular slider" data-afterimages="1">
+                @foreach (var item in Model)
+                {
+                    var redirectController = item.Type == Enums.CurrentDealType.Package ? Constants.Package : Constants.Deal;
+                    var ispackage = item.Type == Enums.CurrentDealType.Package;
+                    <div class="deal-recent-view-box-slider">
+
+                        <a href="/@(redirectController)/details/@(ispackage?item.UrlTitle.ToLower() : item.Id + "/" + SpecialChars.Remove(item.PackageName))">
+                            @if (!string.IsNullOrEmpty(item.ImageName))
+                            {
+                                <img src="~/packages/@item.ImageName" class="img-responsive" onerror="this.src='/images/not-found.jpg'"
+                                     auto-resize="true" width="360" height="232" asp-append-version="true" mode="Stretch" alt="deal-package-image" title="" is-src="true" />
+                            }
+                            else
+                            {
+
+                                <img src="~/images/not-found.jpg" class="img-responsive"
+                                     auto-resize="true" width="360" height="232" asp-append-version="true" mode="Stretch" alt="not-found-image" title="" is-src="true" />
+                            }
+
+
+                            <div class="hotel-text"><h5>@item.HotelName</h5> <p>@item.CityName</p></div>
+                        </a>
+                    </div>
+
+
+
+                }
+            </section>
+        </div>
+    </div>
+
+}

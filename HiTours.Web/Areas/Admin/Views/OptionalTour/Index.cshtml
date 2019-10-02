@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewData["Title"] = "Optional Tours";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    this.ViewBag.Title = "Optional Tours";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    <a id="anchorAddNew" href="@Url.Action("Manage")" class="form-control btn-form-control btn-form-control-sm btn-has-count  btn-primary">
+                        <i class="fa fa-plus"></i>&nbsp;
+                        Add Optional Tours
+                    </a>
+                </div>
+            </div>
+            @this.Html.Partial("_DataTableGrid")
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalOptionalTour" tabindex="-1" role="dialog" aria-labelledby="Optional Tour">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Optional Tours</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary save">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+<script>
+        $(function () {
+            BindGrid({
+                url: "@Url.Action("Index")",
+                columns: [
+                    { "data": "Country", "title": "Country", "type": "string"},
+                    { "data": "Vendor", "title": "Vendor", "type": "string" },
+                    { "data": "CreatedDate", "title": "Created Date", "type": "string" },
+
+                    {
+                        "data": "IsActive",
+                        "title": " Active Status",
+                        "class": "text-center",
+                        "type": "bool", "width": '15%', mRender: function (data, type, record) {
+                            var url = '@Url.GetAdminUrl("OptionalTour", "ChangeActiveStatus")/' + record.Id;
+                            return appendToggleCheckBox(url, record.IsActive, 'Successfully Activated', 'Successfully DeActivated')
+                        }
+                    },
+                    {
+                        "data": null, "title": "Action",
+                        "targets": -1,
+                        "width": '15%',
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+
+                            var action = "";
+                            ////action += '<a class="form-control btn-default" href="@Url.GetAdminUrl("tourpackage", "PackageNights")/' + record.Id + '" title="Add Package Nights"><i class="fa fa-plus"></i>&nbsp;</a>';
+                            ////action += '<a class="form-control btn-default btnViewOptionalTourItems" date-recordid="' + record.Id + '" ><i class="fa fa-eye"></i>&nbsp;</a>';
+                            action += '<a class="form-control btn-success" href="@Url.GetAdminUrl("OptionalTour", "Manage")/' + record.Id+ '"><i class="fa fa-edit"></i>&nbsp;</a>';
+                             action += '<a class="form-control btn-danger delete-row" data-delete href="@Url.GetAdminUrl("OptionalTour", "DeleteMaster")/' + record.Id+ '"><i class="fa fa-trash-o"></i>&nbsp;</a>';
+                            return action;
+
+                        }
+                    }]
+            });
+            var $model =
+            {
+                Master: $("#modalOptionalTour"),
+                Title: $("#modalOptionalTour .modal-title"),
+                Body: $("#modalOptionalTour .modal-body"),
+                btnSave: $("#modalOptionalTour .save")
+                };
+            $(document).on('click', '#anchorAddNew', function (e) { 
+
+            })
+            $(document).on('click', '.btnViewOptionalTourItems', function (e) { 
+                var id = $(this).date('recordid');
+            })
+        });
+
+</script>
+}
+

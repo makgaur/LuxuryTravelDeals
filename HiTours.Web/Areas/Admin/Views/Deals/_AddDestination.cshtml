@@ -1,0 +1,65 @@
+﻿@model DealsDestinationViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+<tr>
+    @using (this.Html.BeginCollectionItem("DealsDestinationViewModels"))
+    {
+        var countryctrl = Guid.NewGuid().ToString("N");
+        var statectrl = Guid.NewGuid().ToString("N");
+        var cityctrl = Guid.NewGuid().ToString("N");
+        var areactrl = Guid.NewGuid().ToString("N");
+        <td>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="PackageId" />
+            <input type="hidden" asp-for="UpdatedBy" />
+            <input type="hidden" asp-for="UpdatedDate" />
+            <input type="hidden" asp-for="CreatedBy" />
+            <input type="hidden" asp-for="CreatedDate" />
+            <input type="hidden" asp-for="IsDeleted" class="delete_row" />
+            <div class="form-group col-md-12">
+                <select class="form-control @(countryctrl)" asp-for="Country" id="CountryId"
+                        select2-value="@Model.Country" select2-Url="/selectlist/GetCountryList"
+                        select2-Dependent="true" select2-Dependent-Control=".@(statectrl)" asp-items="Model.CountryItems"></select>
+                <span asp-validation-for="Country"></span>
+            </div>
+        </td>
+        <td>
+            <div class="form-group col-md-12">
+                <select asp-for="State" selected="@Model.State" id="StateId" class="form-control @(statectrl)" select2-Dependent-OtherControl=".@countryctrl" 
+                        select2-value="@Model.State" select2-Url="/selectlist/GetTourPackageStatesByCountrId"
+                        select2-Dependent="true" select2-Dependent-Control=".@(cityctrl)" asp-items="Model.StateItems"></select>
+                <span asp-validation-for="State"></span>
+            </div>
+        </td>
+        <td>
+            <div class="form-group col-md-12">
+
+                <select asp-for="City" selected="@Model.City" id="CityId" class="form-control packagecitydes @(cityctrl)" 
+                        select2-value="@Model.City" asp-items="Model.CityItems" select2-Dependent="true" select2-Dependent-Control=".@(areactrl)" select2-Url="/selectlist/GetTourPackageCityByCounryIdorStateIdAsync" style="width:100%"></select>
+                <span asp-validation-for="City" ></span>
+            </div>
+        </td>
+        <td>
+            <div class="form-group col-md-12">
+
+                <select asp-for="Area" selected="@Model.Area" id="AreaId" class="form-control packagearea @(areactrl)"
+                        select2-value="@Model.Area" asp-items="Model.AreaItems" select2-Dependent="true" select2-Dependent-Control=".tourpackagehotel" select2-Url="/selectlist/GetPackageAreaListByCity" style="width:100%"></select>
+                <span asp-validation-for="Area" ></span>
+            </div>
+        </td>
+        <td>
+            <div class="form-group col-md-12">
+                <span><input asp-for="VisaRequired" id="VisaRequired" type="checkbox" class="minimal form-control" /></span>
+            </div>
+        </td>
+        <td valign="middle">
+            <button class="delete-item-row btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
+        </td>
+    }
+</tr>
+<script>
+    $(document).ready(function (e) {
+        $('input[type="checkbox"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue'
+        }); 
+    });
+</script>

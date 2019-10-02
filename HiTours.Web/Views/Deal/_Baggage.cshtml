@@ -1,0 +1,18 @@
+﻿@model List<HiTours.TBO.Models.Response.FareRuleResponse.FareRule>;
+
+@if (Model.Count > 0)
+{
+    foreach (var frItem in Model)
+    {
+        <div class="fare-rule-item">
+            <div class="fare-rule-segment-detail">
+                @frItem.Airline (@frItem.Origin - @frItem.Destination)
+                @frItem.DepartureTime.ToString("dddd, dd MMMM yyyy HH:mm")
+            </div>
+            <div>
+                @Html.Raw(frItem.FareRuleDetail)
+            </div>
+        </div>
+        <hr />
+    }
+}

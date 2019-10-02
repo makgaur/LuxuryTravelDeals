@@ -1,0 +1,59 @@
+﻿@model LocationDealsAddViewModel
+@{
+    ViewData["Title"] = "Manage Location Deal";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+
+    <div class="col-md-12">
+        <form asp-antiforgery="true" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="IsActive" />
+            <input type="hidden" asp-for="Id" />
+            <div class="box no-top-border">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Manage Location Deal</h3>
+
+                </div>
+                <div class="pull-right top-buttons">
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.ViewList, Url.Action("Location", "HomePage")) })
+                </div>
+                <div class="box-body">
+                    
+                    @{ 
+                        var countryctrl = Guid.NewGuid().ToString("N");
+                        var statectrl = Guid.NewGuid().ToString("N");
+                        var cityctrl = Guid.NewGuid().ToString("N");
+                    }
+                    <div class="row">
+                        <div class="box-body">
+                            <div class="form-group col-sm-6">
+                                <label asp-for="Name"></label>
+                                <input type="text" asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name"></span>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label asp-for="Country"></label>
+                                <select asp-for="Country" selected="@Model.Country" class="form-control @(countryctrl)" id="CountryId" asp-items="@Model.CountryItems"
+                                        select2-value="@Model.Country" select2-Url="/selectlist/GetCountryList"
+                                        select2-Dependent="true" select2-Dependent-Control=".@(cityctrl)"></select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label asp-for="City"></label>
+                                <select asp-for="City" selected="@Model.City" id="CityId" class="form-control packagecitydes @(cityctrl)" asp-items="@Model.CityItems"
+                                        select2-value="@Model.City" select2-Url="/selectlist/GetTourPackageCityByCounryIdorStateIdAsync"></select>
+                                <span asp-validation-for="City"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+

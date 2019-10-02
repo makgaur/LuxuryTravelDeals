@@ -1,0 +1,30 @@
+﻿@{
+    var routeData = this.ViewContext.RouteData.Values;
+    var nextView = this.TempData["nextview"] != null ? this.TempData["nextview"].ToString() : "#package-destination-validity";
+}
+<div class="nav-tabs-custom">
+    <input type="hidden" name="tabs" data-default="@nextView" value="@nextView" />
+    <form class="hide">
+        @foreach (var key in routeData.Keys)
+        {
+            <input type="hidden" name="@key" value="@(routeData[key])" />
+        }
+        <input type="hidden" name="Id" value="@(this.ViewBag.TourPackageId)" />
+        <input type="hidden" name="tourpackagetype" value="@this.ViewBag.TourPackageType" />
+        <input type="hidden" name="RowIdentifier" value="" />
+    </form>
+    <ul class="nav nav-tabs pull-right">
+        <li class=""><a href="#add-destination-validity" class="replaceAdd" data-toggle="tab" data-href="@Url.Action("AddDestinationValidity","Destination",new {@area="Admin", @packageId=this.ViewBag.TourPackageId })"><i class="fa fa-plus"></i> Add Destination Validity</a></li>
+        <li class=""><a href="#view-destination-validity" class="replaceView" data-toggle="tab" data-href="@Url.Action("PackageDestinationValidityGridView","Destination",new {@area="Admin", @packageId=this.ViewBag.TourPackageId })"><i class="fa fa-list"></i> View List</a></li>
+    </ul>
+    <div class="tab-content hotel-tabs">
+        <div class="tab-pane" id="add-destination-validity"></div>
+        <div class="tab-pane" id="view-destination-validity"></div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.replaceView').click();
+    });
+</script>

@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "Vendors";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    this.ViewBag.Title = "Vendors";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/vendor/creation?id=0") })
+                </div>
+            </div>
+            @this.Html.Partial("_DataTableGrid")
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        $(function () {
+            BindGrid({
+                url: "@Url.Action("Index")",
+                columns: [
+                    { "data": "Name", "title": "Vendor", "type": "string" },
+
+                    { "data": "Group", "title": "Group", "type": "string" },
+                    { "data": "Category", "title": "Category", "type": "string" },
+                    { "data": "City", "title": "City", "type": "string" },
+                    { "data": "Country", "title": "Country", "type": "string" },
+                    {
+                        "data": "IsActive",
+                        "title": " Active Status",
+                        "class": "text-center",
+                        "type": "bool", "width": '15%', mRender: function (data, type, record) {
+                            var url = '@Url.GetAdminUrl("Vendor", "ChangeActiveStatus")/' + record.Id;
+                            return appendToggleCheckBox(url, record.IsActive, 'Successfully Activated', 'Successfully DeActivated')
+                        }
+                    },
+                    {
+                        "data": null, "title": "Action",
+                        "targets": -1,
+                        "width": '15%',
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                            var action = "";
+                            action += '<a class="form-control btn-success" href="@Url.GetAdminUrl("Vendor", "Creation")?id=' + record.Id+ '"><i class="fa fa-edit"></i>&nbsp;</a>';
+                            action += '<a class="form-control btn-danger delete-row" data-delete href="@Url.GetAdminUrl("Vendor", "delete")/' + record.Id+ '"><i class="fa fa-trash-o"></i>&nbsp;</a>';
+                            return action;
+                        }
+                    }]
+            });
+        });
+
+    </script>
+}

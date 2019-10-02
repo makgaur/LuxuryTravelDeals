@@ -1,0 +1,27 @@
+﻿@model TalkToExpertViewModel
+<div class="talkExpert">
+    <div class="heaDing">
+        <span>Talk to our Holiday Expert</span>
+        <a href="tel:18001080808">1800-108-0808</a>
+    </div>
+    <div class="midSection">
+        <p>
+            Give us your details. Our expert will get in touch with
+            you within 30 minutes.
+        </p>
+        <form asp-controller="package" asp-action="talktoexpert" asp-antiforgery="true" method="post" enctype="multipart/form-data" id="frmTalkExpert">
+            <input type="hidden" asp-for="PageUrl" />
+            <input asp-for="Name" class="input-custm" placeholder="Name" type="text">
+            <span asp-validation-for="Name"></span>
+            <input asp-for="Email" class="input-custm" placeholder="Email Address" type="text">
+            <span asp-validation-for="Email"></span>
+            <input asp-for="Mobile" class="input-custm numericOnly" placeholder="Mobile No." type="text">
+            <span asp-validation-for="Mobile"></span>
+            @*<input asp-for="City" class="input-custm" placeholder="Your City" type="text">
+                <span asp-validation-for="City"></span>
+                <textarea asp-for="More" class="input-custm" placeholder="Let us know more about your query (optional)"></textarea>*@
+            <a href="/home/termandcondtion" class="textContatme">I have read the T&C  to contact me</a>
+            <button type="submit" class="call-me-button">Call Me Back</button>
+        </form>
+    </div>
+</div>

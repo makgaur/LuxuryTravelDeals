@@ -1,0 +1,227 @@
+﻿@model TourPackageDetailViewModel
+@using System.Globalization
+@if (Model != null)
+{
+    DateTime calenderFrom = DateTime.MinValue;
+    DateTime calenderTo = DateTime.MinValue;
+    DateTimeFormatInfo dateTimeFormatInfo = CultureInfo.CurrentCulture.DateTimeFormat;
+
+    var tourpackage = Model ?? new TourPackageDetailViewModel();
+    var tourPackageNights = tourpackage.TourPackageNights ?? new List<TourPackageNightViewModel>();
+    var tourpackageNight = tourPackageNights.FirstOrDefault() ?? new TourPackageNightViewModel();
+    var nightValidities = tourpackageNight.TourPackageNightsValidity ?? new List<TourPackageNightsValidityViewModel>();
+
+    if (nightValidities.Count > 0)
+    {
+        calenderFrom = nightValidities.FirstOrDefault().RateValidFrom;
+        calenderTo = nightValidities.LastOrDefault().RateValidTo;
+    }
+
+    var calendarMonths = GetCalendarMonths(calenderFrom, calenderTo);
+
+    var startDays = 0;
+    var index = 0;
+    var daySequence = 1;
+
+    <input type="hidden" name="calendarfrom" value="@calenderFrom.ToString("yyyy-MM-dd hh:mm:ss")" />
+    <input type="hidden" name="calendarTo" value="@calenderTo.ToString("yyyy-MM-dd hh:mm:ss")" />
+
+    int Totaldays = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+    int todaydate = DateTime.Now.Day;
+    int remaingDays = Totaldays - todaydate;
+    foreach (var month in calendarMonths)
+    {
+        index++;
+
+
+        <div data-month-sequence="@index"
+             data-monthstring="@($"{month.MonthName} {month.Year}")" class="month @((remaingDays<5?DateTime.Now.AddMonths(1).Month: DateTime.Now.Month) == month.Month && (remaingDays<5 && DateTime.Now.Month==12?DateTime.Now.AddYears(1).Year: DateTime.Now.Year) == month.Year ? "active" : "") ">
+            <p class="month-details" data-month="@GetAbbreviatedFromFullName(month.MonthName)" data-year="@month.Year"></p>
+            <div class="weekHeader">
+                @foreach (var item in dateTimeFormatInfo.AbbreviatedDayNames)
+                {
+                    <div class="weekDay">@item</div>
+                }
+            </div>
+
+            @for (int week = 1; week <= month.TotalWeeks; week++)
+            {
+                <div class="week">
+                    @for (int indexDays = (week - 1) * 7; indexDays < (week * 7); indexDays++)
+                    {
+                        decimal price = 0;
+
+                        var day = (indexDays + 1) - startDays;
+                        var date = new DateTime(month.Year, month.Month, day);
+                        var validity = nightValidities.FirstOrDefault(x => x.RateValidFrom.Date <= date.Date && x.RateValidTo.Date >= date.Date) ?? new TourPackageNightsValidityViewModel();
+
+                        if (validity.BookedOnDates == null)
+                        {
+                            validity.BookedOnDates = new List<RoomAvailabilityViewModel>();
+                        }
+                        validity.RateTypeApplied = (int)Enums.RateTypeApplied.Double;
+                        price = validity.TwinRateWeekDays;
+                        var hidePrice = !(date <= calenderTo && date >= calenderFrom);
+                        var disabled = date.Date < DateTime.Now.Date.AddDays(5) || price == 0;
+                        var exitingBookedDate = nightValidities.Select(x => x.BookedOnDates.FirstOrDefault(t => t.BookedDate == date.Date)).ToList(); ////validity.BookedOnDates.FirstOrDefault(x => x.BookedDate == date);;
+                        var bookedOnDate = exitingBookedDate.FirstOrDefault(x => x != null); ////validity.BookedOnDates.FirstOrDefault(x => x.BookedDate == date);
+                        var rooms = nightValidities.FirstOrDefault().RoomCapacity; // room per day
+                        var availableRooms = bookedOnDate != null ? bookedOnDate.AvailableRoom : rooms;
+                        var bookedRooms = bookedOnDate != null ? bookedOnDate.TotalBooked : 0;
+                        var roomAvailable = availableRooms > 0;
+                        var nights = tourpackageNight.NoOfNights;
+
+                        var classes = new List<string> { "calendar-day", "day",
+(roomAvailable && availableRooms >= Model.RequestedRooms && !disabled ? "allocationStartDay" : "notAvailable"),
+(availableRooms < Model.RequestedRooms && availableRooms > 0 ? "rooms-left" : string.Empty),
+(availableRooms == 0 ? "soldOut" : string.Empty) };
+
+                        if (hidePrice)
+                        {
+                            classes = new List<string> { "calendar-day", "day", "notAvailable", "soldOut" };
+                        }
+
+                        classes.RemoveAll(str => string.IsNullOrEmpty(str));
+                        if (indexDays >= ((int)month.DayOfWeek))
+                        {
+                            @*@(tourpackageNight.IsExtraNight.ToString().ToLower())*@
+                            <div data-day='@day'
+                                 data-day-sequence="@daySequence"
+                                 data-month='@month.Month'
+                                 data-year='@month.Year'
+                                 data-formatted-date="@(date.ToString("dd MMM yyyy"))"
+                                 data-nights="@(nights)"
+                                 data-extra-nights="false"
+                                 data-overnight="1"
+                                 data-amount="@price.ToAmount()"
+                                 data-discount-amount="@(0)"
+                                 data-room-perDay="@(rooms)"
+                                 data-room-Booked="@(bookedRooms)"
+                                 data-room-Available="@(availableRooms)"
+                                 class="@(string.Join(" ",classes))">
+                                <div class="day-text">@(day)</div>
+
+                                @if (!hidePrice && availableRooms == 0)
+                                {
+                                    <div class='rate' style="display:block !important">Sold</div>
+
+                                }
+                                else if (!hidePrice && availableRooms > 0)
+                                {
+
+                                    <div class='rate' data-price="@price.ToAmount()" data-price-applied="@price.ToAmount()">
+                                        @(availableRooms >= Model.RequestedRooms ? price.ToAmount() : $"{availableRooms} {(availableRooms == 1 ? "room" : "rooms")} left")
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class='rate'></div>
+                                }
+                            </div>
+                            daySequence++;
+                        }
+                        else
+                        {
+
+                            <div class="padDay">&nbsp;</div>
+                            startDays++;
+                        }
+
+                        if (day == month.TotalDays)
+                        {
+                            startDays = 0;
+                            break;
+                        }
+
+                    }
+                </div>
+            }
+        </div>
+
+    }
+}
+@functions{
+
+    public static int Weeks(int year, int month)
+    {
+        DateTime startDate = new DateTime(year, month, 1);
+        DayOfWeek wkstart = startDate.DayOfWeek;
+
+        int firstwkday = (int)startDate.DayOfWeek;
+        int otherwkday = (int)wkstart;
+
+        int offset = ((otherwkday + 7) - firstwkday) % 7;
+
+        double weeks = (double)(DateTime.DaysInMonth(year, month) - offset) / 7d;
+
+        return (int)Math.Ceiling(weeks);
+    }
+
+    public static IEnumerable<calendarMonths> GetCalendarMonths(DateTime startDate, DateTime endDate)
+    {
+        var monthList = new List<calendarMonths>();
+
+        DateTime iterator;
+        DateTime limit;
+
+        if (endDate > startDate)
+        {
+            iterator = new DateTime(startDate.Year, startDate.Month, 1);
+            limit = endDate;
+        }
+        else
+        {
+            iterator = new DateTime(endDate.Year, endDate.Month, 1);
+            limit = startDate;
+        }
+
+        while (iterator <= limit)
+        {
+
+            var viewModel = new calendarMonths();
+            viewModel.Year = iterator.Year;
+            viewModel.Month = iterator.Month;
+            viewModel.MonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(iterator.Month);
+            viewModel.TotalDays = CultureInfo.CurrentCulture.Calendar.GetDaysInMonth(iterator.Year, iterator.Month);
+
+            DateTime monthStartDate = new DateTime(iterator.Year, iterator.Month, 1);
+            DayOfWeek wkstart = monthStartDate.DayOfWeek;
+            viewModel.DayOfWeek = monthStartDate.DayOfWeek;
+
+            int firstwkday = (int)monthStartDate.DayOfWeek;
+            int otherwkday = (int)wkstart;
+            int offset = ((otherwkday + 7) - firstwkday) % 7;
+            var weeks = (viewModel.TotalDays + (int)viewModel.DayOfWeek) / 7.00M;
+            ////double weeks = (double)(DateTime.DaysInMonth(iterator.Year, iterator.Month) - offset) / 7d;
+            viewModel.TotalWeeks = (int)Math.Ceiling(weeks);
+            monthList.Add(viewModel);
+
+            iterator = iterator.AddMonths(1);
+        }
+
+        return monthList;
+    }
+
+    public static string GetAbbreviatedFromFullName(string fullname)
+    {
+        string[] names = DateTimeFormatInfo.CurrentInfo.MonthNames;
+        foreach (var item in names)
+        {
+            if (item == fullname)
+            {
+                return DateTime.ParseExact(item, "MMMM", CultureInfo.CurrentCulture).ToString("MMM");
+            }
+        }
+        return string.Empty;
+    }
+
+    public class calendarMonths
+    {
+        public int Year { get; set; }
+        public int Month { get; set; }
+        public string MonthName { get; set; }
+        public int TotalWeeks { get; set; }
+        public DayOfWeek DayOfWeek { get; set; }
+        public int TotalDays { get; set; }
+    }
+}

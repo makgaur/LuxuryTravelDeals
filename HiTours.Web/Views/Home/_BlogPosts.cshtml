@@ -1,0 +1,76 @@
+﻿@{
+    BlogsLayoutViewModel model = this.ViewBag.BlogPosts;
+}
+<style>
+    /*.slick-slide {
+        text-align: center;
+        color: #419be0;
+        background: red;
+        margin: 10px;
+    }*/
+</style>
+@try
+{
+    if (model != null)
+    {
+        if (model.FeaturedArticles.Count > 0)
+        {
+            <div class="image-article">
+                <section>
+                    @foreach (var item in model.FeaturedArticles)
+                    {
+                        <div class="featured-row">
+                            <img src="~/Blogs/@item.Image" class="featured-image" alt="featured-image"/>
+                            <div class="article-container">
+                                <div class="col-md-12 col-xs-12 article_content">
+                                    <span>Featured Article</span>
+                                    <p>@item.Line1 <br>@item.Line2</p>
+                                    <a href="@item.Url">@item.RedirectText <span class="glyphicon glyphicon-menu-right"></span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                </section>
+            </div>
+
+        }
+        if (model.SubArticles.Count > 0)
+        {
+            int count = model.SubArticles.Count;
+            <div class="blog-destination-section hidden-xs">
+                <section class="beautiful_destination hidden-xs">
+                    <div>
+                        @for (int i = 0; i < count; i++)
+                        {
+                            <div class="sub-article row">
+                                <div class="col-sm-6 beautiful_destination_content">
+                                    <h3>@(model.SubArticles[i].Line1)</h3>
+                                    <p><span>@(model.SubArticles[i].Line2)</span></p>
+                                    <p>@(model.SubArticles[i].Line3)</p>
+                                    <a href="@(model.SubArticles[i].Url)" target="_blank">@(model.SubArticles[i].RedirectText)</a> <span class="glyphicon glyphicon-menu-right"></span>
+                                </div>
+
+                                <div class="col-sm-6 dest_image">
+                                    <img src="~/Blogs/@(model.SubArticles[i].Image)" alt="blog_image" class="img-responsive"/>
+                                </div>
+                            </div>
+
+                            if (i != (count - 1))
+                            {
+                                <hr class="blogpost-saperate w87">
+                            }
+                        }
+                    </div>
+                </section>
+            </div>
+
+        }
+    }
+
+}
+catch (Exception ex)
+{
+    var msg = ex.ToString();
+}

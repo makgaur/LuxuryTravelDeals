@@ -1,0 +1,130 @@
+//-- Ssr Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "2d627a31-b3e8-4e6a-b0eb-82d9ff6b386c",
+  "TraceId": "392d47da-0f02-4e83-a3be-1925a13ce1ec",
+  "ResultIndex": "OB7"
+}
+//-- Ssr Api Response --
+{
+  "Response": {
+    "Meal": [
+      {
+        "Code": "AVML",
+        "Description": "Asian - Vegetarian"
+      },
+      {
+        "Code": "BBML",
+        "Description": "Baby/Infant Food"
+      },
+      {
+        "Code": "BLML",
+        "Description": "Bland"
+      },
+      {
+        "Code": "CHML",
+        "Description": "Child Food"
+      },
+      {
+        "Code": "DBML",
+        "Description": "Diabetic"
+      },
+      {
+        "Code": "FPML",
+        "Description": "Fruit Platter"
+      },
+      {
+        "Code": "GFML",
+        "Description": "Gluten Free"
+      },
+      {
+        "Code": "HFML",
+        "Description": "High Fiber"
+      },
+      {
+        "Code": "HNML",
+        "Description": "Hindu - Non Veg"
+      },
+      {
+        "Code": "KSML",
+        "Description": "Kosher"
+      },
+      {
+        "Code": "LCML",
+        "Description": "Low Calorie"
+      },
+      {
+        "Code": "LFML",
+        "Description": "Low Cholesterol/Fat"
+      },
+      {
+        "Code": "LPML",
+        "Description": "Low Protein"
+      },
+      {
+        "Code": "LSML",
+        "Description": "Low Sodium/No Salt"
+      },
+      {
+        "Code": "MOML",
+        "Description": "Moslem"
+      },
+      {
+        "Code": "NLML",
+        "Description": "Non Lactose"
+      },
+      {
+        "Code": "ORML",
+        "Description": "Oriental"
+      },
+      {
+        "Code": "PRML",
+        "Description": "Low Purin"
+      },
+      {
+        "Code": "RVML",
+        "Description": "Raw Vegetarian"
+      },
+      {
+        "Code": "SFML",
+        "Description": "Seafood"
+      },
+      {
+        "Code": "SPML",
+        "Description": "Special Meal"
+      },
+      {
+        "Code": "VGML",
+        "Description": "Veg/Non Dairy"
+      },
+      {
+        "Code": "VJML",
+        "Description": "Vegetarian Jain"
+      },
+      {
+        "Code": "VLML",
+        "Description": "Veg/Milk/Eggs"
+      },
+      {
+        "Code": "VOML",
+        "Description": "Vegetarian Oriental"
+      }
+    ],
+    "SeatPreference": [
+      {
+        "Code": "A",
+        "Description": "Aisle"
+      },
+      {
+        "Code": "W",
+        "Description": "Window"
+      }
+    ],
+    "ResponseStatus": 1,
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "TraceId": "392d47da-0f02-4e83-a3be-1925a13ce1ec"
+  }
+}

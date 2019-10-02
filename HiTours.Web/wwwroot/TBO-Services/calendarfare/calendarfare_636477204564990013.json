@@ -1,0 +1,252 @@
+//-- calendarfare Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "2d627a31-b3e8-4e6a-b0eb-82d9ff6b386c",
+  "JourneyType": 1,
+  "PreferredAirlines": null,
+  "Segments": [
+    {
+      "Origin": "DEL",
+      "Destination": "JAI",
+      "FlightCabinClass": 1,
+      "PreferredDepartureTime": "2017-12-01T00:00:00",
+      "PreferredArrivalTime": "2017-12-01T00:00:00"
+    }
+  ],
+  "Sources": null
+}
+//-- calendarfare Api Response --
+{
+  "Response": {
+    "ResponseStatus": 1,
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "TraceId": "26895f14-ba22-4332-97f9-e4b11cbc9b77",
+    "Origin": "DEL",
+    "Destination": "JAI",
+    "SearchResults": [
+      {
+        "AirlineCode": "AI",
+        "AirlineName": "Air India",
+        "DepartureDate": "2017-12-01T17:45:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 5765.6,
+        "BaseFare": 4133.3333,
+        "Tax": 214,
+        "OtherCharges": 0,
+        "FuelSurcharge": 0
+      },
+      {
+        "AirlineCode": "AI",
+        "AirlineName": "Air India",
+        "DepartureDate": "2017-12-04T17:45:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 1832.4,
+        "BaseFare": 1600,
+        "Tax": 246,
+        "OtherCharges": 0,
+        "FuelSurcharge": 0
+      },
+      {
+        "AirlineCode": "AI",
+        "AirlineName": "Air India",
+        "DepartureDate": "2017-12-03T17:45:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 2249,
+        "BaseFare": 2000,
+        "Tax": 266,
+        "OtherCharges": 0,
+        "FuelSurcharge": 0
+      },
+      {
+        "AirlineCode": "6E",
+        "AirlineName": "Indigo",
+        "DepartureDate": "2017-12-06T20:10:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 2647.6,
+        "BaseFare": 1433,
+        "Tax": 1107,
+        "OtherCharges": 200,
+        "FuelSurcharge": 525
+      },
+      {
+        "AirlineCode": "6E",
+        "AirlineName": "Indigo",
+        "DepartureDate": "2017-12-09T20:10:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 1433.33,
+        "BaseFare": 150,
+        "Tax": 1093,
+        "OtherCharges": 200,
+        "FuelSurcharge": 525
+      },
+      {
+        "AirlineCode": "AI",
+        "AirlineName": "Air India",
+        "DepartureDate": "2017-12-11T12:05:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 1541.38,
+        "BaseFare": 1250,
+        "Tax": 302,
+        "OtherCharges": 0,
+        "FuelSurcharge": 0
+      },
+      {
+        "AirlineCode": "AI",
+        "AirlineName": "Air India",
+        "DepartureDate": "2017-12-12T17:45:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 2249,
+        "BaseFare": 2000,
+        "Tax": 266,
+        "OtherCharges": 0,
+        "FuelSurcharge": 0
+      },
+      {
+        "AirlineCode": "AI",
+        "AirlineName": "Air India",
+        "DepartureDate": "2017-12-10T17:45:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 1832.4,
+        "BaseFare": 1600,
+        "Tax": 246,
+        "OtherCharges": 0,
+        "FuelSurcharge": 0
+      },
+      {
+        "AirlineCode": "AI",
+        "AirlineName": "Air India",
+        "DepartureDate": "2017-12-07T17:45:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 3186.35,
+        "BaseFare": 2900,
+        "Tax": 311,
+        "OtherCharges": 0,
+        "FuelSurcharge": 0
+      },
+      {
+        "AirlineCode": "6E",
+        "AirlineName": "Indigo",
+        "DepartureDate": "2017-12-13T20:10:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 1433.33,
+        "BaseFare": 150,
+        "Tax": 1093,
+        "OtherCharges": 200,
+        "FuelSurcharge": 525
+      },
+      {
+        "AirlineCode": "9W",
+        "AirlineName": "Jet Airways",
+        "DepartureDate": "2017-12-14T12:15:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 1689.58,
+        "BaseFare": 520,
+        "Tax": 1074,
+        "OtherCharges": 100,
+        "FuelSurcharge": 450
+      },
+      {
+        "AirlineCode": "SG",
+        "AirlineName": "Spicejet",
+        "DepartureDate": "2017-12-16T07:15:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 3861.18,
+        "BaseFare": 3499,
+        "Tax": 566.35,
+        "OtherCharges": 0,
+        "FuelSurcharge": 0
+      },
+      {
+        "AirlineCode": "AI",
+        "AirlineName": "Air India",
+        "DepartureDate": "2017-12-18T12:05:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 2114.7,
+        "BaseFare": 1800,
+        "Tax": 330,
+        "OtherCharges": 0,
+        "FuelSurcharge": 0
+      },
+      {
+        "AirlineCode": "AI",
+        "AirlineName": "Air India",
+        "DepartureDate": "2017-12-19T12:05:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 2114.7,
+        "BaseFare": 1800,
+        "Tax": 330,
+        "OtherCharges": 0,
+        "FuelSurcharge": 0
+      },
+      {
+        "AirlineCode": "AI",
+        "AirlineName": "Air India",
+        "DepartureDate": "2017-12-20T17:45:00",
+        "IsLowestFareOfMonth": true,
+        "Fare": 1415.8,
+        "BaseFare": 1200,
+        "Tax": 226,
+        "OtherCharges": 0,
+        "FuelSurcharge": 0
+      },
+      {
+        "AirlineCode": "AI",
+        "AirlineName": "Air India",
+        "DepartureDate": "2017-12-22T12:05:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 2478.72,
+        "BaseFare": 2150,
+        "Tax": 347,
+        "OtherCharges": 0,
+        "FuelSurcharge": 0
+      },
+      {
+        "AirlineCode": "AI",
+        "AirlineName": "Air India",
+        "DepartureDate": "2017-12-23T17:45:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 2249,
+        "BaseFare": 2000,
+        "Tax": 266,
+        "OtherCharges": 0,
+        "FuelSurcharge": 0
+      },
+      {
+        "AirlineCode": "AI",
+        "AirlineName": "Air India",
+        "DepartureDate": "2017-12-25T12:05:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 2478.72,
+        "BaseFare": 2150,
+        "Tax": 347,
+        "OtherCharges": 0,
+        "FuelSurcharge": 0
+      },
+      {
+        "AirlineCode": "AI",
+        "AirlineName": "Air India",
+        "DepartureDate": "2017-12-30T17:45:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 2473.99,
+        "BaseFare": 2400,
+        "Tax": 286,
+        "OtherCharges": 24.73,
+        "FuelSurcharge": 0
+      },
+      {
+        "AirlineCode": "6E",
+        "AirlineName": "Indigo",
+        "DepartureDate": "2017-12-31T20:10:00",
+        "IsLowestFareOfMonth": false,
+        "Fare": 2634.1015,
+        "BaseFare": 1370.4,
+        "Tax": 1030.6,
+        "OtherCharges": 160,
+        "FuelSurcharge": 525
+      }
+    ]
+  }
+}

@@ -1,0 +1,402 @@
+//-- Book Api Request --
+{
+  "ResultIndex": "OB1",
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "afd1a05d-79ea-4680-a4df-a0bf4a509041",
+  "TraceId": "5c4370ce-3fc6-4634-98ca-4443a88cb615",
+  "Passengers": [
+    {
+      "Title": "Mr",
+      "FirstName": "sumeet",
+      "LastName": "gupta",
+      "PaxType": "1",
+      "DateOfBirth": "1995-12-13T00:00:00",
+      "Gender": "1",
+      "PassportNo": null,
+      "PassportExpiry": null,
+      "AddressLine1": "address1",
+      "AddressLine2": "address1",
+      "City": "jaipur",
+      "CountryCode": "IN",
+      "CountryName": "India",
+      "Nationality": "IN",
+      "ContactNo": "7412589632",
+      "Email": "gsumeet94@gmail.com",
+      "IsLeadPax": true,
+      "FFAirlineCode": "",
+      "FFNumber": "",
+      "GSTCompanyAddress": "",
+      "GSTCompanyContactNumber": "",
+      "GSTCompanyName": "",
+      "GSTNumber": "",
+      "GSTCompanyEmail": "",
+      "Fare": {
+        "Currency": "INR",
+        "BaseFare": 3200,
+        "Tax": 1294,
+        "YQTax": 0,
+        "AdditionalTxnFeePub": 0,
+        "AdditionalTxnFeeOfrd": 0,
+        "OtherCharges": 0,
+        "Discount": 0,
+        "PublishedFare": 4494,
+        "OfferedFare": 4466.8,
+        "TdsOnCommission": 5.44,
+        "TdsOnPLB": 0,
+        "TdsOnIncentive": 0,
+        "ServiceFee": 0
+      }
+    },
+    {
+      "Title": "Mr",
+      "FirstName": "sagar",
+      "LastName": "gupta",
+      "PaxType": "1",
+      "DateOfBirth": "1995-12-18T00:00:00",
+      "Gender": "1",
+      "PassportNo": null,
+      "PassportExpiry": null,
+      "AddressLine1": "address2",
+      "AddressLine2": "address2",
+      "City": "jaipur",
+      "CountryCode": "IN",
+      "CountryName": "India",
+      "Nationality": "IN",
+      "ContactNo": "8521478521",
+      "Email": "gsumeet94@gmail.com",
+      "IsLeadPax": true,
+      "FFAirlineCode": "",
+      "FFNumber": "",
+      "GSTCompanyAddress": "",
+      "GSTCompanyContactNumber": "",
+      "GSTCompanyName": "",
+      "GSTNumber": "",
+      "GSTCompanyEmail": "",
+      "Fare": {
+        "Currency": "INR",
+        "BaseFare": 3200,
+        "Tax": 1294,
+        "YQTax": 0,
+        "AdditionalTxnFeePub": 0,
+        "AdditionalTxnFeeOfrd": 0,
+        "OtherCharges": 0,
+        "Discount": 0,
+        "PublishedFare": 4494,
+        "OfferedFare": 4466.8,
+        "TdsOnCommission": 5.44,
+        "TdsOnPLB": 0,
+        "TdsOnIncentive": 0,
+        "ServiceFee": 0
+      }
+    }
+  ]
+}
+//-- Book Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "TraceId": "5c4370ce-3fc6-4634-98ca-4443a88cb615",
+    "ResponseStatus": 1,
+    "Response": {
+      "PNR": "LBP3E2",
+      "BookingId": 50324,
+      "SSRDenied": false,
+      "SSRMessage": null,
+      "Status": 1,
+      "IsPriceChanged": false,
+      "IsTimeChanged": false,
+      "FlightItinerary": {
+        "BookingId": 50324,
+        "IsManual": false,
+        "PNR": "LBP3E2",
+        "IsDomestic": true,
+        "Source": 4,
+        "Origin": "JAI",
+        "Destination": "DEL",
+        "AirlineCode": "AI",
+        "LastTicketDate": "12DEC17",
+        "ValidatingAirlineCode": "AI",
+        "AirlineRemark": "",
+        "IsLCC": false,
+        "NonRefundable": true,
+        "FareType": "RP",
+        "CreditNoteNo": null,
+        "Fare": {
+          "Currency": "INR",
+          "BaseFare": 3200,
+          "Tax": 1294,
+          "TaxBreakup": [
+            {
+              "key": "YQTax",
+              "value": 0
+            },
+            {
+              "key": "YR",
+              "value": 0
+            },
+            {
+              "key": "TotalTax",
+              "value": 1294
+            }
+          ],
+          "YQTax": 0,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0,
+          "OtherCharges": 0,
+          "ChargeBU": [
+            {
+              "key": "TBOMARKUP",
+              "value": 0
+            },
+            {
+              "key": "CONVENIENCECHARGE",
+              "value": 0
+            },
+            {
+              "key": "OTHERCHARGE",
+              "value": 0
+            }
+          ],
+          "Discount": 0,
+          "PublishedFare": 4494,
+          "CommissionEarned": 27.2,
+          "PLBEarned": 0,
+          "IncentiveEarned": 0,
+          "OfferedFare": 4466.8,
+          "TdsOnCommission": 5.44,
+          "TdsOnPLB": 0,
+          "TdsOnIncentive": 0,
+          "ServiceFee": 0,
+          "TotalBaggageCharges": 0,
+          "TotalMealCharges": 0,
+          "TotalSeatCharges": 0,
+          "TotalSpecialServiceCharges": 0
+        },
+        "CreditNoteCreatedOn": null,
+        "Passenger": [
+          {
+            "PaxId": 68669,
+            "Title": "Mr",
+            "FirstName": "sumeet",
+            "LastName": "gupta",
+            "PaxType": 1,
+            "DateOfBirth": "1995-12-13T00:00:00",
+            "Gender": 1,
+            "PassportNo": "",
+            "AddressLine1": "address1",
+            "AddressLine2": "address1",
+            "Fare": {
+              "Currency": "INR",
+              "BaseFare": 1600,
+              "Tax": 647,
+              "TaxBreakup": [
+                {
+                  "key": "YQTax",
+                  "value": 0
+                },
+                {
+                  "key": "YR",
+                  "value": 0
+                },
+                {
+                  "key": "TotalTax",
+                  "value": 647
+                }
+              ],
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0,
+              "OtherCharges": 0,
+              "ChargeBU": [
+                {
+                  "key": "TBOMARKUP",
+                  "value": 0
+                },
+                {
+                  "key": "CONVENIENCECHARGE",
+                  "value": 0
+                },
+                {
+                  "key": "OTHERCHARGE",
+                  "value": 0
+                }
+              ],
+              "Discount": 0,
+              "PublishedFare": 2247,
+              "CommissionEarned": 13.6,
+              "PLBEarned": 0,
+              "IncentiveEarned": 0,
+              "OfferedFare": 2233.4,
+              "TdsOnCommission": 2.72,
+              "TdsOnPLB": 0,
+              "TdsOnIncentive": 0,
+              "ServiceFee": 0,
+              "TotalBaggageCharges": 0,
+              "TotalMealCharges": 0,
+              "TotalSeatCharges": 0,
+              "TotalSpecialServiceCharges": 0
+            },
+            "City": "jaipur",
+            "CountryCode": "IN",
+            "CountryName": "India",
+            "Nationality": "IN",
+            "ContactNo": "7412589632",
+            "Email": "gsumeet94@gmail.com",
+            "IsLeadPax": true,
+            "FFAirlineCode": "",
+            "FFNumber": "",
+            "GSTCompanyAddress": "",
+            "GSTCompanyContactNumber": "",
+            "GSTCompanyEmail": "",
+            "GSTCompanyName": "",
+            "GSTNumber": ""
+          },
+          {
+            "PaxId": 68670,
+            "Title": "Mr",
+            "FirstName": "sagar",
+            "LastName": "gupta",
+            "PaxType": 1,
+            "DateOfBirth": "1995-12-18T00:00:00",
+            "Gender": 1,
+            "PassportNo": "",
+            "Fare": {
+              "Currency": "INR",
+              "BaseFare": 1600,
+              "Tax": 647,
+              "TaxBreakup": [
+                {
+                  "key": "YQTax",
+                  "value": 0
+                },
+                {
+                  "key": "YR",
+                  "value": 0
+                },
+                {
+                  "key": "TotalTax",
+                  "value": 647
+                }
+              ],
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0,
+              "OtherCharges": 0,
+              "ChargeBU": [
+                {
+                  "key": "TBOMARKUP",
+                  "value": 0
+                },
+                {
+                  "key": "CONVENIENCECHARGE",
+                  "value": 0
+                },
+                {
+                  "key": "OTHERCHARGE",
+                  "value": 0
+                }
+              ],
+              "Discount": 0,
+              "PublishedFare": 2247,
+              "CommissionEarned": 13.6,
+              "PLBEarned": 0,
+              "IncentiveEarned": 0,
+              "OfferedFare": 2233.4,
+              "TdsOnCommission": 2.72,
+              "TdsOnPLB": 0,
+              "TdsOnIncentive": 0,
+              "ServiceFee": 0,
+              "TotalBaggageCharges": 0,
+              "TotalMealCharges": 0,
+              "TotalSeatCharges": 0,
+              "TotalSpecialServiceCharges": 0
+            },
+            "City": "jaipur",
+            "CountryCode": "IN",
+            "CountryName": "India",
+            "Nationality": "IN",
+            "IsLeadPax": true,
+            "FFAirlineCode": "",
+            "FFNumber": "",
+            "GSTCompanyAddress": "",
+            "GSTCompanyContactNumber": "",
+            "GSTCompanyEmail": "",
+            "GSTCompanyName": "",
+            "GSTNumber": ""
+          }
+        ],
+        "CancellationCharges": null,
+        "Segments": [
+          {
+            "Baggage": null,
+            "CabinBaggage": null,
+            "TripIndicator": 1,
+            "SegmentIndicator": 1,
+            "Airline": {
+              "AirlineCode": "AI",
+              "AirlineName": "Air India",
+              "FlightNumber": "9644",
+              "FareClass": "T",
+              "OperatingCarrier": "9I"
+            },
+            "AirlinePNR": "",
+            "Origin": {
+              "Airport": {
+                "AirportCode": "JAI",
+                "AirportName": "Sanganeer",
+                "Terminal": "2",
+                "CityCode": "JAI",
+                "CityName": "Jaipur",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "DepTime": "2017-12-12T19:15:00"
+            },
+            "Destination": {
+              "Airport": {
+                "AirportCode": "DEL",
+                "AirportName": "Indira Gandhi Airport",
+                "Terminal": "3",
+                "CityCode": "DEL",
+                "CityName": "Delhi",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "ArrTime": "2017-12-12T20:15:00"
+            },
+            "AccumulatedDuration": 60,
+            "Duration": 60,
+            "GroundTime": 0,
+            "Mile": 0,
+            "StopOver": false,
+            "StopPoint": "",
+            "StopPointArrivalTime": "2017-12-12T20:15:00",
+            "StopPointDepartureTime": "2017-12-12T19:15:00",
+            "Craft": "ATR",
+            "Remark": "     OPERATED BY ALLIANCE AIR, DEPARTURE JAI TERMINAL 2 / ARRIVAL DEL TERMINAL 3, SEE RTSVC",
+            "IsETicketEligible": false,
+            "FlightStatus": "Confirmed",
+            "Status": "HK"
+          }
+        ],
+        "FareRules": [
+          {
+            "Origin": "JAI",
+            "Destination": "DEL",
+            "Airline": "AI",
+            "FareBasisCode": "TIP9I",
+            "FareRuleDetail": "<ul><li><b>There is no Minimum Stay requirement</b><br><li><b>There is no Maximum Stay requirement</b><br><fieldset><legend><b><b>Adult</b><br></b></legend><ul><li><b>Revalidation/Reissue</b><br>Fare Component <b>TIP9I</b>&emsp; Sector <b>JAI-DEL</b> &nbsp;<ul><li>Revalidation before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li>Reissue, including failure to show at first flight : <b>Allowed with Restrictions</b></li><li><b>Prior to Departure of journey</b><ul><u>Reissue</u><li>Penalty fee : <b>2500 INR(at today exchange rates 2500 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>2500 INR</b></li><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><u>Reissue</u><li>Penalty fee between : <b>0 INR/2500 INR</b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>2500 INR</b></li><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><li><b>Refund</b><br>Fare Component <b>TIP9I</b>&emsp; Sector <b>JAI-DEL</b> &nbsp;<ul><li>Refund, including failure to show at subsequent flight(s) : <b>Not Allowed</b></li><li><b>Prior to Departure of journey</b><ul><li>Refund : <b>Not Allowed</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Refund : <b>Allowed with Restrictions</b></li><li>Refund : <b>Allowed, Check with Agent for further details</b></li><li>Maximum Refund penalty fee for entire ticket : <b>No charge</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><br><b>* Revalidation is a modification of the original ticket without any reissue of a new ticket.</b><br><b>* For Reissue, Penalty fees are in addition to any difference in fare.</b><br><b>* For Refund, certain Taxes are non-refundable.</b></ul></fieldset></ul>",
+            "FareRestriction": "Y"
+          }
+        ],
+        "Status": 1
+      }
+    }
+  }
+}

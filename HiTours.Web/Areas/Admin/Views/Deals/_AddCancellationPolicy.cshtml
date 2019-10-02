@@ -1,0 +1,43 @@
+﻿@model DealsCancellationPolicyViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+<tr>
+    @using (this.Html.BeginCollectionItem("model"))
+    {
+        <td>
+            <div class="field-col">
+                <input class="form-control" asp-for="MinDay" type="number" placeholder="From Days" />
+                <span asp-validation-for="MinDay"></span>
+            </div>
+
+        </td>
+        <td>
+            <div class="field-col">
+                <input class="form-control" asp-for="MaxDay" type="number" placeholder="To Days" />
+                <span asp-validation-for="MaxDay"></span>
+            </div>
+        </td>
+        <td>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="UpdatedBy" />
+            <input type="hidden" asp-for="UpdatedDate" />
+            <input type="hidden" asp-for="CreatedBy" />
+            <input type="hidden" asp-for="CreatedDate" />
+            <input type="hidden" asp-for="PackageId" />
+            <input type="hidden" asp-for="IsDeleted" class="delete_row" />
+            <div class="field-col">
+                <select asp-for="MarginType" selected="@Model.MarginType" class="form-control" id="ChargeType" select2-Placeholder="Deduction Type" asp-items="Model.MarginTypeItems"
+                        select2-value="@Model.MarginType"></select>
+                <span asp-validation-for="MarginType"></span>
+            </div>
+        </td>
+        <td>
+            <div class="field-col">
+                <input class="form-control" asp-for="Charge" placeholder="Deduction Charge" />
+                <span asp-validation-for="Charge"></span>
+            </div>
+        </td>
+        <td valign="middle">
+            <a class="delete-item-row btn btn-block btn-danger" href="javaScript:void(0)"><i class="fa fa-trash-o"></i></a>
+        </td>
+    }
+</tr>

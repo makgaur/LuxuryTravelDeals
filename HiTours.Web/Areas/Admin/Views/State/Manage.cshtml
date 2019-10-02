@@ -1,0 +1,109 @@
+﻿@{  this.ViewBag.Title = "State";}
+@model PackageStateViewModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                        @if (this.Model != null && this.Model.Id != 0)
+                        {
+                            @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/state/manage") })
+                        }
+                        @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.ViewList, "/admin/state") })
+                    </div>
+            </div>
+            <form asp-antiforgery="true" method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Id" />
+                @if (Model.CountryId == 61) { 
+                <input type="hidden" asp-for="CountryId" />
+                }
+                <input type="hidden" asp-for="CreatedBy" />
+                <input type="hidden" asp-for="CreatedDate" />
+                <input type="hidden" asp-for="UpdatedBy" />
+                <input type="hidden" asp-for="UpdatedDate" />
+                <div class="box-body">
+
+                    <div class="form-group col-sm-6">
+                        <label asp-for="Name"></label>
+                        <input type="text" asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="CountryId"></label>
+                        <select class="form-control statecountry" asp-for="CountryId" asp-items="Model.Coutries"
+                                select2-value="@Model.CountryId" select2-Url="/selectlist/GetPackageCountryList"></select>
+                        <span asp-validation-for="CountryId"></span>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label asp-for="Description"></label>
+
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label>Upload Images (Ratio 4:3)</label>
+                        <input type="file" class="image-upload" asp-for="ImageFile">
+                        <input type="text" class="form-control" asp-for="Image" readonly>
+                    </div>
+                </div>
+                @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit) })
+            </form>
+        </div>
+    </div>
+
+</div>
+@section scripts
+    {
+    <script>
+        //  $(document).ready(function () {
+        //    $(document).on('change', '.btn-file :file', function () {
+        //        var input = $(this),
+        //            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        //        input.trigger('fileselect', [label]);
+        //    });
+
+        //    $('.btn-file :file').on('fileselect', function (event, label) {
+
+        //        var input = $(this).parents('.input-group').find(':text'),
+        //            log = label;
+
+        //        if (input.length) {
+        //            input.val(log);
+        //        } else {
+        //            if (log) alert(log);
+        //        }
+
+        //    });
+            
+
+        //    $(".image-upload").change(function () {
+        //        debugger;
+        //        readURL(this, $(this).data('target'));
+        //    });
+        //});
+        //function readURL(input, id) {
+        //    if (input.files && input.files[0]) {
+        //        var reader = new FileReader();
+
+        //        reader.onload = function (e) {
+        //            $('#' + id).attr('src', e.target.result);
+        //            $('#' + id).parent('div').removeClass('hidden');
+        //        }
+
+        //        reader.readAsDataURL(input.files[0]);
+        //    }
+        //}
+        //$(document).ready(function () {
+        //    var $state = $(".statecountry");
+        //    if ($state.select2('data').length > 0) {
+
+        //        var id = $state.select2('data')[0].id;
+        //        if (id == "61") {
+        //            $("#Name").attr('readonly', true);
+        //            $state.attr('disabled', true);
+        //        }
+        //    }
+
+        //})
+    </script>
+}

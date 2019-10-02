@@ -1,0 +1,34 @@
+﻿@{  this.ViewBag.Title = "CompanySetting";}
+@model CompanySettingViewModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+               
+            </div>
+            <form asp-antiforgery="true" method="post">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="CreatedBy" />
+                <input type="hidden" asp-for="CreatedDate" />
+                <input type="hidden" asp-for="UpdatedBy" />
+                <input type="hidden" asp-for="UpdatedDate" />
+                <div class="box-body">
+                    <div class="row">
+                        <div class="form-group col-sm-8">
+                            <div class="col-sm-3">
+                                <label asp-for="FlightMarkup"></label>
+                            </div>
+                            <div class="col-sm-5">
+                                <input type="text" asp-for="FlightMarkup" class="form-control" />
+                                <span asp-validation-for="FlightMarkup"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit), new Button(Enums.ButtonType.Cancel) })
+            </form>
+        </div>
+    </div>
+
+</div>

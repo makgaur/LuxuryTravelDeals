@@ -1,0 +1,7 @@
+﻿<form asp-antiforgery="true" method="post" enctype="multipart/form-data">
+    <div class="form-group col-md-6">
+        <label>Name</label>
+        <input name="name" class="form-control" required />
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit) })
+</form>

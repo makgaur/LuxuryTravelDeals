@@ -1,0 +1,79 @@
+﻿        @{
+            var headerWithoutIcons = this.ViewBag.HeaderWithoutIcons != null && this.ViewBag.HeaderWithoutIcons == true;
+            var hosturl = string.Format("{0}://{1}", Context.Request.Scheme, Context.Request.Host);
+        }
+
+@using System.Security.Claims
+
+@*==========New Layout Header==============*@
+
+        <header>
+            <div class="@(headerWithoutIcons?"inner-header-bg":string.Empty) ">
+                <div class="navbar-wrapper @(headerWithoutIcons?"modify-nav":string.Empty)">
+                    <div class="container-fluid header-bg">
+                        <nav class="navbar navbar-inverse NavCustomize">
+                            <div class="navbar-header no-float">
+                                <button type="button" class="navbar-toggle mobile-navbar-toggle collapsed" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar toggle-icon-bar"></span>
+                                    <span class="icon-bar toggle-icon-bar"></span>
+                                    <span class="icon-bar toggle-icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand hidden-xs" href="@hosturl"><img src="~/images/LTD_logo.svg" class="img-responsive logo-ltd-style" alt="Luxury Travel Deals Logo" title="Luxury Travel Deals" /><div class="hidden-sm"><span class="medium">Luxury</span>Travel<span class="medium">Deals</span></div></a>
+                                <a class="navbar-brand hidden-lg hidden-md hidden-sm" href="@hosturl">
+                                    <img src="~/images/LTD_logo.svg" class="img-responsive logo-ltd-style" alt="Luxury Travel Deals Logo" title="Luxury Travel Deals"  />
+                                </a>
+                                <div class="custom-header-icon hidden-sm hidden-lg hidden-md">
+
+                                        @*For Mobile View*@
+                                        <ul>
+
+                                                    @if (this.User.Identity.IsAuthenticated && (User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Actor) == null || User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Actor).Value == string.Empty))
+                                                    {
+                                                        <li class="user-style">
+                                                            <input type="hidden" id="UserEmail" value="@this.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value" />
+
+                                                            @*<a class="dropdown-toggle white-color" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle-o fa-2x"></i></a>*@
+                                                           
+                                                        </li>
+                                   
+                                                    }
+
+                                                    else
+                                                    {
+                                                        <li class="myaccount">
+                                                            @*<input type="hidden" id="UserEmail" value="" />*@
+                                                            <a href="javascript:;" class="signin" onclick="SignInSignUp('signin', true)">SIGN IN</a>
+                                                        </li>
+                                                    }
+                                        </ul>
+
+                                </div>
+
+                                    @this.Html.Partial("_SubHeader")
+                              </div>
+
+
+
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+
+
+<script>
+   
+</script>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,508 @@
+﻿@{
+    this.ViewBag.Title = "Tour Package";
+    this.ViewBag.HoteTitle = "Hotel Package";
+    var validateErrorMsg = TempData["Error"];
+    var duplicateValue = TempData["Duplicate"];
+}
+@model TourPackageViewModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <form asp-antiforgery="true" method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="TourPackageType" />
+
+                @foreach (var travelstyle in this.Model.TourPackageTravelStyle)
+                {
+                    @this.Html.Partial("_TourPackageTravelStyle", travelstyle)
+                }
+                <div class="box-body">
+                    <div class="form-group col-sm-12">
+                        <label asp-for="VendorId"></label>
+                        <div class="input-group">
+                            <select asp-for="VendorId" selected="@Model.VendorId" class="form-control" id="vendorId" asp-items="Model.VendorListItems"
+                                    select2-value="@Model.VendorId" select2-Url="/selectlist/GetVendorsDropdownList" select2-Placeholder="Choose Vendor"></select>
+                            <div class="input-group-addon">
+                                <a href="@Url.Action("Manage","Vendor",new { @area="Admin" ,@id = 0 })" target="_blank"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                       
+                        <span asp-validation-for="VendorId"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="UrlTitle"></label>&nbsp;&nbsp;&nbsp;<b>Ex:- url-title-for-seo-purpose</b>
+                        <input type="text" asp-for="UrlTitle" class="form-control " />
+                        <span asp-validation-for="UrlTitle"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="PackageName"></label>
+                        <input type="text" asp-for="PackageName" class="form-control " maxlength="100" />
+                        <span asp-validation-for="PackageName"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="DealType"></label>
+                        <select asp-for="DealType" class="form-control packagecountry" multiple asp-items="Model.Deals"
+                                select2-value="@Model.DealType"></select>
+                        <span asp-validation-for="DealType"></span>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="form-group col-sm-4">
+                        <label asp-for="TravelStyle"></label>
+                        <select asp-for="TravelStyle" selected="@Model.TravelStyle" class="form-control packagecountry" asp-items="@this.ViewBag.TravelStyle"
+                                select2-value="@Model.TravelStyle"></select>
+                        <span asp-validation-for="TravelStyle"></span>
+                    </div>
+                    <div class="form-group col-sm-2 flight-cluded">
+                        <label asp-for="IsFlightIncluded"></label>
+                        <input type="checkbox" asp-for="IsFlightIncluded" />
+                    </div>
+                    <div class="form-group col-sm-2 flight-cluded">
+                        <label asp-for="IsHotelOnly"></label>
+                        <input type="checkbox" asp-for="IsHotelOnly" onchange="UpdateLabelForHotelOnly(this)" />
+                    </div>
+                    <div class="" style="padding:0px;z-index:9999;clear:both;">
+                        <div class="form-group col-sm-4">
+                            <label asp-for="PackageValidFrom"></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input asp-for="PackageValidFrom" type="text" data-target-minDate=".bookingvalidfrom" class="form-control pull-right validate-to datepicker">
+                            </div>
+                            <span asp-validation-for="PackageValidFrom"></span>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label asp-for="PackageValidTo"></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" asp-for="PackageValidTo" class="form-control pull-right datepicker">
+                            </div>
+                            <span asp-validation-for="PackageValidTo"></span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group col-sm-4">
+                        <label asp-for="Visitors"></label>
+                        <input type="text" asp-for="Visitors" class="form-control numericOnly" />
+                        <span asp-validation-for="Visitors"></span>
+                    </div>
+
+
+                    <h2 class="city-text-details">City Details</h2>
+
+                    <div class="col-sm-12 col-xs-12">
+
+                        <div class="form-group">
+                            <div class="tax-tabel-wrap">
+
+                                <div class="table-responsive">
+                                    <table id="tourCities" class="table table-standard table-bordered invoice-tabel-2">
+                                        <thead>
+                                            <tr>
+                                                <th>Region</th>
+                                                <th>Country</th>
+                                                <th>State</th>
+                                                <th>City</th>
+                                                <th>Description</th>
+                                                <th><i class="fa fa-trash-o"></i> </th>
+                                            </tr>
+                                        </thead>
+                                        @{
+                                                if (Model.TourPackageCity == null)
+                                                {
+                                                    Model.TourPackageCity = new List<TourPackageCityViewModel>();
+                                                }
+                                        }
+                                           
+                                        <tbody>
+                                            @if (this.Model != null && this.Model.TourPackageCity != null && this.Model.TourPackageCity.Count > 0)
+                                            {
+                                                foreach (var detail in this.Model.TourPackageCity)
+                                                {
+                                                    detail.TourPackageType = Model.TourPackageType;
+                                                    @this.Html.Partial("_TourPackageCity", detail)
+                                                }
+                                            }
+                                        </tbody>
+                                        @*<tfoot>
+                                <tr>
+                                    <td>Regions</td>
+                                    <td>State</td>
+                                    <td>Cities</td>
+                                    <td>Country</td>
+                                    <td>Description</td>
+                                </tr>
+                            </tfoot>*@
+                                    </table>
+                                </div>
+                                @if (Model.TourPackageType == 2)
+                                {
+                                    <div class="form-group col-sm-4">
+                                        <label asp-for="HotelId"></label>
+                                        <select asp-for="HotelId" selected="@Model.HotelId" class="form-control tourpackagehotel" asp-items="Model.HotelList"
+                                                select2-value="@Model.HotelId" select2-Url="/selectlist/GetPackageHotelList"></select>
+                                        <span asp-validation-for="HotelId"></span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <a id="addrow" href="javascript:void(0);" title="Add City" class="btn add-row-btn btn-primary addnewcity">+ Add Row</a>
+                                }
+                                @if (duplicateValue != null)
+                                {
+                                    <span class="text-center validErrorMsg" style="color:#db4c4a;margin-left:210px;font-size:16px">@duplicateValue</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="city-text-details">Validity Details</h2>
+                    <div class="col-sm-12 col-xs-12">
+                        @if (validateErrorMsg != null)
+                        {
+                            <span class="text-center validErrorMsg" style="color:#db4c4a;margin-left:210px;font-size:16px">@validateErrorMsg</span>
+                        }
+                        <div class="form-group">
+                            <div class="tax-tabel-wrap">
+                                <div class="table-responsive">
+                                    <table id="itemmaster" class="table table-standard table-bordered invoice-tabel-2">
+                                        <thead>
+                                            <tr>
+                                                <th>Booking Valid From</th>
+                                                <th>Booking Valid To</th>
+                                                <th><i class="fa fa-trash-o"></i> </th>
+                                            </tr>
+                                        </thead>
+                                        @{
+                                            if (Model.TourPackageBookDate == null)
+                                            {
+                                                Model.TourPackageBookDate = new List<TourPackageBookDateViewModel> { new TourPackageBookDateViewModel() };
+                                            }
+                                        }
+                                        <tbody>
+                                            @if (this.Model != null && this.Model.TourPackageBookDate != null && this.Model.TourPackageBookDate.Count > 0)
+                                            {
+                                                foreach (var detail in this.Model.TourPackageBookDate)
+                                                {
+                                                    @this.Html.Partial("_TourPackageBookDate", detail)
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <a id="addrow" href="javascript:void(0);" title="Add Booking Date" class="btn add-row-btn btn-primary addnewbookingdate">+ Add Row</a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <label asp-for="PackageDescription"></label>
+                        <textarea asp-for="PackageDescription"  class="tinymceTextarea" placeholder="Place some text here"
+                                  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                        <span asp-validation-for="PackageDescription"></span>
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <label asp-for="Quote"></label>
+                        <textarea type="text" asp-for="Quote" class="form-control "></textarea>
+                        <span asp-validation-for="Quote"></span>
+                    </div>
+                    <div class="form-group col-sm-12 view-image-btn">
+                        <label>Summary</label>
+                        <textarea asp-for="HighLights" class="tinymceTextarea" placeholder="Place some text here"
+                                  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                           </textarea>
+
+                        <span asp-validation-for="HighLights"></span>
+                    </div>
+                    <div class="form-group col-sm-12 view-image-btn">
+                        @if(Model.IsHotelOnly)
+                        {
+                        <label id="txtProgram">Program</label>
+                        }
+                        else
+                        {
+                        <label  id="txtProgram">Hotel</label>
+                        }
+                        <textarea asp-for="Programs" class="tinymceTextarea" placeholder="Place some text here"
+                                  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                           </textarea>
+
+                        <span asp-validation-for="Programs"></span>
+                    </div>
+                    <div class="form-group col-sm-12 view-image-btn">
+                        <label>Details</label>
+                        <textarea asp-for="HotelDescription" class="tinymceTextarea" placeholder="Place some text here"
+                                  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+                           </textarea>
+
+                        <span asp-validation-for="Programs"></span>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label asp-for="HotelReview"></label>
+                        <textarea type="text" asp-for="HotelReview" class="form-control html-required"></textarea>
+                        <span asp-validation-for="HotelReview"></span>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <label asp-for="MapScript"></label>
+                        <textarea type="text" asp-for="MapScript" class="form-control html-required"></textarea>
+                        <span asp-validation-for="MapScript"></span>
+                    </div>
+                    @*<div class="form-group col-sm-4">
+            <label asp-for=""></label>
+            <select asp-for="DealTypeId" selected="@Model.DealTypeId" class="form-control packagecountry" asp-items="Model.Deals"
+                    select2-value="@Model.DealTypeId" select2-Url="/selectlist/GetPackageCountryList"></select>
+            <span asp-validation-for="DealTypeId"></span>
+        </div>*@
+
+                    <h2 class="city-text-details">Package Images</h2>
+                    <div class="col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <div class="tax-tabel-wrap">
+                                <div class="table-responsive">
+                                    <table id="tpimages" class="table table-standard table-bordered invoice-tabel-2">
+                                        <thead>
+                                            <tr>
+                                                @*<th>Sr.No.</th>*@
+                                                <th style="width:155px">Image</th>
+                                                <th>Preview</th>
+                                                <th>Alt Tag</th>
+                                                <th>Description</th>
+                                                <th><i class="fa fa-trash-o"></i> </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            @if (this.Model.TourPackageImage != null && this.Model.TourPackageImage.Count > 0)
+                                            {
+                                                var packageImgSeq = this.Model.TourPackageImage.OrderBy(x => x.SequenceNo);
+                                                @foreach (var file in packageImgSeq)
+                                                {
+                                                    @this.Html.Partial("_TourPackageImage", file)
+                                                }
+                                            }
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="6" style="text-align:right"><a href="javascript:void(0);" data-addpackageimage="true" title="Add Booking Date" class="btn btn-primary">+ Add Row</a></td>
+                                                @*<td><label asp-for="Files"></label></td>
+                                    <td colspan="3">
+                                        <input asp-for="Files" type="file" multiple />
+                                    </td>*@
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-12">
+
+                        @*@if (this.Model.TourPackageImage != null && this.Model.TourPackageImage.Count > 0)
+            {
+                var packageImgSeq = this.Model.TourPackageImage.OrderBy(x => x.SequenceNo);
+
+                <div class="col-md-12 row" style="margin-top: 10px;">
+                    <ul id="image-order">
+                        @foreach (var file in packageImgSeq)
+                        {
+
+                             <li class="ui-state-default images image-selected" data-id="@file.Id">
+                                    <i class="fa fa-check-circle-o"></i>
+                                    <img class=" package-images" src="/packages/@file.ImageName" alt="">
+                                </li>
+
+                        }
+                    </ul>
+                </div>
+            }*@
+                    </div>
+                </div>
+
+                @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload), new Button(Enums.ButtonType.SubmitAndNext),  new Button(Enums.ButtonType.SubmitAndClose) })
+            </form>
+        </div>
+    </div>
+</div>
+<div id="myModal1" class="modal  fade bs-example-modal-lg" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" id="myModalContent">
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/content/js/jquery.tablednd.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="~/js/jquery-ui.js"></script>
+    <script src="~/content/js/bootstrap-datepicker.js"></script>
+    <script>
+        
+        $(function () {
+            //==========================================================================================================
+            year = 2017;
+            month = 1;
+            day = 1;
+            initPluggins()
+            bindDataModel();
+            function bindDataModel() {
+                $("a[data-model='popup']").on("click", function (e) {
+
+                    var title = $(this).attr('data-title') ? $(this).attr('data-title') : "Modal";
+                    $('#myModalContent').html("<div class='modal-header custom-modal-header'><button type='button' class='close' data-dismiss='modal' aria-hidden='true'>x</button>" +
+                        "<h3 class='modal-title'>" + title + "</h3></div>" +
+                        "<div class='modal-body'><div style='text-align:center;width: 50px;margin: auto;'></div></div>");
+                    $('#myModal1').modal({ backdrop: 'static', keyboard: false }, 'show');
+                    $(e.target).closest('.btn-group').children('.dropdown-toggle').dropdown('toggle');
+                    $('#myModalContent').load(this.href, function (response, status, xhr) {
+                        if (status == 'error') { $('#myModal1').modal('hide'); }
+                        bindForm(this);
+                    });
+                    return false;
+                });
+            }
+            function bindForm(dialog) {
+                $('form', dialog).submit(function (e) {
+                    e.preventDefault();
+                    var form = $(this);
+                    var formData = new FormData($(this)[0]);
+                    if (!form.valid || form.valid()) {
+                        $.ajax({
+                            url: this.action,
+                            type: this.method,
+                            contentType: false,
+                            processData: false,
+                            data: formData,
+                            success: function (result) {
+                                $('.clsBindResult').html(result);
+                                $('#myModal1').modal('hide');
+                            }
+                        });
+                    }
+                    return false;
+                });
+            }
+
+            $("#tpimages").tableDnD({
+                onDragClass: "tpimgdragrow",
+                onDrop: function (table, row) {
+                    var rows = table.tBodies[0].rows;
+                    //var debugStr = "Row dropped was " + row.id + ". New order: ";
+                    for (var i = 0; i < rows.length; i++) {
+                        $(rows[i]).find(".SequenceNo").val(i);
+
+                        //debugStr += rows[i].id + " ";
+                    }
+                }
+
+            });
+
+
+           
+            $("li.image-selected").click(function () {
+                $(this).toggleClass("checked");
+                var ids = [];
+                $('li.image-selected.checked').each(function () {
+                    ids.push($(this).data("id") || "");
+                });
+
+                if (ids.length > 0) {
+                    var $delete = $(".packege-img-delete-btn");
+                    var url = $delete.data("url") || '';
+                    $delete.attr("data-delete-PackageImage", "");
+                    $delete.attr("href", url + ids.join(','))
+                }
+            })
+            $("#image-order").sortable({
+                stop: function (e, ui) {
+
+                    var $image = $(ui.item[0]);
+
+                    $(".ui-sortable-handle").each(function () {
+                        $image = $(this);
+
+                        var index = $image.index() + 1;
+                        //send ajax requet to update order
+                        $.ajax({
+                            url: '/admin/tourpackage/udpateorder',
+                            method: 'post',
+                            data: {
+                                id: $image.data("id") || '',
+                                index: index
+                            },
+                            success: function (data) {
+                            },
+                            error: function (xhr, request, error) {
+                            }
+                        });
+
+
+
+                    });
+                }
+            });
+            $("#image-order").disableSelection();
+
+            $('[data-addpackageimage]').on("click", function () {
+
+                //NewPackageImage
+                var seq = $("#tpimages tr:last").find("[data-sequence]").val();
+                $.ajax({
+                    url: '/admin/tourpackage/newpackageimage',
+                    method: 'post',
+                    data: { seq: seq },
+                    success: function (data) {
+                        $("#tpimages").append(data);
+
+                    },
+                    error: function (xhr, request, error) {
+                    }
+                });
+
+
+            })
+
+        });
+    </script>
+}
+
+<style>
+    .select2-container { width: 100% !important; }
+
+    .checked input { position: absolute; background: #000; padding: 10px; display: block; top: -9px; right: 101px; display: block !important; }
+
+    /*#image-order li input {
+        display: none;
+    }*/
+
+    .packege-img-delete-btn { clear: both; display: block; margin-left: 0; margin-top: 19px; border: none; padding: 4px 18px; text-transform: uppercase; background: #B22222; border-radius: 2px; }
+
+    .mce-tinymce { margin-top: 8px; }
+
+    .view-image-btn a { text-align: left; float: right; border-bottom: none; border-radius: 0px; }
+
+    #sortable { list-style-type: none; margin: 0; padding: 0; width: 450px; }
+
+    #sortable li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 100px; height: 90px; font-size: 4em; text-align: center; }
+
+    ul#image-order { display: inline-block; list-style: none; margin: 0; padding: 0px 2px; }
+
+    ul#image-order > li { }
+
+    #image-order li { margin: 3px; padding: 4px; float: left; width: 112px; height: 112px; font-size: 4em; text-align: center; position: relative; }
+
+    .image-selected i.fa-check-circle-o { display: none; }
+
+    .image-selected.checked i.fa-check-circle-o { position: absolute; top: 25%; left: 25%; color: #ffffff; border: saddlebrown; cursor: pointer; display: block !important; }
+
+    #image-order .package-images { width: 100px; height: 100px; cursor: pointer; }
+
+    .tpimgdragrow { background-color: #FFEE9B; cursor: move; }
+
+    select[multiple], select[size] { height: 33px !important; }
+</style>

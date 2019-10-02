@@ -1,0 +1,172 @@
+﻿@model BookingThankYouViewModel
+@{
+    ViewData["Title"] = "ThankYou";
+    Layout = "~/Views/Shared/_ProductLayout.cshtml";
+}
+
+<environment include="Development">
+    <link asp-append-version="true" href="~/Styles/Thankyou.css" rel="stylesheet" type="text/css" />
+</environment>
+<environment exclude="Development">
+    <link asp-append-version="true" href="~/Styles/Thankyou.min.css" rel="stylesheet" type="text/css" />
+</environment>
+
+<div class="Thankyou-container container-fluid">
+    <div class="row">
+        <div class="thankyoupage-left col-sm-8 col-md-8 col-lg-8">
+
+
+            <div class="thankyou-title col-sm-12 cool-md-12 col-lg-12 col-xs-12 no-padding-left-right">
+                <h2 class="top-heading-style">Thank You for booking with Us</h2>
+                <hr class="hr-grey-bottom w75">
+            </div>
+
+            <div class="row thankyoupage-content-container">
+                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 thankyoupage-image no-padding-left-right">
+                    <img src="~/DealImages/@Model.CardImage" alt="@Model.DealName" />
+                </div>
+                <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 thankyoupage-content">
+                    <div class="thankyou-deal-name">
+                        <h1 class="top-heading-style">
+                            @Model.DealName 
+                        </h1>
+                    </div>
+
+                    <div class="thankyou-deal-place">
+                        @if (Model.DealType == 1)
+                        {
+                            <span class="deal-loc-image"><img src="~/images/Deal_location.svg" alt="deal-location" /></span>@(Model.HotelName + " ," + Model.Locations.FirstOrDefault())
+                        }
+                        else
+                        {
+                            <span class="deal-loc-image"><img src="~/images/Deal_location.svg" alt="deal-location" /></span>
+                            {
+                                string location = string.Empty;
+                             
+                                @for (int i = 0; i < Model.Locations.Count; i++)
+                                {
+                                    {location = location + Model.Locations[i];}
+                                    if(i !=Model.Locations.Count - 1)
+                                    {
+                                        location = location + ", ";
+                                    }
+                                }
+                                 @location
+                            }
+                        }
+
+                                    </div>
+                    <div class="row">
+                        <div class="col-sm-7 col-lg-7 col-md-7 col-xs-12 no-padding-left-right">
+                            <div class="thankyou-deal-duration">
+                                @{
+                                    string packageDescriptionString = string.Empty;
+                                    int nights = (Model.EndDate - Model.StartDate).Days - 1;
+                                    packageDescriptionString = nights.ToString() + " Nights";
+                                    if (Model.VisaOpted)
+                                    {
+                                        packageDescriptionString = packageDescriptionString + " + Visa";
+                                    }
+                                    if (Model.FlightOpted)
+                                    {
+                                        packageDescriptionString = packageDescriptionString + " + Flights";
+                                    }
+
+                                 }
+                                @packageDescriptionString
+                            </div>
+
+                            <div class="thankyou-deal-calender">
+                                <span class="deal-loc-image"><img src="~/images/Calendar.svg" alt="calender-icon" /></span>
+                                @Model.StartDate.Day @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.StartDate.Month) @Model.EndDate.Year - @Model.EndDate.Day @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.EndDate.Month) @Model.EndDate.Year
+                                @*8 June 2019 - 12 June 2019*@
+                            </div>
+                        </div>
+
+                        <div class="col-sm-5 col-md-5 col-lg-5 col-xs-12 no-padding-left-right">
+                            <div class="thankyou-adult-kid-container">
+                                <div class="thanku-adult">
+                                    <h2 class="top-heading-style"> @Model.Adults x <span><img src="~/images/Adults_Icon.svg" alt="adult-icon" /></span></h2>
+                                    <span class="thaku-adult-kid-style">
+                                        Adult
+                                    </span>
+                                </div>
+
+                                @if ((Model.Childs + Model.Infants) > 0)
+                                {
+                                    <div class="thanku-kid">
+                                        <h2 class="top-heading-style"> @(Model.Childs + Model.Infants) x <span><img src="~/images/Adults_Icon.svg" alt="adult-icon" class="thanku-kid-icon" /></span></h2>
+                                        <span class="thaku-adult-kid-style">
+                                            Childs
+                                        </span>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="booking-status-container">
+                            <div class="booking-status-title col-xs-4 col-sm-6 col-md-6 col-lg-6 no-padding-left-right">
+                                <p>Booking Status</p>
+                                <p>Payment Status</p>
+                                <p>Booking ID:</p>
+                            </div>
+
+                            <div class="booking-status-states col-xs-8 col-sm-6 col-md-6 col-lg-6">
+                                <p>@Model.BookingStatusMessage</p>
+                                <p>@Model.PaymentStatusMessage</p>
+                                <p class="booking-id-color">@Model.BookingReferenceNumber</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-booking-btn">
+                        <button type="button" class="thanku-btn" onclick="window.location ='/user/mybookings'">Back to My Booking</button>
+                    </div>
+                    
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="thankyoupage-right col-sm-4 col-md-4 col-lg-4 hidden-xs no-padding-left-right" id="thankyou-stuck">
+            <div class="col-sm-12 col-md-12 col-lg-12 booking-scroller-anchor"></div>
+            <div class="thankyoupage-right-inner booking-scroller col-sm-12 cool-md-12 col-lg-12">
+                <h2>Need Assistance?</h2>
+                <hr class="hr-grey-bottom-unset-float w75">
+                <h3>1800-108-0808</h3>
+                <hr class="hr-long-e6e6e6">
+                <p>
+                    Monday to Friday 8:00 AM – 8:00 PM<br> except Saturdays, Sundays & bank holidays
+                </p>
+                <hr class="hr-long-e6e6e6">
+                <div class="booking-scroller-text">Our Service Speaks for Itself</div>
+                <a href="https://www.trustpilot.com/review/www.luxurytravel.deals?languages=all" target="_blank">
+                    <div class="star-icon"><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /></div>
+                    <div class="booking-scroller-social-text">
+                        496 RATINGS ON TRUSTPILOT
+                    </div>
+                </a>
+                <hr class="hr-long-e6e6e6">
+                <a href="https://www.facebook.com/pg/luxurytraveldeal/reviews/" target="_blank">
+                    <div class="star-icon"><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /></div>
+                    <div class="booking-scroller-social-text">
+                        5,721 RATINGS ON FACEBOOK
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+

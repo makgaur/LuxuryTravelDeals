@@ -1,0 +1,33 @@
+//-- calendarfare Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "37076e3f-7f35-4a05-a8d5-c0ffb1311332",
+  "JourneyType": 1,
+  "PreferredAirlines": [
+    "9W"
+  ],
+  "Segments": [
+    {
+      "Origin": "DEL",
+      "Destination": "JAI",
+      "FlightCabinClass": 1,
+      "PreferredDepartureTime": "2017-12-01T00:00:00",
+      "PreferredArrivalTime": "2017-12-02T00:00:00"
+    }
+  ],
+  "Sources": [
+    "0"
+  ]
+}
+//-- calendarfare Api Response --
+{
+  "Response": {
+    "ResponseStatus": 3,
+    "Error": {
+      "ErrorCode": 3,
+      "ErrorMessage": "InValid Session"
+    },
+    "TraceId": "219b56c5-8ef8-4f2e-8516-0806dd92e833",
+    "SearchResults": null
+  }
+}

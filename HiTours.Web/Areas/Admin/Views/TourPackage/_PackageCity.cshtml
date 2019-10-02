@@ -1,0 +1,87 @@
+﻿@{  this.ViewBag.Title = "Tour Package City";}
+@model TourPackageCityViewModel
+<div class='modal-header custom-modal-header'>
+    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>x</button>
+    <h3 class='modal-title'>@ViewBag.Title </h3>
+</div><div class='modal-body'>
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <form asp-antiforgery="true" method="POST" id="frmRateValidity" data-datatype="html" asp-action="AddRateValidity"
+                  data-target="table .contact-list" data-targettype="tr">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="TourPackageId" />
+                <input type="hidden" asp-for="CreatedBy" />
+                <input type="hidden" asp-for="CreatedDate" />
+                <input type="hidden" asp-for="UpdatedBy" />
+                <input type="hidden" asp-for="UpdatedDate" />
+
+                <div class="form-group">
+                    <label class="control-label">Regions</label>
+                    <select asp-for="RegionId" selected="@Model.RegionId" class="form-control"
+                            select2-value="@Model.RegionId" select2-Url="/selectlist/GetPackageRegionList"
+                            select2-Dependent="true" select2-Dependent-Control="#CountryId"
+                            ></select>
+                    <span asp-validation-for="Regions"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Country</label>
+                    <select class="form-control" asp-for="CountryId"
+                             select2-value="@Model.CountryId" select2-Url="/selectlist/GetPackageCountryList"
+                            select2-Dependent="true" select2-Dependent-Control="#StateId"></select>
+                    <span asp-validation-for="CountryId"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">State</label>
+                    <select asp-for="StateId" selected="@Model.StateId" class="form-control"  asp-items="Model.StateList"
+                            select2-value="@Model.StateId" select2-Url="/selectlist/GetPackageSateList"
+                             select2-Dependent="true" select2-Dependent-Control="#Cities"></select>
+                    <span asp-validation-for="StateId"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Cities</label>
+                    <select asp-for="CityId" selected="@Model.CityId" class="form-control"
+                            select2-value="@Model.CityId" select2-Url="/selectlist/GetPackageCityList" style="width:100%"></select>
+                    <span asp-validation-for="CityId"></span>
+                </div>
+
+                @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit), new Button(Enums.ButtonType.Cancel) })
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+
+
+    $(document).ready(function () {
+        initPluggins();
+
+        //$("#RegionId").on("change", function () {
+        //    var $element = $('#CountryId').select2();
+        //    var regionId = $(this).val();
+
+        //    ////select2-Url="/selectlist/GetPackageCountryList"
+        //    var $request = $.ajax({
+        //        url: '/selectlist/GetPackagedCountryListByRegion', // wherever your data is actually coming from
+        //        data: { regionId: regionId }
+        //    });
+        //    $request.then(function (responce) {
+        //        var data = responce.results;
+
+        //        for (var d = 0; d < data.length; d++) {
+        //            var item = data[d];
+        //            // Create the DOM option that is pre-selected by default
+        //            var option = new Option(item.text, item.id, false, false);
+        //            // Append it to the select
+        //            $element.append(option);
+        //        }
+        //        // Update the selected options that are displayed
+        //        $element.trigger('change');
+        //    });
+        //});
+
+
+
+    });
+</script>

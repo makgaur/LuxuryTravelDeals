@@ -1,0 +1,87 @@
+﻿@this.Html.Partial("_DataTableGrid")
+<div class="box-footer" align="center">
+    <button class="nexttab-vendorcontact btn btn-primary">Next</button>
+</div>
+<script>
+        $(function () {
+            BindGrid({
+                url: "@Url.Action("ReviewsGridData", new { @packageId=this.ViewBag.PackageId })",
+                columns: [
+                    { "data": "TypeName", "title": "Add On", "type": "string" },
+
+                    { "data": "AdultCharge", "title": "Adult Charge", "type": "string" },
+                    { "data": "ChildCharge", "title": "Child Charge", "type": "string" },
+                    { "data": "IsChargeable", "title": "Chargeable", "type": "string" },
+                    {
+                        "data": "IsChargeable",
+                        "title": " Chargeable",
+                        "class": "text-center",
+                        "type": "bool", "width": '15%', mRender: function (data, type, record) {
+                            var url = '@Url.GetAdminUrl("Deals", "ChangeAddOnChargeableStatus")/' + record.Id;
+                            return appendToggleCheckBox(url, record.IsActive, 'Successfully Activated', 'Successfully DeActivated')
+                        }
+                    },
+                    {
+                        "data": null, "title": "Action",
+                        "targets": -1,
+                        "width": '15%',
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                            var action = "";
+                            action += '<a class="form-control btn-success" href="javascript:;" onclick="EditAddOn(' + record.Id + ')"><i class="fa fa-edit"></i>&nbsp;</a>';
+                            action += '<a class="form-control btn-danger delete-row" data-delete href="@Url.GetAdminUrl("Deals", "DeleteAddOn")/' + record.Id+ '"><i class="fa fa-trash-o"></i>&nbsp;</a>';
+                            return action;
+                        }
+                    }]
+            });
+        });
+        function EditAddOn(id) {
+            var $modal = $('#application-modal');
+            var url = '@Url.Action("AddOnAdd","Deals")';
+            if ($modal) {
+                $modal.find(".modal-title").html("Edit Review");
+                $modal.find('.modal-body').html(overlayTemplate);
+                $modal.modal({ keyboard: false, backdrop: false }).show();
+                $.ajax({
+                    url: url,
+                    data: { 'id': id,'packageId': @this.ViewBag.PackageId},
+                    method: 'get',
+                    dataType: 'html',
+                    success: function (html) {
+                        $modal.find('.modal-body').html(html);
+                        initSelect2();
+                        var _form = $("#btnSaveandReload").parents('form');
+                        if ($.validator.unobtrusive != undefined) {
+                            $.validator.unobtrusive.parse(_form);
+                        }
+                        var $divPartial = $('#application-modal');
+                        $divPartial.find("#btnSaveandReload").on("click", function () {
+                            if ($(_form).valid()) {
+                                _form.append('<input name="method" type="hidden" value="ajax" />');
+                                $.ajax({
+                                    type: "POST",
+                                    dataType: 'json',
+                                    url: _form.attr('action'),
+                                    data: _form.serialize(),
+                                    success: function (json) {
+                                        $modal.toggle();
+                                        if (json == 'update') {
+
+                                            swal('', 'Successfully Updated', 'success');
+                                        }
+                                        return false;
+                                    },
+                                    error: function (response) {
+                                    },
+                                });
+                            }
+                            return false;
+                        });
+                    },
+                    error: function (xhr, request, error) { }
+                });
+            }
+        }
+</script>

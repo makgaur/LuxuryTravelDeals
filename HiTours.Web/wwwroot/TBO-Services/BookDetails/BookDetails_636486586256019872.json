@@ -1,0 +1,275 @@
+//-- BookDetails Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "a70eae69-9aba-4e98-b186-38842a1f0dd1",
+  "TraceId": "4d8d4e80-7730-441c-8e50-bf31bad1a3b9",
+  "BookingId": 50296,
+  "PNR": "LBJOOV"
+}
+//-- BookDetails Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "ResponseStatus": 1,
+    "TraceId": "4d8d4e80-7730-441c-8e50-bf31bad1a3b9",
+    "FlightItinerary": {
+      "BookingId": 50296,
+      "IsManual": false,
+      "PNR": "LBJOOV",
+      "IsDomestic": true,
+      "Source": 4,
+      "Origin": "DEL",
+      "Destination": "BOM",
+      "AirlineCode": "9W",
+      "LastTicketDate": "12DEC17",
+      "ValidatingAirlineCode": "9W",
+      "AirlineRemark": "",
+      "IsLCC": false,
+      "NonRefundable": false,
+      "FareType": "RP",
+      "CreditNoteNo": null,
+      "Fare": {
+        "Currency": "INR",
+        "BaseFare": 9500,
+        "Tax": 2960,
+        "TaxBreakup": [],
+        "YQTax": 1800,
+        "AdditionalTxnFeeOfrd": 0,
+        "AdditionalTxnFeePub": 0,
+        "PGCharge": 0,
+        "OtherCharges": 200,
+        "ChargeBU": [
+          {
+            "key": "TBOMARKUP",
+            "value": 0
+          },
+          {
+            "key": "CONVENIENCECHARGE",
+            "value": 0
+          },
+          {
+            "key": "OTHERCHARGE",
+            "value": 200
+          }
+        ],
+        "Discount": 0,
+        "PublishedFare": 12660,
+        "CommissionEarned": 80.76,
+        "PLBEarned": 0,
+        "IncentiveEarned": 0,
+        "OfferedFare": 12579.24,
+        "TdsOnCommission": 16.16,
+        "TdsOnPLB": 0,
+        "TdsOnIncentive": 0,
+        "ServiceFee": 0,
+        "TotalBaggageCharges": 0,
+        "TotalMealCharges": 0,
+        "TotalSeatCharges": 0,
+        "TotalSpecialServiceCharges": 0
+      },
+      "CreditNoteCreatedOn": null,
+      "Passenger": [
+        {
+          "PaxId": 68633,
+          "Title": "Mr",
+          "FirstName": "Sumeet",
+          "LastName": "Gupta",
+          "PaxType": 1,
+          "DateOfBirth": "1995-12-14T00:00:00",
+          "Gender": 1,
+          "PassportNo": "GFSGFGFSG",
+          "AddressLine1": "address",
+          "AddressLine2": "address",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 4750,
+            "Tax": 1480,
+            "TaxBreakup": null,
+            "YQTax": 900,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 100,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 100
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 6330,
+            "CommissionEarned": 40.38,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 6289.62,
+            "TdsOnCommission": 8.08,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "City": "Jaipur",
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "ContactNo": "8521478523",
+          "Email": "gsumeet@gmail.com",
+          "IsLeadPax": true,
+          "FFAirlineCode": "  ",
+          "FFNumber": "",
+          "Meal": {
+            "Code": null,
+            "Description": null
+          },
+          "GSTCompanyAddress": "",
+          "GSTCompanyContactNumber": "",
+          "GSTCompanyEmail": "",
+          "GSTCompanyName": "",
+          "GSTNumber": ""
+        },
+        {
+          "PaxId": 68634,
+          "Title": "Mr",
+          "FirstName": "sagar",
+          "LastName": "gupta",
+          "PaxType": 1,
+          "DateOfBirth": "1993-12-21T00:00:00",
+          "Gender": 1,
+          "PassportNo": "DFGDFGDGF",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 4750,
+            "Tax": 1480,
+            "TaxBreakup": null,
+            "YQTax": 900,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 100,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 100
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 6330,
+            "CommissionEarned": 40.38,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 6289.62,
+            "TdsOnCommission": 8.08,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "City": "jaipur",
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "IsLeadPax": true,
+          "FFAirlineCode": "  ",
+          "FFNumber": "",
+          "Meal": {
+            "Code": null,
+            "Description": null
+          },
+          "GSTCompanyAddress": "",
+          "GSTCompanyContactNumber": "",
+          "GSTCompanyEmail": "",
+          "GSTCompanyName": "",
+          "GSTNumber": ""
+        }
+      ],
+      "CancellationCharges": null,
+      "Segments": [
+        {
+          "Baggage": null,
+          "CabinBaggage": null,
+          "TripIndicator": 1,
+          "SegmentIndicator": 1,
+          "Airline": {
+            "AirlineCode": "9W",
+            "AirlineName": "Jet Airways",
+            "FlightNumber": "362",
+            "FareClass": "K",
+            "OperatingCarrier": "9W"
+          },
+          "AirlinePNR": "",
+          "Origin": {
+            "Airport": {
+              "AirportCode": "DEL",
+              "AirportName": "DEL",
+              "Terminal": "3 ",
+              "CityCode": "DEL",
+              "CityName": "Delhi",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "DepTime": "2017-12-12T17:45:00"
+          },
+          "Destination": {
+            "Airport": {
+              "AirportCode": "BOM",
+              "AirportName": "Mumbai",
+              "Terminal": "2 ",
+              "CityCode": "BOM",
+              "CityName": "Mumbai",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "ArrTime": "2017-12-12T19:55:00"
+          },
+          "AccumulatedDuration": 130,
+          "Duration": 130,
+          "GroundTime": 0,
+          "Mile": 0,
+          "StopOver": false,
+          "StopPoint": "",
+          "StopPointArrivalTime": null,
+          "StopPointDepartureTime": null,
+          "Craft": "332",
+          "Remark": "010 EY 8789 /VS 8128, SEE RTSVC",
+          "IsETicketEligible": false,
+          "FlightStatus": "Confirmed",
+          "Status": "HK"
+        }
+      ],
+      "FareRules": [
+        {
+          "Origin": "DEL",
+          "Destination": "BOM",
+          "Airline": "9W",
+          "FareBasisCode": "K2IPO",
+          "FareRuleDetail": "<ul><li><b>There is no Minimum Stay requirement</b><br><li><b>There is no Maximum Stay requirement</b><br><fieldset><legend><b><b>Adult</b><br></b></legend><ul><li><b>Revalidation/Reissue</b><br>Fare Component <b>K2IPO</b>&emsp; Sector <b>DEL-BOM</b> &nbsp;<ul><li>Revalidation before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li>Reissue, including failure to show at first flight : <b>Allowed with Restrictions</b></li><li>Revalidation/Reissue request, including failure to show at first flight, must be made prior to <b>12DEC18  0000</b></li><li><b>Prior to Departure of journey</b><ul><u>Reissue</u><li>Penalty fee : <b>2400 INR(at today exchange rates 2400 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>2400 INR</b></li></ul></li><li><b>Failure to show at first flight</b><ul><u>Reissue</u><li>Penalty fee : <b>4800 INR(at today exchange rates 4800 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>4800 INR</b></li></ul></li><li><b>After departure of journey</b><ul><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><li><b>Refund</b><br>Fare Component <b>K2IPO</b>&emsp; Sector <b>DEL-BOM</b> &nbsp;<ul><li>Refund, including failure to show at subsequent flight(s) : <b>Not Allowed</b></li><li><b>Prior to Departure of journey</b><ul><li>Refund : <b>Allowed with Restrictions</b></li><li>Penalty fee : <b>3400 INR(at today exchange rates 3400 INR) </b></td></tr><li>Maximum Refund penalty fee for entire ticket : <b>3400 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Refund : <b>Not Allowed</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><br><b>* Revalidation is a modification of the original ticket without any reissue of a new ticket.</b><br><b>* For Reissue, Penalty fees are in addition to any difference in fare.</b><br><b>* For Refund, certain Taxes are non-refundable.</b></ul></fieldset></ul>",
+          "FareRestriction": "Y"
+        }
+      ],
+      "Status": 1
+    }
+  }
+}

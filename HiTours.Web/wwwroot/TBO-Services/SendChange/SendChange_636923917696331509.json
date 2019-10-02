@@ -1,0 +1,27 @@
+//-- SendChange Api Request --
+{
+  "EndUserIp": "192.168.11.120",
+  "TokenId": "e98a1530-e28e-4399-9fbe-11125ba7c3ca",
+  "BookingId": "1462399",
+  "RequestType": 1,
+  "CancellationType": 2,
+  "Sector": {
+    "Origin": "DEL",
+    "Destination": "PNY",
+    "TicketId": 1727623,
+    "Remarks": "Test"
+  }
+}
+//-- SendChange Api Response --
+{
+  "Response": {
+    "B2B2BStatus": false,
+    "TicketCRInfo": null,
+    "ResponseStatus": 2,
+    "TraceId": "e26b3e5a-2409-4626-b88e-dcbf6ca41985",
+    "Error": {
+      "ErrorCode": 2,
+      "ErrorMessage": "We couldn't process your request due to some technical issue. Please contact Your Agent / Sales representative for details."
+    }
+  }
+}

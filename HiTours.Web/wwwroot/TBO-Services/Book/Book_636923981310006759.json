@@ -1,0 +1,246 @@
+//-- Book Api Request --
+{
+  "ResultIndex": "OB22",
+  "EndUserIp": "192.168.11.120",
+  "TokenId": "85b42dde-4056-46a8-aed9-f0ac4b7b915f",
+  "TraceId": "88ed2983-131c-4b76-8b77-3076be8db52d",
+  "Passengers": [
+    {
+      "Title": "Mr",
+      "FirstName": "Mayank",
+      "LastName": "Gaur",
+      "PaxType": "1",
+      "DateOfBirth": "1984-06-20T00:00:00",
+      "Gender": "1",
+      "PassportNo": null,
+      "PassportExpiry": null,
+      "AddressLine1": "Test",
+      "AddressLine2": "Test",
+      "City": "Delhi",
+      "CountryCode": "IN",
+      "CountryName": "India",
+      "ContactNo": "9045025705",
+      "Email": "makgaur007@gmail.com",
+      "IsLeadPax": true,
+      "FFAirline": "",
+      "FFNumber": "",
+      "Fare": {
+        "PassengerType": 1,
+        "YQTax": 0,
+        "AdditionalTxnFee": 0,
+        "Tax": 681,
+        "BaseFare": 4800,
+        "Currency": "INR"
+      }
+    }
+  ]
+}
+//-- Book Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "TraceId": "88ed2983-131c-4b76-8b77-3076be8db52d",
+    "ResponseStatus": 1,
+    "Response": {
+      "PNR": "VJ3JH3",
+      "BookingId": 1462462,
+      "SSRDenied": false,
+      "SSRMessage": null,
+      "Status": 1,
+      "IsPriceChanged": false,
+      "IsTimeChanged": false,
+      "FlightItinerary": {
+        "TripIndicator": 1,
+        "BookingAllowedForRoamer": true,
+        "BookingId": 1462462,
+        "IsManual": false,
+        "PNR": "VJ3JH3",
+        "IsDomestic": true,
+        "Source": 4,
+        "Origin": "DEL",
+        "Destination": "MAA",
+        "AirlineCode": "UK",
+        "LastTicketDate": "2019-05-02T19:30:00",
+        "ValidatingAirlineCode": "UK",
+        "AirlineRemark": "",
+        "IsLCC": false,
+        "NonRefundable": true,
+        "FareType": "RP",
+        "CreditNoteNo": null,
+        "Fare": {
+          "Currency": "INR",
+          "BaseFare": 4800,
+          "Tax": 681,
+          "TaxBreakup": [],
+          "YQTax": 0,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0,
+          "OtherCharges": 2.46,
+          "ChargeBU": [
+            {
+              "key": "TBOMARKUP",
+              "value": 0
+            },
+            {
+              "key": "OTHERCHARGE",
+              "value": 2.46
+            },
+            {
+              "key": "CONVENIENCECHARGE",
+              "value": 0
+            }
+          ],
+          "Discount": 0,
+          "PublishedFare": 5483.46,
+          "CommissionEarned": 0,
+          "PLBEarned": 0,
+          "IncentiveEarned": 0,
+          "OfferedFare": 5483.46,
+          "TdsOnCommission": 0,
+          "TdsOnPLB": 0,
+          "TdsOnIncentive": 0,
+          "ServiceFee": 0,
+          "TotalBaggageCharges": 0,
+          "TotalMealCharges": 0,
+          "TotalSeatCharges": 0,
+          "TotalSpecialServiceCharges": 0
+        },
+        "CreditNoteCreatedOn": null,
+        "Passenger": [
+          {
+            "PaxId": 2088001,
+            "Title": "Mr",
+            "FirstName": "Mayank",
+            "LastName": "Gaur",
+            "PaxType": 1,
+            "DateOfBirth": "1984-06-20T00:00:00",
+            "Gender": 1,
+            "PassportNo": "",
+            "AddressLine1": "Test",
+            "AddressLine2": "Test",
+            "Fare": {
+              "Currency": "INR",
+              "BaseFare": 4800,
+              "Tax": 681,
+              "TaxBreakup": null,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0,
+              "OtherCharges": 2.46,
+              "ChargeBU": [
+                {
+                  "key": "TBOMARKUP",
+                  "value": 0
+                },
+                {
+                  "key": "OTHERCHARGE",
+                  "value": 2.46
+                },
+                {
+                  "key": "CONVENIENCECHARGE",
+                  "value": 0
+                }
+              ],
+              "Discount": 0,
+              "PublishedFare": 5483.46,
+              "CommissionEarned": 0,
+              "PLBEarned": 0,
+              "IncentiveEarned": 0,
+              "OfferedFare": 5483.46,
+              "TdsOnCommission": 0,
+              "TdsOnPLB": 0,
+              "TdsOnIncentive": 0,
+              "ServiceFee": 0,
+              "TotalBaggageCharges": 0,
+              "TotalMealCharges": 0,
+              "TotalSeatCharges": 0,
+              "TotalSpecialServiceCharges": 0
+            },
+            "City": "Delhi",
+            "CountryCode": "IN",
+            "CountryName": "India",
+            "Nationality": "IN",
+            "ContactNo": "9045025705",
+            "Email": "makgaur007@gmail.com",
+            "IsLeadPax": true,
+            "FFAirlineCode": null,
+            "FFNumber": "",
+            "Ssr": []
+          }
+        ],
+        "CancellationCharges": null,
+        "Segments": [
+          {
+            "Baggage": null,
+            "CabinBaggage": null,
+            "TripIndicator": 1,
+            "SegmentIndicator": 1,
+            "Airline": {
+              "AirlineCode": "UK",
+              "AirlineName": "Air Vistara",
+              "FlightNumber": "833",
+              "FareClass": "V",
+              "OperatingCarrier": "UK"
+            },
+            "AirlinePNR": "VJ3JH3",
+            "Origin": {
+              "Airport": {
+                "AirportCode": "DEL",
+                "AirportName": "Indira Gandhi Airport",
+                "Terminal": "3",
+                "CityCode": "DEL",
+                "CityName": "Delhi",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "DepTime": "2019-05-29T01:20:00"
+            },
+            "Destination": {
+              "Airport": {
+                "AirportCode": "MAA",
+                "AirportName": "Chennai",
+                "Terminal": "1",
+                "CityCode": "MAA",
+                "CityName": "Chennai",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "ArrTime": "2019-05-29T03:10:00"
+            },
+            "AccumulatedDuration": 110,
+            "Duration": 110,
+            "GroundTime": 0,
+            "Mile": 0,
+            "StopOver": false,
+            "FlightInfoIndex": "",
+            "StopPoint": "",
+            "StopPointArrivalTime": "2019-05-29T03:10:00",
+            "StopPointDepartureTime": "2019-05-29T01:20:00",
+            "Craft": "320",
+            "Remark": null,
+            "IsETicketEligible": true,
+            "FlightStatus": "Confirmed",
+            "Status": "HK"
+          }
+        ],
+        "FareRules": [
+          {
+            "Origin": "DEL",
+            "Destination": "MAA",
+            "Airline": "UK",
+            "FareBasisCode": "VH15PYS",
+            "FareRuleDetail": "<b>These Are Non Refundable Fares.</b></br><ul><li><b>Advance Purchase</b><br>Fare Component <b>VH15PYS</b>&emsp; Sector <b>DEL-MAA</b> &nbsp;<ul><li>Earliest reservation date before departure <b>No restriction</b></li><li>Earliest ticketing date before departure <b>No restriction</b></li><li>Latest reservation date before departure <b>14MAY19  2359</b></li><li>Latest ticketing date before departure <b>No restriction</b></li><li>Latest ticketing date after reservation <b>No restriction</b></li></ul></li><li><b>There is no Minimum Stay requirement</b><br><li><b>There is no Maximum Stay requirement</b><br><fieldset><legend><b><b>Adult</b><br></b></legend><ul><li><b>Revalidation/Reissue</b><br>Fare Component <b>VH15PYS</b>&emsp; Sector <b>DEL-MAA</b> &nbsp;<ul><li>Revalidation before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li>Reissue, including failure to show at subsequent flight(s) : <b>Not Allowed</b></li><li><b>Prior to Departure of journey</b><ul><u>Reissue</u> : <b>Allowed with Restrictions</b><li>Penalty fee : <b>2500 INR(at today exchange rates 2500 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>2500 INR</b></li><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Reissue : <b>Not Allowed</b></li><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><li><b>Refund</b><br>Fare Component <b>VH15PYS</b>&emsp; Sector <b>DEL-MAA</b> &nbsp;<ul><li>Refund, including failure to show at subsequent flight(s) : <b>Not Allowed</b></li><li><b>Prior to Departure of journey</b><ul><li>Refund : <b>Allowed with Restrictions</b></li><li>Penalty fee : <b>3000 INR(at today exchange rates 3000 INR) </b></td></tr><li>Maximum Refund penalty fee for entire ticket : <b>3000 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Refund : <b>Not Allowed</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><br><b>* Revalidation is a modification of the original ticket without any reissue of a new ticket.</b><br><b>* For Reissue, Penalty fees are in addition to any difference in fare.</b><br><b>* For Refund, certain Taxes are non-refundable.</b></ul></fieldset></ul><br /><b>These Are Non Refundable Fares.</b><br />RateClass : VH15PYS<br/>FareClass : VH15PYS<br/>marketing Company : UK<br/>Booking Class : V<br/>Origin : DEL<br/>destination : MAA<br/>ruleSectionLocalId : 1<br/>ruleCategoryCode : (5)<br/>AP.ADVANCE RES/TKTFOR VH15PYS TYPE FARES  RESERVATIONS FOR DEPARTURE OF EACH TRIP ON THE FARE  COMPONENT ARE REQUIRED AT LEAST 15 DAYS BEFORE DEPARTURE  FROM FARE COMPONENT ORIGIN.  RESERVATIONS AND TICKETING MUST BE COMPLETED AT THE SAME  TIME.  WAITLIST AND STANDBY NOT PERMITTED.         NOTE -          WAITLIST STANDBY AND OPENDATED TICKETS NOT          PERMITTED.<br/>ruleSectionLocalId : 2<br/>ruleCategoryCode : (16)<br/>PE.PENALTIESFOR VH15PYS TYPE FARES  FOR TICKETING ON/AFTER 02AUG 18    CHANGES      CHARGE INR 2500 FOR REISSUE/REVALIDATION.         NOTE -          ABOVE CHARGES ARE EXCLUSIVE OF SERVICE TAX.          --------------------------------------------------          FOR ALL CHANGES 2 HOURS BEFORE DEPARTURE OF A          FLIGHT A CHARGE OF 2500 INR MUST BE COLLECTED FOR          CHANGE OF RESERVATION. THIS APPLIES PER          SECTOR/ROUTE FOR DATE/FLIGHT CHANGE.      CANCELLATIONS        CHARGE INR 3000 FOR CANCEL/REFUND.         NOTE -          ABOVE CHARGES ARE EXCLUSIVE OF SERVICE TAX.          --------------------------------------------------          CANCELLATION / NO-SHOW FEE APPLICABLE ON REFUNDS          IS SUBJECT TO THE BELOW APPLICABLE CONDITION -S-          BEING SATISFIED.          A. BASE FARE OR CANCELLATION/REFUND FEES          WHICHEVER IS LOWER WILL BE DEDUCTED WHEN          PROCESSING REFUND.          B. ALL UNUTILIZED TAXES INCLUDING YR SHALL BE          REFUNDED. SERVICE TAX -K3- GOODS AND SERVICE TAX          SHALL BE REFUNDED AS RECALCULATED ON THE          REFUNDABLE BALANCE.          ITINERARIES WHICH INVOLVE VIA/CONNECTING          FLIGHTS WHERE THE CONNECTION TIME IS -UPTO 5 HRS          OR NEXT AVAILABLE CONNECTION WHICHEVER IS LOWER-          ARE TO BE TREATED AS ONE FARE COMPONENT -FROM          ORIGIN TO DESTINATION- AND IN CASE OF          REFUND/CANCELLATION THE APPLICABLE PENALTY SHALL          BE CHARGED ONCE ONLY. FOR RETURN TRAVEL PENALTY          APPLICATION ON THE ABOVE ITINERARIES SHALL BE PER          FARE COMPONENT. PARTIAL CANCELLATION ON THIS          ITINERARY SHALL NOT BE PERMITTED. FOR EXAMPLE          WHILE HOLDING A TICKET FOR CONNECTION BOM-DEL-AMD          OR VICE VERSA YOU SHALL NOT BE ALLOWED TO CANCEL          YOUR ONWARD OR RETURN FLIGHTS PARTIALLY AND MUST          CANCEL THE ENTIRE ITINERARY OR TICKET.          --------------------------------------------------          NO RE-VALIDATION OR CANCELLATION FEE WOULD BE          APPLICABLE ON INFANT WITHOUT SEAT TICKETS.          --------------------------------------------------          IN CASE OF CHANGE OF DATE/FLIGHT IN THE          RESERVATION ONLY SAME OR HIGHER RBD CAN BE          REEBOOKED FOR TRAVEL IF THE CHANGE IS TO A HIGHER          CABIN FOR SAME DAY AND SAME FLIGHT NO RE-          ISSUANCE / CHANGE FEE WILL BE APPLICABLE. IN SUCH          CASES ONLY DIFFERENCE OF FARE TO BE COLLECTED.          --------------------------------------------------          CANCELLATION/REFUND FEE OF PARTLY USED TICKET          DEDUCT ONEWAY FARE AND LEVIES FOR THE TRAVELLED          SECTOR PLUS CANCELLATION/REFUND FEE          --------------------------------------------------          FARES WHEN COMBINED ON A HALF ROUND TRIP BASIS          SHALL BE GOVERNED  BY THE CORRESPONDING          APPLICABLE TICKETED FARE PER SECTOR AND ITS          APPLICABLE TERMS AND CONDITIONS          --------------------------------------------------        CHARGE INR 5000 FOR NO-SHOW.         NOTE -          ABOVE CHARGES ARE EXCLUSIVE OF SERVICE TAX.          --------------------------------------------------          NO SHOW IS WHEN A PAX FAILS TO CHANGE/CANCEL          BOOKING ATLEAST 02 HOURS BEFORE DEPARTURE OF THE          FLIGHT BEING CHANGED/CANCELLED.          IF A NO SHOW TICKET IS PROCESSED FOR ANY          CHANGES/REFUND THEN THE PENALTIES FOR          CHANGES/REFUND WILL BE APPLICABLE IN ADDITION TO          THE NO SHOW CHARGE.          -------------------------------------------------          INCASE OF COMBINATIONS BETWEEN MULTIPLE FARES THE          MOST RESTRICTIVE CONDITIONS WILL BE APPLICABLE          FOR THE ENTIRE PRICING UNIT NO SHOW.          --------------------------------------------------          NOTE- IF A NO SHOW TICKET IS PROCESSED FOR ANY          CHANGES/CANCELLATION/REFUND THEN THE PENALTIES          APPLICABLE FOR CHANGE/CANCELLATION/REFUND SHALL          BE APPLICABLE IN ADDITION TO THE NO SHOW PENALTY.<br/><br/> <br/>",
+            "FareRestriction": null,
+            "FareFamilyCode": "ECOYS"
+          }
+        ],
+        "Status": 1
+      }
+    }
+  }
+}

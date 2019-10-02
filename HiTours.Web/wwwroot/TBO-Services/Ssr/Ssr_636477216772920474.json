@@ -1,0 +1,18 @@
+//-- Ssr Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "2d627a31-b3e8-4e6a-b0eb-82d9ff6b386c",
+  "TraceId": "392d47da-0f02-4e83-a3be-1925a13ce1ed",
+  "ResultIndex": "OB7"
+}
+//-- Ssr Api Response --
+{
+  "Response": {
+    "ResponseStatus": 4,
+    "Error": {
+      "ErrorCode": 6,
+      "ErrorMessage": "Your session (TraceId) is expired."
+    },
+    "TraceId": "392d47da-0f02-4e83-a3be-1925a13ce1ed"
+  }
+}

@@ -1,0 +1,309 @@
+//-- TicketLCC Api Request --
+{
+  "EndUserIp": "192.168.11.120",
+  "TokenId": "10667143-6ba7-4629-a7ca-e5eb334bd64d",
+  "TraceId": "2d8d5029-5ce0-4c59-a5f2-cf9fa246f0d4",
+  "ResultIndex": "OB2",
+  "Passengers": [
+    {
+      "Title": "Mr",
+      "FirstName": "Mayank",
+      "LastName": "Gaur",
+      "PaxType": "1",
+      "DateOfBirth": "1977-07-08T00:00:00",
+      "Gender": "1",
+      "PassportNo": null,
+      "PassportExpiry": null,
+      "AddressLine1": "Test Address 1",
+      "AddressLine2": "Test Address 1",
+      "City": "Delhi",
+      "CountryCode": "IN",
+      "CountryName": "India",
+      "ContactNo": "9045025705",
+      "Email": "makgaur007@gmail.com",
+      "IsLeadPax": true,
+      "FFAirline": "",
+      "FFNumber": "",
+      "Fare": {
+        "PassengerType": 1,
+        "YQTax": 0,
+        "AdditionalTxnFee": 0,
+        "Tax": 502,
+        "BaseFare": 2000,
+        "Currency": "INR"
+      }
+    }
+  ]
+}
+//-- TicketLCC Api Response --
+{
+  "Response": {
+    "B2B2BStatus": false,
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "ResponseStatus": 1,
+    "TraceId": "2d8d5029-5ce0-4c59-a5f2-cf9fa246f0d4",
+    "Response": {
+      "PNR": "R3G4NB",
+      "BookingId": 1462370,
+      "SSRDenied": false,
+      "SSRMessage": null,
+      "Status": 1,
+      "IsPriceChanged": false,
+      "IsTimeChanged": false,
+      "FlightItinerary": {
+        "IssuancePcc": "APITESTID",
+        "TripIndicator": 1,
+        "BookingAllowedForRoamer": true,
+        "BookingId": 1462370,
+        "IsManual": false,
+        "PNR": "R3G4NB",
+        "IsDomestic": true,
+        "Source": 3,
+        "Origin": "DEL",
+        "Destination": "HYD",
+        "AirlineCode": "SG",
+        "LastTicketDate": "9999-12-31T00:00:00",
+        "ValidatingAirlineCode": "SG",
+        "AirlineRemark": "",
+        "AirlineTollFreeNo": "9876543210",
+        "IsLCC": true,
+        "NonRefundable": false,
+        "FareType": "PUB",
+        "CreditNoteNo": null,
+        "Fare": {
+          "Currency": "INR",
+          "BaseFare": 2000,
+          "Tax": 502,
+          "TaxBreakup": [
+            {
+              "key": "K3",
+              "value": 108
+            },
+            {
+              "key": "PSF",
+              "value": 244
+            },
+            {
+              "key": "YR",
+              "value": 50
+            },
+            {
+              "key": "TotalTax",
+              "value": 502
+            }
+          ],
+          "YQTax": 0,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0,
+          "OtherCharges": 1.85,
+          "ChargeBU": [
+            {
+              "key": "TBOMARKUP",
+              "value": 0
+            },
+            {
+              "key": "OTHERCHARGE",
+              "value": 1.85
+            },
+            {
+              "key": "CONVENIENCECHARGE",
+              "value": 0
+            }
+          ],
+          "Discount": 0,
+          "PublishedFare": 2503.85,
+          "CommissionEarned": 51,
+          "PLBEarned": 32.57,
+          "IncentiveEarned": 33.13,
+          "OfferedFare": 2387.14,
+          "TdsOnCommission": 20.4,
+          "TdsOnPLB": 13.03,
+          "TdsOnIncentive": 13.25,
+          "ServiceFee": 0,
+          "TotalBaggageCharges": 0,
+          "TotalMealCharges": 0,
+          "TotalSeatCharges": 0,
+          "TotalSpecialServiceCharges": 0
+        },
+        "CreditNoteCreatedOn": null,
+        "Passenger": [
+          {
+            "PaxId": 2087894,
+            "Title": "Mr",
+            "FirstName": "Mayank",
+            "LastName": "Gaur",
+            "PaxType": 1,
+            "DateOfBirth": "1977-07-08T00:00:00",
+            "Gender": 1,
+            "PassportNo": "",
+            "AddressLine1": "Test Address 1",
+            "AddressLine2": "Test Address 1",
+            "Fare": {
+              "Currency": "INR",
+              "BaseFare": 2000,
+              "Tax": 502,
+              "TaxBreakup": [
+                {
+                  "key": "K3",
+                  "value": 108
+                },
+                {
+                  "key": "PSF",
+                  "value": 244
+                },
+                {
+                  "key": "YR",
+                  "value": 50
+                },
+                {
+                  "key": "TotalTax",
+                  "value": 502
+                }
+              ],
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0,
+              "OtherCharges": 1.85,
+              "ChargeBU": [
+                {
+                  "key": "TBOMARKUP",
+                  "value": 0
+                },
+                {
+                  "key": "OTHERCHARGE",
+                  "value": 1.85
+                },
+                {
+                  "key": "CONVENIENCECHARGE",
+                  "value": 0
+                }
+              ],
+              "Discount": 0,
+              "PublishedFare": 2503.85,
+              "CommissionEarned": 51,
+              "PLBEarned": 32.57,
+              "IncentiveEarned": 33.13,
+              "OfferedFare": 2387.14,
+              "TdsOnCommission": 20.4,
+              "TdsOnPLB": 13.03,
+              "TdsOnIncentive": 13.25,
+              "ServiceFee": 0,
+              "TotalBaggageCharges": 0,
+              "TotalMealCharges": 0,
+              "TotalSeatCharges": 0,
+              "TotalSpecialServiceCharges": 0
+            },
+            "City": "Delhi",
+            "CountryCode": "IN",
+            "CountryName": "India",
+            "Nationality": "IN",
+            "ContactNo": "9045025705",
+            "Email": "makgaur007@gmail.com",
+            "IsLeadPax": true,
+            "FFAirlineCode": null,
+            "FFNumber": "",
+            "Ssr": [],
+            "Ticket": {
+              "TicketId": 1727598,
+              "TicketNumber": "R3G4NB",
+              "IssueDate": "2019-05-02T15:53:17",
+              "ValidatingAirline": "001",
+              "Remarks": "",
+              "ServiceFeeDisplayType": "ShowInTax",
+              "Status": "OK",
+              "ConjunctionNumber": "     ",
+              "TicketType": "N"
+            },
+            "SegmentAdditionalInfo": [
+              {
+                "FareBasis": "USAVER",
+                "NVA": "",
+                "NVB": "",
+                "Baggage": "15 KG",
+                "Meal": "0 Platter",
+                "Seat": "",
+                "SpecialService": ""
+              }
+            ]
+          }
+        ],
+        "CancellationCharges": null,
+        "Segments": [
+          {
+            "Baggage": null,
+            "CabinBaggage": null,
+            "TripIndicator": 1,
+            "SegmentIndicator": 1,
+            "Airline": {
+              "AirlineCode": "SG",
+              "AirlineName": "SpiceJet",
+              "FlightNumber": "125",
+              "FareClass": "U",
+              "OperatingCarrier": ""
+            },
+            "AirlinePNR": "",
+            "Origin": {
+              "Airport": {
+                "AirportCode": "DEL",
+                "AirportName": "Indira Gandhi Airport",
+                "Terminal": "1D",
+                "CityCode": "DEL",
+                "CityName": "Delhi",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "DepTime": "2019-06-11T18:45:00"
+            },
+            "Destination": {
+              "Airport": {
+                "AirportCode": "HYD",
+                "AirportName": "Shamsabad International Airport",
+                "Terminal": "",
+                "CityCode": "HYD",
+                "CityName": "Hyderabad",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "ArrTime": "2019-06-11T20:55:00"
+            },
+            "Duration": 130,
+            "GroundTime": 0,
+            "Mile": 0,
+            "StopOver": false,
+            "FlightInfoIndex": "",
+            "StopPoint": "",
+            "StopPointArrivalTime": "2019-06-11T20:55:00",
+            "StopPointDepartureTime": "2019-06-11T18:45:00",
+            "Craft": "737",
+            "Remark": null,
+            "IsETicketEligible": true,
+            "FlightStatus": "Confirmed",
+            "Status": "HK"
+          }
+        ],
+        "FareRules": [
+          {
+            "Origin": "DEL",
+            "Destination": "HYD",
+            "Airline": "SG",
+            "FareBasisCode": "USAVER",
+            "FareRuleDetail": " \r\n\r\n Changes and cancellations are permitted as per applicable rules and charges.\r <br/> <br/>",
+            "FareRestriction": null
+          }
+        ],
+        "Status": 5,
+        "InvoiceAmount": 2434,
+        "InvoiceNo": "DW/1920/6324",
+        "InvoiceStatus": 3,
+        "InvoiceCreatedOn": "2019-05-02T15:53:17",
+        "Remarks": ""
+      },
+      "TicketStatus": 1
+    }
+  }
+}

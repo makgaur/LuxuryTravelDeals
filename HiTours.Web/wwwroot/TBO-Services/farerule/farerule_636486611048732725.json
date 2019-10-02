@@ -1,0 +1,29 @@
+//-- farerule Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "afd1a05d-79ea-4680-a4df-a0bf4a509041",
+  "TraceId": "5c4370ce-3fc6-4634-98ca-4443a88cb615",
+  "ResultIndex": "OB1",
+  "IsLCC": false
+}
+//-- farerule Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "FareRules": [
+      {
+        "Airline": "AI",
+        "Destination": "DEL",
+        "FareBasisCode": "TIP9I",
+        "FareRestriction": "Y",
+        "FareRuleDetail": "<ul><li><b>There is no Minimum Stay requirement</b><br><li><b>There is no Maximum Stay requirement</b><br><fieldset><legend><b><b>Adult</b><br></b></legend><ul><li><b>Revalidation/Reissue</b><br>Fare Component <b>TIP9I</b>&emsp; Sector <b>JAI-DEL</b> &nbsp;<ul><li>Revalidation before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li>Reissue, including failure to show at first flight : <b>Allowed with Restrictions</b></li><li><b>Prior to Departure of journey</b><ul><u>Reissue</u><li>Penalty fee : <b>2500 INR(at today exchange rates 2500 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>2500 INR</b></li><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><u>Reissue</u><li>Penalty fee between : <b>0 INR/2500 INR</b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>2500 INR</b></li><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><li><b>Refund</b><br>Fare Component <b>TIP9I</b>&emsp; Sector <b>JAI-DEL</b> &nbsp;<ul><li>Refund, including failure to show at subsequent flight(s) : <b>Not Allowed</b></li><li><b>Prior to Departure of journey</b><ul><li>Refund : <b>Not Allowed</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Refund : <b>Allowed with Restrictions</b></li><li>Refund : <b>Allowed, Check with Agent for further details</b></li><li>Maximum Refund penalty fee for entire ticket : <b>No charge</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><br><b>* Revalidation is a modification of the original ticket without any reissue of a new ticket.</b><br><b>* For Reissue, Penalty fees are in addition to any difference in fare.</b><br><b>* For Refund, certain Taxes are non-refundable.</b></ul></fieldset></ul>",
+        "Origin": "JAI"
+      }
+    ],
+    "ResponseStatus": 1,
+    "TraceId": "5c4370ce-3fc6-4634-98ca-4443a88cb615"
+  }
+}

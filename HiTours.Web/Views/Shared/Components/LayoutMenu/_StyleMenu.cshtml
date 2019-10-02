@@ -1,0 +1,19 @@
+﻿@{
+    var menuList = this.ViewBag.TravelStyleMenu as IList<Dropdown>;
+}
+@if (menuList != null && menuList.Count > 0)
+{
+    <li class="dropdown mega-dropdown">
+        <a href="#" class="dropdown-toggle style-icon" data-toggle="dropdown">Style <span class="caret"></span></a>
+        <ul class="dropdown-menu mega-dropdown-menu">
+            <li class="col-sm-12">
+                <ul class="syleForitem">
+                    @foreach (var item in menuList)
+                    {
+                        <li><a href="/style/@SpecialChars.Remove(item.Name)/@item.Id">@item.Name</a></li>
+                    }                    
+                </ul>
+            </li>            
+        </ul>
+    </li>
+}

@@ -1,0 +1,138 @@
+﻿@model IList<BookingDetailsViewModel>
+@{
+    this.ViewBag.HeaderWithoutIcons = true;
+}
+@*@this.Html.Partial("_MyAccountHeader")*@
+<style>
+    i.normal-text {
+        font-style: normal;
+        font-size: 16px;
+    }
+</style>
+
+<div class="my-booking">
+    <div class="container">
+        <div class="booking-main-box">
+            <h4 class="my-subscriptions-heading">My Bookings <em>—</em></h4>
+            @if (Model != null && Model.Count > 0)
+            {
+                @foreach (var item in Model)
+                {
+                    var dueDays = (item.EndDate - item.StartDate);
+                    <div class="my-booking-final-list">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-5 book-img-box">
+                                <img src="~/packages/@item.ImageName" alt="" />
+                            </div>
+                            <div class="col-md-7 col-sm-7 hotel-name-box">
+                                <h2>
+                                    @item.DealName<br />
+                                    <i class="itelic-text">@item.City - @item.Country</i><br />
+                                    <span class="transport-text">Without flight</span>
+                                </h2>
+                                <div class="hotel-details-list">
+                                    <div class="col-md-4 col-sm-4 col-xs-4">Booking Id:</div><div class="col-md-8 col-sm-8 col-xs-8">@item.BookingId</div> <div class="clearfix"></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">Room type:</div><div class="col-md-8 col-sm-8 col-xs-8">@item.RoomType</div> <div class="clearfix"></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">Start date:</div><div class="col-md-8 col-sm-8 col-xs-8">@(string.Format("{0:D}", item.StartDate))</div> <div class="clearfix"></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">End date:</div><div class="col-md-8 col-sm-8 col-xs-8">@(string.Format("{0:D}", item.EndDate))</div> <div class="clearfix"></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">Duration:</div><div class="col-md-8 col-sm-8 col-xs-8">@dueDays.TotalDays @(dueDays.TotalDays == 1 ? "night" : "nights")</div> <div class="clearfix"></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">Participants:</div><div class="col-md-8 col-sm-8 col-xs-8">@item.Participants</div> <div class="clearfix"></div>
+                                    <div class="col-md-4 col-sm-4 col-xs-4">Status:</div><div class="col-md-8 col-sm-8 col-xs-8">
+                                        @{
+                                            var status = string.IsNullOrEmpty(item.PaymentStatus) ? "Failed" : item.PaymentStatus == "captured" ? "Paid" : item.PaymentStatus;
+                                        }
+                                        <span class="price-amount" style="@(status == "Failed" ? "color:red" : status == "Paid" ? "color:green" : string.Empty)">@status &nbsp;</span>
+                                    </div> <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        @if (!string.IsNullOrEmpty(item.Description))
+                        {
+                            <div class="hotel-facility-box-main">
+                                <div class="col-md-12 col-sm-12 col-xs-12 hotel-facility-box">
+                                    @Html.Raw(item.Description)
+                                    <div class="clr"></div>
+                                </div><div class="clr"></div>
+                            </div>
+                        }
+                        @{
+                            var pendingAmount = (item.HolidayPrice + item.WeekendPrice + item.GstAmount) - item.PaidAmount;
+
+                        }
+                        <div class="priceTable">
+                            <div>
+                                <h3>Package Price</h3>
+                                <span class="price-amount"><i class="fa fa-inr" aria-hidden="true"></i>@item.HolidayPrice.ToAmount()</span>
+                            </div>
+                            @if (item.WeekendPrice > 0)
+                            {
+                                <div>
+                                    <h3>Weekend Surcharge</h3>
+                                    <span class="price-amount"><i class="fa fa-inr" aria-hidden="true"></i>@item.WeekendPrice.ToAmount()</span>
+                                </div>
+                            }
+
+                            <div>
+                                <h3>Tax</h3>
+                                <span class="price-amount"><i class="fa fa-inr" aria-hidden="true"></i>@item.GstAmount.ToAmount()</span>
+                            </div>
+                            @if (pendingAmount > 0)
+                            {
+                                <div>
+                                    <h3>Deposit</h3>
+                                    <span class="price-amount"><i class="fa fa-inr" aria-hidden="true"></i>@item.PaidAmount.ToAmount()</span>
+                                </div>
+                                <div>
+                                    <h3>Pending</h3>
+                                    <span class="price-amount"><i class="fa fa-inr" aria-hidden="true"></i>@pendingAmount.ToAmount()</span>
+                                </div>
+                            }
+                            <div>
+                                <h3>Total inc. taxes</h3>
+                                <span class="price-amount"><i class="fa fa-inr" aria-hidden="true"></i>@((item.HolidayPrice + item.WeekendPrice + item.GstAmount).ToAmount())</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                }
+
+            }
+            else
+            {
+
+                <div class="no-border">
+                    <label>No Booking Found</label>
+                </div>
+            }
+        </div>
+
+
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        $(function () {
+            localStorage.clear();
+        })
+    </script>
+    @if (this.TempData["PaymentStatus"] != null)
+    {
+        <script>
+            smartech('create', 'ADGMOT35CHFLVDHBJNIG50K969M2CP4N22UB4JPT4SRLRK91B7CG');
+            smartech('register', '7118711369bb8028c468d27da6066644');
+            smartech('dispatch', 30, {
+                "s^success_url": "https://www.luxurytravel.deals/package/bookingconfirmation",
+                "s^payment_status": "Success",
+                "f^deposit_amount": "@this.TempData["BookingAmount"]",
+                "s^transport_type": "",
+                "s^deal_name": ""
+            });
+
+        </script>
+    }
+
+}

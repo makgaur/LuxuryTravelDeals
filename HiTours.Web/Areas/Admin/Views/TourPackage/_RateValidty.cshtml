@@ -1,0 +1,155 @@
+﻿@{this.ViewBag.Title = "Hotel";}
+@model TourPackageNightsValidityViewModel
+<form asp-antiforgery="true" method="POST" id="frmRateValidity" asp-action="AddRateValidity"
+      data-target="table .contact-list" data-targettype="tr">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="HotelRoomTypeId" />
+    <input type="hidden" asp-for="RoomTypeName" />
+    <input type="hidden" data-name="TourPackageNightsId" asp-for="TourPackageNightsId" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="RowIdentifier" />
+    <input type="hidden" asp-for="RowId" />
+    <div class="box-body">
+        <div class="form-group col-sm-12 input-daterange" style="padding:0px">
+
+            <div class="form-group col-sm-6">
+                <label asp-for="RateValidFrom"></label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input asp-for="RateValidFrom" type="text" class="form-control pull-right"
+                           value="@(Model.RateValidFrom != DateTime.MinValue ? Convert.ToDateTime(Model.RateValidFrom).ToString("dd/MM/yyyy") : "")">
+                </div>
+                <span asp-validation-for="RateValidFrom"></span>
+            </div>
+            <div class="form-group col-sm-6">
+                <label asp-for="RateValidTo"></label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" asp-for="RateValidTo" 
+                           value="@(Model.RateValidTo != DateTime.MinValue? Convert.ToDateTime(Model.RateValidTo).ToString("dd/MM/yyyy") : "")"
+                           class="form-control pull-right">
+                </div>
+                <span asp-validation-for="RateValidTo"></span>
+            </div>
+        </div>
+
+        @*<div class="form-group col-sm-6">
+                <label asp-for="DepartCityId"></label>
+                <select asp-for="DepartCityId" selected="@Model.DepartCityId" class="form-control"
+                        select2-value="@Model.DepartCityId" select2-Url="/selectlist/GetPackageCityList"></select>
+            </div>*@
+        <div class="form-group col-sm-3">
+
+            <ul class="ul-lanaguages">
+                @foreach (var item in Model.HotelList)
+            {
+                    <li class="@(Model.HotelRoomTypeId.ToString() == item.Value ? "active" :"")">
+                        <input id="radio@(item.Value)" class="hide hotellanguages" type="radio" name="HotelDescription.LanguageId" value="@item.Value" />
+                        <label for="radio@(item.Value)">@item.Text</label>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="col-sm-9 col-md-9">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="200"></th>
+                            <th width="150">Weekday</th>
+                            <th width="150">Week End Supp.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="hide">
+                            <td>Triple Rate</td>
+                            <td><input type="text" asp-for="TripleRateWeekDays" class="form-control decimalOnly " /></td>
+                            <td><input type="text" asp-for="TripleRateWeekend" class="form-control decimalOnly" /></td>
+                        </tr>
+                        <tr>
+                            <td>Twin rate</td>
+                            <td><input type="text" asp-for="TwinRateWeekDays" class="form-control decimalOnly" /></td>
+                            <td><input type="text" asp-for="TwinRateWeekend" class="form-control decimalOnly" /></td>
+                        </tr>
+                        <tr class="hide">
+                            <td>Single Rate</td>
+                            <td><input type="text" asp-for="SingleRateWeekDays" class="form-control decimalOnly" /></td>
+                            <td><input type="text" asp-for="SingleRateWeekend" class="form-control decimalOnly" /></td>
+                        </tr>
+                        <tr class="hide">
+                            <td>Child With Bed Rate</td>
+                            <td><input type="text" asp-for="ChildWithBedRateWeekDays" class="form-control decimalOnly" /></td>
+                            <td><input type="text" asp-for="ChildWithBedRateWeekend" class="form-control decimalOnly" /></td>
+                        </tr>
+                        <tr class="hide">
+                            <td>Child Without Bed</td>
+                            <td><input type="text" asp-for="ChildWithoutBedRateWeekDays" class="form-control decimalOnly" /></td>
+                            <td><input type="text" asp-for="ChildWithoutBedRateWeekend" class="form-control decimalOnly" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="form-group col-sm-6">
+                    <label asp-for="DepartCityId"></label>
+                    <select asp-for="DepartCityId" selected="@Model.DepartCityId" class="form-control packagecountry" asp-items="Model.CityList"
+                            select2-value="@Model.DepartCityId" select2-Url="/selectlist/GetPackageCityList"></select>
+                    <span asp-validation-for="DepartCityId"></span>
+                </div>
+                <div class="form-group col-sm-6 hide">
+                    <label asp-for="RateValidTo"></label>
+                    <select asp-for="RateTypeApplied" asp-items="Html.GetEnumSelectList<Enums.RateTypeApplied>()" class="form-control"></select>
+                    <span asp-validation-for="RateTypeApplied"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit)})
+</form>
+<style>
+    .language-list {
+        width: 100% !important;
+        height: 304px !important;
+    }
+
+    ul.ul-lanaguages {
+        list-style: none;
+        padding: 4px;
+        border: 1px solid #d1d1d1;
+        height: 305px;
+        overflow-y: scroll;
+    }
+
+        ul.ul-lanaguages li label {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        ul.ul-lanaguages li {
+            cursor: pointer;
+            padding: 0px 0px 0px 2px;
+        }
+
+            ul.ul-lanaguages li:hover {
+                background: #d1d1d1;
+            }
+
+            ul.ul-lanaguages li.active {
+                background: #3c8dbc;
+                color: #fff;
+            }
+</style>
+<script type="text/javascript">
+    $(function () {
+        initPluggins();
+        var newDate = new Date((year || (new Date()).getFullYear()), (month || (new Date()).getMonth()), (day || (new Date()).getDate()));
+        $(".input-daterange").datepicker({ format: dateformat, autoclose: true, startDate: truncateDate(newDate) });
+
+    })
+</script>

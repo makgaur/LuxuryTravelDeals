@@ -1,0 +1,167 @@
+﻿@model IList<HiTours.ViewModels.FlightApi.FlightBookingViewModel>
+@{
+    this.ViewBag.HeaderWithoutIcons = true;
+    var bookings = Model.GroupBy(x => x.UserTransactionId).Select(x => new { Count = x.Count(), Records = x });
+}
+<link asp-append-version="true" href="~/css/flight.css" rel="stylesheet" />
+<link asp-append-version="true" href="~/css/flight-search.css" rel="stylesheet" />
+<div class="my-booking">
+    <div class="container">
+        <div class=" booking-main-box">
+            <h4 class="my-subscriptions-heading">My Flight Booking <em>—</em></h4>
+            <div class="tabbing-flight">
+                @if (Model.Count == 0)
+                {
+                    <div class="no-border">
+                        <label>No Booking Found</label>
+                    </div>
+
+                }
+                else
+                {
+                    <div class="userLabeldetail">
+                        <div class="row">
+                            @foreach (var grp in bookings)
+                            {
+                                var counter = 0;
+                                var list = grp.Records.Where(x => !string.IsNullOrEmpty(x.Pnr));
+                                if (list.Count() > 0)
+                                {
+                                    <div class="col-md-@(grp.Count * 3)">
+
+                                        <div class="boxsDetail">
+                                            @foreach (var booking in list)
+                                            {
+                                                counter++;
+
+                                                @if (counter == 1)
+                                                {
+                                                    <h3>Booking Date : @(booking.UpdatedDate == DateTime.MinValue ? booking.CreatedDate : booking.UpdatedDate)</h3>
+                                                }
+                                                <ul class="col-sm-@(12 / grp.Records.Count())">
+                                                    <li><span class="laftDetAil">PNR:</span> <span class="tbold">@booking.Pnr</span></li>
+                                                    <li><span class="laftDetAil">Booking Id:</span> <span class="tbold">@booking.TboBookingId</span></li>
+                                                    <li><span class="laftDetAil">Origin:</span> <span class="tbold">@booking.Origin</span></li>
+                                                    <li><span class="laftDetAil">Destination:</span> <span class="tbold">@booking.Destination</span></li>
+                                                    <li class="pnr-details" data-view="booking-detail" data-id="@booking.Id">View Details</li>
+                                                </ul>
+
+                                            }
+                                        </div>
+
+                                    </div>
+                                }
+
+                            }
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+        <div class="clr"></div>
+    </div>
+</div>
+
+
+<style>
+    .userLabeldetail .boxsDetail h3 {
+        font-size: 16px;
+    }
+
+    .userLabeldetail .boxsDetail ul {
+        border: 1px dotted #e2e2e2;
+        padding-left: 5px;
+    }
+
+    .userLabeldetail .boxsDetail {
+        padding: 15px 5px;
+    }
+
+    .pnr-details {
+        background: #660866;
+        font-size: 1em;
+        color: #fff;
+        padding: 0px 13px;
+        text-align: center;
+        cursor: pointer;
+    }
+</style>
+
+<div class="flight-page">
+    <div class="modal fade in" id="detailmodal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Booking Details</h4>
+                </div>
+                <div class="modal-body dvBookingDetails">
+                    <div class="box">
+                        <div class="overlay">
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .userLabeldetail .laftDetAil {
+        width: 38%;
+        float: left;
+    }
+
+    .userLabeldetail .tbold {
+        width: 50%;
+        float: left;
+        font-weight: bold;
+    }
+
+    .no-booking {
+        min-height: 250px;
+    }
+</style>
+@section scripts{
+
+    <script>
+        $(function () {
+            $(document).on("click", "div.bhoechie-tab-menu>div.list-group>a", function (e) {
+                e.preventDefault();
+                $(this).siblings('a.active').removeClass("active");
+                $(this).addClass("active");
+                var index = $(this).index();
+                $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+                $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+            });
+
+            $(document).on('show.bs.collapse', '.panel-collapse', function () {
+                $(this).siblings('.panel-heading').addClass('active');
+            });
+
+            $(document).on('hide.bs.collapse', '.panel-collapse', function () {
+                $(this).siblings('.panel-heading').removeClass('active');
+            });
+
+            $('[data-view="booking-detail"]').on('click', function (e) {
+                $("#detailmodal").modal({ keyboard: false, backdrop: "static" }).show()
+                $('.dvBookingDetails').html('<div class="box">' + overlayTemplate + '</div>');
+                $.ajax({
+                    url: '/account/GetFlightDetails',
+                    method: 'post',
+                    dataType: 'html',
+                    data: { id: $(this).data("id") },
+                    success: function (html) {
+                        $('.dvBookingDetails').html(html);
+                    },
+                    error: function (xhr, request, error) {
+                    }
+                });
+
+            });
+
+        });
+    </script>
+}

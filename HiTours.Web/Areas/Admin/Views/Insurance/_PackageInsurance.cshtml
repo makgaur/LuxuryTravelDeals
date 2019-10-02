@@ -1,0 +1,77 @@
+﻿@model PackageInsuranceViewModel;
+
+<form asp-antiforgery="true" id="formPackageinsurance" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="PackageId" />
+    <div class="box-body">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label asp-for="IncludePackageInsurance"></label>
+                <input id="chkIncludePackageInsurance" type="checkbox" class="minimal" asp-for="IncludePackageInsurance" />
+                <span asp-validation-for="IncludePackageInsurance"></span>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <table class="table" id="tourItemtable" style=@(!Model.IncludePackageInsurance?"display:none;":"" )>
+                <thead>
+                    <tr>
+                        <th style="width:10%;">Action</th>
+                        <th style="width:30%;">Vendor</th>
+                        <th style="width:20%;">Days</th>
+                        <th style="width:20%;">Adult Price</th>
+                        <th style="width:20%;">Child Price</th>
+                        @*<th><button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">Add Item</button></th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.PackageInsuranceInfoViewModels != null && Model.PackageInsuranceInfoViewModels.Count > 0)
+                    {
+                        for (int i = 0; i < Model.PackageInsuranceInfoViewModels.Count; i++)
+                        {
+                    <tr class="data-tour-item" data-counter="@i">
+                        <td>
+                            <input asp-for="@Model.PackageInsuranceInfoViewModels[i].SelectThis" type="checkbox" class="minimal" />
+                            <span asp-validation-for="@Model.PackageInsuranceInfoViewModels[i].SelectThis"></span>
+                        </td>
+                        <td>
+                            <select class="form-control" asp-for="@Model.PackageInsuranceInfoViewModels[i].VendorId" selected="@Model.PackageInsuranceInfoViewModels[i].VendorId" class="form-control" id="CountryId" asp-items="@Model.PackageInsuranceInfoViewModels[i].VendorItems"
+                                    select2-Placeholder="Select Vendor" select2-value="@Model.PackageInsuranceInfoViewModels[i].VendorId" select2-Url="/selectlist/GetVendorsDropdownList"></select>
+                            <span asp-validation-for="@Model.PackageInsuranceInfoViewModels[i].VendorId"></span>
+                        </td>
+                        <td>
+                            <input asp-for="@Model.PackageInsuranceInfoViewModels[i].Days" type="number" class="form-control days" placeholder="Days" id="days_@i" />
+                            <span asp-validation-for="@Model.PackageInsuranceInfoViewModels[i].Days"></span>
+                        </td>
+                        <td>
+                            <input asp-for="@Model.PackageInsuranceInfoViewModels[i].AdultRate" type="number" class="form-control a_price" placeholder="Adult Price" id="a_price_@i" />
+                            <span asp-validation-for="@Model.PackageInsuranceInfoViewModels[i].AdultRate"></span>
+                        </td>
+                        <td>
+                            <input asp-for="@Model.PackageInsuranceInfoViewModels[i].ChildRate" type="number" class="form-control c_price" placeholder="Child Price" id="c_price_@i" />
+                            <span asp-validation-for="@Model.PackageInsuranceInfoViewModels[i].ChildRate"></span>
+                        </td>
+                        @*<td><button type="button" id="btnDelete" class="deleteItem btn btn btn-danger btn-xs">Remove</button></td>*@
+                    </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+</form>
+<script>
+    $(document).ready(function (event) { 
+        $('input[type="checkbox"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue'
+        });
+        BindIncludeVisa();
+    })
+    function BindIncludeVisa() {
+        $('#chkIncludePackageInsurance').on('ifChecked', function (event) {
+            $('#tourItemtable').show();
+        });
+        $('#chkIncludePackageInsurance').on('ifUnchecked', function (event) {
+            $('#tourItemtable').hide();
+        });
+    }
+</script>

@@ -1,0 +1,72 @@
+﻿@model List<DealsItineraryViewModel>
+@{
+    int packageTypeID = this.ViewBag.packageTypeId;
+    int packageId = this.ViewBag.packageId;
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <div class="pull-left top-buttons">
+                    @if (this.ViewBag.FirstNightId != @ViewBag.nightId)
+                    {
+                    <button class="btn btn-primary" type="button" id="addItinerary" onclick="CopyItinerary(@this.ViewBag.FirstNightId, @ViewBag.nightId,@this.ViewBag.packageId);">Copy Itinerary</button>
+                    }
+                </div>
+                <div class="pull-right top-buttons">
+                    @if (this.ViewBag.IsFixedDeparture)
+                    {
+                        <button class="btn btn-primary" type="button" id="manageDeparture" onclick="ManageDepartureDates(@ViewBag.nightId)">Manage Departure Dates</button>
+                    }
+                    <button class="btn btn-primary" type="button" id="addItinerary" onclick="AddItinearyPart(@ViewBag.nightId, 0);">Add Itinerary Part</button>
+                </div>
+            </div>
+            <div class="form-group col-md-12" style="margin-top:10px;">
+                <div class="panel-group" id="accordion">
+                    @foreach (DealsItineraryViewModel itinerary in Model)
+                    {
+                        this.ViewBag.ItinaryId = itinerary.Id;
+                        string formattedTitle = string.Empty;
+                        if (itinerary.StartDay == itinerary.EndDay)
+                        {
+                            formattedTitle = formattedTitle + "Day " + itinerary.StartDay;
+                        }
+                        else
+                        {
+                            formattedTitle = formattedTitle + "Day " + itinerary.StartDay + " - " + itinerary.EndDay;
+                        }
+                        if (!string.IsNullOrEmpty(itinerary.Title))
+                        {
+                            formattedTitle = formattedTitle + ": " + itinerary.Title;
+                        }
+                        <div class="panel">
+                            <div class="panel-heading bg-gray-active">
+                                <div class="panel-title ">
+                                    <a data-toggle="collapse" class="" data-parent="#accordion" href="#collapse_@itinerary.Id"><i class="fa fa-fw fa-calendar"></i> @formattedTitle</a>
+                                    @*<a class="pull-right" href="@Url.Action("DeleteItineary", "Deals", new {@itineraryId = itinerary.Id, @packageTypeId = packageTypeID, @packageId = packageId })"><i class="fa fa-trash-o"></i></a>*@
+                                    <div class="pull-right">
+                                        <button class="btn btn-xs btn-default btn-flat" data-toggle="tooltip" title="Edit itinerary leg." href="javaScript:void(0)" onclick="AddItinearyPart(@ViewBag.nightId, @itinerary.Id)"><i class=" fa fa-edit"></i> Edit</button>
+                                        <button class="btn btn-xs btn-success btn-flat" data-toggle="tooltip" title="Add Flight for this itinerary leg." href="javaScript:void(0)" onclick="AddFlight(@ViewBag.packageId, @itinerary.Id, @this.ViewBag.TotalNights, 0)"><i class=" fa fa-plane"></i> Add Flight</button>
+                                        <button class="btn btn-xs btn-primary btn-flat" data-toggle="tooltip" title="Add Hotel for this itinerary leg." onclick="AddHotelRoomConfig(@ViewBag.packageId, @itinerary.Id);"><i class=" fa fa-building-o"></i> Add Hotel</button>
+                                        <button class="btn btn-xs btn-warning btn-flat" data-toggle="tooltip" title="Add Activity for this itinerary leg." onclick="AddActivityItinerary(@ViewBag.packageId, @itinerary.Id, @this.ViewBag.TotalNights, 0);"><i class=" fa fa-soccer-ball-o"></i> Add Activity</button>
+                                        <a class="btn btn-xs btn-flat btn-danger margin-left-5 delete-remote-itenary" data-toggle="tooltip" title="Remove this itinerary leg." href="javascript:;" data-href="@Url.Action("DeleteItineary", "Deals", new { @itineraryId = @itinerary.Id, @packageTypeId = packageTypeID, @packageId = packageId })"><i class=" fa fa-trash-o"></i> Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse_@itinerary.Id" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="tax-tabel-wrap">
+                                        <div class="table-responsive">
+                                            @Html.Partial("_InclusionDescriptionForDealTours", itinerary.InclusionModels)
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

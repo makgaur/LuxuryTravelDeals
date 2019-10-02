@@ -1,0 +1,433 @@
+﻿@model HotelierContentViewModel
+<style>
+    /*.panel-group{
+        padding-left:15px;
+        padding-right:15px;
+    }*/
+    .select2-container{
+        width:100% !important;
+    }
+</style>
+<div>
+    <h4><i class="fa fa-fw fa-building"></i> Hotelier Content</h4>
+    <form asp-antiforgery="true" id="formHotelContent" method="post" enctype="multipart/form-data" style="margin-top:10px;">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="HotelId" />
+        <input type="hidden" asp-for="VendorId" />
+        <input type="hidden" asp-for="UpdatedBy" />
+        <input type="hidden" asp-for="UpdatedDate" />
+        <input type="hidden" asp-for="CreatedBy" />
+        <input type="hidden" asp-for="CreatedDate" />
+
+        <div class="form-group col-md-12">
+            <label asp-for="About"></label>
+            <textarea asp-for="About" class="tinymceTextarea" placeholder="Place some text here"
+                      style="width: 100%; height: 50px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+            <span asp-validation-for="About"></span>
+        </div>
+        <div class="form-group col-md-12">
+            <label asp-for="TAUrl"></label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-fw fa-tripadvisor"></i></span>
+                <input type="text" class="form-control" asp-for="TAUrl" placeholder="Trip Advisor Script">
+            </div>
+            <span asp-validation-for="TAUrl"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="OverallRating"></label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-fw fa-star"></i></span>
+                <input type="number" class="form-control" asp-for="OverallRating">
+            </div>
+            <span asp-validation-for="OverallRating"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="OverallCleaninessRating"></label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-fw fa-leaf"></i></span>
+                <input type="number" class="form-control" asp-for="OverallCleaninessRating">
+            </div>
+            <span asp-validation-for="OverallCleaninessRating"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="OverallComfortRating"></label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-fw fa-bed"></i></span>
+                <input type="number" class="form-control" asp-for="OverallComfortRating">
+            </div>
+            <span asp-validation-for="OverallComfortRating"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="OverallValueRating"></label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-fw fa-money"></i></span>
+                <input type="number" class="form-control" asp-for="OverallValueRating">
+            </div>
+            <span asp-validation-for="OverallValueRating"></span>
+        </div>
+        <div class="form-group col-md-12">
+            <label asp-for="HotelAmeneties"></label>
+            <select asp-for="HotelAmeneties" class="form-control" multiple
+                    asp-items="Model.HotelAmenetiesItem"
+                    select2-value="@Model.HotelAmeneties"
+                    select2-Url="/selectlist/GetHotelierAmenetiesList"></select>
+            <span asp-validation-for="HotelAmeneties"></span>
+        </div>
+        <div class="col-md-12" style="padding-top:15px; padding-bottom:15px;">
+            <div class="form-group">
+                <div class="tax-tabel-wrap">
+                    <div class="table-responsive">
+                        <table id="ImagesTable" class="table table-standard table-bordered invoice-tabel-2">
+                            <thead>
+                                <tr>
+                                    <th>Image Name</th>
+                                    <th style="width:155px">Image</th>
+                                    @*<th>Dimention</th>*@
+                                    <th>Preview</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label asp-for="LogoImg"></label>
+                                        <input type="hidden" asp-for="LogoImg" />
+                                    </td>
+                                    <td align="center">
+                                        <input asp-for="LogoImgFile" type="file" class="singleImg" />
+                                        <span asp-validation-for="LogoImg"></span>
+                                    </td>
+                                    @*<td>
+                <span>Required Dimention</span>
+            </td>*@
+                                    <td>
+                                        <div class="img-thumbnail">
+                                            @if (string.IsNullOrEmpty(Model.LogoImg))
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.LogoImg" alt="">
+
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label asp-for="AboutImg"></label>
+                                        <input type="hidden" asp-for="AboutImg" />
+                                    </td>
+                                    <td align="center">
+                                        <input asp-for="AboutImgFile" type="file" class="singleImg" />
+                                        <span asp-validation-for="AboutImgFile"></span>
+                                    </td>
+                                    <td>
+                                        <div class="img-thumbnail">
+                                            @if (string.IsNullOrEmpty(Model.AboutImg))
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.AboutImg" alt="">
+
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label asp-for="CardImg"></label>
+                                        <input type="hidden" asp-for="CardImg" />
+                                    </td>
+                                    <td align="center">
+                                        <input asp-for="CardImgFile" type="file" class="singleImg" />
+                                        <span asp-validation-for="CardImg"></span>
+                                    </td>
+                                    @*<td>
+                <span>Required Dimention</span>
+            </td>*@
+                                    <td>
+                                        <div class="img-thumbnail">
+                                            @if (string.IsNullOrEmpty(Model.CardImg))
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.CardImg" alt="">
+
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label asp-for="BannerImg4x4"></label>
+                                        <input type="hidden" asp-for="BannerImg4x4" />
+                                    </td>
+                                    <td align="center">
+                                        <input asp-for="BannerImg4x4File" type="file" class="singleImg" />
+                                        <span asp-validation-for="BannerImg4x4"></span>
+                                    </td>
+                                    @*<td>
+                <span>Required Dimention</span>
+            </td>*@
+                                    <td>
+                                        <div class="img-thumbnail">
+                                            @if (string.IsNullOrEmpty(Model.BannerImg4x4))
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.BannerImg4x4" alt="">
+
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label asp-for="BannerImg2x4"></label>
+                                        <input type="hidden" asp-for="BannerImg2x4" />
+                                    </td>
+                                    <td align="center">
+                                        <input asp-for="BannerImg2x4File" type="file" class="singleImg" />
+                                        <span asp-validation-for="BannerImg2x4"></span>
+                                    </td>
+                                    @*<td>
+                <span>Required Dimention</span>
+            </td>*@
+                                    <td>
+                                        <div class="img-thumbnail">
+                                            @if (string.IsNullOrEmpty(Model.BannerImg2x4))
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.BannerImg2x4" alt="">
+
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label asp-for="BannerImg2x2_1"></label>
+                                        <input type="hidden" asp-for="BannerImg2x2_1" />
+                                    </td>
+                                    <td align="center">
+                                        <input asp-for="BannerImg2x2_1File" type="file" class="singleImg" />
+                                        <span asp-validation-for="BannerImg2x2_1"></span>
+                                    </td>
+                                    @*<td>
+                <span>Required Dimention</span>
+            </td>*@
+                                    <td>
+                                        <div class="img-thumbnail">
+                                            @if (string.IsNullOrEmpty(Model.BannerImg2x2_1))
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.BannerImg2x2_1" alt="">
+
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label asp-for="BannerImg2x2_2"></label>
+                                        <input type="hidden" asp-for="BannerImg2x2_2" />
+                                    </td>
+                                    <td align="center">
+                                        <input asp-for="BannerImg2x2_2File" type="file" class="singleImg" />
+                                        <span asp-validation-for="BannerImg2x2_2"></span>
+                                    </td>
+                                    @*<td>
+                <span>Required Dimention</span>
+            </td>*@
+                                    <td>
+                                        <div class="img-thumbnail">
+                                            @if (string.IsNullOrEmpty(Model.BannerImg2x2_2))
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.BannerImg2x2_2" alt="">
+
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label asp-for="BannerImg2x2_3"></label>
+                                        <input type="hidden" asp-for="BannerImg2x2_3" />
+                                    </td>
+                                    <td align="center">
+                                        <input asp-for="BannerImg2x2_3File" type="file" class="singleImg" />
+                                        <span asp-validation-for="BannerImg2x2_3"></span>
+                                    </td>
+                                    @*<td>
+                <span>Required Dimention</span>
+            </td>*@
+                                    <td>
+                                        <div class="img-thumbnail">
+                                            @if (string.IsNullOrEmpty(Model.BannerImg2x2_3))
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.BannerImg2x2_3" alt="">
+
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label asp-for="BannerImg2x2_4"></label>
+                                        <input type="hidden" asp-for="BannerImg2x2_4" />
+                                    </td>
+                                    <td align="center">
+                                        <input asp-for="BannerImg2x2_4File" type="file" class="singleImg" />
+                                        <span asp-validation-for="BannerImg2x2_4"></span>
+                                    </td>
+                                    @*<td>
+                <span>Required Dimention</span>
+            </td>*@
+                                    <td>
+                                        <div class="img-thumbnail">
+                                            @if (string.IsNullOrEmpty(Model.BannerImg2x2_4))
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.BannerImg2x2_4" alt="">
+
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if (Model.HotelierRoomConfigurations.Count > 0)
+        {
+            <h4> <i class="fa fa-fw fa-bed"></i> Configured Rooms</h4>
+            <div class="form-group col-md-12" style="margin-top:10px;">
+                <div class="panel-group" id="accordion">
+                    @for (int i = 0; i < Model.HotelierRoomConfigurations.Count; i++)
+                    {
+                        <div class="panel panel-default">
+                            <input type="hidden" asp-for="HotelierRoomConfigurations[i].Id" />
+                            <input type="hidden" asp-for="HotelierRoomConfigurations[i].HotelId" />
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse_@i"><i class="fa fa-fw fa-bed"></i> @Model.HotelierRoomConfigurations[i].RoomName, <i class="fa fa-fw fa-male"></i>  <span class="text-sm font-bold">x @Model.HotelierRoomConfigurations[i].Max</span></a>
+                                </h4>
+                            </div>
+                            <div id="collapse_@i" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="form-group col-md-12">
+                                        <label asp-for="HotelierRoomConfigurations[i].Description"></label>
+                                        <textarea asp-for="HotelierRoomConfigurations[i].Description" class="tinymceTextarea" placeholder="Place some text here"
+                                                  style="width: 100%; height: 50px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                        <span asp-validation-for="HotelierRoomConfigurations[i].Description"></span>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label asp-for="HotelierRoomConfigurations[i].Ameneties"></label>
+                                        <select asp-for="HotelierRoomConfigurations[i].Ameneties" class="form-control" multiple
+                                                asp-items="Model.HotelierRoomConfigurations[i].AmenetiesItems"
+                                                select2-value="@Model.HotelierRoomConfigurations[i].Ameneties"
+                                                select2-Url="/selectlist/GetAmenetiesList"></select>
+                                        <span asp-validation-for="HotelierRoomConfigurations[i].Ameneties"></span>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <div class="tax-tabel-wrap">
+                                            <div class="table-responsive">
+                                                <table id="ImagesTable" class="table table-standard table-bordered invoice-tabel-2">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Image Name</th>
+                                                            <th style="width:155px">Image</th>
+                                                            @*<th>Dimention</th>*@
+                                                            <th>Preview</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <label asp-for="HotelierRoomConfigurations[i].CardImg"></label>
+                                                                <input type="hidden" asp-for="HotelierRoomConfigurations[i].CardImg" />
+                                                            </td>
+                                                            <td align="center">
+                                                                <input asp-for="HotelierRoomConfigurations[i].CardImgFile" type="file" class="singleImg" />
+                                                                <span asp-validation-for="HotelierRoomConfigurations[i].CardImg"></span>
+                                                            </td>
+                                                            @*<td>
+                                                                <span>Required Dimention</span>
+                                                            </td>*@
+                                                            <td>
+                                                                <div class="img-thumbnail">
+                                                                    @if (string.IsNullOrEmpty(Model.HotelierRoomConfigurations[i].CardImg))
+                                                                    {
+                                                                        <img class="preview" style="width:120px; height:60px;" alt="">
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.HotelierRoomConfigurations[i].CardImg" alt="">
+
+                                                                    }
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        }
+        @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+    </form>
+</div>
+<script>
+    $(document).ready(function (e) { 
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $(input).parents('tr').find(".preview").attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $(document).on("change", ".singleImg", function () {
+            readURL(this);
+        });
+    })
+
+</script>

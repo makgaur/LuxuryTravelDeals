@@ -1,0 +1,882 @@
+﻿@model MyBookingDescriptionViewModel
+@using HiTours.Models
+@using HiTours.TBO.Models
+@using Newtonsoft.Json.Converters
+@{
+    ViewData["Title"] = "MyBookingDetail";
+ Layout = "~/Views/Shared/_ProductLayout.cshtml";
+}
+
+
+<link href="~/Styles/mybooking.css" rel="stylesheet" />
+<link href="~/Styles/AboutUsPage.css" rel="stylesheet" />
+<link href="~/Styles/product.css" rel="stylesheet" />
+<link href="~/Styles/helperstyles.css" rel="stylesheet" />
+@*<style>
+    @@page {
+        size: 25cm 35.7cm;
+        margin: 5mm 5mm 5mm 5mm; /* change the margins as you want them to be. */
+    }
+</style>*@
+@{
+    string tboDateTimeformat = "yyyy-MM-ddTHH:mm:ss";
+}
+@*----------My_Booking_Details---------*@
+
+<div class="Booking-Detail-Container section_container">
+    <div class="row">
+        <div class="Booking-detail-heading col-sm-4 col-md-4 col-lg-8 col-xs-6">
+            Booking Summary
+        </div>
+        <div class="hidden-xs col-sm-4 col-md-4 hidden-lg booking_print_btn">
+            <button>Print My Booking</button>
+        </div>
+        <div class="booking_confirm_title col-sm-4 col-md-4 col-lg-4 col-xs-6">
+            <span class="booking_confirm-icon"><img src="~/images/@(Model.bookingInformationViewModel.IsConfirmed && (Model.bookingFlightViewModel != null && Model.bookingFlightViewModel.Count > 0 ? Model.bookingFlightViewModel.All(x => x.TicketGenerated): true)? "confirm_icon.svg" : "clock.svg")" alt="confirm_icon" /></span>
+            <span class="booking_confirm-text">@(Model.bookingInformationViewModel.IsConfirmed && (Model.bookingFlightViewModel != null && Model.bookingFlightViewModel.Count > 0 ? Model.bookingFlightViewModel.All(x => x.TicketGenerated) : true) ? "Booking Confirmed" : "Confirmation Pending")</span>
+        </div>
+    </div>
+
+    @*---------Deal_banner---------*@
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-8 col-xs-12 no-padding-left-right">
+            <section class="Booking_detail_banner col-sm-12 col-md-12 col-lg-12 hidden-xs">
+                <div class="row height-100">
+
+                    <div class="col-md-6 col-sm-6 col-lg-6 height-100">
+                        <div class="image-4x4">
+                            <a href="javascript:;">
+                                <img src="~/DealImages/@Model.dealContentViewModel.BannerImg4x4" />
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 height-100">
+                        <div class="col-md-6 col-sm-6 col-lg-6 height-100">
+                            <div class="image-2x2 padding-right-5 padding-bottom-5">
+                                <a href="javascript:;">
+                                    <img src="~/DealImages/@Model.dealContentViewModel.BannerImg2x2_1" />
+                                </a>
+                            </div>
+                            <div class="image-2x2 padding-right-5">
+                                <a href="javascript:;">
+                                    <img src="~/DealImages/@Model.dealContentViewModel.BannerImg2x2_2" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6 height-100">
+                            <div class="image-2x2 padding-bottom-5">
+                                <a href="javascript:;">
+                                    <img src="~/DealImages/@Model.dealContentViewModel.BannerImg2x2_3" />
+                                </a>
+
+                            </div>
+                            <a href="javascript:;">
+                                @*<img src="~/DealImages/@(Model.MoreImage != null ? Model.MoreImage : Model.BannerImg2x2_1)" />*@
+                                <div class="image-2x2">
+                                    <div class="open-gallery-container">
+                                        <span>@Model.dealsImageViewModels.Count.ToString() MORE PHOTOS</span>
+                                        <div>
+                                            <button type="button">OPEN PHOTO GALLERY</button>
+                                        </div>
+                                    </div>
+                                    <div class="dark-overlay">
+                                        <img src="~/DealImages/@Model.dealContentViewModel.BannerImg2x2_4" />
+                                    </div>
+                                </div>
+
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            @*---------Booking_Details_Content---------*@
+
+            <section class="col-xs-12 col-md-12 col-lg-12 col-sm-12 Booking-detail-content">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 booking-detail-text">
+                    <p class="booking-id">Booking ID:<span>@Model.bookingInformationViewModel.ReferenceNumber</span></p>
+                    <div class="booking-title">
+                        @Model.dealPackageViewModel.Name
+                    </div>
+                    <div class="booking-place">
+                        @if (Model.LocationNames != null && Model.LocationNames.Count > 0)
+                        {
+                            foreach (var item in Model.LocationNames)
+                            {
+                                <span>@item</span>
+                            }
+                        }
+
+                    </div>
+
+                    <div class="checkin-checkout">
+                        <div class="hotel-tile">Hotel</div>
+                        <div class="checkin-checkout-style">Check In on <span>@Model.bookingInformationViewModel.Checkin.Day @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.bookingInformationViewModel.Checkin.Month), @Model.bookingInformationViewModel.Checkin.Year</span></div>
+                        <div class="checkin-checkout-style">Check Out on <span>@Model.bookingInformationViewModel.Checkout.Day @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.bookingInformationViewModel.Checkout.Month), @Model.bookingInformationViewModel.Checkout.Year (@((Model.bookingInformationViewModel.Checkout - Model.bookingInformationViewModel.Checkin).Days) Nights)</span></div>
+
+                    </div>
+                    @if (Model.dealPackageViewModel.Type == 1)
+                    {
+                        for (int i = 0; i < Model.bookingHotelViewModel.Count; i++)
+                        {
+                            BookingHotelRoomViewModel item = Model.bookingHotelViewModel[i];
+                            <div class="col-sm-12 col-md-12 col-lg-12 select-room" style="padding-left:0px;padding-right:0px;">
+                                <p>ROOM @(i + 1)</p>
+                                <div class="room-list">
+                                    <div class="room-container">
+                                        <div class="room-details-container">
+                                            <div class="room-image" data-target-gallery="#galleryModal" data-count="">
+                                                <img src="~/DealImages/@item.hotelRoomConfigViewModel.CardImg" alt="room_photo" />
+                                                <div class="room-expand-container">
+                                                    <img src="~/images/room_expand.svg" alt="room_expand_icon" />
+                                                    <span class="room_expand_text">@item.hotelRoomConfigViewModel.RoomImageGalleryViewModel.HotelierRoomImageViewModels.Count More Photos</span>
+                                                </div>
+
+                                            </div>
+                                            <div class="room-detail">
+                                                <div class="room-name-header row">
+                                                    <span class="col-sm-7 col-md-7 col-lg-7" style="padding-left:0px;padding-right:0px;">@item.hotelRoomConfigViewModel.RoomName <img src="~/images/Info_Icon.svg" alt="info-icon" title="@item.hotelRoomConfigViewModel.Description" data-toggle="tooltip" /></span>
+                                                    <span class="col-sm-5 col-md-5 col-lg-5" style="padding-left:8px;padding-right:0px;">Accommodating</span>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 room-price no-padding-left-right">
+                                                    @{
+                                                        DealsRatePlanViewModel minRatePlan = item.hotelRoomConfigViewModel.DealsRatePlanViewModels.Where(x => x.Id == item.RatePlanId).FirstOrDefault();
+                                                        List<DealInventoryModel> inventoryModels = JsonConvert.DeserializeObject<List<DealInventoryModel>>(minRatePlan.InventorySerialized);
+                                                        decimal totalPriceBase = 0;
+                                                        foreach (var itemin in inventoryModels)
+                                                        {
+                                                            totalPriceBase = totalPriceBase + (itemin.Price.Value + itemin.Surgcharge.Value /*+ ((item.Price.Value + item.Surgcharge.Value) * (minRatePlan.MarkUp.HasValue ? minRatePlan.MarkUp.Value : 0)) / 100*/);
+                                                        }
+                                                        totalPriceBase = totalPriceBase + (totalPriceBase * (minRatePlan.MarkUp.HasValue ? minRatePlan.MarkUp.Value : 0) / 100);
+                                                        totalPriceBase = totalPriceBase / 2;
+                                                        totalPriceBase = totalPriceBase + (minRatePlan.ExtraSupplement.HasValue ? (minRatePlan.ExtraSupplement.Value / 2) + ((minRatePlan.ExtraSupplement.Value / 2) * (minRatePlan.MarkUp.HasValue ? minRatePlan.MarkUp.Value : 0) / 100) : 0);
+                                                    }
+                                                    <h2>₹ @Math.Round(totalPriceBase, MidpointRounding.AwayFromZero).ToAmount()</h2>
+                                                    <h6>Per Person @*(Incl. Taxes)*@</h6>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 room-price-right no-padding-left-right">
+                                                    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 room-price-adult no-right-padd">
+                                                        @if (item.Adult != 0)
+                                                        {
+                                                            <h2>@item.Adult x <img src="~/images/Adults_Icon.svg" alt="adult-icon" /></h2>
+                                                            <h6>Adults</h6>
+                                                        }
+
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 room-price-kid no-right-padd">
+                                                        @if (item.Child != 0)
+                                                        {
+                                                            <h2>@item.Child x <img src="~/images/Adults_Icon.svg" alt="adult-icon" /></h2>
+                                                            <h6>Kids (2 - 12)</h6>
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <div class="room-features">
+                                                    @for (int a = 0; a < item.hotelRoomConfigViewModel.RoomAmenties.Count; a++)
+                                                    {
+                                                        <div class="col-md-6 col-sm-6  @(a%2 == 1 ? "align-right": string.Empty) no-padding-left-right">
+                                                            <span>@item.hotelRoomConfigViewModel.RoomAmenties[a]</span>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+
+                    }
+                    else
+                    {
+                        for (int i = 0; i < Model.bookingHotelViewModel.Count; i++)
+                        {
+                            BookingHotelRoomViewModel item = Model.bookingHotelViewModel[i];
+                            <div class="col-sm-12 col-md-12 col-lg-12 select-room no-padding-left-right">
+                                <p>ROOM @(i + 1)</p>
+                                <div class="room-list">
+                                    <div class="room-container">
+                                        <div class="room-details-container">
+                                            <div class="room-image" data-target-gallery="#galleryModal" data-count="">
+                                                <img src="~/DealImages/@item.tourRoomConfigViewModel.Image" alt="room_photo" />
+                                                <div class="room-expand-container">
+                                                    <img src="~/images/room_expand.svg" alt="room_expand_icon" />
+                                                    <span class="room_expand_text">@item.tourRoomConfigViewModel.RoomImageGalleryViewModel.HotelierRoomImageViewModels.Count More Photos</span>
+                                                </div>
+
+                                            </div>
+                                            <div class="room-detail">
+                                                <div class="room-name-header row">
+                                                    <span class="col-sm-7 col-md-7 col-lg-7 no-padding-left-right">@item.tourRoomConfigViewModel.HotelName <img src="~/images/Info_Icon.svg" alt="info-icon" title="@item.tourRoomConfigViewModel.Description" data-toggle="tooltip" /></span>
+                                                    <span class="col-sm-5 col-md-5 col-lg-5 padding-left-8 no-right-padd">Accommodating</span>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 room-price no-padding-left-right">
+                                                    @{
+                                                        DealsRatePlanViewModel minRatePlan = item.tourRoomConfigViewModel.DealsRatePlanViewModels.Where(x => x.Id == item.RatePlanId).FirstOrDefault();
+                                                        DealInventoryModel inventory = JsonConvert.DeserializeObject<DealInventoryModel>(minRatePlan.InventorySerialized);
+                                                        decimal basePrice = 0;
+                                                        basePrice = basePrice + inventory.Price.Value + (inventory.Price.Value * minRatePlan.MarkUp.Value) / 100;
+                                                        //basePrice = basePrice / 2;
+                                                        basePrice = basePrice + minRatePlan.ExtraSupplementPerHead + (minRatePlan.ExtraSupplementPerHead * minRatePlan.MarkUp.Value) / 100;
+                                                    }
+                                                    <h2>₹ @Math.Round(basePrice, MidpointRounding.AwayFromZero).ToAmount()</h2>
+                                                    <h6>Per Person @*(Incl. Taxes)*@</h6>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 room-price-right no-padding-left-right">
+                                                    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 room-price-adult no-right-padd">
+                                                        @if (item.Adult != 0)
+                                                        {
+                                                            <h2>@item.Adult x <img src="~/images/Adults_Icon.svg" alt="adult-icon" /></h2>
+                                                            <h6>Adults</h6>
+                                                        }
+
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 room-price-kid no-right-padd">
+                                                        @if (item.Child != 0)
+                                                        {
+                                                            <h2>@item.Child x <img src="~/images/Adults_Icon.svg" alt="adult-icon" /></h2>
+                                                            <h6>Kids (2 - 12)</h6>
+                                                        }
+                                                    </div>
+                                                </div>
+                                                <div class="room-features">
+                                                    @for (int a = 0; a < item.tourRoomConfigViewModel.HotelAmeneties.Count; a++)
+                                                    {
+                                                        <div class="col-md-6 col-sm-6  @(a%2 == 1 ? "align-right": string.Empty) no-padding-left-right">
+                                                            <span>@item.tourRoomConfigViewModel.HotelAmeneties[a]</span>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+
+                    }
+                    @if (Model.bookingInformationViewModel.VisaOptionAvailable)
+                    {
+                        <div class="booking-visa">
+                            <div class="booking-visa-title">Visa Handling</div>
+                            @if (Model.bookingVisaViewModel != null && Model.bookingVisaViewModel.Count > 0)
+                            {
+                                <div class="booking-visa-style">Book <span> with Visa</span></div>
+                                foreach (var item in Model.bookingVisaViewModel)
+                                {
+                                    <div class="booking-visa-style">@item.CountryName: <span>@item.Count Passengers</span></div>
+                                }
+
+                            }
+                            else
+                            {
+                                <div class="booking-visa-style">Book <span> without Visa</span></div>
+                            }
+                        </div>
+                    }
+                    @if (Model.bookingInformationViewModel.FlightOptionAvailable)
+                    {
+
+                        <div class="booking-flight">
+                            <div class="booking-flight-title">Flights</div>
+                            @if (Model.bookingInformationViewModel.FlightRequired)
+                            {
+                                if (Model.bookingInformationViewModel.FlightSuccessful)
+                                {
+                                    if (Model.bookingFlightViewModel != null && Model.bookingFlightViewModel.Count > 0)
+                                    {
+                                        int totalAdults = Model.bookingHotelViewModel.Sum(x => x.Adult);
+                                        int totalChilds = Model.bookingHotelViewModel.Sum(x => x.Child);
+                                        int totalInfants = Model.bookingHotelViewModel.Sum(x => x.Infant);
+                                        foreach (var item in Model.bookingFlightViewModel)
+                                        {
+                                            string FlightCabinClass = string.Empty;
+                                            if (item.FlightCabinClass == 2)
+                                            {
+                                                FlightCabinClass = "Economy";
+                                            }
+                                            else if (item.FlightCabinClass == 3)
+                                            {
+                                                FlightCabinClass = "Premium Economy";
+                                            }
+                                            else if (item.FlightCabinClass == 4)
+                                            {
+                                                FlightCabinClass = "Business";
+                                            }
+                                            else if (item.FlightCabinClass == 5)
+                                            {
+                                                FlightCabinClass = "Premium Business";
+                                            }
+                                            else if (item.FlightCabinClass == 6)
+                                            {
+                                                FlightCabinClass = "First Class";
+                                            }
+                                            else
+                                            {
+                                                FlightCabinClass = "All";
+                                            }
+                                            <div class="booking-flight-style">@FlightCabinClass / @(totalAdults != 0 ? totalAdults.ToString() + " Adults" : string.Empty) @(totalChilds != 0 ? " - " + totalChilds.ToString() + " Kids" : string.Empty) @(totalInfants != 0 ? " - " + totalInfants.ToString() + " Infants" : string.Empty)</div>
+                                            @*<div class="booking-flight-style">Refundable / Baggage Check-in / Meals Included</div>*@
+                                        }
+
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    <div class="booking-flight-style">Flight Tickets Confirmation Pending</div>
+                                }
+
+                            }
+
+                        </div>
+
+                    }
+
+                </div>
+                @if (Model.bookingInformationViewModel.FlightOptionAvailable)
+                {
+                    @if (Model.bookingInformationViewModel.FlightRequired)
+                    {
+                        if (Model.bookingInformationViewModel.FlightSuccessful)
+                        {
+                            if (Model.ticketsViewModel != null && Model.ticketsViewModel.Count > 0)
+                            {
+                                if (Model.ticketsViewModel.Count == 1)////International
+                                {
+                                    <div class="booking-flight-details">
+                                        @{
+                                            List<SegmentResult> segments = Model.ticketsViewModel.FirstOrDefault().Response.FlightItinerary.Segments.ToList();
+                                            List<long> segmentsValue = segments.Select(x => x.TripIndicator).Distinct().ToList();
+                                        }
+                                        @for (int i = 0; i < segmentsValue.Count; i++)
+                                        {
+                                            string segmentString = string.Empty;
+                                            if (i == 0)
+                                            {
+                                                segmentString = "Onward Flight:";
+                                            }
+                                            else if (i == segmentsValue.Count - 1)
+                                            {
+                                                segmentString = "Return Flight:";
+                                            }
+                                            else
+                                            {
+                                                segmentString = "Segment Flight:";
+                                            }
+                                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 booking-flight-details-inner">
+                                                <p>@segmentString</p>
+                                                @{
+                                                    List<SegmentResult> thisSegmentResult = segments.Where(x => x.TripIndicator == segmentsValue[i]).ToList();
+                                                }
+
+                                                @for (int j = 0; j < thisSegmentResult.Count; j++)
+                                                {
+                                                    var item = thisSegmentResult[j];
+                                                    <div class="row booking-flight-details-content @(j > 0 ? "flight-saperate" : string.Empty)">
+                                                        <div class="col-sm-1 col-md-1 col-lg-1 flight-logo">
+                                                            <img src="~/images/airline/@(item.Airline.AirlineCode + ".png")" alt="thai_flight_icon" />
+                                                        </div>
+                                                        @{
+                                                            DateTime departureTime = DateTime.ParseExact(item.Origin.DepTime, tboDateTimeformat, null);
+                                                            DateTime arrivalTime = DateTime.ParseExact(item.Destination.ArrTime, tboDateTimeformat, null);
+                                                            TimeSpan travelTime = arrivalTime.Subtract(departureTime);
+                                                            string travelTimeString = string.Empty;
+                                                            if (travelTime.Days != 0)
+                                                            {
+                                                                travelTimeString = travelTime.Days.ToString() + " Day ";
+                                                            }
+                                                            if (travelTime.Hours != 0)
+                                                            {
+                                                                travelTimeString = travelTimeString + (travelTime.Hours % 24).ToString() + " Hrs ";
+                                                            }
+                                                            if (travelTime.Minutes != 0)
+                                                            {
+                                                                travelTimeString = travelTimeString + (travelTime.Minutes % 60).ToString() + " Min ";
+                                                            }
+                                                        }
+                                                        <div class="col-sm-9 col-md-9 col-lg-9 flight-desc">
+                                                            <div class="flight-desc-style">@item.Origin.Airport.AirportCode–@item.Destination.Airport.AirportCode /  @departureTime.Day @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(departureTime.Month), @departureTime.Year @departureTime.ToString("hh:mm tt")</div>
+                                                            <div class="flight-desc-style">@item.Airline.AirlineName – @item.Airline.FlightNumber – @item.Airline.AirlineCode / Travel Time: @travelTimeString</div>
+                                                        </div>
+                                                        <div class="col-sm-2 col-md-2 col-lg-2 flight-pnr">
+                                                            <span>PRN @(string.IsNullOrEmpty(Model.ticketsViewModel.FirstOrDefault().Response.FlightItinerary.Pnr) ? item.AirlinePnr : Model.ticketsViewModel.FirstOrDefault().Response.FlightItinerary.Pnr) </span>
+                                                        </div>
+                                                    </div>
+                                                    @if (thisSegmentResult.Count > 1 && j != thisSegmentResult.Count - 1) //// Stopover
+                                                    {
+
+                                                        DateTime stopStartTime = arrivalTime;
+                                                        DateTime stopEndTime = DateTime.ParseExact(thisSegmentResult[j + 1].Origin.DepTime, tboDateTimeformat, null);
+                                                        TimeSpan stopOverTime = stopEndTime.Subtract(stopStartTime);
+                                                        string stopOverTimeString = string.Empty;
+                                                        if (stopOverTime.Days != 0)
+                                                        {
+                                                            stopOverTimeString = stopOverTime.Days.ToString() + " Day ";
+                                                        }
+                                                        if (stopOverTime.Hours != 0)
+                                                        {
+                                                            stopOverTimeString = stopOverTimeString + (stopOverTime.Hours % 24).ToString() + " Hrs ";
+                                                        }
+                                                        if (stopOverTime.Minutes != 0)
+                                                        {
+                                                            stopOverTimeString = stopOverTimeString + (stopOverTime.Minutes % 60).ToString() + " Min ";
+                                                        }
+
+                                                        <div class="flight-stop-over">
+                                                            <span>@stopOverTimeString Stopover (@item.Destination.Airport.AirportCode)</span>
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
+                                        }
+
+                                    </div>
+                                }
+                                else ////Domestic
+                                {
+                                    <div class="booking-flight-details">
+
+                                        @for (int i = 0; i < Model.ticketsViewModel.Count; i++)
+                                        {
+                                            string segmentString = string.Empty;
+                                            if (i == 0)
+                                            {
+                                                segmentString = "Onward Flight:";
+                                            }
+                                            else if (i == Model.ticketsViewModel.Count - 1)
+                                            {
+                                                segmentString = "Return Flight:";
+                                            }
+                                            else
+                                            {
+                                                segmentString = "Segment Flight:";
+                                            }
+                                            <div class="col-sm-12 col-md-12 col-lg-12 booking-flight-details-inner">
+                                                <p>@segmentString</p>
+                                                @{
+                                                    List<SegmentResult> thisSegmentResult = Model.ticketsViewModel[i].Response.FlightItinerary.Segments.ToList();
+                                                }
+
+                                                @for (int j = 0; j < thisSegmentResult.Count; j++)
+                                                {
+                                                    var item = thisSegmentResult[j];
+                                                    <div class="row booking-flight-details-content @(j > 0 ? "flight-saperate" : string.Empty)">
+                                                        <div class="col-sm-1 col-md-1 col-lg-1 flight-logo">
+                                                            <img src="~/images/airline/@(item.Airline.AirlineCode + ".png")" alt="thai_flight_icon" />
+                                                        </div>
+                                                        @{
+                                                            DateTime departureTime = DateTime.ParseExact(item.Origin.DepTime, tboDateTimeformat, null);
+                                                            DateTime arrivalTime = DateTime.ParseExact(item.Destination.ArrTime, tboDateTimeformat, null);
+                                                            TimeSpan travelTime = arrivalTime.Subtract(departureTime);
+                                                            string travelTimeString = string.Empty;
+                                                            if (travelTime.Days != 0)
+                                                            {
+                                                                travelTimeString = travelTime.Days.ToString() + " Day ";
+                                                            }
+                                                            if (travelTime.Hours != 0)
+                                                            {
+                                                                travelTimeString = travelTimeString + (travelTime.Hours % 24).ToString() + " Hrs ";
+                                                            }
+                                                            if (travelTime.Minutes != 0)
+                                                            {
+                                                                travelTimeString = travelTimeString + (travelTime.Minutes % 60).ToString() + " Min ";
+                                                            }
+                                                        }
+                                                        <div class="col-sm-9 col-md-9 col-lg-9 flight-desc">
+                                                            <div class="flight-desc-style">@item.Origin.Airport.AirportCode–@item.Destination.Airport.AirportCode /  @departureTime.Day @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(departureTime.Month), @departureTime.Year @departureTime.ToString("hh:mm tt")</div>
+                                                            <div class="flight-desc-style">@item.Airline.AirlineName – @item.Airline.FlightNumber – @item.Airline.AirlineCode / Travel Time: @travelTimeString</div>
+                                                        </div>
+                                                        <div class="col-sm-2 col-md-2 col-lg-2 flight-pnr">
+                                                            <span>PRN @Model.ticketsViewModel[i].Response.FlightItinerary.Pnr</span>
+                                                        </div>
+                                                    </div>
+                                                    @if (thisSegmentResult.Count > 1 && j != thisSegmentResult.Count - 1) //// Stopover
+                                                    {
+
+                                                        DateTime stopStartTime = arrivalTime;
+                                                        DateTime stopEndTime = DateTime.ParseExact(thisSegmentResult[j + 1].Origin.DepTime, tboDateTimeformat, null);
+                                                        TimeSpan stopOverTime = stopEndTime.Subtract(stopStartTime);
+                                                        string stopOverTimeString = string.Empty;
+                                                        if (stopOverTime.Days != 0)
+                                                        {
+                                                            stopOverTimeString = stopOverTime.Days.ToString() + " Day ";
+                                                        }
+                                                        if (stopOverTime.Hours != 0)
+                                                        {
+                                                            stopOverTimeString = stopOverTimeString + (stopOverTime.Hours % 24).ToString() + " Hrs ";
+                                                        }
+                                                        if (stopOverTime.Minutes != 0)
+                                                        {
+                                                            stopOverTimeString = stopOverTimeString + (stopOverTime.Minutes % 60).ToString() + " Min ";
+                                                        }
+
+                                                        <div class="flight-stop-over">
+                                                            <span>@stopOverTimeString Stopover (@item.Destination.Airport.AirportCode)</span>
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
+                                        }
+
+                                    </div>
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            <div class="booking-flight-details">
+                                <div class="col-sm-12 col-md-12 col-lg-12 booking-flight-details-inner">
+                                    <p>Flight Tickets Confirmation Pending</p>
+                                </div>
+                            </div>
+                        }
+
+                    }
+                    else
+                    {
+                        <div class="booking-flight-details">
+                            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 booking-flight-details-inner">
+                                <p>Flight Not Required</p>
+                            </div>
+                        </div>
+                    }
+                }
+
+                @{
+                    BookingSummaryViewModel summaryViewModel = JsonConvert.DeserializeObject<BookingSummaryViewModel>(Model.bookingInformationViewModel.BookingSummarySerialized, new IsoDateTimeConverter { DateTimeFormat = "dd/MM/yyyy" });
+                }
+                @if (summaryViewModel != null)
+                {
+
+                    decimal ExtraSupplementCharge = 0;
+                    List<DealInventoryModel> inventoryModels = new List<DealInventoryModel>(); //// Hotel
+                    DealInventoryModel inventoryModel = new DealInventoryModel(); //// Tour
+                    DateTime startDate = summaryViewModel.BookingHotelRooms.FirstOrDefault().CheckinDate;
+                    DateTime endDate = summaryViewModel.BookingHotelRooms.FirstOrDefault().CheckoutDate;
+
+                    <div class="summary-model-content">
+                        <div class="summary-model-Header">
+                            <h4 class="summary-modal-title">Price Summary</h4>
+                        </div>
+
+                        <div class="summary-modal-body">
+                            <div class="padding-left-15">
+                                <div class="Hotel-Summary col-sm-12 col-md-12 col-xs-12">
+                                    <h3 class="summary-list-title"> @startDate.Date.Day.ToString() @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(startDate.Month) @startDate.Year to @endDate.Date.Day.ToString() @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(endDate.Month) @endDate.Year (@(((endDate - startDate).TotalDays).ToString()) Nights)</h3>
+                                    @foreach (var item in summaryViewModel.BookingHotelRooms)
+                                    {<div style="overflow:hidden;">
+                                            <h3 class="summary-list-title">@item.RoomName (@item.RatePlanName)</h3>
+                                            <div class="Hotel-Summary-Details col-sm-12 col-md-12 col-xs-12">
+                                                @if (item.Adult == 1)
+                                                {
+                                                    <span class="summary-title"><span class="summary_quantity">@item.Adult.ToString().PadLeft(2, '0')</span>Adult</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="summary-title"><span class="summary_quantity">@(2.ToString().PadLeft(2, '0'))</span>Adults</span>
+                                                }
+                                                @{
+                                                    decimal SingleAdultRoomPrice = 0;
+                                                    ExtraSupplementCharge = 0;
+                                                    if (summaryViewModel.Type == 1) //// Hotel
+                                                    {
+                                                        inventoryModels = JsonConvert.DeserializeObject<List<DealInventoryModel>>(item.InventorySerialized);
+                                                        ExtraSupplementCharge = ExtraSupplementCharge + item.Supplement + (item.Supplement * item.MarkUp / 100);
+                                                        ExtraSupplementCharge = ExtraSupplementCharge / item.Adult;
+                                                        if (item.Adult == 1)
+                                                        {
+                                                            foreach (var invItem in inventoryModels)
+                                                            {
+                                                                SingleAdultRoomPrice = SingleAdultRoomPrice + invItem.SingleSupplement.Value + invItem.Surgcharge.Value + (((invItem.SingleSupplement.Value + invItem.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                            }
+
+                                                            SingleAdultRoomPrice = SingleAdultRoomPrice + item.SupplementPh + ExtraSupplementCharge;
+                                                        }
+                                                        else
+                                                        {
+                                                            foreach (var invItem in inventoryModels)
+                                                            {
+                                                                SingleAdultRoomPrice = SingleAdultRoomPrice + invItem.Price.Value + invItem.Surgcharge.Value + (((invItem.Price.Value + invItem.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                            }
+
+                                                            SingleAdultRoomPrice = SingleAdultRoomPrice + (item.SupplementPh * 2) + (ExtraSupplementCharge * 2);
+
+                                                            SingleAdultRoomPrice = SingleAdultRoomPrice / 2;
+                                                        }
+                                                    }
+                                                    else //// Tour
+                                                    {
+                                                        inventoryModel = JsonConvert.DeserializeObject<DealInventoryModel>(item.InventorySerialized);
+                                                        ExtraSupplementCharge = ExtraSupplementCharge + item.Supplement + (item.Supplement * item.MarkUp / 100);
+                                                        ExtraSupplementCharge = ExtraSupplementCharge / item.Adult;
+                                                        if (item.Adult == 1)
+                                                        {
+
+                                                            SingleAdultRoomPrice = SingleAdultRoomPrice + inventoryModel.SingleSupplement.Value + inventoryModel.Surgcharge.Value + (((inventoryModel.SingleSupplement.Value + inventoryModel.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                            SingleAdultRoomPrice = SingleAdultRoomPrice + item.SupplementPh + (item.SupplementPh * (item.MarkUp) / 100);
+                                                        }
+                                                        else
+                                                        {
+
+                                                            SingleAdultRoomPrice = SingleAdultRoomPrice + inventoryModel.Price.Value + inventoryModel.Surgcharge.Value + (((inventoryModel.Price.Value + inventoryModel.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                            SingleAdultRoomPrice = SingleAdultRoomPrice + (item.SupplementPh * 2) + (item.SupplementPh * 2 * item.MarkUp / 100);
+                                                            SingleAdultRoomPrice = SingleAdultRoomPrice / 2;
+                                                        }
+
+                                                    }
+
+                                                }
+                                                <span class="individual-price">x<span class="individual-price-style"><span> ₹</span>@Math.Round(SingleAdultRoomPrice, MidpointRounding.AwayFromZero).ToAmount()</span> per person@*<span class="summary-info-icon"><img src="~/images/Info_Icon.svg" style="width:24px;height:24px;" /></span>*@</span>
+                                                <span class="total-price"><span> ₹</span>@(item.Adult == 1 ? Math.Round(SingleAdultRoomPrice, MidpointRounding.AwayFromZero).ToAmount() : Math.Round(SingleAdultRoomPrice * 2, MidpointRounding.AwayFromZero).ToAmount())</span>
+
+                                            </div>
+                                            @if (item.Adult - 2 >= 1) //// More than 2 Adults
+                                            {
+                                                SingleAdultRoomPrice = 0;
+                                                int ExtraAdults = item.Adult - 2;
+                                                if (summaryViewModel.Type == 1)////Hotel
+                                                {
+                                                    foreach (var invItem in inventoryModels)
+                                                    {
+                                                        SingleAdultRoomPrice = SingleAdultRoomPrice + invItem.ExtraAdult.Value + invItem.Surgcharge.Value + (((invItem.ExtraAdult.Value + invItem.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                    }
+                                                    SingleAdultRoomPrice = SingleAdultRoomPrice + item.SupplementPh + ExtraSupplementCharge;
+                                                }
+                                                else //// Tour
+                                                {
+                                                    SingleAdultRoomPrice = SingleAdultRoomPrice + inventoryModel.ExtraAdult.Value + inventoryModel.Surgcharge.Value + (((inventoryModel.ExtraAdult.Value + inventoryModel.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                    SingleAdultRoomPrice = SingleAdultRoomPrice + item.SupplementPh + (item.SupplementPh * item.MarkUp / 100);
+                                                }
+
+
+                                                <div class="Hotel-Summary-Details col-sm-12 col-md-12 col-xs-12">
+                                                    <span class="summary-title"><span class="summary_quantity">@ExtraAdults.ToString().PadLeft(2, '0')</span>Extra Adult</span>
+                                                    <span class="individual-price">x<span class="individual-price-style"><span> ₹</span>@Math.Round(SingleAdultRoomPrice, MidpointRounding.AwayFromZero).ToAmount()</span> per person@*<span class="summary-info-icon"><img src="~/images/Info_Icon.svg" style="width:24px;height:24px;" /></span>*@</span>
+                                                    <span class="total-price"><span> ₹</span>@Math.Round(SingleAdultRoomPrice * ExtraAdults, MidpointRounding.AwayFromZero).ToAmount()</span>
+                                                </div>
+
+                                            }
+                                            @if (item.Child > 0) //// Childrens
+                                            {
+                                                decimal SingleChildPrice = 0;
+                                                int FreeChild = item.Child - item.ChargableChild;
+                                                int ChargableChild = item.ChargableChild;
+                                                if (summaryViewModel.Type == 1) // // Hotel
+                                                {
+                                                    foreach (var invItem in inventoryModels)
+                                                    {
+                                                        SingleChildPrice = SingleChildPrice + invItem.ExtraChild_WB.Value + invItem.Surgcharge.Value + (((invItem.ExtraChild_WB.Value + invItem.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                    }
+                                                    SingleChildPrice = SingleChildPrice + item.SupplementPh;
+                                                }
+                                                else
+                                                {
+                                                    SingleChildPrice = SingleChildPrice + inventoryModel.ExtraChild_WB.Value + inventoryModel.Surgcharge.Value + (((inventoryModel.ExtraChild_WB.Value + inventoryModel.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                    SingleChildPrice = SingleChildPrice + item.SupplementPh + (item.SupplementPh * item.MarkUp / 100);
+                                                }
+                                                @if (ChargableChild > 0)
+                                                {
+                                                    <div class="Hotel-Summary-Details col-sm-12 col-md-12 col-xs-12">
+                                                        <span class="summary-title"><span class="summary_quantity">@ChargableChild.ToString().PadLeft(2, '0')</span>Extra Child</span>
+                                                        <span class="individual-price">x<span class="individual-price-style"><span> ₹</span>@Math.Round(SingleChildPrice, MidpointRounding.AwayFromZero).ToAmount()</span> per person@*<span class="summary-info-icon"><img src="~/images/Info_Icon.svg" style="width:24px;height:24px;" /></span>*@</span>
+                                                        <span class="total-price"><span> ₹</span>@Math.Round(SingleChildPrice * item.ChargableChild, MidpointRounding.AwayFromZero).ToAmount()</span>
+                                                    </div>
+                                                }
+
+                                                @if (FreeChild > 0)
+                                                {
+                                                    <div class="Hotel-Summary-Details col-sm-12 col-md-12 col-xs-12">
+                                                        <span class="summary-title"><span class="summary_quantity">@FreeChild.ToString().PadLeft(2, '0')</span>Free Child</span>
+                                                        <span class="individual-price">x<span class="individual-price-style"><span> ₹</span>0</span> per person@*<span class="summary-info-icon"><img src="~/images/Info_Icon.svg" style="width:24px;height:24px;" /></span>*@</span>
+                                                        <span class="total-price"><span> ₹</span>0</span>
+                                                    </div>
+                                                }
+                                            }
+                                            @if (item.Infant > 0) //// Infant
+                                            {
+                                                decimal SingleInfantPrice = 0;
+                                                int FreeInfant = item.Infant - item.ChargableInfant;
+                                                int ChargableInfant = item.ChargableInfant;
+                                                if (summaryViewModel.Type == 1)
+                                                {
+                                                    foreach (var invItem in inventoryModels)
+                                                    {
+                                                        SingleInfantPrice = SingleInfantPrice + invItem.ExtraInfant.Value + invItem.Surgcharge.Value + (((invItem.ExtraInfant.Value + invItem.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                    }
+                                                    SingleInfantPrice = SingleInfantPrice + item.SupplementPh;
+                                                }
+                                                else
+                                                {
+                                                    SingleInfantPrice = SingleInfantPrice + inventoryModel.ExtraInfant.Value + inventoryModel.Surgcharge.Value + (((inventoryModel.ExtraInfant.Value + inventoryModel.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                    SingleInfantPrice = SingleInfantPrice + item.SupplementPh + (item.SupplementPh * item.MarkUp / 100);
+                                                }
+                                                @if (ChargableInfant > 0)
+                                                {
+                                                    <div class="Hotel-Summary-Details col-sm-12 col-md-12 col-xs-12">
+                                                        <span class="summary-title"><span class="summary_quantity">@ChargableInfant.ToString().PadLeft(2, '0')</span>Extra Infant</span>
+                                                        <span class="individual-price">x<span class="individual-price-style"><span> ₹</span>@Math.Round(SingleInfantPrice, MidpointRounding.AwayFromZero).ToAmount()</span> per person@*<span class="summary-info-icon"><img src="~/images/Info_Icon.svg" style="width:24px;height:24px;" /></span>*@</span>
+                                                        <span class="total-price"><span> ₹</span>@Math.Round(SingleInfantPrice * ChargableInfant, MidpointRounding.AwayFromZero).ToAmount()</span>
+                                                    </div>
+                                                }
+                                                @if (FreeInfant > 0)
+                                                {
+                                                    <div class="Hotel-Summary-Details col-sm-12 col-md-12 col-xs-12">
+                                                        <span class="summary-title"><span class="summary_quantity">@FreeInfant.ToString().PadLeft(2, '0')</span>Free Infant</span>
+                                                        <span class="individual-price">x<span class="individual-price-style"><span> ₹</span>0</span> per person@*<span class="summary-info-icon"><img src="~/images/Info_Icon.svg" style="width:24px;height:24px;" /></span>*@</span>
+                                                        <span class="total-price"><span> ₹</span>0</span>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+
+                                    }
+                                </div>
+
+                                @if (summaryViewModel.IsFlight)
+                                {
+                                    <div class="Flight-Summary col-sm-12 col-md-12 col-xs-12">
+                                        <h3 class="summary-list-title">Flight</h3>
+                                        <div class="Hotel-Summary-Details col-sm-12 col-md-12 col-xs-12">
+                                            <span class="summary-title"><span class="summary_quantity">@((summaryViewModel.PassengerBreakDown.Adults + summaryViewModel.PassengerBreakDown.Childs + summaryViewModel.PassengerBreakDown.Infants).ToString().PadLeft(2, '0'))</span>Passengers</span>
+                                            <span class="individual-price">x<span class="individual-price-style"><span> ₹</span>@(Math.Round((summaryViewModel.FlightPrice + 100) / (summaryViewModel.PassengerBreakDown.Adults + summaryViewModel.PassengerBreakDown.Childs + summaryViewModel.PassengerBreakDown.Infants), MidpointRounding.AwayFromZero).ToAmount())</span> per Person</span>
+                                            <span class="total-price"><span> ₹</span>@(Math.Round(summaryViewModel.FlightPrice, MidpointRounding.AwayFromZero).ToAmount())</span>
+                                        </div>
+                                    </div>
+                                }
+
+                                @if (summaryViewModel.IsVisa && summaryViewModel.VisaInformation.Count > 0)
+                                {
+                                    <div class="Visa-Summary col-sm-12 col-md-12 col-xs-12">
+                                        <h3 class="summary-list-title">Visa Handling</h3>
+                                        @foreach (var item in summaryViewModel.VisaInformation)
+                                        {
+                                            <div class="Hotel-Summary-Details col-sm-12 col-md-12 col-xs-12">
+                                                <span class="summary-title"><span class="summary_quantity">@item.Count.ToString().PadLeft(2, '0')</span>Passengers</span>
+                                                <span class="individual-price">x<span class="individual-price-style"><span> ₹</span>@(Math.Round(item.Price + (item.ServiceFee / item.Count), MidpointRounding.AwayFromZero).ToAmount())</span> per Passenger@*<span class="summary-info-icon"><img src="~/images/Info_Icon.svg" style="width:24px;height:24px;" /></span>*@</span>
+                                                <span class="total-price"><span> ₹</span>@(Math.Round((item.Price + (item.ServiceFee / item.Count)) * item.Count, MidpointRounding.AwayFromZero).ToAmount())</span>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+
+
+                            </div>
+                            <div class="">
+
+                            </div>
+
+
+                            <div class="booking-total col-sm-12 col-md-12 col-xs-12">
+                                <div class="padding-left-15">
+                                    <div class="tax-section padding-left-15 col-sm-12 col-md-12 col-xs-12">
+                                        <span class="title">Taxes & Charges</span>
+                                        <span class="value">₹@Math.Round(summaryViewModel.TotalTax, MidpointRounding.AwayFromZero).ToAmount()</span>
+                                    </div>
+                                </div>
+
+                                <div class="padding-left-15">
+                                    <div class="booking-total-Details col-sm-12 col-md-12 col-xs-12">
+                                        Total
+                                        <span class="include-text">(Incl. Taxes)</span>
+
+                                        <span class="total-price"><span> ₹</span>@(Math.Round(summaryViewModel.TotalPrice + summaryViewModel.TotalServiceFee + summaryViewModel.TotalTax, MidpointRounding.AwayFromZero).ToAmount())</span>
+                                    </div>
+
+                                </div>
+                                @if (Model.bookingInformationViewModel.DiscountAmount != 0 && !string.IsNullOrEmpty(Model.bookingInformationViewModel.DiscountCoupon))
+                                {
+                                    <div class="booking-net-total col-sm-12 col-md-12 col-xs-12">
+                                        Promotion Discount (@Model.bookingInformationViewModel.DiscountCoupon.ToUpper())
+                                        <span class="total-price"><span> -₹</span>@Math.Round(Model.bookingInformationViewModel.DiscountAmount, MidpointRounding.AwayFromZero).ToAmount()</span>
+                                    </div>
+                                }
+
+                                <div class="booking-net-total col-sm-12 col-md-12 col-xs-12">
+                                    Net Payable
+                                    <span class="total-price"><span> ₹</span>@(Math.Round(summaryViewModel.TotalPrice + summaryViewModel.TotalServiceFee + summaryViewModel.TotalTax - Model.bookingInformationViewModel.DiscountAmount, MidpointRounding.AwayFromZero).ToAmount())</span>
+                                </div>
+
+                                @*<div class="booking-deposit col-sm-12 col-md-12 col-xs-12">
+                            Deposit
+                            <span class="include-text">(20% of Net Payable)</span><span class="summary-info-icon"><img src="~/images/Info_Icon.svg" style="width:24px;height:24px;" /></span>
+
+                            <span class="total-price"><span> ₹</span>83,322</span>
+                        </div>*@
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </section>
+
+            <div class="Total-Summary col-sm-12 col-md-12 col-xs-12">
+
+                <div class="total-Summary-Details col-sm-12 col-md-12 col-xs-12">
+                    @*<div class="col-sm-12 col-md-12 col-lg-12" style="padding-left:0px;padding-right:0px;">
+                        <p>You can change your dates once. Available until Jun 18, 2019 (45 days before check-in).</p>
+                    </div>*@
+
+                    <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 no-padding-left-right margin-top-10">
+                        <div class="col-xs-6"> <a href="#" class="Edit-booking">Edit my Booking</a></div>
+                        <div class="col-xs-6"> <a href="/user/mybookings" class="Back-booking">Back to my bookings</a></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="hidden-sm hidden-md hidden-xs col-lg-4" id="stuck-content">
+            <div class="hidden-sm hidden-md col-lg-4 scroller-anchor"></div>
+            <div class="hidden-sm hidden-md col-md-4 col-lg-4 scroller customer-care top-border">
+                <h2>Stuck Somewhere? Give Us A Call!</h2>
+                <hr class="hr-grey-bottom-unset-float w75">
+                <h3>1800-108-0808</h3>
+                <hr class="hr-long-e6e6e6">
+                <p>
+                    Monday to Friday 8:00 AM – 8:00 PM<br> except Saturdays, Sundays & bank holidays
+                </p>
+                <hr class="hr-long-e6e6e6">
+                <h4>Our Service Speaks for Itself</h4>
+
+                <a href="https://www.trustpilot.com/review/www.luxurytravel.deals?languages=all" target="_blank">
+                    <center><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /></center>
+                    <h5>
+                        496 RATINGS ON TRUSTPILOT
+                    </h5>
+                </a>
+                <hr class="hr-short-e6e6e6">
+                <a href="https://www.facebook.com/pg/luxurytraveldeal/reviews/" target="_blank">
+                    <center><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /></center>
+                    <h5>
+                        5,721 RATINGS ON FACEBOOK
+                    </h5>
+                </a>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 booking_print_btn">
+                <button type="button" onclick="window.print();">Print My Booking</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+@this.Html.Partial("_Footer_navigation")
+@section scripts{
+    <script>
+        $('[data-toggle="tooltip"]').tooltip({ html: true, placement: "bottom" });
+    </script>
+}

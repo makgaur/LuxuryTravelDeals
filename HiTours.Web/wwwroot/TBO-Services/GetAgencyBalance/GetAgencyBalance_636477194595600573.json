@@ -1,0 +1,22 @@
+//-- GetAgencyBalance Api Request --
+{
+  "ClientId": "ApiIntegrationNew",
+  "TokenAgencyId": "46094",
+  "TokenMemberId": "46088",
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "8c5cdd2b-fd1c-48c3-b6f6-fd58ee73d4a8"
+}
+//-- GetAgencyBalance Api Response --
+{
+  "AgencyType": 0,
+  "CashBalance": 0,
+  "CashBalanceInPrefCurrency": null,
+  "CreditBalance": 0,
+  "CreditBalanceInPrefCurrency": null,
+  "Error": {
+    "ErrorCode": 2,
+    "ErrorMessage": "InValid Session on LoadAgency."
+  },
+  "PreferredCurrency": null,
+  "Status": 2
+}

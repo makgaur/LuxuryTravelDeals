@@ -1,0 +1,48 @@
+﻿@model TourPackageBookDateViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+
+@using HtmlHelpers.BeginCollectionItemCore
+@{
+    var newguid = Guid.NewGuid().ToString();
+}
+@if (this.Layout == null)
+{
+    <tr class="itemmaster-row" id="@newguid">
+        @using (this.Html.BeginCollectionItem("TourPackageBookDate"))
+        {
+            
+            <td>
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="TourPackageId" />
+                <div class="field-col">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" asp-for="BookingValidFrom"  class="form-control pull-right bookingvalidfrom datepicker">
+                        </div>
+                        <span asp-validation-for="BookingValidFrom"></span>
+                    </div>
+                    </div>
+            </td>
+            <td>
+                <div class="field-col">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" asp-for="BookingValidTo"  class="form-control pull-right validto datepicker">
+                        </div>
+                        <span asp-validation-for="BookingValidTo"></span>
+                        </div>
+                    </div>
+            </td>
+            <td valign="middle" class="city-delete-row-box">
+                <a class="delete-item-row" href="javaScript:void(0)"><i class="fa fa-trash-o"></i></a>
+            </td>
+        }
+    </tr>
+}
+

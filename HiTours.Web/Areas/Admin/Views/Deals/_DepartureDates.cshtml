@@ -1,0 +1,18 @@
+﻿@model DealsDepartureDateViewModel
+<form id="formDealDeparture" method="post" enctype="multipart/form-data" >
+    <input type="hidden" asp-for="NightId" />
+    <div class="form-group col-sm-12">
+        <label asp-for="Dates"></label>
+        <input asp-for="Dates" type="text" class="form-control date-picker-multiple" />
+        <span asp-validation-for="Dates"></span>
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+</form>
+<script>
+         $(document).ready(function() {
+            $('.date-picker-multiple').datepicker({
+                format: 'dd/mm/yyyy',
+                multidate: true
+            });
+         });
+</script>

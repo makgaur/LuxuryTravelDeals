@@ -1,0 +1,150 @@
+﻿@model HiTours.TBO.Models.AirSearch
+@{
+    var isRequested = this.ViewBag.SearchRequest != null;
+    this.Layout = this.ViewBag.LayoutBlank == null ? "~/Views/Shared/_LayoutFlightSearch.cshtml" : null;
+    var returnDate = Model.ReturnDateTime == null ? string.Empty : Convert.ToDateTime(Model.ReturnDateTime).ToString("dd/MM/yyyy");
+}
+
+@if (this.ViewBag.ClearSearch != null)
+{
+    <input type="hidden" name="ClearSearch" value="true" />
+    <input type="hidden" name="NoModal" value="true" />
+}
+<div class="middle white-clr flight-search-section">
+    <section class="flight-page">
+        <div class="container box">
+            <form asp-antiforgery="true" asp-controller="AirService" asp-action="SearchFlights" method="post" id="frmFlightSearch">
+                <input type="hidden" asp-for="TokenId" />
+                <input type="hidden" asp-for="JourneyType" />
+                <input type="hidden" asp-for="AdultCount" />
+                <input type="hidden" asp-for="ChildCount" />
+                <input type="hidden" asp-for="InfantCount" />
+                @*<input type="hidden" asp-for="HotelBookingId" />*@
+                <input type="hidden" asp-for="DepartureDateTime" />
+                <input type="hidden" asp-for="DepartureDateTime" value="@returnDate" />
+
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="search-box-bg box">
+                            <h3 class="search-box-heading">Book Domestic &amp; International Flight</h3>
+                            <div class="flight-tab">
+                                <ul><li data-journeytype="@((int)JourneyType.Return)" class="active">Round Trip</li></ul>
+                            </div>
+
+                            <div class="formWrap">
+                                @if (Model.Segments != null && Model.Segments.Length > 0)
+                                {
+                                    foreach (var item in Model.Segments)
+                                    {
+                                        item.JourneyType = Model.JourneyType;
+                                        @Html.Partial("_Segments", item);
+                                    }
+
+                                    if (Model.JourneyType == (int)JourneyType.MultiStop)
+                                    {
+                                        <div><a href="javascript:;" data-flight="addsegment" class="btn btn-sm btn-primary"> <i class="fa fa-plus"></i> Add Another Flight (up to 6)</a></div>
+                                    }
+                                }
+                                <div class="row rel-pos journey-datetime">
+                                    @{
+                                        var isMultiCities = !(Model.JourneyType == (int)JourneyType.OneWay || Model.JourneyType == (int)JourneyType.Return);
+                                        var singleRow = isMultiCities ? "col-sm-12" : "col-sm-6";
+
+                                    }
+                                    
+                                    <div class="col-sm-6 ">
+                                        <span class="label-flight">Class:</span>
+                                        <div class="styled-select">
+                                            <select class="form-control skip-select2 flightcabin" asp-for="FlightCabinClass" asp-items="@Html.EnumSelectList<FlightCabin>()"></select>
+                                            <span asp-validation-for="FlightCabinClass"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 hide" data-flight="signle-passengers">
+                                        <div class="form-wd-49 hide" style="display:none !important">
+                                            <span class="label-flight">Passengers:</span>
+                                            <div class="rel-pos">
+                                                <a href="javascript:;" class="form-control pad-left passenger" data-flight="pessengers-toggle">
+                                                    <span>
+                                                        <span data-flight="totalPassengers">0</span> Traveller(s)
+                                                    </span>
+                                                    <span class="pull-right"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                                                </a>
+
+                                                <div class="paxContainer" data-flight="pessengers" style="display:none;">
+                                                    <a href="javascript:;" class="cross-btn" data-flight="pessengers-hide"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                                    <div class="pax-flight">
+                                                        <ul>
+                                                            <li>
+                                                                <input type="number" data-flight="passenger-counter" data-name="AdultCount" class="fl numbSpin" value="@Model.AdultCount" min="1" />
+                                                                <span>Adults</span>
+                                                                <small>(12+ yrs)</small>
+                                                            </li>
+
+                                                            <li>
+                                                                <input type="number" data-flight="passenger-counter" data-name="ChildCount" class="fl numbSpin" value="@Model.ChildCount" min="0" max="9" />
+                                                                <span>Children</span>
+                                                                <small>(2+ 12yrs)</small>
+                                                            </li>
+
+                                                            <li>
+                                                                <input type="number" data-flight="passenger-counter" data-name="InfantCount" class="fl numbSpin" value="@Model.InfantCount" min="0" />
+                                                                <span>Infant(s)</span>
+                                                                <small>(below 2yrs)</small>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                    </div>
+
+                                </div>
+                                <div align="center">
+                                    <button type="submit" class="search-btn-f" data-flight="search">Search</button>
+                                </div>
+                                
+                            </div>
+                            <div class="overlay @(isRequested?string.Empty:" hide")">
+                                <i class="fa fa-refresh fa-spin"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+
+@section scripts{
+
+    @if (this.ViewBag.SearchRequest != null)
+    {
+        <script>
+            $(function () {
+                window.location = "/airservice/Flights"
+
+            })
+        </script>
+
+    }
+    @if (this.ViewBag.AutoSearch != null && this.ViewBag.AutoSearch)
+    {
+
+        <script>
+
+            $(function () {
+                $('[data-flight="search"]').click();
+            })
+        </script>
+
+    }
+}
+
+<style>
+    .flight-page .search-btn-f{
+        clear:both !important;
+        float:none !important;
+    }
+</style>

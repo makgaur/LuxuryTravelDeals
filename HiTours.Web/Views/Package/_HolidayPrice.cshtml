@@ -1,0 +1,34 @@
+﻿@model HolidayPriceViewModel
+<ul>
+    @if (!Model.IsHotel)
+    {
+        <li>Holiday price</li>
+        <li class="amount-box"><i class="fa fa-inr" aria-hidden="true"></i>@Model.BookingPrice.ToAmount()<input id="hfHolidayPrice" type="hidden" value="@Model.BookingPrice.ToAmount()" /></li>
+        @if (Model.WeekendPrice > 0)
+        {
+            <li>Weekend Surcharge</li>
+            <li class="amount-box"><i class="fa fa-inr" aria-hidden="true"></i>@Model.WeekendPrice.ToAmount()<input id="hfWeekend" type="hidden" value="@Model.WeekendPrice.ToAmount()" /></li>
+        }
+        <li>Tax</li>
+        <li class="amount-box"><i class="fa fa-inr" aria-hidden="true"></i>@Model.GstAmount.ToAmount()<input id="hfTax" type="hidden" value="@Model.GstAmount.ToAmount()" /></li>
+    }
+
+    <li>@(Model.IsHotel?"Total All Inclusive": "Total inc.taxes")</li>
+    <li class="amount-box"><i class="fa fa-inr" aria-hidden="true"></i><input id="coutAdults" type="hidden" value="@Model.AdultsCount" />@((Model.BookingPrice + Model.WeekendPrice + Model.GstAmount).ToAmount()) <input id="hfTotalincludingtaxes" type="hidden" value="@((Model.BookingPrice + Model.WeekendPrice + Model.GstAmount).ToAmount())" /></li>
+    @if (Model.DepositAmount > 0 && Model.DepositAmount < (Model.BookingPrice))
+    {
+        <li>Deposit Amount</li>
+        <li class="amount-box">
+            <i class="fa fa-inr" aria-hidden="true"></i><span data-depositamt="deposit">@Model.DepositAmount.ToAmount()</span>
+            <input id="hfBookingAmount" type="hidden" value="@Model.DepositAmount.ToAmount()" />
+        </li>
+
+    }
+    else
+    {
+        <li class="hide">
+            <input id="hfBookingAmount" type="hidden" value="@((Model.BookingPrice + Model.WeekendPrice + Model.GstAmount).ToAmount())" />
+        </li>
+    }
+</ul>
+<div class="clr"></div>

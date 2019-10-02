@@ -1,0 +1,137 @@
+﻿@model VendorInformationViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<form asp-antiforgery="true" id="formVendorInformation" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="IsActive" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    @*<input type="hidden" asp-for="Latitude" />
+        <input type="hidden" asp-for="Longitude" />*@
+    <div class="box-body">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label asp-for="Group"></label>
+                <select asp-for="Group" selected="@Model.Group" class="form-control" id="VendorGroupDropdown" placeholder="Select Vendor Group" asp-items="Model.VendorGroupItems"
+                        select2-value="@Model.Group"
+                        select2-Url="/selectlist/GetVendorGroup"
+                        select2-partial-title="Add New Group"
+                        select2-partial-Url="@Url.Action("ManageGroup","Vendor", new { @area = "Admin" , @id=0})"></select>
+                <span asp-validation-for="Group"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label asp-for="Name"></label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                    <input asp-for="Name" type="text" class="form-control" placeholder="Full Business Name">
+                </div>
+                <span asp-validation-for="Name"></span>
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Category"></label>
+                <select asp-for="Category" selected="@Model.Category" class="form-control" id="VendorCategory" asp-items="Model.CategoryItems"
+                        select2-value="@Model.Category" select2-Url="/selectlist/GetVendorCategoryList"></select>
+                <span asp-validation-for="Category"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Currency"></label>
+                <select asp-for="Currency" selected="@Model.Currency" class="form-control" id="VendorCurrency" asp-items="Model.CurrencyItems"
+                        select2-value="@Model.Currency" select2-Url="/selectlist/GetCurrencyDropDownList"></select>
+                <span asp-validation-for="Currency"></span>
+            </div>
+            <div class="form-group col-md-12">
+                <label asp-for="ServiceTypes"></label>
+                <select asp-for="ServiceTypes" class="form-control" multiple asp-items="Model.ServiceTypeItems" select2-Placeholder="Service Types"
+                        select2-value="@Model.ServiceTypes"></select>
+                <span asp-validation-for="ServiceTypes"></span>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label asp-for="Address1"></label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-address-card"></i></span>
+                        <input type="text" class="form-control" asp-for="Address1" placeholder="1234 Main St">
+                    </div>
+                    <span asp-validation-for="Address1"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label asp-for="Address2"></label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-address-card-o"></i></span>
+                        <input type="text" class="form-control" asp-for="Address2" placeholder="Apartment, studio, or floor">
+                    </div>
+                    <span asp-validation-for="Address2"></span>
+                </div>
+            </div>
+        </div>
+        @{
+            var countryctrl = Guid.NewGuid().ToString("N");
+            var statectrl = Guid.NewGuid().ToString("N");
+            var cityctrl = Guid.NewGuid().ToString("N");
+        }
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="Country"></label>
+                <select asp-for="Country" selected="@Model.Country" class="form-control @(countryctrl)" id="CountryId" asp-items="Model.CountryItems"
+                        select2-value="@Model.Country" select2-Url="/selectlist/GetCountryList"
+                        select2-Dependent="true" select2-Dependent-Control=".@(statectrl)"></select>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="State"></label>
+                <select asp-for="State" selected="@Model.State" class="form-control @statectrl" id="StateId" asp-items="Model.StateItems"
+                        select2-value="@Model.State" select2-Url="/selectlist/GetTourPackageStatesByCountrId"
+                        select2-Dependent="true" select2-Dependent-Control=".@(cityctrl)" select2-Dependent-OtherControl=".@countryctrl"></select>
+                <span asp-validation-for="State"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="City"></label>
+                <select asp-for="City" selected="@Model.City" id="CityId" class="form-control packagecitydes @(cityctrl)" asp-items="Model.CityItems"
+                        select2-value="@Model.City" select2-Url="/selectlist/GetTourPackageCityByCounryIdorStateIdAsync"></select>
+                <span asp-validation-for="City"></span>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label asp-for="PostalCode"></label>
+                <input asp-for="PostalCode" type="text" class="form-control">
+                <span asp-validation-for="PostalCode"></span>
+            </div>
+        </div>
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload), new Button(Enums.ButtonType.SubmitAndNext), new Button(Enums.ButtonType.SubmitAndClose) })
+    @*@this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })*@
+</form>
+
+<script>
+    
+    @*$(document).on('click', '#addVendorGroup', function (e) {
+        $('#vendorModal .modal-title').html('Add Vendor Group');
+        StartModalLoader();
+        $('#btnModalSubmit').data('form-target', '#formVendorGroupManage');
+        $('#vendorModal').modal('toggle');
+        $.get('@Url.Action("ManageGroup", "Vendor",new { @area="Admin", @id=0})', function (result) {
+            $('#vendorModal .modal-body').html(result);
+            initPluggins();
+            //BindPhonePluginGroup("#input-phone-vendor-group");
+            $("[data-val-required]").parents('.form-group').find('label').not(".skip-required").each(function () {
+                if ($(this).find(".danger").length == 0) {
+                    $(this).append('<span class="danger"> *</span>')
+                }
+            });
+            var form = $('#formVendorGroupManage');
+            form.removeData('validator');
+            form.removeData('unobtrusiveValidation');
+            $.validator.unobtrusive.parse(form);
+        });
+    });*@
+
+</script>

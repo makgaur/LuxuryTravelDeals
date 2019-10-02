@@ -1,0 +1,57 @@
+﻿@{
+    List<HiTours.Data.DataBase.Model.PackageTravelStyleModel> travelStyle = this.ViewBag.TravelStyle as List<HiTours.Data.DataBase.Model.PackageTravelStyleModel>;
+}
+
+@*<div class="container travel_options_padding">
+    <div class="row">
+        @foreach (var item in travelStyle)
+        {
+            <div class="col-sm-2 col-xs-6 travel_options">
+                <center><p><i class="widthdoublehalf fa @item.IconClass" data-style-id="@item.Id" aria-hidden="true"></i></p><span>@item.Name</span></center>
+            </div>
+        }
+
+
+    </div>
+</div>*@
+
+<div class="filters">
+    <div class="row">
+        @for (int i = 0; i < 5; i++)
+        {
+            <div class="col-sm-2 col-xs-4 travel_options">
+                <p><img class="travel-style" data-search-type="@((int)HiTours.Core.Enums.SearchType.TravelStyle)" data-value="@travelStyle[i].Id" data-name="@travelStyle[i].Name" src="~/images/Travel Style/@travelStyle[i].Image" alt="Icon" /></p><span>@travelStyle[i].Name</span>
+            </div>
+        }
+        <div class="col-sm-2 col-xs-4 travel_options">
+            <p><a href="#" data-toggle="modal" data-target="#travelStyleModal"><img src="~/images/Travel Style/more_styles.svg" alt="More Travel Styles Icon" onclick="" /></a></p><span>More Travel Styles</span>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal travel-style-modal fade" id="travelStyleModal" role="dialog">
+    <div class="modal-dialog ">
+        <div class="modal-content travel-style-modal-content" id="scrollbar-travel-style">
+            <div class="travel-style-model-Header">
+                <button type="button" class="close travel-style-model-close" data-dismiss="modal"><img src="~/images/Close_Icon.svg" alt="close_icon"/></button>
+                <h4 class="travel-style-model-title">What’s Your Travel Style?</h4>
+                <hr class="hr-grey-bottom w75">
+            </div>
+            <div class="travel-style-model-body">
+                <div class="filters">
+                    <div class="row">
+                        @for (int i = 0; i < travelStyle.Count; i++)
+                        {
+                            <div class="col-sm-4 col-xs-4 travel_options">
+                                <p><img class="travel-style" data-search-type="@((int)HiTours.Core.Enums.SearchType.TravelStyle)" data-name="@travelStyle[i].Name" data-value="@travelStyle[i].Id" src="~/images/Travel Style/@travelStyle[i].Image" alt="tavel-styles" /></p><span>@travelStyle[i].Name</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿@model List<AirSearchResult>
+@{
+    var flights = Model ?? new List<AirSearchResult>();
+    var interNationalReturnFlight =
+        this.ViewData["IsLCC"] == null ? false : Convert.ToBoolean(this.ViewData["IsLCC"].ToString());
+
+}
+
+
+<ul class="flight_view_card one_way_card @(interNationalReturnFlight ? "round_way_card":"")">
+    @for (int i = 0; i < flights.Count; i++)
+    {
+        if (i == 0)
+        {
+            <li class="results_sorting">
+                <label class="result_label results_sorting__airline">Airline</label>
+                <label class="result_label results_sorting__departure">Depart</label>
+                <label class="result_label results_sorting__arrival">Arrival</label>
+                <label class="result_label results_sorting__duration">Duration</label>
+                <label class="result_label results_sorting__price sortable_label">
+                    Price
+                    <span>
+                        <i class="fa fa-angle-up" aria-hidden="true"></i>
+                    </span>
+                </label>
+            </li>
+        }
+        @if (interNationalReturnFlight)
+        {
+            @Html.Partial("InterNationalReturnFlight", flights[i])
+        }
+        else
+        {
+            @Html.Partial("DomesticReturnFlight", flights[i])
+        }
+    }
+</ul>

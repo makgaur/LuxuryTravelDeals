@@ -1,0 +1,250 @@
+//-- farequote Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "15d62697-efe8-4631-817b-27eee07fcc4a",
+  "TraceId": "ac114888-05ce-48c0-b6f0-3e67e8bfd5f6",
+  "ResultIndex": "OB5,IB11",
+  "IsLCC": false
+}
+//-- farequote Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "IsPriceChanged": true,
+    "ResponseStatus": 1,
+    "Results": {
+      "ResultIndex": "OB5",
+      "Source": 6,
+      "IsLCC": true,
+      "IsRefundable": true,
+      "GSTAllowed": true,
+      "AirlineRemark": "Indigo API Fare",
+      "Fare": {
+        "Currency": "INR",
+        "BaseFare": 20700,
+        "Tax": 13221,
+        "TaxBreakup": [
+          {
+            "key": "YQTax",
+            "value": 5850
+          },
+          {
+            "key": "YR",
+            "value": 300
+          },
+          {
+            "key": "PSF",
+            "value": 900
+          },
+          {
+            "key": "UDF",
+            "value": 2106
+          },
+          {
+            "key": "JNTax",
+            "value": 1404
+          },
+          {
+            "key": "INTax",
+            "value": 1431
+          },
+          {
+            "key": "TransactionFee",
+            "value": 930
+          },
+          {
+            "key": "OtherTaxes",
+            "value": 300
+          }
+        ],
+        "YQTax": 5850,
+        "AdditionalTxnFeeOfrd": 0,
+        "AdditionalTxnFeePub": 0,
+        "PGCharge": 0,
+        "OtherCharges": 0,
+        "ChargeBU": [
+          {
+            "key": "TBOMARKUP",
+            "value": 0
+          },
+          {
+            "key": "CONVENIENCECHARGE",
+            "value": 0
+          },
+          {
+            "key": "OTHERCHARGE",
+            "value": 0
+          }
+        ],
+        "Discount": 0,
+        "PublishedFare": 33921,
+        "CommissionEarned": 484.38,
+        "PLBEarned": 506.73,
+        "IncentiveEarned": 343.67,
+        "OfferedFare": 32586.22,
+        "TdsOnCommission": 96.88,
+        "TdsOnPLB": 101.35,
+        "TdsOnIncentive": 68.73,
+        "ServiceFee": 0,
+        "TotalBaggageCharges": 0,
+        "TotalMealCharges": 0,
+        "TotalSeatCharges": 0,
+        "TotalSpecialServiceCharges": 0
+      },
+      "FareBreakdown": [
+        {
+          "Currency": "INR",
+          "PassengerType": 1,
+          "PassengerCount": 2,
+          "BaseFare": 13800,
+          "Tax": 8814,
+          "YQTax": 3900,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0
+        },
+        {
+          "Currency": "INR",
+          "PassengerType": 2,
+          "PassengerCount": 1,
+          "BaseFare": 6900,
+          "Tax": 4407,
+          "YQTax": 1950,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0
+        }
+      ],
+      "Segments": [
+        [
+          {
+            "Baggage": "20 Kg",
+            "CabinBaggage": "7 Kg",
+            "TripIndicator": 1,
+            "SegmentIndicator": 1,
+            "Airline": {
+              "AirlineCode": "6E",
+              "AirlineName": "Indigo",
+              "FlightNumber": "185",
+              "FareClass": "T",
+              "OperatingCarrier": ""
+            },
+            "Origin": {
+              "Airport": {
+                "AirportCode": "DEL",
+                "AirportName": "Indira Gandhi Airport",
+                "Terminal": "1",
+                "CityCode": "DEL",
+                "CityName": "Delhi",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "DepTime": "2017-12-12T20:30:00"
+            },
+            "Destination": {
+              "Airport": {
+                "AirportCode": "BOM",
+                "AirportName": "Mumbai",
+                "Terminal": "",
+                "CityCode": "BOM",
+                "CityName": "Mumbai",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "ArrTime": "2017-12-12T22:40:00"
+            },
+            "Duration": 130,
+            "GroundTime": 0,
+            "Mile": 0,
+            "StopOver": false,
+            "StopPoint": "",
+            "StopPointArrivalTime": "2017-12-12T22:40:00",
+            "StopPointDepartureTime": "2017-12-12T20:30:00",
+            "Craft": "320",
+            "Remark": null,
+            "IsETicketEligible": true,
+            "FlightStatus": "Confirmed",
+            "Status": ""
+          }
+        ],
+        [
+          {
+            "Baggage": "20 Kg",
+            "CabinBaggage": "7 Kg",
+            "TripIndicator": 2,
+            "SegmentIndicator": 1,
+            "Airline": {
+              "AirlineCode": "6E",
+              "AirlineName": "Indigo",
+              "FlightNumber": "439",
+              "FareClass": "T",
+              "OperatingCarrier": ""
+            },
+            "Origin": {
+              "Airport": {
+                "AirportCode": "BOM",
+                "AirportName": "Mumbai",
+                "Terminal": "1",
+                "CityCode": "BOM",
+                "CityName": "Mumbai",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "DepTime": "2017-12-13T18:40:00"
+            },
+            "Destination": {
+              "Airport": {
+                "AirportCode": "DEL",
+                "AirportName": "Indira Gandhi Airport",
+                "Terminal": "1",
+                "CityCode": "DEL",
+                "CityName": "Delhi",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "ArrTime": "2017-12-13T20:45:00"
+            },
+            "Duration": 125,
+            "GroundTime": 0,
+            "Mile": 0,
+            "StopOver": false,
+            "StopPoint": "",
+            "StopPointArrivalTime": "2017-12-13T20:45:00",
+            "StopPointDepartureTime": "2017-12-13T18:40:00",
+            "Craft": "320",
+            "Remark": null,
+            "IsETicketEligible": true,
+            "FlightStatus": "Confirmed",
+            "Status": ""
+          }
+        ]
+      ],
+      "LastTicketDate": null,
+      "TicketAdvisory": null,
+      "FareRules": [
+        {
+          "Origin": "DEL",
+          "Destination": "BOM",
+          "Airline": "6E",
+          "FareBasisCode": "T0IPRT",
+          "FareRuleDetail": "",
+          "FareRestriction": ""
+        },
+        {
+          "Origin": "BOM",
+          "Destination": "DEL",
+          "Airline": "6E",
+          "FareBasisCode": "T0IPRT",
+          "FareRuleDetail": "",
+          "FareRestriction": ""
+        }
+      ],
+      "AirlineCode": "6E",
+      "ValidatingAirline": "6E"
+    },
+    "TraceId": "ac114888-05ce-48c0-b6f0-3e67e8bfd5f6"
+  }
+}

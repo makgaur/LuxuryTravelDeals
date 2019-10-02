@@ -1,0 +1,196 @@
+﻿@model BookingSendMailViewModel
+@if (this.Model != null)
+{
+
+    var nights = (Model.EndDate.Date - Model.StartDate.Date).TotalDays;
+
+    <table align="center" width="100%" cellspacing="0" cellpadding="0" bgcolor="#fff">
+        <tbody>
+            <tr>
+                <td>
+                    <table class="border-gray" align="center" width="602" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+                        <tbody>
+
+                            <tr>
+                                <td align="left" style="padding:0px 30px;">
+                                    <table width="100%" style="font-size: 14px; font-family: Arial, Verdana;">
+                                        <tr>
+                                            @*<td style="width:180px; padding-right:10px; display:none;">
+                                                    <img src="@(Model.SiteUrl)images/package.png" alt="checked" width="180" height="106" style="display:block">
+                                                </td>*@
+                                            <td style="font-size:13px; font-family: Arial, Verdana; color:#545454;">
+                                                <span style="color:#000; font-size:22px;">@Model.HotelName</span><br />
+                                                <span style="color:#222; line-height:30px;"><em>@Model.HotelCity - @Model.HotelCountry</em></span><br />
+                                                @*<span><b>Without transport</b></span>*@
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td align="left" style="padding:15px 30px;">
+                                    <table align="center" width="100%" style="font-size: 14px; font-family: Arial, Verdana;">
+                                        <tr>
+                                            <td style="padding:3px 0; width:90px">Start Date :</td>
+                                            <td style="padding:3px 0;"><b>@(string.Format("{0:D}", Model.StartDate))</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:3px 0; width:90px">End Date :</td>
+                                            <td style="padding:3px 0;"><b>@(string.Format("{0:D}", Model.EndDate))</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:3px 0; width:90px">Duration:</td>
+                                            <td style="padding:3px 0;"><b>@nights @(nights == 1 ? "Night" : "Nights") </b></td>
+                                        </tr>
+                                        @*<tr>
+                                                <td style="padding:3px 0; width:90px">Participants:</td>
+                                                <td style="padding:3px 0;"><b>@Model.Participants</b></td>
+                                            </tr>*@
+                                        <tr>
+                                            <td style="padding:3px 0; width:90px">Deal Code:</td>
+                                            <td style="padding:3px 0;"><b>@Model.DealCode</b></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="padding:3px 0; width:90px">Room Type:</td>
+                                            <td style="padding:3px 0;"><b>@Model.RoomType</b></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td align="left" style="padding:10px 30px; color:#000; font-size: 13px; font-family: Arial, Verdana;" bgcolor="#e0e0e0"><b>Contact Detail</b></td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="padding:15px 30px;">
+                                    <table align="center" width="100%" style="font-size: 14px; font-family: Arial, Verdana;">
+                                        <tr>
+                                            <td style="padding:3px 0; width:90px">Name:</td>
+                                            <td style="padding:3px 0;"><b>@Model.FirstName @Model.LastName</b></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="padding:3px 0; width:90px">Mobile:</td>
+                                            <td style="padding:3px 0;"><b>@Model.Mobile</b></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="padding:3px 0; width:90px">Email:</td>
+                                            <td style="padding:3px 0;"><b>@Model.Email</b></td>
+                                        </tr>
+
+                                        @*<tr>
+                                            <td style="padding:3px 0; width:90px; vertical-align:top;">Address:</td>
+                                            <td style="padding:3px 0;">
+                                                <b>
+                                                    @Model.Address @Model.City - @Model.PinCode @Model.Country
+                                                </b>
+                                            </td>
+                                        </tr>*@
+                                    </table>
+                                </td>
+                            </tr>
+                            @if (Model.PersonDetail.Where(x=> !string.IsNullOrEmpty(x.FirstName)).Count() > 0)
+                            {
+
+                                <tr>
+                                    <td align="left" style="padding:10px 30px; color:#000; font-size: 13px; font-family: Arial, Verdana;" bgcolor="#e0e0e0"><b>Traveler Detail</b></td>
+                                </tr>
+                                <tr>
+                                    <td align="left" style="padding:15px 30px;">
+                                        <table align="center" width="100%" style="font-size: 14px; font-family: Arial, Verdana;">
+                                            @{
+                                                var detail = Model.PersonDetail.OrderBy(x => x.RoomNo).GroupBy(x => x.RoomNo);
+                                                if (detail.Count() > 0)
+                                                {
+                                                    foreach (var item in detail)
+                                                    {
+                                                        @*<tr>
+                                                                <td style="padding:3px 0; width:90px">Room @item.Key</td>
+                                                            </tr>*@
+
+                                                        foreach (var row in item)
+                                                        {
+                                                            <tr>
+                                                                <td style="padding:3px 0; width:90px">Name:</td>
+                                                                <td style="padding:3px 0;"><b>@row.Salutation @row.FirstName @row.LastName</b></td>
+                                                            </tr>
+                                                        }
+                                                    }
+                                                }
+
+                                            }
+                                        </table>
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td align="left" style="padding:10px 30px; color:#000; font-size: 13px; font-family: Arial, Verdana;" ><b>Participants : @(Model.TotalParticipant==0? Model.PersonDetail.Count(): Model.TotalParticipant) </b></td>
+                                </tr>
+                            }
+
+                            <tr>
+                                <td align="left" style="padding:10px 30px; color:#000; font-size: 13px; font-family: Arial, Verdana;" bgcolor="#e0e0e0"><b>Holiday Price</b></td>
+                            </tr>
+
+                            <tr>
+                                <td align="left" style="padding:15px 30px; border-bottom:1px solid #a7a7a7;" bgcolor="">
+                                    <table align="center" width="100%" style="font-size: 14px; font-family: Arial, Verdana;">
+                                        @if (Model.BookingType != Enums.CurrentDealType.Package)
+                                        {
+                                            <tr>
+                                                <td style="padding:3px 0;">Per Night Cost</td>
+                                                <td style="padding:3px 0; color:#f76c00" align="right"> <b>INR @Model.RoomCost.ToAmount() X @nights</b></td>
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td style="padding:3px 0;">Total</td>
+                                            <td style="padding:3px 0; color:#f76c00" align="right"> <b>INR @Model.BookingPrice.ToAmount()</b></td>
+                                        </tr>
+                                        @if (Model.WeekendPrice > 0)
+                                        {
+
+                                            <tr>
+                                                <td style="padding:3px 0;">Weekend Surcharge</td>
+                                                <td style="padding:3px 0; color:#f76c00" align="right"> <b>INR @Model.WeekendPrice.ToAmount()</b></td>
+                                            </tr>
+                                        }
+
+                                        <tr>
+                                            <td style="padding:3px 0;">Tax</td>
+                                            <td style="padding:3px 0; color:#f76c00" align="right"><b>INR @Model.GstAmount.ToAmount()</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:3px 0;">Total inc. taxes</td>
+                                            <td style="padding:3px 0; color:#f76c00" align="right"><b>INR @((Model.BookingPrice + Model.WeekendPrice + Model.GstAmount).ToAmount())</b></td>
+                                        </tr>
+                                        @if (Model.BookingType == Enums.CurrentDealType.Package)
+                                        {
+                                            var pendingAmount = (Model.BookingPrice + Model.WeekendPrice + Model.GstAmount) - Model.PaidAmount;
+                                            if (pendingAmount > 0)
+                                            {
+                                                <tr>
+                                                    <td style="padding:3px 0;">Deposit Amount</td>
+                                                    <td style="padding:3px 0; color:#f76c00" align="right"><b>INR @((Model.PaidAmount).ToAmount())</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding:3px 0;">Pending Amount</td>
+                                                    <td style="padding:3px 0; color:#f76c00" align="right"><b>INR @(((Model.BookingPrice + Model.WeekendPrice + Model.GstAmount) - Model.PaidAmount).ToAmount())</b></td>
+                                                </tr>
+                                            }
+                                        }
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+}

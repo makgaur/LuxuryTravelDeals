@@ -1,0 +1,76 @@
+﻿@model CancellationPolicyViewModel;
+@{
+    ViewData["Title"] = "Cancellation Policy";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="box no-top-border">
+    <div class="box-header with-border">
+        <h3 class="box-title"><span><i class='fa fa-fw fa-ban'></i> @this.ViewBag.Title</span></h3>
+    </div>
+    <div class="box-body">
+        <div class="form-group col-md-4">
+            <label asp-for="DealType"></label>
+            <select select2-stop-render="true" asp-for="DealType" class="form-control" id="dealTypeSelect" select2-Placeholder="Select Deal Type">
+                <option value="0">--Select Deal Type--</option>
+                <option value="1">Hotel</option>
+                <option value="2">Tour</option>
+                <option value="3">Cruise</option>
+                <option value="5">Bus</option>
+                <option value="4">Flights</option>
+            </select>
+            <span class="loader" style="display:none;"><i class="fa fa-fw fa-spin fa-spinner"></i></span>
+        </div>
+        <div class="cancelltion_policy_section">
+
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        var $section = $('.cancelltion_policy_section');
+        var $loader = $('.loader');
+        
+        $(document).on('change', '#dealTypeSelect', function (e) {
+            $loader.show();
+            if ($(this).val() != 0) {
+                $.get('@Url.Action("GetCancellationPolicyByDealType", "CancellationPolicy", new { @area="Admin"})', { 'dealType': $('#dealTypeSelect').val() }, function (result)
+                {
+                    $('.cancelltion_policy_section').html(result);
+                    initSelect2();
+                    $loader.hide();
+                    BindValidation();
+                });
+                
+            }
+            else {
+                $section.html('');
+            }
+        });
+        $(document).on('click', '.add_button', function (e) {
+            $.get('@Url.Action("AddCancellationPolicyRow", "CancellationPolicy", new { @area="Admin"})', { 'dealType': $('#dealTypeSelect').val() }, function (result)
+            {
+                $("#formCancellationPolicy table tbody").append(result);
+                initSelect2();
+                BindValidation()
+            });
+        });
+        $(document).on('click', '.delete-item-row', function (e) { 
+            var row = $(this).closest('tr');
+            $(row).find('.delete_row').val(true);
+            $(row).hide();
+        })
+        function BindValidation() {
+            var form = $('#formCancellationPolicy');
+            form.removeData('validator');
+            form.removeData('unobtrusiveValidation');
+            $.validator.unobtrusive.parse(form);
+        }
+        $(docuent).ready(function (e) {
+            $('#dealTypeSelect').trigger('change');
+        })
+        
+    </script>
+}
+
+

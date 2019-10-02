@@ -1,0 +1,88 @@
+﻿@this.Html.Partial("_DataTableGrid")
+<div class="box-footer" align="center">
+    <button class="nexttab-rooms btn btn-primary">Next</button>
+</div>
+<script>
+        $(function () {
+            BindGrid({
+                url: "@Url.Action("RoomGridData", new { @hotelId=this.ViewBag.HotelId })",
+                columns: [
+                    { "data": "RoomType", "title": "Room Name", "type": "string" },
+
+                    { "data": "Adult", "title": "Adults", "type": "string" },
+                    { "data": "Child", "title": "Childs", "type": "string" },
+                    { "data": "Infant", "title": "Infant", "type": "string" },
+                    { "data": "Max", "title": "Max", "type": "string" },
+                    {
+                        "data": "IsActive",
+                        "title": " Active Status",
+                        "class": "text-center",
+                        "type": "bool", "width": '15%', mRender: function (data, type, record) {
+                            var url = '@Url.GetAdminUrl("Hotelier", "ChangeRoomConfigActiveStatus")/' + record.Id;
+                            return appendToggleCheckBox(url, record.IsActive, 'Successfully Activated', 'Successfully DeActivated')
+                        }
+                    },
+                    {
+                        "data": null, "title": "Action",
+                        "targets": -1,
+                        "width": '15%',
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                            var action = "";
+                            action += '<a class="form-control btn-success" href="javascript:;" onclick="EditRoomConfig(' + record.Id + ')"><i class="fa fa-edit"></i>&nbsp;</a>';
+                            action += '<a class="form-control btn-danger delete-row" data-delete href="@Url.GetAdminUrl("Hotelier", "DeleteRoomConfig")/' + record.Id+ '"><i class="fa fa-trash-o"></i>&nbsp;</a>';
+                            return action;
+                        }
+                    }]
+            });
+        });
+        function EditRoomConfig(id) {
+            var $modal = $('#application-modal');
+            var url = '@Url.Action("RoomsAdd","Hotelier")';
+            if ($modal) {
+                $modal.find(".modal-title").html("Edit Room Configuration");
+                $modal.find('.modal-body').html(overlayTemplate);
+                $modal.modal({ keyboard: false, backdrop: false }).show();
+                $.ajax({
+                    url: url,
+                    data: { 'hotelRoomId': id, 'hotelId':@this.ViewBag.HotelId},
+                    method: 'get',
+                    dataType: 'html',
+                    success: function (html) {
+                        $modal.find('.modal-body').html(html);
+                        initSelect2();
+                        var _form = $("#btnSaveandReload").parents('form');
+                        if ($.validator.unobtrusive != undefined) {
+                            $.validator.unobtrusive.parse(_form);
+                        }
+                        var $divPartial = $('#application-modal');
+                        $divPartial.find("#btnSaveandReload").on("click", function () {
+                            if ($(_form).valid()) {
+                                _form.append('<input name="method" type="hidden" value="ajax" />');
+                                $.ajax({
+                                    type: "POST",
+                                    dataType: 'json',
+                                    url: _form.attr('action'),
+                                    data: _form.serialize(),
+                                    success: function (json) {
+                                        $modal.toggle();
+                                        if (json == 'update') {
+
+                                            swal('', 'Successfully Updated', 'success');
+                                        }
+                                        return false;
+                                    },
+                                    error: function (response) {
+                                    },
+                                });
+                            }
+                            return false;
+                        });
+                    },
+                    error: function (xhr, request, error) { }
+                });
+            }
+        }
+</script>

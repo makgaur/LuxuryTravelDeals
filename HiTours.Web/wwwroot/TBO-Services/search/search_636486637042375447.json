@@ -1,0 +1,2748 @@
+//-- search Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "47a1577c-a741-473a-b838-cfad1d2b2187",
+  "AdultCount": 2,
+  "ChildCount": 1,
+  "InfantCount": 0,
+  "DirectFlight": false,
+  "OneStopFlight": false,
+  "JourneyType": 5,
+  "PreferredAirlines": null,
+  "Segments": [
+    {
+      "Origin": "DEL",
+      "Destination": "BOM",
+      "FlightCabinClass": 1,
+      "PreferredDepartureTime": "2017-12-12T00:00:00",
+      "PreferredArrivalTime": "2017-12-12T00:00:00"
+    },
+    {
+      "Origin": "BOM",
+      "Destination": "DEL",
+      "FlightCabinClass": 1,
+      "PreferredDepartureTime": "2017-12-13T00:00:00",
+      "PreferredArrivalTime": "2017-12-13T00:00:00"
+    }
+  ],
+  "Sources": [
+    "SG",
+    "G8"
+  ]
+}
+//-- search Api Response --
+{
+  "Response": {
+    "ResponseStatus": 1,
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "TraceId": "1b7f4575-e7f1-4e1c-b13f-33ed51ea883b",
+    "Origin": "DEL",
+    "Destination": "BOM",
+    "Results": [
+      [
+        {
+          "ResultIndex": "OB3",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 6900,
+            "Tax": 1221,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 150
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 423
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 8121,
+            "CommissionEarned": 175.95,
+            "PLBEarned": 112.37,
+            "IncentiveEarned": 114.31,
+            "OfferedFare": 7718.37,
+            "TdsOnCommission": 35.19,
+            "TdsOnPLB": 22.47,
+            "TdsOnIncentive": 22.86,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 4600,
+              "Tax": 814,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2300,
+              "Tax": 407,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "159",
+                  "FareClass": "B",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1D",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T21:35:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "1",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-12T23:45:00"
+                },
+                "Duration": 130,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-12T23:45:00",
+                "StopPointDepartureTime": "2017-12-12T21:35:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "BOM",
+              "Airline": "SG",
+              "FareBasisCode": "BSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "OB2",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 6900,
+            "Tax": 1221,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 150
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 423
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 8121,
+            "CommissionEarned": 175.95,
+            "PLBEarned": 112.37,
+            "IncentiveEarned": 114.31,
+            "OfferedFare": 7718.37,
+            "TdsOnCommission": 35.19,
+            "TdsOnPLB": 22.47,
+            "TdsOnIncentive": 22.86,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 4600,
+              "Tax": 814,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2300,
+              "Tax": 407,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "169",
+                  "FareClass": "B",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1D",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T19:45:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "1",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-12T22:05:00"
+                },
+                "Duration": 140,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-12T22:05:00",
+                "StopPointDepartureTime": "2017-12-12T19:45:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "BOM",
+              "Airline": "SG",
+              "FareBasisCode": "BSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "OB1",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 6900,
+            "Tax": 1221,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 150
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 423
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 8121,
+            "CommissionEarned": 175.95,
+            "PLBEarned": 112.37,
+            "IncentiveEarned": 114.31,
+            "OfferedFare": 7718.37,
+            "TdsOnCommission": 35.19,
+            "TdsOnPLB": 22.47,
+            "TdsOnIncentive": 22.86,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 4600,
+              "Tax": 814,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2300,
+              "Tax": 407,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "161",
+                  "FareClass": "B",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1D",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T15:55:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "1",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-12T18:10:00"
+                },
+                "Duration": 135,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-12T18:10:00",
+                "StopPointDepartureTime": "2017-12-12T15:55:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "BOM",
+              "Airline": "SG",
+              "FareBasisCode": "BSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "OB6",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": false,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 7923,
+            "Tax": 1281,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 150
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 483
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 9204,
+            "CommissionEarned": 202.04,
+            "PLBEarned": 129.03,
+            "IncentiveEarned": 131.26,
+            "OfferedFare": 8741.67,
+            "TdsOnCommission": 40.41,
+            "TdsOnPLB": 25.81,
+            "TdsOnIncentive": 26.25,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 5282,
+              "Tax": 854,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2641,
+              "Tax": 427,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "159",
+                  "FareClass": "C",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1D",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T21:35:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "1",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-12T23:45:00"
+                },
+                "Duration": 130,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-12T23:45:00",
+                "StopPointDepartureTime": "2017-12-12T21:35:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "BOM",
+              "Airline": "SG",
+              "FareBasisCode": "CRTSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "OB5",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": false,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 7923,
+            "Tax": 1281,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 150
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 483
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 9204,
+            "CommissionEarned": 202.04,
+            "PLBEarned": 129.03,
+            "IncentiveEarned": 131.26,
+            "OfferedFare": 8741.67,
+            "TdsOnCommission": 40.41,
+            "TdsOnPLB": 25.81,
+            "TdsOnIncentive": 26.25,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 5282,
+              "Tax": 854,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2641,
+              "Tax": 427,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "169",
+                  "FareClass": "C",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1D",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T19:45:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "1",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-12T22:05:00"
+                },
+                "Duration": 140,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-12T22:05:00",
+                "StopPointDepartureTime": "2017-12-12T19:45:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "BOM",
+              "Airline": "SG",
+              "FareBasisCode": "CRTSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "OB4",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": false,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 7923,
+            "Tax": 1281,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 150
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 483
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 9204,
+            "CommissionEarned": 202.04,
+            "PLBEarned": 129.03,
+            "IncentiveEarned": 131.26,
+            "OfferedFare": 8741.67,
+            "TdsOnCommission": 40.41,
+            "TdsOnPLB": 25.81,
+            "TdsOnIncentive": 26.25,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 5282,
+              "Tax": 854,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2641,
+              "Tax": 427,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "161",
+                  "FareClass": "C",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1D",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T15:55:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "1",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-12T18:10:00"
+                },
+                "Duration": 135,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-12T18:10:00",
+                "StopPointDepartureTime": "2017-12-12T15:55:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "BOM",
+              "Airline": "SG",
+              "FareBasisCode": "CRTSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        }
+      ],
+      [
+        {
+          "ResultIndex": "IB3",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 6900,
+            "Tax": 1587,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 150
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 423
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 8487,
+            "CommissionEarned": 175.95,
+            "PLBEarned": 112.37,
+            "IncentiveEarned": 114.31,
+            "OfferedFare": 8084.37,
+            "TdsOnCommission": 35.19,
+            "TdsOnPLB": 22.47,
+            "TdsOnIncentive": 22.86,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 4600,
+              "Tax": 1058,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2300,
+              "Tax": 529,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "158",
+                  "FareClass": "B",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "1",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-13T18:45:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1C",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-13T20:55:00"
+                },
+                "Duration": 130,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T20:55:00",
+                "StopPointDepartureTime": "2017-12-13T18:45:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "DEL",
+              "Airline": "SG",
+              "FareBasisCode": "BSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "IB4",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 6900,
+            "Tax": 1587,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 150
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 423
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 8487,
+            "CommissionEarned": 175.95,
+            "PLBEarned": 112.37,
+            "IncentiveEarned": 114.31,
+            "OfferedFare": 8084.37,
+            "TdsOnCommission": 35.19,
+            "TdsOnPLB": 22.47,
+            "TdsOnIncentive": 22.86,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 4600,
+              "Tax": 1058,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2300,
+              "Tax": 529,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "154",
+                  "FareClass": "B",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "1",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-13T21:30:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1C",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-13T23:50:00"
+                },
+                "Duration": 140,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T23:50:00",
+                "StopPointDepartureTime": "2017-12-13T21:30:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "DEL",
+              "Airline": "SG",
+              "FareBasisCode": "BSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "IB1",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 6900,
+            "Tax": 1587,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 150
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 423
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 8487,
+            "CommissionEarned": 175.95,
+            "PLBEarned": 112.37,
+            "IncentiveEarned": 114.31,
+            "OfferedFare": 8084.37,
+            "TdsOnCommission": 35.19,
+            "TdsOnPLB": 22.47,
+            "TdsOnIncentive": 22.86,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 4600,
+              "Tax": 1058,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2300,
+              "Tax": 529,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "160",
+                  "FareClass": "B",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "1",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-13T06:00:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1C",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-13T08:15:00"
+                },
+                "Duration": 135,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T08:15:00",
+                "StopPointDepartureTime": "2017-12-13T06:00:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "DEL",
+              "Airline": "SG",
+              "FareBasisCode": "BSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "IB2",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 6900,
+            "Tax": 1587,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 150
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 423
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 8487,
+            "CommissionEarned": 175.95,
+            "PLBEarned": 112.37,
+            "IncentiveEarned": 114.31,
+            "OfferedFare": 8084.37,
+            "TdsOnCommission": 35.19,
+            "TdsOnPLB": 22.47,
+            "TdsOnIncentive": 22.86,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 4600,
+              "Tax": 1058,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2300,
+              "Tax": 529,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "152",
+                  "FareClass": "B",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "1",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-13T07:20:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1C",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-13T09:35:00"
+                },
+                "Duration": 135,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T09:35:00",
+                "StopPointDepartureTime": "2017-12-13T07:20:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "DEL",
+              "Airline": "SG",
+              "FareBasisCode": "BSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "IB5",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 6900,
+            "Tax": 1686,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 150
+              },
+              {
+                "key": "PSF",
+                "value": 450
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 372
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 714
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 8586,
+            "CommissionEarned": 175.95,
+            "PLBEarned": 112.37,
+            "IncentiveEarned": 114.31,
+            "OfferedFare": 8183.37,
+            "TdsOnCommission": 35.19,
+            "TdsOnPLB": 22.47,
+            "TdsOnIncentive": 22.86,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 4600,
+              "Tax": 1124,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2300,
+              "Tax": 562,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "153",
+                  "FareClass": "B",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "1",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-13T08:30:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "COK",
+                    "AirportName": "Cochin",
+                    "Terminal": "",
+                    "CityCode": "COK",
+                    "CityName": "Kochi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-13T10:30:00"
+                },
+                "Duration": 120,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T10:30:00",
+                "StopPointDepartureTime": "2017-12-13T08:30:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "184",
+                  "FareClass": "B",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "COK",
+                    "AirportName": "Cochin",
+                    "Terminal": "",
+                    "CityCode": "COK",
+                    "CityName": "Kochi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-13T13:45:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "PNQ",
+                    "AirportName": "Lohegaon",
+                    "Terminal": "",
+                    "CityCode": "PNQ",
+                    "CityName": "Pune",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-13T15:35:00"
+                },
+                "Duration": 110,
+                "GroundTime": 195,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T15:35:00",
+                "StopPointDepartureTime": "2017-12-13T13:45:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 3,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "184",
+                  "FareClass": "B",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "PNQ",
+                    "AirportName": "Lohegaon",
+                    "Terminal": "",
+                    "CityCode": "PNQ",
+                    "CityName": "Pune",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-13T16:05:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1C",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-13T18:10:00"
+                },
+                "AccumulatedDuration": 580,
+                "Duration": 125,
+                "GroundTime": 30,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T18:10:00",
+                "StopPointDepartureTime": "2017-12-13T16:05:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "COK",
+              "Airline": "SG",
+              "FareBasisCode": "BSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            },
+            {
+              "Origin": "COK",
+              "Destination": "PNQ",
+              "Airline": "SG",
+              "FareBasisCode": "BSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            },
+            {
+              "Origin": "PNQ",
+              "Destination": "DEL",
+              "Airline": "SG",
+              "FareBasisCode": "BSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "IB8",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": false,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 7923,
+            "Tax": 1647,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 150
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 483
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 9570,
+            "CommissionEarned": 202.04,
+            "PLBEarned": 129.03,
+            "IncentiveEarned": 131.26,
+            "OfferedFare": 9107.67,
+            "TdsOnCommission": 40.41,
+            "TdsOnPLB": 25.81,
+            "TdsOnIncentive": 26.25,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 5282,
+              "Tax": 1098,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2641,
+              "Tax": 549,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "158",
+                  "FareClass": "C",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "1",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-13T18:45:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1C",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-13T20:55:00"
+                },
+                "Duration": 130,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T20:55:00",
+                "StopPointDepartureTime": "2017-12-13T18:45:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "DEL",
+              "Airline": "SG",
+              "FareBasisCode": "CRTSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "IB9",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": false,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 7923,
+            "Tax": 1647,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 150
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 483
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 9570,
+            "CommissionEarned": 202.04,
+            "PLBEarned": 129.03,
+            "IncentiveEarned": 131.26,
+            "OfferedFare": 9107.67,
+            "TdsOnCommission": 40.41,
+            "TdsOnPLB": 25.81,
+            "TdsOnIncentive": 26.25,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 5282,
+              "Tax": 1098,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2641,
+              "Tax": 549,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "154",
+                  "FareClass": "C",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "1",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-13T21:30:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1C",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-13T23:50:00"
+                },
+                "Duration": 140,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T23:50:00",
+                "StopPointDepartureTime": "2017-12-13T21:30:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "DEL",
+              "Airline": "SG",
+              "FareBasisCode": "CRTSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "IB6",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": false,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 7923,
+            "Tax": 1647,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 150
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 483
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 9570,
+            "CommissionEarned": 202.04,
+            "PLBEarned": 129.03,
+            "IncentiveEarned": 131.26,
+            "OfferedFare": 9107.67,
+            "TdsOnCommission": 40.41,
+            "TdsOnPLB": 25.81,
+            "TdsOnIncentive": 26.25,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 5282,
+              "Tax": 1098,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2641,
+              "Tax": 549,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "160",
+                  "FareClass": "C",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "1",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-13T06:00:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1C",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-13T08:15:00"
+                },
+                "Duration": 135,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T08:15:00",
+                "StopPointDepartureTime": "2017-12-13T06:00:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "DEL",
+              "Airline": "SG",
+              "FareBasisCode": "CRTSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "IB7",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": false,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 7923,
+            "Tax": 1647,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 150
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 483
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 9570,
+            "CommissionEarned": 202.04,
+            "PLBEarned": 129.03,
+            "IncentiveEarned": 131.26,
+            "OfferedFare": 9107.67,
+            "TdsOnCommission": 40.41,
+            "TdsOnPLB": 25.81,
+            "TdsOnIncentive": 26.25,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 5282,
+              "Tax": 1098,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2641,
+              "Tax": 549,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "152",
+                  "FareClass": "C",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "1",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-13T07:20:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1C",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-13T09:35:00"
+                },
+                "Duration": 135,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T09:35:00",
+                "StopPointDepartureTime": "2017-12-13T07:20:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "DEL",
+              "Airline": "SG",
+              "FareBasisCode": "CRTSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        }
+      ]
+    ]
+  }
+}

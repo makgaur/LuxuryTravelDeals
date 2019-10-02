@@ -1,0 +1,105 @@
+﻿@model BookingSendMailViewModel
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Luxury Travel Deals</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <style type="text/css">
+        * {
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .border-gray {
+            border: 1px solid #f1f1f1;
+        }
+
+        @@media only screen and (max-width: 610px) {
+            [class=wimg] {
+                width: 100% !important;
+            }
+
+            [class=border-gray] {
+                width: 100% !important;
+            }
+
+            [class=w490] {
+                width: 90% !important;
+            }
+        }
+
+        @@media only screen and (max-width:479px) {
+            [class=wtitre] {
+                width: 100% !important;
+                height: auto !important;
+            }
+        }
+    </style>
+</head>
+<body bgcolor="#fff">
+    
+    <table align="center" width="100%" cellspacing="0" cellpadding="0" bgcolor="#fff">
+        <tbody>
+            <tr>
+                <td>
+                    <table class="border-gray" align="center" width="602" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+                        <tbody>
+                            <!-- Logo -->
+                            <tr>
+                                <td align="center" bgcolor="#660866">
+                                    <a href="#" target="_blank" style="font-size: 22px; font-family: Arial, Verdana; color:#ffffff;">
+                                        <img src="@(Model.SiteUrl)/images/luxury-logo-2.png" alt="" style="display: block;" width="201" height="100" border="0" />
+                                    </a>
+                                </td>
+                            </tr>
+                            <!-- Logo -->
+
+                            <tr>
+                                <td align="left" style="padding:10px 20px;" bgcolor="#f1f1f1">
+                                    <table width="100%" style="font-size: 14px; font-family: Arial, Verdana;" bgcolor="#f1f1f1">
+                                        <tr>
+                                            <td width="43" style="padding:10px 5px 10px 0px;">
+                                                <img src="@(Model.SiteUrl)images/check.png" alt="checked" width="33" height="34" style="display:block" />
+                                            </td>
+                                            <td style="font-size:13px; font-family: Arial, Verdana; color:#f76c00; text-transform:uppercase;">
+                                                <b>Your Booking is COMPLETE</b><br />
+                                                <span style="color:#545454; text-transform:capitalize">Thank you for booking with us</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="padding:10px 20px;" bgcolor="#f1f1f1">
+                                    <table width="100%" style="font-size: 14px; font-family: Arial, Verdana;" bgcolor="#f1f1f1">
+                                        <tr>
+                                            <td style="font-size:13px; font-family: Arial, Verdana; color:#f76c00; text-transform:uppercase;">
+                                                <b>@Model.DealName</b><br />
+                                                <span style="color:#545454; text-transform:capitalize">@Model.StartDate.ToString("dd/MM/yyyy") to @Model.EndDate.ToString("dd/MM/yyyy")</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" style="padding:10px 20px;" bgcolor="#f1f1f1">
+                                    <table width="100%" style="font-size: 14px; font-family: Arial, Verdana;" bgcolor="#f1f1f1">
+                                        <tr>
+                                            <td style="font-size:13px; font-family: Arial, Verdana; color:#f76c00; text-transform:uppercase;">
+                                                <span style="color:#545454; text-transform:capitalize">Booking Id : @Model.BookingId</span><br />
+                                                <span style="color:#545454; text-transform:capitalize">Total Amount: @Model.BookingPrice </span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

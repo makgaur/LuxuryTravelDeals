@@ -1,0 +1,17 @@
+﻿@using HtmlHelpers.BeginCollectionItemCore
+@model PassengerDetailsViewModel
+@using (this.Html.BeginCollectionItem("PassengerDetails"))
+{
+    @*<input type="hidden" asp-for="PersonType" />*@
+    <input type="hidden" asp-for="RoomNumber" />
+    <div class="row">
+        @if (this.Model != null && this.Model.PersonDetails != null && this.Model.PersonDetails.Count > 0)
+        {
+            foreach (var person in this.Model.PersonDetails)
+            {
+                @this.Html.Partial("_Persons", person)
+            }
+        }
+    </div>
+
+}

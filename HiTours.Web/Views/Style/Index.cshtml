@@ -1,0 +1,20 @@
+﻿@{ 
+    this.ViewBag.MenuName = this.ViewBag.StyleName;
+}
+@Html.Partial("_TopMenuSearch")
+<script>
+    var isDeafultLoad = false;
+</script>
+@section scripts{
+    <link href="~/content/css/timeTo.css" rel="stylesheet" />
+    <script src="~/content/js/jquery.time-to.js"></script>
+    <script>
+        $(function () {
+            var record = { travelstyle: '@this.ViewBag.StyleName', travelstyleid: '@this.ViewBag.StyleId' };
+            setSearch(filterstyle, record);
+        })
+
+    </script>
+
+}
+    <div id="upcomingDeals"></div>

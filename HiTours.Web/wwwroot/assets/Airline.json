@@ -1,0 +1,293 @@
+﻿[
+  {
+    CODE: "6E",
+    NAME: "Indigo"
+  },
+  {
+    CODE: "6U",
+    NAME: "Air Ukraine"
+  },
+  {
+    CODE: "9W",
+    NAME: "Jet Airways"
+  },
+  {
+    CODE: "9Y",
+    NAME: "Air Kazakstan"
+  },
+  {
+    CODE: "AA",
+    NAME: "American Airlines "
+  },
+  {
+    CODE: "AC",
+    NAME: "Air Canada"
+  },
+  {
+    CODE: "AF",
+    NAME: "Air France"
+  },
+  {
+    CODE: "AI",
+    NAME: "Air India"
+  },
+  {
+    CODE: "AK",
+    NAME: "Airasia"
+  },
+  {
+    CODE: "AY",
+    NAME: "Finnair"
+  },
+  {
+    CODE: "AZ",
+    NAME: "Alitalia"
+  },
+  {
+    CODE: "BA",
+    NAME: "British Airways"
+  },
+  {
+    CODE: "BI",
+    NAME: "Royal Brunei Airlines"
+  },
+  {
+    CODE: "CA",
+    NAME: "Air China"
+  },
+  {
+    CODE: "CI",
+    NAME: "China Airline"
+  },
+  {
+    CODE: "CX",
+    NAME: "Cathay Pacific Airways"
+  },
+  {
+    CODE: "CZ",
+    NAME: "Chinasouthern"
+  },
+  {
+    CODE: "DJ",
+    NAME: "Virgin Blue"
+  },
+  {
+    CODE: "DL",
+    NAME: "Delta Air Lines"
+  },
+  {
+    CODE: "EK",
+    NAME: "Emirates Airlines"
+  },
+  {
+    CODE: "ET",
+    NAME: "Ethiopian Airlines S C"
+  },
+  {
+    CODE: "EY",
+    NAME: "Etihad Airways"
+  },
+  {
+    CODE: "G8",
+    NAME: "GoAir"
+  },
+  {
+    CODE: "G9",
+    NAME: "Air Arabia"
+  },
+  {
+    CODE: "GF",
+    NAME: "Gulf Air"
+  },
+  {
+    CODE: "HM",
+    NAME: "Air Mahe/Inter Island Airways"
+  },
+  {
+    CODE: "HY",
+    NAME: "Uzbekistan Airways"
+  },
+  {
+    CODE: "IX",
+    NAME: "Air India Express (DOM)"
+  },
+  {
+    CODE: "JL",
+    NAME: "Japan Airlines"
+  },
+  {
+    CODE: "KA",
+    NAME: "Dragonair"
+  },
+  {
+    CODE: "KB",
+    NAME: "Druk Air"
+  },
+  {
+    CODE: "KE",
+    NAME: "Korean Air Lines"
+  },
+  {
+    CODE: "KL",
+    NAME: "Klm Royal Dutch Airlines"
+  },
+  {
+    CODE: "KQ",
+    NAME: "Kenya Airways"
+  },
+  {
+    CODE: "KU",
+    NAME: "Kuwait Airways Corporation"
+  },
+  {
+    CODE: "LH",
+    NAME: "Lufthansa"
+  },
+  {
+    CODE: "LX",
+    NAME: "Swiss"
+  },
+  {
+    CODE: "MH",
+    NAME: "Malaysia Airlines"
+  },
+  {
+    CODE: "MI",
+    NAME: "Silkair"
+  },
+  {
+    CODE: "MK",
+    NAME: "Air Mauritius"
+  },
+  {
+    CODE: "MS",
+    NAME: "Egyptair"
+  },
+  {
+    CODE: "MU",
+    NAME: "China Eastern"
+  },
+  {
+    CODE: "OS",
+    NAME: "Austrian Airlines"
+  },
+  {
+    CODE: "PG",
+    NAME: "Bangkok Airways"
+  },
+  {
+    CODE: "QF",
+    NAME: "Qantas Airways"
+  },
+  {
+    CODE: "QR",
+    NAME: "Qatar Airways"
+  },
+  {
+    CODE: "RA",
+    NAME: "Royal Nepal Airlines Corp"
+  },
+  {
+    CODE: "SA",
+    NAME: "South African Airways"
+  },
+  {
+    CODE: "SG",
+    NAME: "SpiceJet"
+  },
+  {
+    CODE: "SQ",
+    NAME: "Singapore Airlines"
+  },
+  {
+    CODE: "SU",
+    NAME: "Aeroflot Russian Airlines"
+  },
+  {
+    CODE: "TG",
+    NAME: "Thai Airways International"
+  },
+  {
+    CODE: "TK",
+    NAME: "Turkish Airlines"
+  },
+  {
+    CODE: "TN",
+    NAME: "Air Tahiti Nui"
+  },
+  {
+    CODE: "UK",
+    NAME: "Vistara Airlines"
+  },
+  {
+    CODE: "UL",
+    NAME: "Sri Lankan Airlines"
+  },
+  {
+    CODE: "US",
+    NAME: "US Airways"
+  },
+  {
+    CODE: "VS",
+    NAME: "Virgin Atlantic Airways"
+  },
+  {
+    CODE: "VT",
+    NAME: "Air Tahiti"
+  },
+  {
+    CODE: "W5",
+    NAME: "Mahan Air"
+  },
+  {
+    CODE: "WY",
+    NAME: "Oman Aviation"
+  },
+  {
+    CODE: "XI",
+    NAME: "Air India Express (INTL)"
+  },
+  {
+    CODE: "2P",
+    NAME: "Air Philippines"
+  },
+  {
+    CODE: "BG",
+    NAME: "Biman Bangladesh Airlines"
+  },
+  {
+    CODE: "CO",
+    NAME: "Continental Airlines"
+  },
+  {
+    CODE: "FI",
+    NAME: "Icelandair"
+  },
+  {
+    CODE: "FJ",
+    NAME: "Air Pacific Limited"
+  },
+  {
+    CODE: "GO",
+    NAME: "Go Air"
+  },
+  {
+    CODE: "HR",
+    NAME: "Hahn Air"
+  },
+  {
+    CODE: "OZ",
+    NAME: "Asiana Air"
+  },
+  {
+    CODE: "RJ",
+    NAME: "Royal Jordanian"
+  },
+  {
+    CODE: "UA",
+    NAME: "United Airlines"
+  },
+  {
+    CODE: ""
+  }
+]

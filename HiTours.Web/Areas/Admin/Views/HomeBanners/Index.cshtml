@@ -1,0 +1,47 @@
+﻿@{ this.ViewBag.Title = "Home Banner List"; }
+@model HomeBannerViewModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/homebanners/UploadImages") })
+                </div>
+            </div>
+            @this.Html.Partial("_DataTableGrid")
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        $(function () {
+            BindGrid({
+                url: "@Url.Action("Index")",
+                columns: [
+                         { "data": "Text1", "title": "Caption Text", "type": "string" },
+                         { "data": "Text2", "title": "Location Text", "type": "string" },
+                         { "data": "Text3", "title": "Search Placeholder", "type": "string" },
+                         //{ "data": "Text3", "title": "Text 3", "type": "string" },
+                        { "data": "RedirectUrl", "title": "Redirect URL", "type": "string" },
+                                    {
+                                        "data": null, "title": "Action",
+                                        "targets": -1,
+                                        "width": '15%',
+                                        "class": "column-action text-center",
+                                        "shorting": false,
+                                        "orderable": false,
+                                        "mRender": function (data, type, record) {
+                                            var action = "";
+                                            ////action += '<a class="form-control btn-default" href="@Url.GetAdminUrl("category","details")/' + record.ID + '"><i class="fa fa-eye"></i>&nbsp;</a>';
+                                            action += '<a class="form-control btn-success" href="@Url.GetAdminUrl( "homebanners" , "uploadimages")/' + record.Id+ '"><i class="fa fa-edit"></i>&nbsp;</a>';
+                                            action += '<a class="form-control btn-danger delete-row" data-delete href="/admin/homebanners/DeleteBanners?id=' + record.Id + '&imagename=' + record.ImageName +'"><i class="fa fa-trash-o"></i>&nbsp;</a>';
+                                            return action;
+
+                                        }
+                                    }]
+                            });
+                        });
+
+    </script>
+}

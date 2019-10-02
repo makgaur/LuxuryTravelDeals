@@ -1,0 +1,2904 @@
+//-- search Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "c4dd944d-3a9e-4a36-a879-b7a4bb3d7e35",
+  "AdultCount": 1,
+  "ChildCount": 1,
+  "InfantCount": 1,
+  "DirectFlight": false,
+  "OneStopFlight": false,
+  "JourneyType": 1,
+  "PreferredAirlines": null,
+  "Segments": [
+    {
+      "Origin": "BOM",
+      "Destination": "DXB",
+      "FlightCabinClass": 1,
+      "PreferredDepartureTime": "2017-12-12T00:00:00",
+      "PreferredArrivalTime": "2017-12-12T00:00:00"
+    }
+  ],
+  "Sources": null
+}
+//-- search Api Response --
+{
+  "Response": {
+    "ResponseStatus": 1,
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "TraceId": "dc9fa5b3-6d9e-4e5b-8e3b-af70d76cdbb3",
+    "Origin": "BOM",
+    "Destination": "DXB",
+    "Results": [
+      [
+        {
+          "ResultIndex": "OB1",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": false,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 12800,
+            "Tax": 4140,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 100
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 654
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 220,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 220
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 17160,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 17160,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 5400,
+              "Tax": 2070,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 5400,
+              "Tax": 2070,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 2000,
+              "Tax": 0,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "13",
+                  "FareClass": "C",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T23:05:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DXB",
+                    "AirportName": "Dubai",
+                    "Terminal": "1",
+                    "CityCode": "DXB",
+                    "CityName": "Dubai",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-13T00:55:00"
+                },
+                "Duration": 200,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T00:55:00",
+                "StopPointDepartureTime": "2017-12-12T23:05:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "DXB",
+              "Airline": "SG",
+              "FareBasisCode": "CSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "OB2",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": false,
+          "GSTAllowed": false,
+          "AirlineRemark": "EK TEST",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 5090,
+            "Tax": 12712,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 8392
+              },
+              {
+                "key": "YR",
+                "value": 900
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 8392,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 20,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 20
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 17822,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 17822,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 2750,
+              "Tax": 6209,
+              "YQTax": 4196,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2065,
+              "Tax": 6174,
+              "YQTax": 4196,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 275,
+              "Tax": 329,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "EK",
+                  "AirlineName": "Emirates Airlines",
+                  "FlightNumber": "509",
+                  "FareClass": "T",
+                  "OperatingCarrier": "EK"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T22:00:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DXB",
+                    "AirportName": "Dubai",
+                    "Terminal": "3",
+                    "CityCode": "DXB",
+                    "CityName": "Dubai",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-12T23:55:00"
+                },
+                "AccumulatedDuration": 205,
+                "Duration": 205,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-12T23:55:00",
+                "StopPointDepartureTime": "2017-12-12T22:00:00",
+                "Craft": "77W",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "12DEC17",
+          "TicketAdvisory": "TICKETS ARE NON-REFUNDABLE \nLAST TKT DTE 12DEC17  - SEE ADV PURCHASE \n",
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "DXB",
+              "Airline": "EK",
+              "FareBasisCode": "TLSOPIN1",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "EK",
+          "ValidatingAirline": "EK",
+          "BaggageAllowance": "30 KG"
+        },
+        {
+          "ResultIndex": "OB3",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 14100,
+            "Tax": 4218,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 100
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 732
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 220,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 220
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 18538,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 18538,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 6050,
+              "Tax": 2109,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 6050,
+              "Tax": 2109,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 2000,
+              "Tax": 0,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "13",
+                  "FareClass": "E",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T23:05:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DXB",
+                    "AirportName": "Dubai",
+                    "Terminal": "1",
+                    "CityCode": "DXB",
+                    "CityName": "Dubai",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-13T00:55:00"
+                },
+                "Duration": 200,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T00:55:00",
+                "StopPointDepartureTime": "2017-12-12T23:05:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "DXB",
+              "Airline": "SG",
+              "FareBasisCode": "ESAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "OB4",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": false,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is 9w.",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 7980,
+            "Tax": 16864,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 12526
+              },
+              {
+                "key": "YR",
+                "value": 582
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 12526,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 320,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 320
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 25164,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 25164,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 3800,
+              "Tax": 7642,
+              "YQTax": 5617,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 3800,
+              "Tax": 7642,
+              "YQTax": 5617,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 380,
+              "Tax": 1580,
+              "YQTax": 1292,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "9W",
+                  "AirlineName": "Jet Airways",
+                  "FlightNumber": "558",
+                  "FareClass": "V",
+                  "OperatingCarrier": "9W"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T21:50:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DXB",
+                    "AirportName": "Dubai",
+                    "Terminal": "1",
+                    "CityCode": "DXB",
+                    "CityName": "Dubai",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-12T23:40:00"
+                },
+                "AccumulatedDuration": 200,
+                "Duration": 200,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-12T23:40:00",
+                "StopPointDepartureTime": "2017-12-12T21:50:00",
+                "Craft": "73H",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "12DEC17",
+          "TicketAdvisory": "TICKETS ARE NON-REFUNDABLE \nLAST TKT DTE 12DEC17  - DATE OF ORIGIN \n",
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "DXB",
+              "Airline": "9W",
+              "FareBasisCode": "V2LSPOIA",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "9W",
+          "ValidatingAirline": "9W",
+          "BaggageAllowance": "30 KG"
+        },
+        {
+          "ResultIndex": "OB7",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is 9w.",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 15130,
+            "Tax": 17220,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 12526
+              },
+              {
+                "key": "YR",
+                "value": 582
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 12526,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 320,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 320
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 32670,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 32670,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 6930,
+              "Tax": 7798,
+              "YQTax": 5617,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 6930,
+              "Tax": 7798,
+              "YQTax": 5617,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 1270,
+              "Tax": 1624,
+              "YQTax": 1292,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "9W",
+                  "AirlineName": "Jet Airways",
+                  "FlightNumber": "6520",
+                  "FareClass": "K",
+                  "OperatingCarrier": "EY"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T21:15:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "AUH",
+                    "AirportName": "Abu Dhabi Int'l",
+                    "Terminal": "1",
+                    "CityCode": "AUH",
+                    "CityName": "Abu Dhabi",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-12T23:25:00"
+                },
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-12T23:25:00",
+                "StopPointDepartureTime": "2017-12-12T21:15:00",
+                "Craft": "77W",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "9W",
+                  "AirlineName": "Jet Airways",
+                  "FlightNumber": "6548",
+                  "FareClass": "K",
+                  "OperatingCarrier": "EY"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "AUH",
+                    "AirportName": "Abu Dhabi Int'l",
+                    "Terminal": "1",
+                    "CityCode": "AUH",
+                    "CityName": "Abu Dhabi",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "DepTime": "2017-12-13T02:50:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "XNB",
+                    "AirportName": "Dubai Bus Station",
+                    "Terminal": "",
+                    "CityCode": "DXB",
+                    "CityName": "Dubai",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-13T04:10:00"
+                },
+                "AccumulatedDuration": 505,
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T04:10:00",
+                "StopPointDepartureTime": "2017-12-13T02:50:00",
+                "Craft": "BUS",
+                "Remark": "This is a BUS segment",
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "12DEC17",
+          "TicketAdvisory": "PENALTY APPLIES \nLAST TKT DTE 12DEC17  - DATE OF ORIGIN \n",
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "AUH",
+              "Airline": "9W",
+              "FareBasisCode": "K2LOWIA",
+              "FareRuleDetail": "",
+              "FareRestriction": "N"
+            },
+            {
+              "Origin": "AUH",
+              "Destination": "XNB",
+              "Airline": "9W",
+              "FareBasisCode": "K2LOWIA",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "9W",
+          "ValidatingAirline": "9W",
+          "BaggageAllowance": "30 KG"
+        },
+        {
+          "ResultIndex": "OB6",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is 9w.",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 15130,
+            "Tax": 17220,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 12526
+              },
+              {
+                "key": "YR",
+                "value": 582
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 12526,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 320,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 320
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 32670,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 32670,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 6930,
+              "Tax": 7798,
+              "YQTax": 5617,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 6930,
+              "Tax": 7798,
+              "YQTax": 5617,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 1270,
+              "Tax": 1624,
+              "YQTax": 1292,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "9W",
+                  "AirlineName": "Jet Airways",
+                  "FlightNumber": "6520",
+                  "FareClass": "K",
+                  "OperatingCarrier": "EY"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T21:15:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "AUH",
+                    "AirportName": "Abu Dhabi Int'l",
+                    "Terminal": "1",
+                    "CityCode": "AUH",
+                    "CityName": "Abu Dhabi",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-12T23:25:00"
+                },
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-12T23:25:00",
+                "StopPointDepartureTime": "2017-12-12T21:15:00",
+                "Craft": "77W",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "9W",
+                  "AirlineName": "Jet Airways",
+                  "FlightNumber": "6547",
+                  "FareClass": "K",
+                  "OperatingCarrier": "EY"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "AUH",
+                    "AirportName": "Abu Dhabi Int'l",
+                    "Terminal": "1",
+                    "CityCode": "AUH",
+                    "CityName": "Abu Dhabi",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "DepTime": "2017-12-13T01:30:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "XNB",
+                    "AirportName": "Dubai Bus Station",
+                    "Terminal": "",
+                    "CityCode": "DXB",
+                    "CityName": "Dubai",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-13T02:50:00"
+                },
+                "AccumulatedDuration": 425,
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T02:50:00",
+                "StopPointDepartureTime": "2017-12-13T01:30:00",
+                "Craft": "BUS",
+                "Remark": "This is a BUS segment",
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "12DEC17",
+          "TicketAdvisory": "PENALTY APPLIES \nLAST TKT DTE 12DEC17  - DATE OF ORIGIN \n",
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "AUH",
+              "Airline": "9W",
+              "FareBasisCode": "K2LOWIA",
+              "FareRuleDetail": "",
+              "FareRestriction": "N"
+            },
+            {
+              "Origin": "AUH",
+              "Destination": "XNB",
+              "Airline": "9W",
+              "FareBasisCode": "K2LOWIA",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "9W",
+          "ValidatingAirline": "9W",
+          "BaggageAllowance": "30 KG"
+        },
+        {
+          "ResultIndex": "OB5",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is 9w.",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 15130,
+            "Tax": 17220,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 12526
+              },
+              {
+                "key": "YR",
+                "value": 582
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 12526,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 320,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 320
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 32670,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 32670,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 6930,
+              "Tax": 7798,
+              "YQTax": 5617,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 6930,
+              "Tax": 7798,
+              "YQTax": 5617,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 1270,
+              "Tax": 1624,
+              "YQTax": 1292,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "9W",
+                  "AirlineName": "Jet Airways",
+                  "FlightNumber": "6520",
+                  "FareClass": "K",
+                  "OperatingCarrier": "EY"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T21:15:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "AUH",
+                    "AirportName": "Abu Dhabi Int'l",
+                    "Terminal": "1",
+                    "CityCode": "AUH",
+                    "CityName": "Abu Dhabi",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-12T23:25:00"
+                },
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-12T23:25:00",
+                "StopPointDepartureTime": "2017-12-12T21:15:00",
+                "Craft": "77W",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "9W",
+                  "AirlineName": "Jet Airways",
+                  "FlightNumber": "6557",
+                  "FareClass": "K",
+                  "OperatingCarrier": "EY"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "AUH",
+                    "AirportName": "Abu Dhabi Int'l",
+                    "Terminal": "1",
+                    "CityCode": "AUH",
+                    "CityName": "Abu Dhabi",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "DepTime": "2017-12-13T00:30:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "XNB",
+                    "AirportName": "Dubai Bus Station",
+                    "Terminal": "",
+                    "CityCode": "DXB",
+                    "CityName": "Dubai",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-13T01:50:00"
+                },
+                "AccumulatedDuration": 365,
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T01:50:00",
+                "StopPointDepartureTime": "2017-12-13T00:30:00",
+                "Craft": "BUS",
+                "Remark": "This is a BUS segment",
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "12DEC17",
+          "TicketAdvisory": "PENALTY APPLIES \nLAST TKT DTE 12DEC17  - DATE OF ORIGIN \n",
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "AUH",
+              "Airline": "9W",
+              "FareBasisCode": "K2LOWIA",
+              "FareRuleDetail": "",
+              "FareRestriction": "N"
+            },
+            {
+              "Origin": "AUH",
+              "Destination": "XNB",
+              "Airline": "9W",
+              "FareBasisCode": "K2LOWIA",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "9W",
+          "ValidatingAirline": "9W",
+          "BaggageAllowance": "30 KG"
+        },
+        {
+          "ResultIndex": "OB8",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "For More than 12 hours transit time, need a transit visa. For More than 12 hours transit time, need a transit visa. on staging environmentuy89hkobjh,ljk",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 26825,
+            "Tax": 7820,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 0
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 20,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 20
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 34665,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 34665,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 14500,
+              "Tax": 3834,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 10875,
+              "Tax": 3653,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 1450,
+              "Tax": 333,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "2 Unit(s)",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SV",
+                  "AirlineName": "Saudi Arabian Airlines",
+                  "FlightNumber": "773",
+                  "FareClass": "V",
+                  "OperatingCarrier": "SV"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T21:20:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "JED",
+                    "AirportName": "King Abdulaziz Int'l",
+                    "Terminal": "S",
+                    "CityCode": "JED",
+                    "CityName": "Jeddah",
+                    "CountryCode": "SA",
+                    "CountryName": "Saudi Arabia"
+                  },
+                  "ArrTime": "2017-12-13T00:10:00"
+                },
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T00:10:00",
+                "StopPointDepartureTime": "2017-12-12T21:20:00",
+                "Craft": "333",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "2 Unit(s)",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "SV",
+                  "AirlineName": "Saudi Arabian Airlines",
+                  "FlightNumber": "566",
+                  "FareClass": "V",
+                  "OperatingCarrier": "SV"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "JED",
+                    "AirportName": "King Abdulaziz Int'l",
+                    "Terminal": "S",
+                    "CityCode": "JED",
+                    "CityName": "Jeddah",
+                    "CountryCode": "SA",
+                    "CountryName": "Saudi Arabia"
+                  },
+                  "DepTime": "2017-12-13T07:05:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DXB",
+                    "AirportName": "Dubai",
+                    "Terminal": "1",
+                    "CityCode": "DXB",
+                    "CityName": "Dubai",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-13T10:50:00"
+                },
+                "AccumulatedDuration": 900,
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T10:50:00",
+                "StopPointDepartureTime": "2017-12-13T07:05:00",
+                "Craft": "320",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "12DEC17",
+          "TicketAdvisory": "PENALTY APPLIES - CHECK RULES \nLAST TKT DTE 12DEC17  - DATE OF ORIGIN \nFARE VALID FOR E TICKET ONLY \n",
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "JED",
+              "Airline": "SV",
+              "FareBasisCode": "VOWIN",
+              "FareRuleDetail": "",
+              "FareRestriction": "N"
+            },
+            {
+              "Origin": "JED",
+              "Destination": "DXB",
+              "Airline": "SV",
+              "FareBasisCode": "VOWIN",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "SV",
+          "ValidatingAirline": "SV",
+          "BaggageAllowance": "2 Unit(s)"
+        },
+        {
+          "ResultIndex": "OB11",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": null,
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 19940,
+            "Tax": 16512,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 11622
+              },
+              {
+                "key": "YR",
+                "value": 582
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 11622,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 20,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 20
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 36472,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 36472,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 9220,
+              "Tax": 7438,
+              "YQTax": 5165,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 9220,
+              "Tax": 7438,
+              "YQTax": 5165,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 1500,
+              "Tax": 1636,
+              "YQTax": 1292,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "EY",
+                  "AirlineName": "Etihad Airways",
+                  "FlightNumber": "203",
+                  "FareClass": "L",
+                  "OperatingCarrier": "EY"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T21:15:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "AUH",
+                    "AirportName": "Abu Dhabi Int'l",
+                    "Terminal": "1",
+                    "CityCode": "AUH",
+                    "CityName": "Abu Dhabi",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-12T23:25:00"
+                },
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-12T23:25:00",
+                "StopPointDepartureTime": "2017-12-12T21:15:00",
+                "Craft": "77W",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "EY",
+                  "AirlineName": "Etihad Airways",
+                  "FlightNumber": "5414",
+                  "FareClass": "L",
+                  "OperatingCarrier": "EY"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "AUH",
+                    "AirportName": "Abu Dhabi Int'l",
+                    "Terminal": "1",
+                    "CityCode": "AUH",
+                    "CityName": "Abu Dhabi",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "DepTime": "2017-12-13T02:50:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "XNB",
+                    "AirportName": "Dubai Bus Station",
+                    "Terminal": "",
+                    "CityCode": "DXB",
+                    "CityName": "Dubai",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-13T04:10:00"
+                },
+                "AccumulatedDuration": 505,
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T04:10:00",
+                "StopPointDepartureTime": "2017-12-13T02:50:00",
+                "Craft": "BUS",
+                "Remark": "This is a BUS segment",
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "12DEC17",
+          "TicketAdvisory": "PENALTY APPLIES \nLAST TKT DTE 12DEC17  - DATE OF ORIGIN \n",
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "AUH",
+              "Airline": "EY",
+              "FareBasisCode": "LLOWEY",
+              "FareRuleDetail": "",
+              "FareRestriction": "N"
+            },
+            {
+              "Origin": "AUH",
+              "Destination": "XNB",
+              "Airline": "EY",
+              "FareBasisCode": "LLOWEY",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "EY",
+          "ValidatingAirline": "EY",
+          "BaggageAllowance": "30 KG"
+        },
+        {
+          "ResultIndex": "OB10",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": null,
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 19940,
+            "Tax": 16512,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 11622
+              },
+              {
+                "key": "YR",
+                "value": 582
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 11622,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 20,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 20
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 36472,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 36472,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 9220,
+              "Tax": 7438,
+              "YQTax": 5165,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 9220,
+              "Tax": 7438,
+              "YQTax": 5165,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 1500,
+              "Tax": 1636,
+              "YQTax": 1292,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "EY",
+                  "AirlineName": "Etihad Airways",
+                  "FlightNumber": "203",
+                  "FareClass": "L",
+                  "OperatingCarrier": "EY"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T21:15:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "AUH",
+                    "AirportName": "Abu Dhabi Int'l",
+                    "Terminal": "1",
+                    "CityCode": "AUH",
+                    "CityName": "Abu Dhabi",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-12T23:25:00"
+                },
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-12T23:25:00",
+                "StopPointDepartureTime": "2017-12-12T21:15:00",
+                "Craft": "77W",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "EY",
+                  "AirlineName": "Etihad Airways",
+                  "FlightNumber": "5412",
+                  "FareClass": "L",
+                  "OperatingCarrier": "EY"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "AUH",
+                    "AirportName": "Abu Dhabi Int'l",
+                    "Terminal": "1",
+                    "CityCode": "AUH",
+                    "CityName": "Abu Dhabi",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "DepTime": "2017-12-13T01:30:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "XNB",
+                    "AirportName": "Dubai Bus Station",
+                    "Terminal": "",
+                    "CityCode": "DXB",
+                    "CityName": "Dubai",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-13T02:50:00"
+                },
+                "AccumulatedDuration": 425,
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T02:50:00",
+                "StopPointDepartureTime": "2017-12-13T01:30:00",
+                "Craft": "BUS",
+                "Remark": "This is a BUS segment",
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "12DEC17",
+          "TicketAdvisory": "PENALTY APPLIES \nLAST TKT DTE 12DEC17  - DATE OF ORIGIN \n",
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "AUH",
+              "Airline": "EY",
+              "FareBasisCode": "LLOWEY",
+              "FareRuleDetail": "",
+              "FareRestriction": "N"
+            },
+            {
+              "Origin": "AUH",
+              "Destination": "XNB",
+              "Airline": "EY",
+              "FareBasisCode": "LLOWEY",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "EY",
+          "ValidatingAirline": "EY",
+          "BaggageAllowance": "30 KG"
+        },
+        {
+          "ResultIndex": "OB9",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": null,
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 19940,
+            "Tax": 16512,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 11622
+              },
+              {
+                "key": "YR",
+                "value": 582
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 11622,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 20,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 20
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 36472,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 36472,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 9220,
+              "Tax": 7438,
+              "YQTax": 5165,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 9220,
+              "Tax": 7438,
+              "YQTax": 5165,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 1500,
+              "Tax": 1636,
+              "YQTax": 1292,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "EY",
+                  "AirlineName": "Etihad Airways",
+                  "FlightNumber": "203",
+                  "FareClass": "L",
+                  "OperatingCarrier": "EY"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T21:15:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "AUH",
+                    "AirportName": "Abu Dhabi Int'l",
+                    "Terminal": "1",
+                    "CityCode": "AUH",
+                    "CityName": "Abu Dhabi",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-12T23:25:00"
+                },
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-12T23:25:00",
+                "StopPointDepartureTime": "2017-12-12T21:15:00",
+                "Craft": "77W",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "EY",
+                  "AirlineName": "Etihad Airways",
+                  "FlightNumber": "5432",
+                  "FareClass": "L",
+                  "OperatingCarrier": "EY"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "AUH",
+                    "AirportName": "Abu Dhabi Int'l",
+                    "Terminal": "1",
+                    "CityCode": "AUH",
+                    "CityName": "Abu Dhabi",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "DepTime": "2017-12-13T00:30:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "XNB",
+                    "AirportName": "Dubai Bus Station",
+                    "Terminal": "",
+                    "CityCode": "DXB",
+                    "CityName": "Dubai",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-13T01:50:00"
+                },
+                "AccumulatedDuration": 365,
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T01:50:00",
+                "StopPointDepartureTime": "2017-12-13T00:30:00",
+                "Craft": "BUS",
+                "Remark": "This is a BUS segment",
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "12DEC17",
+          "TicketAdvisory": "PENALTY APPLIES \nLAST TKT DTE 12DEC17  - DATE OF ORIGIN \n",
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "AUH",
+              "Airline": "EY",
+              "FareBasisCode": "LLOWEY",
+              "FareRuleDetail": "",
+              "FareRestriction": "N"
+            },
+            {
+              "Origin": "AUH",
+              "Destination": "XNB",
+              "Airline": "EY",
+              "FareBasisCode": "LLOWEY",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "EY",
+          "ValidatingAirline": "EY",
+          "BaggageAllowance": "30 KG"
+        },
+        {
+          "ResultIndex": "OB12",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": false,
+          "GSTAllowed": false,
+          "AirlineRemark": null,
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 27690,
+            "Tax": 10491,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 4100
+              },
+              {
+                "key": "YR",
+                "value": 2000
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 4100,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 20,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 20
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 38201,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 38201,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 12595,
+              "Tax": 5183,
+              "YQTax": 2050,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 12595,
+              "Tax": 5183,
+              "YQTax": 2050,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 2500,
+              "Tax": 125,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "1 Unit(s)",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "H1",
+                  "AirlineName": "Hahn Air Systems",
+                  "FlightNumber": "9006",
+                  "FareClass": "L",
+                  "OperatingCarrier": "SG"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T23:05:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DXB",
+                    "AirportName": "Dubai",
+                    "Terminal": "1",
+                    "CityCode": "DXB",
+                    "CityName": "Dubai",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-13T00:55:00"
+                },
+                "AccumulatedDuration": 200,
+                "Duration": 200,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T00:55:00",
+                "StopPointDepartureTime": "2017-12-12T23:05:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "12DEC17",
+          "TicketAdvisory": "TICKETS ARE NON REFUNDABLE AFTER DEPARTURE \nLAST TKT DTE 12DEC17  - DATE OF ORIGIN \nFARE VALID FOR E TICKET ONLY \n",
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "DXB",
+              "Airline": "H1",
+              "FareBasisCode": "LOW63",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "H1",
+          "ValidatingAirline": "HR",
+          "BaggageAllowance": "1 Unit(s)"
+        },
+        {
+          "ResultIndex": "OB13",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": null,
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 76085,
+            "Tax": 6805,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 0
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 20,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 20
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 82910,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 82910,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 38920,
+              "Tax": 3396,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 29495,
+              "Tax": 2925,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 7670,
+              "Tax": 484,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "TG",
+                  "AirlineName": "Thai Airways International",
+                  "FlightNumber": "318",
+                  "FareClass": "K",
+                  "OperatingCarrier": "TG"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-12T23:20:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BKK",
+                    "AirportName": "Bangkok Int'l",
+                    "Terminal": "",
+                    "CityCode": "BKK",
+                    "CityName": "Bangkok",
+                    "CountryCode": "TH",
+                    "CountryName": "Thailand"
+                  },
+                  "ArrTime": "2017-12-13T05:05:00"
+                },
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T05:05:00",
+                "StopPointDepartureTime": "2017-12-12T23:20:00",
+                "Craft": "747",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "30 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "TG",
+                  "AirlineName": "Thai Airways International",
+                  "FlightNumber": "517",
+                  "FareClass": "K",
+                  "OperatingCarrier": "TG"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BKK",
+                    "AirportName": "Bangkok Int'l",
+                    "Terminal": "",
+                    "CityCode": "BKK",
+                    "CityName": "Bangkok",
+                    "CountryCode": "TH",
+                    "CountryName": "Thailand"
+                  },
+                  "DepTime": "2017-12-13T16:20:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DXB",
+                    "AirportName": "Dubai",
+                    "Terminal": "1",
+                    "CityCode": "DXB",
+                    "CityName": "Dubai",
+                    "CountryCode": "AE",
+                    "CountryName": "United Arab Emirates"
+                  },
+                  "ArrTime": "2017-12-13T20:30:00"
+                },
+                "AccumulatedDuration": 1360,
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-13T20:30:00",
+                "StopPointDepartureTime": "2017-12-13T16:20:00",
+                "Craft": "777",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "12DEC17",
+          "TicketAdvisory": "PENALTY APPLIES \nLAST TKT DTE 12DEC17  - DATE OF ORIGIN \n",
+          "FareRules": [
+            {
+              "Origin": "BOM",
+              "Destination": "BKK",
+              "Airline": "TG",
+              "FareBasisCode": "KRLOWII3",
+              "FareRuleDetail": "",
+              "FareRestriction": "N"
+            },
+            {
+              "Origin": "BKK",
+              "Destination": "DXB",
+              "Airline": "TG",
+              "FareBasisCode": "KRLOWII3",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "TG",
+          "ValidatingAirline": "TG",
+          "BaggageAllowance": "30 KG"
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+﻿@model HotelierReviewViewModel
+
+<form asp-antiforgery="true" id="formHotelReview" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="HotelId" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <input type="hidden" asp-for="IsActive" />
+    <div class="form-group col-md-4">
+        <label asp-for="FName"></label>
+        <input asp-for="FName" class="form-control" type="text" placeholder="First Name" />
+        <span asp-validation-for="FName"></span>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label asp-for="LName"></label>
+        <input asp-for="LName" class="form-control" type="text" placeholder="Last Name" />
+        <span asp-validation-for="LName"></span>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label asp-for="Rating"></label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-fw fa-star"></i></span>
+            <input type="number" class="form-control" asp-for="Rating">
+        </div>
+        <span asp-validation-for="Rating"></span>
+    </div>
+    <div class="form-group col-md-12">
+        <label asp-for="Comment"></label>
+        <textarea asp-for="Comment" rows="5" style="width:100%;" placeholder="Comments (Max 300 Words)"></textarea>
+        <span asp-validation-for="Comment"></span>
+        <h6 class="pull-right counter"></h6>
+    </div>
+    <div class="form-group col-md-3">
+        <label asp-for="Rating_Cleanliness"></label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-fw fa-leaf"></i></span>
+            <input type="number" class="form-control" asp-for="Rating_Cleanliness">
+        </div>
+        <span asp-validation-for="Rating_Cleanliness"></span>
+    </div>
+    <div class="form-group col-md-3">
+        <label asp-for="Rating_Comfort"></label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-fw fa-bed"></i></span>
+            <input type="number" class="form-control" asp-for="Rating_Comfort">
+        </div>
+        <span asp-validation-for="Rating_Comfort"></span>
+    </div>
+    <div class="form-group col-md-3">
+        <label asp-for="Rating_Location"></label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-fw fa-map"></i></span>
+            <input type="number" class="form-control" asp-for="Rating_Location">
+        </div>
+        <span asp-validation-for="Rating_Location"></span>
+    </div>
+    <div class="form-group col-md-3">
+        <label asp-for="Rating_Value"></label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-fw fa-money"></i></span>
+            <input type="number" class="form-control" asp-for="Rating_Value">
+        </div>
+        <span asp-validation-for="Rating_Value"></span>
+    </div>
+    <div class="form-group col-md-6">
+        <label asp-for="UserRecommend"></label>
+        <input asp-for="UserRecommend" type="checkbox" class="minimal form-control">
+    </div>
+
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+</form>
+<script>
+    $(document).ready(function (e) {
+        $('input[type="checkbox"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue'
+        });
+        $('textarea').each(function (index, element) {
+            $(this).parent('div').find('h6').html($(this).val().length + "/300 Characters");
+            if ($(this).val().length > 300) {
+                $(this).parent('div').find('h6').css({ 'color': 'red' });
+            }
+            else {
+                $(this).parent('div').find('h6').css({ 'color': 'black' });
+            }
+        });
+        $(document).on('keyup', 'textarea', function (e) {
+            $(this).parent('div').find('h6').html($(this).val().length + "/300 Characters");
+            if ($(this).val().length > 300) {
+                $(this).parent('div').find('h6').css({ 'color': 'red' });
+            }
+            else {
+                $(this).parent('div').find('h6').css({ 'color': 'black' });
+            }
+        });
+    })
+</script>

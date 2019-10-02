@@ -1,0 +1,53 @@
+﻿@model DealsItineraryViewModel
+<form asp-antiforgery="true" id="formItinearyContent" method="post" enctype="multipart/form-data" style="margin-top:10px;">
+
+    <div class="form-group">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="NightId" />
+        <input type="hidden" asp-for="UpdatedBy" />
+        <input type="hidden" asp-for="UpdatedDate" />
+        <input type="hidden" asp-for="CreatedBy" />
+        <input type="hidden" asp-for="CreatedDate" />
+        <input type="hidden" asp-for="IsActive" />
+        <input type="hidden" asp-for="SubView" />
+
+        <div class="box-body">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label class="requiredItineary" asp-for="Title"></label>
+                    <input asp-for="Title" type="text" class="form-control" />
+                    <span asp-validation-for="Title"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="requiredItineary" asp-for="StartDay"></label>
+                    <input asp-for="StartDay" type="text" class="form-control" />
+                    <span asp-validation-for="StartDay"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="requiredItineary" asp-for="EndDay"></label>
+                    <input asp-for="EndDay" type="text" class="form-control" />
+                    <span asp-validation-for="EndDay"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="Days"></label>
+                    <input asp-for="Days" type="number" class="form-control" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="Nights"></label>
+                    <input asp-for="Nights" type="number" class="form-control" />
+                </div>
+            </div>
+        </div>
+        @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+    </div>
+</form>
+<script>
+$(document).ready(function (e) {
+    $(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+    $("[data-val-required]").parents('.form-group').find('.requiredItineary').not(".skip-required").each(function () {
+        if ($(this).find(".danger").length == 0) {
+            $(this).append('<span class="danger"> *</span>')
+        }
+    }); 
+});
+</script>

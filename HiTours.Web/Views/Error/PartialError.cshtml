@@ -1,0 +1,37 @@
+﻿@model ErrorHandler
+@{
+    var statusmessage = string.Empty;
+    System.Net.HttpStatusCode statusCode;
+
+    if (Enum.TryParse(this.Model.ErrorCode.ToString(), out statusCode))
+    {
+        switch (statusCode)
+        {
+            case System.Net.HttpStatusCode.NotFound:
+                statusmessage = "<img src='/images/404.jpg' />";
+                break;
+            case System.Net.HttpStatusCode.BadRequest:
+                statusmessage = "<div> BadRequest </div>";
+                break;
+            case System.Net.HttpStatusCode.InternalServerError:
+                statusmessage = "<img src='/images/500.jpg' />";
+                break;
+            default:
+                break;
+        }
+
+    }
+}
+
+
+<div class="wrapper">
+    <div class="container">
+        <div class="contact-us">
+            <div class="row">
+                <div class="col-md-12" align="center">
+                   @Html.Raw(statusmessage)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

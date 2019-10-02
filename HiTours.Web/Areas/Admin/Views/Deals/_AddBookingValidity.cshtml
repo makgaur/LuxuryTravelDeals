@@ -1,0 +1,48 @@
+﻿@model DealsBookingValidityViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+<tr>
+    @using (this.Html.BeginCollectionItem("DealsBookingValidityViewModels"))
+    {
+        <td>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="PackageId" />
+            <input type="hidden" asp-for="UpdatedBy" />
+            <input type="hidden" asp-for="UpdatedDate" />
+            <input type="hidden" asp-for="CreatedBy" />
+            <input type="hidden" asp-for="CreatedDate" />
+            <input type="hidden" asp-for="IsDeleted" class="delete_row" />
+            <div class="form-group col-md-12">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" asp-for="ValidFrom" class="form-control pull-right bookingvalidfrom datepicker">
+                    </div>
+                    <span asp-validation-for="ValidFrom"></span>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="form-group col-md-12">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" asp-for="ValidTo" class="form-control pull-right bookingvalidto datepicker">
+                    </div>
+                    <span asp-validation-for="ValidTo"></span>
+                </div>
+            </div>
+        </td>
+        <td valign="middle">
+            <a class="delete-item-row btn btn-block btn-danger" href="javaScript:void(0)"><i class="fa fa-trash-o"></i></a>
+        </td>
+    }
+</tr>
+<script>
+    //$(document).ready(function (e) {
+        
+    //});
+</script>

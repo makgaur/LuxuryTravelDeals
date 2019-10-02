@@ -1,0 +1,66 @@
+﻿@model List<TourPackageNightViewModel>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td class="text-center">@item.NoOfNights</td>
+        <td class="text-center">@item.PackagePrice.ToAmount()</td>
+        <td class="text-center">@item.PackageDiscountPrice.ToAmount()</td>
+        <td class="text-center">@item.DepositAmount.ToAmount()</td>
+        @*<td class="text-center">@(item.IsExtraNight ? "Yes" : "No")</td>*@
+
+        @*@if (item.TourPackageNightsValidity != null && item.TourPackageNightsValidity.Count > 0)
+        {
+            <td>@(Convert.ToDateTime(item.TourPackageNightsValidity.FirstOrDefault().RateValidFrom).ToString("dd/MM/yyyy"))</td>
+            <td>@(Convert.ToDateTime(item.TourPackageNightsValidity.FirstOrDefault().RateValidTo).ToString("dd/MM/yyyy"))</td>
+
+        }
+        else
+        {
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        }*@
+
+        <td class="text-center">
+            <a href="#view-package-night" class="btn btn-xs btn-warning replaceEdit" data-toggle="tab" data-href="@($"{Url.GetAdminUrl("tourpackage", "PackageNights")}/{item.Id}?tourpackagetype={this.ViewBag.TourPackageType}")">
+                <i class="fa fa-pencil-square-o"></i>
+            </a>
+
+            <a href="#" class="btn btn-xs btn-danger" data-toggle="tab" id="deletenight" data-href="@item.Id">
+                <i class="fa fa-trash-o"></i>
+            </a>
+        </td>
+    </tr>
+}
+<script>
+    $(function () {
+        $(document).on("click", ".replaceEdit", function () {
+            $(".replaceAdd").parent('li').addClass('active');
+            $(".replaceView").parent('li').removeClass('active');
+
+        });
+
+        $(document).off("click", '#deletenight')
+            .on("click", "#deletenight", function () {
+            var $tr = $(this);
+            var tourpackageid = $tr.data('href');
+            $.ajax({
+                url: '@Url.Action("DeletePackageNights")',
+                method: 'POST',
+                type: 'JSON',
+                data: { id: tourpackageid },
+                success: function (data)
+                {
+                    if (data == "success") {
+                      $tr.parents('tr').remove()
+                     swal('', 'Successfully Deleted', 'success');
+                    }
+                    else
+                    {
+
+                    }
+                 }
+            });
+        });
+    });
+</script>

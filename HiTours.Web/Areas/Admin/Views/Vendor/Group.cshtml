@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Vendor Groups";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    this.ViewBag.Title = "Vendor Groups";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/vendor/addgroup?id=0") })
+                </div>
+            </div>
+            @this.Html.Partial("_DataTableGrid")
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        $(function () {
+            BindGrid({
+                url: "@Url.Action("Group")",
+                columns: [
+                    { "data": "Name", "title": "Name", "type": "string" },
+                    { "data": "Address", "title": "Address", "type": "string" },
+                    { "data": "ContactPerson", "title": "Contact Person", "type": "string" },
+                    { "data": "WorkPhone", "title": "Work Phone", "type": "string" },
+                    { "data": "Email", "title": "Email", "type": "string" },
+                    @*{ "data": "Country", "title": "Country", "type": "string" },
+                    {
+                        "data": "IsActive",
+                        "title": " Active Status",
+                        "class": "text-center",
+                        "type": "bool", "width": '15%', mRender: function (data, type, record) {
+                            var url = '@Url.GetAdminUrl("Vendor", "ChangeActiveStatus")/' + record.Id;
+                            return appendToggleCheckBox(url, record.IsActive, 'Successfully Activated', 'Successfully DeActivated')
+                        }
+                    },*@
+                    {
+                        "data": null, "title": "Action",
+                        "targets": -1,
+                        "width": '15%',
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                            var action = "";
+                            action += '<a class="form-control btn-success" href="@Url.GetAdminUrl("Vendor", "AddGroup")?id=' + record.Id + '"><i class="fa fa-edit"></i>&nbsp;</a>';
+                            action += '<a class="form-control btn-danger delete-row" data-delete href="@Url.GetAdminUrl("Vendor", "deletevendorgroup")/' + record.Id+ '"><i class="fa fa-trash-o"></i>&nbsp;</a>';
+                            
+                            return action;
+                        }
+                    }]
+            });
+        });
+
+    </script>
+}

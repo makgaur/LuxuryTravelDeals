@@ -1,0 +1,139 @@
+﻿@{
+    CurationLayoutViewModel model = this.ViewBag.CurationBanner;
+}
+<style>
+    /*.slick-slide {
+        text-align: center;
+        color: #419be0;
+        background: red;
+        margin: 10px;
+    }*/
+</style>
+@if (model != null)
+{
+    <div class="curation-container">
+        <div class="curation-heading">
+           <span class="curation-heading-text">Curated for You</span>
+        </div>
+        <div class="curation-content">
+            <div class="curation-row">
+                @{ string url = model.OneXTwo.Url;}
+
+                <div class="content-1x2">
+                    <a href="@url" target="_blank">
+                        <div class="curation-image">
+                            @{string imgSrc = "/CurationImages/" + model.OneXTwo.Image;}
+                            <img asp-append-version="true" class="" width="385" height="515" src="@imgSrc" alt="@(string.IsNullOrEmpty(model.OneXTwo.Line1)?"curation-image":model.TwoXTwo.Line1)" />
+                            <div class="curation-text">
+                                @{
+                                    string title1 = model.OneXTwo.Line1;
+                                    string title2 = model.OneXTwo.Line2;
+                                }
+                                <h3 class="top-heading-style"><span class="title1">@title1</span></h3>
+                                <span class="title2">@title2</span>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+                @{ url = model.TwoXTwo.Url;}
+
+                <div class="content-2x2">
+                    <a href="@url" target="_blank">
+                        <div class="curation-image">
+                            @{imgSrc = "/CurationImages/" + model.TwoXTwo.Image;}
+                            
+                            <img asp-append-version="true" class="" width="785" height="515" src="@imgSrc" alt="@(string.IsNullOrEmpty(model.TwoXTwo.Line1)?"curation-image":model.TwoXTwo.Line1)"/>
+                            
+                            <div class="curation-text-container">
+                                @*<div class="curation-text-top">
+                                    @{
+                                        title1 = model.TwoXTwo.Line1;
+                                        title2 = model.TwoXTwo.Line2;
+                                        string title3 = model.TwoXTwo.Line3;
+                                        string title4 = model.TwoXTwo.Line4;
+                                    }
+                                    <span class="title1">@title1</span>
+                                    <span class="title2">@title2</span>
+                                    
+                                </div>
+                                <div class="curation-text-bottom">
+                                    <span class="title3">@title3</span>
+                                    <span class="title4">@title4</span>
+                                   
+                                </div>*@
+                                <div class="curation-learn-more">
+                                    <span class="title-learn-more">
+                                        Learn More<img class="icon" src="~/images/Chevron_Right-white.png" alt="right-white-icon"/>
+                                    </span>
+                                    @*<div class="clearer"></div>*@
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                    </a>
+                </div>
+            </div>
+            @if (model.OneXOne.Count > 2)
+            {
+
+                <div class="curation-row hidden-xs">
+                    @foreach (var item in model.OneXOne)
+                    {
+                        <div class="content-1x1">
+                            <a href="@item.Url" target="_blank">
+                                <div class="curation-image">
+                                    @{imgSrc = "/CurationImages/" + item.Image;}
+                                    <img class="img-responsive" width="385" height="250" src="@imgSrc" alt="@title1" />
+                                    <div class="curation-text">
+                                        @{
+                                            title1 = item.Line1;
+                                            title2 = item.Line2;
+                                        }
+                                        <h3 class="top-heading-style"><span class="title1">@title1</span></h3>
+                                        <span class="title2">@title2</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+                <div class="hidden-sm hidden-md hidden-lg">
+                    <div class="carousel-slick">
+                        @foreach (var item in model.OneXOne)
+                        {
+                            <div class="content-1x1">
+                                <a href="@item.Url" target="_blank">
+                                    <div class="curation-image">
+                                        @{imgSrc = "/CurationImages/" + item.Image;}
+                                        <img class="img-responsive" width="385" height="250" src="@imgSrc" alt="@title1" />
+                                        <div class="curation-text">
+                                            @{
+                                                title1 = item.Line1;
+                                                title2 = item.Line2;
+                                            }
+                                            <h3 class="top-heading-style"><span class="title1">@title1</span></h3>
+                                            <span class="title2">@title2</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+
+                        @*<div><h3>1</h3></div>
+                            <div><h3>2</h3></div>
+                            <div><h3>3</h3></div>
+                            <div><h3>4</h3></div>
+                            <div><h3>5</h3></div>
+                            <div><h3>6</h3></div>*@
+
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+
+}

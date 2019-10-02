@@ -1,0 +1,65 @@
+﻿@model SendChange
+@{  this.ViewBag.Title = "Send Change Request";}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+            </div>
+            <form asp-antiforgery="true" method="post">
+                <div class="box-body">
+                    <div class="form-group col-sm-4">
+                        <label asp-for="EndUserIp"></label>
+                        <input type="text" asp-for="EndUserIp" data-autocomplete="EndUserIp" class="form-control" />
+                        <span asp-validation-for="EndUserIp"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="TokenId"></label>
+                        <input type="text" asp-for="TokenId" data-autocomplete="TokenId" class="form-control" />
+                        <span asp-validation-for="TokenId"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="BookingId"></label>
+                        <input type="text" asp-for="BookingId" data-autocomplete="BookingId" class="form-control" />
+                        <span asp-validation-for="BookingId"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="RequestType"></label>
+                        <select class="form-control " asp-for="RequestType" asp-items="@Html.EnumSelectList<RequestType>()"></select>
+                        <span asp-validation-for="RequestType"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="CancellationType"></label>
+                        <select class="form-control " asp-for="CancellationType" asp-items="@Html.EnumSelectList<CancellationType>()"></select>
+                        <span asp-validation-for="CancellationType"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="Sector.TicketId"></label>
+                        <input type="text" asp-for="Sector.TicketId" class="form-control" />
+                        <span asp-validation-for="Sector.TicketId"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="Sector.Origin"></label>
+                        <input type="text" asp-for="Sector.Origin" class="form-control" />
+                        <span asp-validation-for="Sector.Origin"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="Sector.Destination"></label>
+                        <input type="text" asp-for="Sector.Destination"class="form-control" />
+                        <span asp-validation-for="Sector.Destination"></span>
+                    </div>
+                   
+                    <div class="form-group col-sm-4">
+                        <label asp-for="Sector.Remarks"></label>
+                        <input type="text" asp-for="Sector.Remarks" class="form-control" />
+                        <span asp-validation-for="Sector.Remarks"></span>
+                    </div>
+                </div>
+                <div class="box-footer" align="center">
+                    <button type="submit" class="btn btn-primary">Get Result</button>
+                </div>
+            </form>
+        </div>
+        @Html.Partial("_ApiResult")
+    </div>
+</div>

@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewData["Title"] = "Manage";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    this.ViewBag.Title = "Currency";
+}
+
+@model PackageCurrencyViewModel
+
+<style>
+    .currency-code{
+        text-transform:uppercase;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.ViewList, "/admin/currency/index") })
+                </div>
+            </div>
+            <form asp-antiforgery="true" method="post">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="Symbol">
+                <input type="hidden" asp-for="IsActive">
+                <input type="hidden" asp-for="UpdatedBy" />
+                <input type="hidden" asp-for="UpdatedDate" />
+                <input type="hidden" asp-for="CreatedBy" />
+                <input type="hidden" asp-for="CreatedDate" />
+                <div class="box-body">
+                    <div class="form-group col-sm-6">
+                        <label asp-for="Name"></label>
+                        <input class="form-control" type="text" asp-for="Name" />
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="Code"></label>
+                        <input class="form-control currency-code" type="text" asp-for="Code" />
+                        <span asp-validation-for="Code"></span>
+                    </div>
+                    @**@
+                    <div class="form-group col-sm-6">
+                        <label asp-for="Country"></label>
+                        <select asp-for="Country" select2-placeholder="-Select Country-" select2-value="@Model.Country" selected="@Model.Country" class="form-control" asp-items="Model.CountryList"
+                                select2-Url="/selectlist/GetPackageCountryList"></select>
+                        <span asp-validation-for="Country"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="ExchangeRate"></label>
+                        <input class="form-control" type="text" asp-for="ExchangeRate" />
+                        <span asp-validation-for="ExchangeRate"></span>
+                    </div>
+                    <div class="col-xs-12">
+                        <span>Example: Exchange Rate for USD = 69(IE: 1 USD = 69 Rupees)</span>
+                    </div>
+                </div>
+                @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit) })
+            </form>
+        </div>
+    </div>
+</div>
+@section scripts
+    {
+    <script>
+        $('.country').on('change', function () {
+            var options = $(".country").data('select2').data() || [];
+            if (options.length > 0 && options[0] && options[0].hasOwnProperty("Description"))
+            {
+                var description = options[0].Description;
+                $("#Description").val(description !== null ? description : '');
+            }
+        })
+    </script>
+}

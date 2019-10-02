@@ -1,0 +1,115 @@
+﻿@{ this.ViewBag.Title = "Users List"; }
+@model UserDetailModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                @*<div class="pull-right top-buttons">
+                        @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/category/manage") })
+                    </div>*@
+            </div>
+            @this.Html.Partial("_DataTableGrid")
+        </div>
+    </div>
+
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+            BindGrid({
+                url: "@Url.Action("Index")",
+                columns: [
+                    { "data": "FirstName", "title": "Name", "type": "string" },
+                    { "data": "EmailId", "title": "Email", "type": "string" },
+                    { "data": "MobileNo", "title": "Mobile No", "type": "string" },
+                    {
+                        "data": "IsActive",
+                        "title": " Active Status",
+                        "class": "text-center",
+                        "type": "bool", "width": '15%', mRender: function (data, type, record) {
+                            var url = '@Url.GetAdminUrl("users","ChangeActiveStatus")/' + record.Id;
+                            return appendToggleCheckBox(url, record.IsActive, 'Successfully Activated', 'Successfully DeActivated')
+                        }
+                    },
+                        {
+                        "data": null, "title": "Action",
+                        "targets": -1,
+                        "width": '12%',
+                        "class": "column-action text-center pdf-font",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                            var action = "";
+                            action += '<span data-toggle="tooltip" data-title="User Details"><a data-model="modal" class="btn btn-primary btn-xs" href="@Url.GetAdminUrl("users", "GetUserDeatils")/' + record.Id + '"><i class="fa fa-eye" aria-hidden="true"></i></a></span>';
+                            return action;
+
+                    }
+                    }
+                ]
+            });
+            setTimeout(function () {
+                bindDataModel();
+                $('[data-toggle="tooltip"]').tooltip();
+            }, 1000);
+            $('.dataTables_paginate').click(function () {
+                setTimeout(function () {
+                    bindDataModel();
+                    $('[data-toggle="tooltip"]').tooltip();
+                }, 1000);
+            })
+        });
+
+    </script>
+}
+
+<script>
+    function bindDataModel() {
+        $("a[data-model='modal']").on("click", function (e) {
+            var title = $(this).attr('data-title') ? $(this).attr('data-title') : "Modal";
+            $('#myModalContent').html("<div class='modal-header custom-modal-header'><button type='button' class='close' data-dismiss='modal' aria-hidden='true'>x</button>" +
+                "<h3 class='modal-title'>" + title + "</h3></div>" +
+                "<div class='modal-body'><div style='text-align:center;width: 50px;margin: auto;'></div></div>");
+            $('#myModal1').modal({ backdrop: 'static', keyboard: false }, 'show');
+            $(e.target).closest('.btn-group').children('.dropdown-toggle').dropdown('toggle');
+            $('#myModalContent').load(this.href, function (response, status, xhr) {
+                if (status == 'error') { $('#myModal1').modal('hide'); }
+                bindForm(this);
+            });
+            return false;
+        });
+    }
+    function bindForm(dialog) {
+        $('form', dialog).submit(function (e) {
+            e.preventDefault();
+            var form = $(this);
+            var formData = new FormData($(this)[0]);
+            if (!form.valid || form.valid()) {
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    contentType: false,
+                    processData: false,
+                    data: formData,
+                    success: function (result) {
+                        if (result.success) {
+                            if (result.url) {
+                                $('#myModal1').modal('hide');
+                                location = result.url;
+                            }
+                            else {
+                                $('#myModal1').modal('hide');
+                            }
+                        } else {
+                            $('#myModalContent').html(result);
+                            bindForm();
+                        }
+                    }
+
+                });
+            }
+            return false;
+        });
+    }
+</script>

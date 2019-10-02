@@ -1,0 +1,148 @@
+﻿
+@{this.Layout = "~/Views/Shared/_LayoutFlightSearch.cshtml";}
+
+<div class="middle white-clr">
+    <section class="flight-page">
+        <div class="top-flight-part">
+            <div class="container" data-flight="search-criteria">
+                <div class="box">
+                    <div class="overlay">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="container">
+                <div class="flt-filter">
+                    <ul>
+                        <li><i class="flters-icon"></i></li>
+                        <li>
+                            <a href="#"> <span class="display-set"> <i class="watch-icon"></i> <span>Time</span> <i class="fa fa-chevron-down" aria-hidden="true"></i> </span> </a>
+                            <div class="depart-time">
+                                <h5>Depart Time</h5>
+                                <div class="depart-time-list active"> <i class="sun-down-icon"></i> <span>Before 11AM</span> </div>
+                                <div class="depart-time-list"> <i class="sun-up-icon"></i> <span>11AM- 5AM</span> </div>
+                                <div class="depart-time-list"> <i class="moon-icon"></i> <span>5AM- 9AM</span> </div>
+                                <div class="depart-time-list"> <i class="after-nine-icon"></i> <span>After 9</span> </div>
+                            </div>
+                        </li>
+                        <li> <a href="#"> <span class="display-set"> <i class="stop-icon"></i> <span>Stops</span> <i class="fa fa-chevron-down" aria-hidden="true"></i> </span> </a> </li>
+                        <li>
+                            <a href="#"> <span class="display-set"> <i class="airlines-icon"></i> <span>Airlines</span> <i class="fa fa-chevron-down" aria-hidden="true"></i> </span> </a>
+                            <div class="airlines col-sm-3">
+                                <ul>
+                                    <li>
+                                        <span class="air-list">
+                                            <input type="checkbox" checked="">
+                                            <label>All Airlines</label>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="air-list">
+                                            <input type="checkbox">
+                                            <label>Air India</label>
+                                            <span class="air-count">(10 Flights)</span>
+                                        </span> <span class="air-list-price"><i class="fa fa-inr" aria-hidden="true"></i> 5000</span>
+                                    </li>
+                                    <li>
+                                        <span class="air-list">
+                                            <input type="checkbox">
+                                            <label>Indigo</label>
+                                            <span class="air-count">(7 Flights)</span>
+                                        </span> <span class="air-list-price"><i class="fa fa-inr" aria-hidden="true"></i> 5000</span>
+                                    </li>
+                                    <li>
+                                        <span class="air-list">
+                                            <input type="checkbox">
+                                            <label>Jet Airways</label>
+                                            <span class="air-count">(40 Flights)</span>
+                                        </span> <span class="air-list-price"><i class="fa fa-inr" aria-hidden="true"></i> 5000</span>
+                                    </li>
+                                    <li>
+                                        <span class="air-list">
+                                            <input type="checkbox">
+                                            <label>Spicejet</label>
+                                            <span class="air-count">(4 Flights)</span>
+                                        </span> <span class="air-list-price"><i class="fa fa-inr" aria-hidden="true"></i> 5000</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li> <a href="#"> <span class="display-set"> <i class="price-icon"></i> <span>Price</span> <i class="fa fa-chevron-down" aria-hidden="true"></i> </span> </a> </li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="position:relative;clear:both;" class="flight-section">
+            <div class="container">
+                <div class="flights" data-flight="flight-list" style="min-height:400px!important">
+                    <div class="box">
+                        <div class="overlay">
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+<style>
+    .flightProcess {
+        box-shadow: none !important;
+        padding: 0px !important;
+    }
+
+    .flight_view_card {
+        margin-bottom: 30px;
+    }
+
+    .selectedFlightBox .result_selectFlight .airline_details {
+        padding-top: 0px;
+    }
+
+    #selectedFlights {
+        background: #ffffff;
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        transition: 1s;
+        height: auto !important;
+    }
+
+    .affix {
+        position: fixed;
+        top: 0px;
+        left: 0;
+        background: #fff;
+        margin: 0;
+    }
+
+    .change-flight {
+        display: inline-block;
+        text-align: center;
+        background: #f3f3f3;
+        padding: 0px 10px;
+        color: #f06c0a;
+        border-radius: 3px;
+        font-size: 0.9em;
+        position: absolute;
+        bottom: 5px;
+        right: 30px;
+    }
+
+   
+    .change-flight:hover {
+     cursor:pointer;
+    }
+
+    .width_100.options_details.fullWidth.float_left {
+        padding: 10px;
+    }
+    .tab-pane .width_50 {
+        width: 30%;
+    }
+</style>

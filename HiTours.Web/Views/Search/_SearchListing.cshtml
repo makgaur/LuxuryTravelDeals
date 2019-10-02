@@ -1,0 +1,59 @@
+﻿@model List<PackageCurationViewModel>
+
+@if (Model != null && Model.Count > 0)
+{
+    for (int i = 0; i < Model.Count; i++)
+    {
+        var item = Model[i];
+<a href="/@(item.IsHotel ? "Hotel" : "Holiday")/@item.Url">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xs-12 no-padding-left-right">
+        <div class="deal-card">
+            <div class="deal-card-image">
+                <img class="card-image search-deal-card-image" src="~/DealImages/@item.Image" alt="card-image" />
+                <div class="image-caption">
+                    <p class="discount">@(item.Discount == 0 ? string.Empty : "Up to " + item.Discount.ToAmount() + "% Off")</p>
+                    <p class="deal-type">@item.DealType</p>
+                </div>
+            </div>
+            <div class="deal-card-information">
+                <div class="deal-cities">
+                    <ul>
+                        @foreach (var subItem in item.Cities)
+                        {
+                            <li>@subItem</li>
+                        }
+                    </ul>
+                </div>
+                <div class="deal-name">
+                    @item.DealName
+                </div>
+                <div class="deal-amenities">
+                    @foreach (var subItem in item.Ameneties)
+                    {
+                        if (subItem.Key)
+                        {
+                            <span><b>@subItem.Value</b></span>
+                        }
+                        else
+                        {
+                            <span>@subItem.Value</span>
+                        }
+                    }
+
+                    @*<span>Full Service Spa</span>
+        <span>Private Airport Transfers</span>*@
+                </div>
+                <div class="deal-rate">
+                    <ul>
+                        <li>Starting ₹@Math.Round(item.MinPrice, MidpointRounding.AwayFromZero).ToAmount() @(item.IsHotel ? "per person" : "per person")</li>
+                        <li>@item.MinNights Nights</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+
+    }
+
+}

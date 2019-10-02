@@ -1,0 +1,26 @@
+﻿@model IEnumerable<HotelRoomTypeViewModel>
+@if (this.Model != null && this.Model.Count() > 0)
+{
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Room Type</th>
+                <th>Room Price</th>
+                @*<th>Validity</th>*@
+                <th>Rooms Per Day</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="width:50%">@item.RoomType</td>
+                    <td data-double-cost>@(item.DoubleCost + item.MarkUpAmount)</td>
+                    <td >@item.RoomPerDay <input type="hidden" data-date-from="@item.ValidityFrom.ToString("MM/dd/yyyy")" data-date-to="@item.ValidityTo.ToString("MM/dd/yyyy")" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+ 

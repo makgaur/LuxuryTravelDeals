@@ -1,0 +1,245 @@
+﻿@model AirSearchResponse
+<style>
+    .slider-track {
+        border: solid 1px;
+    }
+
+    .slider-selection {
+        background-color: rgb(151, 62, 148);
+        background-image: none !important;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        var speedhandle = $("#speed-slider .custom-handle");
+        $("#speed-slider").slider({
+            range: "max",
+            max: 200000,
+            value: [0, 50000],
+            slide: function (event, ui) {
+                speedhandle.text(ui.value);
+            },
+            change: function (event, ui) {
+                speedhandle.text(ui.value);
+                $('input[name="speed"]').val($(this).slider("value"));
+                $('#frm').trigger('change');
+            }
+        });
+    });
+</script>
+@try
+{
+    if (Model == null || Model.Response == null || Model.Response.Results.GetLength(0) == 0)
+    {
+        <div class="no-flight-result">
+            <span class="no-flight-text">No Flights Found. Change Dates or Research Flights</span>
+        </div>
+        <div class="no-flights-btn">
+            <button class="btn-reload-flights" type="button"><i class="fa fa-refresh"></i> Research Flights</button>
+        </div>
+    }
+    else
+    {
+        <div class="flight-filters">
+            <div class="row rows">
+                @*<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        <span class="filter-name">Cabin Class</span>
+                        <div class="ltd-select-small filter-value">
+                            <select select2-stop-render="true" id="cabin-class-select" onchange="">
+                                <option value="0">All</option>
+                                <option value="1">Economy</option>
+                                <option value="2">Premium Economy</option>
+                                <option value="3">Business</option>
+                                <option value="4">Premium Business</option>
+                            </select>
+                        </div>
+                    </div>*@
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <span class="filter-name">stopovers</span>
+                    <div class="filter-value">
+                        <select multiple="multiple" class="bootstrap-multiselect" select2-stop-render="true" id="ddlFlightStopOver">
+                            <option value="0">Non Stop</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <span class="filter-name">Airlines</span>
+                    <div class="filter-value">
+                        <select id="ddlPreferedAirlines" class="bootstrap-multiselect" select2-stop-render="true" multiple="multiple">
+                            @{
+                                List<Tuple<string, string>> airlineData1 = Model.Response.Results[0]
+                                                                        .SelectMany(x => x.Segments.Select(y => new Tuple<string, string>(y.FirstOrDefault().Airline.AirlineCode, y.FirstOrDefault().Airline.AirlineName))).Distinct().ToList();
+                                if (Model.Response.Results.Length > 1)
+                                {
+                                    List<Tuple<string, string>> airlineData2 = Model.Response.Results[1]
+                                                                            .SelectMany(x => x.Segments.Select(y => new Tuple<string, string>(y.FirstOrDefault().Airline.AirlineCode, y.FirstOrDefault().Airline.AirlineName))).Distinct().ToList();
+
+                                    airlineData1.AddRange(airlineData2.Where(x => !airlineData1.Contains(x)).ToList());
+                                }
+                            }
+                            @foreach (Tuple<string, string> item in airlineData1)
+                            {
+                                <option value="@item.Item1">@item.Item2</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <span class="filter-name">Prices</span>
+                    <div class="filter-value">
+                        <div class="card">
+                            <div class="slider" id="speed-slider">
+                                <div class="custom-handle ui-slider-handle"></div>
+                            </div>
+                            <span id="minpricerange" class="padding-left-10">0</span> - <span id="maxpricerange" class="padding-left-10">50000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row rows">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <span class="filter-name">Onward Timings</span>
+                    <div class="ltd-select-small filter-value">
+                        <select id="flightTime" select2-stop-render="true">
+                            <option value="0">All</option>
+                            <option value="1">(3AM - 9AM)</option>
+                            <option value="2">(9AM - 3PM)</option>
+                            <option value="3">(3PM - 9PM)</option>
+                            <option value="4">(9PM - 3AM)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <span class="filter-name">Return Timings</span>
+                    <div class="ltd-select-small filter-value">
+                        <select id="ddlreturnflightTime" select2-stop-render="true">
+                            <option value="0">All</option>
+                            <option value="1">(3AM - 9AM)</option>
+                            <option value="2">(9AM - 3PM)</option>
+                            <option value="3">(3PM - 9PM)</option>
+                            <option value="4">(9PM - 3AM)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="padding-right:0px;">
+                    <span class="filter-name">Facilities/Options</span>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 check-filter">
+                        <label class="checkbox-container">
+                            <input id="chkRefundable" type="checkbox" name="chkRefundable">
+                            <span class="checkmark" style="margin-top:4px;"></span>
+                        </label>
+                        <span class="filter-check">Refundable</span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-left-padd">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-left-padd">
+                <p>SELECT FLIGHTS</p>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 sort-flights">
+                @*<div class="dropdown dropdown-toggle dropdown-list-icon" style="float:right;">
+                        <span data-toggle="dropdown" class="sort-flights">
+                            SORT BY:PRICE—LOW TO HIGH
+                            <img src="~/images/Chevron_Down.svg" alt="down_icon" />
+                        </span>
+                        <ul class="dropdown-menu filter-sortby" style="float:right;">
+                            <li class="">PRICE—HIGH TO LOW</li>
+                        </ul>
+                    </div>*@
+            </div>
+        </div>
+        <div id="flights-sub-result">
+            @this.Html.Partial("_FlightSearchResult", Model)
+        </div>
+
+    }
+}
+catch (Exception ex)
+{
+    var msg = ex.ToString();
+}
+<script src="~/js/custom-dropdown-small.js"></script>
+
+<script>
+    var priceRange;
+    $(document).ready(function (e) {
+        $('.bootstrap-multiselect').multiselect();
+        //priceRange = $('.price-range').slider({
+        //    formatter: function (value) {
+        //        var stringValue = '₹' + parseFloat(value[0]).toLocaleString('hi') + " : ₹" + parseFloat(value[1]).toLocaleString('hi')
+        //        return stringValue;
+        //    }
+        //}).on('slideStop', function (ev) {
+        //
+        //    $('.show-more-button-div').addClass('hidden');
+        //    var value = $('.price-range').data('slider').getValue();
+        //    var min = value[0];
+        //    var max = value[1];
+        //    if ($('.price-range').data('slider').getAttribute('min') == min && $('.price-range').data('slider').getAttribute('max') == max) {
+        //        $('.show-more-button-div').removeClass('hidden');
+        //        $(".flight-result-single").each(function (index, element) {
+        //            if (index >= 0 && index < 5) {
+        //                $(element).removeClass('hidden');
+        //            }
+        //            else {
+        //                $(element).addClass('hidden');
+        //            }
+        //        });
+        //        return;
+        //    }
+        //    $('.flight-result-single').each(function (index, element) {
+        //        var price = parseFloat($(element).data('price'));
+        //        if (price >= min && price <= max) {
+        //            $(element).removeClass('hidden');
+        //        }
+        //        else {
+        //            $(element).addClass('hidden');
+        //        }
+        //    });
+
+        //});
+    });
+    //flight  Booking
+    $('.showmore').click(function () {
+        var _target = $(this).data('target');
+        var _toggleTarget = $(this).data('toggle-target');
+        var _closeall = $('.showless.active');
+        if (_closeall.hasClass('active')) { _closeall.click(); }
+        $(_target).removeClass('hidden').addClass('active');
+        $(_toggleTarget).removeClass('active').addClass('hidden');
+        var _cont = $(_target).find('.tabbutton.result-header').first();
+        $(_cont).click();
+    });
+    $('.showless').click(function () {
+        var _target = $(this).data('target');
+        var _toggleTarget = $(this).data('toggle-target');
+        $(_target).removeClass('hidden').addClass('active');
+        $(_toggleTarget).removeClass('active').addClass('hidden');
+    });
+
+    var counter = 0;
+    function CallMe() {        
+        var div = document.getElementById('flights-sub-result').getElementsByClassName("flight-result-single hidden");
+        var count = 1;
+        $.each(div, function (index, value) {            
+            var y = $("." + value.className.split(' ')[1]);
+            y.removeClass("hidden");
+            count++;
+            if (count > 5) {
+                return false;
+            }
+        });
+
+        if (div.length == 0) {
+            $(".button_load").addClass("hidden");
+        }        
+    }
+
+</script>

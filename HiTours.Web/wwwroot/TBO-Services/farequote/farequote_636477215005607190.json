@@ -1,0 +1,19 @@
+//-- farequote Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "2d627a31-b3e8-4e6a-b0eb-82d9ff6b386c",
+  "TraceId": "78c69115-1ca4-459d-8405-f35c40ecb1c3",
+  "ResultIndex": "OB7"
+}
+//-- farequote Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 6,
+      "ErrorMessage": "Your session (TraceId) is expired."
+    },
+    "IsPriceChanged": false,
+    "ResponseStatus": 4,
+    "TraceId": "78c69115-1ca4-459d-8405-f35c40ecb1c3"
+  }
+}

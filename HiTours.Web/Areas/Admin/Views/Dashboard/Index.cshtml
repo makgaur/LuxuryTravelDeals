@@ -1,0 +1,37 @@
+﻿@{
+    this.ViewBag.Title = "Dashbord";
+}
+<div class="row">
+    <!-- Hotel Bookings-->
+    <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>@(this.ViewBag.TotalNewBookings ?? 0)</h3>
+                <p>New Booking</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-hotel"></i>
+            </div>
+            <a href="@Url.Content("/admin/report/booking")" class="small-box-footer">
+                More info
+                <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
+    <!-- UserS -->
+    <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-green">
+            <div class="inner">
+                <h3>@(this.ViewBag.TotalUsers ?? 0)</h3>
+                <p>Total Users</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-user-plus"></i>
+            </div>
+            <a href="@Url.Content("/admin/users")" class="small-box-footer">
+                More info
+                <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>

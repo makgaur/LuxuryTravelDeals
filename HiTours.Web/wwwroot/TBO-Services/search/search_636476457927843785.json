@@ -1,0 +1,49 @@
+//-- search Api Request --
+{
+  "EndUserIp": "203.153.42.102",
+  "TokenId": "8cbd26f3-023a-4555-b3d0-d0ef647a5da3",
+  "AdultCount": 1,
+  "ChildCount": 0,
+  "InfantCount": 0,
+  "DirectFlight": false,
+  "OneStopFlight": false,
+  "JourneyType": 1,
+  "PreferredAirlines": [
+    "Air India",
+    "SpiceJet",
+    "Go Air",
+    "Air Arabia",
+    "Fly Dubai",
+    "Air India Express",
+    "Air Asia",
+    "Air Costa"
+  ],
+  "Segments": [
+    {
+      "Origin": "DEL",
+      "Destination": "BOM",
+      "FlightCabinClass": 1,
+      "PreferredDepartureTime": "2017-12-01T00:00:00",
+      "PreferredArrivalTime": "2017-12-01T00:00:00"
+    },
+    {
+      "Origin": "BOM",
+      "Destination": "DEL",
+      "FlightCabinClass": 1,
+      "PreferredDepartureTime": "2017-12-01T00:00:00",
+      "PreferredArrivalTime": "2017-12-01T00:00:00"
+    }
+  ],
+  "Sources": null
+}
+//-- search Api Response --
+{
+  "Response": {
+    "ResponseStatus": 3,
+    "Error": {
+      "ErrorCode": 3,
+      "ErrorMessage": "Invalid segment length."
+    },
+    "TraceId": "295757c8-90e8-4849-99b4-58bb1d4784c0"
+  }
+}

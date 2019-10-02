@@ -1,0 +1,260 @@
+﻿@using HiTours.Data.DataBase.Model
+
+
+<style>
+    .row {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+</style>
+
+@*Updated footer with fresh code using less*@
+@if (!this.ViewBag.IsMobileView)
+{
+    <footer class="hidden-xs">
+        <div class="container-fluid footer-gutter">
+            <div class="row footer-row">
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    <h3 class="footer_heading">Destinations <span class="hidden-lg hidden-md hidden-sm pull-right"><i class="fa fa-angle-down"></i></span></h3>
+                    <ul class="footer_list country_destinations">
+                        @{
+                            List<PackageCountryModel> countryDestination = this.ViewBag.TopCountryDestinations as List<PackageCountryModel>;
+                        }
+                        @for (int i = 0; i < countryDestination.Count; i++)
+                        {
+                        <li data-text="@countryDestination[i].Name" data-value="@countryDestination[i].Id">@countryDestination[i].Name.ToLower()</li>
+                        }
+                    </ul>
+                </div>
+                <hr class="hidden-lg hidden-md hidden-sm footer-hr">
+
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    <h3 class="footer_heading">Top Styles <span class="hidden-lg hidden-md hidden-sm pull-right"><i class="fa fa-angle-down"></i></span></h3>
+                    <ul class="footer_list interests_lists">
+                        @{
+                            List<PackageTravelStyleModel> travelStyles = this.ViewBag.FrequentTravelStyles as List<PackageTravelStyleModel>;
+                        }
+                        @for (int i = 0; i < travelStyles.Count; i++)
+                        {
+                        <li data-text="@travelStyles[i].Name" data-value="@travelStyles[i].Id">@travelStyles[i].Name</li>
+                        }
+
+                        @*<li data-text="Party Vibes" data-value="4">Party Vibes</li>
+                        <li data-text="Beach Destinations" data-value="8">Beach Destinations</li>
+                        <li data-text="Spa-cation" data-value="7">Spa-cation</li>
+                        <li data-text="Camping Retreats" data-value="11">Camping Retreats</li>
+                        <li data-text="Hills" data-value="6">Hills</li>
+                        <li data-text="Weekend Getaways" data-value="2">Weekend Getaways</li>*@
+
+                    </ul>
+                </div>
+                <hr class="hidden-lg hidden-md hidden-sm footer-hr">
+
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    <h3 class="footer_heading">Get in Touch <span class="hidden-lg hidden-md hidden-sm pull-right"><i class="fa fa-angle-down"></i></span></h3>
+                    <ul class="footer_list">
+                        <a href="@Url.Action("ContactUs","Home")"><li>Contact Us</li></a>
+                        <a href="#"><li>Blog</li></a>
+                        <a href="@Url.Action("AboutUsPage","Home")"><li>About Us</li></a>
+                        @*<a href="#"><li>Group Travel Inquiry</li></a>*@
+                        <a href="@Url.Action("Policies","Home")"><li>Policy</li></a>
+                        <a href="@Url.Action("Careers","Home")"><li>Careers</li></a>
+                    </ul>
+                </div>
+                <hr class="hidden-lg hidden-md hidden-sm footer-hr">
+
+                <div class="col-sm-6 col-md-6 col-lg-6 footer_subscribe subscribe_padding no-right-padd">
+                    <h3 class="footer_heading">Subscribe</h3>
+                    <hr class="hidden-lg hidden-md hidden-sm footer-hr-2 ">
+
+                    <ul class="footer_list mobile_footer">
+                        <li>Get exclusive 20% off on trips and hotels</li>
+                        <li><input type="text" id="email" name="emil" placeholder="Enter your email address"></li>
+                        <li>By subscribing to our mailing list you agree to accept our <a href="@Url.Action("Policies","Home")"  class="footer-policy-text" >Privacy Policy.</a> You can unsubscribe from the mailing list any time you like.</li>
+                        <li><button type="button" class="btn btn-primary1 btn-lg1">SUBSCRIBE</button></li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr class="hr-separate">
+
+        <div class="container-fluid footer_bottom">
+            <div class="row">
+                <a href="/">
+                    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 logo_text footer_padding opacity-5">
+                        <span class="medium">Luxury</span>Travel<span class="medium">Deals</span>
+                    </div>
+                </a>
+
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 logo_text">
+                    <div class="footer-copyright">Copyright &copy; 2018 LuxuryTravelDeals</div>
+
+                </div>
+
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 footer_social">
+                    <ul class="footer_social_button">
+                        <li><a href="https://www.linkedin.com/company/luxurytravel-deals/" target="_blank"><img src="~/images/linkedin.svg" alt="linked-icon"/></a></li>
+                        <li><a class="instagram" href="https://www.instagram.com/luxurytraveldeals/" target="_blank"><img src="~/images/instagram.svg"alt="instagram-icon" /></a></li>
+                        <li><a class="twitter" href="https://twitter.com/luxtravdeals" target="_blank"><img src="~/images/twitter.svg" alt="twitter-icon" /></a></li>
+                        <li><a class="facebook-2" href="https://www.facebook.com/luxurytraveldeal" target="_blank"><img src="~/images/facebook.svg" alt="facebook-icon"/></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+}
+else
+{
+
+    <footer class="hidden-sm hidden-md hidden-lg">
+        <div class="container-fluid footer-gutter">
+            <div class="row footer-row">
+                <div class="col-xs-12 footer_subscribe subscribe_padding">
+                    <h3 class="footer_heading_mobile">Subscribe</h3>
+                    <hr class="hidden-lg hidden-md hidden-sm footer-hr-mobile">
+
+                    <ul class="footer_list mobile_footer">
+                        <li>Get exclusive 20% off on trips and hotels</li>
+                        <li><input type="text" id="email" name="emil" placeholder="Enter your email address"></li>
+                        <li class="subscribe_text">By subscribing to our mailing list you agree to accept our <a href="@Url.Action("Policies","Home")" class="footer-policy-text">Privacy Policy.</a> You can unsubscribe from the mailing list any time you like.</li>
+                        <li class="subscribe_button"><button type="button" class="btn btn-primary1 btn-lg1">SUBSCRIBE</button></li>
+
+
+                    </ul>
+                </div>
+                <hr class="hidden-lg hidden-md hidden-sm footer-hr-mobile-section">
+                <div class="col-xs-12 footer-mobile-padding">
+                    <h3 class="footer_heading footer-mobile-inner-padding" onclick="footerList('#destination_list');">Destinations <span class="hidden-lg hidden-md hidden-sm pull-right"><i class="fa fa-angle-down"></i></span></h3>
+                    <ul class="footer_list footer_list_left_padding country_destinations list_hidden" id="destination_list">
+                        @{
+                            List<PackageCountryModel> countryDestination = this.ViewBag.TopCountryDestinations as List<PackageCountryModel>;
+                        }
+                        @for (int i = 0; i < countryDestination.Count; i++)
+                        {
+                            <li data-text="@countryDestination[i].Name.ToUpperInvariant()" data-value="@countryDestination[i].Id">@countryDestination[i].Name.ToLower()</li>
+                        }
+                    </ul>
+                    <hr class="hidden-lg hidden-md hidden-sm footer-hr-mobile-section">
+                </div>
+
+
+                <div class="col-xs-12 footer-mobile-padding interests_list">
+                    <h3 class="footer_heading footer-mobile-inner-padding" onclick="footerList('#interests_list');">Top Styles <span class="hidden-lg hidden-md hidden-sm pull-right"><i class="fa fa-angle-down"></i></span></h3>
+                    <ul class="footer_list footer_list_left_padding  list_hidden" id="interests_list">
+                        @{
+                            List<PackageTravelStyleModel> travelStyles = this.ViewBag.FrequentTravelStyles as List<PackageTravelStyleModel>;
+                        }
+                        @for (int i = 0; i < travelStyles.Count; i++)
+                        {
+                            <li data-text="@travelStyles[i].Name" data-value="@travelStyles[i].Id">@travelStyles[i].Name</li>
+                        }
+
+
+                    </ul>
+                    <hr class="hidden-lg hidden-md hidden-sm footer-hr-mobile-section">
+                </div>
+
+
+                <div class="col-xs-12 footer-mobile-padding">
+                    <h3 class="footer_heading footer-mobile-inner-padding" id="icon_change" onclick="footerList('#touch_list');">Get in Touch <span class="hidden-lg hidden-md hidden-sm pull-right"><i class="fa fa-angle-down"></i></span></h3>
+                    <ul class="footer_list footer_list_left_padding list_hidden" id="touch_list">
+                        <a href="@Url.Action("ContactUs","Home")"><li>Contact Us</li></a>
+                        <a href="#"><li>Blog</li></a>
+                        <a href="@Url.Action("AboutUsPage","Home")"><li>About Us</li></a>
+                        @*<a href="#"><li>Group Travel Inquiry</li></a>*@
+                        <a href="@Url.Action("Policies","Home")"><li>Policy</li></a>
+                        <a href="@Url.Action("Careers","Home")"><li>Careers</li></a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr class="footer-hr-mobile-section">
+
+        <div class="container-fluid footer_bottom">
+            <div class="row">
+
+                <div class="col-sm-4 col-xs-12 footer_social">
+                    <ul class="footer_social_button">
+                        <li><a href="https://www.linkedin.com/company/luxurytravel-deals/" target="_blank"><img src="~/images/linkedin.svg" alt="linkedIn-icon"/></a></li>
+                        <li><a class="instagram" href="https://www.instagram.com/luxurytraveldeals/" target="_blank"><img src="~/images/instagram.svg" alt="instagram-icon"/></a></li>
+                        <li><a class="twitter" href="https://twitter.com/luxtravdeals" target="_blank"><img src="~/images/twitter.svg" alt="twitter-icon"/></a></li>
+                        <li><a class="facebook-2" href="https://www.facebook.com/luxurytraveldeal" target="_blank"><img src="~/images/facebook.svg" alt="facebook-icon"/></a></li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-4 col-xs-12 logo_text footer_padding opacity-5">
+                    <span class="medium">Luxury</span>Travel<span class="medium">Deals</span>
+                </div>
+
+                @*<div class="col-sm-4 col-xs-12 logo_text">
+                        <center class="footer-copyright">Copyright &copy; 2018 LuxuryTravelDeals</center>
+
+                    </div>*@
+
+
+            </div>
+        </div>
+
+    </footer>
+}
+
+
+@*//Footer for mobile view*@
+
+
+
+<script src="~/js/jquery.footer.js"></script>
+
+<script>
+    function footerList(elem) {
+
+        $(elem).toggle();
+        $(elem).siblings('h3').first().find('.fa').toggleClass('fa-angle-up fa-angle-down');
+
+    }
+</script>
+<script>
+    ////$(document).on('click', 'interests_lists li,.interests_list .footer_list li', function (e) {
+    ////    debugger;
+    ////    var value = $(this).data('value');
+    ////    var text = $(this).data('text');
+    ////    if (value !== null && value !== '') {
+    ////        var data = {
+    ////            'startDate': null,
+    ////            'endDate': null,
+    ////            'adults': 1,
+    ////            'kids': 0,
+    ////            'infants': 0,
+    ////            'rooms': 1,
+    ////            'searchTerm': text,
+    ////            'showSearchTerm': false,
+    ////            'searchType': 5, //// Enums.SearchType
+    ////            'value': value
+    ////        };
+    ////        window.location = '/Search?' + $.param(data);
+    ////    }
+    ////});
+</script>
+
+@*<script>
+        $(document).on('click', '#interests_list li', function (e) {
+
+                    var data = {
+                        'startDate': null,
+                        'endDate': null,
+                        'adults': 1,
+                        'kids': 0,
+                        'infants': 0,
+                        'rooms': 1,
+                        'searchTerm': e.attr("data-text"),
+                        'showSearchTerm': true,
+                        'searchType':6, // Enums.SearchType
+                        'value': e.attr("data-value")
+                    };
+                    window.location = '/Search?' + $.param(data);
+
+        });
+    </script>*@

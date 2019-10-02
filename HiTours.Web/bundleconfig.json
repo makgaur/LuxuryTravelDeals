@@ -1,0 +1,248 @@
+﻿// Configure bundling and minification for the project.
+// More info at https://go.microsoft.com/fwlink/?LinkId=808241
+[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    // An array of relative input file paths. Globbing patterns supported
+    "inputFiles": [
+      "wwwroot/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/js/site.js"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    // Optionally generate .map file
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/css/frontend.developer.min.css",
+    "inputFiles": [
+      "wwwroot/css/frontend.developer.css"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    // Optionally generate .map file
+    "sourceMap": false
+  },
+  //{
+  //  "outputFileName": "wwwroot/Styles/main.min.css",
+  //  "inputFiles": [
+  //    "wwwroot/Styles/main.css"
+  //  ],
+  //  // Optionally specify minification options
+  //  "minify": {
+  //    "enabled": true,
+  //    "renameLocals": true
+  //  },
+  //  // Optionally generate .map file
+  //  "sourceMap": false
+  //},
+  {
+    "outputFileName": "wwwroot/styles/Thankyou.min.css",
+    "inputFiles": [
+      "wwwroot/styles/Thankyou.css"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    // Optionally generate .map file
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/jquery.common.min.js",
+    "inputFiles": [
+      "wwwroot/js/jquery.common.js"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    // Optionally generate .map file
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/resource/style.product.min.css",
+    "inputFiles": [
+      //BELOW TOOLS CSS
+      "wwwroot/css/bootstrap.min.css",
+      "wwwroot/assets/css/ie10-viewport-bug-workaround.css",
+      "wwwroot/content/plugins/waitme/waitMe.css",
+      "wwwroot/css/font-awesome.min.css",
+      "wwwroot/css/carousel.css",
+      "wwwroot/content/plugins/sweetalert2/dist/sweetalert2.css",
+      "wwwroot/css/jquery.typeahead.css",
+      "wwwroot/content/bower/select2/dist/css/select2.min.css",
+      "wwwroot/content/bower/bootstrap-daterangepicker/daterangepicker.css",
+      "wwwroot/content/bower/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css",
+      "wwwroot/slick/slick.css",
+      "wwwroot/slick/slick-theme.css",
+      "wwwroot/css/bootstrap-multiselect.css",
+      "wwwroot/css/bootstrap-slider.css",
+
+
+      //BELOW CUSTOM CSS
+      "wwwroot/css/style.css",
+      "wwwroot/css/frontend.developer.css",
+      "wwwroot/Styles/main.css",
+      "wwwroot/Styles/product.css",
+      "wwwroot/Styles/Calender.css",
+      "wwwroot/Styles/search.css",
+      "wwwroot/Styles/Booking.css",
+      "wwwroot/Styles/helperstyles.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/resource/script.product.min.js",
+    "inputFiles": [
+      "wwwroot/assets/js/ie-emulation-modes-warning.js",
+      "wwwroot/js/jquery.min.js",
+      "wwwroot/js/bootstrap.min.js",
+      "wwwroot/content/bower/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
+      "wwwroot/content/bower/select2/dist/js/select2.full.min.js",
+      "wwwroot/content/plugins/iCheck/icheck.min.js",
+      "wwwroot/content/plugins/waitme/waitMe.js",
+      "wwwroot/js/jquery.imageloader.js",
+      "wwwroot/content/js/custom/jquery.format.js",
+      "wwwroot/content/js/custom/jquery.global.js",
+      "wwwroot/content/js/custom/jquery.constants.js",
+      "wwwroot/content/js/custom/jquery.pluggin.js",
+      "wwwroot/assets/js/vendor/holder.min.js",
+      "wwwroot/assets/js/ie10-viewport-bug-workaround.js",
+      "wwwroot/js/bootstrap-growl.min.js",
+      "wwwroot/content/plugins/sweetalert2/dist/sweetalert2.js",
+
+      //USE "wwwroot/js/jquery.cookie.js"
+      "wwwroot/views/frontend.user.js",
+      "wwwroot/content/js/jquery.validate.js",
+      "wwwroot/content/js/jquery.validate.unobtrusive.js",
+      "wwwroot/assets/js/my-account-accordion.js",
+      "wwwroot/assets/js/jquery.jscroll.js",
+      //USE "wwwroot/slick/slick.js",
+      //USE "wwwroot/js/jquery.typeahead.js",
+      "wwwroot/views/jquery.deals.js",
+      "wwwroot/js/custom-scripts.js",
+      "wwwroot/js/jquery.footer.js",
+      "wwwroot/js/bootstrap-multiselect.js",
+      //USE "wwwroot/js/bootstrap-slider.js",
+      "wwwroot/js/bootstrap-touch-slider.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/resource/style.home.min.css",
+    "inputFiles": [
+      "wwwroot/css/bootstrap.min.css",
+      "wwwroot/assets/css/ie10-viewport-bug-workaround.css",
+      "wwwroot/content/plugins/waitme/waitMe.css",
+      "wwwroot/css/font-awesome.min.css",
+      "wwwroot/css/carousel.css",
+      "wwwroot/content/plugins/sweetalert2/dist/sweetalert2.css",
+      "wwwroot/css/jquery.typeahead.css",
+      "wwwroot/content/bower/select2/dist/css/select2.min.css",
+      "wwwroot/content/bower/bootstrap-daterangepicker/daterangepicker.css",
+      "wwwroot/content/bower/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css",
+      //"wwwroot/content/plugins/iCheck/all.css",
+      "wwwroot/css/frontend.developer.css",
+      "wwwroot/css/style.css",
+      "wwwroot/Styles/main.css",
+      "wwwroot/Styles/helperstyles.css",
+      "wwwroot/slick/slick.css",
+      "wwwroot/slick/slick-theme.css",
+      "wwwroot/Styles/Booking.css",
+
+
+      "wwwroot/css/bootstrap-multiselect.css",
+      "wwwroot/css/bootstrap-slider.css",
+      "wwwroot/css/intlTelInput.css"
+
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/resource/script.home.min.js",
+    "inputFiles": [
+      "wwwroot/assets/js/ie-emulation-modes-warning.js",
+      "wwwroot/js/jquery.min.js",
+      "wwwroot/js/bootstrap.min.js",
+      "wwwroot/content/bower/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
+      "wwwroot/content/bower/select2/dist/js/select2.full.min.js",
+      "wwwroot/content/plugins/iCheck/icheck.min.js",
+      "wwwroot/content/plugins/waitme/waitMe.js",
+      "wwwroot/js/jquery.imageloader.js",
+      "wwwroot/content/js/custom/jquery.format.js",
+      "wwwroot/content/js/custom/jquery.global.js",
+      "wwwroot/content/js/custom/jquery.constants.js",
+      "wwwroot/content/js/custom/jquery.pluggin.js",
+      "wwwroot/assets/js/vendor/holder.min.js",
+      "wwwroot/assets/js/ie10-viewport-bug-workaround.js",
+      "wwwroot/js/bootstrap-growl.min.js",
+      "wwwroot/content/plugins/sweetalert2/dist/sweetalert2.js",
+
+      //USE "wwwroot/js/jquery.cookie.js"
+      "wwwroot/views/frontend.user.js",
+      "wwwroot/content/js/jquery.validate.js",
+      "wwwroot/content/js/jquery.validate.unobtrusive.js",
+      "wwwroot/assets/js/my-account-accordion.js",
+      "wwwroot/assets/js/jquery.jscroll.js",
+      //USE "wwwroot/slick/slick.js",
+      //USE "wwwroot/js/jquery.typeahead.js",
+      "wwwroot/views/jquery.deals.js",
+      "wwwroot/js/custom-scripts.js",
+      "wwwroot/js/jquery.footer.js",
+      "wwwroot/js/bootstrap-multiselect.js",
+      //USE "wwwroot/js/bootstrap-slider.js",
+      "wwwroot/js/bootstrap-touch-slider.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+  //{
+  //  "outputFileName": "wwwroot/resource/style.product.min.css",
+  //  "inputFiles": [
+  //    "wwwroot/css/style.css",
+  //    "wwwroot/css/frontend.developer.css",
+  //    "wwwroot/Styles/main.css",
+  //    "wwwroot/Styles/product.css",
+  //    "wwwroot/Styles/Calender.css",
+  //    "wwwroot/Styles/search.css",
+  //    "wwwroot/Styles/Booking.css",
+  //    "wwwroot/Styles/helperstyles.css"
+  //  ],
+  //  // Optionally specify minification options
+  //  "minify": {
+  //    "enabled": true,
+  //    "renameLocals": true
+  //  },
+  //  // Optionally generate .map file
+  //  "sourceMap": false
+  //}
+]

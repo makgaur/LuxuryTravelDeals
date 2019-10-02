@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "Location";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">Location Deals</h3>
+                <div class="pull-right top-buttons">
+                    <a id="anchorAddNew" href="@Url.Action("ManageLocation",new { @id=0}) " class="form-control btn-form-control btn-form-control-sm btn-has-count  btn-primary">
+                        <i class="fa fa-plus"></i>&nbsp;
+                        Add Loca
+                    </a>
+                </div>
+            </div>
+            @this.Html.Partial("_DataTableGrid")
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        $(function () {
+            BindGrid({
+                url: "@Url.Action("Location")",
+                columns: [
+                    { "data": "City", "title": "City", "type": "string"},
+                    { "data": "Text", "title": "Text", "type": "string" },
+                    
+                    {
+                        "data": "IsActive",
+                        "title": " Active Status",
+                        "class": "text-center",
+                        "type": "bool", "width": '15%',
+                        mRender: function (data, type, record) {
+                                    var url = '@Url.GetAdminUrl("HomePage", "ChangeLocationDealActiveStatus")/' + record.Id;
+                                    return appendToggleCheckBox(url, record.IsActive, 'Successfully Activated', 'Successfully DeActivated')
+                        }
+                    },
+                    {
+                        "data": null,
+                        "title": "Action",
+                        "targets": -1,
+                        "width": '15%',
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                                    var manageUrl = "@Url.Action("ManageLocation", "HomePage")" + "?id=" + record.Id;
+                                    var action = "";
+                                    ////action += '<a class="form-control btn-default" href="@Url.GetAdminUrl("tourpackage", "PackageNights")/' + record.Id + '" title="Add Package Nights"><i class="fa fa-plus"></i>&nbsp;</a>';
+                                    action += '<a class="form-control btn-success" href="' + manageUrl + '"><i class="fa fa-edit"></i>&nbsp;</a>';
+                                    action += '<a class="form-control btn-danger delete-row" data-delete href="@Url.GetAdminUrl("HomePage", "deletelocation")/' + record.Id+ '"><i class="fa fa-trash-o"></i>&nbsp;</a>';
+                                    return action;
+                        }
+                    }]
+            });
+        });
+
+    </script>
+}
+

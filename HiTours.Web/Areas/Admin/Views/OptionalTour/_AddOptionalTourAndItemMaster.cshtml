@@ -1,0 +1,77 @@
+﻿@model OptionalTourAndItemsAddViewModel;
+
+<form asp-antiforgery="true" id="formOptionalTourManage" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" id="ot_id"/>
+    <input type="hidden" asp-for="IsActive" id="ot_isActive"/>
+    <input type="hidden" asp-for="UpdatedBy" id="ot_UpdatedBy"/>
+    <input type="hidden" asp-for="UpdatedDate" id="ot_UpdatedDate"/>
+    <input type="hidden" asp-for="CreatedBy" id="ot_CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" id="ot_CreatedDate"/>
+    <div class="box-body">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="CountryId"></label>
+                <select asp-for="CountryId" selected="@Model.CountryId" class="form-control" id="CountryId" asp-items="Model.CountryItems"
+                        select2-value="@Model.CountryId" select2-Url="/selectlist/GetCountryList"></select>
+                <span asp-validation-for="CountryId"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="VendorId"></label>
+                <select asp-for="VendorId" selected="@Model.VendorId" class="form-control" id="VendorId" asp-items="Model.VendorItems"
+                        select2-value="@Model.VendorId" select2-Url="/selectlist/GetVendorsDropdownList"></select>
+                <span asp-validation-for="VendorId"></span>
+            </div>
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    Tour Items
+                </h2>
+            </div>
+            <div class="col-xs-12">
+                <table class="table" id="tourItemtable">
+                    <thead>
+                        <tr>
+                            <th>Tour Name</th>
+                            <th>Adult Price</th>
+                            <th>Child Price</th>
+                            <th><button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">Add Item</button></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.TourItems != null && Model.TourItems.Count > 0)
+                        {
+                            for (int i = 0; i < Model.TourItems.Count; i++)
+                            {
+                                <tr class="data-tour-item" data-counter="@i">
+                                    @*<input asp-for="@Model.TourItems[i].Id" type="hidden" id="item_id_@i" />
+                                    <input asp-for="@Model.TourItems[i].OptionalTourId" type="hidden" id="ot_id_@i" />
+                                    <input asp-for="@Model.TourItems[i].CreatedDate" type="hidden" id="c_date_@i" />
+                                    <input asp-for="@Model.TourItems[i].CreatedBy" type="hidden" id="c_by_@i" />
+                                    <input asp-for="@Model.TourItems[i].UpdatedDate" type="hidden" id="u_date_@i" />
+                                    <input asp-for="@Model.TourItems[i].UpdatedBy" type="hidden" id="u_by_@i" />*@
+                                    <td>
+                                        <input asp-for="@Model.TourItems[i].TourName" class="form-control t_name" placeholder="Tour Name" id="t_name_@i" />
+                                        <span asp-validation-for="@Model.TourItems[i].TourName"></span>
+                                    </td>
+                                    <td>
+                                        <input asp-for="@Model.TourItems[i].AdultPrice" type="number" class="form-control a_price" placeholder="Adult Price" id="a_price_@i" />
+                                        <span asp-validation-for="@Model.TourItems[i].AdultPrice"></span>
+                                    </td>
+                                    <td>
+                                        <input asp-for="@Model.TourItems[i].ChildPrice" type="number" class="form-control c_price" placeholder="Child Price" id="c_price_@i" />
+                                        <span asp-validation-for="@Model.TourItems[i].ChildPrice"></span>
+                                    </td>
+                                    <td><button type="button" id="btnDelete" class="deleteItem btn btn btn-danger btn-xs">Remove</button></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        <div class="center-block">
+            <button id="btnSave" type="button" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+    @*@this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })*@
+</form>

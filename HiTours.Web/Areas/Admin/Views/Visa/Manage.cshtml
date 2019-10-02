@@ -1,0 +1,26 @@
+﻿@model AddVisaMasterViewModel;
+@{
+    this.ViewBag.Title = ViewData["Title"] = (Model.Id == 0 ? "Add Visa" : "Edit Visa");
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.ViewList, Url.Action("index","visa" ,new { @area="Admin" })) })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box no-top-border">
+                        @this.Html.Partial("_AddVisaMaster", Model)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

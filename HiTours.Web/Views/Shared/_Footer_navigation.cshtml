@@ -1,0 +1,139 @@
+﻿@using HiTours.Data.DataBase.Model
+
+@if (!this.ViewBag.IsMobileView)
+{
+
+    <footer class="hidden-xs">
+        <div class="container-fluid footer-gutter max_width">
+            <div class="row footer-row">
+                <div class="col-sm-2 col-md-2 col-lg-2 country-destination padding-left-0">
+                    <h3 class="footer_heading">Destinations <span class="hidden-lg hidden-md hidden-sm pull-right"><i class="fa fa-angle-down"></i></span></h3>
+                    <ul class="footer_list">
+                        @{
+                            List<PackageCountryModel> countryDestination = this.ViewBag.TopCountryDestinations as List<PackageCountryModel>;
+                        }
+                        @for (int i = 0; i < countryDestination.Count; i++)
+                        {
+                            <li data-text="@countryDestination[i].Name" data-value="@countryDestination[i].Id">@countryDestination[i].Name.ToLower()</li>
+                        }
+                    </ul>
+                </div>
+                <hr class="hidden-lg hidden-md hidden-sm footer-hr">
+
+                <div class="col-sm-2 col-md-2 col-lg-2 interests_list">
+                    <h3 class="footer_heading">Top Styles <span class="hidden-lg hidden-md hidden-sm pull-right"><i class="fa fa-angle-down"></i></span></h3>
+                    <ul class="footer_list">
+                        @{
+                            List<PackageTravelStyleModel> travelStyles = this.ViewBag.FrequentTravelStyles as List<PackageTravelStyleModel>;
+                        }
+                        @for (int i = 0; i < travelStyles.Count; i++)
+                        {
+                            <li data-text="@travelStyles[i].Name" data-value="@travelStyles[i].Id">@travelStyles[i].Name</li>
+                        }
+
+                    </ul>
+                </div>
+                <hr class="hidden-lg hidden-md hidden-sm footer-hr">
+
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    <h3 class="footer_heading">Get in Touch <span class="hidden-lg hidden-md hidden-sm pull-right"><i class="fa fa-angle-down"></i></span></h3>
+                    <ul class="footer_list">
+                        <a href="/home/ContactUs"><li>Contact Us</li></a>
+                        <a href="#"><li>Blog</li></a>
+                        <a href="/Home/AboutUs"><li>About Us</li></a>
+                        @*<a href="#"><li>Group Travel Inquiry</li></a>*@
+                        <a href="/home/policies"><li>Policy</li></a>
+                        <a href="/home/careers"><li>Careers</li></a>
+
+                    </ul>
+                </div>
+                <hr class="hidden-lg hidden-md hidden-sm footer-hr">
+
+                <div class="col-sm-6 col-md-6 col-lg-6 footer_subscribe subscribe_padding padding-right-0">
+                    <h3 class="footer_heading">Subscribe</h3>
+                    <hr class="hidden-lg hidden-md hidden-sm footer-hr-2">
+
+                    <ul class="footer_list mobile_footer">
+                        <li>Get exclusive 20% off on trips and hotels</li>
+                        <li><input type="text" id="email" name="emil" placeholder="Enter your email address"></li>
+                        <li>By subscribing to our mailing list you agree to accept our <a href="#" class="footer-mobile-list-style footer-mobile-list-style">Privacy<br> Policy.</a> You can unsubscribe from the mailing list any time you like.</li>
+                        <li><button type="button" class="btn btn-primary1 btn-lg1">SUBSCRIBE</button></li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+}
+else
+{
+
+    <footer class="hidden-sm hidden-md hidden-lg">
+        <div class="container-fluid footer-gutter">
+            <div class="row footer-row">
+                <div class="col-xs-12 footer_subscribe subscribe_padding">
+                    <h3 class="footer_heading_mobile">Subscribe</h3>
+                    <hr class="hidden-lg hidden-md hidden-sm footer-hr-mobile">
+
+                    <ul class="footer_list mobile_footer">
+                        <li>Get exclusive 20% off on trips and hotels</li>
+                        <li><input type="text" id="email" name="emil" placeholder="Enter your email address"></li>
+                        <li class="subscribe_text">By subscribing to our mailing list you agree to accept our <a href="#" class="footer-mobile-list-style">Privacy Policy.</a> You can unsubscribe from the mailing list any time you like.</li>
+                        <li class="subscribe_button"><button type="button" class="btn btn-primary1 btn-lg1">SUBSCRIBE</button></li>
+
+
+                    </ul>
+                </div>
+                <hr class="hidden-lg hidden-md hidden-sm footer-hr-mobile-section">
+                <div class="col-xs-12 footer-mobile-padding" onclick="footerList('#destination_list');">
+                    <h3 class="footer_heading footer-mobile-inner-padding">Destinations <span class="hidden-lg hidden-md hidden-sm pull-right"><i class="fa fa-angle-down"></i></span></h3>
+                    <ul class="footer_list footer_list_left_padding country_destinations list_hidden" id="destination_list">
+                        @{
+                            List<PackageCountryModel> countryDestination = this.ViewBag.TopCountryDestinations as List<PackageCountryModel>;
+                        }
+                        @for (int i = 0; i < countryDestination.Count; i++)
+                        {
+                            <li data-text="@countryDestination[i].Name.ToUpperInvariant()" data-value="@countryDestination[i].Id">@countryDestination[i].Name.ToLower()</li>
+                        }
+                    </ul>
+                    <hr class="hidden-lg hidden-md hidden-sm footer-hr-mobile-section">
+                </div>
+
+                <div class="col-xs-12 footer-mobile-padding " onclick="footerList('#interests_list');">
+                    <h3 class="footer_heading footer-mobile-inner-padding">Top Styles <span class="hidden-lg hidden-md hidden-sm pull-right"><i class="fa fa-angle-down"></i></span></h3>
+                    <ul class="footer_list footer_list_left_padding list_hidden interests_lists" id="interests_list">
+                        @{
+                            List<PackageTravelStyleModel> travelStyles = this.ViewBag.FrequentTravelStyles as List<PackageTravelStyleModel>;
+                        }
+                        @for (int i = 0; i < travelStyles.Count; i++)
+                        {
+                            <li data-text="@travelStyles[i].Name" data-value="@travelStyles[i].Id">@travelStyles[i].Name</li>
+                        }
+
+
+                    </ul>
+                    <hr class="hidden-lg hidden-md hidden-sm footer-hr-mobile-section">
+                </div>
+
+                <div class="col-xs-12 footer-mobile-padding" onclick="footerList('#touch_list');">
+                    <h3 class="footer_heading footer-mobile-inner-padding">Get in Touch <span class="hidden-lg hidden-md hidden-sm pull-right"><i class="fa fa-angle-down"></i></span></h3>
+                    <ul class="footer_list footer_list_left_padding list_hidden" id="touch_list">
+                        <a href="/home/ContactUs"><li>Contact Us</li></a>
+                        <a href="#"><li>Blog</li></a>
+                        <a href="/Home/AboutUs"><li>About Us</li></a>
+                        @*<a href="#"><li>Group Travel Inquiry</li></a>*@
+                        <a href="/home/policies"><li>Policy</li></a>
+                        <a href="/home/careers"><li>Careers</li></a>
+                    </ul>
+                </div>
+
+
+
+            </div>
+        </div>
+        <hr class="hidden-lg hidden-md hidden-sm footer-hr-mobile-section">
+    </footer>
+}
+
+@*//Footer for mobile view*@

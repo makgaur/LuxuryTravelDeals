@@ -1,0 +1,119 @@
+﻿@model VendorContactViewModel
+<style>
+    .intl-tel-input {
+        z-index:unset;
+    }
+</style>
+<form asp-antiforgery="true" id="formVendorContact" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="VendorId" value="@Model.VendorId"/>
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <div class="row" style="padding:0px 15px;">
+        <div class="form-group col-md-3">
+            <label asp-for="Designation"></label>
+            <div class="input-group">
+                <select asp-for="Designation" selected="@Model.Designation" class="form-control" placeholder="Designation" asp-items="Model.DesignationItems"
+                        select2-value="@Model.Designation"
+                        select2-Url="/selectlist/GetDesignation"></select>
+                <span class="input-group-addon"><a href="@Url.Action("DesignationMaster","Master", new { @area = "Admin" })" target="_blank"><i class="fa fa-plus"></i></a></span>
+            </div>
+            <span asp-validation-for="Designation"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="Salutation"></label>
+            <div class="input-group">
+                <select asp-for="Salutation" selected="@Model.Salutation" class="form-control" placeholder="Salutation" asp-items="Model.SalutationItems"
+                        select2-value="@Model.Salutation"
+                        select2-Url="/selectlist/GetSalutation"></select>
+                <span class="input-group-addon"><a href="@Url.Action("SalutationMaster","Master", new { @area = "Admin" })" target="_blank"><i class="fa fa-plus"></i></a></span>
+            </div>
+            <span asp-validation-for="Salutation"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" class="form-control" type="text" placeholder="First Name" />
+            <span asp-validation-for="FirstName"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" class="form-control" type="text" placeholder="Last Name" />
+            <span asp-validation-for="LastName"></span>
+        </div>
+    </div>
+    
+    <div class="row" style="padding:0px 15px;">
+        <div class="form-group col-md-4">
+            <label asp-for="WorkPhone"></label>
+            <input asp-for="WorkPhone" class="form-control" type="text" placeholder="Work Phone" id="input-work" />
+            <span asp-validation-for="WorkPhone"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Mobile"></label>
+            <input asp-for="Mobile" class="form-control" type="text" placeholder="Mobile" id="input-mobile" />
+            <span asp-validation-for="Mobile"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Email"></label>
+            <div class="input-group">
+                <span class="input-group-addon">@@</span>
+                <input asp-for="Email" type="email" class="form-control" placeholder="Email Address">
+            </div>
+            <span asp-validation-for="Email"></span>
+        </div>
+    </div>
+   
+    <div class="form-group col-md-4">
+        <label asp-for="Alt_WorkPhone"></label>
+        <input asp-for="Alt_WorkPhone" class="form-control" type="text" placeholder="Alternate Work Phone" id="input-work-alt" />
+        <span asp-validation-for="Alt_WorkPhone"></span>
+    </div>
+    <div class="form-group col-md-4">
+        <label asp-for="Alt_Mobile"></label>
+        <input asp-for="Alt_Mobile" class="form-control" type="text" placeholder="Alternate Mobile" id="input-mobile-alt" />
+        <span asp-validation-for="Alt_Mobile"></span>
+    </div>
+    <div class="form-group col-md-4">
+        <label asp-for="Alt_Email"></label>
+        <div class="input-group">
+            <span class="input-group-addon">@@</span>
+            <input asp-for="Alt_Email" type="email" class="form-control" placeholder="Alternate Email Address">
+        </div>
+        <span asp-validation-for="Alt_Email"></span>
+    </div>
+    <div class="form-group col-md-12">
+        <label asp-for="IsPrimary"></label>
+        <input asp-for="IsPrimary"type="checkbox" class="minimal">
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+</form>
+<script>
+    $(document).ready(function (e) {
+        BindPhoneWithCountryCode("#input-mobile-alt");
+        BindPhoneWithCountryCode("#input-mobile");
+        BindPhoneWithCountryCode("#input-work-alt");
+        BindPhoneWithCountryCode("#input-work");
+        $('input[type="checkbox"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue'
+        });
+
+    })
+    function BindPhoneWithCountryCode(id) {
+        var input = document.querySelector(id);
+        var itiGroup = window.intlTelInput(input, {
+            formatOnDisplay: true,
+            initialCountry: "auto",
+            geoIpLookup: function (callback) {
+                $.get("http://ipinfo.io", function () { }, "jsonp").always(function (resp) {
+                    var countryCode = (resp && resp.country) ? resp.country : "";
+                    callback(countryCode);
+                });
+            },
+            nationalMode: false,
+            utilsScript: "/js/utils.js"
+        });
+
+    }
+</script>

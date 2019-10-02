@@ -1,0 +1,12 @@
+//-- GetAgencyBalance Api Request --
+{
+  "ClientId": "ApiIntegrationNew",
+  "TokenAgencyId": "dfdf",
+  "TokenMemberId": "dfdfd",
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "37076e3f-7f35-4a05-a8d5-c0ffb1311332"
+}
+//-- GetAgencyBalance Api Response --
+{
+  "Message": "StatusCode: 400, ReasonPhrase: 'Bad Request', Version: 1.1, Content: System.Net.Http.NoWriteNoSeekStreamContent, Headers:\r\n{\r\n  Cache-Control: private\r\n  Date: Fri, 01 Dec 2017 04:30:23 GMT\r\n  Server: Microsoft-IIS/8.5\r\n  X-AspNet-Version: 4.0.30319\r\n  X-Powered-By: ASP.NET\r\n  Content-Length: 3158\r\n  Content-Type: text/html\r\n}"
+}

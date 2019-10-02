@@ -1,0 +1,216 @@
+﻿<aside class="main-sidebar">
+    <section class="sidebar">
+        <ul class="sidebar-menu" data-widget="tree">
+
+            <li>
+                <a href="/admin/dashboard">
+                    <i class="fa fa-dashboard fa-fw"></i><span> DashBoard</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="javascript:;">
+                    <i class="fa fa-gift fa-fw"></i>
+                    <span>Deals</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("List","Deals",new { @area = "admin",  @type=2})"><i class="fa fa-fw fa-briefcase"></i> Tours</a></li>
+                    <li><a href="@Url.Action("List","Deals",new { @area = "admin",  @type=1})"><i class="fa fa-fw fa-building"></i> Hotels</a></li>
+                    <li><a href="@Url.Action("List","Deals",new { @area = "admin",  @type=3})"><i class="fa fa-fw fa-ship"></i> Cruises</a></li>
+                    <li><a href="@Url.Action("List","Deals",new { @area = "admin",  @type=4})"><i class="fa fa-fw fa-plane"></i> Flights</a></li>
+                    <li><a href="@Url.Action("List","Deals",new { @area = "admin",  @type=5})"><i class="fa fa-fw fa-bus"></i> Buses</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="javascript:;">
+                    <i class="fa fa-handshake-o fa-fw "></i>
+                    <span>Vendor Management</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Index","Vendor",new {@area="Admin"})"> <i class="fa fa-user-circle fa-fw "></i><span> Vendors</span></a></li>
+                    <li><a href="/admin/vendor/group"><i class="fa fa-fw fa-users"></i> Vendor Groups</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="javascript:;">
+                    <i class="fa fa-laptop fa-fw"></i>
+                    <span>Packages Master</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/admin/hotelier/list"><i class="fa fa-fw fa-circle-o"></i> Hotels</a></li>
+                    <li><a href="/admin/hotelroomtype/index"><i class="fa fa-circle-o"></i> Hotel Room Type</a></li>
+                    <li><a href="/admin/optionaltour/index"><i class="fa fa-fw fa-circle-o"></i> Optional Tour</a></li>
+                    <li><a href="/admin/cancellationpolicy/index"><i class="fa fa-fw fa-circle-o"></i> Cancellation Policy</a></li>
+                    <li><a href="/admin/promotion/index"><i class="fa fa-fw fa-circle-o"></i> Promotions</a></li>
+                    <li><a href="/admin/visa/index"><i class="fa fa-fw fa-circle-o"></i> Visa</a></li>
+                    <li><a href="/admin/insurance/index"><i class="fa fa-fw fa-circle-o"></i> Insurance</a></li>
+                    <li><a href="/Admin/Currency/Index"><i class="fa fa-fw fa-circle-o"></i> Currency</a></li>
+                    <li><a href="/admin/travelstyle/index"><i class="fa fa-fw fa-circle-o"></i> Travel Style</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="javascript:;">
+                    <i class="fa fa-file-picture-o fa-fw"></i>
+                    <span>Home Page Settings</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="/admin/homebanners/index">
+                            <i class="fa fa-dashboard fa-fw"></i><span> Home Banners</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/homepage/location">
+                            <i class="fa fa-dashboard fa-fw"></i><span> Location Deals</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/HomeBanners/PopularDestination">
+                            <i class="fa fa-dashboard fa-fw"></i><span> Popular Destination</span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="javascript:;">
+                            <i class="fa fa-binoculars fa-fw"></i>
+                            <span>Curations</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("index","curation",new { @area = "admin", @mode ="1x1"})"><i class="fa fa-user-o fa-fw"></i> One x One</a></li>
+                            <li><a href="@Url.Action("index","curation",new { @area = "admin", @mode ="1x2"})"><i class="fa fa-user-o fa-fw"></i> One x Two</a></li>
+                            <li><a href="@Url.Action("index","curation",new { @area = "admin", @mode ="2x2"})"><i class="fa fa-user-o fa-fw"></i> Two x Two</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="javascript:;">
+                            <i class="fa fa-rss-square fa-fw"></i>
+                            <span>Blog Posts</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("index","blog",new { @area = "admin", @mode ="feature"})"><i class="fa fa-fw fa-user-o"></i> Featured Articles</a></li>
+                            <li><a href="@Url.Action("index","blog",new { @area = "admin", @mode ="sub"})"><i class="fa fa-fw fa-user-o"></i> Sub Articles</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="javascript:;">
+                            <i class="fa fa-user-circle-o fa-fw"></i>
+                            <span>SEO Settings</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/admin/seodetail/manage?pagetype=static"><i class="fa fa-fw fa-file-code-o"></i> Static Page</a></li>
+                            <li><a href="/admin/seodetail/manage?pagetype=package"><i class="fa fa-fw fa-file-code-o"></i> Package</a></li>
+                            <li><a href="/admin/seodetail/manage?pagetype=hotel"><i class="fa fa-fw fa-file-code-o"></i> Hotel</a></li>
+                            <li><a href="/admin/seodetail/manage?pagetype=style"><i class="fa fa-fw fa-file-code-o"></i> Style</a></li>
+                            <li><a href="/admin/seodetail/manage?pagetype=holiday"><i class="fa fa-fw fa-file-code-o"></i> Holiday</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="javascript:;">
+                    <i class="fa fa-file-picture-o fa-fw"></i>
+                    <span>Search Page Settings</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="/admin/searchpage/recommendations">
+                            <i class="fa fa-dashboard fa-fw"></i><span> Recommendations</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-pie-chart fa-fw"></i>
+                    <span> Reports</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/admin/report/booking"><i class="fa fa-file-text fa-fw"></i>Booking</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-pie-chart fa-fw"></i>
+                    <span> Bookings</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/admin/booking/index?type=1"><i class="fa fa-fw fa-circle-o"></i>Hotel</a></li>
+                    <li><a href="/admin/booking/index?type=2"><i class="fa fa-fw fa-circle-o"></i>Tour</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="javascript:;">
+                    <i class="fa fa-users fa-fw"></i>
+                    <span>Users</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/admin/users"><i class="fa fa-user-o fa-fw"></i> Users List</a></li>
+                    <li><a href="/admin/Account/CmsUser"><i class="fa fa-user fa-fw"></i> CMS Users</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="javascript:;">
+                    <i class="fa fa-user-circle-o fa-fw"></i>
+                    <span>Admin</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/admin/companysetting"><i class="fa fa-server fa-fw"></i><span> Company Setting</span></a></li>
+                    @*<li><a href="/tbo/dashboard"><i class="fa fa-dashboard fa-fw"></i><span> TBO Services</span></a></li>*@
+                    <li class="treeview">
+                        <a href="javascript:;">
+                            <i class="fa fa-database fa-fw"></i>
+                            <span>Master Data</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/admin/region/index"><i class="fa fa-fw fa-circle-o"></i> Region</a></li>
+                            <li><a href="/admin/country/index"><i class="fa fa-fw fa-circle-o"></i> Country</a></li>
+                            <li><a href="/admin/state/index"><i class="fa fa-fw fa-circle-o"></i> State</a></li>
+                            <li><a href="/admin/city/index"><i class="fa fa-fw fa-circle-o"></i> City</a></li>
+                            <li><a href="/admin/area/index"><i class="fa fa-fw fa-circle-o"></i> Area</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+
+    </section>
+</aside>

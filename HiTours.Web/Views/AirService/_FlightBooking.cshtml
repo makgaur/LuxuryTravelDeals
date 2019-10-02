@@ -1,0 +1,132 @@
+﻿@{this.Layout = null;}
+@using HiTours.TBO.Models
+@model HiTours.TBO.Models.FlightBook
+
+<div class="middle">
+    <div class="flights">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="flightProcess fpShadow">
+                    <div class="flight-heading">Passengers Details:-</div>
+                    <form asp-controller="airservice" asp-action="payment" method="post" id="frmFlightBook">
+                        <input type="hidden" asp-for="TokenId" />
+                        <input type="hidden" asp-for="TraceId" />
+                        <input type="hidden" asp-for="AdultCount" />
+                        <input type="hidden" asp-for="ChildCount" />
+                        <input type="hidden" asp-for="InfantCount" />
+                        <input type="hidden" asp-for="ResultIndex" />
+                        <input type="hidden" asp-for="MarkUpPrice" />
+                        <input type="hidden" asp-for="HotelName" />
+                        <input type="hidden" asp-for="HotelBookingPrice" />
+                        <input type="hidden" asp-for="HotelBookingId" />
+                        @if (Model.AutoBooking)
+                        {
+                            <input type="hidden" asp-for="AutoBooking" />
+                        }
+
+                        @if (this.ViewBag.ClearSearch != null)
+                        {
+                            <input type="hidden" name="ClearSearch" value="true" />
+                        }
+                        else
+                        {
+                            if (!Model.StatusFlightQuote)
+                            {
+
+                                <div>@Model.Message</div>
+                            }
+                            else
+                            {
+                                @if (Model.Passengers != null)
+                                {
+                                    foreach (var passenger in Model.Passengers)
+                                    {
+                                        <div class="adult-box-details-lf box-body">
+                                            <div class="information-heading">
+                                                @($"{passenger.Index} - {((PaxType)(Convert.ToInt32(passenger.PaxType)))}")
+                                            </div>
+                                            @Html.Partial("_Passenger", passenger)
+                                        </div>
+                                    }
+                                }
+                            }
+                        }
+                        <div class="box-footer" align="center">
+                            <button type="submit" class="continue-to-payment-btn big_btn">Continue To Payment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="flightpanel_group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="flight-heading">Booking Summary</div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Flights Details
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" aria-expanded="true" style="">
+                            <div class="panel-body">
+                                @if (Model.AirSearchResults != null)
+                                {
+                                    foreach (var airSearchResult in Model.AirSearchResults)
+                                    {
+                                        foreach (var segments in airSearchResult.Segments)
+                                        {
+                                            foreach (var segment in segments)
+                                            {
+                                                var airline = segment.Airline;
+                                                var origin = segment.Origin;
+                                                var destination = segment.Destination;
+                                                DateTime.TryParse(origin.DepTime, out DateTime depTime);
+                                                DateTime.TryParse(destination.ArrTime, out DateTime arrTime);
+                                                TimeSpan duration = TimeSpan.FromMinutes(segment.Duration);
+                                                <div class="flight_TiMing">
+                                                    <span>@(depTime.ToString("HH:mm"))</span> <span>@origin.Airport.AirportCode</span> - <span>@(arrTime.ToString("HH:mm"))</span> <span>@destination.Airport.CityCode</span>
+                                                    <div class="flight_TiMingDay"><span>@(depTime.ToString("MMM dd yyyy, dddd"))</span> <span> | </span> <span>@segment.Airline.AirlineName</span></div>
+                                                </div>
+                                            }
+                                        }
+
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingThree">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Price
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false" style="height: 0px;">
+                            <div class="panel-body">
+                                <ul class="TravellersPrice">
+
+                                    @if (Model.HotelBookingPrice > 0)
+                                    {
+                                        <li><span class="left">Hotel Booking </span>  <span class="right"> ₹ @Model.HotelBookingPrice.ToAmount()</span></li>
+                                    }
+                                    <li><span class="left">Base Fare</span>  <span class="right"> ₹ @Model.TotalBaseFareAmount.ToAmount()</span></li>
+                                    <li><span class="left">Total Tax</span>  <span class="right"> ₹ @Model.TotalBaseFareTaxAmount.ToAmount()</span></li>
+                                    <li><span class="left">Total</span>  <span class="right"> ₹ @((Model.TotalAmount + Model.HotelBookingPrice).ToAmount())</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div>
+
+            </div>
+        </div>
+    </div>
+</div>

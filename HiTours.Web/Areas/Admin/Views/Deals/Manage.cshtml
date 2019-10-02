@@ -1,0 +1,774 @@
+﻿@{ this.ViewBag.Title = "Manage Deal";
+    var ErrorMsg = TempData["ErrorMsg"];
+    var id = this.ViewBag.PackageId;
+    var packageTypeId = this.ViewBag.PackageTypeId;
+    var disabled = id == 0 ? true : false;
+    var nextView = this.TempData["nextview"] != null ? this.TempData["nextview"].ToString() : "#information";
+    var dealtypeName = this.ViewBag.PackageTypeName;
+    this.ViewBag.Title = (id == 0 ? "Create " : "Manage ") + dealtypeName + " Deal";
+}
+@model DealsPackageViewModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.ViewList, "/admin/deals/list?type=" + packageTypeId) })
+                </div>
+            </div>
+            <div class="nav-tabs-custom">
+                <input type="hidden" name="tabs" data-default="@nextView" value="@nextView" />
+                <ul class="nav nav-tabs booking-flow">
+                    <li class=""><a href="#information" data-toggle="tab" data-href="@Url.Action("Package","Deals", new {@id = id, @packageTypeId = packageTypeId})"><i class="fa fa-fw fa-gift"></i> Information</a></li>
+                    @if (packageTypeId == 1)
+                    {
+                        <li class="@(disabled?"disabled":"")"><a href="#rooms" class="" data-toggle="tab" data-href="@Url.Action("HotelRooms","Deals", new {@id = id})"><i class="fa fa-fw fa-bed"></i> Rooms</a></li>
+
+                    }
+                    @if (packageTypeId == 2 || packageTypeId == 3)
+                    {
+                        <li class="@(disabled?"disabled":"")"><a href="#itinerary" class="" data-toggle="tab" data-href="@Url.Action("Itinerary","Deals", new {@id = id, @packageTypeId = packageTypeId, @packageId = id})"><i class="fa fa-fw fa-suitcase"></i> Itinerary</a></li>
+
+                    }
+
+                    @if (packageTypeId == 5)
+                    {
+                        <li class="@(disabled?"disabled":"")"><a href="#route" class="" data-toggle="tab" data-href="@Url.Action("Routes","Deals", new {@id = id})"><i class="fa fa-fw fa-road"></i> Routes</a></li>
+
+                    }
+                    @if (packageTypeId == 1)
+                    {
+                        <li class="@(disabled?"disabled":"")"><a href="#hotelratePlans" class="" data-toggle="tab" data-href="@Url.Action("HotelRatePlan","Deals", new {@id = id,@packageTypeId = packageTypeId})"><i class="fa fa-fw fa-money"></i> Rate Plans</a></li>
+
+                    }
+                    else
+                    {
+                        <li class="@(disabled?"disabled":"")"><a href="#ratePlans" class="" data-toggle="tab" data-href="@Url.Action("RatePlan","Deals", new {@id = id,@packageTypeId = packageTypeId})"><i class="fa fa-fw fa-money"></i> Rate Plans</a></li>
+                    }
+                    @if (packageTypeId == 4 || packageTypeId == 1)
+                    {
+                        <li class="@(disabled?"disabled":"")"><a href="#flights" class="" data-toggle="tab" data-href="@Url.Action("Flights","Deals", new {@id = id})"><i class="fa fa-fw fa-plane"></i> Flights</a></li>
+
+                    }
+                    <li class="@(disabled?"disabled":"")"><a href="#visa" class="" data-toggle="tab" data-href="@Url.Action("Visa","Deals", new {@id = id, @packageTypeId = packageTypeId})"><i class="fa fa-fw fa-address-card"></i> Visa</a></li>
+                    @*<li class="@(disabled?"disabled":"")"><a href="#insurance" class="" data-toggle="tab" data-href="@Url.Action("Insurance","Deals", new {@id = id})"><i class="fa fa-fw fa-institution"></i> Insurance</a></li>*@
+                    <li class="@(disabled?"disabled":"")"><a href="#cancellationPolicy" class="" data-toggle="tab" data-href="@Url.Action("CancellationPolicy","Deals", new {@packageId = id, @packageTypeId = packageTypeId})"><i class="fa fa-fw fa-ban"></i> Cancellation Policy</a></li>
+                    <li class="@(disabled?"disabled":"")"><a href="#promotions" class="" data-toggle="tab" data-href="@Url.Action("Promotion","Deals", new {@id = id})"><i class="fa fa-fw fa-percent"></i> Promotions</a></li>
+                    <li class="@(disabled?"disabled":"")"><a href="#content" class="" data-toggle="tab" data-href="@Url.Action("Content","Deals", new {@packageId = id, @packageTypeId = packageTypeId})"><i class="fa fa-fw fa-file-text"></i> Content</a></li>
+                    <li class="@(disabled?"disabled":"")"><a href="#images" class="" data-toggle="tab" data-href="@Url.Action("Images","Deals", new {@packageId = id, @packageTypeId = packageTypeId})"><i class="fa fa-fw fa-image"></i> Images</a></li>
+                    <li class="@(disabled?"disabled":"")"><a href="#reviews" class="" data-toggle="tab" data-href="@Url.Action("Reviews","Deals", new {@packageId = id, @packageTypeId = packageTypeId})"><i class="fa fa-fw fa-comment-o"></i> Reviews</a></li>
+                    <li class="@(disabled?"disabled":"")"><a href="#seo" class="" data-toggle="tab" data-href="@Url.Action("Seo","Deals", new {@packageId = id, @packageTypeId = packageTypeId})"><i class="fa fa-fw fa-file-code-o"></i> SEO</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane" id="information"></div>
+                    <div class="tab-pane" id="itinerary"></div>
+                    <div class="tab-pane" id="flights"></div>
+                    <div class="tab-pane" id="rooms"></div>
+                    <div class="tab-pane" id="hotelratePlans"></div>
+                    <div class="tab-pane" id="ratePlans"></div>
+                    <div class="tab-pane" id="visa"></div>
+                    <div class="tab-pane" id="route"></div>
+                    <div class="tab-pane" id="Inventory"></div>
+                    <div class="tab-pane" id="cancellationPolicy"></div>
+                    <div class="tab-pane" id="promotions"></div>
+                    <div class="tab-pane" id="flight"></div>
+                    <div class="tab-pane" id="insurance"></div>
+                    <div class="tab-pane" id="content"></div>
+                    <div class="tab-pane" id="images"></div>
+                    <div class="tab-pane" id="reviews"></div>
+                    <div class="tab-pane" id="seo"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+@section scripts
+    {
+<script>
+        function addnewitemmaster() {
+            $.ajax({ url: '/admin/Hotel/AddNewRow' }).success(function (response) {
+                $('#itemmaster > tbody').append(response);
+                $("form").removeData("validator");
+                $("form").removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse("form");
+                initPluggins();
+            });
+        }
+
+        function AddInclusionHotelWithRoomConfig() {
+            var $modal = $('#application-modal');
+            var _form = $("#btnAddRoomConfig").parents('form');
+            if ($('#formDealsTourHotelManage').valid() && $("#formDealsTourHotelManage #hotelRooms tr.active-rows").length > 0) {
+                _form.append('<input name="method" type="hidden" value="ajax" />');
+                $.ajax({
+                    type: "POST",
+                    dataType: 'json',
+                    url: '@Url.Action("AddInclusionHotelRoomConfig", "Deals")',
+                    data: _form.serialize(),
+                    success: function (json) {
+                        $modal.toggle();
+                        
+                        if (json == 'Success') {
+                            UpdateItenearySubTab();
+                        }
+                        return false;
+                    },
+                    error: function (response) {
+                    },
+                });
+            }
+            return false;
+        }
+
+    function ManageDepartureDates(nightId) {
+        var $modal = $('#application-modal');
+        var url = '@Url.Action("DepartureDates", "Deals")';
+        if ($modal) {
+            $modal.find(".modal-title").html("Manage Departure Dates");
+            $modal.find('.modal-body').html(overlayTemplate);
+            $modal.modal({ keyboard: false, backdrop: false }).show();
+             $.ajax({
+                    url: url,
+                    data: {'nightId': nightId},
+                    method: 'get',
+                    dataType: 'html',
+                    success: function (html) {
+                        
+                        $modal.find('.modal-body').html(html);
+                        var _form = $("#btnSaveandReload").parents('form');
+                        var form = $(_form);
+                        form.removeData('validator');
+                        form.removeData('unobtrusiveValidation');
+                        $.validator.unobtrusive.parse(form);
+                        if ($.validator.unobtrusive != undefined) {
+                            $.validator.unobtrusive.parse(form);
+                        }
+                        var $divPartial = $('#application-modal');
+                        $divPartial.find("#btnSaveandReload").on("click", function () {
+                            if ($('#formDealDeparture').valid()) {
+                                
+                                _form.append('<input name="method" type="hidden" value="ajax" />');
+                                $.ajax({
+                                    type: "POST",
+                                    dataType: 'json',
+                                    url: url,
+                                    data: _form.serialize(),
+                                    success: function (json) {
+                                        $modal.toggle();
+                                        if (json == 'success') {
+                                            location.reload();
+                                        }
+                                        return false;
+                                    },
+                                    error: function (response) {
+                                    },
+                                });
+                            }
+                            return false;
+                        });
+                    },
+                    error: function (xhr, request, error) { }
+                });
+        }
+    }
+
+    function CopyItinerary(fromNightId, toNightId, packageId) {
+        var url = '@Url.Action("CopyItinerary", "Deals")';
+        showWaitProcess();
+         $.ajax({
+                    url: url,
+             data: { 'fromNightId': fromNightId, 'toNightId': toNightId, 'packageId': packageId},
+                    method: 'get',
+             success: function (result) {
+                     if (result.Status) {
+                         var targetItinearyTab = $('#itineraryNavs li.active a').attr("href");
+                         var itinearySource = $('#itineraryNavs li.active a').data("href");
+                         $.get(itinearySource, function (result) {
+                             swal("", 'Successfully Saved', 'success');
+                             hideWaitProcess();
+                             $(targetItinearyTab).html(result);
+                             return;
+                         });
+                     }
+                     else {
+                         hideWaitProcess();
+                         swal("", result.Message, 'error');
+                     }
+                     
+                    },
+                    error: function (xhr, request, error) { }
+                });
+    }
+        function AddItinearyPart(nightId, id) {
+            
+            var $modal = $('#application-modal');
+            var url = '@Url.Action("AddItinearyPart", "Deals")';
+            if ($modal) {
+                $modal.find(".modal-title").html("Add Itinerary");
+                $modal.find('.modal-body').html(overlayTemplate);
+                $modal.modal({ keyboard: false, backdrop: false }).show();
+                $.ajax({
+                    url: url,
+                    data: { 'id': id, 'nightId': nightId},
+                    method: 'get',
+                    dataType: 'html',
+                    success: function (html) {
+                        
+                        $modal.find('.modal-body').html(html);
+                        initSelect2();
+                        var _form = $("#btnSaveandReload").parents('form');
+                        var form = $(_form);
+                        form.removeData('validator');
+                        form.removeData('unobtrusiveValidation');
+                        $.validator.unobtrusive.parse(form);
+                        if ($.validator.unobtrusive != undefined) {
+                            $.validator.unobtrusive.parse(form);
+                        }
+                        var $divPartial = $('#application-modal');
+                        $divPartial.find("#btnSaveandReload").on("click", function () {
+                            
+                            if ($('#formItinearyContent').valid()) {
+                                
+                                _form.append('<input name="method" type="hidden" value="ajax" />');
+                                $.ajax({
+                                    type: "POST",
+                                    dataType: 'json',
+                                    url: '@Url.Action("AddItinearyPart", "Deals")',
+                                    data: _form.serialize(),
+                                    success: function (json) {
+                                        
+                                        $modal.toggle();
+                                        if (json == 'success') {
+                                            UpdateItenearySubTab();
+                                        }
+                                        return false;
+                                    },
+                                    error: function (response) {
+                                    },
+                                });
+                            }
+                            return false;
+                        });
+                    },
+                    error: function (xhr, request, error) { }
+                });
+            }
+        }
+    function UpdateItenearySubTab() {
+        var targetItinearyTab = $('#itineraryNavs li.active a').attr("href");
+        var itinearySource = $('#itineraryNavs li.active a').data("href");
+        showWaitProcess();
+        $.get(itinearySource, function (result) {
+            swal("", 'Successfully Saved', 'success');
+            hideWaitProcess();
+            $(targetItinearyTab).html(result);
+            $('body').removeClass('modal-open');
+            return;
+        });
+    }
+    function UpdateRatePlanSubTab() {
+        var targetRatePlanTab = $('#ratePlanNavs li.active a').attr("href");
+        var ratePlanSource = $('#ratePlanNavs li.active a').data("href");
+        showWaitProcess();
+        $.get(ratePlanSource, function (result) {
+            swal("", 'Successfully Saved', 'success');
+            hideWaitProcess();
+            $(targetRatePlanTab).html(result);
+            $('body').removeClass('modal-open');
+            return;
+        });
+    }
+    function UpdateHotelRatePlanTab() {
+        var targetRatePlanTab = $('.booking-flow li.active a').attr("href");
+        var ratePlanSource = $('.booking-flow li.active a').data("href");
+        showWaitProcess();
+        $.get(ratePlanSource, function (result) {
+            swal("", 'Successfully Saved', 'success');
+            hideWaitProcess();
+            $(targetRatePlanTab).html(result);
+            $('body').removeClass('modal-open');
+            return;
+        });
+    }
+        function AddActivityItinerary(packageId, itineraryId, days, id) {
+            var $modal = $('#application-modal');
+            var itineraryId = itineraryId;
+            var url = '@Url.Action("AddActivityInclusionForTour", "Deals")';
+            if ($modal) {
+                $modal.find(".modal-title").html("Add Activity");
+                $modal.find('.modal-body').html(overlayTemplate);
+                $modal.modal({ keyboard: false, backdrop: false }).show();
+                $.ajax({
+                    url: url,
+                    data: { 'inclusionId': id, 'packageId': packageId, 'itineraryId': itineraryId, 'totalDays': days},
+                    method: 'get',
+                    dataType: 'html',
+                    success: function (html) {
+                        
+                        $modal.find('.modal-body').html(html);
+                        initSelect2();
+                        var _form = $("#btnSaveandReload").parents('form');
+                        var form = $(_form);
+                        form.removeData('validator');
+                        form.removeData('unobtrusiveValidation');
+                        $.validator.unobtrusive.parse(form);
+                        if ($.validator.unobtrusive != undefined) {
+                            $.validator.unobtrusive.parse(form);
+                        }
+                        var $divPartial = $('#application-modal');
+                        $($divPartial.find("#btnSaveandReload").parents('form')).on("submit", function () {
+                            
+                            if ($('#formActivityInclusion').valid()) {
+                                _form.append('<input name="method" type="hidden" value="ajax" />');
+                                $.ajax({
+                                    type: "POST",
+                                    dataType: 'json',
+                                    url: '@Url.Action("AddActivityInclusionForTour", "Deals")',
+                                    data: _form.serialize(),
+                                    success: function (json) {
+                                        $modal.toggle();
+                                        if (json == 'Success') {
+                                            UpdateItenearySubTab();
+                                            //location.reload();
+                                        }
+                                        return false;
+                                    },
+                                    error: function (response) {
+                                    },
+                                });
+                            }
+                            return false;
+                        });
+                    },
+                    error: function (xhr, request, error) { }
+                });
+            }
+        }
+
+    function AddTourRatePlans(nightId, ratePlanId, packageType, packageId) {
+            var $modal = $('#application-modal');
+            var url = '@Url.Action("AddTourRatePlan", "Deals")';
+            if ($modal)
+            {
+                $modal.find(".modal-title").html("Add Rate Plan");
+                $modal.find('.modal-body').html(overlayTemplate);
+                $modal.modal({ keyboard: false, backdrop: false }).show();
+                $.ajax({
+                    url: url,
+                    data: { 'nightId': nightId, 'packageId': @this.ViewBag.PackageId, 'packageType': 2, 'ratePlanId': ratePlanId, 'packageType': packageType, 'packageId': packageId },
+                    method: 'get',
+                    dataType: 'html',
+                    success: function (html) {
+                        $modal.find('.modal-body').html(html);
+                        initSelect2();
+                        var _form = $("#btnSaveandReload").parents('form');
+                        var form = $(_form);
+                        form.removeData('validator');
+                        form.removeData('unobtrusiveValidation');
+                        $.validator.unobtrusive.parse(form);
+                        if ($.validator.unobtrusive != undefined) {
+                            $.validator.unobtrusive.parse(form);
+                        }
+                    },
+                    error: function (xhr, request, error) { }
+                });
+            }
+    }
+    $(document).on('click', '.btn-save-tour-rate-plan #btnSaveandReload', function (e) {
+        e.preventDefault();
+        var $form = $('#formAddRatePlan');
+
+        if ($form.valid())
+        {
+            $.post('/admin/deals/AddTourRatePlan', $form.serialize(), function (result)
+            {
+                
+                if (result == 'Success')
+                {
+                    $('#application-modal').toggle();
+                    UpdateRatePlanSubTab();
+                }
+            })
+        }
+
+    });
+        function AddFlight(packageId, itineraryId, days, id) {
+            var $modal = $('#application-modal');
+            var itineraryId = itineraryId;
+            var url = '@Url.Action("AddFlightForItenary", "Deals")';
+            if ($modal) {
+                $modal.find(".modal-title").html("Add Flight");
+                $modal.find('.modal-body').html(overlayTemplate);
+                $modal.modal({ keyboard: false, backdrop: false }).show();
+                $.ajax({
+                    url: url,
+                    data: { 'inclusionId': id, 'packageId': packageId, 'itineraryId': itineraryId, 'totalDays':days},
+                    method: 'get',
+                    dataType: 'html',
+                    success: function (html) {
+                        
+                        $modal.find('.modal-body').html(html);
+                        initSelect2();
+                        var _form = $("#btnSaveandReload").parents('form');
+                        var form = $(_form);
+                        form.removeData('validator');
+                        form.removeData('unobtrusiveValidation');
+                        $.validator.unobtrusive.parse(form);
+                        if ($.validator.unobtrusive != undefined) {
+                            $.validator.unobtrusive.parse(form);
+                        }
+                        var $divPartial = $('#application-modal');
+                        $($divPartial.find("#btnSaveandReload").parents('form')).on("submit", function () {
+                            
+                            if ($('#formDealsTourFlightManage').valid()) {
+                                
+                                _form.append('<input name="method" type="hidden" value="ajax" />');
+                                $.ajax({
+                                    type: "POST",
+                                    dataType: 'json',
+                                    url: '@Url.Action("AddFlightForItenary", "Deals")',
+                                    data: _form.serialize(),
+                                    success: function (json) {
+                                        
+                                        $modal.toggle();
+                                        if (json == 'Success') {
+                                            //location.reload();
+                                            UpdateItenearySubTab();
+                                        }
+                                        return false;
+                                    },
+                                    error: function (response) {
+                                    },
+                                });
+                            }
+                            return false;
+                        });
+                    },
+                    error: function (xhr, request, error) { }
+                });
+            }
+        }
+        function DeleteRatePlan(rateplanId) {
+
+            $.ajax({
+                url: '@Url.Action("DeleteTourRatePlan","Deals")',
+                data: { 'ratePlanId': rateplanId },
+                method: 'POST',
+                dataType: 'JSON',
+                success: function (json) {
+                    
+                    if (json == 'Success') {
+                        UpdateRatePlanSubTab();
+                    }
+                    else {
+                        alert('Failed');
+                    }
+                },
+                error: function (xhr, request, error) { }
+            });
+        }
+    function AddHotelRoomConfig(packageId, itineraryId) {
+            var $modal = $('#application-modal');
+            var id = 0;
+        var itineraryId = itineraryId;
+            var url = '@Url.Action("AddHotelRoomConfigurationForTours", "Deals")';
+            if ($modal) {
+                $modal.find(".modal-title").html("Add Itinerary");
+                $modal.find('.modal-body').html(overlayTemplate);
+                $modal.modal({ keyboard: false, backdrop: false }).show();
+                $.ajax({
+                    url: url,
+                    data: { 'inclusionId': id, 'packageId': packageId, 'itineraryId': itineraryId},
+                    method: 'get',
+                    dataType: 'html',
+                    success: function (html) {
+                        
+                        $modal.find('.modal-body').html(html);
+                        initSelect2();
+                        var _form = $("#btnSaveandReload").parents('form');
+                        var form = $(_form);
+                        form.removeData('validator');
+                        form.removeData('unobtrusiveValidation');
+                        $.validator.unobtrusive.parse(form);
+                        if ($.validator.unobtrusive != undefined) {
+                            $.validator.unobtrusive.parse(form);
+                        }
+                    },
+                    error: function (xhr, request, error) { }
+                });
+            }
+        }
+    function EditInventory(id, planName, currencyName, isFixedDeparture, nightId) {
+        $('#application-modal .modal-title').html("Inventory: " + planName + " (" + currencyName + ")");
+        $('#application-modal').modal('toggle');
+        $('#application-modal .modal-body').html(spinnerLoading);
+        $.get('/admin/deals/RatePlanInventory', { 'ratePlanId': id, 'type': isFixedDeparture == 'true' ? 2 : 1, 'nightId': nightId }, function (result) {
+            $('#application-modal .modal-body').html(result);
+        });
+    }
+        function GetHotelRooms(packageId) {
+            var hotelId = $('#vendorID').val();
+            var data = { 'hotelId': hotelId, 'packageId': packageId };
+            $.ajax({
+                url: '@Url.Action("GetHotelRoomsTour", "Deals")',
+                data: data,
+                method: 'get',
+                dataType: 'html',
+                error: function () { },
+                success: function (html) {
+                    $('#hotelRooms').html(html);
+                },
+                error: function (xhr, request, error) { }
+            });
+        }
+    $(document).on('change', '.bulkcolumn', function (e)
+    {
+        var $targetElements = $($(this).data('target'));
+        if ($(this).val() != null && $(this).val() != '') {
+            $targetElements.val($(this).val());
+        }
+    });
+    $(document).on('change', '.bulkcheck', function (e)
+    {
+        
+        var $targetElements = $($(this).data('target'));
+        if ($(this).is(':checked')) {
+            $targetElements.prop('checked', true)
+        }
+        else {
+            $targetElements.prop('checked', false)
+        }
+       
+    });
+
+    function GetVisaDetail(event) {
+        var current_row = event.parentNode.parentNode.parentNode;
+        showWaitProcess();
+        $.post('/admin/Deals/ImportVisaFromDestination', { 'packageId': event.value, 'from': 'Visa' }, function (e) {
+            hideWaitProcess();
+            if (e != undefined) {
+                $('#' + current_row.cells[1].childNodes[1].firstElementChild.id).select2('val', [e.VendorID]);
+                current_row.cells[2].childNodes[27].firstElementChild.value = e.AdultPrice;
+                current_row.cells[3].childNodes[1].firstElementChild.value = e.ChildPrice;
+                current_row.cells[4].childNodes[1].firstElementChild.value = e.BufferDays;
+
+                current_row.cells[2].childNodes[15].value = e.DocumentsRequired;
+                current_row.cells[2].childNodes[17].value = e.GeneralPolicy;
+                current_row.cells[2].childNodes[19].value = e.Markup;
+                current_row.cells[2].childNodes[21].value = e.PhotoSpecification;
+                current_row.cells[2].childNodes[23].value = e.ProcessingTime;
+            }
+            else if (e == 'nodata') {
+                swal("", "No Data found in Master", "warning");
+            }
+        });
+    }
+
+    function ImportVisaFromDestination(packageId)
+    {
+        showWaitProcess();
+        $.post('/admin/Deals/ImportVisaFromDestination', { 'packageId': packageId, 'from': 'Destination' }, function (e) {
+            hideWaitProcess();
+            if (e == 'Success')
+            {
+                location.reload();
+            }
+            else if (e == 'nodata')
+            {
+                swal("", "No Data found in Master", "warning");
+            }
+        });
+    }
+    $(document).on('click', '#btnApplyFilterInventory', function (e) {
+        var $startDate = $('#txtInventoryFilterStartDate');
+        var $endDate = $('#txtInventoryFilterEndDate');
+        var $ddnDay = $('#ddlFilterDays');
+        var ratePlanId = $(this).data('rate-plan-id');
+        
+        $('#formInventory tbody').html(spinnerLoading);
+        $.post('/admin/deals/GetFilteredInventory', { 'startDate': $startDate.val(), 'endDate': $endDate.val(), 'ratePlanId': ratePlanId, days: $ddnDay.val() }, function (result) {
+                $('#formInventory tbody').html(result);
+            });
+
+        //}
+        //else {
+        //    swal("", "Invalid Dates", "warning");
+        //}
+        return false;
+    });
+        $(document).on("click", '[data-toggle="tab"]', function (e) {
+            e.preventDefault()
+            if ($(this).closest('li').hasClass("disabled")) {
+                return false;
+            }
+            $(this).tab('show')
+        });
+        $(document).on("click", '#btnSubmit', function (event) {
+            if ($('.nav-tabs > .active').length) {
+                var nextTab = $('.nav-tabs').hasClass('pull-right')
+                    ? $('.nav-tabs > .active').prev('li').find('a').attr("href")
+                    : $('.nav-tabs > .active').next('li').find('a').attr("href")
+                $(this).parents('form').find(':hidden[name="nextview"]').remove();
+                $(this).parents('form').append('<input name="nextview" type="hidden" value="' + nextTab + '" />');
+            }
+        });
+
+        $(document).on('show.bs.tab', 'a[data-toggle="tab"][data-href]', function (e) {
+
+            const url = $(this).data("href");
+            const target = $(this).attr("href");
+            const currentTab = $(this);
+            const ul = $(this).parents('ul');
+            const li = $(this).closest('li');
+            if (url && url != '' && target.indexOf("#") != -1 && !li.hasClass("disabled")) {
+                $(target).html(overlayTemplate);
+                var data = {};
+                ul.next('.tab-content').find(".active").html('')
+                var form = ul.closest('div').children('form.hide');
+                if (form.length) { data = form.serialize(); }
+                $.ajax({
+                    url: url,
+                    data: data,
+                    method: 'get',
+                    dataType: 'html',
+                    error: function (xhr, request, error) { },
+                    success: function (html) {
+                        $(target).html(html)
+                        currentTab.tab('show');
+                        history.pushState({}, "", $(currentTab).attr('href'));
+                        //initPluggins();
+                        if ($('.nav-tabs-custom .nav-tabs-custom > ul > li.active').length == 0) {
+                            var $childTab = $('.nav-tabs-custom .nav-tabs-custom > input[name="tabs"]:hidden');
+                            fnChangeTab($childTab, $childTab.val());
+                        }
+
+                        setTimeout(function () {
+                            $("form").removeData("validator");
+                            $("form").removeData("unobtrusiveValidation");
+                            $.validator.unobtrusive.parse("form");
+                            initPluggins();
+                            $("#DealType").select2({
+                                maximumSelectionLength: 2
+                            });
+                        }, 2000);
+
+                    },
+                });
+            }
+        });
+
+        var $tab = $('.nav-tabs-custom > input[name="tabs"]:hidden');
+        fnChangeTab($tab, $tab.val());
+
+        function fnChangeTab($tab, value) {
+            if ($tab.length > 0 && $tab.val().length > 0) {
+                const active = (value || "") === "" ? $tab.val() : value;
+                const target = $('a[href="' + active + '"]');
+                if (target) {
+                    target.click();
+                }
+            }
+        }
+    $(document).on('click', '#updateInventory', function (e) {
+        e.preventDefault();
+        showWaitProcess();
+        
+        if ($("#formInventory").valid()) {
+            $.post('/admin/deals/SaveRatePlanInventory', $("#formInventory").serialize(), function (result) {
+                hideWaitProcess();
+                $('#application-modal').modal('toggle');
+                if (result) {
+                    debugger;
+                    @(packageTypeId == 2 ? "UpdateRatePlanSubTab();": "UpdateHotelRatePlanTab();")
+                    hideWaitProcess();
+
+                }
+                else
+                {
+                    hideWaitProcess();
+                    swal("", "Failed", "warning");
+                }
+                return;
+            });
+        }
+    });
+        //$(document).on("click", '.delete-item-row', function () {
+        //    if ($(this).parents('tr').parent('tbody').find('tr').length > 1) {
+        //        var ROWID = $(this).parents('tr').attr('id')
+        //        swal({
+        //            title: 'Are you sure?',
+        //            text: "You won't be able to revert this!",
+        //            type: 'warning',
+        //            showCancelButton: true,
+        //            confirmButtonColor: '#3085d6',
+        //            cancelButtonColor: '#d33',
+        //            confirmButtonText: 'Yes, delete it!'
+        //        }).then(function () {
+        //            $('#' + ROWID).remove();
+        //        })
+        //        return false;
+        //    }
+        //    else {
+        //        ////alert("You want be able to delete at least remaining item !")
+        //    }
+
+        //});
+    $(document).on('click', '.delete-remote-itenary', function (e) {
+        
+        var urlSource = $(this).data('href');
+        $.get(urlSource, function (result) {
+            if (result.Status) {
+                var targetItinearyTab = $('#itineraryNavs li.active a').attr("href");
+                var itinearySource = $('#itineraryNavs li.active a').data("href");
+                showWaitProcess();
+                $.get(itinearySource, function (result) {
+                    swal("", 'Successfully Deleted', 'success');
+                    hideWaitProcess();
+                    $(targetItinearyTab).html(result);
+                    return;
+                });
+            }
+            else {
+                swal("", result.Message, "error");
+            }
+
+        });
+    });
+        $(function () {
+
+            setTimeout(function () {
+                $(".duplicate-Room").text('');
+            },4000);
+
+
+            $(document).off("change", ".hotelroomtypedes")
+            $(document).on("change", ".hotelroomtypedes", function () {
+                //$('.hotelroomtypedes').on('change', function () {
+
+
+                var options = $(this).data('select2').data() || [];
+                //var options = $(".hotelroomtypedes ").data('select2').data() || [];
+                if (options.length > 0 && options[0] && options[0].hasOwnProperty("Description")) {
+                    var description = options[0].Description;
+                    $(this).parents('tr').eq(0).find('.roomtypedes').val(description !== null ? description : '');
+                    //$(".roomtypedes").val(description !== null ? description : '');
+                }
+                else {
+                    $(this).parents('tr').eq(0).find('.roomtypedes').val('');
+                }
+            })
+
+            $(document).on("change", "#Areas,#CityId", function () {
+
+                var value = $("#Name").val();
+                if (value != "") {
+                    $("#Name").removeData("previousValue");
+                    $('form').validate().element('#Name');
+                }
+            })
+        });
+</script>
+}

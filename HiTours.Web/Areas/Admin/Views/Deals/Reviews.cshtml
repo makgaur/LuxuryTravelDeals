@@ -1,0 +1,103 @@
+﻿@{
+    var routeData = this.ViewContext.RouteData.Values;
+    var nextView = this.TempData["nextview"] != null ? this.TempData["nextview"].ToString() : "#reviews";
+}
+<div class="nav-tabs-custom">
+    <input type="hidden" name="tabs" data-default="@nextView" value="@nextView" />
+    <form class="hide">
+        @foreach (var key in routeData.Keys)
+        {
+            <input type="hidden" name="@key" value="@(routeData[key])" />
+        }
+        <input type="hidden" name="RowIdentifier" value="" />
+    </form>
+    @*<div class="col-md-9"></div>
+    <div class="col-md-3"><button type="button" id="moveReviewsFromMaster" class="btn btn-block btn-primary">Move Reviews From Master</button></div>*@
+   
+    <ul class="nav nav-tabs pull-right">
+        @if (this.ViewBag.PackageTypeId == 1)
+        {
+            <li><button type="button" id="moveReviewsFromMaster" class="btn btn-block btn-primary">Move Reviews From Master</button></li>
+        }
+        <li class=""><a href="#add-reviews" class="replaceAdd" data-toggle="tab" data-href="@Url.Action("ReviewAdd",new { @id = 0, @packageId = this.ViewBag.PackageId})"><i class="fa fa-plus"></i> Add Review</a></li>
+        <li class=""><a href="#view-reviews" class="replaceView" data-toggle="tab" data-href="@Url.Action("ReviewsGrid" ,new { @packageId = this.ViewBag.PackageId})"><i class="fa fa-list"></i> View List</a></li>
+    </ul>
+    <div class="tab-content hotel-tabs">
+        <div class="tab-pane" id="add-reviews"></div>
+        <div class="tab-pane" id="view-reviews"></div>
+    </div>
+</div>
+<script>
+    $(document).ready(function (e) {
+        $('.replaceView').click();
+    })
+    $(document).on('click', '#moveReviewsFromMaster', function (e) {
+        showWaitProcess();
+        $.get('@Url.Action("MoveHotelReviewsFromMaster", "Deals")', { 'packageId':@this.ViewBag.PackageId}, function (result) {
+            if (result == 'success') {
+                location.reload();
+            }
+            else if (result == "nodata") {
+                swal('', "No Data found In Master Hotel", 'warning');
+            }
+            else if (result == 'failure') {
+                swal('', 'Failed to Move', 'error');
+            }
+            hideWaitProcess();
+        });
+    })
+    $(document).on('submit', "#formDealsReview", function (e) {
+        e.preventDefault();
+        debugger;
+        var $form = $("#formDealsReview");
+        //$('#formPackagePromotionManage input[name="Id"]').val(0);
+            if ($form.valid()) {
+                showWaitProcess();
+                var model = {}
+                model = $form.serialize();
+                var ErrorMsg = "";
+                $(".text-blank").each(function () {
+                    ErrorMsg += $(this).text();
+                })
+                if (ErrorMsg != "") {
+                    hideWaitProcess();
+                    return false;
+                }
+                else {
+                    $.ajax({
+                        url: '@Url.Action("ReviewAdd", "Deals")',
+                        type: "JOSN",
+                        method: "POST",
+                        data: model,
+                        success: function (data) {
+                            hideWaitProcess();
+                            if (data == "success") {
+                                swal('', 'Successfully Inserted', 'success');
+                                $(".replaceView").click();
+                            }
+                            else if (data == "update") {
+                                swal('', 'Successfully Updated', 'success');
+                                $(".replaceView").click();
+                            }
+                            else
+                            {
+                                var errors = JSON.parse(data);
+                                $.each(errors, function (i, obj) {
+                                    var $span = $('span[data-valmsg-for="' + obj.key + '"]');
+                                    $span.addClass("field-validation-error").html('<span for="' + obj.key + '" class="field-validation-error">' + obj.error + '</span>');
+                                    $span.attr("data-valmsg-replace", "false");
+                                })
+
+                                 setTimeout(function () {
+                                        $("[data-valmsg-replace]").each(function () {
+                                            $(this).attr("data-valmsg-replace", "true");
+                                        })
+                                    }, 3000);
+                                return false;
+                            }
+                        }
+                    });
+                }
+            }
+    })
+</script>

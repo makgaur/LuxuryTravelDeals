@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>HiTours.Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{6086d18f-8af7-445e-af98-6552c91ee95c}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>HiTours.Database</RootNamespace>
+    <AssemblyName>HiTours.Database</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Tables" />
+    <Folder Include="StoredProcedures" />
+    <Folder Include="Functions" />
+    <Folder Include="Views" />
+    <Folder Include="PostDeploymentScripts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\dbo.Accommodation.Table.sql" />
+    <Build Include="Tables\dbo.AccommodationGroup.Table.sql" />
+    <Build Include="Tables\dbo.ApplicationUser.Table.sql" />
+    <Build Include="Tables\dbo.Categories.Table.sql" />
+    <Build Include="Tables\dbo.City.Table.sql" />
+    <Build Include="Tables\dbo.CityArea.Table.sql" />
+    <Build Include="Tables\dbo.CompanySetting.Table.sql" />
+    <Build Include="Tables\dbo.Country.Table.sql" />
+    <Build Include="Tables\dbo.Currencies.Table.sql" />
+    <Build Include="Tables\dbo.FlightBooking.Table.sql" />
+    <Build Include="Tables\dbo.FlightDestination.Table.sql" />
+    <Build Include="Tables\dbo.FlightDetail.Table.sql" />
+    <Build Include="Tables\dbo.HomeBanner.Table.sql" />
+    <Build Include="Tables\dbo.Hotel.Table.sql" />
+    <Build Include="Tables\dbo.HotelBooking.Table.sql" />
+    <Build Include="Tables\dbo.HotelBookingPersonDetail.Table.sql" />
+    <Build Include="Tables\dbo.HotelCategory.Table.sql" />
+    <Build Include="Tables\dbo.HotelPrice.Table.sql" />
+    <Build Include="Tables\dbo.HotelPriceDetail.Table.sql" />
+    <Build Include="Tables\dbo.HotelTerms.Table.sql" />
+    <Build Include="Tables\dbo.HotelValidity.Table.sql" />
+    <Build Include="Tables\dbo.Markets.Table.sql" />
+    <Build Include="Tables\dbo.MealPlanMaster.Table.sql" />
+    <Build Include="Tables\dbo.PackageImages.Table.sql" />
+    <Build Include="Tables\dbo.PackageReminder.Table.sql" />
+    <Build Include="Tables\dbo.Packages.Table.sql" />
+    <Build Include="Tables\dbo.PlanType.Table.sql" />
+    <Build Include="Tables\dbo.RefactorLog.Table.sql" />
+    <Build Include="Tables\dbo.RoomType.Table.sql" />
+    <Build Include="Tables\dbo.SpecificPrice.Table.sql" />
+    <Build Include="Tables\dbo.States.Table.sql" />
+    <Build Include="Tables\dbo.UserCountries.Table.sql" />
+    <Build Include="Tables\dbo.UserDetailModels.Table.sql" />
+    <Build Include="Tables\dbo.UserDetails.Table.sql" />
+    <Build Include="Tables\dbo.UserTransaction.Table.sql" />
+    <Build Include="Tables\Package.City.Table.sql" />
+    <Build Include="Tables\Package.Country.Table.sql" />
+    <Build Include="Tables\Package.DealType.Table.sql" />
+    <Build Include="Tables\Package.HolidayMenu.Table.sql" />
+    <Build Include="Tables\Package.Hotel.Table.sql" />
+    <Build Include="Tables\Package.HotelCategory.Table.sql" />
+    <Build Include="Tables\Package.HotelRoomType.Table.sql" />
+    <Build Include="Tables\Package.HotelRoomTypeDesc.Table.sql" />
+    <Build Include="Tables\Package.Region.Table.sql" />
+    <Build Include="Tables\Package.Schema.sql" />
+    <Build Include="Tables\Package.SeoDetail.Table.sql" />
+    <Build Include="Tables\Package.State.Table.sql" />
+    <Build Include="Tables\Package.StaticPageMaster.Table.sql" />
+    <Build Include="Tables\Package.TourPackage.Table.sql" />
+    <Build Include="Tables\Package.TourPackageBookDate.Table.sql" />
+    <Build Include="Tables\Package.TourPackageCity.Table.sql" />
+    <Build Include="Tables\Package.TourPackageImage.Table.sql" />
+    <Build Include="Tables\Package.TourPackageNights.Table.sql" />
+    <Build Include="Tables\Package.TourPackageNightsDepartCity.Table.sql" />
+    <Build Include="Tables\Package.TourPackageNightsValidity.Table.sql" />
+    <Build Include="Tables\Package.TourPackageTravelStyle.Table.sql" />
+    <Build Include="Tables\Package.TravelStyle.Table.sql" />
+    <Build Include="StoredProcedures\dbo.sp_GetInsertQuery.StoredProcedure.sql" />
+    <Build Include="StoredProcedures\dbo.sp_TableScript.StoredProcedure.sql" />
+    <Build Include="Functions\dbo.F_Split.UserDefinedFunction.sql" />
+    <Build Include="Functions\dbo.RTF2TextWeb.UserDefinedFunction.sql" />
+    <Build Include="Views\dbo.HotelRoomMealRemark.View.sql" />
+    <Build Include="Views\dbo.CityView.View.sql" />
+    <Build Include="PostDeploymentScripts\Data.sql" />
+  </ItemGroup>
+</Project>

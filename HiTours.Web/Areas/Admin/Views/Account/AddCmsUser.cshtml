@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Add CMS User";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{ this.ViewBag.Title = "Add CMS User";}
+@model ApplicationUserAddViewModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.ViewList, "/admin/Account/CmsUser") })
+                </div>
+            </div>
+            <form id="formAddCmsUser" asp-antiforgery="true" method="post">
+                <input type="hidden" asp-for="CreatedBy" />
+                <input type="hidden" asp-for="CreatedDate" />
+                <input type="hidden" asp-for="UpdatedBy" />
+                <input type="hidden" asp-for="UpdatedDate" />
+                <div class="box-body">
+                    <div class="form-group col-sm-6">
+                        <label asp-for="Name"></label>
+                        <input type="text" asp-for="Name" class="form-control" maxlength="90" />
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="UserId"></label>
+                        <input type="text" asp-for="UserId" class="form-control" maxlength="90" />
+                        <span asp-validation-for="UserId"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="Password"></label>
+                        <input type="password" asp-for="Password" class="form-control" maxlength="90" />
+                        <span asp-validation-for="Password"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="ConfirmPassword"></label>
+                        <input type="password" asp-for="ConfirmPassword" class="form-control" maxlength="90" />
+                        <span asp-validation-for="ConfirmPassword"></span>
+                    </div>
+                </div>
+                @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit) })
+            </form>
+        </div>
+    </div>
+
+</div>

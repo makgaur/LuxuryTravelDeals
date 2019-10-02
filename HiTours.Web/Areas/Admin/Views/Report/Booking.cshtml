@@ -1,0 +1,146 @@
+﻿@{ this.ViewBag.Title = "Booking List"; }
+@model HotelBookingViewModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                @*<div class="pull-right top-buttons">
+                        @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/category/manage") })
+                    </div>*@
+            </div>
+            @this.Html.Partial("_DataTableGrid")
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+            BindGrid({
+                url: "@Url.Action("Booking")",
+                columns: [
+                    { "data": "HotelName", "title": "Hotel Name", "type": "string" },
+                    { "data": "BookingId", "title": "Booking Id","type":"int"},                    
+                    { "data": "DealCode", "title": "Deal Code", "type": "string" },
+                    { "data": "ContactPerson", "title": "Contact Person", "type": "string", "class":"capitalize" },                    
+                    { "data": "BookFromDate", "title": "Start Date", "type": "date" },
+                    { "data": "BookToDate", "title": "End Date", "type": "date" },                    
+                    {
+                        "data": null, "title": "Status",
+                        "targets": -1,
+                        "width": '2%',
+                        "class": "column-action text-center pdf-font",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                            var action = "";
+                            if (record.BookingStatus=='Success')
+                                action += '<span style="color:green;">Success</span> ';
+                            else
+                                action += '<span style="color:red;">Failed</span> ';
+                            return action;
+
+                        }
+                    },
+                    {
+                        "data": null, "title": "Action",
+                        "targets": -1,
+                        "width": '2%',
+                        "class": "column-action text-center pdf-font",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                            var action = "";
+                            action += '<span data-toggle="tooltip" data-title="Booking Details">';
+                            action += '     <a data-view="booking"  data-id="' + record.Id + '" data-type="' + record.BookingType+'" class="btn btn-primary btn-xs" href="javascript:;">';
+                            action += '        <i class="fa fa-eye" aria-hidden="true"></i>';
+                            action += '     </a >';
+                            action += '</span > ';
+                          return action;
+
+                        }
+                    }
+                ],
+                fnCallBack: function (oSettings) {
+                    $("a[data-view='booking']").each(function () {
+                        var oModal = { title: 'Booking Detail', url: '/admin/report/getbookingdetail/' + $(this).data("id") + '?type=' + $(this).data("type") || 0 };
+                        $(this).data("modal", oModal);
+                    });
+                    $("a[data-view='booking']").on("click", function () {
+                        var $Modal = $(dyanmicModalKey);
+                        if ($Modal) {
+                            var oModal = $(this).data("modal") || {};
+                            $Modal.find(".modal-title").html((oModal.title || ''));
+                            $Modal.find('.modal-body').html(spinnerLoading);
+                            $Modal.modal({keyboard: false, backdrop: false }).show();
+                            $.ajax({
+                                url: oModal.url || '',
+                                success: function (html) {
+                                    if ($(dyanmicModalKey).length > 0) {
+                                        $(dyanmicModalKey).find('.modal-body').html(html);
+                                    }
+                                }
+                            });
+                        }
+
+                    });
+
+                 }
+            });
+            //setTimeout(function () {
+            //    bindDataModel();
+            //    $('[data-toggle="tooltip"]').tooltip();
+            //}, 1000);
+            //$('.dataTables_paginate').click(function () {
+            //    setTimeout(function () {
+            //        bindDataModel();
+            //        $('[data-toggle="tooltip"]').tooltip();
+            //    }, 1000);
+            //})
+        });
+    </script>
+}
+ <style>
+     #dvModalDynmic .modal-dialog {
+         width: 50%;
+     }
+     .modal-header {
+         background: #b2cad42e;
+         border-bottom: 3px solid #660866;
+         text-align: center;
+     }
+     h4.modal-title {
+         font-size: 22px;
+         text-align: center;
+         background: #f2f2f2;
+          
+         text-transform: uppercase;
+         
+         color: #660866;       
+        
+     }
+      .close {
+         /* float: right; */
+         font-size: 22px;
+         font-weight: 700;
+         line-height: 1;
+         color: #fff;
+         text-shadow: inherit;
+         filter: alpha(opacity=20);
+         margin-top: 0;
+         background: #f00 !important;
+         /* margin-top: -15px; */
+         /* margin-right: -15px; */
+         padding: 6px 12px !important;
+         position: absolute;
+         top: -17px;
+         right: -14px;
+         border-radius: 50px;
+         padding: 10px !important;
+         height: 40px;
+         opacity: initial;
+         padding: 0px !important;
+         width: 40px;
+     }
+ </style>

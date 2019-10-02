@@ -1,0 +1,925 @@
+﻿@model ListingViewModel;
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/_ProductLayout.cshtml";
+}
+<link href="~/Styles/main.css" rel="stylesheet" />
+<style>
+
+    .res {
+        text-overflow: ellipsis; /* Required for text-overflow to do anything */
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .select-items {
+        max-height: 150px;
+        overflow-y: scroll;
+    }
+
+    .select-selected {
+        width: 155px;
+    }
+</style>
+@try
+{
+    <form id="formSearchDeals" method="post" action="/SearchFilter" enctype="multipart/form-data">
+        <div class="search-deal-xs col-xs-12 hidden-sm hidden-md hidden-lg">
+            <div class="col-xs-12 search-deal-xs-header">
+                <span class="search-xs-left-arrow" onclick="window.history.back();"><img src="~/images/left_arrow.svg" alt="left_arrow" /></span><span>@(string.IsNullOrWhiteSpace(this.ViewBag.searchTerm) ? "All" : this.ViewBag.searchTerm)</span><span class="search-xs-close-icon"><img src="~/images/Close_Icon.svg" alt="close_icon" /></span>
+            </div>
+            <div class="col-xs-12 sort-deal-xs-header-bottom">
+                <div class="search-xs-header-bottom-date">
+                    <span class="search-xs-icon"><img src="~/images/Search_Icon.svg" alt="seach_icon" /></span><span class="search-xs-date">24 Sep &ndash; 1 Oct</span><span class="search-header-xs-botoom-right-style" id="openSearchBox">Change</span>
+                </div>
+                <ul>
+                    <li>2 Adults</li>
+                    <li>2 Kids</li>
+                    <li>2 Rooms</li>
+                </ul>
+            </div>
+        </div>
+        <div class="container-search">
+            <div class="row">
+
+                <div class="col-sm-6 col-md-4 col-xs-12 col-lg-4 padding-xs relative-position">
+                    <div class="deal-search-container">
+                        <h1 class="top-heading-style"><span class="deal-search-heading hidden-xs">Deal Search</span></h1>
+                        <div class="search-bar">
+                            <h3 class="top-heading-style"><span class="section-heading hidden-xs">DESTINATION / HOTEL</span></h3>
+                            @if (!this.ViewBag.IsMobileView)
+                            {
+                                <div class="search-input hidden-xs">
+                                    <div class="typeahead__container">
+                                        <div class="typeahead__field">
+                                            <span class="typeahead__query">
+                                                <input id="searchTerm" type="text" asp-for="SearchTermViewModel.SearchTerm" data-search-type="@((int)Enums.SearchType.Query)" data-search-value="0" placeholder="Anywhere" />
+                                                <img class="search-img" src="~/images/Search_Icon_pink.svg" alt="search-icon-pink" />
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="search-input-mobile hidden-sm hidden-md hidden-lg">
+                                    <div class="typeahead__container">
+                                        <div class="typeahead__field">
+                                            <span class="typeahead__query">
+                                                <input id="searchTerm" type="text" asp-for="SearchTermViewModel.SearchTerm" data-search-type="@((int)Enums.SearchType.Query)" data-search-value="0" placeholder="Anywhere" />
+                                                <img class="search-img" src="~/images/Close_Icon.svg" alt="close_icon" id="closeSearchBox" />
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+
+                        </div>
+                        <div class="dates">
+                            <h3 class="top-heading-style"><span class="section-heading">CHECK IN – CHECK OUT</span></h3>
+                            <div class="dropdown">
+                                <div onclick="ToogleCalender(this)" data-scrolled="false">
+                                    <div class="start-date-input">
+                                        <input class="date_input_text" readonly asp-for="SearchTermViewModel.CompleteDateString" type="text" />
+                                        @*<input class="checkin_input" data-date="" asp-for="SearchTermViewModel.StartDate" readonly type="text" name="dates" />*@
+                                        <img src="~/images/Calendar.svg" alt="calender-icon" />
+                                    </div>
+                                    <input class="checkin_input" data-date="" asp-for="SearchTermViewModel.StartDateVar" readonly type="hidden" />
+                                    <input class="checkout_input" readonly data-date="" asp-for="SearchTermViewModel.EndDateVar" type="hidden" />
+                                    @*<div class="end-date-input">
+                                            <input class="checkout_input" readonly data-date="" asp-for="SearchTermViewModel.EndDate" type="text" name="dates" />
+                                            <img src="~/images/Calendar.svg" />
+                                        </div>*@
+                                </div>
+                                <div class="home-calender dropdown-menu">
+                                    @Html.Partial("_LTD_Calendar_Search")
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="passenger-room-configuration">
+                            <h3 class="top-heading-style"><span class="section-heading">GUESTS / ROOMS</span></h3>
+                            <div class="configuration">
+                                <ul class="omnibox-sub-dropdown">
+                                    <li>
+                                        <div class="box-description">
+                                            <p>Adults</p>
+                                            <span>ABOVE 12 YEARS</span>
+                                        </div>
+                                        <div class="box-value">
+                                            <span class="decrease @(Model.SearchTermViewModel.Adults == 1 ? "disabled":string.Empty)" data-target="#addAdults">
+                                            </span>
+                                            <span>
+                                                <input class="input-box-value" type="text" asp-for="SearchTermViewModel.Adults" data-min="1" id="addAdults" readonly />
+                                            </span>
+                                            <span data-target="#addAdults" class="increase">
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <hr class="hr-separate">
+                                    <li>
+                                        <div class="box-description">
+                                            <p>Kids</p>
+                                            <span>2-12 YEARS</span>
+                                        </div>
+                                        <div class="box-value">
+                                            <span data-target="#addKids" class="decrease @(Model.SearchTermViewModel.Kids == 0 ? "disabled":string.Empty)">
+                                            </span>
+                                            <span>
+                                                <input class="input-box-value" data-min="0" type="text" asp-for="SearchTermViewModel.Kids" id="addKids" readonly />
+                                                <input type="text" asp-for="SearchTermViewModel.Kids" id="addChilds" class="hidden" />
+                                            </span>
+                                            <span data-target="#addKids" class="increase">
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li id="liInfant" class="hidden">
+                                        <input type="text" asp-for="SearchTermViewModel.Infants" id="addInfants" class="hidden" />
+                                        <div id="likidage" class='row'>
+
+                                        </div>
+                                    </li>
+
+                                    <span class="error-message hidden" id="error-message"></span>
+                                </ul>
+                                <div class="omnibox-sub-dropdown">
+                                    <ul>
+                                        <li>
+                                            <div class="box-description">
+                                                <p>Rooms</p>
+                                            </div>
+                                            <div class="box-value">
+                                                <span data-target="#addRoom" class="decrease @(Model.SearchTermViewModel.Rooms == 1 ? "disabled":string.Empty)">
+                                                </span>
+                                                <span>
+                                                    <input class="input-box-value" type="text" data-min="1" asp-for="SearchTermViewModel.Rooms" id="addRoom" readonly />
+                                                </span>
+                                                <span data-target="#addRoom" class="increase">
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="search-button">
+                            <button type="button" class="btn btn-block">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                    @if (Model.ResultViewModels.Count > 0)
+                    {
+                        <div id="searchFilterContainer" class="relative-position">
+                            <div class="scroller_anchor"></div>
+                            <div class="search-filter scroller" id="scroll">
+                                <h2 class="hidden-xs">Filter Results By</h2>
+                                <div class="hidden-sm hidden-md hidden-lg col-xs-12 apply-deal-xs-header">
+                                    <span>Apply filters</span><span class="apply-xs-close-icon" id="apply-xs-close"><img src="~/images/Close_Icon.svg" alt="close_icon" /></span>
+                                </div>
+
+                                <div class="filter-xs col-xs-12 hidden-sm hidden-md hidden-lg">
+                                    <div class="col-xs-6 reset-filter-title right-border" id="btnResetFilter">
+                                        <span id="reset-filter-mobile">Reset Filters</span>
+                                    </div>
+                                    <div class="col-xs-6 apply-filter-title" id="btnApplyFilter">
+                                        <span>Apply filters</span>
+                                    </div>
+                                </div>
+                                @try
+                                {
+                                    @if (Model.FiltersViewModels.Count > 0)
+                                    {
+                                        for (int i = 0; i < Model.FiltersViewModels.Count; i++)
+                                        {
+                                            @if (Model.FiltersViewModels[i].FilterOptions.Count > 0)
+                                            {
+                                                <input type="hidden" asp-for="FiltersViewModels[i].Name" />
+                                                <input type="hidden" asp-for="FiltersViewModels[i].SelectType" />
+                                                <input type="hidden" asp-for="FiltersViewModels[i].Type" />
+                                                <input type="hidden" asp-for="FiltersViewModels[i].SortOrder" />
+                                                <div class="search-category">
+                                                    <h4>@Model.FiltersViewModels[i].Name</h4>
+
+                                                    <ul class="search-category-border">
+                                                        @for (int k = 0; k < Model.FiltersViewModels[i].FilterOptions.Count; k++)
+                                                        {
+                                                            <input type="hidden" asp-for="FiltersViewModels[i].FilterOptions[k].Display" />
+                                                            <input type="hidden" asp-for="FiltersViewModels[i].FilterOptions[k].IsRange" />
+                                                            <input type="hidden" asp-for="FiltersViewModels[i].FilterOptions[k].Value" />
+                                                            <input type="hidden" asp-for="FiltersViewModels[i].FilterOptions[k].MinValue" />
+                                                            <input type="hidden" asp-for="FiltersViewModels[i].FilterOptions[k].MaxValue" />
+                                                            <input type="hidden" asp-for="FiltersViewModels[i].FilterOptions[k].DealIds" />
+                                                            <input type="hidden" asp-for="FiltersViewModels[i].FilterOptions[k].ResultCount" />
+                                                            if (Model.FiltersViewModels[i].FilterOptions[k].IsRange)
+                                                            {
+
+                                                                <li class="@(k >= 5 ? "hidden" : string.Empty) ">
+
+                                                                    <label class="checkbox-container">
+                                                                        <input type="checkbox" asp-for="FiltersViewModels[i].FilterOptions[k].IsSelected" data-dealIds="@Model.FiltersViewModels[i].FilterOptions[k].DealIds" class="margin-right-10" data-min="@Model.FiltersViewModels[i].FilterOptions[k].MinValue" data-max="@Model.FiltersViewModels[i].FilterOptions[k].MaxValue" />
+                                                                        <span class="checkmark"></span>
+                                                                    </label>
+
+                                                                    <span> @Model.FiltersViewModels[i].FilterOptions[k].Display</span>
+                                                                    <span class="search-result"> @Model.FiltersViewModels[i].FilterOptions[k].ResultCount<span class="hidden-xs"> Results</span></span>
+
+                                                                </li>
+                                                            }
+                                                            else
+                                                            {
+                                                                <li class="@(k >= 5 ? "hidden" : string.Empty) ">
+
+                                                                    <label class="checkbox-container">
+                                                                        <input type="checkbox" asp-for="FiltersViewModels[i].FilterOptions[k].IsSelected" class="margin-right-10" data-dealIds="@Model.FiltersViewModels[i].FilterOptions[k].DealIds" />
+                                                                        <span class="checkmark"></span>
+                                                                    </label>
+
+
+                                                                    <span> @Model.FiltersViewModels[i].FilterOptions[k].Display.ToLower()</span>
+                                                                    <span class="search-result"> @Model.FiltersViewModels[i].FilterOptions[k].ResultCount<span class="hidden-xs"> Results</span></span>
+
+                                                                </li>
+                                                            }
+
+                                                        }
+
+                                                        @if (Model.FiltersViewModels[i].FilterOptions.Count > 5)
+                                                        {
+                                                            <p class="show-more"><img src="~/images/More_Icon.svg" alt="more-icon" />@(Model.FiltersViewModels[i].FilterOptions.Count - 5) more filtering options</p>
+                                                        }
+
+                                                    </ul>
+                                                </div>
+
+                                                <hr class="hidden-xs hr-separate">
+                                            }
+
+                                        }
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    var msg = ex.ToString();
+                                }
+
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                <div class="col-sm-6 col-md-8 col-xs-12 col-lg-8 search-deals-container padding-left-xs-0">
+
+                    @if (Model.ResultViewModels.Count > 0)
+                    {
+                        <div class="row mobile-listing-header-container">
+                            <div class="col-md-5 col-xs-12 col-lg-7 col-sm-5 listing-header deal-box-width">
+                                @if (!this.ViewBag.IsMobileView)
+                                {
+                                    <span class="search-deal-city capitalize">@(string.IsNullOrWhiteSpace(this.ViewBag.searchTerm) ? "All" : this.ViewBag.searchTerm) </span>
+                                }
+                                <span class="search-deal-quantity" id="searchDealCount" data-dealids="@string.Join(",", Model.ResultViewModels.Select(x => x.Id).ToList())"> @Model.ResultViewModels.Count </span> <span class="search-deal-quantity">Deals Found</span>
+                                @*<span class="search-deal-city">Bali Hotels & Tours </span>*@
+                            </div>
+                            <div class="col-md-7  col-lg-5 col-sm-7 deal-box-width hidden-xs">
+                                <div class="dropdown dropdown-toggle pull-right">
+                                    <span class="search-deal-filter" data-toggle="dropdown">Sort By: <span id="sortTitle">Price - Low to High</span><img src="~/images/Chevron_ Down.svg" alt="down-arrow" class="margin-left-5" /></span>
+                                    <ul class="dropdown-menu custom-sort-filter-dropdown">
+                                        <div class="arrow-up recentViewlist margin-right-0"></div>
+                                        <li><a href="javascript:;" onclick="LoadDeals('Price - Low to High',@((int)Enums.SortFilterType.PriceLowToHight))">Price &mdash; Low to High </a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:;" onclick="LoadDeals('Price - High to Low',@((int)Enums.SortFilterType.PriceHighToLow))">Price &mdash; High to Low </a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:;" onclick="LoadDeals('Discounts - High to Low',@((int)Enums.SortFilterType.DiscountHighToLow))">Discounts &mdash; High to Low</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:;" onclick="LoadDeals('Discounts - Low to High',@((int)Enums.SortFilterType.DiscountLowToHigh))">Discounts &mdash; Low to High</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:;" onclick="LoadDeals('Popularity - High to Low',@((int)Enums.SortFilterType.PopularityHighToLow))">Popularity &mdash; High to Low</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:;" onclick="LoadDeals('Whats New',@((int)Enums.SortFilterType.WhatsNew))">Whats New</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:;" onclick="LoadDeals('Near Me', @((int)Enums.SortFilterType.NearMe))">Near Me</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+
+
+                    @if (Model.ResultViewModels.Count > 0)
+                    {
+                        <div class="result-deals-container">
+                            @this.Html.Partial("_SearchListing", Model.ResultViewModels)
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="no-result-container">
+                            @*<span class="sub-header-no-result">Shiver me timbers! You broke the internet matey…</span>*@
+                            <span class="header-no-result">No Location Found</span>
+                            <div class="image-404">
+                                <img src="~/images/NoDeal.svg" alt="404-image" />
+                            </div>
+                            <span class="no-result-footer">
+                                We’re trying continuously trying our best to bring you newer, better deals every hour, everyday. While we try to tailor deals better suited to your needs how about you explore some of our trending deals below?
+                            </span>
+
+                        </div>
+                    }
+
+
+                    @*<div class="row row-width">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 show-more-button" style="padding-right:0px;">
+                                <button type="button" class="show-more-btn">SHOW MORE</button>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+
+
+        </div>
+        @if (!(Model.ResultViewModels.Count > 0))
+        {
+            <hr class="trending-deal-hr" />
+            <div class="trending-deal-container">
+                <div class="flash-heading">
+                    <span class="flash-heading-text">Trending Destinations</span>
+                </div>
+                <div class="deals-container">
+                    <div class="display-table">
+                        @this.Html.Partial("_CurrentDeals", Model.TrendingDeals.Take(3).ToList())
+
+                    </div>
+                </div>
+                <div class="deals-container">
+                    <div class="display-table">
+                        @this.Html.Partial("_CurrentDeals", Model.TrendingDeals.Skip(3).Take(3).ToList())
+                    </div>
+                </div>
+            </div>
+        }
+    </form>
+}
+catch (Exception ex)
+{
+    var msg = ex.ToString();
+}
+
+
+
+@*<hr style="height: 1px;border: none;width:100%; background-color: #E6E6E6;margin-top:0px;margin-bottom:0px;">*@
+
+<div class="sort-filter-xs col-xs-12 hidden-sm hidden-md hidden-lg">
+    <div class="col-xs-6 sort-filter-title right-border" id="sort-filter-mobile">
+        <span>Sort</span>
+    </div>
+    <div class="col-xs-6 sort-filter-title" id="apply-filter-mobile">
+        <span>Filter</span>
+    </div>
+</div>
+
+<section class="hidden-sm hidden-md hidden-lg">
+    <div class="col-xs-12 shadow_box">
+
+    </div>
+</section>
+
+<div class="hidden-sm hidden-md hidden-lg sort-xs-container">
+    <div class="col-xs-12 sort-xs-header">
+        <span>Sort</span><span class="pull-right" id="sort-xs-close"><img src="~/images/Close_Icon.svg" alt="close_icon" /></span>
+    </div>
+    <ul class="custom-sort-filter-dropdown col-xs-12">
+        @*<div class="arrow-up recentViewlist" style="margin-right:0px;"></div>*@
+        <li class="filter-title-xs"><a href="javascript:;" onclick="LoadDeals('Price - Low to High',1)">Price &mdash; Low to High </a></li>
+        <li class="divider"></li>
+        <li class="filter-title-xs"><a href="javascript:;" onclick="LoadDeals('Discounts - High to Low',2)">Discounts &mdash; High to Low</a></li>
+        <li class="divider"></li>
+        <li class="filter-title-xs"><a href="javascript:;" onclick="LoadDeals('Popularity - High to Low',3)">Popularity &mdash; High to Low</a></li>
+        <li class="divider"></li>
+        <li class="filter-title-xs"><a href="javascript:;" onclick="LoadDeals('Whats New',4)">Whats New</a></li>
+        <li class="divider"></li>
+        <li class="filter-title-xs"><a href="javascript:;" onclick="LoadDeals('Near Me', 5)">Near Me</a></li>
+    </ul>
+</div>
+
+
+<input type="text" id="txtKidsAge" asp-for="SearchTermViewModel.KidsAge" class="hidden" />
+
+<button onclick="topFunction()" id="btnTop" title="Go to top"></button>
+
+@Html.Partial("_Footer_navigation")
+
+@section scripts{
+
+    <link href="~/Styles/Calender.css" rel="stylesheet" />
+    <script src="~/js/LTD_Calender.js"></script>
+
+    <script>
+        var isMobileView = @this.ViewBag.IsMobileView.ToString().ToLower();
+        $('.search-deal-xs-header .search-xs-left-arrow').click(function (e)
+        {
+            window.location = '/';
+
+        });
+        function ToogleCalender(e) {
+
+            if ($(e).parent('.dropdown').hasClass('open')) {
+                $(e).parent('.dropdown').removeClass('open');
+            }
+            else {
+                $(e).parent('.dropdown').addClass('open');
+                if (!$(e).data('scrolled')) {
+                    $('.calendar').animate({
+                        scrollLeft: 288
+                    }, "fast");
+                    $(e).data('scrolled', true);
+                }
+            }
+        }
+
+        function ValidateAge() {
+            for (var i = 1; i <= $('#addKids').val(); i++) {
+                if ($("#ddlKidsAge" + i).val() == "0") {
+                    $("#error-message").html('Please select age for Kid ' + i + '.');
+                    $("#error-message").removeClass("hidden");
+                    return false;
+                }
+            }
+
+            $("#error-message").addClass("hidden");
+            $("#error-message").html('');
+            return true;
+        }
+
+        function ChildInfantCalculate() {
+            var Child = 0, Infants = 0;
+            var KidsAge = '';
+            for (var i = 1; i <= $('#addKids').val(); i++) {
+
+                if ($("#ddlKidsAge" + i + " option:selected").html() > 1) {
+                    Child++;
+                }
+                else {
+                    Infants++;
+                }
+                KidsAge = KidsAge + "#" + $("#ddlKidsAge" + i).val();
+            }
+
+            $('#txtKidsAge').val(KidsAge);
+            $('#addChilds').val(Child);
+            $('#addInfants').val(Infants);
+        }
+
+        $('.search-button button, .search-input .search-img').click(function (e) {
+            if (ValidateAge()) {
+                ChildInfantCalculate();
+                var data = {
+                    'startDate': $('.checkin_input').data('date'),
+                    'endDate': $('.checkout_input').data('date'),
+                    'adults': $('#addAdults').val(),
+                    'kids': $('#addChilds').val(),
+                    'infants': $('#addInfants').val(),
+                    'rooms': $('#addRoom').val(),
+                    'searchTerm': $('#searchTerm').val().toString(),
+                    'subSearchTerm': $('#searchTerm').data('sub-search-term'),
+                    'showSearchTerm': true,
+                    'searchType': $('#searchTerm').data('search-type'), //// Enums.SearchType.Query
+                    'value': $('#searchTerm').data('search-value'),
+                    'kidsage': $('#txtKidsAge').val()
+                };
+
+                window.location = BuildSearchUrl(data);
+            }
+        });
+        function BuildSearchUrl(data) {
+            var url = '';
+            if (data.searchType == 10) {
+                url = ReturnSearchUrl(data, false, false);
+            }
+            else if (data.searchTerm != '' && data.subSearchTerm != '' && data.searchTerm != null && data.subSearchTerm != null) {
+                url = ReturnSearchUrl(data, true, true);
+            }
+            else {
+                url = ReturnSearchUrl(data, true, false);
+            }
+            return url;
+        }
+        function ReturnSearchUrl(data, searchTermRequired, subSearchTermRequired) {
+            var url = '/search';
+            if (data.subSearchTerm != null && data.subSearchTerm != '' && data.subSearchTerm != undefined && subSearchTermRequired) {
+                url = url + '/' + data.subSearchTerm.toLowerCase();
+            }
+
+            if (data.searchTerm != null && data.searchTerm != '' && data.searchTerm != undefined && searchTermRequired) {
+
+                url = url + '/' + data.searchTerm.toLowerCase();
+            }
+            if (!((data.adults == 1 || data.adults == '1') &&
+                (data.kids == 0 || data.kids == '0') &&
+                (data.infants == 0 || data.infants == '0') &&
+                (data.rooms == 1 || data.rooms == '1')) || (data.startDate != null && data.startDate != '' && data.startDate != undefined)) {
+                url = url + "/" + data.adults;
+                url = url + "/" + data.kids;
+                url = url + "/" + data.infants;
+                url = url + "/" + data.rooms;
+
+                if (data.startDate != null && data.startDate != '' && data.startDate != undefined) {
+                    url = url + '/' + data.startDate;
+                }
+                if (data.endDate != null && data.endDate != '' && data.endDate != undefined) {
+                    url = url + '/' + data.endDate;
+                }
+                if (data.kidsage != null && data.kidsage != '' && data.kidsage != undefined) {
+                    url = url + '/' + data.kidsage;
+                }
+
+            }
+            else {
+                if (data.startDate != null && data.startDate != '' && data.startDate != undefined) {
+                    url = url + '/' + data.startDate;
+                }
+                if (data.endDate != null && data.endDate != '' && data.endDate != undefined) {
+                    url = url + '/' + data.endDate;
+                }
+            }
+
+            return url;
+        }
+        function sticky_relocate() {
+            var window_top = $(window).scrollTop();
+            var footer_top = $("footer").offset().top;
+            var div_top = $('.scroller').offset().top;
+            var div_height = $(".scroller").height();
+
+            if (window_top + div_height > footer_top)
+                $('#scroll').removeClass('.scroller');
+            else if (window_top > div_top) {
+                $('#scroll').addClass('.scroller');
+            } else {
+                $('#scroll').removeClass('.scroller');
+            }
+        }
+        $(document).ready(function (e) {
+
+            if ($('#addChilds').val() != undefined && $('#addChilds').val() != '' && $('#addInfants').val() != undefined && $('#addInfants').val() != '') {
+                $('#addKids').val(parseInt($('#addChilds').val()) + parseInt($('#addInfants').val()));
+                for (var i = 1; i <= parseInt($('#addKids').val()); i++) {
+                    $('#liInfant').removeClass('hidden');
+                    var selectedvalue = $('#txtKidsAge').val().split('#');
+                    addkidsddl(i, selectedvalue[i]);
+                }
+            }
+
+
+            BindSearchData();
+            //getCurrentDeals(limit, offset);
+            UpdateSteppersString();
+            ////sticky_relocate();
+            //$('.ltd-checkbox').iCheck({
+            //    checkboxClass: 'icheckbox_flat-pink',
+            //    radioClass: 'iradio_flat-pink'
+            //});
+            $('.search-category .show-more').click(function (e) {
+
+                $(this).parent().find('li.hidden').removeClass('hidden')
+                $(this).addClass('hidden');
+            });
+            var lastScrollTop = 0;
+            //This function will be executed when the user scrolls the page.
+            ////$(window).scroll(function (e) {
+            ////    clearTimeout($.data(this, "scrollCheck"));
+            ////    $.data(this, "scrollCheck", setTimeout(function () {
+            ////        if ($(window).scrollTop() > lastScrollTop) {
+            ////            var down_scroller_start = ($(".scroller").innerHeight() + $(".scroller_anchor").offset().top + 15) - ($(window).scrollTop() + window.innerHeight);
+            ////            if ($(window).scrollTop() < $('.scroller_anchor').offset().top) {
+            ////                $('.scroller').css({
+            ////                    'top': '0px',
+            ////                    //'- webkit-transition': 'all 0.5s linear',
+            ////                    //'-moz-transition': 'all 0.5s linear',
+            ////                    //'-o-transition': 'all 0.5s linear',
+            ////                    //'transition': 'all 0.5s linear',
+            ////                    'position': 'relative'
+            ////                });
+            ////                return;
+            ////            }
+            ////            if (down_scroller_start <= 0) {
+            ////                if (($(window).scrollTop() + window.innerHeight) > $("footer").offset().top) {
+            ////                    return;
+            ////                }
+            ////                $('.scroller').css({
+            ////                    'top': (down_scroller_start * (-1)) + 'px',
+            ////                    //'- webkit-transition': 'all 0.5s linear',
+            ////                    //'-moz-transition': 'all 0.5s linear',
+            ////                    //'-o-transition': 'all 0.5s linear',
+            ////                    //'transition': 'all 0.5s linear',
+            ////                    'position': 'absolute'
+            ////                });
+            ////            }
+            ////        }
+            ////        else {
+            ////            var up_scroller_start = ($(window).scrollTop() + 75) - $(".scroller").offset().top;
+            ////            if (up_scroller_start <= 0) {
+            ////                if ($(".scroller").offset().top <= $('.scroller_anchor').offset().top) {
+            ////                    $('.scroller').css({
+            ////                        'top': '0px',
+            ////                        'position': 'absolute'
+            ////                    });
+            ////                    return;
+            ////                }
+            ////                $('.scroller').css({
+            ////                    'top': ($(window).scrollTop() + 75 - $('.scroller_anchor').offset().top) + 'px',
+            ////                    'position': 'absolute'
+            ////                });
+            ////            }
+            ////        }
+
+            ////        //$(".scroller").stop().animate({ 'top': (down_scroller_start * (-1)) + 'px' }, 1)
+            ////        lastScrollTop = $(window).scrollTop();
+            ////    }, 250));
+
+
+
+        });
+            $(".searchInputDestination").on('click', function () {
+                if ($("#search_container").hasClass("hooked")) {
+                    $("#search_container").removeClass("hooked");
+                    $(".searchInputDestination").removeClass("hooked_icon_image");
+                }
+                else {
+                    $("#search_container").addClass("hooked");
+                    $(".searchInputDestination").addClass("hooked_icon_image");
+                }
+                //$(".dropdown_search").css("dislay","block" );
+                ////$(".search-panel").css({ "width": "100%", "margin": "0px" });
+                //$(".nav_search").css("display", "block");
+            });
+
+
+
+
+        $(".increase").click(function (e) {
+
+            e.stopPropagation();
+            var target = $(this).data('target')
+            var $target = $(target);
+            var minVal = $target.data('min');
+            var currentVal = $target.val();
+
+            $target.val(parseInt(currentVal) + 1);
+            if ($target.val() > minVal) {
+                $(this).siblings('.decrease').removeClass('disabled');
+            }
+            if (target == "#addKids") {
+                if ($target.val() > minVal) {
+                    $('#liInfant').removeClass('hidden');
+                }
+                addkidsddl((parseInt(currentVal) + 1), '');
+            }
+            UpdateSteppersString();
+        });
+        $(".decrease").click(function (e) {
+                e.stopPropagation();
+                var target = $(this).data('target');
+                var $target = $(target);
+                var minVal = $target.data('min');
+                var currentVal = $target.val();
+                if (currentVal == minVal) {
+
+                }
+                else {
+                    $target.val(parseInt(currentVal) - 1);
+                    if (target == "#addKids") {
+                        if ($target.val() == minVal) {
+                            $("#error-message").addClass("hidden");
+                            $("#error-message").html('');
+                            $('#liInfant').addClass('hidden');
+                        }
+                        removekidsddl(parseInt(currentVal));
+                    }
+                    UpdateSteppersString();
+                    if ($target.val() == minVal) {
+                        $(this).addClass('disabled');
+                    }
+                }
+
+            });
+
+        function addkidsddl(currentkid, selectedvalue) {
+            var likidage = document.getElementById('likidage');
+            var kids_html = "<div class='col-lg-6 col-md-6  col-sm-6 col-xs-6'><div class='row'><div class='box-description'><p>Kid " + currentkid + "</p></div></div><div class='row'><div class='box-value'><div class='select-dropdown' id='ddl_kids" + currentkid +"'></div></div></div></div>";
+            likidage.insertAdjacentHTML('beforeend', kids_html);
+
+            var kids_ddl = "<div class='ltd-select' ><select id='ddlKidsAge" + currentkid + "' select2-stop-render='true' class='scrollbar-style'><option value='0'>Select Age</option></select></div>";
+            var ddl_kids = document.getElementById('ddl_kids' + currentkid);
+            ddl_kids.insertAdjacentHTML('beforeend', kids_ddl);
+
+            var ddlkids = document.getElementById('ddlKidsAge' + currentkid);
+            for (var i = 0; i <= 12; i++) {
+                ddlkids.options[i + 1] = new Option(i, i + 1);
+            }
+
+            if (selectedvalue != undefined && selectedvalue != '') {
+                $('#ddlKidsAge' + currentkid).val(selectedvalue);
+            }
+
+            custom_dropdown();
+        }
+
+        function removekidsddl(currentkid) {
+            $('#ddl_kids' + currentkid).parents().eq(2).remove();
+        }
+
+            function UpdateSteppersString() {
+                var adults = parseInt($('#addAdults').val());
+                var kids = parseInt($('#addKids').val());
+                //var infants = parseInt($('#addInfants').val());
+                var rooms = parseInt($('#addRoom').val());
+                var totalGuests = adults + kids;
+                $('#stepperString').val(totalGuests + " Guests / " + rooms + " Rooms");
+            }
+            function BindSearchData() {
+                var startDate = '@this.ViewBag.startDate';
+                var endDate = '@this.ViewBag.endDate';
+                @*var adults = '@this.ViewBag.adults';
+                var kids = '@this.ViewBag.kids';
+                var infants = '@this.ViewBag.infants';
+                var rooms = '@this.ViewBag.rooms';*@
+                var searchTerm = '@this.ViewBag.searchTerm';
+                var showSearchTerm = '@this.ViewBag.showSearchTerm';
+                //Dates
+                if (startDate != null && endDate != null && startDate != 'null' && endDate != 'null' && startDate != '' && endDate != '')
+                {
+                    ////startDate = startDate.replace(/\//ig, "-");
+                    ////endDate = endDate.replace(/\//ig, "-");
+                    var startFlag = false;
+
+                    $(".calendar .calendar-day").each(function (index, element) {
+                        // element == this
+                        if ($(element).data('date') == startDate) {
+                            startFlag = true;
+                            $(element).addClass('selected-start');
+                            $('.checkin_input').data('date', $(element).data('date'));
+                        }
+                        else if (($(element).data('date') == endDate))
+                        {
+                            $(element).addClass('selected-end');
+                            $('.checkout_input').data('date', $(element).data('date'));
+                            startFlag = false;
+                            return;
+                        }
+                        else if (startFlag) {
+                            $(element).addClass('hover-mid');
+                        }
+                    });
+                    var displayStringStartDate = $(".calendar .calendar-day.selected-start").data("day") + " " + $(".calendar .calendar-day.selected-start").data("monthName") + ", " + $(".calendar .calendar-day.selected-start").data("year");
+                    var displayStringEndDate = $(".calendar .calendar-day.selected-end").data("day") + " " + $(".calendar .calendar-day.selected-end").data("monthName") + ", " + $(".calendar .calendar-day.selected-end").data("year");
+                    $('.checkin_input').val(startDate);
+                    $('.checkout_input').val(endDate);
+                    $('.date_input_text').val(displayStringStartDate + "-" + displayStringEndDate);
+                }
+
+                if (showSearchTerm === 'True' || showSearchTerm === true) {
+                    $('#searchTerm').val(searchTerm);
+                }
+                else {
+                    $('#searchTerm').val('');
+                }
+        }
+        if (!isMobileView) {
+            $('#searchFilterContainer input').on('change', function (event) {
+                //LoadDeals('Price - Low to High',1);
+                FilterSearch();
+            });
+            function FilterSearch() {
+                $('#formSearchDeals').submit();
+            }
+        }
+        else {
+            $('#btnApplyFilter').click(function (e) {
+                $('#formSearchDeals').submit();
+            });
+            $('#btnResetFilter').click(function (e) {
+                $('#searchFilterContainer input[type="checkbox"]').val(false);
+                $('#formSearchDeals').submit();
+            })
+        }
+
+            var loaderTemplate = '<div class="loader"><img src="/images/ajax-loader.gif"/></div>';
+        function LoadDeals(sortTitle,sortType) {
+
+            if (sortType == @((int)Enums.SortFilterType.NearMe))
+            {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(sendPositionDisplayResult, filterLocationError);
+                }
+                return;
+            }
+
+            LoadDealsExtensionRequest(sortTitle, sortType, null, null);
+
+        }
+        function filterLocationError(error) {
+            var errorMsg = '';
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    errorMsg = "User denied the request for Geolocation."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    errorMsg = "Location information is unavailable."
+                    break;
+                case error.TIMEOUT:
+                    errorMsg = "The request to get user location timed out."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    errorMsg = "An unknown error occurred."
+                    break;
+            }
+            swal('', errorMsg, 'error');
+        }
+        function sendPositionDisplayResult(position)
+        {
+            LoadDealsExtensionRequest("Near Me", @((int)Enums.SortFilterType.NearMe), position.coords.latitude, position.coords.longitude)
+        }
+        function LoadDealsExtensionRequest(sortTitle, sortType, lat, long)
+        {
+            var filteredDealIds = [];
+            var $resultContainer = $('.result-deals-container');
+            $resultContainer.html(loaderTemplate);
+            $("#searchFilterContainer").find(':checkbox').each(function () {
+                if (this.checked) {
+                    var dealIds = '';
+                    try {
+                        if ($(this).data('dealids') != undefined) {
+                            dealIds = $(this).data('dealids').toString();
+                        }
+                    } catch (e) {
+
+                    }
+                    try {
+                        if (this.data('dealids') != undefined) {
+                            dealIds = this.data('dealids').toString();
+                        }
+                    } catch (e) {
+
+                    }
+                    var dealIdsArray = dealIds.split(',');
+                    for (var i = 0; i < dealIdsArray.length; i++) {
+                        filteredDealIds.push(dealIdsArray[i]);
+                    }
+                }
+            });
+
+            filteredDealIds = GetUnique(filteredDealIds);
+            if (filteredDealIds.length == 0) {
+                filteredDealIds = GetUnique($("#searchDealCount").data("dealids").toString().split(','));
+            }
+            $("#searchDealCount").html(filteredDealIds.length);
+
+
+            $("#sortTitle").html(sortTitle);
+
+            $.get('/search/FilterSearchResult', { dealIds: filteredDealIds.join(','), filterType: sortType, latitude: lat, longitude: long }, function (result) {
+                $resultContainer.html(result);
+            });
+        }
+        function GetUnique(inputArray) {
+            var outputArray = [];
+
+            for (var i = 0; i < inputArray.length; i++) {
+                if ((jQuery.inArray(inputArray[i], outputArray)) == -1) {
+                    outputArray.push(inputArray[i]);
+                }
+            }
+
+            return outputArray;
+        }
+        //Dropdown on hover start
+        $('.dropdown-list-icon').hover(function () {
+            $(this).find('.dropdown-deal-custom-style').stop(true, true).delay(200).fadeIn(500);
+        }, function () {
+            $(this).find('.dropdown-deal-custom-style').stop(true, true).delay(200).fadeOut(500);
+        });
+
+        $('.dropdown-list-icon').hover(function () {
+            $(this).find('.dropdown-recent-view-custom-style').stop(true, true).delay(200).fadeIn(500);
+        }, function () {
+            $(this).find('.dropdown-recent-view-custom-style').stop(true, true).delay(200).fadeOut(500);
+        });
+             //Dropdown on hover end
+    </script>
+    <script src="~/js/jquery.sticky-kit.min.js"></script>
+    <script src="~/js/custom-dropdown.js"></script>
+    <script src="~/js/jquery.search.js"></script>
+
+    <environment include="Development">
+        <script asp-append-version="true" src="~/js/jquery.common.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script asp-append-version="true" src="~/js/jquery.common.min.js"></script>
+    </environment>
+}
+
+

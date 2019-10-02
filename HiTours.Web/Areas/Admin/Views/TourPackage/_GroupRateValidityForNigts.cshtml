@@ -1,0 +1,46 @@
+﻿@model TourPackageNightsValiditys
+@{
+    var ModelList = Model.TourPackageNightsValidity.GroupBy(x => new {x.RateValidFrom,x.RateValidTo }).ToList();
+}
+
+@if (Model.TourPackageNightsValidity.Count > 0)
+{
+foreach (var groups in ModelList)
+{
+    var fromDate = Convert.ToDateTime(groups.Key.RateValidFrom).ToString("dd/MM/yyyy");
+    var toDate = Convert.ToDateTime(groups.Key.RateValidTo).ToString("dd/MM/yyyy");
+    <tr id="@Guid.NewGuid().ToString("N")" data-from="@fromDate.Replace("/","-")" data-to="@toDate.Replace("/","-")">
+        @*<td class=" details-control show-nested"></td>*@
+        <td>@(fromDate)</td>
+        <td>@(toDate)</td>
+        <td><a class="btn btn-xs btn-warning  add-ratevalidity" data-href="/admin/tourpackage/PackageEditRateValidity?id=@Model.TourPackageNightsId&from=@groups.Key.RateValidFrom&to=@groups.Key.RateValidTo " data-from="@(groups.Key.RateValidFrom)" data-to="@(groups.Key.RateValidTo)" data-packagenigthid="@Model.TourPackageNightsId" style="width: 101px;text-align: center;float: right;line-height: 11px;padding: 6px;height: 26px;" href="javascript:void(0);">
+      <i class="fa fa-pencil-square-o"></i> Edit</a></td>
+        <td valign="middle" class="city-delete-row-box">
+            <a class="packageNightValidityDelete" data-packagenigthid="@Model.TourPackageNightsId" data-from="@(groups.Key.RateValidFrom)" data-to="@(groups.Key.RateValidTo)"  href="javaScript:void(0)"><i class="fa fa-trash-o"></i></a>
+        </td>
+    </tr>
+
+  @*foreach (var items in groups)
+  {
+    <tr class="hide nested-row" style="padding:0px;">
+        <td colspan="4">
+            <table class="table table-standard table-bordered table-striped" style="width: 98%;float: right;margin: 0;">
+                <thead>
+                    <tr class="th-small">
+                        <th>Room Type</th>
+                        <th> Twin Rate WeekDays</th>
+                        <th> Twin Rate Weekend</th>
+                        <th class="column-action text-center" style="width:10%">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+               
+                        @Html.Partial("_RateValidityRowForNight", items)
+                  
+                </tbody>
+            </table>
+        </td>
+    </tr>
+        }*@
+    }
+}

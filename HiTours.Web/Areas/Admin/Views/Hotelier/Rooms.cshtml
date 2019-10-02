@@ -1,0 +1,85 @@
+﻿@{
+    var routeData = this.ViewContext.RouteData.Values;
+    var nextView = this.TempData["nextview"] != null ? this.TempData["nextview"].ToString() : "#rooms";
+}
+<div class="nav-tabs-custom">
+    <input type="hidden" name="tabs" data-default="@nextView" value="@nextView" />
+    <form class="hide">
+        @foreach (var key in routeData.Keys)
+        {
+            <input type="hidden" name="@key" value="@(routeData[key])" />
+        }
+    </form>
+
+    <ul class="nav nav-tabs pull-right">
+        <li class=""><a href="#add-roomconfig" class="replaceAdd" data-toggle="tab" data-href="@Url.Action("RoomsAdd","Hotelier",new {@hotelRoomId = 0,  @hotelId = this.ViewBag.HotelId})"><i class="fa fa-plus"></i> Add Room Cofiguration</a></li>
+        <li class=""><a href="#view-roomconfig" class="replaceView" data-toggle="tab" data-href="@Url.Action("RoomsGrid","Hotelier",new { @hotelId = this.ViewBag.HotelId})"><i class="fa fa-list"></i> View List</a></li>
+    </ul>
+    <div class="tab-content hotel-tabs">
+        <div class="tab-pane" id="add-roomconfig"></div>
+        <div class="tab-pane" id="view-roomconfig"></div>
+    </div>
+
+
+</div>
+<script>
+    $(document).ready(function (e) {
+        $('.replaceView').click();
+    })
+    $(document).on('click', ".nexttab-rooms" ,function () {
+        $('#hotelierPromotion').trigger('click');
+    });
+    $(document).off('submit', "#formRoomConfig").on('submit', "#formRoomConfig", function (e) {
+        e.preventDefault();
+        var $form = $("#formRoomConfig");
+        //$('#formPackagePromotionManage input[name="Id"]').val(0);
+            if ($form.valid()) {
+                showWaitProcess();
+                var model = {}
+                model = $form.serialize();
+                var ErrorMsg = "";
+                $(".text-blank").each(function () {
+                    ErrorMsg += $(this).text();
+                })
+                if (ErrorMsg != "") {
+                    hideWaitProcess();
+                    return false;
+                }
+                else {
+                    $.ajax({
+                        url: '@Url.Action("RoomsAdd", "Hotelier")',
+                        type: "JOSN",
+                        method: "POST",
+                        data: model,
+                        success: function (data) {
+                            hideWaitProcess();
+                            if (data == "success") {
+                                swal('', 'Successfully Inserted', 'success');
+                                $(".replaceView").click();
+                            }
+                            else if (data == "update") {
+                                swal('', 'Successfully Updated', 'success');
+                                $(".replaceView").click();
+                            }
+                            else
+                            {
+                                var errors = JSON.parse(data);
+                                $.each(errors, function (i, obj) {
+                                    var $span = $('span[data-valmsg-for="' + obj.key + '"]');
+                                    $span.addClass("field-validation-error").html('<span for="' + obj.key + '" class="field-validation-error">' + obj.error + '</span>');
+                                    $span.attr("data-valmsg-replace", "false");
+                                })
+
+                                 setTimeout(function () {
+                                        $("[data-valmsg-replace]").each(function () {
+                                            $(this).attr("data-valmsg-replace", "true");
+                                        })
+                                    }, 3000);
+                                return false;
+                            }
+                        }
+                    });
+                }
+            }
+    })
+</script>

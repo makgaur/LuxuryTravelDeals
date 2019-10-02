@@ -1,0 +1,84 @@
+﻿@model DealsAddOnViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+@using (this.Html.BeginCollectionItem("DealsAddOnModels"))
+{
+    var identifier = Guid.NewGuid();
+    <div class="panel">
+        <div class="panel-heading btn-warning">
+            <h4 class="panel-title ">
+                <a data-toggle="collapse" class="" data-parent="#sub-accordion" href="#collapse_@identifier"><i class="fa fa-fw fa-soccer-ball-o"></i> @Model.Name</a>
+            </h4>
+        </div>
+        <div id="collapse_@identifier" class="panel-collapse collapse">
+            <div class="panel-body">
+                <input asp-for="Id" type="hidden"/>
+                <input asp-for="InclusionId" type="hidden"/>
+                <input asp-for="InfantCharge" type="hidden"/>
+                <input asp-for="AdultCharge" type="hidden"/>
+                <input asp-for="AdultMinimumAge" type="hidden"/>
+                <input asp-for="ChildCharge" type="hidden"/>
+                <input asp-for="ChildMinimumAge" type="hidden"/>
+                <input asp-for="CreatedBy" type="hidden"/>
+                <input asp-for="CreatedDate" type="hidden"/>
+                <input asp-for="Day" type="hidden"/>
+                <input asp-for="IsChargeable" type="hidden"/>
+                <input asp-for="IsIncluded" type="hidden"/>
+                <input asp-for="Name" type="hidden"/>
+                <input asp-for="UpdatedBy" type="hidden"/>
+                <input asp-for="UpdatedDate" type="hidden"/>
+                <input asp-for="VendorId" type="hidden"/>
+                <div class="form-group col-md-12">
+                    <label asp-for="Description"></label>
+                    <textarea asp-for="Description" rows="5" style="width:100%;" placeholder="Details (Max 300 Words)"></textarea>
+                    <span asp-validation-for="Description"></span>
+                    <h6 class="pull-right counter"></h6>
+                </div>
+                <div class="form-group col-md-12">
+                    <div class="tax-tabel-wrap">
+                        <div class="table-responsive">
+                            <table id="ImagesTable" class="table table-standard table-bordered invoice-tabel-2">
+                                <thead>
+                                    <tr>
+                                        <th>Image Name</th>
+                                        <th style="width:155px">Image</th>
+                                        <th>Dimention</th>
+                                        <th>Preview</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <label asp-for="Image"></label>
+                                            <input type="hidden" asp-for="Image" />
+                                        </td>
+                                        <td align="center">
+                                            <input asp-for="ImageFile" type="file" class="singleImg" />
+                                            <span asp-validation-for="Image"></span>
+                                        </td>
+                                        <td>
+                                            <span>Required Dimention</span>
+                                        </td>
+                                        <td>
+                                            <div class="img-thumbnail">
+                                                @if (string.IsNullOrEmpty(Model.Image))
+                                                {
+                                                    <img class="preview" style="width:120px; height:60px;" alt="">
+                                                }
+                                                else
+                                                {
+                                                    <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.Image" alt="">
+
+                                                }
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

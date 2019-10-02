@@ -1,0 +1,67 @@
+﻿@model ApplicationUserViewModels
+@{
+    ViewData["Title"] = "Index";
+    this.Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="~/images/favicon.png">
+    <title>Welcome to Luxury Travel Deals</title>
+    <link asp-append-version="true" href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link asp-append-version="true" rel="stylesheet" type="text/css" href="~/css/font-awesome.min.css">
+    <link asp-append-version="true" href="~/content/css/AdminLTE.min.css" rel="stylesheet" />   
+    
+    <link href="~/css/css.css" rel="stylesheet" />
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="javascript:;"><b>LuxuryTravel</b>Deals</a>
+        </div>        
+        <div class="login-box-body">
+            <p class="login-box-msg">Sign in to start your session</p>
+            <form asp-antiforgery="true" class="form-horizontal" method="post">
+                <div class="form-group has-feedback">
+                    <input asp-for="UserId" type="text" autofocus placeholder="UserId" class="form-control" />
+                    <span asp-validation-for="UserId"></span>
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input asp-for="Password" type="password" placeholder="Password" class="form-control" />
+                    <span asp-validation-for="Password"></span>
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">                 
+                    <!-- /.col -->
+                    <div class="col-xs-4">
+                        @this.Html.ButtonBottom(new[] { new Button { Text = "Sign In", Type = Enums.ButtonType.Submit } })                        
+                    </div>
+                    <div style="color:red">@this.ViewBag.LoginError</div>
+                    <!-- /.col -->
+                </div>
+            </form>
+        </div>
+        
+    </div>
+
+    <script asp-append-version="true" src="~/assets/js/vendor/jquery.min.js"></script>
+    <script asp-append-version="true" src="~/js/bootstrap.min.js"></script>    
+    <script asp-append-version="true" src="~/content/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script asp-append-version="true" src="~/content/js/jquery.validate.js"></script>
+    <script asp-append-version="true" src="~/content/js/jquery.validate.unobtrusive.js"></script>
+    <link asp-append-version="true" href="~/css/frontend.developer.css" rel="stylesheet" />
+    <style>
+        .form-horizontal .form-group {
+            margin-right: 0;
+            margin-left: 0;
+        }
+    </style>
+</body>
+</html>

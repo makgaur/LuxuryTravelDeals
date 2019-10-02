@@ -1,0 +1,53 @@
+﻿@{ this.ViewBag.Title = "City List"; }
+@model CategoryViewModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/city/manage") })
+                </div>
+            </div>
+            @this.Html.Partial("_DataTableGrid")
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        $(function () {
+            BindGrid({
+                url: "@Url.Action("Index")",
+                columns: [
+                    { "data": "Name", "title": "City Name", "type": "string" },
+                    { "data": "CityDescription", "title": "City Description", "type": "string" },
+                     {
+                        "data": "IsActive",
+                        "title": " Active Status",
+                        "class": "text-center",
+                        "type": "bool", "width": '15%', mRender: function (data, type, record) {
+                            var url = '@Url.GetAdminUrl("City", "ChangeActiveStatus")/' + record.Id;
+                            return appendToggleCheckBox(url , record.IsActive,'@Messages.StatusActive','@Messages.StatusInactive' )
+                    } },
+                    {
+                        "data": null, "title": "Action",
+                        "targets": -1,
+                        "width": '15%',
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                            var action = "";
+                            action += '<a class="form-control btn-success" href="@Url.GetAdminUrl("city", "manage")/' + record.Id + '"><i class="fa fa-edit" title="Edit"></i>&nbsp;</a>';
+                            if (record.Id >= 1294) {
+                                action += '<a class="form-control btn-danger delete-row" data-delete href="@Url.GetAdminUrl("city", "delete")/' + record.Id + '"><i class="fa fa-trash-o"></i>&nbsp;</a>';
+                            }
+                            return action;
+
+                        }
+                    }]
+            });
+        });
+
+    </script>
+}

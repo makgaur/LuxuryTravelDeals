@@ -1,0 +1,20 @@
+﻿@{  this.ViewBag.Title = "Area";}
+@model PackageAreaViewModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    @if (this.Model != null && this.Model.Id != 0)
+                    {
+                        @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/area/manage") })
+                    }
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.ViewList, "/admin/area") })
+                </div>
+            </div>
+         @Html.Partial("_area")
+        </div>
+    </div>
+
+</div>

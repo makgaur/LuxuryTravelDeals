@@ -1,0 +1,36 @@
+﻿@model PromotionViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+<tr>
+    @using (this.Html.BeginCollectionItem("model"))
+    {
+        <input type="hidden" asp-for="CouponCode"/>
+        <input type="hidden" asp-for="DiscountType"/>
+        <input type="hidden" asp-for="DiscountValue"/>
+        <input type="hidden" asp-for="Id"/>
+        <input type="hidden" asp-for="IsActive"/>
+        <input type="hidden" asp-for="IsDeleted"/>
+        <input type="hidden" asp-for="MaxCount"/>
+        <input type="hidden" asp-for="MaxDiscountFlat"/>
+        <input type="hidden" asp-for="Remark"/>
+        <input type="hidden" asp-for="ValidityEnd"/>
+        <input type="hidden" asp-for="ValidityStart"/>
+        <td>
+            <span>@Model.CouponCode</span>
+        </td>
+        <td>
+            <span>@(Model.DiscountType == 1 ? "Percentage" : "Flat")</span>
+        </td>
+        <td>
+            <span>@(Model.DiscountValue.ToAmount()) @(Model.DiscountType == 1 ? "%" : "₹")</span>
+        </td>
+        <td>
+            <span> ₹@Model.MaxDiscountFlat.ToAmount()</span>
+        </td>
+        <td>
+            <span> @Model.ValidityStart.ToString("dd/MM/yyyy")</span>
+        </td>
+        <td>
+            <span> @Model.ValidityEnd.ToString("dd/MM/yyyy")</span>
+        </td>
+    }
+</tr>

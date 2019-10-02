@@ -1,0 +1,96 @@
+﻿@model List<DealInventoryViewModel>
+
+<form asp-antiforgery="true" id="formInventory" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <div class="tax-tabel-wrap">
+            <div class="table-responsive">
+                <table id="DealsImageTable" class="table table-standard table-bordered invoice-tabel-2">
+                    <thead>
+                        <tr>
+                            <td>Date Filter</td>
+                            <td></td>
+                            <td colspan="2"><input type="date" id="txtInventoryFilterStartDate" class="form-control " placeholder="Start Date"/></td>
+                            <td colspan="2"><input type="date" id="txtInventoryFilterEndDate" class="form-control " placeholder="End Date"/></td>
+                            <td colspan="2">
+                                <select id="ddlFilterDays" select2-stop-render="true" class="form-control" multiple="multiple">
+                                    <option value="1">Monday</option>
+                                    <option value="2">Tuesday</option>
+                                    <option value="3">Wednesday</option>
+                                    <option value="4">Thursday</option>
+                                    <option value="5">Friday</option>
+                                    <option value="6">Saturday</option>
+                                    <option value="0">Sunday</option>
+                                </select>
+                            </td>
+                            <td colspan="2"><button type="button" class="btn btn-success" id="btnApplyFilterInventory" data-rate-plan-id="@Model.Select(x => x.RatePlanId).Distinct().FirstOrDefault().ToString()">Apply</button></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Bulk</td>
+                            <td></td>
+                            <td><input class="form-control bulkcolumn" type="number" data-target=".txt_inventory" /></td>
+                            <td><input class="form-control bulkcolumn" type="number" data-target=".txt_price_dbo" /></td>
+                            <td><input class="form-control bulkcolumn" type="number" data-target=".txt_price_sbo" /></td>
+                            <td><input class="form-control bulkcolumn" type="number" data-target=".txt_extra_adult" /></td>
+                            <td><input class="form-control bulkcolumn" type="number" data-target=".txt_extra_child_wb" /></td>
+                            <td><input class="form-control bulkcolumn" type="number" data-target=".txt_extra_child_nb" /></td>
+                            <td><input class="form-control bulkcolumn" type="number" data-target=".txt_extra_infant" /></td>
+                            <td><input class="form-control bulkcolumn" type="number" data-target=".txt_surge_charge" /></td>
+                            <td><input class="icheck bulkcheck" type="checkbox" data-target=".chk_block" /></td>
+                        </tr>
+                        <tr>
+                            <th style="width:200px">Date</th>
+                            <th>Booking</th>
+                            <th>Inventory</th>
+                            <th>Price (DBO)</th>
+                            <th>Price (SBO)</th>
+                            <th>Extra Adult</th>
+                            <th>Extra Child WB</th>
+                            <th>Extra Child NB</th>
+                            <th>Extra Infant</th>
+                            <th>Surcharge</th>
+                            <th>Block Out</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @if (Model.Count > 0)
+                        {
+                            for (int i = 0; i < Model.Count; i++)
+                            {
+                                @Html.Partial("_RatePlanInventoryCollection", Model[i]);
+                            }
+                        }
+
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="12">
+                                <div class="col-md-5">
+
+                                </div>
+                                <div class="col-md-2 form-group">
+                                    <button class="btn btn-success" id="updateInventory" style="width:100%;">Save Inventory</button>
+                                </div>
+                                <div class="col-md-5">
+
+                                </div>
+                            </td>
+
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    $(document).ready(function (e) {
+        debugger;
+        $('#ddlFilterDays').multiselect();
+    })
+</script>

@@ -1,0 +1,101 @@
+﻿
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h4 class="box-title">Promotions</h4>
+                <div class="pull-right top-buttons">
+                    <button class="btn btn-sm btn-primary" onclick="EditPromotion(0)"><i class="fa fa-fw fa-plus"></i> Add Promotions</button>
+                </div>
+            </div>
+            @this.Html.Partial("_DataTableGrid")
+        </div>
+    </div>
+</div>
+<div class="box-footer" align="center">
+    <button class="nexttab-promotion btn btn-primary">Next</button>
+</div>
+<script>
+        $(function () {
+            BindGrid({
+                url: "@Url.Action("PromotionGridData", new { @id = this.ViewBag.PackageId })",
+                columns: [
+                    { "data": "Type", "title": "Type", "type": "string" },
+                    { "data": "BookingStartDate", "title": "Booking Start Date", "type": "string" },
+                    { "data": "BookingEndDate", "title": "Bookin End Date", "type": "string" },
+                    { "data": "TravelStartDate", "title": "Travel Start Date", "type": "string" },
+                    { "data": "TravelEndDate", "title": "Travel End Date", "type": "string" },
+                    { "data": "DiscountValue", "title": "Discount", "type": "string" },
+                    {
+                        "data": "IsActive",
+                        "title": " Active Status",
+                        "class": "text-center",
+                        "type": "bool", "width": '15%', mRender: function (data, type, record) {
+                            var url = '@Url.GetAdminUrl("Deals", "ChangePromotionActiveStatus")?id=' + record.Id;
+                            return appendToggleCheckBox(url, record.IsActive, 'Successfully Activated', 'Successfully DeActivated')
+                        }
+                    },
+                    {
+                        "data": null, "title": "Action",
+                        "targets": -1,
+                        "width": '15%',
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                            var action = "";
+                            action += '<a class="form-control btn-success" href="javascript:;" onclick="EditPromotion(' + record.Id + ')"><i class="fa fa-edit"></i>&nbsp;</a>';
+                            action += '<a class="form-control btn-danger delete-row" data-delete href="@Url.GetAdminUrl("Deals", "DeletePromotion")?id=' + record.Id+ '"><i class="fa fa-trash-o"></i>&nbsp;</a>';
+                            return action;
+                        }
+                    }]
+            });
+        });
+        function EditPromotion(id) {
+            var $modal = $('#application-modal');
+            var url = '@Url.Action("PromotionAdd","Deals")';
+            if ($modal) {
+                $modal.find(".modal-title").html("Edit Promotion");
+                $modal.find('.modal-body').html(overlayTemplate);
+                $modal.modal({ keyboard: false, backdrop: false }).show();
+                $.ajax({
+                    url: url,
+                    data: { 'promotionId': id,'packageId': @this.ViewBag.PackageId},
+                    method: 'get',
+                    dataType: 'html',
+                    success: function (html) {
+                        $modal.find('.modal-body').html(html);
+                        initSelect2();
+                        initPluggins();
+                        var _form = $("#btnSaveandReload").parents('form');
+                        if ($.validator.unobtrusive != undefined) {
+                            $.validator.unobtrusive.parse(_form);
+                        }
+                        var $divPartial = $('#application-modal');
+                        $divPartial.find("#btnSaveandReload").on("click", function () {
+                            if ($(_form).valid()) {
+                                _form.append('<input name="method" type="hidden" value="ajax" />');
+                                $.ajax({
+                                    type: "POST",
+                                    dataType: 'json',
+                                    url: _form.attr('action'),
+                                    data: _form.serialize(),
+                                    success: function (json) {
+                                        $modal.toggle();
+                                        if (json == 'update' || json == 'success') {
+                                            location.reload();
+                                        }
+                                        return false;
+                                    },
+                                    error: function (response) {
+                                    },
+                                });
+                            }
+                            return false;
+                        });
+                    },
+                    error: function (xhr, request, error) { }
+                });
+            }
+        }
+</script>

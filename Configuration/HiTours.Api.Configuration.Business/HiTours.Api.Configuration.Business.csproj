@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\HiTours.Api.Common\HiTours.Api.Common.csproj" />
+    <ProjectReference Include="..\..\HiTours.Services\HiTours.Services.csproj" />
+    <ProjectReference Include="..\HiTours.Api.Configuration.Contract\HiTours.Api.Configuration.Contract.csproj" />
+  </ItemGroup>
+
+</Project>

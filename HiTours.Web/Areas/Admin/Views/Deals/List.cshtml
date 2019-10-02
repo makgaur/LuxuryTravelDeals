@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewData["Title"] = "Deals";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    this.ViewBag.Title = "Deals";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@(this.ViewBag.DealType == 1 ? "Hotel" : "Tour") @this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/deals/Manage?id=0&packageTypeId=" + this.ViewBag.DealType) })
+                </div>
+            </div>
+            @this.Html.Partial("_DataTableGrid")
+        </div>
+    </div>
+</div>
+@section scripts {
+<script>
+    @{var hotelNameString = Html.Raw("{ \"data\": \"HotelName\", \"title\": \"Hotel\", \"type\": \"string\" },");}
+        $(function () {
+            BindGrid({
+            url: "@Url.Action("List",new {@type= this.ViewBag.DealType})",
+                columns: [
+                    { "data": "Code", "title": "Code", "type": "string" },
+                    { "data": "Name", "title": "Deal Name", "type": "string" },
+                    @if(this.ViewBag.DealType == 1)
+                    {
+                        @hotelNameString
+                    }
+                    { "data": "CreatedDate", "title": "Created On", "type": "string" },
+                    { "data": "ValidFrom", "title": "Valid From", "type": "string" },
+                    { "data": "ValidTo", "title": "Valid To", "type": "string" },
+                    {
+                        "data": "IsActive",
+                        "title": " Active",
+                        "class": "text-center",
+                        "type": "bool", "width": '10%', mRender: function (data, type, record) {
+                            var url = '@Url.GetAdminUrl("Deals", "ChangeDealActiveStatus")/' + record.Id;
+                            return appendToggleCheckBox(url, record.IsActive, 'Successfully Activated', 'Successfully DeActivated')
+                        }
+                    },
+                    {
+                        "data": "PreviewUrl", "title": "Preview",
+                        "targets": -1,
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                            var action = "";
+                            action += '<a class="form-control btn-success" href="' + record.PreviewUrl + '" target="_blank"><i class="fa fa-eye"></i>&nbsp;</a>';
+
+                            return action;
+                        }
+                    },
+                    ////{
+                    ////    "data": null, "title": "Inventory",
+                    ////    "targets": -1,
+                    ////    "class": "column-action text-center",
+                    ////    "shorting": false,
+                    ////    "orderable": false,
+                    ////    "mRender": function (data, type, record) {
+                    ////        var action = "";
+                    ////        action += '<a class="form-control btn-default btn-inventory" data-type="' + record.Type +'" data-code="' + record.Code +'" data-id="' + record.Id + '" href="#" ><i class="fa fa-info-circle"></i></a>';
+                    ////        return action;
+                    ////    }
+                    ////},
+                    {
+                        "data": null, "title": "Action",
+                        "targets": -1,
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                            var action = "";
+                            action += '<a class="form-control btn-success" href="@Url.Action("Manage","Deals", new { @area="Admin"})?id=' + record.Id + '&packageTypeId=' + record.Type + '"><i class="fa fa-edit"></i>&nbsp;</a>';
+                            action += '<a class="form-control btn-danger delete-row" data-delete href="@Url.GetAdminUrl("Deals", "DeleteDeal")?id=' + record.Id + '&packageType=' + @this.ViewBag.DealType + '"><i class="fa fa-trash-o"></i>&nbsp;</a>';
+                            return action;
+                        }
+                    }
+                ]
+            });
+        });
+</script>
+}
+

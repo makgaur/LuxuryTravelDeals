@@ -1,0 +1,161 @@
+﻿@model HiTours.ViewModels.Deals.Product.ProductBannerViewModel
+@if (!this.ViewBag.IsMobileView)
+{
+    <section class="product_banner hidden-xs">
+        <div class="row height-100">
+            <div class="col-md-6 col-sm-6 col-lg-6 height-100">
+                <div class="image-4x4">
+                    <a href="javascript:;" data-name="@Model.BannerImg4x4">
+                        <img src="~/DealImages/@Model.BannerImg4x4" alt="deal-image"/>
+                    </a>
+
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-lg-6 height-100">
+                <div class="col-md-6 col-sm-6 col-lg-6 height-100">
+                    <div class="image-2x2 padding-right-5 padding-bottom-5">
+                        <a href="javascript:;" data-name="@Model.BannerImg2x2_1">
+                            <img src="~/DealImages/@Model.BannerImg2x2_1" alt="deal-image"/>
+                        </a>
+                    </div>
+                    <div class="image-2x2 padding-right-5">
+                        <a href="javascript:;" data-name="@Model.BannerImg2x2_2">
+                            <img src="~/DealImages/@Model.BannerImg2x2_2" alt="deal-image"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-lg-6 height-100">
+                    <div class="image-2x2 padding-bottom-5">
+                        <a href="javascript:;" data-name="@Model.BannerImg2x2_3">
+                            <img src="~/DealImages/@Model.BannerImg2x2_3" alt="deal-image"/>
+                        </a>
+
+                    </div>
+                    <a href="javascript:;">
+                        @*<img src="~/DealImages/@(Model.MoreImage != null ? Model.MoreImage : Model.BannerImg2x2_1)" />*@
+                        <div class="image-2x2">
+                            <div class="open-gallery-container">
+                                <span>@Model.ImagesCount.ToString() MORE PHOTOS</span>
+                                <div>
+                                    <button type="button">OPEN PHOTO GALLERY</button>
+                                </div>
+                            </div>
+                            <div class="dark-overlay">
+                                <img src="~/DealImages/@(Model.MoreImage != null ? Model.MoreImage : Model.BannerImg2x2_1)" alt="deal-image"/>
+                            </div>
+                        </div>
+
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        @*<div class="container-fluid" style="padding-left:0px !important;padding-right:0px !important;">
+                <div class="row">
+                    <a href="javascript:;" data-toggle="modal" data-target="#galleryModal">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding-left:0px !important;padding-right:0px !important;">
+                            <div class="product_main_image">
+                                <img src="~/DealImages/@Model.BannerImg4x4" class="img-responsive" />
+                            </div>
+                        </div>
+                    </a>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding-left:0px !important;padding-right:0px !important;">
+                        <div class="col-sm-6 col-lg-6 col-md-6 product_sub_image" style="padding-left:5px !important;padding-right:0px !important;">
+                            <a href="javascript:;" data-toggle="modal" data-target="#galleryModal">
+                                <div class="image-2x2">
+                                    <img src="~/DealImages/@Model.BannerImg2x2_1" class="img-responsive" />
+                                </div>
+
+                            </a>
+                            <a href="javascript:;" data-toggle="modal" data-target="#galleryModal">
+                                <div class="image-2x2">
+                                    <img src="~/DealImages/@Model.BannerImg2x2_2" class="img-responsive" style="margin-top:5px;" />
+                                </div>
+
+                            </a>
+                        </div>
+                        <div class="col-sm-6 col-lg-6 col-md-6 product_sub_image " style="padding-left:5px !important;padding-right:0px !important;">
+                            <a href="javascript:;" data-toggle="modal" data-target="#galleryModal">
+                                <div class="image-2x2">
+                                    <img src="~/DealImages/@Model.BannerImg2x2_3" class="img-responsive" />
+                                </div>
+                            </a>
+
+                            <a href="javascript:;" data-toggle="modal" data-target="#galleryModal">
+                                <div class="open-gallery-container">
+                                    <span>@Model.ImagesCount.ToString() MORE PHOTOS</span>
+                                    <div>
+                                        <button>OPEN PHOTO GALLERY</button>
+                                    </div>
+                                </div>
+                                <div class="dark-overlay">
+                                    <img src="~/DealImages/@(Model.MoreImage != null ? Model.MoreImage : Model.BannerImg2x2_1)" class="img-responsive" style="margin-top:5px;" />
+                                </div>
+                            </a>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+    </section>
+}
+else
+{
+<section class="product_banner product_mobile_banner hidden-sm hidden-md hidden-lg col-xs-12">
+
+    
+
+    <div class="product_main_image col-xs-12">
+        <a href="javascript:;" data-name="@Model.BannerImg4x4">
+            <img src="~/DealImages/@Model.BannerImg4x4" class="img-responsive"alt="deal-image" />
+        </a>
+    </div>
+
+    
+    <div class="col-xs-12 no-padding-left-right">
+        <div class="col-xs-4 product_sub_image no-padding-left-right">
+            <a href="javascript:;" data-name="@Model.BannerImg2x2_1">
+                <img src="~/DealImages/@Model.BannerImg2x2_1" class="img-responsive" alt="deal-image"/>
+            </a>
+         
+        </div>
+
+        <div class="col-xs-4 product_sub_image padding-left-right-5">
+            <a href="javascript:;" data-name="@Model.BannerImg2x2_2">
+                <img src="~/DealImages/@Model.BannerImg2x2_2" class="img-responsive" alt="deal-image"/>
+            </a>
+            @*<a href="javascript:;" data-toggle="modal" data-target="#galleryModal">
+                    <img src="~/DealImages/@Model.BannerImg2x2_2" class="img-responsive" style="margin-top:5px;" />
+                </a>*@
+        </div>
+
+        <div class="col-xs-4 product_sub_image no-padding-left-right">
+            @*<a href="javascript:;" data-toggle="modal" data-target="#galleryModal">
+                    <div>
+                        <img src="~/DealImages/@Model.BannerImg2x2_3" class="img-responsive" />
+                    </div>
+                </a>*@
+
+            <a href="javascript:;">
+                <div class="open-mobile-gallery-container">
+                    <span> +@Model.ImagesCount.ToString()</span>
+                    @*<div>
+                            <button>OPEN PHOTO GALLERY</button>
+                        </div>*@
+                </div>
+                <div class="dark-overlay">
+                    <img src="~/DealImages/@(Model.MoreImage != null ? Model.MoreImage : Model.BannerImg2x2_3)" class="img-responsive" alt="deal-image"/>
+                </div>
+            </a>
+
+
+        </div>
+    </div>
+
+</section>
+}
+
+
+

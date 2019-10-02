@@ -1,0 +1,93 @@
+//-- Book Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "36e32957-322a-474a-927f-33c307ea4c6d",
+  "TraceId": "392d47da-0f02-4e83-a3be-1925a13ce1ec",
+  "ResultIndex": "OB7",
+  "Passenger": [
+    {
+      "Title": "Mr",
+      "FirstName": "sumeet",
+      "LastName": "gupta",
+      "PaxType": "1",
+      "DateOfBirth": "1987-12-06T00:00:00",
+      "Gender": "1",
+      "GSTCompanyAddress": "A-fhgjkhsjkfd",
+      "GSTCompanyContactNumber": null,
+      "GSTCompanyName": "tetrs",
+      "GSTNumber": "700932234532413",
+      "Fare": null,
+      "Baggage": null,
+      "MealDynamic": null,
+      "SeatDynamic": null,
+      "GSTCompanyEmail": "test@mailinator.com",
+      "PassportNo": "KJHHJKHKJH",
+      "PassportExpiry": "2020-12-06T00:00:00",
+      "AddressLine1": "address1",
+      "AddressLine2": "address2",
+      "City": "jaipur",
+      "CountryCode": "IN",
+      "CountryName": "India",
+      "ContactNo": "9785678298",
+      "Email": "test@mailinator.com",
+      "IsLeadPax": false,
+      "FFAirline": "df",
+      "FFNumber": "sd101",
+      "FFAirlineCode": null
+    }
+  ],
+  "Fares": [
+    {
+      "BaseFare": 3171,
+      "Tax": 10.2,
+      "TransactionFee": 300,
+      "YQTax": 200,
+      "AdditionalTxnFeeOfrd": 100,
+      "AdditionalTxnFeePub": 100,
+      "AirTransFee": 100,
+      "ChargeBU": null,
+      "CommissionEarned": 0,
+      "Currency": null,
+      "Discount": 0,
+      "IncentiveEarned": 0,
+      "OfferedFare": 0,
+      "OtherCharges": 0,
+      "PGCharge": 0,
+      "PLBEarned": 0,
+      "PublishedFare": 0,
+      "ServiceFee": 0,
+      "TaxBreakup": null,
+      "TdsOnCommission": 0,
+      "TdsOnIncentive": 0,
+      "TdsOnPLB": 0,
+      "TotalBaggageCharges": 0,
+      "TotalMealCharges": 0,
+      "TotalSeatCharges": 0,
+      "TotalSpecialServiceCharges": 0
+    }
+  ],
+  "Meals": [
+    {
+      "Code": "101",
+      "Description": "test"
+    }
+  ],
+  "Seats": [
+    {
+      "Code": "s101",
+      "Description": "test"
+    }
+  ]
+}
+//-- Book Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 3,
+      "ErrorMessage": "Invalid Passenger"
+    },
+    "TraceId": "392d47da-0f02-4e83-a3be-1925a13ce1ec",
+    "ResponseStatus": 3,
+    "Response": null
+  }
+}

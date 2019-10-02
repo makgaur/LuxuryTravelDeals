@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.0\HiTours.Data.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <NoWarn>1701;1702;1705;SA1518</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DataBase\Model\HotelRoomNightTarget\**" />
+    <EmbeddedResource Remove="DataBase\Model\HotelRoomNightTarget\**" />
+    <None Remove="DataBase\Model\HotelRoomNightTarget\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="DataBase\Model\Country\UserCountriesModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="DataBase\Model\Hotelier\HotelierInformationModel.cs.19580_1.103.partial" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HiTours.Core\HiTours.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="../stylecop.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataBase\Mapping\" />
+    <Folder Include="DataBase\Model\Promotion\" />
+  </ItemGroup>
+</Project>

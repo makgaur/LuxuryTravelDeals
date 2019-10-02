@@ -1,0 +1,138 @@
+﻿@model List<TourPackageNightViewModel>
+
+@if (Model != null)
+{
+
+    @foreach (var item in Model)
+    {
+        var packageNight = item ?? new TourPackageNightViewModel();
+        var packageValidities = packageNight.TourPackageNightsValidity.OrderBy(x => x.TwinRateWeekDays).ToList();
+
+        if (packageValidities == null)
+        {
+            packageValidities = new List<TourPackageNightsValidityViewModel>();
+        }
+        for (int index = 0; index < packageValidities.Count; index++)
+        {
+            var packageValidity = packageValidities[index];
+            var hotelRoomTypes = packageValidities[index].PackageHotelRoomType
+            ?? new PackageHotelRoomTypeViewModel();
+
+            var selectOptions = new { TourPackageNightId = packageValidity.Id, TourPackageId = packageNight.TourPackageId };
+            var price = packageNight.PackageDiscountPrice;
+            var discount = packageValidity.Discount;
+            packageNight.NoOfNights = (byte)(packageNight.NoOfNights == 0 ? 1 : packageNight.NoOfNights);
+            packageValidity.RateTypeApplied = (int)Enums.RateTypeApplied.Double;
+            if (price > 0)
+            {
+                decimal packagePrice = 0;
+                packagePrice = packageValidity.TwinRateWeekDays;
+                @* @(index == 0 ? "active" : string.Empty) *@
+                <div class="book-now-box room-type-box "
+                     data-packageNightsValidityId="@packageValidity.Id"
+                     data-hotelRoomTypeId="@hotelRoomTypes.Id"
+                     data-packagediscountprice="@packageValidity.Discount"
+                     data-depositamount="@packageNight.DepositAmount"
+                     data-packageprice="@packageNight.PackagePrice"
+                     data-validityprice="@packagePrice"
+                     data-cityname="@(packageValidity.DepartCityName)"
+                     data-roomType="@hotelRoomTypes.Name">
+
+                    <div class="row room-type-header">
+                        <div class="col-xs-8 col-sm-8 full-xs">
+                            <div class="room-type">
+                                <h3>@hotelRoomTypes.Name </h3>
+                                <div class="sleep-up">
+                                    <div class="adult-count">Sleeps up to</div>
+                                    <div class="adult">
+                                        @{
+                                            var adult = packageValidity.MaxAdult;
+                                            var child = packageValidity.MaxChild;
+                                        }
+
+                                        <input type="hidden" data-adult-count="@adult" />
+                                        <input type="hidden" data-child-count="@child" />
+                                        @for (int i = 0; i < adult; i++)
+                                        {
+                                            <img src="/images/adult.png">
+                                        }
+                                        @if (child > 0)
+                                        {
+                                            <i class="fa fa-plus" style="font-size: 12px;"></i>
+                                        }
+                                        @for (int i = 0; i < child; i++)
+                                        {
+                                            <img src="/images/child.png">
+                                        }
+                                    </div>
+                                    <div class="adult-count">Tell me more</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4 col-sm-4 full-xs">
+                            <div class="room-offers">
+                                <div class="from-price">
+                                    @{
+                                        decimal showPrice = 0;
+                                        packageValidity.RateTypeApplied = (int)Enums.RateTypeApplied.Double;
+                                        showPrice = packageValidity.TwinRateWeekDays;
+                                        ////switch ((Enums.RateTypeApplied)packageValidity.RateTypeApplied)
+                                        ////{
+                                        ////    case Enums.RateTypeApplied.Single: showPrice = packageValidity.SingleRateWeekDays; break;
+                                        ////    case Enums.RateTypeApplied.Double: showPrice = packageValidity.TwinRateWeekDays + packageValidity.TwinRateWeekend; break;
+                                        ////    case Enums.RateTypeApplied.Triple: showPrice = packageValidity.TripleRateWeekDays; break;
+                                        ////}
+                                    }
+                                    From <span>
+                                        <i class="fa fa-inr" aria-hidden="true"></i>@((showPrice).ToAmount()) price
+                                    </span>
+                                </div>
+                                <div class="per-person"></div>
+                                @if (discount > 0)
+                                {
+                                    <div class="upto-offer">Up to <span>@discount.ToAmount(true)%</span> off</div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    @*@(index == 0 ? string.Empty : "hide" )*@
+                    <div class="room-type-details hide">
+                        <div class="room-facility">
+                            @*@Html.Raw(hotelRoomTypes.Description)*@
+                            @Html.Raw(packageValidity.Descriptions)
+                        </div>
+                        <div class="book-now-box-bottom">
+                            <div class="room-counting">
+                                @*<label style="display:block;">Room 1</label>*@
+                                <select class="room-number skip-select2" data-options="@(JsonConvert.SerializeObject(selectOptions))">
+                                    @for (int i = 1; i <= packageValidity.RoomCapacity; i++)
+                                    {
+                                        if (i == packageValidity.RoomCapacity && !ViewBag.IsHotelOnly)
+                                        {
+                                            <option selected value="@i">@i</option>
+
+                                        }
+                                        else
+                                        {
+                                            <option value="@i">@i</option>
+                                        }
+
+                                    }
+                                </select>
+                                @if (child > 0)
+                                {
+
+
+                                }
+                                @*<span class="add-room"style="float:right;" data-room-count="2" data-options="@(JsonConvert.SerializeObject(selectOptions))"><i class="fa fa-plus-circle"></i></span>*@
+                                <span>@(ViewBag.IsHotelOnly ? "Room(s)" : "Person(s)")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+    }
+}

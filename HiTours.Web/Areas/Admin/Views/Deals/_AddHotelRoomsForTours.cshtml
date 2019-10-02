@@ -1,0 +1,41 @@
+﻿@model List<HotelierRoomConfigurationViewModel>
+
+<div class="col-sm-12 col-xs-12">
+    <div class="form-group">
+        <div class="tax-tabel-wrap">
+            <div class="table-responsive">
+                <table id="tpimages" class="table table-standard table-bordered invoice-tabel-2">
+                    <thead>
+                        <tr>
+                            <th style="width:50px;">Action</th>
+                            <th>Room Name</th>
+                            <th>Adults</th>
+                            <th>Child</th>
+                            <th>Infant</th>
+                            <th>Max</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            @Html.Partial("_AddHotelRoomsForToursRow", Model[i])
+                        }
+                    </tbody>
+                </table>
+                <div class="col-md-5"></div>
+                <div class="col-md-2"><button class="btn btn-block btn-primary" id="btnAddRoomConfig" onclick="AddInclusionHotelWithRoomConfig();" type="button">Add to Deal</button></div>
+                <div class="col-md-5"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function (e) {
+        $('input[type="checkbox"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue'
+        });
+    });
+</script>

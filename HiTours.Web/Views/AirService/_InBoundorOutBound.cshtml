@@ -1,0 +1,173 @@
+﻿@model List<AirSearchResult>
+@{ var flights = Model ?? new List<AirSearchResult>();}
+
+<div class="round-trip-flight">
+    <div class="air-way">
+        <div class="flight-shorting">
+            <ul>
+                <li class="width10">
+                    Airlines
+                </li>
+                <li class="width20">
+                    Departure
+                </li>
+                <li class="width20">
+                    Duration
+                </li>
+                <li class="width20">
+                    Arrival
+                </li>
+                <li class="width20 active">
+                    Price <i></i>
+                </li>
+                <li class="width10">Status</li>
+            </ul>
+        </div>
+        @foreach (var flight in flights.Where(x => x.ResultIndex.StartsWith("OB")))
+        {
+
+            var segments = flight.Segments.FirstOrDefault();
+            var OriginSegment = segments.FirstOrDefault();
+            var destinationSegment = segments.LastOrDefault();
+
+            var stops = segments.Skip(1).Select(x => x.Origin.Airport.CityCode);
+
+            if (OriginSegment != null && destinationSegment != null)
+            {
+                <div class="flight-box">
+                    <input type="hidden" class="resultindex" name="ibflightindex" value="@flight.ResultIndex" />
+                    <ul>
+                        <li class="width10" data-price="@flight.TotalAmount">
+                            <i class="flightImagesNewdib flight-carrier-sprite go_@(flight.AirlineCode)"></i>
+                            <span class="fbox-bottom">@OriginSegment.Airline.AirlineName</span>
+                        </li>
+                        <li class="width20">
+                            <span class="fbox-top">@(string.Format("{0:HH:mm}", OriginSegment.StopPointDepartureTime))</span>
+                            <span class="fbox-bottom">@(OriginSegment.Origin.Airport.CityName), @(OriginSegment.Destination.Airport.CountryName)</span>
+                        </li>
+                        <li class="width20">
+                            <span class="fbox-top">@(OriginSegment.Duration)</span>
+                            <span class="fbox-bottom">@("Duration")</span>
+                            @if (stops.Count() > 0)
+                            {
+                                <span class="fbox-bottom">@(string.Join(", ", stops))</span>
+                                <span class="fbox-bottom">@($"( {stops.Count()} Stop )")</span>
+
+                            }
+                            else
+                            {
+                                <span class="fbox-bottom">Non - Stop</span>
+                            }
+                        </li>
+
+                        <li class="width20">
+                            <span class="fbox-top">@(string.Format("{0:HH:mm}", destinationSegment.StopPointArrivalTime))</span>
+                            <span class="fbox-bottom">@(destinationSegment.Destination.Airport.CityName), @(destinationSegment.Destination.Airport.CountryName)</span>
+                        </li>
+
+                        <li class="width20 skip">
+                            <span class="flight-price"><i class="fa fa-inr" aria-hidden="true"></i> @(flight.TotalAmount.ToCurrencyAmount())</span>
+                        </li>
+                        <li class="width10 skip">
+                            <div class="funkyradio">
+                                <label class="radio inline">
+                                    <input type="radio" name="obflight" value="@(flight.ResultIndex)">
+                                    <span>  </span>
+                                </label>
+                            </div>
+                            <div class="view-details">
+                                <a href="javascript:;" data-flight="details" data-result-index="@flight.ResultIndex">Details</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            }
+        }
+    </div>
+    <div class="air-way">
+        <div class="flight-shorting">
+            <ul>
+                <li class="width10">
+                    Airlines
+                </li>
+                <li class="width20">
+                    Departure
+                </li>
+                <li class="width20">
+                    Duration
+                </li>
+                <li class="width20">
+                    Arrival
+                </li>
+                <li class="width20 active">
+                    Price <i></i>
+                </li>
+                <li class="width10">Status</li>
+            </ul>
+        </div>
+        @foreach (var returnflight in flights.Where(x => x.ResultIndex.StartsWith("IB")))
+        {
+
+            var segments = returnflight.Segments.FirstOrDefault();
+            var OriginSegment = segments.FirstOrDefault();
+            var destinationSegment = segments.LastOrDefault();
+            var stops = segments.Skip(1).Select(x => x.Origin.Airport.CityCode);
+
+            var ibSegmentss = returnflight.Segments.FirstOrDefault();
+            foreach (var ibSegment in ibSegmentss.Take(1))
+            {
+                var segment = ibSegment;
+                if (OriginSegment != null && destinationSegment != null)
+                {
+                    <div class="flight-box">
+                        <input type="hidden" class="resultindex" name="ibflightindex" value="@returnflight.ResultIndex" />
+                        <ul>
+                            <li class="width10" data-price="@returnflight.TotalAmount">
+                                <i class="flightImagesNewdib flight-carrier-sprite go_@(returnflight.AirlineCode)">></i>
+                                <span class="fbox-bottom">@segment.Airline.AirlineName</span>
+                            </li>
+                            <li class="width20">
+                                <span class="fbox-top">@(string.Format("{0:HH:mm}", OriginSegment.StopPointDepartureTime))</span>
+                                <span class="fbox-bottom">@(OriginSegment.Origin.Airport.CityName), @(OriginSegment.Destination.Airport.CountryName)</span>
+                            </li>
+                            <li class="width20">
+                                <span class="fbox-top">@(OriginSegment.Duration)</span>
+                                <span class="fbox-bottom">@("Duration")</span>
+                                @if (stops.Count() > 0)
+                                {
+                                    <span class="fbox-bottom">@(string.Join(", ", stops))</span>
+                                    <span class="fbox-bottom">@($"( {stops.Count()} Stop )")</span>
+
+                                }
+                                else
+                                {
+                                    <span class="fbox-bottom">Non - Stop</span>
+                                }
+                            </li>
+                            <li class="width20">
+                                <span class="fbox-top">@(string.Format("{0:HH:mm}", destinationSegment.StopPointArrivalTime))</span>
+                                <span class="fbox-bottom">@(destinationSegment.Destination.Airport.CityName), @(destinationSegment.Destination.Airport.CountryName)</span>
+                            </li>
+                            <li class="width20 skip">
+                                <span class="flight-price"><i class="fa fa-inr" aria-hidden="true"></i> @(returnflight.TotalAmount.ToCurrencyAmount())</span>
+                            </li>
+                            <li class="width10 skip">
+                                <div class="funkyradio">
+                                    <label class="radio inline">
+                                        <input type="radio" name="ibflight" value="@(returnflight.ResultIndex)">
+                                        <span>  </span>
+                                    </label>
+                                </div>
+
+                            </li>
+                        </ul>
+                        <div class="view-details">
+                            <a href="javascript:;" data-flight="details" data-result-index="@returnflight.ResultIndex">Details</a>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>

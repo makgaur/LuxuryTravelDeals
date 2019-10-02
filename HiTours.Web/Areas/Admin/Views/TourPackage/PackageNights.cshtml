@@ -1,0 +1,161 @@
+﻿@{ this.ViewBag.Title = "Tour Package Nights";}
+@model TourPackageNightViewModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+            </div>
+            <form method="post" id="packageNights">
+                <input type="hidden" name="Id" value="@Model.Id" />
+                <input type="hidden" asp-for="TourPackageId" />
+                <input type="hidden" asp-for="CreatedBy" />
+                <input type="hidden" asp-for="CreatedDate" />
+                <input type="hidden" asp-for="UpdatedBy" />
+                <input type="hidden" asp-for="UpdatedDate" />
+                <input type="hidden" asp-for="TourPackageType" class="tourpackagetype" />
+                <div class="box-body">
+                    <div class="form-group col-sm-3">
+                        <label asp-for="NoOfNights"></label>
+                        <input type="text" asp-for="NoOfNights" class="form-control numericOnly" />
+                        <span asp-validation-for="NoOfNights"></span>
+                    </div>
+
+                    <div class="form-group col-sm-3">
+                        <label asp-for="PackagePrice"></label>
+                        <input type="text" asp-for="PackagePrice" class="form-control decimalOnly" />
+                        <span asp-validation-for="PackagePrice" class="packgaeprice"></span>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label asp-for="PackageDiscountPrice"></label>
+                        <input type="text" asp-for="PackageDiscountPrice" class="form-control decimalOnly packagediscount" />
+                        <span asp-validation-for="PackageDiscountPrice"></span>
+                        <span class="discount text-blank"></span>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label asp-for="DepositAmount"></label>
+                        <input type="text" asp-for="DepositAmount" class="form-control decimalOnly" />
+                        <span asp-validation-for="DepositAmount"></span>
+                        <span class="deposite text-blank"></span>
+                    </div>
+
+                    <div class="form-group col-sm-3 hide">
+                        <label asp-for="Cities"></label>
+                        <select asp-for="Cities" selected="@Model.Cities" class="form-control" asp-items="Model.CityList" select2-Multiple="true"
+                                select2-value="@Model.Cities" select2-Url="/selectlist/GetPackageCityList"></select>
+                    </div>
+
+                    <div class="form-group col-sm-6 hide">
+                        <label asp-for="IsExtraNight"></label>
+                        <input type="checkbox" asp-for="IsExtraNight" />
+                    </div>
+                    @*<span data-toggle="tooltip" data-title="User Details">
+                            <a data-model="popup" class="btn btn-primary btn-xs" href="@Url.GetAdminUrl("tourpackage", "PackageRateValidty")">
+                            <i class="fa fa-eye" aria-hidden="true"></i></a>
+                        </span>*@
+                </div>
+                @*<div class="form-group col-sm-12 no-padding ">
+                        @Html.Partial("_RateValidityList", Model.TourPackageNightsValidity)
+                    </div>*@
+                @*@this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit)})*@
+                @*<button type="button" id="PackageNightClick"></button>*@
+                <div class="box-footer" align="center">
+                    <button type="button" id="PackageNightClick" class="btn btn-primary">Save</button><br />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        initPluggins();
+        $(".tourpackagetype").val($("[name='tourpackagetype']").val());
+    })
+    $(document).off("click", '#PackageNightClick')
+        .on("click", '#PackageNightClick', function () {
+            //showWaitProcess();
+            //setTimeout(function () {
+            //    hideWaitProcess();
+            //}, 2000);
+             
+            var $form = $("#packageNights");
+            if ($form.valid()) {
+                showWaitProcess();
+                var model = {}
+                model = $form.serialize();
+                var ErrorMsg = "";
+                $(".text-blank").each(function () {
+                    ErrorMsg += $(this).text();
+                })
+                if (ErrorMsg != "") {
+                    hideWaitProcess();
+                    return false;
+                }
+                else {
+                    $.ajax({
+                        url: '@Url.Action("PackageNightsPrice")',
+                        type: "JOSN",
+                        method: "POST",
+                        data: model,
+                        success: function (data) {
+                            hideWaitProcess();
+                            if (data == "success") {
+                                swal('', 'Successfully Inserted', 'success');
+                               $(".replaceView").click();
+                            }
+                            else if (data == "update") {
+                                swal('', 'Successfully Updated', 'success');
+                                $(".replaceView").click();
+                            }
+                            else
+                            {
+                                var errors = JSON.parse(data);
+                                $.each(errors, function (i, obj) {
+                                    var $span = $('span[data-valmsg-for="' + obj.key + '"]');
+                                    $span.addClass("field-validation-error").html('<span for="' + obj.key + '" class="field-validation-error">' + obj.error + '</span>');
+                                    $span.attr("data-valmsg-replace", "false");
+                                })
+
+                                 setTimeout(function () {
+                                        $("[data-valmsg-replace]").each(function () {
+                                            $(this).attr("data-valmsg-replace", "true");
+                                        })
+                                    }, 3000);
+                                return false;
+                            }
+                        }
+                    });
+                }
+            }
+            return false;
+
+        });
+</script>
+@section scripts
+    {
+
+    <script>
+
+        $(document).on('click', '.removecontactlist', function (event) {
+            event.preventDefault();
+            var rows = $(this).parents('tr').length;
+            if (rows == 1)
+                $(this).parents('tr').addClass('empty-row')
+                    .html('<td valign="top" colspan="7" class="dataTables_empty text-center">No data available in table</td >');
+            else
+                $(this).parents('tr').remove();
+        });
+
+        event.preventDefault();
+
+    </script>
+}
+<style>
+    .no-padding a.auto-height {
+        float: right !important;
+        width: 12% !important;
+        line-height: 32px !important;
+        text-align: center !important;
+        border: none !important;
+    }
+</style>

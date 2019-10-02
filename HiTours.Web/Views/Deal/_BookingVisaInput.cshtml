@@ -1,0 +1,41 @@
+﻿@using HtmlHelpers.BeginCollectionItemCore
+@model BookingVisaViewModel
+
+@using (this.Html.BeginCollectionItem("BookingVisaViewModels"))
+{
+<li class="visa-input">
+    <div class="visa-selector">
+        <label class="checkbox-container">
+            @if (this.ViewBag.IsMobileView)
+            {
+                <input type="checkbox" class="ltd-checkbox" asp-for="IsRequired" checked readonly/>
+            }
+            else
+            {
+                <input type="checkbox" class="ltd-checkbox" asp-for="IsRequired" readonly/>
+            }
+
+            <span class="checkmark"></span>
+        </label>
+    </div>
+    <div class="visa-name" data-country="@Model.CountryName">@Model.CountryName</div>
+    
+    
+
+    <span class="decrease" data-min="1">
+
+    </span>
+    <span class="visa-quantity-input">
+        <input type="hidden" class="visa-id" asp-for="VisaId" />
+        <input type="text" asp-for="Count" readonly />
+        <input type="hidden" asp-for="Price" class="visa-price" readonly />
+        <input type="hidden" asp-for="TotalAmount" readonly />
+        <input type="hidden" asp-for="CountryName" readonly />
+        <input type="hidden" asp-for="Markup" class="visa-markup" readonly />
+    </span>
+    <span class="increase disabled" data-max="">
+
+    </span>
+</li>
+    
+}

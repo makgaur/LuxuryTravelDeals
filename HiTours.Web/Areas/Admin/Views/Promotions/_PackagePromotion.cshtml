@@ -1,0 +1,128 @@
+﻿@model PackagePromotionsManageViewModel
+<form asp-antiforgery="true" id="formPackagePromotionManage" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="IsActive" />
+    <input type="hidden" asp-for="IsDeleted" />
+    <input type="hidden" asp-for="IsSuper" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <div class="box-header with-border">
+        <h5 class="box-title">Package Promotion</h5>
+    </div>
+    <div class="box-body">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label asp-for="DisplayName"></label>
+                <input asp-for="DisplayName" type="text" class="form-control" placeholder="Promotion Display Name">
+                <span asp-validation-for="DisplayName"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Type"></label>
+                <select asp-for="Type" selected="@Model.Type" class="form-control" id="TypeId" asp-items="Model.MarginItems"
+                        select2-value="@Model.Type" select2-Url="/selectlist/GetMarginTypeList"></select>
+                <span asp-validation-for="Type"></span>
+            </div>
+            
+            @*selected="@Model.TravelStyle"  asp-items="@this.ViewBag.TravelStyle"
+                select2-value="@Model.TravelStyle"*@
+            <div class="form-group col-md-4">
+                <label asp-for="Value"></label>
+                <div class="input-group">
+                    <input id="PromotionValue" class="form-control" type="number" asp-for="Value" />
+                    <span class="input-group-addon"><i id="marginTypeIcon" class="fa fa-rupee"></i></span>
+                </div>
+                <span asp-validation-for="Value"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Days"></label>
+                <input asp-for="Days" type="number" class="form-control">
+                <span asp-validation-for="Days"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="IsPeriod"></label><br />
+                <input id="isPeriodPromo" type="checkbox" class="minimal" asp-for="IsPeriod" />
+                <span asp-validation-for="IsPeriod" />
+            </div>
+            @if (!Model.IsPeriod)
+            {
+
+                <div class="form-group col-md-4">
+                    <label asp-for="StartDate"></label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar-plus-o"></i></span>
+                        <input id="periodStartDate" asp-for="StartDate" type="date" class="form-control" placeholder="" disabled="disabled">
+                    </div>
+                    <span asp-validation-for="StartDate"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="EndDate"></label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar-minus-o"></i></span>
+                        <input id="periodEndDate" asp-for="EndDate" type="date" class="form-control" placeholder="" disabled="disabled">
+                    </div>
+                    <span asp-validation-for="EndDate"></span>
+                </div>
+            }
+            else
+            {
+                <div class="form-group col-md-4">
+                    <label asp-for="StartDate"></label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar-plus-o"></i></span>
+                        <input id="periodStartDate" asp-for="StartDate" type="date" class="form-control" placeholder="">
+                    </div>
+                    <span asp-validation-for="StartDate"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="EndDate"></label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar-minus-o"></i></span>
+                        <input id="periodEndDate" asp-for="EndDate" type="date" class="form-control" placeholder="">
+                    </div>
+                    <span asp-validation-for="EndDate"></span>
+                </div>
+            }
+
+
+
+        </div>
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+</form>
+<script>
+    $(document).ready(function (e) {
+        BindPeriodTime();
+        BindMarginTypeIcon();
+        $('input[type="checkbox"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue'
+        });
+        $('#TypeId').on('change', BindMarginTypeIcon);
+    })
+    function BindMarginTypeIcon() {
+        var valueSelected = $('#TypeId').val();
+        if (valueSelected == '1') {
+            $('#marginTypeIcon').removeClass().addClass('fa fa-percent');
+        }
+        else if (valueSelected == '2') {
+            $('#marginTypeIcon').removeClass().addClass('fa fa-rupee');
+        }
+    }
+    function BindPeriodTime() {
+        $('#isPeriodPromo').on('ifChecked', function (event) {
+            $('#periodStartDate').removeAttr('disabled');
+            $('#periodEndDate').removeAttr('disabled');
+        });
+        $('#isPeriodPromo').on('ifUnchecked', function (event) {
+            $('#periodStartDate').attr('disabled', 'disabled');
+            $('#periodEndDate').attr('disabled', 'disabled');
+        });
+    }
+</script>

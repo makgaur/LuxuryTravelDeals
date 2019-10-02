@@ -1,0 +1,565 @@
+//-- TicketNonLCC Api Request --
+{
+  "EndUserIp": "192.168.11.120",
+  "TokenId": "1fdd1815-b549-4b86-af8b-8e38ccd47b88",
+  "TraceId": "f88df3d0-4647-4c70-afd8-d330ccae1c59",
+  "PNR": "VJBAKA",
+  "BookingId": 1462484
+}
+//-- TicketNonLCC Api Response --
+{
+  "Response": {
+    "B2B2BStatus": false,
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "ResponseStatus": 1,
+    "TraceId": "f88df3d0-4647-4c70-afd8-d330ccae1c59",
+    "Response": {
+      "PNR": "VJBAKA",
+      "BookingId": 1462484,
+      "SSRDenied": false,
+      "SSRMessage": null,
+      "IsPriceChanged": false,
+      "IsTimeChanged": false,
+      "FlightItinerary": {
+        "IssuancePcc": "DELWI2216",
+        "TripIndicator": 1,
+        "BookingAllowedForRoamer": true,
+        "BookingId": 1462484,
+        "IsManual": false,
+        "PNR": "VJBAKA",
+        "IsDomestic": false,
+        "Source": 4,
+        "Origin": "DEL",
+        "Destination": "MLE",
+        "AirlineCode": "UL",
+        "ValidatingAirlineCode": "UL",
+        "AirlineRemark": "",
+        "IsLCC": false,
+        "NonRefundable": false,
+        "FareType": "RP",
+        "CreditNoteNo": null,
+        "Fare": {
+          "Currency": "INR",
+          "BaseFare": 21890,
+          "Tax": 3802,
+          "TaxBreakup": [
+            {
+              "key": "YQ",
+              "value": 2110
+            },
+            {
+              "key": "WO",
+              "value": 490
+            },
+            {
+              "key": "K3",
+              "value": 1202
+            }
+          ],
+          "YQTax": 2110,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0,
+          "OtherCharges": 24.6,
+          "ChargeBU": [
+            {
+              "key": "TBOMARKUP",
+              "value": 0
+            },
+            {
+              "key": "OTHERCHARGE",
+              "value": 24.6
+            },
+            {
+              "key": "CONVENIENCECHARGE",
+              "value": 0
+            }
+          ],
+          "Discount": 0,
+          "PublishedFare": 25716.6,
+          "CommissionEarned": 200,
+          "PLBEarned": 0,
+          "IncentiveEarned": 0,
+          "OfferedFare": 25516.6,
+          "TdsOnCommission": 80,
+          "TdsOnPLB": 0,
+          "TdsOnIncentive": 0,
+          "ServiceFee": 0,
+          "TotalBaggageCharges": 0,
+          "TotalMealCharges": 0,
+          "TotalSeatCharges": 0,
+          "TotalSpecialServiceCharges": 0
+        },
+        "CreditNoteCreatedOn": null,
+        "Passenger": [
+          {
+            "PaxId": 2088029,
+            "Title": "Mr",
+            "FirstName": "Mayank",
+            "LastName": "Gaur",
+            "PaxType": 1,
+            "DateOfBirth": "1974-06-12T00:00:00",
+            "Gender": 1,
+            "PassportNo": "j8369854",
+            "AddressLine1": "Test",
+            "AddressLine2": "Test",
+            "Fare": {
+              "Currency": "INR",
+              "BaseFare": 11830,
+              "Tax": 1945,
+              "TaxBreakup": [
+                {
+                  "key": "K3",
+                  "value": 645
+                },
+                {
+                  "key": "YQ",
+                  "value": 1055
+                },
+                {
+                  "key": "WO",
+                  "value": 245
+                }
+              ],
+              "YQTax": 1055,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0,
+              "OtherCharges": 12.3,
+              "ChargeBU": [
+                {
+                  "key": "TBOMARKUP",
+                  "value": 0
+                },
+                {
+                  "key": "OTHERCHARGE",
+                  "value": 12.3
+                },
+                {
+                  "key": "CONVENIENCECHARGE",
+                  "value": 0
+                }
+              ],
+              "Discount": 0,
+              "PublishedFare": 13787.3,
+              "CommissionEarned": 100,
+              "PLBEarned": 0,
+              "IncentiveEarned": 0,
+              "OfferedFare": 13687.3,
+              "TdsOnCommission": 40,
+              "TdsOnPLB": 0,
+              "TdsOnIncentive": 0,
+              "ServiceFee": 0,
+              "TotalBaggageCharges": 0,
+              "TotalMealCharges": 0,
+              "TotalSeatCharges": 0,
+              "TotalSpecialServiceCharges": 0
+            },
+            "City": "Delhi",
+            "CountryCode": "IN",
+            "Nationality": "IN",
+            "ContactNo": "9045025705",
+            "Email": "makgaur007@gmail.com",
+            "IsLeadPax": true,
+            "FFAirlineCode": null,
+            "FFNumber": null,
+            "Ssr": [
+              {
+                "Detail": "j8369854-IN",
+                "SsrCode": "PSPT",
+                "SsrStatus": null,
+                "Status": 3
+              }
+            ],
+            "Ticket": {
+              "TicketId": 1727724,
+              "TicketNumber": "2989427443",
+              "IssueDate": "2019-05-02T19:28:34",
+              "ValidatingAirline": "603",
+              "Remarks": "",
+              "ServiceFeeDisplayType": "ShowInTax",
+              "Status": "OK",
+              "ConjunctionNumber": "     ",
+              "TicketType": "N"
+            },
+            "SegmentAdditionalInfo": [
+              {
+                "FareBasis": "VOWIZ",
+                "NVA": "",
+                "NVB": "",
+                "Baggage": "30 Kg",
+                "Meal": "0 Platter",
+                "Seat": "",
+                "SpecialService": ""
+              },
+              {
+                "FareBasis": "VOWIZ",
+                "NVA": "",
+                "NVB": "",
+                "Baggage": "30 Kg",
+                "Meal": "0 Platter",
+                "Seat": "",
+                "SpecialService": ""
+              }
+            ]
+          },
+          {
+            "PaxId": 2088030,
+            "Title": "Mr",
+            "FirstName": "Anshul",
+            "LastName": "Varun",
+            "PaxType": 2,
+            "DateOfBirth": "2009-11-26T00:00:00",
+            "Gender": 1,
+            "PassportNo": "j8369857",
+            "Fare": {
+              "Currency": "INR",
+              "BaseFare": 8875,
+              "Tax": 1797,
+              "TaxBreakup": [
+                {
+                  "key": "K3",
+                  "value": 497
+                },
+                {
+                  "key": "YQ",
+                  "value": 1055
+                },
+                {
+                  "key": "WO",
+                  "value": 245
+                }
+              ],
+              "YQTax": 1055,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0,
+              "OtherCharges": 12.3,
+              "ChargeBU": [
+                {
+                  "key": "TBOMARKUP",
+                  "value": 0
+                },
+                {
+                  "key": "OTHERCHARGE",
+                  "value": 12.3
+                },
+                {
+                  "key": "CONVENIENCECHARGE",
+                  "value": 0
+                }
+              ],
+              "Discount": 0,
+              "PublishedFare": 10684.3,
+              "CommissionEarned": 100,
+              "PLBEarned": 0,
+              "IncentiveEarned": 0,
+              "OfferedFare": 10584.3,
+              "TdsOnCommission": 40,
+              "TdsOnPLB": 0,
+              "TdsOnIncentive": 0,
+              "ServiceFee": 0,
+              "TotalBaggageCharges": 0,
+              "TotalMealCharges": 0,
+              "TotalSeatCharges": 0,
+              "TotalSpecialServiceCharges": 0
+            },
+            "CountryCode": "IN",
+            "Nationality": "IN",
+            "IsLeadPax": false,
+            "FFAirlineCode": null,
+            "FFNumber": null,
+            "Ssr": [
+              {
+                "Detail": "j8369857-IN",
+                "SsrCode": "PSPT",
+                "SsrStatus": null,
+                "Status": 3
+              },
+              {
+                "Detail": "26/11/2009",
+                "SsrCode": "CHLD",
+                "SsrStatus": null,
+                "Status": 3
+              }
+            ],
+            "Ticket": {
+              "TicketId": 1727726,
+              "TicketNumber": "2989427444",
+              "IssueDate": "2019-05-02T19:28:34",
+              "ValidatingAirline": "603",
+              "Remarks": "",
+              "ServiceFeeDisplayType": "ShowInTax",
+              "Status": "OK",
+              "ConjunctionNumber": "     ",
+              "TicketType": "N"
+            },
+            "SegmentAdditionalInfo": [
+              {
+                "FareBasis": "VOWIZ",
+                "NVA": "",
+                "NVB": "",
+                "Baggage": "30 Kg",
+                "Meal": "0 Platter",
+                "Seat": "",
+                "SpecialService": ""
+              },
+              {
+                "FareBasis": "VOWIZ",
+                "NVA": "",
+                "NVB": "",
+                "Baggage": "30 Kg",
+                "Meal": "0 Platter",
+                "Seat": "",
+                "SpecialService": ""
+              }
+            ]
+          },
+          {
+            "PaxId": 2088031,
+            "Title": "",
+            "FirstName": "Amiit",
+            "LastName": "Bhatt",
+            "PaxType": 3,
+            "DateOfBirth": "2019-03-01T00:00:00",
+            "Gender": 1,
+            "PassportNo": "j8369859",
+            "Fare": {
+              "Currency": "INR",
+              "BaseFare": 1185,
+              "Tax": 60,
+              "TaxBreakup": [
+                {
+                  "key": "K3",
+                  "value": 60
+                }
+              ],
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0,
+              "OtherCharges": 0,
+              "ChargeBU": [
+                {
+                  "key": "TBOMARKUP",
+                  "value": 0
+                },
+                {
+                  "key": "OTHERCHARGE",
+                  "value": 0
+                },
+                {
+                  "key": "CONVENIENCECHARGE",
+                  "value": 0
+                }
+              ],
+              "Discount": 0,
+              "PublishedFare": 1245,
+              "CommissionEarned": 0,
+              "PLBEarned": 0,
+              "IncentiveEarned": 0,
+              "OfferedFare": 1245,
+              "TdsOnCommission": 0,
+              "TdsOnPLB": 0,
+              "TdsOnIncentive": 0,
+              "ServiceFee": 0,
+              "TotalBaggageCharges": 0,
+              "TotalMealCharges": 0,
+              "TotalSeatCharges": 0,
+              "TotalSpecialServiceCharges": 0
+            },
+            "CountryCode": "IN",
+            "Nationality": "IN",
+            "IsLeadPax": false,
+            "FFAirlineCode": null,
+            "FFNumber": null,
+            "Ssr": [
+              {
+                "Detail": "j8369859-IN",
+                "SsrCode": "PSPT",
+                "SsrStatus": null,
+                "Status": 3
+              },
+              {
+                "Detail": "01/03/2019",
+                "SsrCode": "INFT",
+                "SsrStatus": null,
+                "Status": 3
+              }
+            ],
+            "Ticket": {
+              "TicketId": 1727725,
+              "TicketNumber": "2989427445",
+              "IssueDate": "2019-05-02T19:28:34",
+              "ValidatingAirline": "603",
+              "Remarks": "",
+              "ServiceFeeDisplayType": "ShowInTax",
+              "Status": "OK",
+              "ConjunctionNumber": "     ",
+              "TicketType": "N"
+            },
+            "SegmentAdditionalInfo": [
+              {
+                "FareBasis": "VOWIZ",
+                "NVA": "",
+                "NVB": "",
+                "Baggage": "10 Kg",
+                "Meal": "0 Platter",
+                "Seat": "",
+                "SpecialService": ""
+              },
+              {
+                "FareBasis": "VOWIZ",
+                "NVA": "",
+                "NVB": "",
+                "Baggage": "10 Kg",
+                "Meal": "0 Platter",
+                "Seat": "",
+                "SpecialService": ""
+              }
+            ]
+          }
+        ],
+        "CancellationCharges": null,
+        "Segments": [
+          {
+            "Baggage": null,
+            "CabinBaggage": null,
+            "TripIndicator": 1,
+            "SegmentIndicator": 1,
+            "Airline": {
+              "AirlineCode": "UL",
+              "AirlineName": "Sri Lankan Airlines",
+              "FlightNumber": "192",
+              "FareClass": "V",
+              "OperatingCarrier": "UL"
+            },
+            "AirlinePNR": "VJBAKA",
+            "Origin": {
+              "Airport": {
+                "AirportCode": "DEL",
+                "AirportName": "Indira Gandhi Airport",
+                "Terminal": "3 ",
+                "CityCode": "DEL",
+                "CityName": "Delhi",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "DepTime": "2019-05-29T05:15:00"
+            },
+            "Destination": {
+              "Airport": {
+                "AirportCode": "CMB",
+                "AirportName": "Katunayake",
+                "Terminal": "",
+                "CityCode": "CMB",
+                "CityName": "Colombo",
+                "CountryCode": "LK",
+                "CountryName": "Sri Lanka"
+              },
+              "ArrTime": "2019-05-29T08:50:00"
+            },
+            "Duration": 0,
+            "GroundTime": 0,
+            "Mile": 0,
+            "StopOver": false,
+            "FlightInfoIndex": "1",
+            "StopPoint": "",
+            "StopPointArrivalTime": null,
+            "StopPointDepartureTime": null,
+            "Craft": "320",
+            "Remark": null,
+            "IsETicketEligible": true,
+            "FlightStatus": "Confirmed",
+            "Status": "HK"
+          },
+          {
+            "Baggage": null,
+            "CabinBaggage": null,
+            "TripIndicator": 1,
+            "SegmentIndicator": 2,
+            "Airline": {
+              "AirlineCode": "UL",
+              "AirlineName": "Sri Lankan Airlines",
+              "FlightNumber": "103",
+              "FareClass": "V",
+              "OperatingCarrier": "UL"
+            },
+            "AirlinePNR": "VJBAKA",
+            "Origin": {
+              "Airport": {
+                "AirportCode": "CMB",
+                "AirportName": "Katunayake",
+                "Terminal": "",
+                "CityCode": "CMB",
+                "CityName": "Colombo",
+                "CountryCode": "LK",
+                "CountryName": "Sri Lanka"
+              },
+              "DepTime": "2019-05-29T18:55:00"
+            },
+            "Destination": {
+              "Airport": {
+                "AirportCode": "MLE",
+                "AirportName": "Male Int'l",
+                "Terminal": "",
+                "CityCode": "MLE",
+                "CityName": "Male",
+                "CountryCode": "MV",
+                "CountryName": "Maldives"
+              },
+              "ArrTime": "2019-05-29T19:50:00"
+            },
+            "AccumulatedDuration": 905,
+            "Duration": 0,
+            "GroundTime": 0,
+            "Mile": 0,
+            "StopOver": false,
+            "FlightInfoIndex": "2",
+            "StopPoint": "",
+            "StopPointArrivalTime": null,
+            "StopPointDepartureTime": null,
+            "Craft": "332",
+            "Remark": null,
+            "IsETicketEligible": true,
+            "FlightStatus": "Confirmed",
+            "Status": "HK"
+          }
+        ],
+        "FareRules": [
+          {
+            "Origin": "DEL",
+            "Destination": "CMB",
+            "Airline": "UL",
+            "FareBasisCode": "VOWIZ",
+            "FareRuleDetail": "<ul><li><b>There is no Minimum Stay requirement</b><br><li><b>There is no Maximum Stay requirement</b><br><fieldset><legend><b><b>Adult</b><br></b></legend><ul><li><b>Revalidation/Reissue</b><br>Fare Component <b>VOWIZ</b>&emsp; Sector <b>DEL-MLE</b> &nbsp;<ul><li>Revalidation before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li>Reissue before/after departure, including failure to show at first/subsequent flight(s) : <b>Allowed with Restrictions</b></li><li>Revalidation/Reissue request, including failure to show at first flight, must be made prior to <b>02MAY20  0000</b></li><li>Revalidation/Reissue request, including failure to show at subsequent flight(s), must be made prior to <b>29MAY20  0000</b></li><li><b>Prior to Departure of journey</b><ul><u>Reissue</u><li>Penalty fee between : <b>0 INR/4600 INR</b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>4600 INR</b></li></ul></li><li><b>Failure to show at first flight</b><ul><u>Reissue</u><li>Penalty fee : <b>4600 INR(at today exchange rates 4600 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>4600 INR</b></li></ul></li><li><b>After departure of journey</b><ul><u>Reissue</u><li>Penalty fee between : <b>0 INR/4600 INR</b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>4600 INR</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><u>Reissue</u><li>Penalty fee : <b>4600 INR(at today exchange rates 4600 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>4600 INR</b></li></ul></li></ul></li><li><b>Refund</b><br>Fare Component <b>VOWIZ</b>&emsp; Sector <b>DEL-MLE</b> &nbsp;<ul><li>Refund before/after departure, including failure to show at first/subsequent flight(s) : <b>Allowed with Restrictions</b></li><li><b>Prior to Departure of journey</b><ul><li>Penalty fee : <b>3800 INR(at today exchange rates 3800 INR) </b></td></tr><li>Maximum Refund penalty fee for entire ticket : <b>3800 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Penalty fee : <b>4600 INR(at today exchange rates 4600 INR) </b></li><li>Maximum Refund penalty fee for entire ticket : <b>4600 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Penalty fee : <b>3800 INR(at today exchange rates 3800 INR) </b></li><li>Maximum Refund penalty fee for entire ticket : <b>3800 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Penalty fee : <b>4600 INR(at today exchange rates 4600 INR) </b></li><li>Maximum Refund penalty fee for entire ticket : <b>4600 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><br><b>* Revalidation is a modification of the original ticket without any reissue of a new ticket.</b><br><b>* For Reissue, Penalty fees are in addition to any difference in fare.</b><br><b>* For Refund, certain Taxes are non-refundable.</b></ul></fieldset></ul><ul><fieldset><legend><b><b>Child</b><br></b></legend><ul><li><b>Revalidation/Reissue</b><br>Fare Component <b>VOWIZCH25</b>&emsp; Sector <b>DEL-MLE</b> &nbsp;<ul><li>Revalidation before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li>Reissue before/after departure, including failure to show at first/subsequent flight(s) : <b>Allowed with Restrictions</b></li><li>Revalidation/Reissue request, including failure to show at first flight, must be made prior to <b>02MAY20  0000</b></li><li>Revalidation/Reissue request, including failure to show at subsequent flight(s), must be made prior to <b>29MAY20  0000</b></li><li><b>Prior to Departure of journey</b><ul><u>Reissue</u><li>Penalty fee between : <b>0 INR/4600 INR</b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>4600 INR</b></li></ul></li><li><b>Failure to show at first flight</b><ul><u>Reissue</u><li>Penalty fee : <b>4600 INR(at today exchange rates 4600 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>4600 INR</b></li></ul></li><li><b>After departure of journey</b><ul><u>Reissue</u><li>Penalty fee between : <b>0 INR/4600 INR</b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>4600 INR</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><u>Reissue</u><li>Penalty fee : <b>4600 INR(at today exchange rates 4600 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>4600 INR</b></li></ul></li></ul></li><li><b>Refund</b><br>Fare Component <b>VOWIZCH25</b>&emsp; Sector <b>DEL-MLE</b> &nbsp;<ul><li>Refund before/after departure, including failure to show at first/subsequent flight(s) : <b>Allowed with Restrictions</b></li><li><b>Prior to Departure of journey</b><ul><li>Penalty fee : <b>3800 INR(at today exchange rates 3800 INR) </b></td></tr><li>Maximum Refund penalty fee for entire ticket : <b>3800 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Penalty fee : <b>4600 INR(at today exchange rates 4600 INR) </b></li><li>Maximum Refund penalty fee for entire ticket : <b>4600 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Penalty fee : <b>3800 INR(at today exchange rates 3800 INR) </b></li><li>Maximum Refund penalty fee for entire ticket : <b>3800 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Penalty fee : <b>4600 INR(at today exchange rates 4600 INR) </b></li><li>Maximum Refund penalty fee for entire ticket : <b>4600 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><br><b>* Revalidation is a modification of the original ticket without any reissue of a new ticket.</b><br><b>* For Reissue, Penalty fees are in addition to any difference in fare.</b><br><b>* For Refund, certain Taxes are non-refundable.</b></ul></fieldset></ul><ul><fieldset><legend><b><b>Infant</b><br></b></legend><ul><li><b>Revalidation/Reissue</b><br>Fare Component <b>VOWIZIN90</b>&emsp; Sector <b>DEL-MLE</b> &nbsp;<ul><li>Revalidation before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li>Reissue before/after departure, including failure to show at first/subsequent flight(s) : <b>Allowed with Restrictions</b></li><li>Revalidation/Reissue request, including failure to show at first flight, must be made prior to <b>02MAY20  0000</b></li><li>Revalidation/Reissue request, including failure to show at subsequent flight(s), must be made prior to <b>29MAY20  0000</b></li><li><b>Prior to Departure of journey</b><ul><u>Reissue</u><li>Reissue : <b>Allowed, Free of charge</b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>No charge</b></li></ul></li><li><b>Failure to show at first flight</b><ul><u>Reissue</u><li>Reissue : <b>Allowed, Free of charge</b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>No charge</b></li></ul></li><li><b>After departure of journey</b><ul><u>Reissue</u><li>Reissue : <b>Allowed, Free of charge</b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>No charge</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><u>Reissue</u><li>Reissue : <b>Allowed, Free of charge</b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>No charge</b></li></ul></li></ul></li><li><b>Refund</b><br>Fare Component <b>VOWIZIN90</b>&emsp; Sector <b>DEL-MLE</b> &nbsp;<ul><li>Refund before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li><b>Prior to Departure of journey</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><br><b>* Revalidation is a modification of the original ticket without any reissue of a new ticket.</b><br><b>* For Reissue, Penalty fees are in addition to any difference in fare.</b><br><b>* For Refund, certain Taxes are non-refundable.</b></ul></fieldset></ul><br />RateClass : VOWIZ<br/>FareClass : VOWIZ<br/>marketing Company : UL<br/>Booking Class : V<br/>Origin : DEL<br/>destination : MLE<br/>ruleSectionLocalId : 1<br/>ruleCategoryCode : (5)<br/>AP.ADVANCE RES/TKT  RESERVATIONS ARE REQUIRED FOR ALL SECTORS.  WAITLIST NOT PERMITTED.         NOTE -          WAITLISTED AND OPEN DATED SEGMENTS NOT PERMITTED.<br/>ruleSectionLocalId : 2<br/>ruleCategoryCode : (16)<br/>PE.PENALTIESFROM/TO INDIA FOR VOWIZ TYPE FARES  CHANGES    ANY TIME      CHARGE INR 2100.  CANCELLATIONS    ANY TIME      CHARGE INR 3800 FOR CANCEL/REFUND.  CHANGES/CANCELLATIONS    ANY TIME      CHARGE INR 4600 FOR NO-SHOW.         NOTE -          LATE CHANGE - ABOVE NO SHOW FEE SHALL APPLY          --------------------------------------------------          NO SHOW/ LATE CHANGE FEE          FEE APPLICATION          LATE CHANGE FEE -          WHEN A PASSENGER FAILS TO CHANGE/CANCEL HIS OR          HER TICKETED RESERVATION 05 HOURS PRIOR TO FLIGHT          DEPARTURE.                    --          ANY RE BOOKING MADE WITHIN 05 HOURS PRIOR TO          DEPARTURE OR AFTER DEPARTURE OF A FLIGHT AS SHOWN          IN THE E-TICKET.                    --          FEE WILL APPLY IF THE TICKET IS RE-ISSUED TO THE          NEW DATE/FLIGHT/ROUTE/CABIN WITHIN 05 HOURS OR          AFTER DEPARTURE OF THE FLIGHT SHOWN IN THE E-          TICKET IRRESPECTIVE OF THE TIME OF CANCELLATION          OF RESERVATION.          NO SHOW FEE          A NO SHOW FOR A FLIGHT IS CONSIDERED WHEN A          PASSENGER FAILS TO USE THE RESERVATION OF THE          SCHEDULED FLIGHT.          IN CASE OF NO-SHOW ONLY ONE FEE IS TO BE          COLLECTED I.E. EITHER THE NO SHOW FEE OR CHANGE          FEE /CANCELLATION FEE WHICHEVER IS HIGHER.          --------------------------------------------------          CHANGE IS A VOLUNTARY DATE AND/OR FLIGHT AND/OR          ROUTING AND/OR CABIN AND/OR BOOKING CODE CHANGE          WHICH RESULTS IN A MODIFICATION TO A TICKETED          ITINERARY.          --------------------------------------------------          CHANGES/RE-PRICING          DATE/FLIGHT/CABIN CHANGES ARE PERMITTED ON THE          EQUAL OR HIGHER VALUE AND/OR SAME OR HIGHER          BOOKING CLASS WHICH EVER IS MORE RESTRICTED ONLY          1. BEFORE DEPARTURE          IN THE EVENT A VOLUNATRY CHANGE IS REQUESTED          BEFORE UTILIZATION OF THE FIRST FLIGHT COUPON TO          THE OUTBOUND AND/OR INBOUND FLIGHT OF THE JOURNEY          THE FARE AND CHARGES WILL BE RECALCULATED IN          ACCORDANCE WITH NEW FARE/RULES ADHERING TO THE AP          CONDITION IN EFFECT ON THE DATE THE CHANGE IS          MADE AND REFLECTED ON THE TICKET.          2. AFTER DEPARTURE          IN THE EVENT OF VOLUNTARY CHANGE IS MADE AFTER          UTILIZATION OF THE FIRST FLIGHT COOUPON ITINERARY          MUST BE REPRISED USING FARES IN EFFECT OF THE          ORIGINAL TICKETED AND TRAVEL COMMENCEMENT DATE.          APPLICABLE PENALTY FEE WILL APPLY.          --------------------------------------------------          REROUTING          CHANGE IN THE FARE BREAK POINT IS PERMITTED ON          THE SAME OR HIGHER BOOKING CLASS ONLY.          IN CASE THERE IS A CHANGE OF FARE BREAK POINT AND          THE NEW FARE RESULTS IN A LOWER FARE / TAX THE          RESIDUAL VALUE WILL BE RETURNED TO THE PASSENGER          IN THE FORM OF AN EMD FOR FURTHER TRANSPORTATION          AND OR REFUND TO THE ORIGINAL FORM OF PAYMENT.          1. BEFORE DEPARTURE          IN THE EVENT A FARE BREAK POINT IS CHANGED BEFORE          UTILIZATION OF THE FIRST FLIGHT COUPON THE FARE          AND CHARGES WILL BE RECALCULATED IN ACCORDANCE          WITH NEW FARE/RULES ADHERING TO THE AP CONDITION          IN EFFECT ON THE DATE THE CHANGE IS MADE AND          REFLECTED ON THE TICKET.          2. AFTER DEPARTURE          IN THE EVENT A FARE BREAK POINT IS CHANGED AFTER          UTILIZATION OF THE FIRST FLIGHT COOUPON NEW          ITINERARY MUST BE REPRISED USING FARES IN EFFECT          OF THE ORIGINAL TICKETED AND TRAVEL COMMENCEMENT          DATE.          APPLICABLE PENALTY FEE WILL APPLY.          --------------------------------------------------          UPGRADE          ANY TIME WITHIN TICKET VALIDITY A FARE CAN BE          UPGRADED TO ANY HIGHER FARE IN THE SAME CABIN.          APPLICABLE PENALTY FEE WILL APPLY.          ANY TIME WITHIN TICKET VALIDITY A FARE CAN BE          UPGRADED TO ANY FARE IN A HIGHER CABIN. IN CASE          OF AN UPGRADE TO A HIGHER CABIN AND THE NEW FARE          RESULTS IN A LOWER FARE / TAX THE RESIDUAL VALUE          WILL BE RETURNED TO THE PASSENGER IN THE FORM OF          AN EMD FOR FURTHER TRANSPORTATION AND OR REFUND          TO THE ORIGINAL FORM OF PAYMENT.          CHANGE FEE WILL NOT BE APPLICABLE.          LATE CHANGE FEE /NO SHOW FEE WILL BE APPLICABLE.          ANY TIME WITHIN TICKET VALIDITY A FARE CAN BE          DOWNGARDED TO ANY FARE IN A LOWER CABIN. IN CASE          OF AN DOWNGRADE TO A LOWER CABIN AND THE NEW FARE          RESULTS IN A LOWER FARE / TAX THE RESIDUAL VALUE          WILL BE RETURNED TO THE PASSENGER IN THE FORM OF          AN EMD FOR FURTHER TRANSPORTATION AND OR REFUND          TO THE ORIGINAL FORM OF PAYMENT.          APPLICABLE PENALTY FEE WILL APPLY.          1. BEFORE DEPARTURE          IN THE EVENT AN UPGRADING IS REQUESTED BEFORE          UTILIZATION OF THE FIRST FLIGHT COUPON NEW FARES          AND CHARGES FOR THE PASSENGER JOURNEY SHALL BE RE          CALCULATED IN ACCORDANCE WITH FARES AND CHARGES          IN EFFECT ON THE DATE THE CHANGE IS MADE AND          REFLECTED ON THE TICKET.          2. AFTER DEPARTURE          IN THE EVENT AN UPGRADING IS REQUESTED AFTER          UTILIZATION OF THE FIRST FLIGHT COUPON NEW          ITINERARY MUST BE REPRISED USING FARES IN EFFECT          OF THE ORIGINAL TICKETED AND TRAVEL COMMENCEMENT          DATE.          ADDITIONAL FARE/TAX IF ANY SHALL BE COLLECTED.          --------------------------------------------------          CANCELLATIONS          1. BEFORE DEPARTURE          REFUNDS-          WHEN COMBINED WITH A NON-REFUNDABLE FARE IF THE          NON-REFUNDABLE FARE IS PART OF THE INBOUND OR          OUTBOUND COMPONENT WITH IN A PRICING UNIT NO          REFUND WILL BE PERMITTED ON THE ENTIRE          TICKET.                    --          IF A NON-REFUNDABLE FARE IS RE ISSUED TO A          REFUNDABLE FARE THE BASE FARE OF THE ORIGINAL NON-          REFUNDABLE TICKET REMAINS AS NON-          REFUNDABLE.          WHEN COMBINED WITH A REFUNDABLE FARE APPLY THE          HIGHEST          PENALTY.          2.AFTER DEPARTURE-          REFUNDS-          WHEN COMBINED WITH A REFUNDABLE FARE DEDUCT THE          APPLICABLE PENALTIES AND ONE WAY FARE IN SAME          RBD.                    --          IF ONE WAY FARE IS NOT AVAILABLE ON THE RBD          MENTIONED ON THE TICKET THEN DEDUCT THE NEXT          AVAILABLE ONE WAY HIGHER RBD FARE FOR THE          FLOWN          PORTION.                    --          WHEN COMBINED WITH A NON-REFUNDABLE FARE AND IF          THE NON-REFUNDABLE FARE IS USED OF THE OUTBOUND          FARE COMPONENT NO          REFUND.                    --          WHEN COMBINED WITH A NON-REFUNDABLE FARE AND IF          NON-REFUNDABLE FARE IS PART OF THE INBOUND          COMPONENT NO REFUND.                    --          NO REFUND PERMITTED FOR TRAVEL BEYOND THE FARE          BREAK POINT WITHIN A PRICING UNIT AND TICKET          UTILISED OUT OF          SEQUENCE.                    --          IF A NON-REFUNDABLE FARE IS RE ISSUED TO A          REFUNDABLE FARE THE BASE FARE OF THE ORIGINAL NON-          REFUNDABLE TICKET REMAINS AS NON-          REFUNDABLE.          FEES APPLICATION-          -CHARGE APPLIES FOR ADULT CHILD AND INFANT          OCCUPYING A SEAT. CHARGE INCLUDING NO-SHOW FEE          WILL NOT APPLY FOR INFANT NOT OCCUPYING A SEAT.          -CHANGE FEE APPLIES PER TRANSACTION.          -WHEN ONE COMPONENT IS CHANGED PENALTY OF THAT          COMPONENT WILL APPLY.          -WHEN MORE THAN ONE FARE COMPONENT IS CHANGED THE          HIGHEST PENALTY OF THE CHANGED FARE COMPONENTS          WILL APPLY.          -CHANGE FEE WILL APPLY EXCEPT WHEN UPGRADING TO A          HIGHER CABIN.          -WHEN COMBINED WITH A REFUNDABLE FARE HIGHEST          REFUND FEE WILL APPLY.          -IN CASE OF NO-SHOW ONLY ONE FEE IS TO BE          COLLECTED I.E. EITHER THE NO SHOW FEE OR CHANGE          FEE /CANCELLATION FEE WHICHEVER IS HIGHER.          NOTE-          -FEES TO BE COLLECTED ON EMD-S RFIC-D RFISC-98F          ONLY AT ALL LOCATIONS WHEN REISSUING MANUALY OR          AUTOMATICALY.          -REFUND OF FARE/TAX TO BE ISSUED ON EMD-S RFIC-D          RFISC-996 ONLY AT UL OFFICE.IF EMD IS NOT          AVAIALBLE TO BE ISSUED AT AGENCY LOCATION          REISSUANCE OF TICKET SHOULD BE HANDLED BY UL          OFFICE. SERVICE FEE WILL BE WAIVED OF.          -NAME CHANGE NOT PERMITTED.          -ONE DATE CHANGE IS PERMITTED FOC FOR INBOUND          ONLY FOR BOOKINGS MADE WITH TRAVEL BEYOND SYSTEM          RANGE.          RETURN TRAVEL DATE MUST BE UPDATED AT THE TIME OF          ORIGINAL BOOKING.          IF ORIGINAL RBD IS NOT AVAILABLE THEN ANY FARE          DIFFERENCE WILL APPLY.          -REVALIDATION NOT PERMITTED. ALL CHANGES SHOULD          BE INDICATED BY RE-ISSUING DOCUMENT.          -REBOOKING/REISSUES CAN BE DONE BY THE ORIGINAL          ISSUING AGENT OR UL OFFICE ONLY.          -SERVICE FEE OF LKR 3500 WILL APPLY FOR TICKETS          ISSUED AT AGENCY LOCATIONS WORLDWIDE IF          CHANGES/REISSUES DONE AT UL OFFICES IN SRI          LANKA / GLOBAL CALL CENTRE.          -SUSPENDED TICKET COUPON/S-          FOR AGENCY ISSUED TICKETS EMD SHOULD BE ISSUED          FOR THE APPLICABLE PENALTY FEE AND FORWRAD TO UL          OFFICE TO OPEN THE COUPON STATUS. TICKET SHOULD          BE REISSUED AT THE AGENCY LOCATION AND NEW TICKET          SHOULD HAVE THE EMD NO.          -OUT OF SEQUENCE TICKETS          ANYTIME TICKET IS UTILIZED OUT OF SEQUENCE NO          REFUND OF FARE AND THE CARRIER IMPOSED SURCHARGE-          YQ.          -FOR REFUNDABLE FARES REFUND REQUEST POSSIBLE          WITHIN 364 DAYS FROM THE DATE OF ISSUE.          -FOR NON REFUNDBALE TICKETS THE CARRIER IMPOSED          SURCHARGE - YQ WILL BE NON REFUNDABLE.          -YQ WHICH IS INCLUDED IN THE CARRIER IMPOSED          SURCHARGE IS CONSIDERED AS PART OF CARRIER          PUBLISHED FARE AT THE TIME OF REFUND.          -REFUND OF UNUSED COUNTRY TAXES PERMITTED.          UNLESS APPLICABLE OW/RT FARE PLUS CARRIER IMPOSED          SURCHARGE - YQ PLUS          COUNTRY TAXES FOR ACTUAL TRAVEL IS HIGHER THAN          THE ORIGINAL TICKET. IN THIS CASE NO COUNTRY          TAX /YQ OR REFUND OF FARE WILL BE PERMITTED.          -ALL CONDITIONS WILL BE AS PER FARE RULE UNLESS          OTHERWISE GOVENRED BY THE COUNTRY REGULATIONS.          --------------------------------------------------          WAIVERS -          1. INFANT NOT OCCUPYING A SEAT.          2. FLYSMILES SAME DAY /SAME FLIGHT AWARD UPGRADES.          3. FLIGHT DISRUPTIONS.          4. WAIVED FOR DEATH OF PASSENGER OR FAMILY MEMBER.             A COPY OF DEATH CERTIFICATE ISSUED BY COMPETENT             MEDICAL AUTHORITY IS REQUIRED.             FAMILY MEMBERS -             SPOUSE/CHILDREN/PARENTS/BROTHERS/SISTERS/             GRANDPARENTS/GRANDCHILDREN/PARENTS-IN-LAW/             SISTERS-IN-LAW/BROTHERS-IN-LAW/SONS-IN-LAW             DAUGHTERS-IN-LAW          5. CONTACT UL OFFICE FOR WAIVERS 3 AND 4          6. NO WAIVER APPLICABLE FOR ILLNESS OF PASSENGER             OR FAMILY MEMBER<br/><br/> <br/>",
+            "FareRestriction": "",
+            "FareFamilyCode": "",
+            "FareRuleIndex": ""
+          },
+          {
+            "Origin": "CMB",
+            "Destination": "MLE",
+            "Airline": "UL",
+            "FareBasisCode": "VOWIZ",
+            "FareRuleDetail": "Please refer above.<br/> <br/>",
+            "FareRestriction": "",
+            "FareFamilyCode": "",
+            "FareRuleIndex": ""
+          }
+        ],
+        "Status": 5,
+        "InvoiceAmount": 25597,
+        "InvoiceNo": "IW/1920/1186",
+        "InvoiceStatus": 3,
+        "InvoiceCreatedOn": "2019-05-02T19:28:34",
+        "Remarks": ""
+      },
+      "Message": "",
+      "TicketStatus": 1
+    }
+  }
+}

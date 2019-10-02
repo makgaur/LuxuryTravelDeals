@@ -1,0 +1,35 @@
+//-- search Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "4bed8b26-f56b-4046-97fa-89d49104909f",
+  "AdultCount": 1,
+  "ChildCount": 2,
+  "InfantCount": 2,
+  "DirectFlight": false,
+  "OneStopFlight": false,
+  "JourneyType": 1,
+  "PreferredAirlines": [
+    "Ai"
+  ],
+  "Segments": [
+    {
+      "Origin": "DEL",
+      "Destination": "JAI",
+      "FlightCabinClass": 1,
+      "PreferredDepartureTime": "2017-12-01T00:00:00",
+      "PreferredArrivalTime": "2017-12-02T00:00:00"
+    }
+  ],
+  "Sources": null
+}
+//-- search Api Response --
+{
+  "Response": {
+    "ResponseStatus": 3,
+    "Error": {
+      "ErrorCode": 3,
+      "ErrorMessage": "Number of Infant can not be exceed the number of Adults"
+    },
+    "TraceId": "c1cb7e17-56aa-4e96-b9ca-291ae9e8f0d7"
+  }
+}

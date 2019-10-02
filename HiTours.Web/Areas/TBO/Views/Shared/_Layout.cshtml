@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> @this.ViewBag.Title | Luxury Travel Deals</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="msvalidate.01" content="B2CD1A65D4DF01A64F7DB93393684DCD" />
+    <link asp-append-version="true" rel="stylesheet" href="~/content/bower/bootstrap/dist/css/bootstrap.min.css">
+    <link asp-append-version="true" rel="stylesheet" href="~/content/bower/font-awesome/css/font-awesome.min.css">
+    <link asp-append-version="true" rel="stylesheet" href="~/content/bower/bootstrap-daterangepicker/daterangepicker.css">
+    <link asp-append-version="true" rel="stylesheet" href="~/content/bower/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link asp-append-version="true" rel="stylesheet" href="~/content/plugins/iCheck/all.css">
+    <link asp-append-version="true" href="~/content/plugins/bootstrap-toggle/bootstrap-toggle.min.css" rel="stylesheet" />
+    <link asp-append-version="true" href="~/content/plugins/waitme/waitMe.css" rel="stylesheet" />
+    <link asp-append-version="true" href="~/content/plugins/json-viewer/jquery.json-viewer.css" rel="stylesheet" />
+    <link asp-append-version="true" rel="stylesheet" href="~/content/bower/select2/dist/css/select2.min.css">
+    <link href="~/content/bower/datatables.net-bs/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link asp-append-version="true" rel="stylesheet" href="~/content/css/AdminLTE.min.css">
+    <link asp-append-version="true" rel="stylesheet" href="~/content/css/skins/_all-skins.min.css">
+    <link asp-append-version="true" href="~/content/css/developer.css" rel="stylesheet" />
+    <link asp-append-version="true" href="~/content/plugins/sweetalert2/dist/sweetalert2.css" rel="stylesheet" />
+    @this.RenderSection("style", false)
+    <style>
+        .api-result {
+            background-color: rgb(255, 255, 255);
+            padding-left: 11px;
+        }
+
+        .toggle-password {
+            cursor: pointer;
+        }
+
+        .api-result pre {
+            background-color: #fff;
+            border: none;
+            min-height: 110px;
+            padding: 4px 10px;
+            max-height: 500px;
+            overflow: scroll;
+            overflow-x: hidden;
+        }
+
+        .radiobtn-group {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .segments {
+            border: 1px solid #e4e4e4;
+            padding: 10px;
+        }
+
+        .segments-item {
+            clear: both;
+        }
+
+        .download-json {
+            margin: 10px 0px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .field-validation-error {
+            position: absolute;
+        }
+
+        a.btn-actions {
+            padding: 3px 10px;
+        }
+    </style>
+    <script>
+        var year = @(DateTime.UtcNow.Year);
+        var month= @(DateTime.UtcNow.Month - 1);
+        var day= @(DateTime.UtcNow.Day );
+    </script>
+
+    <script src='//tw.netcore.co.in/smartechclient.js'></script>
+    <script>
+        smartech('create', 'ADGMOT35CHFLVDHBJNIG50K969M2CP4N22UB4JPT4SRLRK91B7CG');
+        smartech('register', '7118711369bb8028c468d27da6066644');
+        smartech('identify', '');   //pass email in identify section of logged in user, keep empty for non logged users
+        smartech('dispatch', 1, {});
+    </script>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+
+    <div id="dvLoading"></div>
+    <div data-sweetalert="" data-message="@this.TempData["Message"]" data-message-type="@this.TempData["MessageType"]"></div>
+    <div class="wrapper">
+        @this.Html.Partial("_Header")
+        @await this.Component.InvokeAsync("TBOLayout", new { component = Enums.ViewComponent.LeftMenu })
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                @this.RenderBody()
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 2.4.0
+            </div>
+            <strong>Copyright &copy; @DateTime.UtcNow.Year <a href="javascript:;">HiTours</a></strong>
+            reserved.
+        </footer>
+    </div>
+
+    <script asp-append-version="true" src="~/content/js/jquery-latest.min.js"></script>
+    <script asp-append-version="true" src="~/content/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script asp-append-version="true" src="~/js/bootstrap-growl.min.js"></script>
+    <script asp-append-version="true" src="~/content/bower/select2/dist/js/select2.js"></script>
+    <script asp-append-version="true" src="~/content/bower/moment/min/moment.min.js"></script>
+    <script asp-append-version="true" src="~/content/bower/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script asp-append-version="true" src="~/content/plugins/waitme/waitMe.js"></script>
+    <script asp-append-version="true" src="~/content/plugins/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+    <script asp-append-version="true" src="~/content/bower/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script asp-append-version="true" src="~/content/plugins/json-viewer/jquery.json-viewer.js"></script>
+    <script asp-append-version="true" src="~/content/plugins/iCheck/icheck.min.js"></script>
+    <script asp-append-version="true" src="~/content/js/jquery.validate.js"></script>
+    <script asp-append-version="true" src="~/content/js/jquery.validate.unobtrusive.js"></script>
+    <script asp-append-version="true" src="~/content/plugins/datatable/js/jquery.dataTables.js"></script>
+    <script asp-append-version="true" src="~/content/plugins/datatable/js/dataTables.bootstrap.js"></script>
+    <script asp-append-version="true" src="~/content/js/custom/jquery.format.js"></script>
+    <script asp-append-version="true" src="~/content/js/custom/jquery.global.js"></script>
+    <script asp-append-version="true" src="~/content/js/custom/jquery.constants.js"></script>
+
+    <script asp-append-version="true" src="~/content/js/custom/jquery.pluggin.js"></script>
+    <script asp-append-version="true" src="~/content/js/custom/jquery.custom-datatable.js"></script>
+    <script asp-append-version="true" src="~/content/js/custom/jquery.custom.js"></script>
+    <script asp-append-version="true" src="~/content/js/adminlte.min.js"></script>
+    <script asp-append-version="true" src="~/content/js/demo.js"></script>
+    <script asp-append-version="true" src="~/content/plugins/sweetalert2/dist/sweetalert2.js"></script>
+    <script asp-append-version="true" src="~/content/js/linq.js"></script>
+
+    <input type="hidden" name="clearclipboard" value="@(this.ViewBag.ClearClipBoard!=null ? "true": "false")" />
+    <script>
+       var actionName = '@this.ViewContext.RouteData.Values["action"]';
+        var oClipBoard =@(Html.Raw(this.ViewBag.ClipBoardData ?? new { } ));
+
+       var oApiRequest =@(Html.Raw(this.ViewBag.ApiRequest ?? new { } ));
+       var oApiResponse =@(Html.Raw(this.ViewBag.ApiResponse ?? new { } ));
+       var oApiKeys = {
+           request: 'tbo-request',
+           response: 'tbo-response',
+           clipBoard: 'tbo-clipboard',
+           downloadForm: '#frmApiResult',
+           traceid : '@(nameof(ApiSearchResultResponse.TraceId))',
+           airSearch: '@(nameof(AirSearchResult))',
+           fairQuoteSearch: '@(nameof(FareRule))Quote',
+           ssrResult: 'SSRResponse'
+       };
+    </script>
+    <script asp-append-version="true" src="~/content/js/tbo.services.js"></script>
+
+    @this.RenderSection("scripts", false)
+    <script>
+        $(function () {
+
+
+            $(document).on("click", '.remove-section-row', function () {
+                $(this).parents(".section-row").eq(0).remove();
+            });
+            $(".addnew-segment").on("click", function () {
+                window.renderSection = $(".segments");
+                var url = '/tbo/shared/addnewsegment';
+                if ($(this).data("url")) {
+                    url = $(this).data("url");
+                }
+                if ($(this).data("section")) {
+                    window.renderSection = $($(this).data("section"));
+                }
+                $.ajax({
+                    url: url,
+                    method: 'get',
+                    dataType: 'html',
+                    success: function (html) {
+                        var $segments = $(renderSection).find('.segments-item');
+                        if ($segments.length == 0) {
+                            $(renderSection).html(html);
+                        }
+                        else {
+                            $(renderSection).find('.segments-item:last').after(html);
+                        }
+
+                        $(":text").filter("[value='01/01/0001']").val('');
+                        $("form").removeData("validator");
+                        $("form").removeData("unobtrusiveValidation");
+                        $.validator.unobtrusive.parse("form");
+
+                        initPluggins()
+                    },
+                    error: function (xhr, request, error) { }
+                });
+
+            });
+
+
+
+        });
+    </script>
+    @*@if (this.ViewBag.ApiResponse == null)
+        {
+            <script>
+                $(function () {
+                    localStorage.removeItem(oApiObject.request);
+                    localStorage.removeItem(oApiObject.response);
+                });
+            </script>
+        }*@
+
+    @*@if (this.ViewBag.ApiResponse != null)
+        {
+            <script>
+                $(function () {
+                    $('.json-view').jsonViewer(@Html.Raw(this.ViewBag.ApiResponse), { withQuotes: true });
+                    localStorage.setItem(oApiObject.request, JSON.stringify(@(Html.Raw(this.ViewBag.ApiRequest))));
+                    localStorage.setItem(oApiObject.response, JSON.stringify(@(Html.Raw(this.ViewBag.ApiResponse))));
+                    $(".download-json").removeClass("hide");
+            });
+            </script>
+        }*@
+
+    @*@if (this.ViewBag.ClipBoardData != null)
+        {
+            <script>
+                $(function () {
+                    var jsonData = @(Html.Raw(this.ViewBag.ClipBoardData));
+                    localStorage.setItem(oApiObject.clipBoard, JSON.stringify(jsonData));
+                });
+            </script>
+        }*@
+
+    @*@if (this.ViewBag.ApiSearchClipBoard != null)
+        {
+            <script>
+                $(function () {
+
+                    var jsonData = @(Html.Raw(this.ViewBag.ApiSearchClipBoard));
+                    var jsonApiData = {};
+                    var apiData = localStorage.getItem(oApiObject.clipBoard);
+                    if (apiData !== null) {
+                        var jsonApiData = JSON.parse(apiData);
+                    }
+                    localStorage.setItem(oApiObject.clipBoard, JSON.stringify($.extend(jsonApiData, jsonData)));
+                });
+            </script>
+        }*@
+    @*@if (this.ViewBag.ClearClipBoard != null)
+        {
+            <script>
+                $(function () {
+                    localStorage.removeItem(oApiObject.clipBoard);
+                });
+            </script>
+        }*@
+</body>
+</html>

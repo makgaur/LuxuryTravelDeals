@@ -1,0 +1,235 @@
+//-- pricerbd Api Request --
+{
+  "AdultCount": 1,
+  "ChildCount": 1,
+  "InfantCount": 1,
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "4bed8b26-f56b-4046-97fa-89d49104909f",
+  "TraceId": "16c1f0d5-c601-461f-9ff7-708845404a7e",
+  "AirSearchResult": [
+    {
+      "ResultIndex": "OB1",
+      "Source": 4,
+      "IsLCC": false,
+      "IsRefundable": false,
+      "AirlineRemark": "AI TEST",
+      "Segments": [
+        [
+          {
+            "TripIndicator": 1,
+            "SegmentIndicator": 1,
+            "Airline": {
+              "AirlineCode": "AI",
+              "AirlineName": "Air India",
+              "FlightNumber": "9643",
+              "FareClass": "U",
+              "OperatingCarrier": "9I"
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}
+//-- pricerbd Api Response --
+{
+  "Response": {
+    "ResponseStatus": 1,
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "TraceId": "16c1f0d5-c601-461f-9ff7-708845404a7e",
+    "Origin": "DEL",
+    "Destination": "JAI",
+    "IsPriced": true,
+    "Results": [
+      [
+        {
+          "ResultIndex": "OB1",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": false,
+          "GSTAllowed": false,
+          "AirlineRemark": "AI TEST",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 12400,
+            "Tax": 642,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 0
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 6842,
+            "CommissionEarned": 40.8,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 13001.2,
+            "TdsOnCommission": 8.16,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 2400,
+              "Tax": 286,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2400,
+              "Tax": 286,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 1400,
+              "Tax": 70,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "15 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "AI",
+                  "AirlineName": "Air India",
+                  "FlightNumber": "9643",
+                  "FareClass": "U",
+                  "OperatingCarrier": "9I"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "3",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T17:45:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "JAI",
+                    "AirportName": "Sanganeer",
+                    "Terminal": "2",
+                    "CityCode": "JAI",
+                    "CityName": "Jaipur",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-01T18:45:00"
+                },
+                "AccumulatedDuration": 60,
+                "Duration": 60,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-01T18:45:00",
+                "StopPointDepartureTime": "2017-12-01T17:45:00",
+                "Craft": "ATR",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "01DEC17",
+          "TicketAdvisory": "TICKETS ARE NON REFUNDABLE BEFORE DEPARTURE \nLAST TKT DTE 01DEC17  - SEE ADV PURCHASE \n",
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "JAI",
+              "Airline": "AI",
+              "FareBasisCode": "UIP9I",
+              "FareRuleDetail": null,
+              "FareRestriction": null
+            }
+          ],
+          "AirlineCode": "AI",
+          "ValidatingAirline": "AI"
+        }
+      ]
+    ]
+  }
+}

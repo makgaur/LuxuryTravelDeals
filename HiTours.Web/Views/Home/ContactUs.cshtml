@@ -1,0 +1,156 @@
+﻿@{
+    this.ViewBag.HeaderWithoutIcons = true;
+}
+@*<div class="wrapper">
+        <div class="container">
+            <div class="contact-us">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="contact-us-text">
+                            <h4>Queries regarding our current offer?</h4>
+                            <h2>Contact us</h2>
+                        </div>
+
+                        <div class="contact-box">
+                            <h5 class="call">Call Us</h5>
+                            <p>Contact our team by phone on 0124-6100000 </p>
+                            <p>Working hours are Monday to Friday 08:00AM – 20:00PM</p>
+                        </div>
+
+                        <div class="contact-box">
+                            <h5 class="email">By Email</h5>
+                            <p>We will reply within 24hrs</p>
+                            <a href="mailto://hunar@@hi.tours">Send us an email</a>
+                        </div>
+
+                        <div class="contact-box">
+                            <h5 class="question">Frequently asked questions</h5>
+                            <p>Go to the help section</p>
+                            <a href="javascript:;">Access Help page</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-social">
+                    <p>Want to share your experiences with the HI Tours online community? Folllow us on </p>
+
+                    <a href="javascript:;"><img src="/images/facebook-color.png" alt="" title="" /></a>
+                    <a href="javascript:;"><img src="/images/twitter-color.png" alt="" title="" /></a>
+                    <a href="javascript:;"><img src="/images/instagram-color.png" alt="" title="" /></a>
+                    <a href="javascript:;"><img src="/images/linkedin.png" alt="" title="" /></a>
+                </div>
+
+                <div class="contact-footer">
+                    <h3>Website Feedback</h3>
+                    <p>Feel free to suggest ideas to help us improve our website, offers & services.</p>
+                    <a href="javascript:;">Give Feedback</a>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+
+<div class="contactBanner">
+    <div class="bannerText">
+        <h2><span>Contact us</span></h2>
+        <p>Queries regarding our current offer?</p>
+    </div>
+    <img src="/images/contact-background.jpg" class="img-responsive" alt="" />
+</div>
+
+<div class="clr"></div>
+
+
+<div class="wrapper">
+    <div class="container">
+        <div class="contact-us">
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="contact-box">
+                        <img src="/images/call.png" alt="" />
+                        <h5 class="call">Call Us</h5>
+                        <p>Contact our team by phone on 1800-108-0808 </p>
+                        @*<p>Working hours are Monday to Friday 08:00AM – 20:00PM</p>*@
+                        <p>Working Hours should be 9 AM – 6 PM</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-box">
+                        <img data-toggle="modal" data-target="#myModalFeedback" src="/images/email.png" alt="" class="pointer" />
+                        <h5 data-toggle="modal" data-target="#myModalFeedback" class="email pointer">Write to Us</h5>
+                        <p>contact@luxurytravel.deals</p>
+                        <p>We will reply within 24hrs</p>
+                        @*<a href="#">Send us an email</a>*@
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-box">
+                        <img class="pointer"  data-toggle="modal"  data-target="#myModalrequestcallback" src="/images/question.png" alt="" />
+                        <h5 class="question pointer"  data-toggle="modal" data-target="#myModalrequestcallback" >Request Call back & Customer Service</h5>
+                        <p>Go to the help section</p>
+                        @*<a href="#">Access Help page</a>*@
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="contact-social">
+            <p>Want to share your experiences with the Luxury Travel Deals online community? Folllow us on </p>
+
+            <a href="https://www.facebook.com/luxurytraveldeal" target="_blank"><img src="/images/facebook-color.png" alt="" title="" /></a>
+            <a href="https://www.instagram.com/luxurytraveldeals/" target="_blank"><img src="/images/instagram-color.png" alt="" title="" /></a>
+            @*<a href="#"><img src="/images/twitter-color.png" alt="" title="" /></a>*@
+            @*<a href="#"><img src="/images/linkedin.png" alt="" title="" /></a>*@
+        </div>
+
+        <div class="contact-footer">
+            <h3>Website Feedback</h3>
+            <p>Feel free to suggest ideas to help us improve our website, offers & services.</p>
+            <a href="#" data-toggle="modal" data-target="#myModalFeedback">Give Feedback</a>
+            <!-- Modal -->
+            <div class="modal fade myModal" id="myModalFeedback" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                <center>
+                                    <img src="/images/luxury.png" class="img-responsive hiTourlogo" alt="Luxury Travel Deals Logo" title="Luxury Travel Deals" />
+                                </center>
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="feedBackform">
+                                <h4>Share your feedback or ideas with us!</h4>
+                                <label>How can we improve your Luxury Travel Deals experience?</label>
+                                <input name="confullname" class="input-custm" placeholder="Full Name" type="text" required="required">
+                                <span class="field-validation-error" style="text-align:left" data-valmsg-for="confullname" data-valmsg-replace="true"></span>
+                                <input name="conemail" class="input-custm" placeholder="Email" type="email" required="required">
+                                <span class="field-validation-error" style="text-align:left" data-valmsg-for="conemail" data-valmsg-replace="true"></span>
+                                <input name="conphone" class="input-custm" placeholder="Phone Number" type="number" required="required">
+                                <span class="field-validation-error" style="text-align:left" data-valmsg-for="conphone" data-valmsg-replace="true"></span>
+                                <textarea class="form-control input-custm" name="conarea" required="required"></textarea>
+                                <span class="field-validation-error" style="text-align:left" data-valmsg-for="conarea" data-valmsg-replace="true"></span>
+
+                                <div class="subcontainer">
+                                    <button class="mfb-btn" type="submit">
+                                        Send <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

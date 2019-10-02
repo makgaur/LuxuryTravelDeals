@@ -1,0 +1,46 @@
+﻿@using HtmlHelpers.BeginCollectionItemCore
+@model PassengerDetailsViewModel
+@{
+    var numberOfPersons = 2;
+}
+
+@using (this.Html.BeginCollectionItem("PassengerDetails"))
+{
+    var adults = new List<SelectListItem>();
+
+    for (int counter = 1; counter <= numberOfPersons; counter++)
+    {
+        adults.Add(new SelectListItem { Value = counter.ToString(), Text = counter.ToString() });
+    }
+    <div class="main-passenger-box">
+        <div class="contact-input-box">
+            <ul>
+                <li class="adult-box">
+                </li>
+            </ul>
+            <div class="clr"></div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="form-inline col-sm-12 margin-top-15">
+            <div class="form-group margin-top-bottom-15">
+                <input type="hidden" asp-for="RoomNumber" />
+                <label class="person-number skip-required">Room Number : @(Model.RoomNumber)</label>
+                <label class="person-number skip-required">Total Persons : </label>
+                <select asp-for="Adults" asp-items="adults" data-room="@Model.RoomNumber" class="skip-select2 select-room-numbers form-control"></select>
+            </div>
+        </div>
+        @if (this.Model != null && this.Model.PersonDetails != null && this.Model.PersonDetails.Count > 0)
+        {
+            var countPerson = 0;
+            foreach (var person in this.Model.PersonDetails)
+            {
+                countPerson++;
+                person.Adults = countPerson;
+                @this.Html.Partial("_Persons", person)
+            }
+        }          
+    </div>
+}

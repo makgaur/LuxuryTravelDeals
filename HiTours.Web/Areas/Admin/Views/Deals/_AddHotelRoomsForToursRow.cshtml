@@ -1,0 +1,54 @@
+﻿@model HotelierRoomConfigurationViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+
+@using (this.Html.BeginCollectionItem("RoomConfigurations"))
+{
+    <tr class="active-rows">
+        <td>
+            <div class="field-col">
+                <input asp-for="IsSelected" type="checkbox" class="minimal form-control">
+            </div>
+
+        </td>
+        <td>
+            <div class="field-col">
+                <strong><i class="fa fa-fw fa-bed"></i> @Model.PackageHotelRoomTypeViewModel.Name</strong>
+            </div>
+        </td>
+        <td>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Adult" />
+            <input type="hidden" asp-for="AdultAge" />
+            <input type="hidden" asp-for="CardImg" />
+            <input type="hidden" asp-for="Child" />
+            <input type="hidden" asp-for="ChildAge" />
+            <input type="hidden" asp-for="Description" />
+            <input type="hidden" asp-for="FreeChild" />
+            <input type="hidden" asp-for="FreeInfant" />
+            <input type="hidden" asp-for="HotelId" />
+            <input type="hidden" asp-for="Infant" />
+            <input type="hidden" asp-for="InfantAge" />
+            <input type="hidden" asp-for="IsActive" />
+            <input type="hidden" asp-for="Max" />
+            <input type="hidden" asp-for="RoomTypeId" />
+            <div class="field-col">
+                <span>@Model.Adult</span>
+            </div>
+        </td>
+        <td>
+            <div class="field-col">
+                <span>@Model.Child</span>
+            </div>
+        </td>
+        <td>
+            <div class="field-col">
+                <span>@Model.Infant</span>
+            </div>
+        </td>
+        <td>
+            <div class="field-col">
+                <span>@Model.Infant</span>
+            </div>
+        </td>
+    </tr>
+}

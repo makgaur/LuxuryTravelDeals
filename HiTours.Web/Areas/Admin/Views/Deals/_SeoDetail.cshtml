@@ -1,0 +1,66 @@
+﻿@model DealsSeoDetail
+<form asp-antiforgery="true" method="post" id="seodetailForm">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="DealId" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="PageType" />
+    <input type="hidden" asp-for="PageId" />
+
+    <div class="box-body">
+        <div class="form-group col-sm-6">
+            <label asp-for="Title"></label>
+            <textarea asp-for="Title" class="form-control"></textarea>
+            <span asp-validation-for="Title"></span>
+            <h6 class="pull-right counter"></h6>
+        </div>
+
+        <div class="form-group col-sm-6">
+            <label asp-for="MetaDescription">Meta Description</label>
+            <textarea asp-for="MetaDescription" class="form-control"></textarea>
+            <span asp-validation-for="MetaDescription"></span>
+            <h6 class="pull-right counter"></h6>
+        </div>
+
+        <div class="form-group col-sm-6">
+            <label asp-for="MetaKeyword">Meta Keyword</label>
+            <textarea asp-for="MetaKeyword" class="form-control"></textarea>
+            <span asp-validation-for="MetaKeyword"></span>
+            <h6 class="pull-right counter"></h6>
+        </div>
+
+        <div class="form-group col-sm-6">
+            <label asp-for="HeaderMetaCode">Header Meta Code</label>
+            <textarea asp-for="HeaderMetaCode" class="form-control"></textarea>
+            <span asp-validation-for="HeaderMetaCode"></span>
+            <h6 class="pull-right counter"></h6>
+        </div>
+
+        <div class="form-group col-sm-6">
+            <label asp-for="Schema"></label>
+            <textarea asp-for="Schema" class="form-control"></textarea>
+            <span asp-validation-for="Schema"></span>
+            <h6 class="pull-right counter"></h6>
+        </div>
+
+        <div class="form-group col-sm-6 hide">
+            <label asp-for="AltTag">Alt Tags</label>
+            <textarea asp-for="AltTag" class="form-control"></textarea>
+            <span asp-validation-for="AltTag"></span>
+            <h6 class="pull-right counter"></h6>
+        </div>
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit)})
+</form>
+<script>
+    $(document).ready(function (e) {
+        $('textarea').each(function (index, element) {
+            $(this).parent('div').find('h6').html($(this).val().length + " Characters");
+        });
+    });
+    $(document).on('keyup', 'textarea', function (e) {
+        $(this).parent('div').find('h6').html($(this).val().length + " Characters");
+    });
+</script>

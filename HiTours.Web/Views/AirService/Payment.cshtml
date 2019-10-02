@@ -1,0 +1,85 @@
+﻿@{this.Layout = "~/Views/Shared/_LayoutFlightSearch.cshtml";}
+@model HiTours.TBO.Models.FlightBook
+@{ BookingPayment bookingPayment = this.ViewBag.BookingPayment;}
+
+@if (this.ViewBag.HidePayment != null && this.ViewBag.HidePayment)
+{
+    <input type="hidden" name="hidepayment" value="yes" />
+}
+
+<div class="middle white-clr">
+    <section class="flight-page dvNewBookingSummary" id="frmFlightBook">
+        @if (Model != null && this.ViewBag.ClearSearch == null)
+        {
+            <input type="hidden" name="bookingsummary-get" value="" />
+            @Html.Partial("_BookingSummary")
+        }
+        else
+        {
+            <div class="box" style="min-height:375px;">
+                <div class="overlay">
+                    <i class="fa fa-refresh fa-spin"></i>
+                </div>
+            </div>
+        }
+    </section>
+
+    @if (bookingPayment != null && bookingPayment.DataAmount > 0)
+    {
+        <div class="payment-option-box" style="margin-bottom:20px">
+            <div class="container">
+                <div class="razorpaydialog">
+                    <span class="donotrefresh">Please do not refresh the page otherwise payment will be cancelled</span>
+                    <form action="ConfirmPayment" method="post">
+                        <script src="@bookingPayment.JsSrc"
+                                data-key="@bookingPayment.DataKey"
+                                data-amount="@bookingPayment.DataAmount"
+                                data-name="@bookingPayment.DataName"
+                                data-description="@bookingPayment.DataDescription"
+                                data-order_id="@bookingPayment.DataOrderId"
+                                data-image="@bookingPayment.DataImage"
+                                data-prefill.name="@bookingPayment.DataPrefillName"
+                                data-prefill.email="@bookingPayment.DataPrefillEmail"
+                                data-prefill.contact="@bookingPayment.DataPrefillContact"
+                                data-theme.color="@bookingPayment.DataThemeColor"
+                                data-modal.escape="false"
+                                data-modal.ondismiss="getnamesuccess">
+                        </script>
+                        <input type="hidden" value="Hidden Element" name="hidden">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+@if (bookingPayment != null && bookingPayment.DataAmount > 0)
+{
+    @section scripts {
+        <script>
+
+            $(function () {
+                $(".razorpay-payment-button").click();
+                //$(".razorpay-payment-button").hide();
+            })
+        </script>
+
+        @if (this.ViewBag.HidePayment != null && this.ViewBag.HidePayment)
+        {
+            <script>
+                $(function () {
+                    //showWaitProcess();
+                })
+            </script>
+        }
+
+    }
+}
+<style>
+    .flight-booking-box {
+        padding-bottom: 0px !important;
+    }
+</style>
+
+

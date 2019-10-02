@@ -1,0 +1,61 @@
+﻿@model HotelierImageViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+<tr>
+    @using (this.Html.BeginCollectionItem("HotelierImageViewModels"))
+    {
+        <td align="center">
+            <input asp-for="Image" type="hidden" />
+            <input asp-for="ImageFile" type="file" class="singleImg" />
+            <span asp-validation-for="Image"></span>
+        </td>
+        <td>
+            <input asp-for="Id" type="hidden" />
+            <input asp-for="IsDeleted" class="isDeleted" type="hidden" />
+            <input asp-for="UpdatedBy" type="hidden" />
+            <input asp-for="HotelId" type="hidden" />
+            <input asp-for="UpdatedDate" type="hidden" />
+            <input asp-for="CreatedDate" type="hidden" />
+            <input asp-for="CreatedBy" type="hidden" />
+            <div class="img-thumbnail">
+                @if (string.IsNullOrEmpty(Model.Image))
+                {
+                    <img class="preview" style="width:120px; height:60px;" alt="">
+                }
+                else
+                {
+                    <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.Image" alt="">
+
+                }
+            </div>
+        </td>
+        <td>
+            <input type="text" asp-for="Caption" class="form-control" placeholder="Caption">
+            <span asp-validation-for="Caption"></span>
+        </td>
+        <td>
+            <span>Standard</span>
+        </td>
+        <td>
+            <input type="number" asp-for="SortOrder" class="form-control" />
+        </td>
+        <td valign="middle">
+            <button class="delete_image_row btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
+        </td>
+    }
+</tr>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $(input).parents('tr').find(".preview").attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $(document).on("change", ".singleImg", function () {
+        readURL(this);
+    });
+</script>

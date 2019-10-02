@@ -1,0 +1,36 @@
+﻿@model List<DealsNightViewModel>
+@{ 
+    var nextView = "";
+    var packageTypeId = this.ViewBag.packageTypeId;
+    var packageId = this.ViewBag.PackageId;
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="nav-tabs-custom">
+                <input type="hidden" name="tabs" data-default="@nextView" value="@nextView" />
+                <ul id="itineraryNavs" class="nav nav-tabs">
+                    @foreach (DealsNightViewModel item in Model)
+                    {
+                        string tabId = "#itinerary_night" + item.Id;
+                        <li class=""><a href="@tabId" data-toggle="tab" data-href="@Url.Action("ManageItinerary","Deals", new {nightId = item.Id, packageTypeId = packageTypeId, packageId = packageId})"><i class="fa fa-fw fa-moon-o"></i> @item.Value Nights </a></li>
+
+                    }
+
+                </ul>
+                <div class="tab-content hotel-tabs">
+                    @foreach (DealsNightViewModel item in Model)
+                    {
+                        string tabContentId = "itinerary_night" + item.Id;
+                        <div class="tab-pane" id="@tabContentId"></div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function (e) {
+        $("#itineraryNavs li:first-child a").click();
+    });
+</script>

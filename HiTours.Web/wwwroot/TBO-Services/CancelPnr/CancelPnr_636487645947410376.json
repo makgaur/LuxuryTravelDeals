@@ -1,0 +1,19 @@
+//-- CancelPnr Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "c583f4ef-2348-4393-96fe-986daf4d969b",
+  "BookingId": "50741",
+  "Source": "3"
+}
+//-- CancelPnr Api Response --
+{
+  "Response": {
+    "B2B2BStatus": null,
+    "ResponseStatus": 3,
+    "TraceId": "27760648-a9a0-408a-ae3d-ac723e54c75e",
+    "Error": {
+      "ErrorCode": 3,
+      "ErrorMessage": "Please provide a valid Booking Source."
+    }
+  }
+}

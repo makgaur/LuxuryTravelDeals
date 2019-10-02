@@ -1,0 +1,124 @@
+﻿@model List<MyBookingsListViewModel>
+
+@{
+    ViewData["Title"] = "MyBookings";
+    Layout = "~/Views/Shared/_ProductLayout.cshtml";
+}
+
+
+<link href="~/Styles/mybooking.css" rel="stylesheet" />
+<link href="~/Styles/AboutUsPage.css" rel="stylesheet" />
+
+
+@*----------My_Booking---------*@
+
+<div class="mybooking hidden-xs">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 booking-heading-container">
+            <div class="booking-headings">My Bookings</div>
+        </div>
+    </div>
+</div>
+
+<div class="hidden-sm hidden-md hidden-lg col-xs-12 mybooking-header-xs">
+    <span class="left-arrow" onclick="window.history.back();"><img src="~/images/left_arrow.svg" alt="left-arrow" /></span>
+    <span class="title-container">
+        <span class="booking-title">My Bookings</span>
+
+    </span>
+
+</div>
+@if (Model.Count > 0)
+{
+    <div class="booking-content-container  section_container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 hidden-xs booking-heading-text">
+
+                <h4>Upcoming Tours</h4>
+
+            </div>
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-12 col-md-12 col-lg-12 booking-content">
+                        <div class="col-sm-12 col-md-6 col-lg-7 col-xs-12 booking-image-container">
+                            <div class="booking-image-inner">
+                                <div class="col-sm-6 col-md-6 col-lg-5 col-xs-12 booking-image">
+                                    <img src="~/DealImages/@item.CardImage" alt="booking-image">
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-lg-7 col-xs-12 booking-image-content">
+                                    <div class="booking_place">
+                                        <span class="booking-loc-icon"><img src="~/images/location_icon.svg" alt="location_icon" /></span>
+                                        @if (item.DealType == 1)
+                                        {
+                                            string locationString = string.Empty;
+                                            for (int i = 0; i < item.LocationNames.Count; i++)
+                                            {
+                                                locationString = locationString + item.LocationNames[i];
+                                                if (i != (item.LocationNames.Count - 1))
+                                                {
+                                                    locationString = locationString + ", ";
+                                                }
+                                            }
+                                            <span class="location-text">@item.HotelName, @locationString</span>
+                                        }
+
+                                    </div>
+                                    <div class="booking_title">
+                                        @item.DealName
+                                    </div>
+                                    <div class="booking_duration hidden-xs">
+                                        @{
+                                            int days = (item.CheckOutDate - item.CheckInDate).Days;
+                                        }
+                                        @(days + 1) days @(days) Nights
+                                    </div>
+                                    <div class="confirm_title  hidden-sm hidden-md hidden-lg">
+                                        <span class="confirm-icon"><img class="img_confirm" src="~/images/@(item.Confirmed && item.FlightsConfirmed ? "confirm_icon.svg" : "clock.svg")" style="width:20px;height:20px" alt="confirm_icon" /></span>
+                                        <span class="confirm-text">@(item.Confirmed && item.FlightsConfirmed ? "Booking Confirmed" : "Confirmation Pending")</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 col-lg-3 col-xs-12 booking-details">
+                            <div class="confirm_title hidden-xs">
+                                <span class="confirm-icon"><img class="img_confirm" src="~/images/@(item.Confirmed && item.FlightsConfirmed? "confirm_icon.svg" : "clock.svg")" style="width:20px;height:20px" alt="confirm_icon" /></span>
+                                <span class="confirm-text">@(item.Confirmed && item.FlightsConfirmed ? "Booking Confirmed" : "Confirmation Pending")</span>
+                            </div>
+                            <div class="booking_id">
+                                <span class="booking_id_text">Booking ID: </span>@item.ReferenceNumber
+                            </div>
+                            <div class="booking_duration hidden-sm hidden-md hidden-lg">
+                                @(days+1) days @(days) Nights
+                            </div>
+                            <div class="booking_duration">
+                                @item.CheckInDate.Day @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.CheckInDate.Month) @item.CheckInDate.Year - @item.CheckOutDate.Day @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.CheckOutDate.Month) @item.CheckOutDate.Year
+                            </div>
+                        </div>
+
+                        <a href="/user/mybookings?bookingId=@item.BookingId" class="col-sm-6 col-md-3 col-lg-2 col-xs-12 booking-details-btn">
+                            View Details
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="booking-content-container  section_container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 hidden-xs booking-heading-text" style="margin-bottom:50px;">
+
+                <h4>No Upcoming Tours Found</h4>
+
+            </div>
+        </div>
+    </div>
+}
+
+
+@this.Html.Partial("_Footer_navigation")

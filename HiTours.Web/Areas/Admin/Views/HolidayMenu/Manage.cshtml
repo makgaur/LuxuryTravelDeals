@@ -1,0 +1,46 @@
+﻿@{ this.ViewBag.Title = "Holiday Menu";}
+@model PackageHolidayMenuViewModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    @if (this.Model != null && this.Model.Id != 0)
+                    {
+                        @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/holidaymenu/manage") })
+                    }
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.ViewList, "/admin/holidaymenu") })
+                </div>
+            </div>
+            @Html.Partial("_holidaymenu")
+        </div>
+    </div>
+
+</div>
+@section scripts
+    {
+    <script>
+       
+        if ($("#IsRegion").data("value").toString().toLowerCase() == "true") {
+            $("#divTemplate").html($('#tmpRegion').html());
+        }
+        else {
+
+            $("#divTemplate").html($('#tmpCountry').html());
+        }
+        $(document).on("change", "#IsRegion", function () {
+            if ($(this).prop('checked')) {
+                $("#divTemplate").html($('#tmpRegion').html());                
+            }
+            else {
+                $("#divTemplate").html($('#tmpCountry').html());
+
+            }
+            initPluggins();          
+            $("#Name").val('').trigger('change');
+
+        })
+       
+    </script>
+}

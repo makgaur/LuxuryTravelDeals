@@ -1,0 +1,148 @@
+﻿@model PopularDestinationViewModel
+@{ 
+    this.ViewBag.Title = "Popular Destination";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .copy-link {
+        display: none;
+    }
+
+    .view-copylink:hover .copy-link {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -6% 0 0 -17%;
+        display: block;
+    }
+</style>
+
+
+<div class="row">
+
+    <div class="col-md-12">
+        @try
+        {<form asp-antiforgery="true" method="post" enctype="multipart/form-data">
+                <input asp-for="Id" type="hidden" />
+                <input asp-for="IsActive" type="hidden" />
+                <input asp-for="CreatedBy" type="hidden" />
+                <input asp-for="CreatedDate" type="hidden" />
+                <input asp-for="UpdatedBy" type="hidden" />
+                <input asp-for="UpdatedDate" type="hidden" />
+                <div class="box no-top-border">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Upload @this.ViewBag.Title </h3>
+
+                    </div>
+                    <div class="pull-right top-buttons">
+                        @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.ViewList, "/Admin/HomeBanners/PopularDestination") })
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+
+                            <div class="form-group col-sm-6">
+                                <label>Upload Images(Ratio 57:70)</label>
+                                <div class="input-group" style="width:100%;padding-right:10px;">
+                                    <span class="input-group-btn">
+                                        <span class="btn btn-default btn-file">
+                                            Browse… <input type="file" class="image-upload" data-target="img-upload-card" asp-for="ImageFile">
+                                        </span>
+                                    </span>
+                                    <input type="text" class="form-control" asp-for="Image" readonly>
+                                    <span asp-validation-for="Image"></span>
+                                </div>
+                            </div>
+
+                            
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label asp-for="CountryId"></label>
+                                <select asp-for="CountryId" selected="@Model.CountryId" class="form-control" id="CountryId" asp-items="Model.CountryItems"
+                                        select2-value="@Model.CountryId" select2-Url="/selectlist/GetCountryList"></select>
+                                <span asp-validation-for="CountryId"></span>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label asp-for="StateId"></label>
+                                <select asp-for="StateId" selected="@Model.StateId" class="form-control" id="StateId" asp-items="Model.StateItems"
+                                        select2-value="@Model.StateId" select2-Url="/selectlist/GetPackageSateList"></select>
+                                <span asp-validation-for="StateId"></span>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label asp-for="CityId"></label>
+                                <select asp-for="CityId" selected="@Model.CityId" class="form-control" id="CityId" asp-items="Model.CityItems"
+                                        select2-value="@Model.CityId" select2-Url="/selectlist/GetPackageCityList"></select>
+                                <span asp-validation-for="CityId"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="box-body">
+                                <div class="form-group col-sm-6">
+                                    <label asp-for="Text1"></label>
+                                    <input type="text" asp-for="Text1" class="form-control" />
+                                    <span asp-validation-for="Text1"></span>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label asp-for="Text2"></label>
+                                    <input type="text" asp-for="Text2" class="form-control" />
+                                    <span asp-validation-for="Text2"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="pull-right">
+                            <button type="submit" name="Submit" class="btn btn-primary">Upload</button>
+                        </span>
+                    </div>
+
+                </div>
+            </form>
+        }
+        catch (Exception ex)
+        {
+            var msg = ex.ToString();
+        }
+
+    </div>
+</div>
+@section scripts {
+
+    <script>
+        $(document).ready(function () {
+            $(document).on('change', '.btn-file :file', function () {
+                var input = $(this),
+                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                input.trigger('fileselect', [label]);
+            });
+
+            $('.btn-file :file').on('fileselect', function (event, label) {
+
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = label;
+
+                if (input.length) {
+                    input.val(log);
+                } else {
+                    if (log) alert(log);
+                }
+
+            });
+            function readURL(input, id) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#' + id).attr('src', e.target.result);
+                        $('#' + id).parent('div').removeClass('hidden');
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $(".image-upload").change(function () {
+                readURL(this, $(this).data('target'));
+            });
+        });
+
+    </script>
+}

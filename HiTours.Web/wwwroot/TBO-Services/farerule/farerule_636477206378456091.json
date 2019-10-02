@@ -1,0 +1,19 @@
+//-- farerule Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "2d627a31-b3e8-4e6a-b0eb-82d9ff6b386c",
+  "TraceId": "12c7b666-a8b6-45c5-8d5d-6d65e9796eb8",
+  "ResultIndex": "OB7"
+}
+//-- farerule Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 6,
+      "ErrorMessage": "Your session (TraceId) is expired."
+    },
+    "FareRules": null,
+    "ResponseStatus": 4,
+    "TraceId": "12c7b666-a8b6-45c5-8d5d-6d65e9796eb8"
+  }
+}

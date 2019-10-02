@@ -1,0 +1,26 @@
+//-- Authenticate Api Request --
+{
+  "ClientId": "ApiIntegrationNew",
+  "UserName": "HiTours",
+  "Password": "HiTours@123",
+  "EndUserIp": "203.153.42.102"
+}
+//-- Authenticate Api Response --
+{
+  "Status": 1,
+  "TokenId": "8cbd26f3-023a-4555-b3d0-d0ef647a5da3",
+  "Error": {
+    "ErrorCode": 0,
+    "ErrorMessage": ""
+  },
+  "Member": {
+    "FirstName": "Hunar",
+    "LastName": "Syal",
+    "Email": "hunar@hi.tours",
+    "MemberId": 46088,
+    "AgencyId": 46094,
+    "LoginName": "HiTours",
+    "LoginDetails": "Login Success at#@ 11/22/2017 1:26:37 PM #@ IPAddress: 203.153.42.102",
+    "isPrimaryAgent": false
+  }
+}

@@ -1,0 +1,396 @@
+//-- BookDetails Api Request --
+{
+  "EndUserIp": "192.168.11.120",
+  "TokenId": "ff235bef-7434-438c-b368-42275759a50b",
+  "TraceId": "e27dad3f-7aa2-4fc0-a458-35166e555fca",
+  "BookingId": 1462382,
+  "PNR": null
+}
+//-- BookDetails Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "ResponseStatus": 1,
+    "TraceId": "e27dad3f-7aa2-4fc0-a458-35166e555fca",
+    "FlightItinerary": {
+      "IssuancePcc": "GoAirSPLCoupon30",
+      "TripIndicator": 1,
+      "BookingAllowedForRoamer": true,
+      "BookingId": 1462382,
+      "IsManual": false,
+      "PNR": "A3WLTF",
+      "IsDomestic": true,
+      "Source": 32,
+      "Origin": "DEL",
+      "Destination": "IXL",
+      "AirlineCode": "G8",
+      "LastTicketDate": "9999-12-31T00:00:00",
+      "ValidatingAirlineCode": "G8",
+      "AirlineRemark": "",
+      "AirlineTollFreeNo": "9876543210",
+      "IsLCC": true,
+      "NonRefundable": false,
+      "FareType": "PUB",
+      "CreditNoteNo": null,
+      "Fare": {
+        "Currency": "INR",
+        "BaseFare": 33956,
+        "Tax": 6352,
+        "TaxBreakup": [
+          {
+            "key": "K3",
+            "value": 4268
+          },
+          {
+            "key": "PSF",
+            "value": 488
+          },
+          {
+            "key": "YR",
+            "value": 122
+          },
+          {
+            "key": "YQTax",
+            "value": 400
+          },
+          {
+            "key": "OtherTaxes",
+            "value": 1074
+          },
+          {
+            "key": "TotalTax",
+            "value": 6352
+          }
+        ],
+        "YQTax": 400,
+        "AdditionalTxnFeeOfrd": 0,
+        "AdditionalTxnFeePub": 0,
+        "PGCharge": 0,
+        "OtherCharges": 123,
+        "ChargeBU": [
+          {
+            "key": "TBOMARKUP",
+            "value": 0
+          },
+          {
+            "key": "OTHERCHARGE",
+            "value": 123
+          },
+          {
+            "key": "CONVENIENCECHARGE",
+            "value": 0
+          }
+        ],
+        "Discount": 0,
+        "PublishedFare": 40431,
+        "CommissionEarned": 0,
+        "PLBEarned": 0,
+        "IncentiveEarned": 0,
+        "OfferedFare": 40431,
+        "TdsOnCommission": 0,
+        "TdsOnPLB": 0,
+        "TdsOnIncentive": 0,
+        "ServiceFee": 0,
+        "TotalBaggageCharges": 0,
+        "TotalMealCharges": 0,
+        "TotalSeatCharges": 0,
+        "TotalSpecialServiceCharges": 0
+      },
+      "CreditNoteCreatedOn": null,
+      "Passenger": [
+        {
+          "PaxId": 2087909,
+          "Title": "Mr",
+          "FirstName": "Shubham",
+          "LastName": "Sharma",
+          "PaxType": 1,
+          "DateOfBirth": "1978-10-18T00:00:00",
+          "Gender": 1,
+          "PassportNo": "",
+          "AddressLine1": "Test Address",
+          "AddressLine2": "Test Address",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 16978,
+            "Tax": 3176,
+            "TaxBreakup": [
+              {
+                "key": "K3",
+                "value": 2134
+              },
+              {
+                "key": "PSF",
+                "value": 244
+              },
+              {
+                "key": "YR",
+                "value": 61
+              },
+              {
+                "key": "YQTax",
+                "value": 200
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 537
+              },
+              {
+                "key": "TotalTax",
+                "value": 3176
+              }
+            ],
+            "YQTax": 200,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 61.5,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 61.5
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 20215.5,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 20215.5,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "City": "Delhi",
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "ContactNo": "9045025705",
+          "Email": "makgaur007@gmail.com",
+          "IsLeadPax": true,
+          "FFAirlineCode": null,
+          "FFNumber": null,
+          "Ssr": [],
+          "Ticket": {
+            "TicketId": 1727609,
+            "TicketNumber": "A3WLTF",
+            "IssueDate": "2019-05-02T16:12:05",
+            "ValidatingAirline": "82*",
+            "Remarks": "",
+            "ServiceFeeDisplayType": "ShowInTax",
+            "Status": "OK",
+            "ConjunctionNumber": "     ",
+            "TicketType": "N"
+          },
+          "SegmentAdditionalInfo": [
+            {
+              "FareBasis": "CO9REINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "15 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            }
+          ]
+        },
+        {
+          "PaxId": 2087910,
+          "Title": "Mr",
+          "FirstName": "Anshul",
+          "LastName": "Sharma",
+          "PaxType": 2,
+          "DateOfBirth": "2008-10-29T00:00:00",
+          "Gender": 1,
+          "PassportNo": "",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 16978,
+            "Tax": 3176,
+            "TaxBreakup": [
+              {
+                "key": "K3",
+                "value": 2134
+              },
+              {
+                "key": "PSF",
+                "value": 244
+              },
+              {
+                "key": "YR",
+                "value": 61
+              },
+              {
+                "key": "YQTax",
+                "value": 200
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 537
+              },
+              {
+                "key": "TotalTax",
+                "value": 3176
+              }
+            ],
+            "YQTax": 200,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 61.5,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 61.5
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 20215.5,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 20215.5,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "City": "Delhi",
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "IsLeadPax": true,
+          "FFAirlineCode": null,
+          "FFNumber": null,
+          "Ssr": [
+            {
+              "Detail": "29/10/2008",
+              "SsrCode": "CHLD",
+              "SsrStatus": null,
+              "Status": 1
+            }
+          ],
+          "Ticket": {
+            "TicketId": 1727610,
+            "TicketNumber": "A3WLTF",
+            "IssueDate": "2019-05-02T16:12:05",
+            "ValidatingAirline": "82*",
+            "Remarks": "",
+            "ServiceFeeDisplayType": "ShowInTax",
+            "Status": "OK",
+            "ConjunctionNumber": "     ",
+            "TicketType": "N"
+          },
+          "SegmentAdditionalInfo": [
+            {
+              "FareBasis": "CO9REINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "15 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            }
+          ]
+        }
+      ],
+      "CancellationCharges": null,
+      "Segments": [
+        {
+          "Baggage": null,
+          "CabinBaggage": null,
+          "TripIndicator": 1,
+          "SegmentIndicator": 1,
+          "Airline": {
+            "AirlineCode": "G8",
+            "AirlineName": "GoAir",
+            "FlightNumber": "203",
+            "FareClass": "C",
+            "OperatingCarrier": ""
+          },
+          "AirlinePNR": "",
+          "Origin": {
+            "Airport": {
+              "AirportCode": "DEL",
+              "AirportName": "Indira Gandhi Airport",
+              "Terminal": "2 ",
+              "CityCode": "DEL",
+              "CityName": "Delhi",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "DepTime": "2019-05-29T06:30:00"
+          },
+          "Destination": {
+            "Airport": {
+              "AirportCode": "IXL",
+              "AirportName": "Leh",
+              "Terminal": "  ",
+              "CityCode": "IXL",
+              "CityName": "Leh",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "ArrTime": "2019-05-29T07:55:00"
+          },
+          "Duration": 85,
+          "GroundTime": 0,
+          "Mile": 0,
+          "StopOver": false,
+          "FlightInfoIndex": "1",
+          "StopPoint": "",
+          "StopPointArrivalTime": null,
+          "StopPointDepartureTime": null,
+          "Craft": "320",
+          "Remark": null,
+          "IsETicketEligible": true,
+          "FlightStatus": "Confirmed",
+          "Status": "HK"
+        }
+      ],
+      "FareRules": [
+        {
+          "Origin": "DEL",
+          "Destination": "IXL",
+          "Airline": "G8",
+          "FareBasisCode": "CO9REINX",
+          "FareRuleDetail": " 1. All Guests, including children and infants, must present valid identification at check-in. It is your responsibility to ensure you have the appropriate travel documents at all times.\n2. Rescheduling - Rs. 1000 per pax per segment plus difference of fare.\n3. Check-in starts \"2 hours\" before scheduled departure, and closes 45 minutes prior to the scheduled departure time. Guests are requested to report at least 2 hours prior to departure time, at Go Air Check-in counters.\n4. Cancellation / Changes within \"2 hours\" of departure or failure to check-in for a Go Air flight at least 45 minutes prior to the scheduled departure time will result in the fare being forfeited. We require the request atleast 4 hours prior to departure, After that ticket will be count as a No show.\n5. Cancellation- Rs. 1000 per pax per segment plus difference of fare.\n6. Schedule is subject to change and regulatory authority approvals.\n <br/> <br/>",
+          "FareRestriction": "",
+          "FareFamilyCode": "",
+          "FareRuleIndex": ""
+        }
+      ],
+      "Status": 5,
+      "InvoiceAmount": 40431,
+      "InvoiceNo": "DW/1920/6330",
+      "InvoiceStatus": 3,
+      "InvoiceCreatedOn": "2019-05-02T16:12:05",
+      "Remarks": ""
+    }
+  }
+}

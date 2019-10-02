@@ -1,0 +1,448 @@
+﻿
+@{
+    ViewData["Title"] = "AboutUsPage";
+    Layout = "~/Views/Shared/_ProductLayout.cshtml";
+}
+<link href="~/Styles/AboutUsPage.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/slick/slick.css">
+<link rel="stylesheet" type="text/css" href="/slick/slick-theme.css">
+
+<div class="container-fluid sticky-nav hidden-xs">
+    <div class="row">
+        <div style="max-width:1336px;margin:0 auto;">
+            <div class="col-sm-8 col-md-8 col-lg-8 product_options">
+                <ul>
+                    <li class="award-nav colored-nav" data-target=".awards-container">Awards</li>
+                    <li class="mission-nav" data-target=".mission-container">Mission</li>
+                    <li class="value-nav" data-target=".value-container-bg">Values</li>
+                    <li class="team-nav" data-target=".team-container">Team</li>
+                </ul>
+            </div>
+            @*<div class="col-md-9 col-sm-9 hidden-lg product_options product_options_medium">
+                    <ul style="padding-left:70px;margin-bottom:0px;">
+                        <li class="highlight-nav colored-nav" data-target=".Hotel_highlights.section_medium">Awards</li>
+                        <li class="amenities-nav" data-target=".Hotel_Amenities.section_medium">Mission</li>
+                        <li class="about-nav" data-target=".Trip_Advisor.section_medium">Values</li>
+                        <li class="customer-review-nav" data-target=".Reviews-Ratings.section_medium">Team</li>
+                    </ul>
+                </div>*@
+
+            <div class="col-md-4 col-sm-4 col-lg-4 product_share">
+                <p>SHARE <img src="~/images/Share_Icon.svg" alt="share-icon" /></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="hidden-sm hidden-md hidden-lg col-xs-12 about-banner-top">
+    <span class="left-arrow" onclick="window.history.back();"><img src="~/images/left_arrow.svg" alt="left-arrow" /></span>
+    <span class="title-container">
+        <span class="about-title">About Us</span>
+
+    </span>
+    <span class="share-icon-xs"><img src="~/images/Share_Icon.svg" alt="share_icon" /></span>
+</div>
+
+<div class="about-us">
+
+    @*----------About_us_banner---------*@
+    <div class="row">
+        <div class="about-us-banner col-sm-12 col-lg-12 col-md-12 col-xs-12">
+            <div class="img-top">
+                <img src="~/images/AboutUs-topImg.png" alt="AboutUs-topImg">
+                <h1 class="img-top-mark top-heading-style">Happy Holidays to you</h1>
+                <div class="about-banner-bottom-container hidden-sm hidden-md hidden-lg">
+                    <div class="bottom-explore">
+                        <p>About Us</p>
+                        <span class="glyphicon glyphicon-menu-down"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="img-caption section_container">
+                <b>Luxury Travel Deals</b> is a global travel technology platform that helps travellers customise ultimate luxury travel experiences, at delightful prices, to create happy holidays.
+            </div>
+
+        </div>
+    </div>
+
+    @*----------Awards-Press-Invester---------*@
+
+    <div class="award-invester-press hidden-xs">
+        <div class="awards-container section_desktop" data-nav-target=".award-nav">
+            <div class="headings">Awards</div>
+            <div class="img-container">
+                <div class="col-lg-4 col-md-4 col-xs-4 center-img">
+                    <span class="img-small"> <img src="~/images/national-awards-logo.svg" alt="national-awards-logo"></span>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-4 center-img">
+                    <span class="img-small"><img src="~/images/award-logo.svg" alt="award-logo"></span>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-4 center-img">
+                    <span class="img-small"><img src="~/images/national-awards-logo.svg" alt="national-award-logo"></span>
+                </div>
+            </div>
+        </div>
+
+        @*<div class="Invester-container">
+                <div class="headings">Invester</div>
+                <div class="img-container">
+                    <div class="col-lg-4 col-md-4 col-xs-4 center-img">
+                        <span class="img-small"> <img src="~/images/Allianz-Global-Investors-Logo.svg" alt="allianz-global-logo"></span>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-xs-4 center-img">
+                        <span class="img-small"><img src="~/images/psp-logo.svg" alt="psp-logo"></span>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-xs-4 center-img">
+                        <span class="img-small"><img src="~/images/henderson-logo.svg" alt="henderson-logo"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="press-container">
+                <div class="headings">Press Room</div>
+                <div class="img-container">
+                    <div class="col-lg-3 col-md-3 col-xs-4 center-img">
+                        <span class="img-small"> <img src="~/images/yourstory-logo.svg" alt="yourstory-logo"></span>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-4 center-img">
+                        <span class="img-small"><img src="~/images/hubspot-logo.svg" alt="hubspot-logo"></span>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-4 center-img">
+                        <span class="img-small"><img src="~/images/MediaKind-brand-logo.svg" alt="MediaKind-logo"></span>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-4 center-img">
+                        <span class="img-small"><img src="~/images/hubspot-logo.svg" alt="hubspot-logo"></span>
+                    </div>
+                </div>
+            </div>*@
+
+
+    </div>
+
+    <div class="award-invester-press hidden-sm hidden-md hidden-lg">
+        <div class="awards-container">
+            <div class="headings">Awards</div>
+            <div class="img-container awards-slider">
+                <div class="col-lg-4 col-md-4 col-xs-4 center-img">
+                    <span class="img-small"> <img src="~/images/national-awards-logo.svg" alt="national-awards-logo"></span>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-4 center-img">
+                    <span class="img-small"><img src="~/images/award-logo.svg" alt="award-logo"></span>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-4 center-img">
+                    <span class="img-small"><img src="~/images/national-awards-logo.svg" alt="national-award-logo"></span>
+                </div>
+            </div>
+        </div>
+
+        @*<div class="Invester-container">
+            <div class="headings">Invester</div>
+            <div class="img-container invester-slider">
+                <div class="col-lg-4 col-md-4 col-xs-4 center-img">
+                    <span class="img-small"> <img src="~/images/Allianz-Global-Investors-Logo.svg" alt="allianz-global-logo"></span>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-4 center-img">
+                    <span class="img-small"><img src="~/images/psp-logo.svg" alt="psp-logo"></span>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-4 center-img">
+                    <span class="img-small"><img src="~/images/henderson-logo.svg" alt="henderson-logo"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="press-container">
+            <div class="headings">Press Room</div>
+            <div class="img-container press-slider">
+                <div class="col-lg-3 col-md-3 col-xs-4 center-img">
+                    <span class="img-small"> <img src="~/images/yourstory-logo.svg" alt="yourstory-logo"></span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-4 center-img">
+                    <span class="img-small"><img src="~/images/hubspot-logo.svg" alt="hubspot-logo"></span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-4 center-img">
+                    <span class="img-small"><img src="~/images/MediaKind-brand-logo.svg" alt="MediaKind-logo"></span>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-4 center-img">
+                    <span class="img-small"><img src="~/images/hubspot-logo.svg" alt="hubspot-logo"></span>
+                </div>
+            </div>
+        </div>*@
+
+
+    </div>
+
+    @*----------Our_Mission---------*@
+    <div class="mission-container section_desktop col-sm-12 col-md-12 col-lg-12 col-xs-12" data-nav-target=".mission-nav">
+
+        <img src="~/images/AboutUs-Img.png" alt="AboutUs-Img">
+        <div class="mission-content-container section_container">
+            <div class="img-middle-mark">
+                <div class="top-header">Our Mission</div>
+                <div class="top-content">
+                    Spreading Happiness Through<br>
+                    <span class="bold">Luxury Travel</span> Worldwide.
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    @*----------Our_Values---------*@
+    <div class="value-container-bg section_desktop hidden-xs" data-nav-target=".value-nav">
+        <div class="value-container section_container">
+            <div class="headings">Values</div>
+            <div class=" col-lg-12 col-md-12 col-xs-12" style="padding-left:0px;padding-right:0px;">
+                <div class="col-lg-3 col-md-3 col-xs-12" style="padding-left:0px;padding-right:0px;">
+                    <div class="block">
+                        <span class="caps">C</span><span class="block-title">ustomer Oriented</span>
+                        <div class="block-content">
+                            <p>We believe that customers are our guiding light and permeate everything we do right from building an intelligent online sollution that helps travellers choose the perfect trip or bringing in the hotels or tours.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-xs-12 center-img" style="padding-left:0px;padding-right:0px;">
+                        <img class="value-img" src="~/images/AboutUs-ImgValues.png" alt="AboutUs-ImgValues">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12" style="padding-left:0px;">
+                        <span class="caps">A</span><span class="block-title">uthentic</span>
+                        <div class="block-content">
+                            <p>We believe in creating authentic experiences for every traveller, be it in our platform that spreads happiness to our customers by its ease of use or importantly the holidays themselves creating amazing once-in-a-lifetime memories from a romantic beach escape in Maldives to a family vacation in Egypt.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12" style="padding-left:0px;padding-right:0px;">
+                        <span class="caps">R</span><span class="block-title">espect</span>
+                        <div class="block-content">
+                            <p>This is rooted in our philosophy towards our customers, partners and teams. We are committed to treat each other in a warm and sincere manner believing travel is empowered by compassion and service.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-12" style="padding-left:0px;padding-right:0px;">
+                    <div class="block">
+                        <span class="caps">E</span><span class="block-title">njoyment</span>
+                        <div class="block-content">
+                            <p>We are committed to provide our community with enjoyable and happy luxury experiences at each touchpoint. This gives us meaning and a higher purpose to spread happiness through travel worldwide.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="value-container-bg hidden-sm hidden-md hidden-lg">
+        <div class="value-container section_container">
+            <div class="headings">Values</div>
+
+
+            <div class="col-xs-12 center-img value-section">
+                <img class="value-img" src="~/images/AboutUs-ImgValues.png" alt="AboutUs-ImgValues">
+            </div>
+
+            <div class="col-xs-12 value-section">
+                <div class="block">
+                    <span class="block-title">Customer Oriented</span>
+                    <div class="block-content">
+                        <p>We believe that customers are our guiding light and permeate everything we do right from building an intelligent online sollution that helps travellers choose the perfect trip or bringing in the hotels or tours.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 value-section">
+                <span class="block-title">Authentic</span>
+                <div class="block-content">
+                    <p>We believe in creating authentic experiences for every traveller, be it in our platform that spreads happiness to our customers by its ease of use or importantly the holidays themselves creating amazing once-in-a-lifetime memories from a romantic beach escape in Maldives to a family vacation in Egypt.</p>
+                </div>
+            </div>
+
+            <div class="col-xs-12 value-section">
+                <span class="block-title">Respect</span>
+                <div class="block-content">
+                    <p>This is rooted in our philosophy towards our customers, partners and teams. We are committed to treat each other in a warm and sincere manner believing travel is empowered by compassion and service.</p>
+                </div>
+            </div>
+
+            <div class="col-xs-12 value-section">
+                <div class="block">
+                    <span class="block-title">Enjoyment</span>
+                    <div class="block-content">
+                        <p>We are committed to provide our community with enjoyable and happy luxury experiences at each touchpoint. This gives us meaning and a higher purpose to spread happiness through travel worldwide.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @*----------Our_Team---------*@
+    <div class="team-container section_container section_desktop" data-nav-target=".team-nav">
+        <div class="headings">
+            Our Team
+        </div>
+        <div class="col-lg-12 col-md-12 col-xs-12 team-div">
+            <div class="team-xs-bg">
+                <div class="col-lg-4 col-md-4 col-xs-12 team-img" style="padding-left:0px;padding-right:0px;">
+
+                    <div class="col-lg-10 col-md-10 col-xs-12 team-img-content">
+                        <img src="~/images/Assets/HunarSyal.jpg" alt="ceo_image">
+                        <div class="team-name">Hunar Syal</div>
+                        <div class="team-desgntn">Founder & CEO</div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 hidden-xs icon-container">
+                        <div class="icons">
+                            <a href="#"><img src="~/images/linkedin_icon.svg" alt="linkedin-icon"></a>
+                        </div>
+                        <div class="icons">
+                            <a href="mailto:hunar@luxurytravel.deals"><img src="~/images/email_icon.svg" alt="email-icon"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 hidden-sm hidden-md hidden-lg icon-container">
+                        <div class="icons">
+                            <a href="#">Linkedin</a>
+                        </div>
+                        <div class="icons">
+                            <a href="#">Email</a>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+                <div class="col-lg-8 col-md-8 col-xs-12 team-msg-container">
+                    <div class="team-msg">
+                        <p>
+                            Luxury Travel Deals is group of talented young and mid-career professionals from disciplines of travel, e-commerce, technology, and design. A sister company of HI Tours India Pvt. Ltd under the umbrella of HI Tours Group, the team at Luxury Travel Deals is an innovative startup that believes in pushing the idea of luxury travel, soul-satisfying holidays in the digital world. This energy is coupled with the edge of by the market knowledge and industry experience that comes from Hi Tours Indian Pvt. Ltd
+                        </p>
+                        <p>Our team members have significant experience of working in digital space of travel in India for Outbound and Inbound holidays, alongside experts in the digital technology, e-commerce, and visual design - who have worked in India, the United States and UAE over the course of their careers. The skills of the entire team are banded with leadership that understands management and creativity just as much as they understand travel. As the team grows with Luxury Travel Deals, having purpose, loving travel and spreading happiness are the three things that unite us on this smorgasboard of talent and knowledge!</p>
+
+                    </div>
+                </div>
+
+                <div class="col-xs-12 show-more-content hidden-sm hidden-md hidden-lg">
+                    <button class="show-more-content-style">Show More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @*----------Press---------*@
+    <div class="press-container-bg">
+        <div class="press-container section_container">
+            <div class="headings col-lg-12 col-md-12 col-xs-12">Press Room</div>
+            <div class=" col-lg-4 col-md-4 col-xs-12 press-section" style="padding-left:0px;padding-right:0px;">
+                <div class="press-img-logo">
+                    <img class="press-img" src="~/images/press-img1.png" alt="press-img1">
+                    <div class="press-img-cap">
+                        <img class="logo-img" src="~/images/ltd-logo.svg" alt="ltd_logo"><span class="logo-text">LuxuryTravelDeals</span>
+                    </div>
+                </div>
+                <span class="press-title">Logo</span>
+                <p class="press-content">
+                    Download our Luxury Hotel Deals logo assets.
+                </p>
+                <a href="~/images/Assets/LTD-New-Logo.jpg" download><div class="press-btn"><span><img src="~/images/Download_icon.svg" alt="download-icon"></span><span class="link-icon">Download</span></div></a>
+                <div class="press-btn"> <span><img src="~/images/print_icon.svg" alt="print-icon"></span><span class="link-icon">Print</span></div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-12 press-section">
+                <img class="press-img" src="~/images/Assets/Founder's_picture.jpg" alt="founder_image">
+                <div class="press-content-bg">
+                    <span class="press-title">Founder Pictures</span>
+                    <p class="press-content">
+                        Download photos from the founder team john Dow and Mike tyson.
+                    </p>
+
+                    <a href="~/images/Assets/Founder's_picture.jpg" download><div class="press-btn"><span><img src="~/images/Download_icon.svg" alt="download-icon"></span><span class="link-icon">Download</span></div></a>
+                    <div class="press-btn"><span><img src="~/images/print_icon.svg" alt="print-icon"></span><span class="link-icon">Print</span></div>
+                </div>
+
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-12 press-section" style="padding-left:0px;padding-right:0px;">
+                <img class="press-img" src="~/images/Assets/Office1.jpg" alt="ofice_image">
+                <span class="press-title">Office</span>
+                <p class="press-content">
+                    Download picture assets from our luxury Hotel deal office.
+                </p>
+                <a href="~/images/Assets/Office.zip" download><div class="press-btn"><span><img src="~/images/Download_icon.svg" alt="download-icon"></span><span class="link-icon">Download</span></div></a>
+                <div class="press-btn"><span><img src="~/images/print_icon.svg" alt="print-icon"></span><span class="link-icon">Print</span></div>
+            </div>
+        </div>
+    </div>
+
+    @*----------Press-contact---------*@
+
+    <div class="press-contact-container">
+        <img src="~/images/about-us-img-bottom.png" alt="about-us-img-bottom">
+
+        <div class="section_container">
+            <div class="bottom-cont">
+                <div class="head">Press Contact</div>
+                <div class="sub-head">Reach Us at:</div>
+                <div class="cont">
+                    <p><a href="mailto:contact@luxurytravel.deals ">contact@luxurytravel.deals </a></p>
+                    @*<p><a href="mailto:Blogs@Luxuryhoteldeals.com">Blogs@Luxuryhoteldeals.com</a></p>*@
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@this.Html.Partial("_Footer_navigation")
+
+<script asp-append-version="true" src="~/js/jquery.min.js"></script>
+<script src="~/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    $('.product_options ul li').on('click', function (e) {
+        $('html,body').animate({ scrollTop: $($(this).data('target')).offset().top - 117}, 1000);
+    });
+
+    $(window).scroll(function (e) {
+        NavScrollerHighlight();
+
+    });
+
+    function NavScrollerHighlight() {
+
+        var $navs_desktop = $('.product_options ul li');
+        $('.section_desktop').each(function () {
+            if ($(window).scrollTop() + 119 >= $(this).offset().top) {
+                var navTarget = $(this).data('nav-target');
+                $navs_desktop.removeClass('colored-nav');
+                $(navTarget).addClass('colored-nav');
+            }
+        })
+
+    }
+
+    $('.awards-slider').slick({
+        centerMode: true,
+        dots: false,
+        infinite: true,
+        arrows: false,
+        centerPadding: '90px'
+    });
+
+    $('.invester-slider').slick({
+        centerMode: true,
+        dots: false,
+        infinite: true,
+        arrows: false,
+        centerPadding: '90px'
+    });
+
+    $('.press-slider').slick({
+        centerMode: true,
+        dots: false,
+        infinite: true,
+        arrows: false,
+        centerPadding: '90px'
+    });
+
+
+</script>

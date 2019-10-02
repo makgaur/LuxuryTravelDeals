@@ -1,0 +1,16 @@
+//-- Authenticate Api Request --
+{
+  "ClientId": "ApiIntegrationNew",
+  "UserName": "HiTours",
+  "Password": "Tours@123",
+  "EndUserIp": "192.168.11.120"
+}
+//-- Authenticate Api Response --
+{
+  "Status": 2,
+  "TokenId": null,
+  "Error": {
+    "ErrorCode": 1,
+    "ErrorMessage": "You are not authorized to access TBO API"
+  }
+}

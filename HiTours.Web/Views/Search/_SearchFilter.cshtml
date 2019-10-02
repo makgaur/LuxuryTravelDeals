@@ -1,0 +1,101 @@
+﻿@model List<FilterViewModel>;
+
+<div class="search-filter scroller" id="scroll">
+    <h2 class="hidden-xs">Filter Results By</h2>
+    <div class="hidden-sm hidden-md hidden-lg col-xs-12 apply-deal-xs-header">
+        <span>Apply filters</span><span class="apply-xs-close-icon" id="apply-xs-close"><img src="~/images/Close_Icon.svg" alt="close_icon" /></span>
+    </div>
+
+    <div class="filter-xs col-xs-12 hidden-sm hidden-md hidden-lg">
+        <div class="col-xs-6 reset-filter-title right-border">
+            <span id="reset-filter-mobile">Reset Filters</span>
+        </div>
+        <div class="col-xs-6 apply-filter-title">
+            <span>Apply filters</span>
+        </div>
+    </div>
+
+    @try
+    {
+        @if (Model.Count > 0)
+        {
+            for (int i = 0; i < Model.Count; i++)
+            {
+                <input type="hidden" asp-for="@Model[i].Name"/>
+                <input type="hidden" asp-for="@Model[i].SelectType"/>
+                <input type="hidden" asp-for="@Model[i].Type"/>
+                <input type="hidden" asp-for="@Model[i].SortOrder"/>
+                <input type="hidden" asp-for="@Model[i].FilterId"/>
+                <div class="search-category">
+                    <h4>@Model[i].Name</h4>
+
+                    <ul class="search-category-border">
+                        @for (int k = 0; k < Model[i].FilterOptions.Count; k++)
+                        {
+                            <input type="hidden" asp-for="@Model[i].FilterOptions[k].Display" />
+                            <input type="hidden" asp-for="@Model[i].FilterOptions[k].IsRange" />
+                            <input type="hidden" asp-for="@Model[i].FilterOptions[k].Value" />
+                            <input type="hidden" asp-for="@Model[i].FilterOptions[k].FilterOptionId" />
+                            <input type="hidden" asp-for="@Model[i].FilterOptions[k].MinValue" />
+                            <input type="hidden" asp-for="@Model[i].FilterOptions[k].MaxValue" />
+                            <input type="hidden" asp-for="@Model[i].FilterOptions[k].DealIds" />
+                            <input type="hidden" asp-for="@Model[i].FilterOptions[k].ResultCount" />
+                            <input type="hidden" asp-for="@Model[i].FilterOptions[k].ResultCount" />
+                            if (Model[i].FilterOptions[k].IsRange)
+                            {
+
+                            <li class="@(k >= 5 ? "hidden" : string.Empty) ">
+
+                                @*<label class="checkbox-container">
+            <input type="checkbox" asp-for="@Model[i].FilterOptions[k].IsSelected" data-dealIds="@Model[i].FilterOptions[k].DealIds" class="margin-right-10" data-min="@Model[i].FilterOptions[k].MinValue" data-max="@Model[i].FilterOptions[k].MaxValue" />
+            <span class="checkmark"></span>
+        </label>*@
+                                <input type="checkbox" asp-for="@Model[i].FilterOptions[k].IsSelected" />
+                                <span> @Model[i].FilterOptions[k].Display</span>
+                                <span class="search-result"> @Model[i].FilterOptions[k].ResultCount<span class="hidden-xs"> Results</span></span>
+                                @*<span class="margin-right-10  text-capitalize checkbox-container">
+            <span class="margin-left-10"> @Model[i].FilterOptions[k].Display</span>
+            <input type="checkbox" asp-for="@Model[i].FilterOptions[k].IsSelected" data-dealIds="@Model[i].FilterOptions[k].DealIds" class="margin-right-10" data-min="@Model[i].FilterOptions[k].MinValue" data-max="@Model[i].FilterOptions[k].MaxValue" />
+            <span class="checkmark"></span>
+
+        </span>
+        <span class="search-result"> @Model[i].FilterOptions[k].ResultCount<span class="hidden-xs"> Results</span></span>*@
+                            </li>
+                            }
+                            else
+                            {
+                                <li class="@(k >= 5 ? "hidden" : string.Empty) ">
+
+                                    @*<label class="checkbox-container">
+            <input type="checkbox" asp-for="@Model[i].FilterOptions[k].IsSelected" class="margin-right-10" data-dealIds="@Model[i].FilterOptions[k].DealIds" data-value="@Model[i].FilterOptions[k].Value" value="@Model[i].FilterOptions[k].IsSelected" />
+            <span class="checkmark"></span>
+        </label>*@
+                                    <input type="checkbox" asp-for="@Model[i].FilterOptions[k].IsSelected" />
+
+                                    <span> @Model[i].FilterOptions[k].Display.ToLower()</span>
+                                    <span class="search-result"> @Model[i].FilterOptions[k].ResultCount<span class="hidden-xs"> Results</span></span>
+                                </li>
+                            }
+
+                        }
+
+                    </ul>
+                    @if (Model[i].FilterOptions.Count > 5)
+                    {
+                        <p class="show-more"><img src="~/images/More_Icon.svg" alt="more-icon" />@(Model[i].FilterOptions.Count - 5) more filtering options</p>
+                    }
+
+                </div>
+
+
+
+                <hr class="hidden-xs hr-separate">
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        var msg = ex.ToString();
+    }
+
+</div>

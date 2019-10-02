@@ -1,0 +1,1490 @@
+﻿@import "fonts.less";
+@import "variables.less";
+@import "UIElements.less";
+.field-validation-error{
+    font-size:11px;
+    font-style:unset;
+}
+.select2-results .select2-highlighted, .select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background: #973E94 !important;
+    color: #fff;
+}
+.select2-search--dropdown {
+    display: none;
+}
+.padding-left-15{
+    padding-left: 15px;
+    /*overflow: hidden;*/
+
+    @media screen {
+        @media (min-width:0px) and (max-width:767px) {
+            padding-left: 9px;
+            padding-right:10px;
+        }
+    }
+}
+
+.Booking-Summary-Container {
+    padding: 50px 90px;
+    max-width: 1366px;
+
+    @media screen {
+        @media (min-width:0px) and (max-width:767px) {
+            padding: 0px;
+        }
+
+        @media (min-width:992px) and (max-width:1199px) {
+            padding: 50px 15px;
+        }
+    }
+
+    .Booking-Summary-Title {
+        padding-left: 0px;
+        padding-right: 0px;
+
+        @media screen {
+            @media (min-width:0px) and (max-width:767px) {
+                padding: 17px 10px 17px 9px;
+                font-family: 'IBM Plex Sans';
+                font-size: 15px;
+                font-weight: 500;
+                color: #323232;
+                line-height: 20px;
+                height: 54px;
+                position: fixed;
+                text-align: center;
+                top: 0;
+                left: 0px;
+                right: 0px;
+                width: 100%;
+                background-color: white;
+                text-transform: uppercase;
+                z-index: 1;
+                box-shadow: 0px 0px 5px 0px rgba(100,100,100,0.15);
+                -webkit-box-shadow: 0px 0px 5px 0px rgba(100,100,100,0.15);
+                -moz-box-shadow: 0px 0px 5px 0px rgba(100,100,100,0.15);
+            }
+        }
+
+        h2 {
+            color: #505050;
+            font-family: 'Abhaya Libre';
+            font-weight: 500;
+            font-size: 25px;
+            line-height: 30px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+    }
+
+    .Booking-Summary-Body {
+        margin-top: 15px;
+        padding-left: 0px;
+        padding-right: 0px;
+        clear: left;
+
+        @media screen {
+            @media (min-width:0px) and (max-width:767px) {
+                margin-top: 0px;
+            }
+        }
+
+        .Booking-Summary-Left {
+            /*border: 1px solid @border-color;*/
+            /*padding-right: 0px;*/
+            padding-left: 0px;
+
+            @media screen {
+                @media (min-width:0px) and (max-width:767px) {
+                    padding-right: 0px;
+                }
+            }
+
+
+
+            .booking-summary-section1 {
+                /*height: 1806px;*/
+                border: 1px solid @border-color;
+                border-bottom: none;
+                border-top-left-radius: 2px;
+                border-top-right-radius: 2px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-bottom: 20px;
+
+                @media screen {
+                    @media (min-width:0px) and (max-width:767px) {
+                        border: none;
+                        display: flex;
+                        flex-wrap: wrap;
+                        flex-direction: row;
+                    }
+                }
+
+                .booking-summary-deal {
+                    padding: 20px 15px 15px 15px;
+                    border-bottom: 1px solid @border-color;
+
+                    @media screen {
+                        @media (min-width:0px) and (max-width:420px) {
+                            border-top: 1px solid @border-color;
+                            padding: 15px 10px 15px 9px;
+                            margin-top: 70px;
+                        }
+
+                        @media (min-width:421px) and (max-width:767px) {
+                            border-top: 1px solid @border-color;
+                            padding: 15px 10px 15px 9px;
+                            margin-top: 70px;
+                            background-color: white;
+                            max-width: 385px;
+                            margin-left: auto;
+                            margin-right: auto;
+                        }
+                    }
+
+
+                    h1 {
+                        color: #973E94;
+                        font-family: 'Abhaya Libre';
+                        font-weight: 700;
+                        font-size: 25px;
+                        line-height: 30px;
+
+                        @media screen {
+                            @media (min-width:0px) and (max-width:767px) {
+                                font-size: 20px;
+                                line-height: 25px;
+                                /*max-height: 50px;
+                                height: 50px;
+                                overflow: hidden;
+                                white-space: nowrap;*/
+                            }
+                        }
+                    }
+
+                    div {
+                        span {
+                            color: #505050;
+                            font-family: 'IBM Plex Sans';
+                            font-weight: 500;
+                            font-size: 15px;
+                            line-height: 20px;
+                            text-transform: uppercase;
+
+                            @media screen {
+                                @media (min-width:0px) and (max-width:767px) {
+                                    font-size: 12px;
+                                    line-height: 15px;
+                                }
+                            }
+                        }
+
+                        span:not(:first-child)::before {
+                            content: "•";
+                            margin-left: 2.5px;
+                            margin-right: 4px;
+                            font-size: 15px;
+                            color: #FCA32B;
+                        }
+                    }
+                }
+
+                .Booking-summary-options {
+                    padding-top: 20px;
+                    padding-bottom: 15px;
+
+                    @media screen {
+                        @media (min-width:0px) and (max-width:420px) {
+                            padding-top: 15px;
+                            width: 100%;
+                        }
+
+                        @media (min-width:421px) and (max-width:767px) {
+                            padding-top: 15px;
+                            width: 100%;
+                            max-width: 385px;
+                            margin-left: auto;
+                            margin-right: auto;
+                        }
+                    }
+
+
+                    .booking-summary-hotel {
+                        border-bottom: 1px solid @border-color;
+
+                        .hotel-title {
+                            color: #505050;
+                            font-family: 'IBM Plex Sans';
+                            font-weight: 500;
+                            font-size: 20px;
+                            line-height: 30px;
+
+                            @media screen {
+                                @media (min-width:0px) and (max-width:767px) {
+                                    font-size: 15px;
+                                }
+                            }
+
+                            span {
+                                color: #973E94;
+                                text-transform: uppercase;
+                                font-family: 'IBM Plex Sans';
+                                font-weight: 500;
+                                font-size: 15px;
+                                padding-right: 15px;
+                                line-height: 20px;
+                                float: right;
+                                cursor: pointer;
+
+                                @media screen {
+                                    @media (min-width:0px) and (max-width:767px) {
+                                        padding-right: 0px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .check-text {
+                            color: #969696;
+                            font-family: 'IBM Plex Sans';
+                            font-weight: 500;
+                            line-height: 20px;
+                            font-size: 15px;
+
+                            @media screen {
+                                @media (min-width:0px) and (max-width:767px) {
+                                    font-size: 12px;
+                                }
+                            }
+
+
+                            span {
+                                color: #505050;
+                            }
+                        }
+
+                        .hotel-room {
+                            border-bottom: 1px solid @border-color;
+
+                            .hotel-room-text {
+                                color: #969696;
+                                font-family: 'IBM Plex Sans';
+                                font-weight: 500;
+                                font-size: 15px;
+                                line-height: 20px;
+                                text-transform: uppercase;
+
+                                @media screen {
+                                    @media (min-width:0px) and (max-width:767px) {
+                                        font-size: 12px;
+                                        line-height: 15px;
+                                    }
+                                }
+                            }
+
+                            p {
+                                color: #505050;
+                                font-family: 'IBM Plex Sans';
+                                font-weight: 500;
+                                line-height: 20px;
+                                font-size: 15px;
+
+                                @media screen {
+                                    @media (min-width:0px) and (max-width:767px) {
+                                        font-size: 12px;
+                                        line-height: 15px;
+                                    }
+                                }
+                            }
+
+                            .hotel-room-style {
+                                color: #969696;
+                            }
+                        }
+
+                        .guest-info {
+                            padding: 20px 0px;
+
+                            .guest-title {
+                                color: #505050;
+                                font-family: 'IBM Plex Sans';
+                                font-weight: 500;
+                                font-size: 15px;
+                                line-height: 20px;
+                                text-transform: uppercase;
+
+                                @media screen {
+                                    @media (min-width:0px) and (max-width:767px) {
+                                        font-size: 12px;
+                                        line-height: 15px;
+                                    }
+                                }
+
+                                span {
+                                    float: right;
+                                    font-size: 12px;
+                                    color: #973E94;
+                                    padding-right: 15px;
+                                    line-height: 15px;
+                                    text-decoration: underline;
+                                    cursor: pointer;
+
+                                    @media screen {
+                                        @media (min-width:0px) and (max-width:767px) {
+                                            padding-right: 0px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .guest-text {
+                                font-family: 'IBM Plex Sans';
+                                font-weight: 500;
+                                font-size: 12px;
+                                line-height: 15px;
+                                text-transform: uppercase;
+                                color: #973E94;
+
+                                span {
+                                    margin-left: 5px;
+                                    cursor: pointer;
+                                }
+                            }
+
+                            .form-group {
+                                padding-right: 0px;
+                                padding-left: 15px;
+
+                                @media screen {
+                                    @media (min-width:0px) and (max-width:767px) {
+                                        padding-left: 0px;
+                                    }
+                                }
+
+                                input {
+                                    border: 1px solid @border-color;
+                                    display: block;
+                                    width: 100%;
+                                    /*width: 245px;*/
+                                    border-radius: 2px;
+                                    /*margin-top:5px;*/
+                                    padding: 15px;
+                                    font-family: 'IBM Plex Sans';
+                                    font-weight: 400;
+                                    font-size: 16px;
+                                    color: #323232;
+                                    text-transform: capitalize;
+
+                                    @media screen {
+                                        @media (min-width:768px) and (max-width:991px) {
+                                            font-size: 12px;
+                                            padding: 12px;
+                                        }
+                                    }
+                                }
+
+                                input:focus {
+                                    border: 1px solid @btn-primary1_color;
+                                    box-shadow: 0 0 rgba(100, 100, 100, 0.15);
+                                    outline: none;
+                                }
+
+                                input::placeholder, input:-ms-input-placeholder, input::-ms-input-placeholder, input::-webkit-input-placeholder {
+                                    color: rgba(230, 230, 230, 0.25); /* Chrome, Firefox, Opera, Safari 10.1+ */
+                                }
+                            }
+
+                            .form-group:first-child {
+                                padding-left: 0px;
+                            }
+
+                            .form-group:last-child {
+                                padding-right: 15px;
+
+                                @media screen {
+                                    @media (min-width:0px) and (max-width:767px) {
+                                        padding-right: 0px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .booking-summary-visa {
+                        border-bottom: 1px solid @border-color;
+                        padding-top: 20px;
+                        padding-bottom: 5px;
+
+                        .visa-title {
+                            color: #505050;
+                            font-family: 'IBM Plex Sans';
+                            font-weight: 500;
+                            font-size: 20px;
+                            line-height: 30px;
+
+                            @media screen {
+                                @media (min-width:0px) and (max-width:767px) {
+                                    font-size: 15px;
+                                    line-height: 20px;
+                                }
+                            }
+
+                            span {
+                                color: #973E94;
+                                text-transform: uppercase;
+                                font-family: 'IBM Plex Sans';
+                                font-weight: 500;
+                                font-size: 15px;
+                                line-height: 20px;
+                                padding-right: 15px;
+                                float: right;
+                                cursor: pointer;
+
+                                @media screen {
+                                    @media (min-width:0px) and (max-width:767px) {
+                                        font-size: 12px;
+                                        line-height: 15px;
+                                        padding-right: 0px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .visa-text {
+                            font-family: 'IBM Plex Sans';
+                            font-weight: 500;
+                            font-size: 15px;
+                            line-height: 20px;
+                            color: #505050;
+
+                            @media screen {
+                                @media (min-width:0px) and (max-width:767px) {
+                                    font-size: 12px;
+                                    line-height: 15px;
+                                }
+                            }
+
+                            span {
+                                color: #969696;
+                            }
+                        }
+                    }
+
+                    .booking-summary-flight {
+                        padding-top: 20px;
+
+                        .flight-title {
+                            color: #505050;
+                            font-family: 'IBM Plex Sans';
+                            font-weight: 500;
+                            font-size: 20px;
+                            line-height: 30px;
+
+                            @media screen {
+                                @media (min-width:0px) and (max-width:767px) {
+                                    font-size: 15px;
+                                    line-height: 20px;
+                                }
+                            }
+
+                            span {
+                                color: #973E94;
+                                text-transform: uppercase;
+                                font-family: 'IBM Plex Sans';
+                                font-weight: 500;
+                                font-size: 15px;
+                                line-height: 20px;
+                                padding-right: 15px;
+                                float: right;
+                                cursor: pointer;
+
+                                @media screen {
+                                    @media (min-width:0px) and (max-width:767px) {
+                                        font-size: 12px;
+                                        line-height: 15px;
+                                        padding-right: 0px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .booking-flight-content {
+                            font-family: 'IBM Plex Sans';
+                            font-size: 15px;
+                            line-height: 20px;
+                            font-weight: 500;
+                            /*padding-left: 55px;
+                            padding-top: 15px;*/
+                            @media screen {
+                                @media (min-width:0px) and (max-width:767px) {
+                                    font-size: 12px;
+                                    line-height: 15px;
+                                }
+                            }
+
+                            .description {
+                                display: block;
+                                color: #505050;
+                                margin-bottom: 10px;
+                            }
+
+
+
+                            .flight-heading {
+                                display: block;
+                                color: #969696;
+                                margin-bottom: 10px;
+                            }
+
+                            p {
+                                color: #969696;
+                                margin-bottom: 15px;
+
+                                span {
+                                    color: #505050;
+                                }
+                            }
+                        }
+
+                        .seperator {
+                            display: block;
+                            height: 1px;
+                            max-height: 1px;
+                            background: #e6e6e6;
+                            margin-top: 5px;
+                            margin-bottom: 5px;
+                        }
+
+                        .passenger-info {
+
+                            .passenger-title {
+                                cursor: pointer;
+                                color: #505050;
+                                font-family: 'IBM Plex Sans';
+                                font-weight: 500;
+                                font-size: 15px;
+                                line-height: 20px;
+                                text-transform: uppercase;
+                                margin-bottom: 0px;
+
+                                @media screen {
+                                    @media (min-width:0px) and (max-width:767px) {
+                                        font-size: 12px;
+                                        line-height: 15px;
+                                    }
+                                }
+
+                                span {
+                                    float: right;
+                                    font-size: 12px;
+                                    color: #973E94;
+                                    padding-right: 15px;
+                                    text-decoration: underline;
+
+                                    @media screen {
+                                        @media (min-width:0px) and (max-width:767px) {
+                                            padding-right: 0px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .passenger-details {
+                                padding-left: 0px;
+                                padding-right: 0px;
+
+                                p {
+                                    color: #505050;
+                                    font-family: 'IBM Plex Sans';
+                                    font-weight: 500;
+                                    font-size: 12px;
+                                    line-height: 15px;
+                                    text-transform: uppercase;
+                                    margin-top: 15px;
+                                    margin-bottom: 0px;
+                                }
+
+                                .passenger-input {
+                                    padding-left: 0px;
+                                    position: relative;
+                                    font-family: 'IBM Plex Sans';
+                                    font-weight: 400;
+                                    font-size: 16px;
+                                    color: #323232;
+                                    margin-top: 10px;
+
+                                    .passport-input {
+                                        text-transform: uppercase;
+                                    }
+
+                                    .select2-selection__arrow {
+                                        top: 15px !important;
+                                    }
+
+                                    .select2-container .select2-selection--single:focus {
+                                        outline: none !important;
+                                    }
+
+                                    .select2-search--dropdown, .select2-selection__clear {
+                                        display: none !important;
+                                    }
+
+                                    @media screen {
+
+                                        @media (min-width:0px) and (max-width:767px) {
+                                            font-size: 12px;
+                                            padding-right: 0px;
+                                            margin-bottom: 15px;
+                                        }
+
+                                        @media (min-width:768px) and (max-width:991px) {
+                                            font-size: 12px;
+                                        }
+                                    }
+
+                                    input {
+                                        width: 100%;
+                                        border: 1px solid @border-color;
+                                        border-radius: 2px;
+                                        padding: 15px;
+                                        text-transform: capitalize;
+
+                                        @media screen {
+
+                                            @media (min-width:768px) and (max-width:991px) {
+                                                padding: 12px;
+                                            }
+                                        }
+                                    }
+
+                                    input:focus {
+                                        border: 1px solid #660666;
+                                        box-shadow: 0 0 rgba(100, 100, 100, 0.15);
+                                        outline: none;
+                                    }
+
+                                    input::placeholder, input:-ms-input-placeholder, input::-ms-input-placeholder, input::-webkit-input-placeholder {
+                                        color: rgba(230, 230, 230, 0.25); /* Chrome, Firefox, Opera, Safari 10.1+ */
+                                    }
+
+                                    .passenger-calender {
+                                        position: absolute;
+                                        right: 30px;
+                                        top: 15px;
+                                        cursor: pointer;
+
+                                        @media screen {
+
+                                            @media (min-width:0px) and (max-width:767px) {
+                                                right: 15px;
+                                                top: 12px;
+                                            }
+
+                                            @media (min-width:768px) and (max-width:991px) {
+                                                right: 25px;
+                                                top: 10px;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .passenger-input.passport-input input {
+                                    text-transform: uppercase;
+                                }
+
+                                .passenger-input.passport-input input::placeholder {
+                                    text-transform: capitalize;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+
+            .booking-summary-section2 {
+                height: 341px;
+                border: 1px solid @border-color;
+                border-bottom: none;
+                padding: 20px 15px 15px 15px;
+
+                .Frequent-Deal {
+                    .deal-heading {
+                        color: #505050;
+                        font-family: 'IBM Plex Sans';
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 30px;
+                        text-transform: capitalize;
+                        margin-top: 0px;
+                        margin-bottom: 0px;
+                    }
+
+                    .frequent-deal-image {
+                        margin-top: 20px;
+                        padding-left: 0px;
+                        /*width: 285px;*/
+                        img {
+                            width: 100%;
+                            height: 175px;
+                            border-radius: 2px;
+                        }
+                    }
+
+                    .frequent-deal-description {
+                        margin-top: 20px;
+                        padding-right: 0px;
+                        padding-left: 0px;
+                        /*width: 445px;*/
+                        .frequent-deal-text {
+                            font-family: 'IBM Plex Sans';
+                            font-weight: 500;
+                            font-size: 15px;
+                            line-height: 20px;
+                            text-transform: uppercase;
+
+                            p {
+                                color: #505050;
+                                margin-bottom: 15px;
+                            }
+
+                            a {
+                                color: #973E94;
+                            }
+                        }
+
+                        .frequent-deal-experience {
+                            margin-top: 20px;
+                            padding: 10px 15px;
+                            border: 1px solid @border-color;
+                            border-radius: 2px;
+                            /*overflow: hidden;*/
+                            height: 99px;
+
+                            p {
+                                color: #969696;
+                                font-family: 'IBM Plex Sans';
+                                font-weight: 500;
+                                font-size: 12px;
+                                line-height: 15px;
+                                text-transform: uppercase;
+                                margin-bottom: 0px;
+
+                                .remove-text {
+                                    float: right;
+                                    color: #973E94;
+                                    text-transform: capitalize;
+
+                                    .remove-icon-bg {
+                                        background-color: #E6E6E6;
+                                        margin-left: 5px;
+                                        border-radius: 50%;
+                                        padding: 5px;
+
+                                        img {
+                                            width: 20px;
+                                            height: 20px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .day-select {
+                                /*height: 50px;*/
+                                margin-top: 10px;
+                                /*border: 1px solid @border-color;*/
+                                border-radius: 2px;
+                                padding-left: 0px;
+                                padding-right: 0px;
+                            }
+
+                            .frequent-deal-price {
+                                margin-top: 10px;
+                                padding-right: 0px;
+
+                                h5 {
+                                    font-family: 'IBM Plex Sans';
+                                    font-weight: 500;
+                                    font-size: 15px;
+                                    line-height: 20px;
+                                    color: #505050;
+                                    margin-bottom: 5px;
+                                    float: right;
+                                }
+
+                                p {
+                                    color: #969696;
+                                    font-family: 'IBM Plex Sans';
+                                    font-weight: 500;
+                                    font-size: 12px;
+                                    line-height: 15px;
+                                    float: right;
+                                }
+
+                                .selected-btn {
+                                    background-color: #E6E6E6;
+                                    border-radius: 5px;
+                                    padding: 10px 14px;
+                                    text-transform: uppercase;
+                                    color: #660666;
+                                    font-family: 'IBM Plex Sans';
+                                    font-weight: 500;
+                                    font-size: 15px;
+                                    line-height: 20px;
+                                    border: none;
+                                    outline: none;
+                                    float: right;
+                                }
+                            }
+                        }
+                    }
+
+                    .frequent-deal-bottom {
+                        border: 1px solid @border-color;
+                        border-radius: 2px;
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        margin-top: 10px;
+                        background-color: white;
+
+                        li {
+                            padding: 10px 5px;
+
+                            .box-description {
+                                width: 60%;
+                                padding-left: 15px;
+                                padding-top: 4px;
+                                float: left;
+
+                                p {
+                                    margin-bottom: 0px;
+                                    color: #323232;
+                                    font-family: 'IBM Plex Sans';
+                                    font-weight: 500;
+                                    font-size: 16px;
+                                }
+
+                                span {
+                                    color: #969696;
+                                    font-family: 'IBM Plex Sans';
+                                    font-weight: 500;
+                                    font-size: 12px;
+                                }
+                            }
+
+                            .box-value {
+                                width: 40%;
+                                text-align: center;
+                                overflow: hidden;
+                                padding: 10px 0px;
+
+                                .input-box-value {
+                                    width: 25%;
+                                    text-align: center;
+                                    border: none;
+                                    font-family: 'IBM Plex Sans';
+                                    font-size: 16px;
+                                    font-weight: 500;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .booking-summary-section3 {
+                /*height: 809px;*/
+                border-bottom-left-radius: 2px;
+                border-bottom-right-radius: 2px;
+                padding-left: 0px;
+                padding-right: 0px;
+                border: 1px solid @border-color;
+                background: white;
+
+                @media screen {
+                    @media (min-width:0px) and (max-width:420px) {
+                        display: none;
+                        background-color: white;
+                        border-left: none;
+                        border-right: none;
+                        margin-bottom: 50px;
+                    }
+
+                    @media (min-width:421px) and (max-width:767px) {
+                        display: none;
+                        background-color: white;
+                        border-left: none;
+                        border-right: none;
+                        max-width: 385px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                }
+
+
+
+                .summary-model-Header {
+                    margin-top: 30px;
+                    padding-left: 15px;
+
+                    @media screen {
+                        @media (min-width:0px) and (max-width:767px) {
+                            padding: 17px 10px 17px 9px;
+                            font-family: 'IBM Plex Sans';
+                            font-size: 15px;
+                            font-weight: 500;
+                            color: #323232;
+                            line-height: 20px;
+                            height: 54px;
+                            position: fixed;
+                            text-align: center;
+                            top: 0;
+                            left: 0px;
+                            right: 0px;
+                            background-color: white;
+                            text-transform: uppercase;
+                            z-index: 2;
+                            box-shadow: 0px 0px 5px 0px rgba(100, 100, 100, 0.15);
+                            -webkit-box-shadow: 0px 0px 5px 0px rgba(100, 100, 100, 0.15);
+                            -moz-box-shadow: 0px 0px 5px 0px rgba(100, 100, 100, 0.15);
+                            width: 100%;
+                            margin-top: 0px;
+                        }
+                    }
+
+                    .summary-model-close {
+                        background-color: #E6E6E6;
+                        border-top-left-radius: 15px;
+                        border-bottom-left-radius: 15px;
+                        padding: 3px 15px;
+                        outline: none;
+                        opacity: 1;
+                    }
+
+                    .summary-modal-title {
+                        color: #505050;
+                        font-family: 'IBM Plex Sans';
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 30px;
+                        margin-bottom: 0px;
+                    }
+                }
+
+                .summary-modal-body {
+                    /*padding: 0px 30px 30px 30px;*/
+                    /*overflow: hidden;*/
+                    clear: left;
+
+                    .Hotel-Summary {
+                        border-bottom: 1px solid #E6E6E6;
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        padding-bottom: 10px;
+
+                        .summary-list-title {
+                            color: #505050;
+                            font-family: 'IBM Plex Sans';
+                            font-weight: 500;
+                            font-size: 15px;
+                            line-height: 20px;
+                            text-transform: uppercase;
+
+                            @media screen {
+                                @media (min-width:0px) and (max-width:767px) {
+                                    font-size: 12px;
+                                    line-height: 15px;
+                                }
+                            }
+                        }
+
+                        .Hotel-Summary-Details {
+                            font-family: 'IBM Plex Sans';
+                            font-weight: 500;
+                            line-height: 20px;
+                            font-size: 15px;
+                            color: #969696;
+                            /*display: inline-block;*/
+                            margin-top: 10px;
+                            padding-left: 0px;
+                            padding-right: 0px;
+                            margin-bottom: 5px;
+
+                            @media screen {
+                                @media (min-width:0px) and (max-width:767px) {
+                                    font-size: 12px;
+                                    line-height: 15px;
+                                }
+                            }
+
+                            .summary-title {
+                                width: 135px;
+                                max-width: 135px;
+                                margin-right: 10px;
+                                display: inline-block;
+
+                                @media screen {
+                                    @media (min-width:0px) and (max-width:767px) {
+                                        width: 100px;
+                                        max-width: 100px;
+                                    }
+                                }
+
+                                .summary_quantity {
+                                    background-color: #b9e8cd;
+                                    color: #0AC65A;
+                                    margin-right: 5px;
+                                    border-radius: 5px;
+                                    padding: 5px 7px;
+                                    line-height: 30px;
+                                }
+                            }
+
+                            .individual-price {
+                                /*margin-left: 100px;*/
+                                .individual-price-style {
+                                    color: #505050;
+                                    margin-left: 5px;
+                                }
+
+                                .summary-info-icon {
+                                    margin-left: 5px;
+                                    cursor: pointer;
+                                }
+                            }
+
+
+
+
+
+                            .total-price {
+                                float: right;
+                                color: #505050;
+                                padding-right: 15px;
+
+                                @media screen {
+                                    @media (min-width:0px) and (max-width:767px) {
+                                        padding-right: 0px;
+                                        padding-top: 4px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .Flight-Summary {
+                        .Hotel-Summary();
+                    }
+
+                    .Visa-Summary {
+                        .Hotel-Summary();
+                    }
+
+                    .service-charge-section, .tax-section {
+                        border-bottom: 1px solid #E6E6E6;
+                        font-size: 0;
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+
+                        .title, .value {
+                            display: inline-block;
+                            color: #505050;
+                            font-family: 'IBM Plex Sans';
+                            font-weight: 500;
+                            font-size: 15px;
+                            text-transform: uppercase;
+                        }
+
+                        .value {
+                            float: right;
+                            padding-right: 15px;
+
+                            @media screen {
+                                @media (min-width:0px) and (max-width:767px) {
+                                    padding-right: 0px;
+                                }
+                            }
+                        }
+                    }
+
+                    .Another-Angle {
+                        .Hotel-Summary();
+                        padding-left: 15px !important;
+                    }
+
+                    .booking-total {
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        /*border-bottom: 1px solid @border-color;*/
+                        .booking-total-Details {
+                            color: #505050;
+                            font-family: 'IBM Plex Sans';
+                            font-weight: 500;
+                            font-size: 15px;
+                            line-height: 20px;
+                            text-transform: uppercase;
+                            border-bottom: 1px solid @border-color;
+                            padding: 15px 0px;
+
+                            @media screen {
+                                @media (min-width:0px) and (max-width:767px) {
+                                    font-size: 12px;
+                                    line-height: 15px;
+                                }
+                            }
+
+                            .include-text {
+                                color: #969696;
+                                margin-left: 5px;
+                            }
+
+                            .total-price {
+                                float: right;
+                                color: #505050;
+                                padding-right: 15px;
+
+                                @media screen {
+                                    @media (min-width:0px) and (max-width:767px) {
+                                        padding-right: 0px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .booking-coupon-Details {
+                            color: #505050;
+                            font-family: 'IBM Plex Sans';
+                            font-weight: 500;
+                            font-size: 15px;
+                            line-height: 20px;
+                            text-transform: uppercase;
+                            border-bottom: 1px solid @border-color;
+                            padding: 15px 0px;
+
+                            .coupon-title {
+                                padding-left: 0px;
+                                padding-right: 0px;
+                            }
+
+                            .booking-coupon-left {
+                                position: relative;
+                                /*width: 355px;*/
+                                padding-left: 0px;
+                                padding-right: 0px;
+
+                                input {
+                                    padding: 15px 0px 15px 15px;
+                                    border: 1px solid @border-color;
+                                    border-radius: 2px;
+                                    width: 100%;
+                                    margin-top: 10px;
+                                    text-transform: uppercase;
+                                }
+
+                                input:focus {
+                                    border: 1px solid #660666;
+                                    outline: none;
+                                }
+
+                                .Fixed-value {
+                                    position: absolute;
+                                    right: 15px;
+                                    /*font-weight: bold;*/
+                                    font-size: 15px;
+                                    line-height: 20px;
+                                    font-family: 'IBM Plex Sans';
+                                    font-weight: 500;
+                                    color: #973E94;
+                                    top: 25px;
+                                    text-transform: capitalize;
+                                }
+                            }
+
+                            .booking-coupon-right {
+                                padding-left: 0px;
+                                padding-right: 0px;
+                                padding-top: 25px;
+
+                                .coupon-discount-text {
+                                    color: #323232;
+                                    font-family: 'IBM Plex Sans';
+                                    font-weight: 400;
+                                    font-size: 16px;
+                                    text-transform: capitalize;
+                                    margin-left: 20px;
+                                }
+
+                                .coupon-discount-text.warning {
+                                    color: red;
+                                }
+
+                                .total-price {
+                                    float: right;
+                                    color: #505050;
+                                    padding-right: 15px;
+                                }
+                            }
+                        }
+
+                        .promotion-discount-details {
+                            .tooltip-inner {
+                                text-align: left;
+                            }
+
+                            color: #505050;
+                            font-family: 'IBM Plex Sans';
+                            font-weight: 500;
+                            font-size: 15px;
+                            line-height: 20px;
+                            text-transform: uppercase;
+                            border-bottom: 1px solid @border-color;
+                            padding: 15px 0px;
+
+                            .promotion-heading {
+                                padding-left: 0px;
+                                padding-right: 0px;
+                            }
+
+                            .promotion-item {
+                                margin-top: 10px;
+
+                                .promotion-information-left {
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                    color: #969696;
+                                    cursor: pointer;
+                                }
+
+                                .apply-promotion {
+                                    float: right;
+                                    font-size: 15px;
+                                    line-height: 20px;
+                                    font-family: 'IBM Plex Sans';
+                                    font-weight: 500;
+                                    color: #973E94;
+                                    top: 25px;
+                                    text-transform: capitalize;
+                                }
+
+                                .remove-promotion {
+                                    float: right;
+                                    font-size: 15px;
+                                    display: none;
+                                    line-height: 20px;
+                                    font-family: 'IBM Plex Sans';
+                                    font-weight: 500;
+                                    color: #973E94;
+                                    top: 25px;
+                                    text-transform: capitalize;
+                                }
+
+                                .discounted-price {
+                                    text-align: right;
+                                }
+                            }
+
+                            .promotion-item.selected {
+                                .apply-promotion {
+                                    display: none;
+                                }
+
+                                .remove-promotion {
+                                    display: block
+                                }
+                            }
+                        }
+
+                        .booking-net-total {
+                            color: #505050;
+                            font-family: 'IBM Plex Sans';
+                            font-weight: 500;
+                            font-size: 15px;
+                            line-height: 20px;
+                            border-bottom: 1px solid @border-color;
+                            padding: 15px 0px 15px 15px;
+
+                            @media screen {
+                                @media (min-width:0px) and (max-width:767px) {
+                                    font-size: 12px;
+                                    line-height: 15px;
+                                }
+                            }
+
+                            .total-price {
+                                float: right;
+                                color: #505050;
+                                padding-right: 15px;
+                            }
+                        }
+
+                        .booking-deposit {
+                            color: #505050;
+                            font-family: 'IBM Plex Sans';
+                            font-weight: 500;
+                            font-size: 15px;
+                            line-height: 20px;
+                            padding: 25px 0px 25px 15px;
+
+                            .include-text {
+                                color: #969696;
+                                margin-left: 5px;
+                            }
+
+                            .summary-info-icon {
+                                padding-left: 7px;
+                            }
+
+                            .total-price {
+                                float: right;
+                                color: #973E94;
+                                padding-right: 15px;
+                                font-size: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .Total-Summary {
+                padding-left: 0px;
+                padding-right: 0px;
+                margin-top: 20px;
+
+                @media screen {
+                    @media (min-width:0px) and (max-width:767px) {
+                        position: fixed;
+                        bottom: 0px;
+                        z-index: 3;
+                        display: none;
+                    }
+                }
+
+                .checkout-btn {
+                    background-color: #660666;
+                    color: white;
+                    border: 1px solid #660666;
+                    border-radius: 5px;
+                    text-transform: uppercase;
+                    padding: 15px 60px;
+                    float: right;
+                    outline: none;
+                    font-family: 'IBM Plex Sans';
+                    font-size: 15px;
+                    line-height: 20px;
+                    font-weight: 500;
+
+                    @media screen {
+                        @media (min-width:0px) and (max-width:767px) {
+                            width: 100%;
+                            border-radius: 0px;
+                        }
+                    }
+                }
+            }
+        }
+
+        #booking-stuck {
+            position: relative;
+
+            .booking-scroller {
+                position: absolute;
+                /*right: 0px;*/
+                top: 0px;
+            }
+        }
+
+        .Booking-Summary-Right {
+            border: 1px solid @border-color;
+            border-radius: 2px;
+            width: 385px;
+            float: right;
+            padding-bottom: 20px;
+
+            h2 {
+                font-family: 'Abhaya Libre';
+                font-size: 25px;
+                font-weight: 500;
+                color: #505050;
+                margin-top: 30px;
+                text-align: center;
+            }
+
+            h3 {
+                font-family: 'IBM Plex Sans';
+                font-weight: 500;
+                font-size: 20px;
+                color: #646464;
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            p {
+                font-family: 'IBM Plex Sans';
+                font-weight: 500;
+                line-height: 20px;
+                font-size: 15px;
+                color: #646464;
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .booking-scroller-text {
+                font-family: 'IBM Plex Sans';
+                font-weight: 500;
+                font-size: 15px;
+                color: #505050;
+                margin-top: 20px;
+                text-align: center;
+                text-transform: uppercase;
+                line-height: 20px;
+            }
+
+            .star-icon {
+                text-align: center;
+                img {
+                    margin-top: 10px;
+                }
+            }
+
+
+            .booking-scroller-social-text {
+                font-family: 'IBM Plex Sans';
+                font-weight: 500;
+                font-size: 12px;
+                margin-top: 10px;
+                text-align: center;
+                color: #323232;
+            }
+        }
+    }
+}
+
+
+/*----------------------Mobile-view (Responsive)--------------------------*/
+
+@media screen {
+    @media (min-width:0px) and (max-width:767px) {
+        .price-summary-btn-xs {
+            padding: 15px;
+            background-color: #660666;
+            font-family: 'IBM Plex Sans';
+            font-size: 15px;
+            font-weight: 500;
+            color: white;
+            text-transform: uppercase;
+            line-height: 20px;
+            text-align: center;
+            position: fixed;
+            bottom: 0px;
+            z-index: 1;
+        }
+    }
+    
+}
+
+
+        

@@ -1,0 +1,331 @@
+//-- Book Api Request --
+{
+  "ResultIndex": "OB7",
+  "EndUserIp": "192.168.11.120",
+  "TokenId": "fb80cb9c-3bc6-42dc-973c-d1399174eba5",
+  "TraceId": "7d446a15-f8cb-4cc5-b15c-8829ea6b1d8a",
+  "Passengers": [
+    {
+      "Title": "Mr",
+      "FirstName": "Mayank",
+      "LastName": "Gaur",
+      "PaxType": "1",
+      "DateOfBirth": "1980-06-04T00:00:00",
+      "Gender": "1",
+      "PassportNo": null,
+      "PassportExpiry": null,
+      "AddressLine1": "Test",
+      "AddressLine2": "Test",
+      "City": "Delhi",
+      "CountryCode": "IN",
+      "CountryName": "India",
+      "ContactNo": "9045025705",
+      "Email": "makgaur007@gmail.com",
+      "IsLeadPax": true,
+      "FFAirline": "",
+      "FFNumber": "",
+      "Fare": {
+        "PassengerType": 1,
+        "YQTax": 0,
+        "AdditionalTxnFee": 0,
+        "Tax": 611,
+        "BaseFare": 3400,
+        "Currency": "INR"
+      }
+    },
+    {
+      "Title": "Mr",
+      "FirstName": "Anshul",
+      "LastName": "Varun",
+      "PaxType": "2",
+      "DateOfBirth": "2010-02-09T00:00:00",
+      "Gender": "1",
+      "PassportNo": null,
+      "PassportExpiry": null,
+      "AddressLine1": "Test",
+      "AddressLine2": "Test",
+      "City": "Delhi",
+      "CountryCode": "IN",
+      "CountryName": "India",
+      "ContactNo": "9045025705",
+      "Email": "makgaur007@gmail.com",
+      "IsLeadPax": true,
+      "FFAirline": "",
+      "FFNumber": "",
+      "Fare": {
+        "PassengerType": 2,
+        "YQTax": 0,
+        "AdditionalTxnFee": 0,
+        "Tax": 611,
+        "BaseFare": 3400,
+        "Currency": "INR"
+      }
+    }
+  ]
+}
+//-- Book Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "TraceId": "7d446a15-f8cb-4cc5-b15c-8829ea6b1d8a",
+    "ResponseStatus": 1,
+    "Response": {
+      "PNR": "VJ44ZF",
+      "BookingId": 1462465,
+      "SSRDenied": false,
+      "SSRMessage": null,
+      "Status": 1,
+      "IsPriceChanged": false,
+      "IsTimeChanged": false,
+      "FlightItinerary": {
+        "TripIndicator": 1,
+        "BookingAllowedForRoamer": true,
+        "BookingId": 1462465,
+        "IsManual": false,
+        "PNR": "VJ44ZF",
+        "IsDomestic": true,
+        "Source": 4,
+        "Origin": "DEL",
+        "Destination": "MAA",
+        "AirlineCode": "UK",
+        "LastTicketDate": "2019-05-02T20:30:00",
+        "ValidatingAirlineCode": "UK",
+        "AirlineRemark": "",
+        "IsLCC": false,
+        "NonRefundable": false,
+        "FareType": "RP",
+        "CreditNoteNo": null,
+        "Fare": {
+          "Currency": "INR",
+          "BaseFare": 6800,
+          "Tax": 1222,
+          "TaxBreakup": [],
+          "YQTax": 0,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0,
+          "OtherCharges": 4.92,
+          "ChargeBU": [
+            {
+              "key": "TBOMARKUP",
+              "value": 0
+            },
+            {
+              "key": "OTHERCHARGE",
+              "value": 4.92
+            },
+            {
+              "key": "CONVENIENCECHARGE",
+              "value": 0
+            }
+          ],
+          "Discount": 0,
+          "PublishedFare": 8026.92,
+          "CommissionEarned": 0,
+          "PLBEarned": 0,
+          "IncentiveEarned": 0,
+          "OfferedFare": 8026.92,
+          "TdsOnCommission": 0,
+          "TdsOnPLB": 0,
+          "TdsOnIncentive": 0,
+          "ServiceFee": 0,
+          "TotalBaggageCharges": 0,
+          "TotalMealCharges": 0,
+          "TotalSeatCharges": 0,
+          "TotalSpecialServiceCharges": 0
+        },
+        "CreditNoteCreatedOn": null,
+        "Passenger": [
+          {
+            "PaxId": 2088004,
+            "Title": "Mr",
+            "FirstName": "Mayank",
+            "LastName": "Gaur",
+            "PaxType": 1,
+            "DateOfBirth": "1980-06-04T00:00:00",
+            "Gender": 1,
+            "PassportNo": "",
+            "AddressLine1": "Test",
+            "AddressLine2": "Test",
+            "Fare": {
+              "Currency": "INR",
+              "BaseFare": 3400,
+              "Tax": 611,
+              "TaxBreakup": null,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0,
+              "OtherCharges": 2.46,
+              "ChargeBU": [
+                {
+                  "key": "TBOMARKUP",
+                  "value": 0
+                },
+                {
+                  "key": "OTHERCHARGE",
+                  "value": 2.46
+                },
+                {
+                  "key": "CONVENIENCECHARGE",
+                  "value": 0
+                }
+              ],
+              "Discount": 0,
+              "PublishedFare": 4013.46,
+              "CommissionEarned": 0,
+              "PLBEarned": 0,
+              "IncentiveEarned": 0,
+              "OfferedFare": 4013.46,
+              "TdsOnCommission": 0,
+              "TdsOnPLB": 0,
+              "TdsOnIncentive": 0,
+              "ServiceFee": 0,
+              "TotalBaggageCharges": 0,
+              "TotalMealCharges": 0,
+              "TotalSeatCharges": 0,
+              "TotalSpecialServiceCharges": 0
+            },
+            "City": "Delhi",
+            "CountryCode": "IN",
+            "CountryName": "India",
+            "Nationality": "IN",
+            "ContactNo": "9045025705",
+            "Email": "makgaur007@gmail.com",
+            "IsLeadPax": true,
+            "FFAirlineCode": null,
+            "FFNumber": "",
+            "Ssr": []
+          },
+          {
+            "PaxId": 2088005,
+            "Title": "Mr",
+            "FirstName": "Anshul",
+            "LastName": "Varun",
+            "PaxType": 2,
+            "DateOfBirth": "2010-02-09T00:00:00",
+            "Gender": 1,
+            "PassportNo": "",
+            "Fare": {
+              "Currency": "INR",
+              "BaseFare": 3400,
+              "Tax": 611,
+              "TaxBreakup": null,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0,
+              "OtherCharges": 2.46,
+              "ChargeBU": [
+                {
+                  "key": "TBOMARKUP",
+                  "value": 0
+                },
+                {
+                  "key": "OTHERCHARGE",
+                  "value": 2.46
+                },
+                {
+                  "key": "CONVENIENCECHARGE",
+                  "value": 0
+                }
+              ],
+              "Discount": 0,
+              "PublishedFare": 4013.46,
+              "CommissionEarned": 0,
+              "PLBEarned": 0,
+              "IncentiveEarned": 0,
+              "OfferedFare": 4013.46,
+              "TdsOnCommission": 0,
+              "TdsOnPLB": 0,
+              "TdsOnIncentive": 0,
+              "ServiceFee": 0,
+              "TotalBaggageCharges": 0,
+              "TotalMealCharges": 0,
+              "TotalSeatCharges": 0,
+              "TotalSpecialServiceCharges": 0
+            },
+            "City": "Delhi",
+            "CountryCode": "IN",
+            "CountryName": "India",
+            "Nationality": "IN",
+            "IsLeadPax": true,
+            "FFAirlineCode": null,
+            "FFNumber": "",
+            "Ssr": []
+          }
+        ],
+        "CancellationCharges": null,
+        "Segments": [
+          {
+            "Baggage": null,
+            "CabinBaggage": null,
+            "TripIndicator": 1,
+            "SegmentIndicator": 1,
+            "Airline": {
+              "AirlineCode": "UK",
+              "AirlineName": "Air Vistara",
+              "FlightNumber": "835",
+              "FareClass": "O",
+              "OperatingCarrier": "UK"
+            },
+            "AirlinePNR": "VJ44ZF",
+            "Origin": {
+              "Airport": {
+                "AirportCode": "DEL",
+                "AirportName": "Indira Gandhi Airport",
+                "Terminal": "3",
+                "CityCode": "DEL",
+                "CityName": "Delhi",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "DepTime": "2019-07-31T19:50:00"
+            },
+            "Destination": {
+              "Airport": {
+                "AirportCode": "MAA",
+                "AirportName": "Chennai",
+                "Terminal": "1",
+                "CityCode": "MAA",
+                "CityName": "Chennai",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "ArrTime": "2019-07-31T22:40:00"
+            },
+            "AccumulatedDuration": 170,
+            "Duration": 170,
+            "GroundTime": 0,
+            "Mile": 0,
+            "StopOver": false,
+            "FlightInfoIndex": "",
+            "StopPoint": "",
+            "StopPointArrivalTime": "2019-07-31T22:40:00",
+            "StopPointDepartureTime": "2019-07-31T19:50:00",
+            "Craft": "320",
+            "Remark": "MEAL NOT INCLUDED!BAG 1PC 15KG!CHECK FXY, SEE RTSVC",
+            "IsETicketEligible": true,
+            "FlightStatus": "Confirmed",
+            "Status": "HK"
+          }
+        ],
+        "FareRules": [
+          {
+            "Origin": "DEL",
+            "Destination": "MAA",
+            "Airline": "UK",
+            "FareBasisCode": "OL15PYL",
+            "FareRuleDetail": "<ul><li><b>Advance Purchase</b><br>Fare Component <b>OL15PYL</b>&emsp; Sector <b>DEL-MAA</b> &nbsp;<ul><li>Earliest reservation date before departure <b>No restriction</b></li><li>Earliest ticketing date before departure <b>No restriction</b></li><li>Latest reservation date before departure <b>16JUL19  2359</b></li><li>Latest ticketing date before departure <b>No restriction</b></li><li>Latest ticketing date after reservation <b>No restriction</b></li></ul></li><li><b>There is no Minimum Stay requirement</b><br><li><b>There is no Maximum Stay requirement</b><br><fieldset><legend><b><b>Adult</b><br></b></legend><ul><li><b>Revalidation/Reissue</b><br>Fare Component <b>OL15PYL</b>&emsp; Sector <b>DEL-MAA</b> &nbsp;<ul><li>Revalidation before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li>Reissue before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li><b>Prior to Departure of journey</b><ul><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><li><b>Refund</b><br>Fare Component <b>OL15PYL</b>&emsp; Sector <b>DEL-MAA</b> &nbsp;<ul><li>Refund before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li><b>Prior to Departure of journey</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><br><b>* Revalidation is a modification of the original ticket without any reissue of a new ticket.</b><br><b>* For Reissue, Penalty fees are in addition to any difference in fare.</b><br><b>* For Refund, certain Taxes are non-refundable.</b></ul></fieldset></ul><ul><fieldset><legend><b><b>Child</b><br></b></legend><ul><li><b>Revalidation/Reissue</b><br>Fare Component <b>OL15PYL</b>&emsp; Sector <b>DEL-MAA</b> &nbsp;<ul><li>Revalidation before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li>Reissue before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li><b>Prior to Departure of journey</b><ul><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Revalidation/Reissue request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><li><b>Refund</b><br>Fare Component <b>OL15PYL</b>&emsp; Sector <b>DEL-MAA</b> &nbsp;<ul><li>Refund before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li><b>Prior to Departure of journey</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><br><b>* Revalidation is a modification of the original ticket without any reissue of a new ticket.</b><br><b>* For Reissue, Penalty fees are in addition to any difference in fare.</b><br><b>* For Refund, certain Taxes are non-refundable.</b></ul></fieldset></ul><br />RateClass : OL15PYL<br/>FareClass : OL15PYL<br/>marketing Company : UK<br/>Booking Class : O<br/>Origin : DEL<br/>destination : MAA<br/>ruleSectionLocalId : 1<br/>ruleCategoryCode : (5)<br/>AP.ADVANCE RES/TKTFOR OL15PYL TYPE FARES  RESERVATIONS FOR DEPARTURE OF EACH TRIP ON THE FARE  COMPONENT ARE REQUIRED AT LEAST 15 DAYS BEFORE DEPARTURE  FROM FARE COMPONENT ORIGIN.  RESERVATIONS AND TICKETING MUST BE COMPLETED AT THE SAME  TIME.  WAITLIST AND STANDBY NOT PERMITTED.         NOTE -          WAITLIST STANDBY AND OPENDATED TICKETS NOT          PERMITTED.<br/>ruleSectionLocalId : 2<br/>ruleCategoryCode : (16)<br/>PE.PENALTIESFOR OL15PYL TYPE FARES  CHANGES    CHANGES NOT PERMITTED.  CANCELLATIONS    TICKET IS NON-REFUNDABLE.         NOTE -          ALL UNUTILIZED TAXES INCLUDING YR SHALL BE          REFUNDED. SERVICE TAX -K3- GOODS AND SERVICE TAX          SHALL BE REFUNDED.          FLIGHTS WHERE THE CONNECTION TIME IS -UPTO 5 HRS          OR NEXT AVAILABLE CONNECTION WHICHEVER IS LOWER          ARE TO BE TREATED AS ONE FARE COMPONENT -FROM          ORIGIN TO DESTINATION- AND IN CASE OF          REFUND/CANCELLATION ALL UNUTILIZED TAXES INCLUDING          INCLUDING YR SHALL BE REFUNDED.          FOR RETURN TRAVEL PENALTY APPLICATION ON THE ABOVE          ABOVE ITINERARIES SHALL BE PER FARE COMPONENT.          PARTIAL CANCELLATION ON THIS ITINERARY SHALL NOT          BE PERMITTED.          FOR EXAMPLE  WHILE HOLDING A TICKET FOR          CONNECTION BOM DEL AMD OR VICE VERSA YOU SHALL NOT          NOT BE ALLOWED TO CANCEL YOUR ONWARD OR RETURN          FLIGHTS PARTIALLY AND MUST CANCEL THE ENTIRE          ITINERARY OR TICKET.          FARES WHEN COMBINED ON A HALF ROUND TRIP BASIS          SHALL BE GOVERNED BY THE ORRESPONDING APPLICABLE          TICKETED FARE PER SECTOR AND ITS APPLICABLE TERMS          AND CONDITIONS          NOTE- IF A NO SHOW TICKET IS PROCESSED ONLY TAXES          WILL BE REFUNDED.<br/><br/> <br/>",
+            "FareRestriction": null,
+            "FareFamilyCode": "ECOYL"
+          }
+        ],
+        "Status": 1
+      }
+    }
+  }
+}

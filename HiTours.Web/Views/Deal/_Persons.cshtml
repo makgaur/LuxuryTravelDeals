@@ -1,0 +1,26 @@
+﻿@model HotelBookingPersonDetailViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+
+@using (this.Html.BeginCollectionItem("PersonDetails"))
+{
+    <input type="hidden" asp-for="PersonType" />
+    <input type="hidden" asp-for="RoomNo" />
+    <div data-roomno="@Model.RoomNo" data-adults="@Model.Adults" class="form-group col-sm-2">
+        <label>Title</label>
+        <select asp-for="Salutation" asp-items="@(new SelectList(Html.GetEnumSelectList<Enums.Salutation>(),"Text","Text"))" class="skip-select2 form-control"></select>
+        <span asp-validation-for="Salutation"></span>
+    </div>
+
+    <div data-roomno="@Model.RoomNo" data-adults="@Model.Adults" class="form-group col-sm-5">
+        <label asp-for="FirstName"></label>
+        <input type="text" asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName"></span>
+
+    </div>
+    <div data-roomno="@Model.RoomNo" data-adults="@Model.Adults" class="form-group col-sm-5">
+        <label asp-for="LastName"></label>
+        <input type="text" asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName"></span>
+    </div>
+}
+

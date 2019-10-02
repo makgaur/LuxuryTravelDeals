@@ -1,0 +1,239 @@
+﻿@model List<DealsHotelRatePlanViewModel>
+@{
+    var routeData = this.ViewContext.RouteData.Values;
+    var nextView = this.TempData["nextview"] != null ? this.TempData["nextview"].ToString() : "#hotelratePlans";
+    var packageType = Convert.ToInt32(this.TempData["packageType"]);
+    var packageId = Convert.ToInt32(this.ViewBag.PackageId);
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group col-md-12" style="margin-top:10px;">
+            <div class="panel-group" id="accordion">
+                @foreach (DealsHotelRatePlanViewModel ratePlan in Model)
+                {
+                    <div class="panel">
+                        <div class="panel-heading bg-gray-active">
+                            <h4 class="panel-title ">
+                                <a data-toggle="collapse" class="roomConfiguration" data-parent="#accordion" href="#collapse_@ratePlan.RoomConfigId" data-href="@Url.Action("GetRoomConfigRatePlan", "Deals", new { @roomConfigId = ratePlan.RoomConfigId, @packageTypeId = packageType })"><i class="fa fa-fw fa-bed"></i>  @ratePlan.RoomName</a>
+                                <a class="add-rateplan-row pull-right" onclick="AddRatePlan(this)" data-href="@Url.Action("AddHotelRatePlan","Deals", new {@id = packageId, @packageTypeId = packageType, @ratePlanId = 0})" href="javaScript:void(0)"><i class="fa fa-plus-circle"></i></a>
+                            </h4>
+                        </div>
+                        <div id="collapse_@ratePlan.RoomConfigId" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                               
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        @*<div class="box no-top-border">
+            <div class="nav-tabs-custom">
+                <input type="hidden" name="tabs" data-default="@nextView" value="@nextView" />
+                <ul id="ratePlanNavs" class="nav nav-tabs pull-right">
+                    <li class=""><a href="#add-rateplan" data-toggle="tab" data-href="@Url.Action("AddHotelRatePlan","Deals", new {@id = packageId, @packageTypeId = packageType, @ratePlanId = 0})"><i class="fa fa-fw fa-plus"></i> Add Rate Plan</a></li>
+                    @foreach (var item in Model)
+                    {
+                        string hrefId = "roomconfig_" + item.RoomConfigId;
+                        <li class=""><a href="#@hrefId" data-toggle="tab" data-href="@Url.Action("GetRoomConfigRatePlan", "Deals", new { @roomConfigId = item.RoomConfigId, @packageTypeId = packageType })"><i class="fa fa-fw fa-list"></i> @item.RoomName</a></li>
+                    }
+                </ul>
+                <div class="tab-content ratePlan-tabs">
+
+                    @foreach (var item in Model)
+                    {
+                        string hrefIdTab = "roomconfig_" + item.RoomConfigId;
+                        <div class="tab-pane" id="@hrefIdTab"></div>
+                    }
+                    <div class="tab-pane" id="add-rateplan"></div>
+                </div>
+            </div>
+        </div>*@
+    </div>
+</div>
+<script>
+    $(document).ready(function (e) {
+        $("#ratePlanNavs li a").last().click();
+        $(".roomConfiguration").each(function (e, item) {
+            LoadRatePlan(item.dataset.href, item.hash);
+        })
+    });
+
+    $(document).on('submit', "#formAddRatePlan", function (e) {
+        e.preventDefault();
+        var $form = $("#formAddRatePlan");
+        //$('#formPackagePromotionManage input[name="Id"]').val(0);
+            if ($form.valid()) {
+                showWaitProcess();
+                debugger;
+                var model = {}
+                model = $form.serialize();
+                var ErrorMsg = "";
+                $(".text-blank").each(function () {
+                    ErrorMsg += $(this).text();
+                })
+                if (ErrorMsg != "") {
+                    hideWaitProcess();
+                    return false;
+                }
+                else {
+                    $.ajax({
+                        url: '@Url.Action("AddHotelRatePlan", "Deals")',
+                        type: "JOSN",
+                        method: "POST",
+                        data: model,
+                        //data: model + '&ratePlanId=' + $('#txtRatePlanID').val(),
+                        success: function (data) {
+                            hideWaitProcess();
+                            if (data == "success") {
+                                //swal('', 'Successfully Inserted', 'success');
+                                location.reload();
+                                //$(".replaceView").click();
+                            }
+                            else if (data == "update") {
+                                //swal('', 'Successfully Updated', 'success');
+                                location.reload();
+                                //$(".replaceView").click();
+                            }
+                            else
+                            {
+                            }
+                        }
+                    });
+                }
+            }
+    })
+
+    function LoadRatePlan(url, identifer) {
+        var container = $($(identifer)[0].firstElementChild);
+        $.ajax({
+            url: url,
+            method: "Get",
+            success: function (data) {
+                container.html(data);
+            }
+        });
+    }
+
+    function AddRatePlan(target) {
+        var $modal = $('#application-modal');
+            var url = target.dataset.href;
+            if ($modal) {
+                $modal.find(".modal-title").html("Add Rate Plan");
+                $modal.find('.modal-body').html(overlayTemplate);
+                $modal.modal({ keyboard: false, backdrop: false }).show();
+                $.ajax({
+                    url: url,
+                    method: 'get',
+                    dataType: 'html',
+                    success: function (html) {
+                        $modal.find('.modal-body').html(html);
+                        initSelect2();
+                        var _form = $("#btnSaveandReload").parents('form');
+                        if ($.validator.unobtrusive != undefined) {
+                            $.validator.unobtrusive.parse(_form);
+                        }
+                        var $divPartial = $('#application-modal');
+                        $divPartial.find("#btnSaveandReload").on("click", function () {
+                            if ($(_form).valid()) {
+                                _form.append('<input name="method" type="hidden" value="ajax" />');
+                                $.ajax({
+                                    type: "POST",
+                                    dataType: 'json',
+                                    url: _form.attr('action'),
+                                    data: _form.serialize(),
+                                    success: function (json) {
+                                        $modal.toggle();
+                                        if (json == 'success') {
+                                            location.reload();
+                                        }
+                                        return false;
+                                    },
+                                    error: function (response) {
+                                    },
+                                });
+                            }
+                            return false;
+                        });
+                    },
+                    error: function (xhr, request, error) { }
+                });
+            }
+        }
+
+    function DeleteRatePlan(id) {
+        $.ajax({
+            url: '@Url.Action("DeleteRatePlan","Deals")',
+            data: { 'id': @this.ViewBag.PackageId, 'packageTypeId': 1, 'ratePlanId': id },
+            method: 'GET',
+            dataType: 'json',
+            success: function (json) {
+                if (json == 'success') {
+                    location.reload();
+                    //swal('', 'Successfully Updated', 'success');
+                }
+                else {
+                    swal('', 'Delete Failed', 'error');
+                }
+            }
+        })
+
+    }
+    function EditRatePlan(id) {
+            var $modal = $('#application-modal');
+            var url = '@Url.Action("AddHotelRatePlan", "Deals")';
+            if ($modal) {
+                $modal.find(".modal-title").html("Edit Rate Plan");
+                $modal.find('.modal-body').html(overlayTemplate);
+                $modal.modal({ keyboard: false, backdrop: false }).show();
+                $.ajax({
+                    url: url,
+                    data: { 'id': @this.ViewBag.PackageId, 'packageTypeId': 1, 'ratePlanId':id },
+                    method: 'get',
+                    dataType: 'html',
+                    success: function (html) {
+                        $modal.find('.modal-body').html(html);
+                        initSelect2();
+                        var _form = $("#btnSaveandReload").parents('form');
+                        if ($.validator.unobtrusive != undefined) {
+                            $.validator.unobtrusive.parse(_form);
+                        }
+                        var $divPartial = $('#application-modal');
+                        $divPartial.find("#btnSaveandReload").on("click", function () {
+                            if ($(_form).valid()) {
+                                _form.append('<input name="method" type="hidden" value="ajax" />');
+                                $.ajax({
+                                    type: "POST",
+                                    dataType: 'json',
+                                    //url: _form.attr('action'),
+                                    url:'@Url.Action("AddHotelRatePlan", "Deals")',
+                                    data: _form.serialize(),
+                                    success: function (json) {
+                                        $modal.toggle();
+                                        if (json == 'update') {
+                                            location.reload();
+                                            //swal('', 'Successfully Updated', 'success');
+                                        }
+                                        return false;
+                                    },
+                                    error: function (response) {
+                                    },
+                                });
+                            }
+                            return false;
+                        });
+                    },
+                    error: function (xhr, request, error) { }
+                });
+            }
+        }
+
+    //$(document).on('change', '.bulkcolumn', function (e) {
+    //    var $targetElements = $($(this).data('target'));
+    //    if ($(this).val() != null && $(this).val() != '') {
+    //        $targetElements.val($(this).val());
+    //    }
+    //});
+    
+</script>

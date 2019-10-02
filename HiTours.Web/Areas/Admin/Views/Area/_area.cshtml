@@ -1,0 +1,41 @@
+﻿@model PackageAreaViewModel
+@{
+    this.Layout = null;
+    var countryctrl = Guid.NewGuid().ToString();
+    var statectrl = Guid.NewGuid().ToString();
+    var cityctrl = Guid.NewGuid().ToString();
+
+}
+
+<form asp-antiforgery="true" method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="IsActive" />
+
+    <div class="box-body">
+        <div class="form-group col-md-3">
+            <label asp-for="Country"></label>
+            <select asp-for="Country" selected="@Model.Country" class="form-control @(countryctrl)" id="CountryId" asp-items="Model.Countries"
+                    select2-value="@Model.Country" select2-Url="/selectlist/GetCountryList"
+                    select2-Dependent="true" select2-Dependent-Control=".@(statectrl)"></select>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="State"></label>
+            <select asp-for="State" selected="@Model.State" class="form-control @statectrl" id="StateId" asp-items="Model.States"
+                    select2-value="@Model.State" select2-Url="/selectlist/GetTourPackageStatesByCountrId"
+                    select2-Dependent="true" select2-Dependent-Control=".@(cityctrl)" select2-Dependent-OtherControl=".@countryctrl"></select>
+            <span asp-validation-for="State"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="City"></label>
+            <select asp-for="City" selected="@Model.City" id="CityId" class="form-control packagecitydes @(cityctrl)" asp-items="Model.Cities"
+                    select2-value="@Model.City" select2-Url="/selectlist/GetTourPackageCityByCounryIdorStateIdAsync"></select>
+            <span asp-validation-for="City"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control"/>
+            <span asp-validation-for="Name"></span>
+        </div>
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit) })
+</form>

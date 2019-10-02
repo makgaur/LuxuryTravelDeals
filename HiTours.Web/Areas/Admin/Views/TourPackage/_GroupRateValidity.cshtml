@@ -1,0 +1,54 @@
+﻿@model TourPackageNightsValidityGroupedViewModel
+@{
+    var fromDate = Convert.ToDateTime(Model.FromDate).ToString("dd/MM/yyyy");
+    var toDate = Convert.ToDateTime(Model.ToDate).ToString("dd/MM/yyyy");
+
+}<tr id="@Guid.NewGuid().ToString("N")" data-from="@fromDate.Replace("/","-")" data-to="@toDate.Replace("/","-")">
+    <td class=" details-control show-nested"></td>
+    <td>@(fromDate)</td>
+    <td>@(toDate)</td>
+    <td>
+        <a class="form-control btn-primary btn-sm add-ratevalidity"
+           data-from="@fromDate.Replace("/","-")"
+           data-to="@toDate.Replace("/","-")"
+           style="width: 101px;text-align: center;float: right;line-height: 11px;padding: 6px;height: 26px;"
+           href="javascript:;" data-href="@Url.GetAdminUrl("tourpackage", "PackageRateValidty")">
+            <i class="fa fa-plus"></i>&nbsp;Add Prices
+        </a>
+
+    </td>
+</tr>
+@if (Model.Records.Count() > 0)
+{
+    <tr class="hide nested-row" style="padding:0px;">
+        <td colspan="4">
+            <table class="table table-standard table-bordered table-striped" style="width: 98%;float: right;margin: 0;">
+                <thead>
+                    <tr class="th-small">
+                        <th>Room Type</th>
+                        @*<th> Triple Rate WeekDays</th>
+                        <th> Triple Rate Weekend </th>*@
+                        <th> Twin Rate WeekDays</th>
+                        <th> Twin Rate Weekend</th>
+                        @*<th> Single Rate WeekDays</th>
+                        <th> Single Rate Weekend </th>
+                        <th> Child With Bed Rate WeekDays</th>
+                        <th> Child Without Bed Rate WeekDays</th>
+                        <th> Child With Bed Rate Weekend</th>
+                        <th> Child Without Bed Rate Weekend</th>*@
+
+                        <th class="column-action text-center" style="width:10%">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Records)
+                    {
+                        @Html.Partial("_RateValidityRow", item)
+                    }
+
+                </tbody>
+            </table>
+        </td>
+    </tr>
+
+}

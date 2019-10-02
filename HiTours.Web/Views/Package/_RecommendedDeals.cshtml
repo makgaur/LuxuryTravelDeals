@@ -1,0 +1,40 @@
+﻿@model List<UpComingDealsViewModel>
+    @if (Model.Count() > 0)
+    {
+        <div class="container">
+            <div class="recently-home"><h2 class="mainHeading">Other Exclusive Offers Currently on Sale</h2></div>
+            <div class="currently-on-sale-box">
+                <div class="row deal-offer-rect-sale-box regular slider" data-afterimages="3">
+                    @foreach (var item in Model)
+                {
+                        <div class="col-sm-4">
+                            <a href="/package/details/@item.UrlTitle.ToLower()" class="availability" data-dealid="@item.Id">
+                                <div class="coming-list-main-box">
+                                    <div class="coming_soon hover14">
+                                        <figure>  <img src="~/packages/@item.ImagesName" class="img-responsive img-full" auto-resize="true" width="335" height="216" mode="Stretch" is-src="true" asp-append-version="true" alt="" onerror="this.src='/images/not-found.jpg'"></figure>
+                                    </div>
+                                    <div class="coming-soon-img-tex-bg">
+                                        <div class="row">
+                                            <div class="col-xs-8 col-sm-8 coming_soon_text">
+                                                <h3>@item.CityName</h3>
+                                                <p>@item.Name</p>
+                                            </div>
+                                            @if (item.Discount > 0)
+                                            {
+                                                <div class="col-xs-4 col-sm-4" style="padding-right:0px !important;">
+                                                    <div class="coming_soon_price">
+                                                        <h4><span class="up-to-text">Up to</span> <br><span>@item.Discount.ToAmount(true)%</span><br><span class="off-text">Off</span></h4>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    }

@@ -1,0 +1,28 @@
+﻿@model DealInventoryViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+<tr>
+    @using (this.Html.BeginCollectionItem("model"))
+    {
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="RatePlanId" />
+        <input type="hidden" asp-for="CreatedBy" />
+        <input type="hidden" asp-for="CreatedDate" />
+        <input type="hidden" asp-for="UpdatedBy" />
+        <input type="hidden" asp-for="UpdatedDate" />
+        <input type="hidden" asp-for="Date" />
+        <input type="hidden" asp-for="IsActive" />
+        <td>@Model.Date.ToString("MMM d, yyyy") @Model.Date.DayOfWeek.ToString()</td>
+        <td>@Model.Booking</td>
+        <td>
+            <input class="form-control txt_inventory" type="number" asp-for="Inventory" /><span asp-validation-for="Inventory"></span>
+        </td>
+        <td><input class="form-control txt_price_dbo" type="number" asp-for="Price" /><span asp-validation-for="Price"></span></td>
+        <td><input class="form-control txt_price_sbo" type="number" asp-for="SingleSupplement" /><span asp-validation-for="SingleSupplement"></span></td>
+        <td><input class="form-control txt_extra_adult" type="number" asp-for="ExtraAdult" /><span asp-validation-for="ExtraAdult"></span></td>
+        <td><input class="form-control txt_extra_child_wb" type="number" asp-for="ExtraChild_WB" /><span asp-validation-for="ExtraChild_WB"></span></td>
+        <td><input class="form-control txt_extra_child_nb" type="number" asp-for="ExtraChild_NB" /><span asp-validation-for="ExtraChild_NB"></span></td>
+        <td><input class="form-control txt_extra_infant" type="number" asp-for="ExtraInfant" /><span asp-validation-for="ExtraInfant"></span></td>
+        <td><input class="form-control txt_surge_charge" type="number" asp-for="Surgcharge" /><span asp-validation-for="Surgcharge"></span></td>
+        <td><input class="icheck chk_block" type="checkbox" asp-for="BlackOut" /><span asp-validation-for="BlackOut"></span></td>
+    }
+</tr>

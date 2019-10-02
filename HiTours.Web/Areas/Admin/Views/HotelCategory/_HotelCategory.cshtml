@@ -1,0 +1,22 @@
+﻿@model PackageHotelCategoryViewModel
+@{ this.Layout = null;}
+<form asp-antiforgery="true" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <input type="hidden" asp-for="IsActive" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <div class="box-body">
+        <div class="form-group col-sm-6">
+            <label asp-for="Name"></label>
+            <input type="text" asp-for="Name" class="form-control " />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group col-sm-6">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" class="form-control "></textarea>
+        </div>
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit)})
+</form>

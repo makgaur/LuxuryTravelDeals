@@ -1,0 +1,252 @@
+﻿@model HotelDealBookingViewModel
+@{
+    var tourpackage = Model.TourPackageDetail ?? new TourPackageDetailViewModel();
+    var package = tourpackage.TourPackage ?? new TourPackageViewModel();
+    var tourPackageNights = tourpackage.TourPackageNights ?? new List<TourPackageNightViewModel>();
+    var tourpackageNight = tourPackageNights.FirstOrDefault() ?? new TourPackageNightViewModel();
+    var tourPackageNightValidities = tourpackageNight.TourPackageNightsValidity ?? new List<TourPackageNightsValidityViewModel>();
+    var tourPackageNightValidity = tourPackageNightValidities.FirstOrDefault() ?? new TourPackageNightsValidityViewModel();
+
+    var validityFrom = tourPackageNightValidity.RateValidFrom;
+    var validityTo = tourPackageNightValidity.RateValidTo;
+
+    string[] dayNames = CultureInfo.CurrentCulture.DateTimeFormat.AbbreviatedDayNames;
+    var dealEndTime = (tourpackage.ValidTo - DateTime.Now);
+
+}
+<link asp-append-version="true" href="~/content/intlTelInput/intlTelInput.css" rel="stylesheet" />
+
+<input type="hidden" asp-for="@Model.RoomPrice" />
+<input id="RateWeekend" type="hidden" asp-for="@tourPackageNightValidity.TwinRateWeekend" />
+<input id="DepositAmt" type="hidden" asp-for="@tourpackageNight.DepositAmount" />
+<div class="container">
+    <section class="main-detail-box">
+        <aside id="breadcrumb">
+            @*<div class="page-center">
+                    <div class="breadcrumb-container">
+                        <div class="step-container left active">
+                            <span class="step">1</span>
+                            <p class="step-title">Create</p>
+                        </div>
+                        <div class="step-container middle">
+                            <span class="step">2</span>
+                            <p class="step-title">Payment</p>
+                        </div>
+                        <div class="step-container right">
+                            <span class="step">3</span>
+                            <p class="step-title">Confirmation</p>
+                        </div>
+                        <span class="line left active"></span>
+                        <span class="line right"></span>
+                    </div>
+                </div>*@
+        </aside>
+
+        <div class="row">
+            <div class="col-md-4 detail-right  col-md-push-8">
+                <div class="deal-box-five">
+                    <h2 class="time-remain"><i class="fa fa-flash"></i> Flash Deal Ends In</h2>
+                    <div class="tour-time" align="center">
+                        <div class='deal-countdown' data-seconds="@dealEndTime.TotalSeconds"></div>
+                        @if (tourpackage.TourPackageImages != null && tourpackage.TourPackageImages.Count > 0)
+                        {
+                            <img src="/packages/@tourpackage.TourPackageImages.OrderBy(x=>x.SequenceNo).FirstOrDefault().ImageName"
+                                 class="img-responsive" auto-resize="true" width="323" height="219"
+                                 style="margin-top: 13px;width: 323px;height: 219px;" />
+                        }
+                    </div>
+
+                    <p>
+                        @*@tourpackage.CityName<br />
+                            @tourpackage.CityName - @tourpackage.CountryName<br />*@
+                        <strong>
+                            @tourpackage.TourPackage.PackageName
+                        </strong>
+                    </p>
+                </div>
+
+                <div class="product-details-box-two">
+                    <ul>
+                        <li>City: </li>
+                        <li>@(tourpackage.CityName) </li>
+                        <li>Start date: </li>
+                        <li>@($"{dayNames[(int)Model.CheckInDate.DayOfWeek]} {Model.CheckInDate.ToString("dd MMM yyyy")}") </li>
+                        <li>End date : </li>
+                        <li>@($"{dayNames[(int)Model.CheckOutDate.DayOfWeek]} {Model.CheckOutDate.ToString("dd MMM yyyy")}") </li>
+                        <li>Duration : </li>
+                        <li>@($"{Model.Days} Days - {Model.Nights} Nights")</li>
+                    </ul>
+                    <div class="clr"></div>
+                </div>
+
+                <div class="participants-adult-box">
+                    <h2>Booking for <span id="spnTotalAdults">@Model.TotalAdults</span> 
+                    @(Model.TotalAdults > 1 ? (Model.TourPackageDetail.TourPackage.IsHotelOnly?"Rooms":"Travellers") : (Model.TourPackageDetail.TourPackage.IsHotelOnly ? "Room" : "Traveller")) </h2>
+                    @Html.Raw(Model.AdultDescriptions)
+                    <div class="clr"></div>
+                </div>
+
+                <div class="total-amout-box">
+                    @Html.Partial("_HolidayPrice", new HolidayPriceViewModel { BookingPrice = Model.BookingPrice, GstAmount = Model.GstAmount, WeekendPrice = Model.WeekendPrice, DepositAmount = Model.PaidAmount, IsHotel = Model.TourPackageDetail.TourPackage.IsHotelOnly })
+                </div>
+            </div>
+            <div class="col-md-8 detail-left  col-md-pull-4">
+                <div class="details-passenger-box">
+                    <form asp-antiforgery="false" asp-controller="Package" asp-action="BookNow" method="post" id="payment-booknow">
+                        <input type="hidden" asp-for="PackageId" />
+                        <input type="hidden" asp-for="PackageNightId" />
+                        <input type="hidden" name="PackageNightsValidityId" value="@Model.PackageNightsValidityId" />
+                        <input type="hidden" asp-for="HotelRoomTypeId" />
+                        <input type="hidden" asp-for="CheckInDate" data-date="@Model.CheckInDate" data-start-date="@Model.CheckInDate.ToString("yyyy-MM-dd HH':'mm':'ss")" />
+                        <input type="hidden" asp-for="CheckOutDate" data-date="@Model.CheckOutDate" data-end-date="@Model.CheckOutDate.ToString("yyyy-MM-dd HH':'mm':'ss")" />
+                        <input type="hidden" asp-for="Rooms" />
+                        <input type="hidden" asp-for="HotelBooking.AuotUpdateInfo" />
+                        <input type="hidden" asp-for="UrlTitle" />
+                        <input type="hidden" asp-for="TotalAdults" />
+
+                        <div class="border-box">
+                            <h2 class="detail-tab">Booking Details</h2>
+                            <div class="row">
+                                <div class="form-group col-sm-2 hidden">
+                                    <label>Title</label>
+                                    <select class="form-control skip-select2" asp-for="HotelBooking.Salutation" asp-items="@(new SelectList(Html.GetEnumSelectList<Enums.Salutation>(),"Text","Text"))"></select>
+                                    <span asp-validation-for="HotelBooking.Salutation"></span>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label asp-for="HotelBooking.FirstName"></label>
+                                    <input type="text" asp-for="HotelBooking.FirstName" class="form-control" id="firstname" />
+                                    <span asp-validation-for="HotelBooking.FirstName"></span>
+                                </div>
+
+                                <div class="form-group col-sm-6">
+                                    <label asp-for="HotelBooking.LastName"></label>
+                                    <input type="text" asp-for="HotelBooking.LastName" class="form-control" id="lastnamecaps" />
+                                    <span asp-validation-for="HotelBooking.LastName"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label asp-for="HotelBooking.Email"></label>
+                                    <input type="email" asp-for="HotelBooking.Email" class="form-control" id="BookingEmail" />
+                                    <span asp-validation-for="HotelBooking.Email"></span>
+                                </div>
+
+                                <div class="form-group col-sm-6">
+                                    <label asp-for="HotelBooking.Mobile"></label>
+                                    <input type="tel" asp-for="HotelBooking.Mobile" class="numericOnly form-control" />
+                                    <span asp-validation-for="HotelBooking.Mobile"></span>
+                                </div>
+                            </div>
+                            <div class="pass-detail-box hide">
+                                <h2 class="detail-tab">Passenger Details</h2>
+                                <p>Please check that your first name & last name match what is indicated on the passport or ID you will be showing at the airport on they day of departure.</p>
+                                <div class="contact-box-details">
+                                    @if (this.Model != null && this.Model.PassengerDetails != null && this.Model.PassengerDetails.Count > 0)
+                                    {
+                                        foreach (var passenger in this.Model.PassengerDetails)
+                                        {
+                                            @this.Html.Partial("_PassengerDetails", passenger)
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="pass-detail-box">
+                                <h2 class="detail-tab">Booking terms and conditions</h2>
+                                <div class="tram-condition-box">
+                                    <label asp-for="TermsAndConditions" class="checkbox-inline">
+                                        <input type="checkbox" asp-for="TermsAndConditions" required="required" />
+                                        <strong>I have read and accept Luxury Travels Deals <a href="/home/termandcondtion" target="_blank">terms and conditions</a>. <span class="danger">*</span></strong>
+                                    </label>
+
+                                    @*<h4><label asp-for="TermsAndConditions">I have read and accept Hi Tours's <a href="/home/termandcondtion" target="_blank">terms and conditions</a>. <span class="danger">*</span></label></h4>*@
+                                    <span asp-validation-for="TermsAndConditions"></span>
+                                </div>
+                            </div>
+
+                            <div class="total-text-box" style="display:none">
+                                <div class="text-left-text">
+                                    <h2>Booking Amount<br><span></span></h2>
+                                </div>
+                                <div class="text-right-text">
+                                    <h2><i class="fa fa-inr" aria-hidden="true"></i><span data-depositamt="deposit">@Model.PaidAmount.ToAmount()</span> </h2>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+
+                            <div class="sent-btn">
+                                @*<button type="button" class="btn btn-success active" data-color="success"><i class="state-icon glyphicon glyphicon-check"></i>&nbsp;Do you want to book Flight?</button>
+                <input type="checkbox" asp-for="IsAddFlight" class="hidden" checked="">*@
+                                @if (Model.IsFlightProcess)
+                                {
+                                    <span class="addFlightsNew">
+                                        <input type="checkbox" asp-for="IsAddFlight" />
+                                        <label asp-for="IsAddFlight"></label>
+                                    </span>
+                                }
+
+                                <p class="mand-fild-text"><span>*</span> Mandatory fields</p>
+                                <button type="submit" class="whiteText">Pay Now</button>
+                            </div><div class="clr"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+    .select2-container .select2-selection--single {
+        border: 1px solid #aaa !important;
+    }
+
+    .datepicker-days .day {
+        float: none !important;
+        clear: both !important;
+    }
+
+    .pax-details label {
+        font-size: 0.8em;
+    }
+
+    .pax-details .select2-container--default .select2-selection--single .select2-selection__rendered {
+        color: #444;
+        line-height: 33px;
+    }
+
+    .pax-details .select2-container--default .select2-selection--single .select2-selection__arrow b {
+        border-color: #888 transparent transparent transparent;
+        border-style: solid;
+        border-width: 5px 4px 0 4px;
+        height: 0;
+        left: 50%;
+        margin-left: -4px;
+        margin-top: 2px;
+        position: absolute;
+        top: 50%;
+        width: 0;
+    }
+
+    .flag-dropdown.f16 {
+        border-right: 1px solid darkgrey;
+    }
+
+    #firstname {
+        text-transform: capitalize;
+    }
+
+    #lastnamecaps {
+        text-transform: capitalize;
+    }
+</style>
+<script asp-append-version="true" src="~/content/intlTelInput/intlTelInput.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    $(function () {
+        $(".dob").datepicker("destroy");
+        $(".dob").datepicker({ format: dateformat, todayHighlight: true, autoclose: true, endDate: new Date() });
+        if ($.fn.intlTelInput)
+            $(".countryCodeList").intlTelInput();
+    });
+</script>

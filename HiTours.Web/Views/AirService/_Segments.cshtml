@@ -1,0 +1,34 @@
+﻿@model HiTours.TBO.Models.Segments
+@using HtmlHelpers.BeginCollectionItemCore
+
+<div class="row rel-pos" data-flight="search-segment">
+    @using (this.Html.BeginCollectionItem("Segments"))
+    {
+        <input type="hidden" asp-for="Destination" />
+        <input type="hidden" asp-for="PreferredDepartureTime">
+
+        <div class="col-sm-12" style="margin-bottom:10px">
+            <div class="row">
+                <div class="round-arrow">
+                    <a href="javascript:;">
+                        <img src="/images/round-arrow.png" style=" width:20px;">
+                    </a>
+                </div>
+                <div class="col-sm-6 flight-search">
+                    <select asp-for="Origin"
+                            asp-items="Model.OriginList"
+                            class="form-control skip-select2 hide location-from"
+                            data-flight="location"
+                            data-placeholder="From : City or Airport"></select>
+                    <span asp-validation-for="Origin"></span>
+                </div>
+                <div class="col-sm-6 flight-search">
+                    <input type="text" asp-for="Destination" readonly 
+                           class="form-control" 
+                           placeholder="To : City or Airport" 
+                           style="position: absolute;top: -6px;" value="@Model.DisplayDestination" />
+                </div>
+            </div>
+        </div>
+                        }
+</div>

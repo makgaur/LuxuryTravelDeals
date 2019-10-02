@@ -1,0 +1,330 @@
+﻿@model FlightBookResult
+@{
+    var fligtBookResult = Model;
+    var bookings = fligtBookResult.Bookings ?? new List<BookingResult>();
+    var siteUrl = Model.Json;
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Luxury Travel Deals</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <style type="text/css">
+        * {
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .border-gray {
+            border: 1px solid #f1f1f1;
+        }
+
+        @@media only screen and (max-width: 610px) {
+            [class=wimg] {
+                width: 100% !important;
+            }
+
+            [class=border-gray] {
+                width: 100% !important;
+            }
+
+            [class=w490] {
+                width: 90% !important;
+            }
+        }
+
+        @@media only screen and (max-width:479px) {
+            [class=wtitre] {
+                width: 100% !important;
+                height: auto !important;
+            }
+        }
+    </style>
+</head>
+<body bgcolor="#fff">
+    <table align="center" width="100%" cellspacing="0" cellpadding="0" bgcolor="#fefefe">
+        <tbody>
+            <tr>
+                <td>
+                    <table class="border-gray" align="center" width="602" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+                        <tbody>
+                            <!-- Logo -->
+                            <tr>
+                                <td align="center" bgcolor="#660866">
+                                    <a href="#" target="_blank" style="font-size: 22px; font-family: Arial, Verdana; color:#ffffff;">
+                                        <img src="@(siteUrl)images/luxury-logo-2.png" alt="" style="display: block;" width="201" height="100" border="0" />
+                                    </a>
+                                </td>
+                            </tr>
+                            <!-- Logo -->
+                            <tr>
+                                <td align="left" style="padding:10px 20px;" bgcolor="#f1f1f1">
+                                    <table width="100%" style="font-size: 14px; font-family: Arial, Verdana;" bgcolor="#f1f1f1">
+                                        <tr>
+                                            <td width="43" style="padding:10px 5px 10px 0px;">
+                                                <img src="@(siteUrl)images/check.png" alt="checked" width="33" height="34" style="display:block" />
+                                            </td>
+                                            <td style="font-size:13px; font-family: Arial, Verdana; color:#f76c00; text-transform:uppercase;">
+                                                <b>Your Booking is complete</b><br />
+                                                <span style="color:#545454; text-transform:capitalize">Thank you for booking with us</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px 20px; color:#fff; font-size: 13px; font-family: Arial, Verdana;" bgcolor="#660866" align="left"><b>Flight Booking Detail</b></td>
+                            </tr>
+                            @foreach (var booking in bookings)
+                            {
+                                var flightItinerary = booking.FlightItinerary ?? new FlightItinerary();
+                                var segments = flightItinerary.Segments ?? new List<SegmentResult>().ToArray();
+                                var segment = segments.FirstOrDefault() ?? new SegmentResult();
+                                var destination = segment.Destination ?? new Destination();
+                                var origin = segment.Origin ?? new Origin();
+                                var originAirport = origin.Airport ?? new Airport();
+                                var destinationAirport = destination.Airport ?? new Airport();
+                                var passengers = flightItinerary.Passenger ?? new List<Passenger>().ToList().ToArray();
+
+                                <tr>
+                                    <td align="left" style="padding:10px 20px 0px 20px;" bgcolor="#f1f1f1">
+                                        <table align="center" width="100%" style="font-size: 13px; font-family: Arial, Verdana;">
+                                            <tr>
+                                                <td colspan="2" style="font-size: 16px;"><b>Invoice Detail:-</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="50%">
+                                                    <table width="100%" style="font-size: 13px; font-family: Arial, Verdana;">
+                                                        <tr>
+                                                            <td style="width:100px;">PNR:</td>
+                                                            <td>@booking.Pnr</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+
+                                                <td width="50%">
+                                                    <table width="100%" style="font-size: 13px; font-family: Arial, Verdana;">
+                                                        <tr>
+                                                            <td style="width:100px;">Origin:</td>
+                                                            <td>@($"{originAirport.CityName} ({originAirport.CityCode})")</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td width="50%">
+                                                    <table width="100%" style="font-size: 13px; font-family: Arial, Verdana;">
+                                                        <tr>
+                                                            <td style="width:100px;">Destination:</td>
+                                                            <td>@($"{destinationAirport.CityName} ({destinationAirport.CityCode})")</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+
+                                                <td width="50%">
+                                                    <table width="100%" style="font-size: 13px; font-family: Arial, Verdana;">
+                                                        <tr>
+                                                            <td style="width:100px;">Invoice No.:</td>
+                                                            <td>@flightItinerary.InvoiceNo</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td width="50%">
+                                                    <table width="100%" style="font-size: 13px; font-family: Arial, Verdana;">
+                                                        <tr>
+                                                            <td style="width:100px;">Date:</td>
+                                                            <td>@(string.Format("{0:D}", Convert.ToDateTime(flightItinerary.InvoiceCreatedOn)))</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+
+                                                <td width="50%">
+                                                    <table width="100%" style="font-size: 13px; font-family: Arial, Verdana;">
+                                                        <tr>
+                                                            <td style="width:100px;">Amount:</td>
+                                                            <td>INR @flightItinerary.InvoiceAmount.ToAmount()</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td align="left" style="padding:10px 20px 0px 20px;" bgcolor="#f1f1f1">
+                                        <table align="center" width="100%" style="font-size: 13px; font-family: Arial, Verdana;">
+                                            <tr>
+                                                <td colspan="2" style="font-size: 16px;"><b>Passanger Detail:-</b></td>
+                                            </tr>
+                                            @foreach (var passenger in passengers)
+                                            {
+                                                <tr>
+                                                    <td colspan="2" width="100%">
+                                                        <table width="100%" style="font-size: 13px; font-family: Arial, Verdana;">
+                                                            <tr>
+                                                                <td style="width:100px;">Name:</td>
+                                                                <td>@($"{passenger.FirstName} {passenger.LastName}")</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+
+
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="2" width="50%">
+                                                        <table width="100%" style="font-size: 13px; font-family: Arial, Verdana;">
+                                                            <tr>
+                                                                <td style="width:100px;">Gender:</td>
+                                                                <td>@(passenger.Gender == 1 ? "Male" : "Female")</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" width="50%">
+                                                        <table width="100%" style="font-size: 13px; font-family: Arial, Verdana;">
+                                                            <tr>
+                                                                <td style="width:100px;">Date Of Birth:</td>
+                                                                <td>@(string.Format("{0:D}", Convert.ToDateTime(passenger.DateOfBirth)))</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+
+
+
+                                                </tr>
+
+                                                @if (passenger.Ticket != null)
+                                                {
+                                                    var ticket = passenger.Ticket ?? new TicketResult();
+
+
+                                                    <tr>
+                                                        <td align="left" style="padding:10px 0px 0px 0px;" bgcolor="#f1f1f1" width="100%">
+                                                            <table align="center" width="100%" style="font-size: 13px; font-family: Arial, Verdana;">
+                                                                <tr>
+                                                                    <td colspan="2" style="font-size: 16px;"><b>Ticket Detail:-</b></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="50%">
+                                                                        <table width="100%" style="font-size: 13px; font-family: Arial, Verdana;">
+                                                                            <tr>
+                                                                                <td style="width:100px;">Ticket No.:</td>
+                                                                                <td>@ticket.TicketNumber</td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+
+                                                                    <td width="50%">
+                                                                        <table width="100%" style="font-size: 13px; font-family: Arial, Verdana;">
+                                                                            <tr>
+                                                                                <td style="width:100px;">Issue Date:</td>
+                                                                                <td>@(string.Format("{0:D}", Convert.ToDateTime(ticket.IssueDate)))</td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
+
+                                                                </tr>
+                                                                @*<tr>
+                                                                        <td width="50%">
+                                                                            <table width="100%">
+                                                                                <tr>
+                                                                                    <td style="width:100px;">Sheet No.:</td>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+
+                                                                        <td width="50%">
+                                                                            <table width="100%">
+                                                                                <tr>
+                                                                                    <td style="width:100px;">Status:</td>
+                                                                                    <td>@ticket.Status</td>
+                                                                                </tr>
+                                                                            </table>
+                                                                        </td>
+
+                                                                    </tr>*@
+
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+
+
+                                        </table>
+                                    </td>
+                                </tr>
+
+                            }
+
+                            <tr>
+                                <td align="left" style="padding:10px 20px 0px 20px;" bgcolor="#f1f1f1">
+                                    &nbsp;
+
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="center">
+                                    <table width="100%" cellspacing="0" cellpadding="0" bgcolor="#680866" align="center">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding:30px 0 30px 0;" align="center">
+                                                    <img src="@(siteUrl)images/sup_bas.png" alt="Your registration is confirmed" style="display: block;" height="53" width="215" border="0" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding-bottom:30px;" align="center">
+                                                    <table width="160px" style="font-size: 13px; font-family: Arial, Verdana;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td height="34" width="34">
+                                                                    <a href="https://www.facebook.com/luxurytraveldeal/" target="_blank">
+                                                                        <img src="@(siteUrl)images/facebook.png" alt="Twitter" style="display: block;" height="32" width="32" border="0" />
+                                                                    </a>
+                                                                </td>
+                                                                @*<td height="34" width="34">
+                                                                    <a href="https://twitter.com/hitours" target="_blank">
+                                                                        <img src="@(siteUrl)images/twitter.png" alt="Twitter" style="display: block;" height="32" width="32" border="0" />
+                                                                    </a>
+                                                                </td>*@
+                                                                <td height="34" width="34">
+                                                                    <a href="https://www.instagram.com/luxurytraveldeals/" target="_blank">
+                                                                        <img src="@(siteUrl)images/instagram.png" alt="Twitter" style="display: block;" height="32" width="32" border="0" />
+                                                                    </a>
+                                                                </td>
+                                                                @*<td height="34" width="34">
+                                                                    <a href="https://www.linkedin.com/company/hi-tours-pvt.-india-ltd./" target="_blank">
+                                                                        <img src="@(siteUrl)images/gplus.png" alt="Twitter" style="display: block;" height="32" width="32" border="0" />
+                                                                    </a>
+                                                                </td>*@
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

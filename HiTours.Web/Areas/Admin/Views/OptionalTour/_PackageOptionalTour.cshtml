@@ -1,0 +1,82 @@
+﻿@model PackageOptionalTourViewModel;
+
+<form asp-antiforgery="true" id="formPackageOptionalTour" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="PackageId" />
+    <div class="box-body">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label asp-for="IncludePackageOptionalTour"></label>
+                <input id="chkIncludeOptionalTour" type="checkbox" class="minimal" asp-for="IncludePackageOptionalTour" />
+                <span asp-validation-for="IncludePackageOptionalTour"></span>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <table class="table" id="tourItemtable" style=@(!Model.IncludePackageOptionalTour?"display:none;":"" )>
+                <thead>
+                    <tr>
+                        <th style="width:10%;">Action</th>
+                        <th style="width:30%;">Vendor</th>
+                        <th style="width:30%;">Country</th>
+                        <th style="width:15%;">Adult Price</th>
+                        <th style="width:15%;">Child Price</th>
+                        @*<th><button type="button" id="btnAdd" class="btn btn-xs btn-primary classAdd">Add Item</button></th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.PackageOptionalTourViewModels != null && Model.PackageOptionalTourViewModels.Count > 0)
+                    {
+                        for (int i = 0; i < Model.PackageOptionalTourViewModels.Count; i++)
+                        {
+                            <tr class="data-tour-item" data-counter="@i">
+                                <td>
+                                    <input asp-for="@Model.PackageOptionalTourViewModels[i].SelectItem" type="checkbox" class="minimal" />
+                                    <span asp-validation-for="@Model.PackageOptionalTourViewModels[i].SelectItem"></span>
+                                </td>
+                                <td>
+                                    <select class="form-control" asp-for="@Model.PackageOptionalTourViewModels[i].VendorId" selected="@Model.PackageOptionalTourViewModels[i].VendorId" id="CountryId" asp-items="@Model.PackageOptionalTourViewModels[i].VendorItems"
+                                            select2-Placeholder="Select Vendor" select2-value="@Model.PackageOptionalTourViewModels[i].VendorId" select2-Url="/selectlist/GetVendorsDropdownList"></select>
+                                    <span asp-validation-for="@Model.PackageOptionalTourViewModels[i].VendorId"></span>
+                                </td>
+                                <td>
+                                    <select class="form-control" asp-for="@Model.PackageOptionalTourViewModels[i].CountryId" selected="@Model.PackageOptionalTourViewModels[i].CountryId" id="CountryId" asp-items="@Model.PackageOptionalTourViewModels[i].CountryItems"
+                                            select2-Placeholder="Select Country" select2-value="@Model.PackageOptionalTourViewModels[i].CountryId" select2-Url="/selectlist/GetCountryList"></select>
+                                    <span asp-validation-for="@Model.PackageOptionalTourViewModels[i].CountryId"></span>
+                                </td>
+                                <td>
+                                    <input asp-for="@Model.PackageOptionalTourViewModels[i].AdultPrice" type="number" class="form-control a_price" placeholder="Adult Price" id="a_price_@i" />
+                                    <span asp-validation-for="@Model.PackageOptionalTourViewModels[i].AdultPrice"></span>
+                                </td>
+                                <td>
+                                    <input asp-for="@Model.PackageOptionalTourViewModels[i].ChildPrice" type="number" class="form-control c_price" placeholder="Child Price" id="c_price_@i" />
+                                    <span asp-validation-for="@Model.PackageOptionalTourViewModels[i].ChildPrice"></span>
+                                </td>
+                                @*<td><button type="button" id="btnDelete" class="deleteItem btn btn btn-danger btn-xs">Remove</button></td>*@
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><span style="display:block; text-align:center;">Please Complete Destinations Before Add Ons Optional Tour</span></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+</form>
+<script>
+    $(document).ready(function (event) { 
+        $('input[type="checkbox"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue'
+        });
+        BindIncludeVisa();
+    })
+    function BindIncludeVisa() {
+        $('#chkIncludeOptionalTour').on('ifChecked', function (event) {
+            $('#tourItemtable').show();
+        });
+        $('#chkIncludeOptionalTour').on('ifUnchecked', function (event) {
+            $('#tourItemtable').hide();
+        });
+    }
+</script>

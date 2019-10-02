@@ -1,0 +1,789 @@
+
+
+@-ms-keyframes spin {
+    from {
+        -ms-transform: rotate(0deg);
+    }
+
+    to {
+        -ms-transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes spin {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+
+    to {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.price-calender .row {
+    width: 910px;
+    margin: 0 auto;
+    text-align: left;
+    padding-right: 18px;
+    padding-left: 18px
+}
+
+
+.icon-angle-left:before {
+    content: "\f104"
+}
+
+.icon-angle-right:before {
+    content: "\f105"
+}
+
+.icon-angle-up:before {
+    content: "\f106"
+}
+
+.icon-angle-down:before {
+    content: "\f107"
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: inherit;
+    -webkit-font-smoothing: antialiased;
+    display: inline;
+    width: auto;
+    height: auto;
+    line-height: normal;
+    vertical-align: baseline;
+    background-image: none;
+    background-position: 0 0;
+    background-repeat: repeat;
+    margin-top: 0
+}
+
+    [class^="icon-"]:before, [class*=" icon-"]:before {
+        text-decoration: inherit;
+        display: inline-block;
+        speak: none
+    }
+
+a {
+    text-decoration: none;
+    color: #fca32b;
+}
+
+    a:visited {
+        text-decoration: none;
+        color: #fca32b
+    }
+
+    a:hover, a:focus {
+        color: #a37e41;
+        transition: all .1s;
+        outline: none
+    }
+
+
+
+
+
+
+
+
+
+/******/
+
+
+
+
+.booking-right-section {
+    border: 1px solid #dadada;
+    position: relative
+}
+
+.calendar-container {
+    overflow: hidden;
+    position: relative;
+    border-bottom: 0
+}
+
+.month {
+    float: left;
+    margin: 0;
+    width: 100%
+}
+
+.week {
+    width: 100%;
+    min-height: auto
+}
+
+    .week .day:first-child, .week .day.firstDayOfMonth {
+        border-left: 1px solid rgba(218,218,218,0.5)
+    }
+
+.day, .padDay {
+    position: relative;
+    height: 46px;
+    float: left;
+    text-align: center;
+    font-size: 14px;
+    font-size: 1.4rem;
+    width: 14.28571429%;
+    padding: 5px 0 0 0;
+    padding: 0.4rem 0 0 0;
+    font-family: 'Open Sans',sans-serif;
+    box-sizing: border-box
+}
+
+.padDay {
+    height: 0;
+    padding-bottom: 1px;
+    padding-bottom: 0.1rem
+}
+
+.day {
+    /*border: 1px solid rgba(218,218,218,0.5);*/
+    border-left: 0;
+    color: #666666;
+    background: #ffffff;
+    cursor: default
+}
+
+    .day .rate {
+        color: #fca32b;
+        font: 0.9rem / 1.5 'Open Sans',sans-serif;
+        margin-left: 0;
+        padding: 0;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .day.available.soldOut .rate {
+        /*display: none*/
+    }
+
+    .day.notAvailable, .day.soldOut, .day.checkInNotAvailable {
+        background: #efefef;
+        color: #c1c1c1;
+        margin-bottom: 0
+    }
+
+        .day.notAvailable .rate, .day.soldOut .rate, .day.checkInNotAvailable .rate {
+            display: none !important;
+            color: red !important;
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        .day.notAvailable:hover, .day.soldOut:hover, .day.checkInNotAvailable:hover {
+            background: #efefef;
+            color: #c1c1c1;
+            cursor: default
+        }
+
+    .day.allocationStartDay {
+        background: #ffffff;
+        color: #666666;
+        border-bottom: solid 1px #fca32b;
+    }
+
+        .day.allocationStartDay .rate {
+            display: block
+        }
+
+        .day.allocationStartDay:hover, .day.eanApplicable:hover, .day.fsEndDay:hover,
+        .day.allocationStartDay.available-extranight:hover {
+            background:#fca32b;
+            color: black;
+            cursor: pointer;
+            border-bottom: 0
+        }
+
+            .day.allocationStartDay:hover .rate, .day.eanApplicable:hover .rate, .day.fsEndDay:hover .rate {
+                color: black;
+            }
+
+            .day.allocationStartDay:hover.backfilled, .day.eanApplicable:hover.backfilled, .day.fsEndDay:hover.backfilled {
+                border-bottom: 0
+            }
+
+    .day.disabled {
+        background: #efefef;
+        color: #c1c1c1;
+        border-bottom: 0
+    }
+
+        .day.disabled .rate {
+            /*display: none*/
+        }
+
+        .day.disabled:hover {
+            background: #efefef;
+            color: #c1c1c1;
+            cursor: default
+        }
+
+        .day.disabled.backfilled.day.disabled.allocationStartDay {
+            border-bottom: 0
+        }
+
+    .day .eanEndDay, .day .eanCheckInDay, .day .eanCheckOutDay {
+        background: #fca32b;
+        color: #ffffff
+    }
+
+        .day .eanEndDay.backfilled.day .eanEndDay.allocationStartDay, .day .eanEndDay.backfilled.day .eanCheckInDay.allocationStartDay, .day .eanEndDay.backfilled.day .eanCheckOutDay.allocationStartDay, .day .eanCheckInDay.backfilled.day .eanEndDay.allocationStartDay, .day .eanCheckInDay.backfilled.day .eanCheckInDay.allocationStartDay, .day .eanCheckInDay.backfilled.day .eanCheckOutDay.allocationStartDay, .day .eanCheckOutDay.backfilled.day .eanEndDay.allocationStartDay, .day .eanCheckOutDay.backfilled.day .eanCheckInDay.allocationStartDay, .day .eanCheckOutDay.backfilled.day .eanCheckOutDay.allocationStartDay {
+            border-bottom: 0
+        }
+
+    .day .eanGhost {
+        background: rgba(255,140,0,0.75);
+        color: #ffffff;
+        border-bottom: 0
+    }
+
+    .day.checkInDay, .day.eanCheckInDay {
+        background-image: url(/images/method-draw-image-left.svg) !important;
+        background-size: 100% 100% !important;
+        color: black;
+        border-bottom: 0;
+    }
+
+        .day.checkInDay .rate,
+        .day.eanCheckInDay .rate,
+        .day.checkOutDay .rate,
+        .day.eanCheckOutDay .rate {
+            display: block;
+            color: black;
+        }
+
+        .day.checkInDay:hover, .day.eanCheckInDay:hover {
+            color: black;
+            /*background: #fca32b*/
+        }
+
+        .day.checkInDay.backfilled.day.checkInDay.allocationStartDay, .day.checkInDay.backfilled.day.eanCheckInDay.allocationStartDay, .day.eanCheckInDay.backfilled.day.checkInDay.allocationStartDay, .day.eanCheckInDay.backfilled.day.eanCheckInDay.allocationStartDay {
+            border-bottom: 0
+        }
+
+    .day.checkOutDay, .day.eanCheckOutDay {
+        background-image: url(/images/method-draw-image-left.svg) !important;
+        transform: scale(-1,1);
+        background-size: 100% 100% !important;
+        color: black;
+    }
+
+
+        .day.checkOutDay .rate, .day.eanCheckOutDay .rate,
+        .day.checkOutDay.rooms-left .rate, .day.eanCheckOutDay.rooms-left .rate {
+            /*display: none*/
+        }
+
+        .day.checkOutDay:hover, .day.eanCheckOutDay:hover {
+            color: black;
+            background-image: url(/images/method-draw-image-right.svg) !important;
+            background-size: 100% 100% !important;
+        }
+
+        .day.checkOutDay.backfilled.day.checkOutDay.allocationStartDay, .day.checkOutDay.backfilled.day.eanCheckOutDay.allocationStartDay, .day.eanCheckOutDay.backfilled.day.checkOutDay.allocationStartDay, .day.eanCheckOutDay.backfilled.day.eanCheckOutDay.allocationStartDay {
+            border-bottom: 0
+        }
+
+    .day.ghost,
+    .day.available-extranight.hoverGhost,
+    .day.available-extranight.hoverCheckOut {
+        background: rgba(252, 162, 44, 0.8);
+        color: black;
+        border-bottom: 0
+    }
+    .day.hoverCheckOut {
+        background-image: url(/images/method-draw-image-left.svg) !important;
+        background-size: 100% 100% !important;
+        color: black;
+        transform: scale(-1,1);
+    }
+    .day.hoverGhost {
+        background: rgba(252, 162, 44, 0.8);
+        color: black;
+        border-bottom: 0
+    }
+    /*.day.ghost .rate, .day.hoverGhost .rate, .day.hoverCheckOut .rate {*/
+    .day.ghost .rate, .day.hoverGhost .rate {
+        display: block;
+        color: black;
+    }
+        .day.hoverCheckOut .rate
+        {
+            color:#ffffff;
+        }
+        .day.ghost:hover, .day.hoverGhost:hover, .day.hoverCheckOut:hover {
+            color: black;
+            background:#fca32b;
+        }
+
+        .day.ghost.day.backfilled.allocationStartDay, .day.hoverGhost.day.backfilled.allocationStartDay, .day.hoverCheckOut.day.backfilled.allocationStartDay {
+            border-bottom: 0
+        }
+
+    .day.backfilled.day.allocationStartDay {
+        border-bottom: solid 1px #666666
+    }
+
+        .day.backfilled.day.allocationStartDay:hover {
+            border-bottom: 0
+        }
+
+.fixed-travel .day.ghost .rate {
+    /*display: none*/
+}
+.fixed-travel .checkOutDay .day-text {
+    /*display: none*/
+    transform: scale(-1,1);
+}
+.hoverCheckOut .rate, .hoverCheckOut .day-text {
+    transform: scale(-1,1);
+}
+.fixed-travel .checkOutDay .rate {
+    /*display: none*/
+    transform: scale(-1,1);
+}
+
+.dp-sale .booking-right-section {
+    margin-top: 30px;
+    margin-top: 3rem
+}
+
+.dp-sale .booking-section #booknow.desk-full {
+    margin-bottom: 0
+}
+
+div[data-tags*='flights'] .booking-right-section {
+    margin-top: 30px;
+    margin-top: 3rem
+}
+
+div[data-tags*='flights'] .booking-section #booknow.desk-full {
+    margin-bottom: 0
+}
+
+.checkOutCalendar .month, .checkInCalendar .month {
+    display: none
+}
+
+    .checkOutCalendar .month.active, .checkInCalendar .month.active {
+        display: block;
+        margin-bottom: 1px;
+        margin-bottom: 0.1rem
+    }
+
+.weekHeader {
+    padding: 10px 0;
+    padding: 1rem 0;
+    overflow: hidden
+}
+
+    .weekHeader .weekDay {
+        text-align: center;
+        float: left;
+        width: calc(14.28571429%);
+        font-family: 'Open Sans',sans-serif;
+        font-size: 12px;
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: #808285
+    }
+
+.month-selection {
+    overflow: hidden;
+    padding: 15px 15px 0 15px;
+    padding: 1.5rem 1.5rem 0 1.5rem
+}
+
+    .month-selection .availaibility-link {
+        line-height: 2
+    }
+
+    .month-selection .checkin-month, .month-selection .checkout-month {
+        display: inline-block;
+        vertical-align: top;
+        line-height: 2;
+        padding: 0 5px;
+        padding: 0 0.5rem;
+        text-transform: uppercase
+    }
+
+.previous-month, .next-month {
+    display: inline-block;
+    border: 1px solid #fca32b;
+    height: 24px;
+    width: 24px;
+    position: relative;
+    border-radius: 2px
+}
+
+.is-inactive .previous-month, .is-inactive .next-month {
+    opacity: .2;
+    cursor: default
+}
+
+.previous-month .icon-angle-right, .next-month .icon-angle-right, .previous-month .icon-angle-left, .next-month .icon-angle-left {
+    position: absolute;
+    font-size: 22px;
+    font-size: 2.2rem
+}
+
+.previous-month .icon-angle-right, .next-month .icon-angle-right {
+    margin: 0 0 0 9px;
+    margin: 0 0 0 0.9rem
+}
+
+.previous-month .icon-angle-left, .next-month .icon-angle-left {
+    margin: 0 0 0 8px;
+    margin: 0 0 0 0.8rem
+}
+
+.move-to-next-month, .move-to-previous-month {
+    top: 0;
+    padding: 10px;
+    padding: 1rem;
+    z-index: 2;
+    color: #fca32b;
+    position: absolute;
+    cursor: pointer
+}
+
+    .move-to-next-month:hover, .move-to-previous-month:hover {
+        color: #cc7000
+    }
+
+    .move-to-next-month:after, .move-to-previous-month:after {
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-style: normal;
+        text-decoration: inherit;
+        -webkit-font-smoothing: antialiased;
+        display: inline;
+        width: auto;
+        height: auto;
+        line-height: normal;
+        vertical-align: baseline;
+        background-image: none;
+        background-position: 0 0;
+        background-repeat: repeat;
+        margin-top: 0;
+        font-size: 12px;
+        font-size: 1.2rem
+    }
+
+.move-to-previous-month {
+    left: 0;
+    margin: 0 0 0 -24px;
+    margin: 0 0 0 -2.4rem
+}
+
+    .move-to-previous-month:after {
+        content: "\f060"
+    }
+
+.move-to-next-month {
+    right: 0;
+    margin: 0 -24px 0 0;
+    margin: 0 -2.4rem 0 0
+}
+
+    .move-to-next-month:after {
+        content: "\f061"
+    }
+
+.calendarPopUpContainer {
+    font-family: 'Open Sans',sans-serif;
+    width: auto;
+    padding: 0 15px;
+    padding: 0 1.5rem
+}
+
+    .calendarPopUpContainer .month {
+        float: left;
+        width: calc(48%);
+        margin: 0 1%;
+        min-height: 350px
+    }
+
+.backfilled-legend {
+    font-size: 12px;
+    height: 35px;
+    padding: 15px 15px 0 15px;
+    padding: 1.5rem 1.5rem 0 1.5rem;
+    box-sizing: border-box;
+    position: relative
+}
+
+.backfilled-legend__full-availability {
+    padding: 0 15px 15px 15px;
+    float: left;
+    margin-bottom: 40px
+}
+
+.backfilled-legend__exclusive-rates {
+    border-bottom: 1px solid #fca32b
+}
+
+.backfilled-legend__non-exclusive-rates {
+    border-bottom: 1px solid #666666
+}
+
+.backfilled-legend__exclusive-rates, .backfilled-legend__non-exclusive-rates {
+    box-sizing: border-box;
+    float: left;
+    margin-right: 5px;
+    clear: both;
+    padding: 7px;
+    border-top: 1px solid #dadada;
+    border-left: 1px solid #dadada;
+    border-right: 1px solid #dadada
+}
+
+.backfilled-legend__key {
+    display: inline-block;
+    clear: both
+}
+
+.backfilled-legend__exclusive, .backfilled-legend__non-exclusive {
+    display: inline-block;
+    margin-left: 10px
+}
+
+.calendar-summary {
+    width: 100%;
+    display: block
+}
+
+.calendar-summary__dates {
+    display: block;
+    clear: both;
+    padding: 15px;
+    padding: 1.5rem
+}
+
+.calendar-summary__nights {
+    margin-left: 10px;
+    margin-left: 1rem
+}
+
+.calendar-summary .dates__arrow {
+    background-image: url("//d1x3cbuht6sy0f.cloudfront.net/assets/images/dates-arrow.svg");
+    width: 14px;
+    height: 10px;
+    display: inline-block;
+    margin: 0 5px;
+    margin: 0 0.5rem
+}
+
+.calendar-summary__clear {
+    text-align: right;
+    float: right;
+    display: inline-block
+}
+
+.calendar-summary__info {
+    display: table;
+    table-layout: fixed;
+    overflow: hidden;
+    background: rgba(239,239,239,0.5);
+    border-top: 0;
+    width: 100%;
+    box-sizing: border-box
+}
+
+    .calendar-summary__info .hide + div:nth-child(3) .label {
+        display: inline;
+        float: left
+    }
+
+    .calendar-summary__info .hide + div:nth-child(3) .price {
+        display: inline;
+        float: right
+    }
+
+.calendar-summary__discount.ean-summary__item {
+    display: none
+}
+
+.calendar-summary__item {
+    border-top: 1px solid #dadada;
+    display: table-cell;
+    text-align: center;
+    padding: 15px;
+    padding: 1.5rem
+}
+
+    .calendar-summary__item .label {
+        font: 1.2rem / 2 'Open Sans',sans-serif
+    }
+
+    .calendar-summary__item.hide {
+        display: none
+    }
+
+    .calendar-summary__item:first-child {
+        border-left: 1px solid #dadada
+    }
+
+.calendar-summary__total-price .deposit-price, .calendar-summary__deposit .deposit-price, .calendar-summary__total-price .price, .calendar-summary__deposit .price {
+    color: #fca32b;
+    font: 600 1.8rem / 1.8rem 'Open Sans',sans-serif
+}
+
+.calendar-summary .feePrice, .calendar-summary .priceWithFee {
+    color: #666666;
+    font: 600 1.8rem / 1.5rem 'Open Sans',sans-serif;
+    margin-top: 5px;
+    margin-top: 0.5rem
+}
+
+.calendar-summary .price-secondary {
+    font: 600 1.4rem / 1.8rem 'Open Sans',sans-serif
+}
+
+.calendar-summary .discount-percentage {
+    font-size: 1.2rem
+}
+
+.bookerButtons {
+    margin: 0 0 0 10px;
+    margin: 0 0 0 1rem
+}
+
+.icon-refresh:before {
+    content: "\f021"
+}
+
+
+.summary-book-button {
+    margin-right: 0
+}
+
+.calendar-spinner {
+    position: absolute;
+    top: 35%;
+    left: 38%;
+    z-index: 99;
+    text-align: center
+}
+
+.icon-spin {
+    animation: spin 2s linear infinite;
+}
+
+
+
+.calendar-spinner__gif {
+    display: block;
+    font-size: 24px;
+    font-size: 2.4rem;
+    margin: 0 0 5px 0;
+    margin: 0 0 0.5rem 0;
+    color: #fca32b
+}
+
+.calendar-spinner__text {
+    display: block;
+    font-size: 18px;
+    font-size: 1.8rem
+}
+
+.loading-layer {
+    background: rgba(255,255,255,0.8);
+    -webkit-transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -ms-transition: opacity .25s ease-in-out;
+    -o-transition: opacity .25s ease-in-out;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 98 ;
+    font-size: small;
+    text-align: center;
+    color: #fca32b;
+}
+
+.day.available-extranight {
+    background: #fff1e0;
+}
+
+.available-extranight {
+    cursor: pointer !important;
+}
+
+.notAvailable.available-extranight:hover {
+    color: #ffffff;
+    background: rgba(255,140,0,0.75);
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.deal-booking-loading {
+}
+
+    .deal-booking-loading .checkInContainer {
+        min-height: 250px;
+    }
+
+    .deal-booking-loading .loading-layer {
+        background: none;
+    }
+
+    .deal-booking-loading .calendar-spinner {
+        left: 48%;
+    }
+
+
+
+.day.rooms-left:not(.checkOutDay,.hoverCheckOut) {
+    background: #eae7e7 !important;
+    color: #666666 !important;
+}
+
+.day.rooms-left:not(.checkOutDay) .rate {
+    font-size: 9px !important;
+    color: maroon !important;
+    font-weight: bold !important;
+    line-height: 9px !important;
+    display: block !important;
+}
+
+.day.rooms-left.hoverCheckOut .rate {
+    display: none;
+}
+.hoverCheckIn {
+    background-image: url(/images/method-draw-image-left.svg) !important;
+    background-size: 100% 100% !important;
+}

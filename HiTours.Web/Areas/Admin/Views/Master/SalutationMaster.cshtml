@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewData["Title"] = "Salutation";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<form asp-antiforgery="true" method="post" action="@Url.Action("Salutation","Master", new { @area = "Admin" })" enctype="multipart/form-data">
+    <div class="form-group col-md-6">
+        <label>Name</label>
+        <input name="name" class="form-control" required />
+    </div>
+    <input name="mode" type="hidden" value="master" />
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit) })
+</form>

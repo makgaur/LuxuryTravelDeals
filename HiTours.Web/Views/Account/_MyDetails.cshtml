@@ -1,0 +1,66 @@
+﻿@model ApplicationUserChangePasswordViewModel
+@{
+    var emailid = this.User.Claims.FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Email).Value;
+}
+<form class="form-horizontal my-account-form" role="form" method="post" id="frmMydeatils">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Email <span class="danger">*</span></label>
+                <div class="col-xs-9 col-sm-9">
+                    <input type="text" class="form-control" value="@emailid" disabled="disabled">
+                </div>
+            </div>
+        </div>
+        @if (this.User.Identities.FirstOrDefault().AuthenticationType == Constants.ApplicationCookies)
+        {
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-xs-3 col-sm-3 skip-required" for="inputEmail1">Old password<span class="danger">*</span></label>
+                    <div class="col-xs-9 col-sm-9">
+                        <input class="form-control" placeholder="" type="password" asp-for="OldPassword" autocomplete="off">
+                        <span asp-validation-for="OldPassword"></span>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3 skip-required" for="inputEmail1">New password <span class="danger">*</span></label>
+                <div class="col-xs-9 col-sm-9">
+                    <input class="form-control" asp-for="NewPassword" placeholder="" type="password">
+                    <span asp-validation-for="NewPassword"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3 skip-required" for="inputEmail1">Confirm password <span class="danger">*</span></label>
+                <div class="col-xs-9 col-sm-9">
+                    <input class="form-control" asp-for="ConfirmPassword" placeholder="" type="password">
+                    <span asp-validation-for="ConfirmPassword"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <p>
+                <span> <i class="fa fa-question-circle" aria-hidden="true"></i></span>
+                You have not yet registered your card details. You can choose to do this with your next holiday booking
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="submit" class="btn pull-right">Submit</button>
+        </div>
+    </div>
+
+</form>

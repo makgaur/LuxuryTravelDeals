@@ -1,0 +1,1503 @@
+﻿.flag-sprt {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    vertical-align: text-top;
+    line-height: 16px;
+    background: url('../images/flags16.png') no-repeat
+}
+
+
+
+
+._Arab_League {
+    background-position: 0 -32px
+}
+
+._ASEAN {
+    background-position: 0 -48px
+}
+
+._CARICOM {
+    background-position: 0 -64px
+}
+
+._CIS {
+    background-position: 0 -80px
+}
+
+._Commonwealth {
+    background-position: 0 -96px
+}
+
+._England {
+    background-position: 0 -112px
+}
+
+._European_Union {
+    background-position: 0 -128px
+}
+
+._Islamic_Conference {
+    background-position: 0 -144px
+}
+
+._Kosovo {
+    background-position: 0 -160px
+}
+
+._NATO {
+    background-position: 0 -176px
+}
+
+._Northern_Cyprus {
+    background-position: 0 -192px
+}
+
+._Northern_Ireland {
+    background-position: 0 -208px
+}
+
+._Olimpic_Movement {
+    background-position: 0 -224px
+}
+
+._OPEC {
+    background-position: 0 -240px
+}
+
+._Red_Cross {
+    background-position: 0 -256px
+}
+
+._Scotland {
+    background-position: 0 -272px
+}
+
+._Somaliland {
+    background-position: 0 -288px
+}
+
+._Tibet {
+    background-position: 0 -304px
+}
+
+._United_Nations {
+    background-position: 0 -320px
+}
+
+._Wales {
+    background-position: 0 -336px
+}
+
+.ad {
+    background-position: 0 -352px
+}
+
+.ae {
+    background-position: 0 -368px
+}
+
+.af {
+    background-position: 0 -384px
+}
+
+.ag {
+    background-position: 0 -400px
+}
+
+.ai {
+    background-position: 0 -416px
+}
+
+.al {
+    background-position: 0 -432px
+}
+
+.am {
+    background-position: 0 -448px
+}
+
+.an {
+    background-position: 0 -464px
+}
+
+.ao {
+    background-position: 0 -480px
+}
+
+.aq {
+    background-position: 0 -496px
+}
+
+.ar {
+    background-position: 0 -512px
+}
+
+.as {
+    background-position: 0 -528px
+}
+
+.at {
+    background-position: 0 -544px
+}
+
+.au {
+    background-position: 0 -560px
+}
+
+.aw {
+    background-position: 0 -576px
+}
+
+.az {
+    background-position: 0 -592px
+}
+
+.ba {
+    background-position: 0 -608px
+}
+
+.bb {
+    background-position: 0 -624px
+}
+
+.bd {
+    background-position: 0 -640px
+}
+
+.be {
+    background-position: 0 -656px
+}
+
+.bf {
+    background-position: 0 -672px
+}
+
+.bg {
+    background-position: 0 -688px
+}
+
+.bh {
+    background-position: 0 -704px
+}
+
+.bi {
+    background-position: 0 -720px
+}
+
+.bj {
+    background-position: 0 -736px
+}
+
+.bm {
+    background-position: 0 -752px
+}
+
+.bn {
+    background-position: 0 -768px
+}
+
+.bo {
+    background-position: 0 -784px
+}
+
+.br {
+    background-position: 0 -800px
+}
+
+.bs {
+    background-position: 0 -816px
+}
+
+.bt {
+    background-position: 0 -832px
+}
+
+.bw {
+    background-position: 0 -848px
+}
+
+.by {
+    background-position: 0 -864px
+}
+
+.bz {
+    background-position: 0 -880px
+}
+
+.ca {
+    background-position: 0 -896px
+}
+
+.cg {
+    background-position: 0 -912px
+}
+
+.cf {
+    background-position: 0 -928px
+}
+
+.cd {
+    background-position: 0 -944px
+}
+
+.ch {
+    background-position: 0 -960px
+}
+
+.ci {
+    background-position: 0 -976px
+}
+
+.ck {
+    background-position: 0 -992px
+}
+
+.cl {
+    background-position: 0 -1008px
+}
+
+.cm {
+    background-position: 0 -1024px
+}
+
+.cn {
+    background-position: 0 -1040px
+}
+
+.co {
+    background-position: 0 -1056px
+}
+
+.cr {
+    background-position: 0 -1072px
+}
+
+.cu {
+    background-position: 0 -1088px
+}
+
+.cv {
+    background-position: 0 -1104px
+}
+
+.cy {
+    background-position: 0 -1120px
+}
+
+.cz {
+    background-position: 0 -1136px
+}
+
+.de {
+    background-position: 0 -1152px
+}
+
+.dj {
+    background-position: 0 -1168px
+}
+
+.dk {
+    background-position: 0 -1184px
+}
+
+.dm {
+    background-position: 0 -1200px
+}
+
+.do {
+    background-position: 0 -1216px
+}
+
+.dz {
+    background-position: 0 -1232px
+}
+
+.ec {
+    background-position: 0 -1248px
+}
+
+.ee {
+    background-position: 0 -1264px
+}
+
+.eg {
+    background-position: 0 -1280px
+}
+
+.eh {
+    background-position: 0 -1296px
+}
+
+.er {
+    background-position: 0 -1312px
+}
+
+.es {
+    background-position: 0 -1328px
+}
+
+.et {
+    background-position: 0 -1344px
+}
+
+.fi {
+    background-position: 0 -1360px
+}
+
+.fj {
+    background-position: 0 -1376px
+}
+
+.fm {
+    background-position: 0 -1392px
+}
+
+.fo {
+    background-position: 0 -1408px
+}
+
+.lag-sprt.fr {
+    background-position: 0 -1424px
+}
+
+.ga {
+    background-position: 0 -1440px
+}
+
+.gb {
+    background-position: 0 -1456px
+}
+
+.gd {
+    background-position: 0 -1472px
+}
+
+.ge {
+    background-position: 0 -1488px
+}
+
+.gg {
+    background-position: 0 -1504px
+}
+
+.gh {
+    background-position: 0 -1520px
+}
+
+.gi {
+    background-position: 0 -1536px
+}
+
+.gl {
+    background-position: 0 -1552px
+}
+
+.gm {
+    background-position: 0 -1568px
+}
+
+.gn {
+    background-position: 0 -1584px
+}
+
+.gp {
+    background-position: 0 -1600px
+}
+
+.gq {
+    background-position: 0 -1616px
+}
+
+.gr {
+    background-position: 0 -1632px
+}
+
+.gt {
+    background-position: 0 -1648px
+}
+
+.gu {
+    background-position: 0 -1664px
+}
+
+.gw {
+    background-position: 0 -1680px
+}
+
+.gy {
+    background-position: 0 -1696px
+}
+
+.hk {
+    background-position: 0 -1712px
+}
+
+.hn {
+    background-position: 0 -1728px
+}
+
+.hr {
+    background-position: 0 -1744px
+}
+
+.ht {
+    background-position: 0 -1760px
+}
+
+.hu {
+    background-position: 0 -1776px
+}
+
+.id {
+    background-position: 0 -1792px
+}
+
+.mc {
+    background-position: 0 -1792px
+}
+
+.ie {
+    background-position: 0 -1808px
+}
+
+.il {
+    background-position: 0 -1824px
+}
+
+.im {
+    background-position: 0 -1840px
+}
+
+.in {
+    background-position: 0 -1856px
+}
+
+.iq {
+    background-position: 0 -1872px
+}
+
+.ir {
+    background-position: 0 -1888px
+}
+
+.is {
+    background-position: 0 -1904px
+}
+
+.it {
+    background-position: 0 -1920px
+}
+
+.je {
+    background-position: 0 -1936px
+}
+
+.jm {
+    background-position: 0 -1952px
+}
+
+.jo {
+    background-position: 0 -1968px
+}
+
+.jp {
+    background-position: 0 -1984px
+}
+
+.ke {
+    background-position: 0 -2000px
+}
+
+.kg {
+    background-position: 0 -2016px
+}
+
+.kh {
+    background-position: 0 -2032px
+}
+
+.ki {
+    background-position: 0 -2048px
+}
+
+.km {
+    background-position: 0 -2064px
+}
+
+.kn {
+    background-position: 0 -2080px
+}
+
+.kp {
+    background-position: 0 -2096px
+}
+
+.kr {
+    background-position: 0 -2112px
+}
+
+.kw {
+    background-position: 0 -2128px
+}
+
+.ky {
+    background-position: 0 -2144px
+}
+
+.kz {
+    background-position: 0 -2160px
+}
+
+.la {
+    background-position: 0 -2176px
+}
+
+.lb {
+    background-position: 0 -2192px
+}
+
+.lc {
+    background-position: 0 -2208px
+}
+
+.li {
+    background-position: 0 -2224px
+}
+
+.lk {
+    background-position: 0 -2240px
+}
+
+.lr {
+    background-position: 0 -2256px
+}
+
+.ls {
+    background-position: 0 -2272px
+}
+
+.lt {
+    background-position: 0 -2288px
+}
+
+.lu {
+    background-position: 0 -2304px
+}
+
+.lv {
+    background-position: 0 -2320px
+}
+
+.ly {
+    background-position: 0 -2336px
+}
+
+.ma {
+    background-position: 0 -2352px
+}
+
+.md {
+    background-position: 0 -2368px
+}
+
+.me {
+    background-position: 0 -2384px
+}
+
+.mg {
+    background-position: 0 -2400px
+}
+
+.mh {
+    background-position: 0 -2416px
+}
+
+.mk {
+    background-position: 0 -2432px
+}
+
+.ml {
+    background-position: 0 -2448px
+}
+
+.mm {
+    background-position: 0 -2464px
+}
+
+.mn {
+    background-position: 0 -2480px
+}
+
+.mo {
+    background-position: 0 -2496px
+}
+
+.mq {
+    background-position: 0 -2512px
+}
+
+.mr {
+    background-position: 0 -2528px
+}
+
+.ms {
+    background-position: 0 -2544px
+}
+
+.mt {
+    background-position: 0 -2560px
+}
+
+.mu {
+    background-position: 0 -2576px
+}
+
+.mv {
+    background-position: 0 -2592px
+}
+
+.mw {
+    background-position: 0 -2608px
+}
+
+.mx {
+    background-position: 0 -2624px
+}
+
+.my {
+    background-position: 0 -2640px
+}
+
+.mz {
+    background-position: 0 -2656px
+}
+
+.na {
+    background-position: 0 -2672px
+}
+
+.nc {
+    background-position: 0 -2688px
+}
+
+.ne {
+    background-position: 0 -2704px
+}
+
+.ng {
+    background-position: 0 -2720px
+}
+
+.ni {
+    background-position: 0 -2736px
+}
+
+.nl {
+    background-position: 0 -2752px
+}
+
+.no {
+    background-position: 0 -2768px
+}
+
+.np {
+    background-position: 0 -2784px
+}
+
+.nr {
+    background-position: 0 -2800px
+}
+
+.nz {
+    background-position: 0 -2816px
+}
+
+.om {
+    background-position: 0 -2832px
+}
+
+.pa {
+    background-position: 0 -2848px
+}
+
+.pe {
+    background-position: 0 -2864px
+}
+
+.pf {
+    background-position: 0 -2880px
+}
+
+.pg {
+    background-position: 0 -2896px
+}
+
+.ph {
+    background-position: 0 -2912px
+}
+
+.pk {
+    background-position: 0 -2928px
+}
+
+.pl {
+    background-position: 0 -2944px
+}
+
+.pr {
+    background-position: 0 -2960px
+}
+
+.ps {
+    background-position: 0 -2976px
+}
+
+.pt {
+    background-position: 0 -2992px
+}
+
+.pw {
+    background-position: 0 -3008px
+}
+
+.py {
+    background-position: 0 -3024px
+}
+
+.qa {
+    background-position: 0 -3040px
+}
+
+.re {
+    background-position: 0 -3056px
+}
+
+.ro {
+    background-position: 0 -3072px
+}
+
+.rs {
+    background-position: 0 -3088px
+}
+
+.ru {
+    background-position: 0 -3104px
+}
+
+.rw {
+    background-position: 0 -3120px
+}
+
+.sa {
+    background-position: 0 -3136px
+}
+
+.sb {
+    background-position: 0 -3152px
+}
+
+.sc {
+    background-position: 0 -3168px
+}
+
+.sd {
+    background-position: 0 -3184px
+}
+
+.se {
+    background-position: 0 -3200px
+}
+
+.sg {
+    background-position: 0 -3216px
+}
+
+.si {
+    background-position: 0 -3232px
+}
+
+.sk {
+    background-position: 0 -3248px
+}
+
+.sl {
+    background-position: 0 -3264px
+}
+
+.sm {
+    background-position: 0 -3280px
+}
+
+.sn {
+    background-position: 0 -3296px
+}
+
+.so {
+    background-position: 0 -3312px
+}
+
+.sr {
+    background-position: 0 -3328px
+}
+
+.st {
+    background-position: 0 -3344px
+}
+
+.sv {
+    background-position: 0 -3360px
+}
+
+.sy {
+    background-position: 0 -3376px
+}
+
+.sz {
+    background-position: 0 -3392px
+}
+
+.tc {
+    background-position: 0 -3408px
+}
+
+.td {
+    background-position: 0 -3424px
+}
+
+.tg {
+    background-position: 0 -3440px
+}
+
+.th {
+    background-position: 0 -3456px
+}
+
+.tj {
+    background-position: 0 -3472px
+}
+
+.tl {
+    background-position: 0 -3488px
+}
+
+.tm {
+    background-position: 0 -3504px
+}
+
+.tn {
+    background-position: 0 -3520px
+}
+
+.to {
+    background-position: 0 -3536px
+}
+
+.tr {
+    background-position: 0 -3552px
+}
+
+.tt {
+    background-position: 0 -3568px
+}
+
+.tv {
+    background-position: 0 -3584px
+}
+
+.tw {
+    background-position: 0 -3600px
+}
+
+.tz {
+    background-position: 0 -3616px
+}
+
+.ua {
+    background-position: 0 -3632px
+}
+
+.ug {
+    background-position: 0 -3648px
+}
+
+.us {
+    background-position: 0 -3664px
+}
+
+.uy {
+    background-position: 0 -3680px
+}
+
+.uz {
+    background-position: 0 -3696px
+}
+
+.va {
+    background-position: 0 -3712px
+}
+
+.vc {
+    background-position: 0 -3728px
+}
+
+.ve {
+    background-position: 0 -3744px
+}
+
+.vg {
+    background-position: 0 -3760px
+}
+
+.vi {
+    background-position: 0 -3776px
+}
+
+.vn {
+    background-position: 0 -3792px
+}
+
+.vu {
+    background-position: 0 -3808px
+}
+
+.ws {
+    background-position: 0 -3824px
+}
+
+.ye {
+    background-position: 0 -3840px
+}
+
+.za {
+    background-position: 0 -3856px
+}
+
+.zm {
+    background-position: 0 -3872px
+}
+
+.zw {
+    background-position: 0 -3872px
+}
+
+
+.flight-search .select2-container {
+    width: 100% !important;
+    border-radius: 0px !important;
+}
+
+.flight-search .select2-container--default .select2-selection--single {
+    border-radius: 0px;
+}
+
+.flight-search .select2-container .select2-selection--single .select2-selection__rendered {
+}
+
+.flight-search .select2-container .select2-selection--single {
+    display: block;
+}
+
+.flight-search .select2-container .select2-selection--single {
+    height: 43px;
+}
+
+.flight-search .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #444;
+    line-height: 41px;
+}
+
+.flight-search .select2-container--default .select2-selection--single .select2-selection__placeholder {
+    font-size: 16px;
+}
+
+.flight-search .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 41px;
+    display: none !important;
+}
+
+.select2-results__option .destinations {
+    margin-bottom: 10px;
+}
+
+.flt-detas.destinations {
+    border: none !important;
+}
+
+.show-country {
+    margin-top: 0px !important;
+}
+
+.select2-results__option {
+    padding: 0px !important
+}
+
+.select2-result-repository {
+    cursor: pointer;
+}
+
+.flt-detas:hover {
+    background-color: #5897fb !important;
+}
+
+[type=number] {
+    width: 60% !important;
+    padding-left: 5px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+.skip-select2 {
+    width: 100% !important;
+}
+
+.box > .overlay, .overlay-wrapper > .overlay, .box > .loading-img, .overlay-wrapper > .loading-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+
+.box .overlay, .overlay-wrapper .overlay {
+    z-index: 50;
+    background: rgba(255,255,255,0.7);
+    border-radius: 3px
+}
+
+    .box .overlay > .fa, .overlay-wrapper .overlay > .fa {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -15px;
+        margin-top: -15px;
+        color: #000;
+        font-size: 30px
+    }
+
+    .box .overlay.dark, .overlay-wrapper .overlay.dark {
+        background: rgba(0,0,0,0.5)
+    }
+
+
+[data-flight="search-criteria"],
+[data-flight="flight-list"] {
+    position: relative;
+    min-height: 83px !important;
+}
+
+    [data-flight="search-criteria"] .box .overlay, .overlay-wrapper .overlay,
+    [data-flight="flight-list"] .box .overlay, .overlay-wrapper .overlay {
+        z-index: 50;
+        background: none;
+        border-radius: 3px
+    }
+
+.no-cursor {
+    cursor: default !important;
+}
+
+.flight-search .datepicker {
+    margin-top: 0px !important;
+}
+
+.flight-search .flight-page .calender-set {
+    top: 10px !important;
+}
+
+.round-arrow {
+    top: 9px;
+}
+
+.no-margin {
+    margin: 0px !important;
+}
+
+.flight-page .calender-set {
+    top: 9px;
+}
+
+.api-error {
+    text-align: center;
+}
+
+.modal-body {
+    min-height: 170px;
+}
+
+.field-validation-error {
+    color: #db4c4a !important;
+    margin-top: 5px;
+    display: block;
+    font-size: 0.9em;
+    font-style: italic;
+    clear: both;
+}
+
+.form-control.input-validation-error, .select2-container.input-validation {
+    border-color: #db4c4a !important;
+}
+
+.flight-search .select2-container.input-validation-error {
+    border: 1px solid #db4c4a !important;
+}
+
+.search-criteria {
+    position: relative;
+    min-height: 191px;
+    ;
+}
+
+.margin-bottom-10px {
+    margin-bottom: 10px !important
+}
+
+.remove-segment {
+    position: absolute;
+    top: 2px;
+    right: -9px;
+    color: red;
+    padding: 13px 5px;
+    background: #e0e0e0;
+    margin: -2px 0px;
+    cursor: pointer;
+}
+
+    .remove-segment:hover {
+        background: #eaeaea;
+    }
+
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2),only screen and (min--moz-device-pixel-ratio:2),only screen and (min-device-pixel-ratio:2) {
+    .flight-carrier-sprite {
+        background-image: url('/images/domestic-high-new2.png');
+        background-repeat: no-repeat;
+        background-size: 77px 847px
+    }
+}
+
+.flight-carrier-sprite {
+    display: block;
+    display: inline-block;
+    font-weight: bold;
+    height: 34px;
+    width: 34px;
+    overflow: hidden;
+    background-image: url('/images/domestic-low-new2.png');
+    background-repeat: no-repeat
+}
+
+
+.go_IT {
+    background-position: 0 -109px
+}
+
+.go_AI {
+    background-position: 0 -58px
+}
+
+.go_6E {
+    background-position: 0 0
+}
+
+.go_SG {
+    background-position: 0 -221px
+}
+
+.go_S2 {
+    background-position: 0 -442px
+}
+
+.go_G8 {
+    background-position: 0 -166px
+}
+
+.go_9W {
+    background-position: 0 -329px
+}
+
+.go_ZZ {
+    background-position: 0 -387px
+}
+
+.go_JK {
+    background-position: 0 -329px
+}
+
+.go_IB {
+    background-position: 14px -270px;
+    padding: 14px 0 0 46px;
+    background-image: url('/images/fligh_logo_dom_4.png')
+}
+
+.go_IX {
+    background-position: 0 -556px
+}
+
+.go_LB {
+    background-position: 0 -601px
+}
+
+.go_I5 {
+    background-position: 0 -660px
+}
+
+.go_OP {
+    background-position: 0 -743px
+}
+
+.go_UK {
+    background-position: 0 -712px
+}
+
+.go_2T {
+    background-position: 0 -781px
+}
+
+.go_2S {
+    background-position: 0 -818px
+}
+
+.modal-footer {
+    text-align: center;
+}
+
+    .modal-footer .btn-primary {
+        color: #fff;
+        background-color: #660866;
+        border-color: #660866;
+    }
+
+.missing-content {
+    font-size: 1.2em;
+    min-height: 170px;
+    vertical-align: middle;
+}
+
+.box-loading {
+    position: absolute;
+}
+
+.information-heading {
+    padding: 10px 11px;
+    font-size: 18px;
+    background: gainsboro;
+    margin-bottom: 10px;
+}
+
+.segments-item label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+span.danger {
+    color: red;
+}
+
+.radiobtn-group {
+    display: inline-block;
+}
+
+.adult-box-details-lf {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+
+.book-now-final {
+    padding: 5px 28px;
+    font-size: 14px;
+}
+
+li.box-filter-open:hover .box-filter {
+    display: block !important;
+}
+
+.selectFlights {
+    display: inline-flex;
+    width: 100%;
+    margin-bottom: 30px;
+    border-radius: 7px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+    .selectFlights .widthF45 {
+        width: 45%;
+        display: inline-block;
+    }
+
+    .selectFlights .widthF10 {
+        width: 10%;
+        display: inline-block;
+        padding-top: 5px;
+    }
+
+    .selectFlights .flight-box {
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+        .selectFlights .flight-box:first-child {
+            border-right: 1px dashed #ccc !important;
+            ;
+        }
+
+        .selectFlights .flight-box:hover {
+            box-shadow: none !important;
+            background-color: inherit !important
+        }
+
+     
+    .selectFlights .fa {
+        font-size: 20px;
+    }
+
+div.bhoechie-tab-container {
+    z-index: 10;
+    background-color: #ffffff;
+    padding: 0 !important;
+    border: 1px solid #ddd;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    -moz-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    background-clip: padding-box;
+    opacity: 0.97;
+    filter: alpha(opacity=97);
+}
+
+div.bhoechie-tab-menu {
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+}
+
+    div.bhoechie-tab-menu div.list-group {
+        margin-bottom: 0;
+    }
+
+        div.bhoechie-tab-menu div.list-group > a {
+            margin-bottom: 0;
+        }
+
+            div.bhoechie-tab-menu div.list-group > a .glyphicon,
+            div.bhoechie-tab-menu div.list-group > a .fa {
+                color: #d0cfcf;
+            }
+
+            div.bhoechie-tab-menu div.list-group > a:first-child {
+                border-top-right-radius: 0;
+                -moz-border-top-right-radius: 0;
+            }
+
+            div.bhoechie-tab-menu div.list-group > a:last-child {
+                border-bottom-right-radius: 0;
+                -moz-border-bottom-right-radius: 0;
+            }
+
+            div.bhoechie-tab-menu div.list-group > a.active,
+            div.bhoechie-tab-menu div.list-group > a.active .glyphicon,
+            div.bhoechie-tab-menu div.list-group > a.active .fa {
+                background-color: #d0cfcf;
+                background-image: #d0cfcf;
+                color: #660866;
+            }
+
+                div.bhoechie-tab-menu div.list-group > a.active:after {
+                    content: '';
+                    position: absolute;
+                    left: 100%;
+                    top: 50%;
+                    margin-top: -13px;
+                    border-left: 0;
+                    border-bottom: 13px solid transparent;
+                    border-top: 13px solid transparent;
+                    border-left: 10px solid #d0cfcf;
+                }
+
+div.bhoechie-tab-content {
+    background-color: #ffffff;
+    /* border: 1px solid #eeeeee; */
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+div.bhoechie-tab div.bhoechie-tab-content:not(.active) {
+    display: none;
+}
+
+
+.separator-control {
+    background: #f1f1f1;
+    border: 0px;
+    border: none !important;
+    /* width: 200%; */
+}
+
+    .separator-control .title {
+        /* font-weight: bold; */
+        font-size: 1.1em;
+        background: transparent;
+        border: none !important;
+        border-radius: 0px !important;
+        border-top: 0;
+        line-height: 20px;
+        -webkit-box-shadow: none;
+        padding-left:10px;
+    }
+.view-details a {
+    color: #fff !important;
+    padding: 12px !important;
+    font-size: 0.9em !important;
+    font-family: 'Source Sans Pro' !important;
+}
+.view-details {
+    float: right !important;
+    position: absolute;
+    bottom: 0 !important;
+    right: 0 !important;
+    background: #660866 !important;
+}
+.flight-box{
+    position:relative;
+}
+.flights {
+    margin-top: 10px;
+}
+.flight-box .fbox-bottom {
+    text-transform: inherit;
+}
+
+.air-way .flight-box .fbox-bottom {
+    text-transform: inherit;
+}
+
+.top-flight-part{float:left}
+
+.flight-overlay::after {
+    background-color: rgba(0,0,0,.5);
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 999999999;
+}
+.flight-section{
+    position:relative;
+    clear:both;
+}
+
+
+
+.result_flight .airline_details
+{
+    padding:0px;
+}

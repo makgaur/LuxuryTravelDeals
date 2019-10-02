@@ -1,0 +1,51 @@
+﻿@model DealsHighlightViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+
+@using (this.Html.BeginCollectionItem("DealsHighlights"))
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse_@Model.RandomIdentifier">@(string.IsNullOrEmpty(Model.Title)?"New": Model.Title)</a>
+                <span class="delete_highlight_row pull-right"><i class="fa fa-fw fa-trash"></i></span>
+            </h4>
+        </div>
+        <div id="collapse_@Model.RandomIdentifier" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="row">
+                    <input asp-for="Id" type="hidden" />
+                    <input asp-for="PackageId" type="hidden" />
+                    <input asp-for="CreatedBy" type="hidden" />
+                    <input asp-for="CreatedDate" type="hidden" />
+                    <input asp-for="UpdatedBy" type="hidden" />
+                    <input asp-for="UpdatedDate" type="hidden" />
+                    <input asp-for="IsDeleted" class="deleted_item" type="hidden" />
+                    <div class="form-group col-md-10">
+                        <label asp-for="Title"></label>
+                        <input class="form-control" type="text" asp-for="Title" />
+                        <span asp-validation-for="Title"></span>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label asp-for="StarRating"></label>
+                        <input class="form-control" type="number" asp-for="StarRating" />
+                        <span asp-validation-for="StarRating"></span>
+                    </div>
+                    <div class="form-group col-md-1">
+                        <label asp-for="SortOrder"></label>
+                        <input class="form-control" type="number" asp-for="SortOrder" />
+                        <span asp-validation-for="SortOrder"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label asp-for="Description"></label>
+                        @*class="tinymceTextarea"*@
+                        <textarea asp-for="Description" placeholder="Place some text here"
+                                  style="width: 100%; height: 50px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                        <span asp-validation-for="Description"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

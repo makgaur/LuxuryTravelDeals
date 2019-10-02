@@ -1,0 +1,75 @@
+﻿@model TourPackageCityViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+@{
+    var newguid = Guid.NewGuid().ToString();
+}
+@if (this.Layout == null)
+{
+    var countryctrl = Guid.NewGuid().ToString("N");
+    var statectrl = Guid.NewGuid().ToString("N");
+    var cityctrl = Guid.NewGuid().ToString("N");
+
+    <tr class="itemmaster-row tourpackagecitycount" id="@newguid">
+        @using (this.Html.BeginCollectionItem("TourPackageCity"))
+        {
+
+            <td>
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="TourPackageId" />
+                <div class="field-col">
+                    <select asp-for="RegionId" selected="@Model.RegionId" class="form-control" id="RegionId" asp-items="Model.RegionList"
+                            select2-value="@Model.RegionId" select2-Url="/selectlist/GetPackageRegionList"
+                            select2-Dependent="true" select2-Dependent-Control=".@(countryctrl)"></select>
+                    <span asp-validation-for="RegionId"></span>
+                </div>
+            </td>
+            <td>
+                <div class="field-col">
+                    <select class="form-control @(countryctrl)" asp-for="CountryId" id="CountryId" asp-items="Model.CountyList"
+                            select2-value="@Model.CountryId" select2-Url="/selectlist/GetTourPackageCountryByReagionId"
+                            select2-Dependent="true" select2-Dependent-Control=".@(statectrl)"></select>
+                    <span asp-validation-for="CountryId"></span>
+                </div>
+            </td>
+            <td>
+                <div class="field-col">
+                    <select asp-for="StateId" selected="@Model.StateId" id="StateId" class="form-control @(statectrl)" asp-items="Model.StateList" select2-Dependent-OtherControl=".@countryctrl"
+                            select2-value="@Model.StateId" select2-Url="/selectlist/GetTourPackageStatesByCountrId"
+                            select2-Dependent="true" select2-Dependent-Control=".@(cityctrl)"></select>
+                    <span asp-validation-for="StateId"></span>
+                </div>
+            </td>
+            <td>
+                <div class="field-col">
+                    @if (Model.TourPackageType == 2)
+                    {
+                        <select asp-for="CityId" selected="@Model.CityId" id="CityId" class="form-control packagecitydes @(cityctrl)" asp-items="Model.CityList"
+                                select2-value="@Model.CityId" select2-Dependent="true" select2-Dependent-Control=".tourpackagehotel" select2-Url="/selectlist/GetTourPackageCityByCounryIdorStateIdAsync"  style="width:100%"></select>
+                        <span asp-validation-for="CityId"></span>   
+                    }
+                    else
+                    {
+                        <select asp-for="CityId" selected="@Model.CityId" id="CityId" class="form-control packagecitydes @(cityctrl)" asp-items="Model.CityList"
+                                    select2-value="@Model.CityId" select2-Url="/selectlist/GetTourPackageCityByCounryIdorStateIdAsync" style="width:100%"></select>
+                            <span asp-validation-for="CityId"></span>
+
+                    }
+                </div>
+            </td>
+            <td>
+                <div class="field-col">
+                    <input type="text" asp-for="CityDescription" class="form-control tourcpackagecitydesc" />
+                </div>
+            </td>
+            @if (Model.TourPackageType != 2)
+            {
+
+                <td valign="middle" class="city-delete-row-box">
+
+                    <a class="delete-item-row" href="javaScript:void(0)"><i class="fa fa-trash-o"></i></a>
+                </td>
+            }
+        }
+    </tr>
+
+}

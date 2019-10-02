@@ -1,0 +1,71 @@
+﻿@model AddVisaMasterViewModel;
+
+<form asp-antiforgery="true" id="formPackagePromotionManage" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="IsActive" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <div class="box-body">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="CountryId"></label>
+                <select asp-for="CountryId" selected="@Model.CountryId" class="form-control" id="CountryId" asp-items="Model.CountryItems"
+                        select2-value="@Model.CountryId" select2-Url="/selectlist/GetCountryList"></select>
+                <span asp-validation-for="CountryId"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="VendorID"></label>
+                <select asp-for="VendorID" selected="@Model.VendorID" class="form-control" id="VendorId" asp-items="Model.VendorItems"
+                        select2-value="@Model.VendorID" select2-Url="/selectlist/GetVendorForVisa"></select>
+                <span asp-validation-for="VendorID"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="AdultPrice "></label>
+                <input asp-for="AdultPrice" type="number" class="form-control" />
+                <span asp-validation-for="AdultPrice"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="ChildPrice"></label>
+                <input asp-for="ChildPrice" type="number" class="form-control" />
+                <span asp-validation-for="ChildPrice"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="BufferDays"></label>
+                <input asp-for="BufferDays" type="number" class="form-control" />
+                <span asp-validation-for="BufferDays"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Markup"></label>
+                <input asp-for="Markup" type="number" class="form-control" />
+                <span asp-validation-for="Markup"></span>
+            </div>
+            <div class="form-group col-md-12">
+                <label asp-for="DocumentsRequired"></label>
+                <textarea asp-for="DocumentsRequired" class="tinymceTextarea" placeholder="Place some text here"
+                          style="width: 100%; height: 50px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                <span asp-validation-for="DocumentsRequired"></span>
+            </div>
+            <div class="form-group col-md-12">
+                <label asp-for="GeneralPolicy"></label>
+                <textarea asp-for="GeneralPolicy" class="tinymceTextarea" placeholder="Place some text here"
+                          style="width: 100%; height: 50px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                <span asp-validation-for="GeneralPolicy"></span>
+            </div>
+            <div class="form-group col-md-12">
+                <label asp-for="ProcessingTime"></label>
+                <textarea asp-for="ProcessingTime" class="tinymceTextarea" placeholder="Place some text here"
+                          style="width: 100%; height: 50px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                <span asp-validation-for="ProcessingTime"></span>
+            </div>
+            <div class="form-group col-md-12">
+                <label asp-for="PhotoSpecification"></label>
+                <textarea asp-for="PhotoSpecification" class="tinymceTextarea" placeholder="Place some text here"
+                          style="width: 100%; height: 50px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                <span asp-validation-for="PhotoSpecification"></span>
+            </div>
+        </div>
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+</form>

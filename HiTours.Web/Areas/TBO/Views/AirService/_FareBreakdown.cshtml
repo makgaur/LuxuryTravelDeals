@@ -1,0 +1,17 @@
+﻿@model FareBreakdown
+@using HtmlHelpers.BeginCollectionItemCore
+
+
+@using (this.Html.BeginCollectionItem("FareBreakdown"))
+{
+
+    <input type="hidden" asp-for="AdditionalTxnFeeOfrd" />
+    <input type="hidden" asp-for="AdditionalTxnFeePub" />
+    <input type="hidden" asp-for="BaseFare" />
+    <input type="hidden" asp-for="Currency" />
+    <input type="hidden" asp-for="PGCharge" />
+    <input type="hidden" asp-for="PassengerCount" />
+    <input type="hidden" asp-for="Tax" />
+    <input type="hidden" asp-for="YQTax" />
+    <input type="hidden" asp-for="PassengerType" />
+}

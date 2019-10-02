@@ -1,0 +1,58 @@
+﻿@{ this.ViewBag.Title = "Package Inventory"; }
+@*<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+            </div>
+
+        </div>
+    </div>
+</div>*@
+
+@this.Html.Partial("_DataTableGrid")
+@*@section scripts {*@
+    <script>
+        $(function () {
+            BindGrid({
+                url: "@Url.Action("PackageInventoryGridViewData", "Inventory",new {@area="Admin",@packageId=this.ViewBag.TourPackageId })",
+                columns: [
+                    { "data": "RoomName", "title": "Name", "type": "string" },
+                    { "data": "RI_Inventory", "title": "Inventory", "type": "string" },
+                    { "data": "RI_BaseRate", "title": "Base Rate", "type": "string" },
+                    { "data": "RI_SurgeRate", "title": "Surge Extra", "type": "string" },
+                    { "data": "RI_ExtraAdultCost", "title": "Extra Adult Cost", "type": "string" },
+                    { "data": "RI_ExtraChildCost", "title": "Extra Child Cost", "type": "string" },
+                    { "data": "RI_ExtraInfantCost", "title": "Extra Infant Cost", "type": "string" },
+                    { "data": "RI_StartDate", "title": "Valid From", "type": "string" },
+                    { "data": "RI_EndDate", "title": "Valid To", "type": "string" },
+                    {
+                        "data": "RI_IsActive",
+                        "title": "Active Status",
+                        "class": "text-center",
+                        "type": "bool", mRender: function (data, type, record) {
+                            var url = '@Url.GetAdminUrl("Inventory", "ChangeActiveStatus")/' + record.RI_Id;
+                            return appendToggleCheckBox(url, record.RI_IsActive, 'Successfully Activated', 'Successfully DeActivated')
+                        }
+                    },
+                    {
+                        "data": null, "title": "Action",
+                        "targets": -1,
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+
+                            var action = "";
+                            ////action += '<a class="form-control btn-default" href="@Url.GetAdminUrl("tourpackage", "PackageNights")/' + record.Id + '" title="Add Package Nights"><i class="fa fa-plus"></i>&nbsp;</a>';
+                            ////action += '<a class="form-control btn-success" href="@Url.GetAdminUrl("RoomConfiguration", "tourpackagecreation")/' + record.Id+ '"><i class="fa fa-edit"></i>&nbsp;</a>';
+                             action += '<a class="form-control btn-danger delete-row" data-delete href="@Url.GetAdminUrl("Inventory", "DeleteInventory")/' + record.RI_Id+ '"><i class="fa fa-trash-o"></i>&nbsp;</a>';
+                            return action;
+
+                        }
+                    }]
+            });
+        });
+
+    </script>
+@*}*@

@@ -1,0 +1,273 @@
+//-- farequote Api Request --
+{
+  "EndUserIp": "192.168.11.120",
+  "TokenId": "90451c0b-69df-4eed-9816-ab4c750ca84e",
+  "TraceId": "c4cc254a-c568-4788-acf2-f915ce88cb9b",
+  "ResultIndex": "OB1",
+  "IsLCC": false,
+  "Origin": null,
+  "Destination": null,
+  "Airline": null,
+  "FareBasisCode": null,
+  "FareRuleDetail": null,
+  "FareRestriction": null
+}
+//-- farequote Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "IsPriceChanged": false,
+    "ResponseStatus": 1,
+    "Results": {
+      "ResultIndex": "OB1",
+      "Source": 10,
+      "IsLCC": true,
+      "IsRefundable": true,
+      "GSTAllowed": true,
+      "IsGSTMandatory": false,
+      "AirlineRemark": "Go air API.",
+      "Fare": {
+        "Currency": "INR",
+        "BaseFare": 19910,
+        "Tax": 4014,
+        "TaxBreakup": [
+          {
+            "key": "K3",
+            "value": 1116
+          },
+          {
+            "key": "YQTax",
+            "value": 1600
+          },
+          {
+            "key": "YR",
+            "value": 168
+          },
+          {
+            "key": "PSF",
+            "value": 488
+          },
+          {
+            "key": "UDF",
+            "value": 0
+          },
+          {
+            "key": "INTax",
+            "value": 0
+          },
+          {
+            "key": "TransactionFee",
+            "value": 0
+          },
+          {
+            "key": "OtherTaxes",
+            "value": 642
+          }
+        ],
+        "YQTax": 1600,
+        "AdditionalTxnFeeOfrd": 0,
+        "AdditionalTxnFeePub": 0,
+        "PGCharge": 0,
+        "OtherCharges": 0,
+        "ChargeBU": [
+          {
+            "key": "TBOMARKUP",
+            "value": 0
+          },
+          {
+            "key": "CONVENIENCECHARGE",
+            "value": 0
+          },
+          {
+            "key": "OTHERCHARGE",
+            "value": 0
+          }
+        ],
+        "Discount": 0,
+        "PublishedFare": 23924,
+        "CommissionEarned": 0,
+        "PLBEarned": 0,
+        "IncentiveEarned": 0,
+        "OfferedFare": 23924,
+        "TdsOnCommission": 0,
+        "TdsOnPLB": 0,
+        "TdsOnIncentive": 0,
+        "ServiceFee": 0,
+        "TotalBaggageCharges": 0,
+        "TotalMealCharges": 0,
+        "TotalSeatCharges": 0,
+        "TotalSpecialServiceCharges": 0
+      },
+      "FareBreakdown": [
+        {
+          "Currency": "INR",
+          "PassengerType": 1,
+          "PassengerCount": 1,
+          "BaseFare": 8836,
+          "Tax": 1951,
+          "YQTax": 800,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0
+        },
+        {
+          "Currency": "INR",
+          "PassengerType": 2,
+          "PassengerCount": 1,
+          "BaseFare": 8836,
+          "Tax": 1951,
+          "YQTax": 800,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0
+        },
+        {
+          "Currency": "INR",
+          "PassengerType": 3,
+          "PassengerCount": 1,
+          "BaseFare": 2238,
+          "Tax": 112,
+          "YQTax": 0,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0
+        }
+      ],
+      "Segments": [
+        [
+          {
+            "Baggage": "20 KG",
+            "CabinBaggage": "0 KG",
+            "TripIndicator": 1,
+            "SegmentIndicator": 1,
+            "Airline": {
+              "AirlineCode": "G8",
+              "AirlineName": "GoAir",
+              "FlightNumber": "530",
+              "FareClass": "H",
+              "OperatingCarrier": ""
+            },
+            "Origin": {
+              "Airport": {
+                "AirportCode": "DEL",
+                "AirportName": "Indira Gandhi Airport",
+                "Terminal": "2",
+                "CityCode": "DEL",
+                "CityName": "Delhi",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "DepTime": "2019-05-30T07:00:00"
+            },
+            "Destination": {
+              "Airport": {
+                "AirportCode": "BOM",
+                "AirportName": "Mumbai",
+                "Terminal": "1",
+                "CityCode": "BOM",
+                "CityName": "Mumbai",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "ArrTime": "2019-05-30T09:15:00"
+            },
+            "Duration": 135,
+            "GroundTime": 0,
+            "Mile": 0,
+            "StopOver": false,
+            "FlightInfoIndex": "",
+            "StopPoint": "",
+            "StopPointArrivalTime": "2019-05-30T09:15:00",
+            "StopPointDepartureTime": "2019-05-30T07:00:00",
+            "Craft": "320",
+            "Remark": null,
+            "IsETicketEligible": true,
+            "FlightStatus": "Confirmed",
+            "Status": ""
+          },
+          {
+            "Baggage": "20 KG",
+            "CabinBaggage": "0 KG",
+            "TripIndicator": 1,
+            "SegmentIndicator": 2,
+            "Airline": {
+              "AirlineCode": "G8",
+              "AirlineName": "GoAir",
+              "FlightNumber": "23",
+              "FareClass": "P",
+              "OperatingCarrier": ""
+            },
+            "Origin": {
+              "Airport": {
+                "AirportCode": "BOM",
+                "AirportName": "Mumbai",
+                "Terminal": "2",
+                "CityCode": "BOM",
+                "CityName": "Mumbai",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "DepTime": "2019-05-30T13:25:00"
+            },
+            "Destination": {
+              "Airport": {
+                "AirportCode": "MLE",
+                "AirportName": "Male Int'l",
+                "Terminal": "",
+                "CityCode": "MLE",
+                "CityName": "Male",
+                "CountryCode": "MV",
+                "CountryName": "Maldives"
+              },
+              "ArrTime": "2019-05-30T15:50:00"
+            },
+            "AccumulatedDuration": 560,
+            "Duration": 175,
+            "GroundTime": 250,
+            "Mile": 0,
+            "StopOver": false,
+            "FlightInfoIndex": "",
+            "StopPoint": "",
+            "StopPointArrivalTime": "2019-05-30T15:50:00",
+            "StopPointDepartureTime": "2019-05-30T13:25:00",
+            "Craft": "32A",
+            "Remark": null,
+            "IsETicketEligible": true,
+            "FlightStatus": "Confirmed",
+            "Status": ""
+          }
+        ]
+      ],
+      "LastTicketDate": null,
+      "TicketAdvisory": null,
+      "FareRules": [
+        {
+          "Origin": "DEL",
+          "Destination": "BOM",
+          "Airline": "G8",
+          "FareBasisCode": "HO9RBINF",
+          "FareRuleDetail": "",
+          "FareRestriction": "",
+          "FareFamilyCode": "",
+          "FareRuleIndex": ""
+        },
+        {
+          "Origin": "BOM",
+          "Destination": "MLE",
+          "Airline": "G8",
+          "FareBasisCode": "PO9RIZZX",
+          "FareRuleDetail": "",
+          "FareRestriction": "",
+          "FareFamilyCode": "",
+          "FareRuleIndex": ""
+        }
+      ],
+      "AirlineCode": "G8",
+      "ValidatingAirline": "G8"
+    },
+    "TraceId": "c4cc254a-c568-4788-acf2-f915ce88cb9b"
+  }
+}

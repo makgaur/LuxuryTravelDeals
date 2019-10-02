@@ -1,0 +1,202 @@
+//-- farequote Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "c4dd944d-3a9e-4a36-a879-b7a4bb3d7e35",
+  "TraceId": "dc9fa5b3-6d9e-4e5b-8e3b-af70d76cdbb3",
+  "ResultIndex": "OB1",
+  "IsLCC": false
+}
+//-- farequote Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "IsPriceChanged": true,
+    "ResponseStatus": 1,
+    "Results": {
+      "ResultIndex": "OB1",
+      "Source": 3,
+      "IsLCC": true,
+      "IsRefundable": false,
+      "GSTAllowed": true,
+      "AirlineRemark": "this is a test from aditya",
+      "Fare": {
+        "Currency": "INR",
+        "BaseFare": 13163,
+        "Tax": 4030,
+        "TaxBreakup": [
+          {
+            "key": "YQTax",
+            "value": 0
+          },
+          {
+            "key": "YR",
+            "value": 100
+          },
+          {
+            "key": "PSF",
+            "value": 300
+          },
+          {
+            "key": "UDF",
+            "value": 2916
+          },
+          {
+            "key": "JNTax",
+            "value": 544
+          },
+          {
+            "key": "INTax",
+            "value": 0
+          },
+          {
+            "key": "TransactionFee",
+            "value": 0
+          },
+          {
+            "key": "OtherTaxes",
+            "value": 170
+          }
+        ],
+        "YQTax": 0,
+        "AdditionalTxnFeeOfrd": 0,
+        "AdditionalTxnFeePub": 0,
+        "PGCharge": 0,
+        "OtherCharges": 220,
+        "ChargeBU": [
+          {
+            "key": "TBOMARKUP",
+            "value": 0
+          },
+          {
+            "key": "CONVENIENCECHARGE",
+            "value": 0
+          },
+          {
+            "key": "OTHERCHARGE",
+            "value": 220
+          }
+        ],
+        "Discount": 0,
+        "PublishedFare": 17413,
+        "CommissionEarned": 0,
+        "PLBEarned": 0,
+        "IncentiveEarned": 0,
+        "OfferedFare": 17413,
+        "TdsOnCommission": 0,
+        "TdsOnPLB": 0,
+        "TdsOnIncentive": 0,
+        "ServiceFee": 0,
+        "TotalBaggageCharges": 0,
+        "TotalMealCharges": 0,
+        "TotalSeatCharges": 0,
+        "TotalSpecialServiceCharges": 0
+      },
+      "FareBreakdown": [
+        {
+          "Currency": "INR",
+          "PassengerType": 1,
+          "PassengerCount": 1,
+          "BaseFare": 5400,
+          "Tax": 2015,
+          "YQTax": 0,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0
+        },
+        {
+          "Currency": "INR",
+          "PassengerType": 2,
+          "PassengerCount": 1,
+          "BaseFare": 5400,
+          "Tax": 2015,
+          "YQTax": 0,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0
+        },
+        {
+          "Currency": "INR",
+          "PassengerType": 3,
+          "PassengerCount": 1,
+          "BaseFare": 2363,
+          "Tax": 0,
+          "YQTax": 0,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0
+        }
+      ],
+      "Segments": [
+        [
+          {
+            "Baggage": "30 KG",
+            "CabinBaggage": "7 Kg",
+            "TripIndicator": 1,
+            "SegmentIndicator": 1,
+            "Airline": {
+              "AirlineCode": "SG",
+              "AirlineName": "SpiceJet",
+              "FlightNumber": "13",
+              "FareClass": "C",
+              "OperatingCarrier": ""
+            },
+            "Origin": {
+              "Airport": {
+                "AirportCode": "BOM",
+                "AirportName": "Mumbai",
+                "Terminal": "2",
+                "CityCode": "BOM",
+                "CityName": "Mumbai",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "DepTime": "2017-12-12T23:05:00"
+            },
+            "Destination": {
+              "Airport": {
+                "AirportCode": "DXB",
+                "AirportName": "Dubai",
+                "Terminal": "1",
+                "CityCode": "DXB",
+                "CityName": "Dubai",
+                "CountryCode": "AE",
+                "CountryName": "United Arab Emirates"
+              },
+              "ArrTime": "2017-12-13T00:55:00"
+            },
+            "Duration": 200,
+            "GroundTime": 0,
+            "Mile": 0,
+            "StopOver": false,
+            "StopPoint": "",
+            "StopPointArrivalTime": "2017-12-13T00:55:00",
+            "StopPointDepartureTime": "2017-12-12T23:05:00",
+            "Craft": "737",
+            "Remark": null,
+            "IsETicketEligible": true,
+            "FlightStatus": "Confirmed",
+            "Status": ""
+          }
+        ]
+      ],
+      "LastTicketDate": null,
+      "TicketAdvisory": null,
+      "FareRules": [
+        {
+          "Origin": "BOM",
+          "Destination": "DXB",
+          "Airline": "SG",
+          "FareBasisCode": "CSAVER",
+          "FareRuleDetail": "",
+          "FareRestriction": ""
+        }
+      ],
+      "AirlineCode": "SG",
+      "ValidatingAirline": "SG"
+    },
+    "TraceId": "dc9fa5b3-6d9e-4e5b-8e3b-af70d76cdbb3"
+  }
+}

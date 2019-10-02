@@ -1,0 +1,213 @@
+
+.form-control.input-validation-error, .select2-container.input-validation {
+    border: 1px solid #CAC9C9;
+}
+
+.form-control.input-validation-error, .select2-container.input-validation {
+    border-color: #db4c4a !important;
+}
+
+.select2-container.input-validation-error, .select2-container.input-validation-error .select2-arrow,
+.select2-container.input-validation-error .select2-chosen,
+.select2-container.input-validation-error .select2-arrow {
+    border: 1px solid #CAC9C9;
+}
+
+    .select2-container.input-validation-error .select2-choice {
+        border: 1px solid #DB4C4A;
+    }
+
+.field-validation-error {
+    color: #db4c4a !important;
+    margin-top: 5px;
+    display: block;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+    .field-validation-error.show-error {
+        display: block !important;
+    }
+
+
+.select2-container.form-control {
+    height: auto !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+.select2-results .select2-highlighted,
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background: #3c8dbc !important;
+    color: #fff;
+}
+.select2-container .select2-selection--single {
+    border: 1px solid #E6E6E6 !important;
+    border-radius: 2px !important;
+    height: auto !important;
+    padding-top:12px;
+    padding-bottom:12px;
+}
+
+
+
+.package-image-thumbnail {
+    position: relative;
+    display: inline-block;
+}
+
+    .package-image-thumbnail a.remove-package-image {
+        display: none;
+        position: absolute;
+        top: 42%;
+        left: 22%;
+        font-size: 10px;
+    }
+
+    .package-image-thumbnail:hover a.remove-package-image {
+        display: block;
+    }
+
+
+.package-images {
+    width: 90px;
+    height: 90px;
+    cursor: pointer;
+}
+ 
+
+.display-label {
+    font-size: 1.1em;
+    font-weight: normal;
+    border: 1px solid whitesmoke;
+}
+
+.input-daterange input {
+    text-align: left;
+}
+
+.timer, .timer-done, .timer-loop {
+    font-size: 30px;
+    color: black;
+    padding: 10px;
+}
+
+.deal-countdown .jst-hours,
+.deal-countdown .jst-minutes,
+.deal-countdown .jst-seconds {
+    font-size: 14px;
+    color: #f1751d !important;
+    font-family: 'NexaLight';
+}
+
+
+.jst-hours {
+    float: left;
+}
+
+.jst-minutes {
+    float: left;
+}
+
+.jst-seconds {
+    float: left;
+}
+
+.jst-clearDiv {
+    clear: both;
+}
+
+.jst-timeout {
+    color: red;
+}
+
+.is-complete {
+    color: red;
+    -webkit-animation-name: blinker;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: cubic-bezier(1.0,0,0,1.0);
+    -webkit-animation-duration: 1s;
+}
+
+@-webkit-keyframes blinker {
+    from {
+        opacity: 1.0;
+    }
+
+    to {
+        opacity: 0.0;
+    }
+}
+
+.no-discount::before {
+    content: none;
+}
+
+.tour-info1 .tour-time {
+    width: auto !important;
+    margin-top: 7px;
+}
+
+.tour-info1 {
+    padding: 30px 22px;
+}
+
+.time-remain {
+    /*font-weight: bold;*/
+    font-size: 1.3em;
+    color: #c8a873;
+}
+
+.deal-box-five h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 7px;
+    margin-bottom: 18px;
+}
+
+.sent-btn button {
+    background: #660866;
+    padding: 10px 15px;
+    color: #fff;
+    width: 200px;
+    text-transform:uppercase;
+    border: none;
+    cursor: pointer;
+}
+
+label.person-number {
+    display: inline-block !IMPORTANT;
+    padding: 15px 5px;
+}
+
+.no-border {
+    text-align: center;
+    padding: 20px;
+}
+
+    .no-border > label {
+        font-size: 1.2em;
+        color: #777;
+    }
+
+.form-control-checkbox {
+    display: block;
+}
+
+.coming_soon {
+    border: 1px solid #f5f2f2;
+}
+ 
+
+[data-src] {
+    background-image: url(/images/preload/loader.gif);
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position: center;
+}
+div#modal-close {
+    display: none!important;
+}
+span.danger {
+    color: red;
+}

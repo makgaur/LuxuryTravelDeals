@@ -1,0 +1,985 @@
+﻿@model ProductViewModel
+@{
+    ViewData["Title"] = "Booking";
+    Layout = "~/Views/Shared/_ProductLayout.cshtml";
+}
+@try
+{
+    <form id="formDealBooking" asp-antiforgery="true" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="BookingSummaryViewModelString" />
+        <input type="hidden" asp-for="BookingSummaryViewModel.TotalPrice" />
+        <input type="hidden" asp-for="BookingSummaryViewModel.TotalServiceFee" />
+        <input type="hidden" asp-for="BookingSummaryViewModel.TotalTax" />
+        <input type="hidden" asp-for="Type" />
+        <input type="hidden" asp-for="FareQuoteResponseString" />
+        <input type="hidden" asp-for="razorpay_order_id" />
+        <input type="hidden" asp-for="razorpay_payment_id" />
+        <input type="hidden" asp-for="razorpay_signature" />
+        <input type="hidden" asp-for="FlightRequired" />
+
+        <input type="hidden" asp-for="BookingInformationViewModel.Id" />
+        <input type="hidden" asp-for="BookingInformationViewModel.BookedDate" />
+        <input type="hidden" asp-for="BookingInformationViewModel.Checkin" />
+        <input type="hidden" asp-for="BookingInformationViewModel.Checkout" />
+        <input type="hidden" asp-for="BookingInformationViewModel.Currency" />
+        <input type="hidden" asp-for="BookingInformationViewModel.CustomerId" />
+        <input type="hidden" asp-for="BookingInformationViewModel.DealId" />
+
+        <input type="hidden" asp-for="BookingInformationViewModel.GST" />
+        <input type="hidden" asp-for="BookingInformationViewModel.HoldFromDate" />
+        <input type="hidden" asp-for="BookingInformationViewModel.HoldToDate" />
+        <input type="hidden" asp-for="BookingInformationViewModel.IsCompleted" />
+        <input type="hidden" asp-for="BookingInformationViewModel.IsConfirmed" />
+        <input type="hidden" asp-for="BookingInformationViewModel.IsHold" />
+        <input type="hidden" asp-for="BookingInformationViewModel.NightId" />
+        <input type="hidden" asp-for="BookingInformationViewModel.PackagePrice" />
+        <input type="hidden" asp-for="BookingInformationViewModel.TaxAmount" />
+        <input type="hidden" asp-for="BookingInformationViewModel.TotalAmount" />
+        <input type="hidden" asp-for="BookingInformationViewModel.FlightOptionAvailable" />
+        <input type="hidden" asp-for="BookingInformationViewModel.FlightRequired" />
+        <input type="hidden" asp-for="BookingInformationViewModel.FlightSuccessful" />
+        <input type="hidden" asp-for="BookingInformationViewModel.FlightTraceId" />
+        <input type="hidden" asp-for="BookingInformationViewModel.VisaOptionAvailable" />
+        <input type="hidden" asp-for="BookingInformationViewModel.BookingSummarySerialized" />
+
+        <input type="hidden" asp-for="BookingFlightViewModel.BookingDate" />
+        <input type="hidden" asp-for="BookingFlightViewModel.BookingId" />
+        <input type="hidden" asp-for="BookingFlightViewModel.CreatedBy" />
+        <input type="hidden" asp-for="BookingFlightViewModel.CreatedDate" />
+        <input type="hidden" asp-for="BookingFlightViewModel.DayOfItinerary" />
+        <input type="hidden" asp-for="BookingFlightViewModel.Destination" />
+        <input type="hidden" asp-for="BookingFlightViewModel.FlightIndex" />
+        <input type="hidden" asp-for="BookingFlightViewModel.Id" />
+        <input type="hidden" asp-for="BookingFlightViewModel.ItineraryId" />
+        <input type="hidden" asp-for="BookingFlightViewModel.NightId" />
+        <input type="hidden" asp-for="BookingFlightViewModel.Origin" />
+        <input type="hidden" asp-for="BookingFlightViewModel.PNR" />
+        <input type="hidden" asp-for="BookingFlightViewModel.TBOBookingId" />
+        <input type="hidden" asp-for="BookingFlightViewModel.FareQuoteIndex" />
+        <input type="hidden" asp-for="BookingFlightViewModel.IsLCC" />
+        <input type="hidden" asp-for="BookingFlightViewModel.IsLCCString" />
+        <input type="hidden" asp-for="BookingFlightViewModel.Length" />
+        <input type="hidden" asp-for="BookingFlightViewModel.TokenId" />
+        <input type="hidden" asp-for="BookingFlightViewModel.TraceId" />
+        <input type="hidden" asp-for="BookingFlightViewModel.UserTransactionId" />
+        <input type="hidden" asp-for="BookingFlightViewModel.ServiceCharge" />
+
+        @if (Model.BookingHotelRoomViewModels != null)
+        {
+            for (int i = 0; i < Model.BookingHotelRoomViewModels.Count; i++)
+            {
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].Adult" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].AdultPriceDbo" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].AdultPriceSbo" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].BookingId" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].CheckinDate" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].CheckoutDate" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].Child" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].ConfirmedBy" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].ConfirmedOn" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].CreatedBy" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].Discount" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].DiscountAmount" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].DiscountCoupon" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].ExtraAdultPrice" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].ExtraChildPrice" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].ExtraInfantPrice" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].GST" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].GSTAmount" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].HotelName" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].Id" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].Infant" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].IsCancelled" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].IsConfirmed" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].Max" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].Nights" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].PriceAdult" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].PriceChild" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].PriceInfant" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].Rate" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].RatePlanId" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].RatePlanName" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].RoomConfigId" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].RoomName" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].Status" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].TotalAmount" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].TotalPrice" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].RoomConfigSerialized" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].FreeChild" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].FreeInfant" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].ChargableChild" />
+                <input type="hidden" asp-for="BookingHotelRoomViewModels[i].ChargableInfant" />
+            }
+        }
+
+        @if (Model.BookingVisaViewModels != null)
+        {
+            for (int i = 0; i < Model.BookingVisaViewModels.Count; i++)
+            {
+                <input type="hidden" asp-for="BookingVisaViewModels[i].BookingId" />
+                <input type="hidden" asp-for="BookingVisaViewModels[i].Count" />
+                <input type="hidden" asp-for="BookingVisaViewModels[i].CountryName" />
+                <input type="hidden" asp-for="BookingVisaViewModels[i].Id" />
+                <input type="hidden" asp-for="BookingVisaViewModels[i].IsRequired" />
+                <input type="hidden" asp-for="BookingVisaViewModels[i].Price" />
+                <input type="hidden" asp-for="BookingVisaViewModels[i].TotalAmount" />
+                <input type="hidden" asp-for="BookingVisaViewModels[i].VisaId" />
+                <input type="hidden" asp-for="BookingVisaViewModels[i].Markup" />
+            }
+        }
+
+        @if (Model.BookingRoomPriceBreakupViewModels != null)
+        {
+            for (int i = 0; i < Model.BookingRoomPriceBreakupViewModels.Count; i++)
+            {
+                <input type="hidden" asp-for="BookingRoomPriceBreakupViewModels[i].Id" />
+                <input type="hidden" asp-for="BookingRoomPriceBreakupViewModels[i].Date" />
+                <input type="hidden" asp-for="BookingRoomPriceBreakupViewModels[i].HotelRoomId" />
+                <input type="hidden" asp-for="BookingRoomPriceBreakupViewModels[i].Price" />
+                <input type="hidden" asp-for="BookingRoomPriceBreakupViewModels[i].Surcharge" />
+                <input type="hidden" asp-for="BookingRoomPriceBreakupViewModels[i].TotalAmount" />
+            }
+        }
+
+            <div class="Booking-Summary-Container container-fluid">
+                <div class="row">
+                    <div class="Booking-Summary-Title col-sm-12 cool-md-12 col-lg-12 hidden-xs">
+                        <h2>Booking Summary</h2>
+                        <hr class="hr-grey-bottom w75">
+                    </div>
+
+                    <div class="Booking-Summary-Title hidden-sm hidden-md hidden-lg" onclick="window.history.back();">
+                        <span class="pull-left"><img src="~/images/left_arrow.svg" alt="left-arrow" /></span>
+                            Booking Summary
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="Booking-Summary-Body col-sm-12 cool-md-12 col-lg-12">
+                        <div class="Booking-Summary-Left col-sm-12 cool-md-7 col-lg-8">
+                            <div class="col-sm-12 col-md-12 col-lg-12 booking-summary-section1">
+                                <div class="booking-summary-deal">
+                                    <h1 class="top-heading-style">@(Model.Type == 1 ? Model.HotelProductViewModel.Name : Model.TourProductViewModel.Name)</h1>
+                                    <div>
+                                        @if (Model.Type == 1)
+                                        {
+                                            <span>@Model.HotelProductViewModel.HotelName</span>
+                                            <span>@Model.HotelProductViewModel.City</span>
+                                        }
+                                        else if (Model.Type == 2)
+                                        {
+                                            foreach (var item in Model.TourProductViewModel.City)
+                                            {
+                                                <span>@item</span>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+
+                            <div class="Booking-summary-options">
+                                <div class="booking-summary-hotel padding-left-15">
+                                    <p class="hotel-title">Hotel<span onclick="window.history.back();" class="hidden">Edit</span></p>
+                                    <p class="check-text">Check In on<span class="checkin-date"> @Model.BookingInformationViewModel.Checkin.Day @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.BookingInformationViewModel.Checkin.Month), @Model.BookingInformationViewModel.Checkin.Year</span></p>
+                                    <p class="check-text">Check Out on<span class="checkout-date"> @Model.BookingInformationViewModel.Checkout.Day @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.BookingInformationViewModel.Checkout.Month), @Model.BookingInformationViewModel.Checkout.Year</span> (@((Model.BookingInformationViewModel.Checkout - Model.BookingInformationViewModel.Checkin).TotalDays.ToString()) Nights)</p>
+                                    @*<hr style="height: 1px;border: none; width:100%; background-color:#E6E6E6;margin-bottom:15px;margin-top:15px;">*@
+                                    <div class="hotel-room">
+                                        @if (Model.Type == 1)
+                                        {
+                                            var distinctRooms = Model.BookingHotelRoomViewModels.GroupBy(x => x.RoomName).Select(x => x.Key).Distinct().ToList();
+                                            foreach (var item in distinctRooms)
+                                            {
+                                                <h5 class="hotel-room-text">@item</h5>
+                                                int counter = 1;
+                                                for (int i = 0; i < Model.BookingHotelRoomViewModels.Count; i++)
+                                                {
+                                                    if (Model.BookingHotelRoomViewModels[i].RoomName == item)
+                                                    {
+                                                        <p><span class="hotel-room-style">Room @counter:</span> @Model.BookingHotelRoomViewModels[i].RatePlanName  / @Model.BookingHotelRoomViewModels[i].Adult.ToString() Adults @(Model.BookingHotelRoomViewModels[i].Child > 0 ? "– " + Model.BookingHotelRoomViewModels[i].Child.ToString() + " Kid" : string.Empty)  @(Model.BookingHotelRoomViewModels[i].Infant > 0 ? "– " + Model.BookingHotelRoomViewModels[i].Infant.ToString() + " Infant" : string.Empty)</p>
+                                                        counter++;
+                                                    }
+                                                }
+                                            }
+
+
+                                            @*<p><span class="hotel-room-style">Room 2:</span> Room with Breakfast / 2 Adults – 1 Kid – 0 Infants</p>*@
+                                        }
+
+                                    </div>
+                                    <div class="guest-info">
+                                        <p class="guest-title">Guest Information<span>What is This?</span></p>
+                                        <p class="guest-text">Booked on behalf of<span class="guest-info-icon"><img src="~/images/Info_Icon.svg" class="image-small-24" alt="info-icon" /></span></p>
+                                        <div class="row">
+                                            <div class="col-sm-4 form-group">
+                                                <input type="text" asp-for="BookingInformationViewModel.LeadFullName" placeholder="Full Name" />
+                                                <span asp-validation-for="BookingInformationViewModel.LeadFullName"></span>
+                                            </div>
+                                            <div class="col-sm-4 form-group">
+                                                <input asp-for="BookingInformationViewModel.Email" placeholder="Email"  class="text-lowercase"/>
+                                                <span asp-validation-for="BookingInformationViewModel.Email"></span>
+                                            </div>
+                                            <div class="col-sm-4 form-group">
+                                                <input asp-for="BookingInformationViewModel.MobileNumber" placeholder="Mobile Number" />
+                                                <span asp-validation-for="BookingInformationViewModel.MobileNumber"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                @if (Model.BookingVisaViewModels != null)
+                                {
+                                    <div class="booking-summary-visa padding-left-15">
+                                        <p class="visa-title">Visa Handling<span onclick="window.history.back();" class="hidden">Edit</span></p>
+                                        @if (Model.BookingVisaViewModels.Where(x => x.IsRequired).Any())
+                                        {
+                                            <p class="visa-text"><span>Book</span> with Visa</p>
+                                            for (int i = 0; i < Model.BookingVisaViewModels.Count; i++)
+                                            {
+                                                if (Model.BookingVisaViewModels[i].IsRequired)
+                                                {
+                                                    <p class="visa-text"><span>@Model.BookingVisaViewModels[i].CountryName:</span> @Model.BookingVisaViewModels[i].Count Passengers</p>
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <p class="visa-text"><span>Book</span> without Visa</p>
+                                        }
+                                    </div>
+                                }
+                                    <div class="booking-summary-flight padding-left-15">
+                                        <p class="flight-title">Flights<span onclick="window.history.back();" class="hidden">Edit</span></p>
+                                        <div class="booking-flight-content">
+                                            @if (Model.FlightRequired)
+                                            {
+                                                @Html.Raw(Model.FlightRender)
+                                            }
+                                            else
+                                            {
+                                                <p>Book<span> without Flights</span></p>
+                                            }
+                                        </div>
+                                        @if (Model.FlightRequired)
+                                        {
+                                            <div class="seperator margin-top-bottom-15"></div>
+                                            <div class="passenger-info">
+                                                <p class="passenger-title">Passenger Information<span data-toggle="tooltip" title="Passenger Information would be used for Flight Booking">What is this?</span></p>
+                                                @{
+                                                    int index = 1;
+                                                    bool passportRequired = Model.BookingFlightViewModel.Length == 2 ? false : true;
+                                                }
+                                                @for (int i = 1; i <= Model.BookingSummaryViewModel.PassengerBreakDown.Adults; i++)
+                                                {
+                                                    @Html.Partial("_BookingPassengerDetails", new BookingPassengerViewModel { Index = index, PassengerType = (int)Enums.PersonType.Adult, Salutation = "Mr",PassportRequired = passportRequired })
+                                                    index = index + 1;
+                                                }
+                                                @for (int i = 1; i <= Model.BookingSummaryViewModel.PassengerBreakDown.Childs; i++)
+                                                {
+                                                    @Html.Partial("_BookingPassengerDetails", new BookingPassengerViewModel { Index = index, PassengerType = (int)Enums.PersonType.Child, Salutation = "Mr" , PassportRequired = passportRequired})
+                                                    index = index + 1;
+                                                }
+                                                @for (int i = 1; i <= Model.BookingSummaryViewModel.PassengerBreakDown.Infants; i++)
+                                                {
+                                                    @Html.Partial("_BookingPassengerDetails", new BookingPassengerViewModel { Index = index, PassengerType = (int)Enums.PersonType.Infant, Salutation = "Mstr",PassportRequired = passportRequired })
+                                                    index = index + 1;
+                                                }
+                                            </div>
+                                        }
+
+                                    </div>
+                            </div>
+                        </div>
+
+                        @*<div class="col-sm-12 col-md-12 col-lg-12 booking-summary-section2">
+                <div class="Frequent-Deal">
+                    <h2 class="deal-heading">Frequently Bought With this Deal</h2>
+                    <div class="col-sm-4 col-md-4 col-lg-4 frequent-deal-image">
+                        <img src="~/images/deal-hotel-1.jpg" alt="deal-image" />
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8 frequent-deal-description">
+                        <div style="width:100%;">
+                            <div class="frequent-deal-text">
+                                <p>UBUD From Another Angle</p>
+                                <a href="#">Show Details</a>
+                            </div>
+                            <div class="frequent-deal-experience">
+                                <p>Day of experience <span class="remove-text">Remove<span class="remove-icon-bg"><img src="~/images/Close_Icon.svg" /></span></span></p>
+                                <div class="col-sm-6 col-md-6 col-lg-6 ltd-select day-select" style="padding-left:0px;padding-right:0px;">
+                                    <select select2-stop-render="true">
+                                        <option value="0">Select Day:</option>
+                                        <option value="1">Day 1</option>
+                                        <option value="2">Day 2</option>
+                                        <option value="3">Day 3</option>
+                                        <option value="4">Day 4</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 frequent-deal-price">
+                                    <div class="col-sm-6 col-md-6 col-lg-6" style="padding-left:0px;">
+                                        <h5><i class="fa fa-rupee" aria-hidden="true"></i>12,687</h5>
+                                        <p>Per Person</p>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-6" style="padding-left:0px;padding-right:0px;">
+                                        <button type="button" class="selected-btn">Selected</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <ul class="col-sm-12 col-md-12 col-lg-12 frequent-deal-bottom">
+                        <li class="col-sm-4 col-md-4" style="padding-left:0px;padding-right:0px;">
+                            <div style="border-right:1px solid #E6E6E6">
+                                <div class="box-description">
+                                    <p>Adults</p>
+                                    <span>ABOVE 12 YEARS</span>
+                                </div>
+                                <div class="box-value">
+                                    <span>
+                                        <img src="~/images/Decrease.png" alt="Decrease_icon" data-target="#addAdults" class="decrease" />
+                                    </span>
+                                    <span>
+                                        <input class="input-box-value" type="text" data-min="1" id="addAdults" value="1" />
+                                    </span>
+                                    <span>
+                                        <img src="~/images/Increase.png" alt="increase_icon" data-target="#addAdults" class="increase" />
+                                    </span>
+                                </div>
+                            </div>
+
+
+                        </li>
+
+                        <li class="col-sm-4 col-md-4" style="padding-left:0px;padding-right:0px;">
+                            <div style="border-right:1px solid #E6E6E6">
+                                <div class="box-description">
+                                    <p>Kids</p>
+                                    <span>3-12 YEARS</span>
+                                </div>
+                                <div class="box-value">
+                                    <span>
+                                        <img src="~/images/Decrease.png" alt="Decrease_icon" data-target="#addKids" class="decrease" />
+                                    </span>
+                                    <span>
+                                        <input class="input-box-value" data-min="0" type="text" id="addKids" value="0" />
+                                    </span>
+                                    <span>
+                                        <img src="~/images/Increase.png" alt="increase_icon" data-target="#addKids" class="increase" />
+                                    </span>
+                                </div>
+                            </div>
+
+
+                        </li>
+
+                        <li class="col-sm-4 col-md-4" style="padding-left:0px;padding-right:0px;">
+                            <div class="box-description">
+                                <p>Infants</p>
+                                <span>0-2 YEARS</span>
+                            </div>
+                            <div class="box-value">
+                                <span>
+                                    <img src="~/images/Decrease.png" alt="Decrease_icon" data-target="#addInfants" class="decrease" />
+                                </span>
+                                <span>
+                                    <input class="input-box-value" data-min="0" type="text" id="addInfants" value="0" />
+                                </span>
+                                <span>
+                                    <img src="~/images/Increase.png" alt="increase_icon" data-target="#addInfants" class="increase" />
+                                </span>
+                            </div>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+            </div>*@
+
+                            <div class="col-sm-12 col-md-12 col-lg-12 booking-summary-section3">
+                                <div class="summary-model-Header hidden-xs">
+
+                                    <div class="summary-modal-title">Price Summary</div>
+
+                                </div>
+
+                                <div class="summary-model-Header hidden-sm hidden-md hidden-lg">
+
+                                    <span class="pull-left" id="mobilepricesummaryclose"><img src="~/images/left_arrow.svg" alt="left-arrow" /></span>
+                                    Price Summary
+
+                            </div>
+
+                            <div class="summary-modal-body">
+                                <div class="padding-left-15">
+                                    @Html.Raw(Model.SummaryRendered)
+                                </div>
+                                
+                                <div class="booking-total col-sm-12 col-md-12 col-xs-12">
+                                    <div class="padding-left-15">
+                                        <div class="booking-total-Details col-sm-12 col-md-12 col-xs-12">
+                                            Total
+                                            <span class="include-text">(Incl. Taxes)</span>
+
+                                            <span class="total-price"><span> ₹</span>@(Math.Round(Model.BookingSummaryViewModel.TotalPrice + Model.BookingSummaryViewModel.TotalServiceFee + Model.BookingSummaryViewModel.TotalTax, MidpointRounding.AwayFromZero).ToAmount())</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="padding-left-15">
+                                        <div class="booking-coupon-Details  col-sm-12 col-md-12 col-xs-12">
+                                            <div class="coupon-title col-sm-12 col-md-12 col-lg-12">
+                                                Coupon Discount
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 booking-coupon-left">
+                                                <input type="text" id="txtCouponCode" asp-for="BookingInformationViewModel.DiscountCoupon" />
+                                                <a href="javascript:;" class="Fixed-value" id="applyCoupon">Apply</a>
+                                                <a href="javascript:;" class="Fixed-value hidden" id="removeCoupon">Remove</a>
+                                            </div>
+                                            <div class="col-sm-6 col-md-6 col-lg-6 booking-coupon-right">
+                                                <span class="coupon-discount-text"></span>
+                                                <span class="total-price discounted-price"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @if(Model.DealsPromotionViewModels.Count > 0)
+                                    {
+                                        <div class="padding-left-15">
+                                            <div class="promotion-discount-details  col-sm-12 col-md-12 col-xs-12">
+                                                <div class="promotion-heading row">
+                                                    Promotions Discount
+                                                </div>
+                                                @for (int i = 0; i < Model.DealsPromotionViewModels.Count; i++)
+                                                {
+                                                    DealsPromotionViewModel item = Model.DealsPromotionViewModels[i];
+                                                    if (item.Type == (int)Enums.DealPromotionType.EarlyBirdOffer)
+                                                    {
+                                                        string spanText = string.Empty;
+                                                        spanText = spanText + (item.DiscountType == 1 ? item.DiscountValue.ToAmount() + "%" : "₹" + item.DiscountValue.ToAmount());
+                                                        spanText = spanText + " Early Bird Discount";
+                                                        string tooltipText = string.Empty;
+                                                        tooltipText = tooltipText + (item.DiscountType == 1 ? item.DiscountValue.ToAmount() + "%" : "₹" + item.DiscountValue.ToAmount());
+                                                        tooltipText = tooltipText + " Early Bird Discount ";
+                                                        if (item.BookingStartDate != null && item.BookingEndDate != null)
+                                                        {
+                                                            tooltipText = tooltipText + "<br> •Booked Between " + Convert.ToDateTime(item.BookingStartDate).ToString("dd/MM/yyyy") + " to " + Convert.ToDateTime(item.BookingEndDate).ToString("dd/MM/yyyy");
+                                                        }
+                                                        if (item.TravelStartDate != null && item.TravelEndDate != null)
+                                                        {
+                                                            tooltipText = tooltipText + "<br> •Travel Date Between " + Convert.ToDateTime(item.BookingStartDate).ToString("dd/MM/yyyy") + " to " + Convert.ToDateTime(item.BookingEndDate).ToString("dd/MM/yyyy");
+                                                        }
+                                                        if (item.StartDay != null && item.StartDay != 0)
+                                                        {
+                                                            tooltipText = tooltipText + "<br> •Diffrence of More than " + Convert.ToInt32(item.StartDay) + " Days between Date of Booking and Date of Travel.";
+                                                        }
+                                                        if (item.RoomType != null && item.RoomType != (short)0)
+                                                        {
+                                                            tooltipText = tooltipText + "<br> •" + Model.BookingHotelRoomViewModels.Where(x => x.RoomTypeId == item.RoomType).Select(x => x.RoomName).FirstOrDefault().ToString() + " Included in Package.";
+                                                        }
+                                                        <div class="row promotion-item" id="dealPromotion_@item.Id">
+                                                            <div class="col-sm-10 col-md-10 col-lg-10 promotion-information-left">
+                                                                <div class="promotion-description">
+                                                                    <span>@(item.DiscountType == 1 ? item.DiscountValue.ToAmount() + "%" : "₹" + item.DiscountValue.ToAmount()) Early Bird Discount</span>
+                                                                    <span class="promotion-information-icon" data-toggle="tooltip" title="@tooltipText"><img src="/images/Info_Icon.svg" class="image-small-20" alt="info-icon"></span>
+                                                                    <a href="javascript:;" class="apply-promotion" data-target="#dealPromotion_@item.Id" data-discount-type="@item.DiscountType" data-discount-value="@item.DiscountValue">Apply</a>
+                                                                    <a href="javascript:;" class="remove-promotion">Remove</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-2 col-md-2 col-lg-2">
+                                                                <div class="total-price discounted-price"></div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    if (item.Type == (int)Enums.DealPromotionType.LengthOfStay)
+                                                    {
+                                                        string spanText = string.Empty;
+                                                        spanText = spanText + (item.DiscountType == 1 ? item.DiscountValue.ToAmount() + "%" : "₹" + item.DiscountValue.ToAmount());
+                                                        spanText = spanText + " Length of Stay Discount";
+                                                        string tooltipText = string.Empty;
+                                                        tooltipText = tooltipText + (item.DiscountType == 1 ? item.DiscountValue.ToAmount() + "%" : "₹" + item.DiscountValue.ToAmount());
+                                                        tooltipText = tooltipText + " Length of Stay Discount ";
+                                                        if (item.BookingStartDate != null && item.BookingEndDate != null)
+                                                        {
+                                                            tooltipText = tooltipText + "<br> •Booked Between " + Convert.ToDateTime(item.BookingStartDate).ToString("dd/MM/yyyy") + " to " + Convert.ToDateTime(item.BookingEndDate).ToString("dd/MM/yyyy");
+                                                        }
+                                                        if (item.TravelStartDate != null && item.TravelEndDate != null)
+                                                        {
+                                                            tooltipText = tooltipText + "<br> •Travel Date Between " + Convert.ToDateTime(item.BookingStartDate).ToString("dd/MM/yyyy") + " to " + Convert.ToDateTime(item.BookingEndDate).ToString("dd/MM/yyyy");
+                                                        }
+                                                        //if (item.StartDay != null && item.StartDay != 0)
+                                                        //{
+                                                        //    tooltipText = tooltipText + "<br> •Diffrence of More than " + Convert.ToInt32(item.StartDay) + " Days between Date of Booking and Date of Travel.";
+                                                        //}
+                                                        if (item.LengthOfStay != 0)
+                                                        {
+                                                            tooltipText = tooltipText + "<br> •Minimum Length Of Stay is " + item.LengthOfStay.ToString() + " days.";
+                                                        }
+                                                        if (item.RoomType != null && item.RoomType != (short)0)
+                                                        {
+                                                            tooltipText = tooltipText + "<br> •" + Model.BookingHotelRoomViewModels.Where(x => x.RoomTypeId == item.RoomType).Select(x => x.RoomName).FirstOrDefault().ToString() + " Included in Package.";
+                                                        }
+                                                        <div class="row promotion-item" id="dealPromotion_@item.Id">
+                                                            <div class="col-sm-10 col-md-10 col-lg-10 promotion-information-left">
+                                                                <div class="promotion-description">
+                                                                    <span>@(item.DiscountType == 1 ? item.DiscountValue.ToAmount() + "%" : "₹" + item.DiscountValue.ToAmount()) Length of Stay Discount</span>
+                                                                    <span class="promotion-information-icon" data-toggle="tooltip" title="@tooltipText"><img src="/images/Info_Icon.svg" class="image-small-20" alt="info-icon"></span>
+                                                                    <a href="javascript:;" class="apply-promotion" data-target="#dealPromotion_@item.Id" data-discount-type="@item.DiscountType" data-discount-value="@item.DiscountValue">Apply</a>
+                                                                    <a href="javascript:;" class="remove-promotion">Remove</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-2 col-md-2 col-lg-2">
+                                                                <div class="total-price discounted-price"></div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    if (item.Type == (int)Enums.DealPromotionType.FlatDiscount)
+                                                    {
+                                                        string spanText = string.Empty;
+                                                        spanText = spanText + (item.DiscountType == 1 ? item.DiscountValue.ToAmount() + "%" : "₹" + item.DiscountValue.ToAmount());
+                                                        spanText = spanText + " Flat Discount";
+                                                        string tooltipText = string.Empty;
+                                                        tooltipText = tooltipText + (item.DiscountType == 1 ? item.DiscountValue.ToAmount() + "%" : "₹" + item.DiscountValue.ToAmount());
+                                                        tooltipText = tooltipText + " Flat Discount ";
+                                                        if (item.BookingStartDate != null && item.BookingEndDate != null)
+                                                        {
+                                                            tooltipText = tooltipText + "<br> •Booked Between " + Convert.ToDateTime(item.BookingStartDate).ToString("dd/MM/yyyy") + " to " + Convert.ToDateTime(item.BookingEndDate).ToString("dd/MM/yyyy");
+                                                        }
+                                                        if (item.TravelStartDate != null && item.TravelEndDate != null)
+                                                        {
+                                                            tooltipText = tooltipText + "<br> •Travel Date Between " + Convert.ToDateTime(item.BookingStartDate).ToString("dd/MM/yyyy") + " to " + Convert.ToDateTime(item.BookingEndDate).ToString("dd/MM/yyyy");
+                                                        }
+                                                        if (item.RoomType != null && item.RoomType != (short)0)
+                                                        {
+                                                            tooltipText = tooltipText + "<br> •" + Model.BookingHotelRoomViewModels.Where(x => x.RoomTypeId == item.RoomType).Select(x => x.RoomName).FirstOrDefault().ToString() + " Included in Package.";
+                                                        }
+                                                        <div class="row promotion-item" id="dealPromotion_@item.Id">
+                                                            <div class="col-sm-10 col-md-10 col-lg-10 promotion-information-left">
+                                                                <div class="promotion-description">
+                                                                    <span>@(item.DiscountType == 1 ? item.DiscountValue.ToAmount() + "%" : "₹" + item.DiscountValue.ToAmount()) Flat Discount</span>
+                                                                    <span class="promotion-information-icon" data-toggle="tooltip" title="@tooltipText"><img src="/images/Info_Icon.svg" class="image-small-20" alt="info-icon" /></span>
+                                                                    <a href="javascript:;" class="apply-promotion" data-target="#dealPromotion_@item.Id" data-discount-type="@item.DiscountType" data-discount-value="@item.DiscountValue">Apply</a>
+                                                                    <a href="javascript:;" class="remove-promotion">Remove</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-2 col-md-2 col-lg-2">
+                                                                <div class="total-price discounted-price"></div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                }
+
+                                            </div>
+                                        </div>
+
+                                    }
+                                    
+
+                                    <input type="hidden" asp-for="BookingInformationViewModel.Discount" />
+                                    <input type="hidden" asp-for="BookingInformationViewModel.DiscountAmount" />
+                                    <input type="hidden" asp-for="BookingInformationViewModel.DiscountType" />
+                                    <input type="hidden" asp-for="BookingInformationViewModel.DiscountApplied" />
+                                    <div class="booking-net-total col-sm-12 col-md-12 col-xs-12">
+                                        Net Payable
+                                        <span class="total-price"><span> ₹</span>@(Math.Round(Model.BookingSummaryViewModel.TotalPrice + Model.BookingSummaryViewModel.TotalServiceFee + Model.BookingSummaryViewModel.TotalTax, MidpointRounding.AwayFromZero).ToAmount())</span>
+                                    </div>
+                                    @if (Model.BookingInformationViewModel.IsHold)
+                                    {
+                                        <div class="booking-deposit col-sm-12 col-md-12 col-xs-12">
+                                            Deposit
+                                            <span class="include-text">(20% of Net Payable)</span><span class="summary-info-icon"><img src="~/images/Info_Icon.svg" class="image-small-24" alt="info-icon" /></span>
+
+                                            <span class="total-price"><span> ₹</span>@(Math.Round((Model.BookingSummaryViewModel.TotalPrice + Model.BookingSummaryViewModel.TotalServiceFee + Model.BookingSummaryViewModel.TotalTax) * Convert.ToDecimal(0.2)).ToAmount())</span>
+                                        </div>
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+
+                            <div class="Total-Summary col-sm-12 col-md-12 col-xs-12 hidden-xs">
+
+                            <button type="button" class="checkout-btn">Proceed to Pay Deposit</button>
+                        </div>
+
+                            <div class="Total-Summary col-sm-12 col-md-12 col-xs-12 hidden-sm hidden-md hidden-lg">
+
+                                <button type="button" class="checkout-btn">Proceed to Checkout</button>
+                            </div>
+
+                            <div id="mobilepricesummaryopen" class="price-summary-btn-xs col-xs-12 hidden-sm hidden-md hidden-lg">
+                                <span>View Price Summary</span>
+                            </div>
+
+                        </div>
+                        
+                        <div class="col-sm-4 col-md-5 col-lg-4 hidden-md hidden-xs hidden-sm" id="booking-stuck">
+                            <div class="col-sm-12 col-md-12 col-lg-12 booking-scroller-anchor"></div>
+                            <div class="Booking-Summary-Right booking-scroller col-sm-12 cool-md-12 col-lg-12">
+                                <h2>Stuck Somewhere? Give Us A Call!</h2>
+                                <hr class="hr-grey-bottom-unset-float w75">
+                                <h3>1800-108-0808</h3>
+                                <hr class="hr-long-e6e6e6">
+                                <p>
+                                    Monday to Friday 8:00 AM – 8:00 PM<br> except Saturdays, Sundays & bank holidays
+                                </p>
+                                <hr class="hr-long-e6e6e6">
+                                <div class="booking-scroller-text">Our Service Speaks for Itself</div>
+                                <a href="https://www.trustpilot.com/review/www.luxurytravel.deals?languages=all" target="_blank">
+                                    <div class="star-icon"><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /></div>
+                                    <div class="booking-scroller-social-text">
+                                        496 RATINGS ON TRUSTPILOT
+                                    </div>
+                                </a>
+                                <hr class="hr-long-e6e6e6">
+                                <a href="https://www.facebook.com/pg/luxurytraveldeal/reviews/" target="_blank">
+                                    <div class="star-icon"><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /></div>
+                                    <div class="booking-scroller-social-text">
+                                        5,721 RATINGS ON FACEBOOK
+                                    </div>
+                                </a>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    </div>
+            </div>
+        </form>
+}
+catch (Exception ex)
+{
+    var msg = ex.ToString();
+}
+
+
+
+
+@section scripts{
+    <script src="~/js/custom-dropdown.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        jQuery.validator.addMethod("equal", 
+            function (value, element, param) {
+                if ($('#BookingPassengerViewModels_' + element.id.split('_')[1] + '__FirstName').val().toLowerCase() == element.value.toLowerCase()) {
+                    return false;
+                }
+                return true;
+            });
+        jQuery.validator.addMethod("minlength",
+            function (value, element, param) {
+                if ($(element).val().length > parseInt($(element).data('val-minlength-min'))) {
+                    return true;
+                }
+                return false;
+            });
+        jQuery.validator.unobtrusive.adapters.addBool("equal");
+        jQuery.validator.unobtrusive.adapters.addBool("minlength");
+
+        $('[data-toggle="tooltip"]').tooltip({ html: true, placement: "bottom" });
+        $(document).on('click', '.promotion-discount-details .promotion-item .apply-promotion', function (e)
+        {
+            showWaitProcess();
+            var target = $(this).data('target');
+            var promoId = target.split("_").pop(); 
+            var discountType = parseInt($(this).data('discount-type'));
+            var discountValue = parseInt($(this).data('discount-value'));
+            var totalPrice = parseFloat($('input[name="BookingSummaryViewModel.TotalPrice"]').val()) + parseFloat($('input[name="BookingSummaryViewModel.TotalServiceFee"]').val());
+            totalPrice = Math.round(totalPrice);
+            var totalPriceIncludingTax = parseFloat($('input[name="BookingSummaryViewModel.TotalPrice"]').val()) + parseFloat($('input[name="BookingSummaryViewModel.TotalServiceFee"]').val()) + parseFloat($('input[name="BookingSummaryViewModel.TotalTax"]').val());
+            var discountAmount = 0.0;
+            var priceAfterDiscount = 0.0;
+            if (discountType == 1)
+            {
+                discountAmount = totalPrice * (discountValue / 100);
+                priceAfterDiscount = totalPriceIncludingTax - discountAmount;
+
+            }
+            else {
+                discountAmount = discountType;
+                priceAfterDiscount = totalPriceIncludingTax - discountAmount;
+            }
+            $(this).closest('.promotion-item').find('.discounted-price').first().html('- ₹' + Math.round(discountAmount).toLocaleString('en-IN'));
+            var netPaybleString = '<span> ₹</span>';
+            netPaybleString = netPaybleString + Math.round(priceAfterDiscount).toLocaleString('en-IN') + '</span>';
+            $('.booking-net-total .total-price').html(netPaybleString);
+            $('input[name="BookingInformationViewModel.DiscountApplied"]').val(true);
+            $('input[name="BookingInformationViewModel.DiscountAmount"]').val(discountAmount);
+            $('input[name="BookingInformationViewModel.DiscountType"]').val(discountType);
+            $('input[name="BookingInformationViewModel.DiscountCoupon"]').val("DEAL PROMO " + promoId);
+            $(this).closest('.promotion-item').first().addClass('selected');
+            $(".promotion-discount-details .promotion-item:not(" + target + ")").addClass('hidden');
+            $('.booking-coupon-Details').addClass('hidden');
+            hideWaitProcess();
+        });
+        $(document).on('click', '.promotion-discount-details .promotion-item .remove-promotion', function (e)
+        {
+            showWaitProcess();
+            $(this).closest('.promotion-item').removeClass('selected');
+            $(this).closest('.promotion-item').find('.discounted-price').first().html('');
+            $('.promotion-discount-details .promotion-item').removeClass('hidden');
+            $('.booking-coupon-Details').removeClass('hidden');
+            $('#txtCouponCode').val(null);
+            $(this).closest('.promotion-item').find('.discounted-price').first().html('');
+            $('.booking-coupon-Details .coupon-discount-text').html('');
+            var totalPrice = parseFloat($('input[name="BookingSummaryViewModel.TotalPrice"]').val()) + parseFloat($('input[name="BookingSummaryViewModel.TotalServiceFee"]').val()) + parseFloat($('input[name="BookingSummaryViewModel.TotalTax"]').val());
+            totalPrice = Math.round(totalPrice);
+            $('input[name="BookingInformationViewModel.DiscountAmount"]').val(0);
+            $('input[name="BookingInformationViewModel.Discount"]').val(0);
+            $('input[name="BookingInformationViewModel.DiscountType"]').val(0);
+            var netPaybleString = '<span> ₹</span>';
+            netPaybleString = netPaybleString + Math.round(totalPrice).toLocaleString('en-IN') + '</span>';
+            $('.booking-net-total .total-price').html(netPaybleString);
+            $('input[name="BookingInformationViewModel.DiscountApplied"]').val(false);
+            hideWaitProcess();
+        });
+        $(document).on('click', '#applyCoupon', function (e) {
+            var $txtCoupon = $('#txtCouponCode');
+            if ($txtCoupon.val() != null && $txtCoupon.val() != '')
+            {
+                showWaitProcess();
+                $.post('/deal/ApplyCoupon', { 'code': $txtCoupon.val() }, function (result) {
+                    hideWaitProcess();
+                    if (result.Status)
+                    {
+                        $('input[name="BookingInformationViewModel.Discount"]').val(result.DiscountValue);
+                        $('input[name="BookingInformationViewModel.DiscountType"]').val(result.DiscountType);
+                        var totalPrice = parseFloat($('input[name="BookingSummaryViewModel.TotalPrice"]').val()) + parseFloat($('input[name="BookingSummaryViewModel.TotalServiceFee"]').val());
+                        totalPrice = Math.round(totalPrice);
+                        var totalPriceIncludingTax = parseFloat($('input[name="BookingSummaryViewModel.TotalPrice"]').val()) + parseFloat($('input[name="BookingSummaryViewModel.TotalServiceFee"]').val()) + parseFloat($('input[name="BookingSummaryViewModel.TotalTax"]').val());
+                        var discountAmount = 0.0;
+                        var priceAfterDiscount = 0.0;
+                        var discountTextString = '';
+                        if (result.DiscountType == 1)
+                        {
+                            var discountPercentage = parseInt(result.DiscountValue);
+                            discountAmount = totalPrice * (discountPercentage / 100);
+                            if (discountAmount > parseFloat(result.MaxDiscount))
+                            {
+                                discountAmount = parseFloat(result.MaxDiscount);
+                            }
+                            priceAfterDiscount = totalPriceIncludingTax - discountAmount;
+
+                            discountTextString = discountTextString + discountPercentage.toLocaleString('en-IN') + "% off Applied";
+                            
+                        }
+                        else
+                        {
+                            discountAmount = parseFloat(result.DiscountValue);
+                            priceAfterDiscount = totalPriceIncludingTax - discountAmount;
+                            discountTextString = discountTextString + "₹" + discountAmount.toLocaleString('en-IN') + " off Applied";
+                        }
+                        $('input[name="BookingInformationViewModel.DiscountAmount"]').val(discountAmount);
+                        var netPaybleString = '<span> ₹</span>';
+                        netPaybleString = netPaybleString + Math.round(priceAfterDiscount).toLocaleString('en-IN') + '</span>';
+                        $('.booking-net-total .total-price').html(netPaybleString);
+                        $('.booking-coupon-Details .coupon-discount-text').html(discountTextString);
+                        $('.booking-coupon-Details .total-price.discounted-price').html('- ₹' + Math.round(discountAmount).toLocaleString('en-IN'));
+                        $txtCoupon.prop("readonly", true);
+                        $('#applyCoupon').addClass('hidden');
+                        $('#removeCoupon').removeClass('hidden');
+                        $('input[name="BookingInformationViewModel.DiscountApplied"]').val(true);
+                    }
+                    else
+                    {
+                        $('.booking-coupon-Details .coupon-discount-text').html("No Coupon Found");
+                        $('.booking-coupon-Details .coupon-discount-text').addClass('warning');
+                        setTimeout(function () {
+                            $('.booking-coupon-Details .coupon-discount-text').html("");
+                            $('.booking-coupon-Details .coupon-discount-text').removeClass('warning');
+                        }, 5000);
+                    }
+                });
+            }
+        });
+        $(document).on('click', '#removeCoupon', function (e) {
+            $('#txtCouponCode').prop("readonly", false);
+            $('#txtCouponCode').val(null);
+            $('#applyCoupon').removeClass('hidden');
+            $('#removeCoupon').addClass('hidden');
+            var totalPrice = parseFloat($('input[name="BookingSummaryViewModel.TotalPrice"]').val()) + parseFloat($('input[name="BookingSummaryViewModel.TotalServiceFee"]').val()) + parseFloat($('input[name="BookingSummaryViewModel.TotalTax"]').val());
+            totalPrice = Math.round(totalPrice);
+            $('.booking-coupon-Details .coupon-discount-text').html('');
+            $('.booking-coupon-Details .total-price.discounted-price').html('');
+            $('input[name="BookingInformationViewModel.DiscountAmount"]').val(0);
+            $('input[name="BookingInformationViewModel.Discount"]').val(0);
+            $('input[name="BookingInformationViewModel.DiscountType"]').val(0);
+            var netPaybleString = '<span> ₹</span>';
+            netPaybleString = netPaybleString + Math.round(totalPrice).toLocaleString('en-IN') + '</span>';
+            $('.booking-net-total .total-price').html(netPaybleString);
+            $('input[name="BookingInformationViewModel.DiscountApplied"]').val(false);
+        });
+        $(document).on('click', '.passenger-input .passenger-calender', function (e) {
+            $(this).siblings('input').first().datepicker('show');
+        });
+        $(window).scroll(function (e) {
+            var booking_scroll_start = $(this).scrollTop() - ($('.booking-scroller-anchor').offset().top - $('.product-header').height());
+            if ($(this).scrollTop() < $('.booking-scroller-anchor').offset().top) {
+                $('.booking-scroller').css({
+                    'top': '0px',
+                    //'margin-top': '0px',
+                    'position': 'absolute',
+                    'left': 'unset'
+                });
+            }
+            if (booking_scroll_start >= 0) {
+
+                var leftpos = ($('.Booking-Summary-Body').position().left + $('.booking-summary-section1').outerWidth() + 30);
+
+                $('.Booking-Summary-Right').css({
+                    //'margin-top': '10px',
+                });
+
+                $('.booking-scroller').css({
+                    //'top': Math.round(booking_scroll_start).toString() + 'px',
+                    'top': '83px',
+                    'position': 'fixed',
+                    'right': 'unset',
+                    'left': leftpos
+                });
+
+                if (($('.booking-scroller').height() + $(this).scrollTop() + $('.product-header').height() + 50) > $('.footer_bottom').offset().top) {
+                    $('.booking-scroller').css({
+                        //'top': Math.round(booking_scroll_start).toString() + 'px',
+                        'position': 'absolute',
+                        //'right': '0px',
+                        'top': 'unset',
+                        //'bottom': '15px',
+                        'left': 'unset'
+                    });
+                    return;
+                }
+                
+            }
+        });
+        $(document).on('click', '.Total-Summary .checkout-btn', function (e) {
+
+            if ($('#formDealBooking').valid()) {
+                showWaitProcess();
+                 $.post('@Url.Action("BookingPayment","Deal")', $('#formDealBooking').serialize(), function (data) {
+                    if (data.ErrorCode != "0") {
+                        hideWaitProcess();
+                        return false;
+                        //Handle Errors.
+                    }
+                    else {
+                        StartPaymentWithRazorPay(data.Result);
+                    }
+                    hideWaitProcess();
+            });
+            }
+
+        });
+        function StartPaymentWithRazorPay(data) {
+            var options = {
+                "key": data.DataKey,
+                "amount": data.DataAmount, // 2000 paise = INR 20
+                "name": data.DataName,
+                "description": data.DataDescription,
+                "image": data.DataImage,
+                "order_id": data.DataOrderId,
+                "handler": function (response) {
+                    $('#razorpay_order_id').val(response.razorpay_order_id);
+                    $('#razorpay_payment_id').val(response.razorpay_payment_id);
+                    $('#razorpay_signature').val(response.razorpay_signature);
+                    showWaitProcess();
+                    debugger
+                    $.ajax({
+                        type: "POST",
+                        url: '/deal/bookingconfirmation',
+                        data:  $('#formDealBooking').serialize(),
+                        success: function (result) {
+                            hideWaitProcess();
+                            if (result.Status) {
+                                window.location = "/Deal/ThankYou?bookingId=" + result.BookingId;
+                            }
+                            else {
+
+                            }
+                            
+                        }
+                    });
+                    ////alert(response.razorpay_payment_id);
+                },
+                "prefill": {
+                    "name": data.DataPrefillName,
+                    "email": data.DataPrefillEmail,
+                    "contact": data.DataPrefillContact
+                },
+
+                "modal": {
+                    "ondismiss": function () { },
+                    "escape": false
+                },
+                "theme": {
+                    "color": data.DataThemeColor
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+            hideWaitProcess();
+        }
+        $(document).ready(function (e) {
+            var todayDate = new Date();
+            $('.datepicker-custom.datepicker-adult').datepicker({
+                autoclose: true,
+                format: "dd/mm/yyyy",
+                startView: 2,
+                defaultViewDate: { year: todayDate.getFullYear() - 25, month: todayDate.getMonth(), day: todayDate.getDate() },
+                endDate: new Date(todayDate.getFullYear() - 12, todayDate.getMonth(), todayDate.getDate())
+            });
+            $('.datepicker-custom.datepicker-child').datepicker({
+                autoclose: true,
+                format: "dd/mm/yyyy",
+                startView: 2,
+                defaultViewDate: new Date(todayDate.getFullYear() - 10, todayDate.getMonth(), todayDate.getDate() ),
+                startDate: new Date(todayDate.getFullYear() - 12, todayDate.getMonth(), todayDate.getDate()),
+                endDate: new Date(todayDate.getFullYear() - 2, todayDate.getMonth(), todayDate.getDate()),
+            });
+            $('.datepicker-custom.datepicker-infant').datepicker({
+                autoclose: true,
+                format: "dd/mm/yyyy",
+                startView: 2,
+                
+                defaultViewDate: new Date(todayDate.getFullYear() - 1, todayDate.getMonth(), todayDate.getDate()),
+                startDate: new Date(todayDate.getFullYear() - 2, todayDate.getMonth(), todayDate.getDate()),
+                endDate: new Date()
+            });
+            if ($('.datepicker-custom.datepicker-passport-expiry').length > 0)
+            {
+                $('.datepicker-custom.datepicker-passport-expiry').datepicker({
+                    autoclose: true,
+                    format: "dd/mm/yyyy",
+                    startView: 2,
+                    defaultViewDate: new Date(todayDate.getFullYear() + 4, todayDate.getMonth(), todayDate.getDate()),
+                    startDate: new Date(todayDate.getFullYear(), todayDate.getMonth(), todayDate.getDate() + 1),
+                    endDate: new Date(todayDate.getFullYear() + 20, todayDate.getMonth(), todayDate.getDate())
+                });
+            }
+            
+            $('[data-toggle="tooltip"]').tooltip();
+
+          
+              //Price Summary View (Mobile View- Booking flow) start,
+            $("#mobilepricesummaryopen").click(function () {
+                if ($('#formDealBooking').valid()) {
+                    $(".Booking-summary-options").css("display", "none");
+                    $(".booking-summary-section3").css("display", "block");
+                    $(".Total-Summary").css("display", "block");
+                    $(".footer_bottom").css("display", "none");
+                    $('.price-summary-btn-xs').hide();
+                    $('.Booking-Summary-Title').hide();
+                    $(".booking-summary-deal").css("background-color", "white");
+                }
+            });
+            $("#mobilepricesummaryclose").click(function () {
+                $(".Booking-summary-options").css("display", "block");
+                $(".booking-summary-section3").css("display", "none");
+                $(".Total-Summary").css("display", "none");
+                $(".footer_bottom").css("display", "block");
+                $('.price-summary-btn-xs').show();
+                $('.Booking-Summary-Title').show();
+                $(".booking-summary-deal").css("background-color","unset");
+            });
+              //Price Summary View (Mobile View- Booking flow) end,
+           
+        });
+    </script>
+}

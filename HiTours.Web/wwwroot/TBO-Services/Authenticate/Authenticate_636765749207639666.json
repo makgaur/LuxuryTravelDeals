@@ -1,0 +1,16 @@
+//-- Authenticate Api Request --
+{
+  "ClientId": "tboprod",
+  "UserName": "HiTours",
+  "Password": "Tours@123",
+  "EndUserIp": "132.148.146.28"
+}
+//-- Authenticate Api Response --
+{
+  "Status": 3,
+  "TokenId": null,
+  "Error": {
+    "ErrorCode": 1,
+    "ErrorMessage": "Incorrect Username"
+  }
+}

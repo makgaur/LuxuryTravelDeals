@@ -1,0 +1,43 @@
+﻿@model DealVisaViewModel
+
+<!-- Visa Policy Modal -->
+<div class="modal visa-policy-modal fade" id="visaPolicyModal_@Model.Id" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content mobile-modal-content">
+            <div class="visa-policy-header">
+                <button type="button" class="close visa-policy-modal-close" data-dismiss="modal"><img src="~/images/Close_Icon.svg" alt="close_icon" class="image-small-24" /></button>
+                <div class="visa-policy-modal-title">Visa Policy @*<span class="visa-country-name">(@Model.CountryName)</span>*@</div>
+                <hr class="hr-grey-bottom-unset-float w75 hidden-xs">
+            </div>
+            <div id="visaPolicyTab_@Model.Id" class="visa-policy-body">
+                <ul class="nav visa-nav-tabs">
+                    <li data-parent-tab="#visaPolicyTab_@Model.Id" class="active"><a href="#visatab1_@Model.Id"><span class="margin-right-7"><img src="~/images/visa_document_icon.svg" alt="visa_document_icon" class="image-small-20 visa-active-icon" /> <img src="~/images/visa_document_black.svg" alt="visa-document-black-image" class="visa-black-icon" /> </span> Documents Requirement</a></li>
+                    <li data-parent-tab="#visaPolicyTab_@Model.Id"><a href="#visatab2_@Model.Id"><span class="margin-right-7"><img src="~/images/visa_photo_icon.svg" alt="visa-photo-icon" class="image-small-20 visa-black-icon" /><img src="~/images/visa_photo_pink.svg" alt="visa-photo-pink-image" class="visa-active-icon" /> </span>Photo Specification</a></li>
+                    <li data-parent-tab="#visaPolicyTab_@Model.Id"><a href="#visatab3_@Model.Id"><span class="margin-right-7"><img src="~/images/visa_processing_icon.svg" alt="visa-processing-icon" class="image-small-20 visa-black-icon" /><img src="~/images/visa_processing_pink.svg" alt="visa-processing-pink-image" class="visa-active-icon" /> </span>Processing Time</a></li>
+                    <li data-parent-tab="#visaPolicyTab_@Model.Id"><a href="#visatab4_@Model.Id"><span class="margin-right-7"><img src="~/images/visa_general_policy_icon.svg" alt="visa_genral_policy_icon" class="image-small-20 visa-black-icon" /><img src="~/images/visa_general_policy_pink.svg" alt="visa-general-policy-pink-image" class="visa-active-icon" /> </span>General Policy</a></li>
+                </ul>
+
+                <div class="tab-content visa-policy-tab-content">
+                    <div id="visatab1_@Model.Id" class="tab-pane fade in active" >
+                        @Html.Raw(Model.DocumentsRequired)
+                    </div>
+                    <div id="visatab2_@Model.Id" class="tab-pane fade">
+                        @Html.Raw(Model.PhotoSpecification)
+
+                    </div>
+                    <div id="visatab3_@Model.Id" class="tab-pane fade">
+                        @Html.Raw(Model.ProcessingTime)
+
+                    </div>
+                    <div id="visatab4_@Model.Id" class="tab-pane fade">
+                       
+                        @Html.Raw(Model.GeneralPolicy)
+                    </div>
+                </div>
+            </div>
+            </div>
+           
+        </div>
+
+ </div>

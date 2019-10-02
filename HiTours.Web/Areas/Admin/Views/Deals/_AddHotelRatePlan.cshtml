@@ -1,0 +1,105 @@
+﻿@model DealsRatePlanViewModel
+<form asp-antiforgery="true" id="formAddRatePlan" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="NightId" />
+    <input type="hidden" asp-for="IsActive" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <input type="hidden" asp-for="RatePlanId" id="txtRatePlanID" />
+
+    
+    <div class="box-body">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="RoomConfigId"></label>
+                <select asp-for="RoomConfigId" selected="@Model.RoomConfigId" class="form-control" id="RoomId" asp-items="Model.RoomConfigurationItems"
+                        select2-value="@Model.RoomConfigId" select2-Url="/selectlist/GetRoomConfigListForPackage?packageId=@this.ViewBag.PackageId"></select>
+                <span asp-validation-for="RoomConfigId"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="Name"></label>
+                <input class="form-control" type="text" asp-for="Name" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="Currency"></label>
+                <select asp-for="Currency" selected="@Model.Currency" class="form-control" id="VendorCurrency" asp-items="Model.CurrencyItems"
+                        select2-value="@Model.Currency" select2-Url="/selectlist/GetCurrencyDropDownList"></select>
+                <span asp-validation-for="Currency"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="Price"></label>
+                <input class="form-control" type="number" asp-for="Price" />
+                <span asp-validation-for="Price"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="SingleSupplement">Price (SBO)</label><br />
+                <input type="number" class="form-control" asp-for="SingleSupplement" />
+                <span asp-validation-for="SingleSupplement"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="RackRate"></label><br />
+                <input type="number" class="form-control" asp-for="RackRate" />
+                <span asp-validation-for="RackRate"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="ExtraAdult"></label>
+                <input class="form-control" type="number" asp-for="ExtraAdult" />
+                <span asp-validation-for="ExtraAdult"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="ExtraChild_WB"></label><br />
+                <input type="number" class="form-control" asp-for="ExtraChild_WB" />
+                <span asp-validation-for="ExtraChild_WB"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="ExtraChild_NB"></label><br />
+                <input type="number" class="form-control" asp-for="ExtraChild_NB" />
+                <span asp-validation-for="ExtraChild_NB"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="ExtraInfant"></label><br />
+                <input type="number" class="form-control" asp-for="ExtraInfant" />
+                <span asp-validation-for="ExtraInfant"></span>
+            </div>
+
+
+            <div class="form-group col-md-3">
+                <label asp-for="ValidFrom"></label>
+                <input asp-for="ValidFrom" type="text" class="form-control datepicker-custom">
+                <span asp-validation-for="ValidFrom"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="ValidTo"></label>
+                <input asp-for="ValidTo" type="text" class="form-control datepicker-custom">
+                <span asp-validation-for="ValidTo"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="MarkUp"></label>
+                <input asp-for="MarkUp" class="form-control" placeholder="Mark Up Percentage">
+                <span asp-validation-for="MarkUp"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="ExtraSupplement"></label>
+                <input asp-for="ExtraSupplement" class="form-control" type="number">
+                <span asp-validation-for="ExtraSupplement"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="ExtraSupplementPerHead"></label>
+                <input asp-for="ExtraSupplementPerHead" class="form-control" type="number">
+                <span asp-validation-for="ExtraSupplementPerHead"></span>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer" align="center">
+        <button type="submit" id="btnSaveandReload" class="btn btn-primary">Save</button><br />
+    </div>
+</form>
+<script>
+    $(document).ready(function (e) {
+        $('.datepicker-custom').datepicker({ format: 'dd/mm/yyyy'});
+    })
+</script>

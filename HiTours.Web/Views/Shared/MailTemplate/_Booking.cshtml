@@ -1,0 +1,292 @@
+﻿@model BookingSendMailViewModel
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Luxury Travel Deals</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <style type="text/css">
+        * {
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .border-gray {
+            border: 1px solid #f1f1f1;
+        }
+
+        @@media only screen and (max-width: 610px) {
+            [class=wimg] {
+                width: 100% !important;
+            }
+
+            [class=border-gray] {
+                width: 100% !important;
+            }
+
+            [class=w490] {
+                width: 90% !important;
+            }
+        }
+
+        @@media only screen and (max-width:479px) {
+            [class=wtitre] {
+                width: 100% !important;
+                height: auto !important;
+            }
+        }
+    </style>
+</head>
+<body bgcolor="#fff">
+    @{
+        var nights = (Model.EndDate.Date - Model.StartDate.Date).TotalDays;
+    }
+    <table align="center" width="100%" cellspacing="0" cellpadding="0" bgcolor="#fff">
+        <tbody>
+            <tr>
+                <td>
+                    <table class="border-gray" align="center" width="602" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+                        <tbody>
+                            <!-- Logo -->
+                            <tr>
+                                <td align="center" bgcolor="#660866">
+                                    <a href="#" target="_blank" style="font-size: 22px; font-family: Arial, Verdana; color:#ffffff;">
+                                        <img src="@(Model.SiteUrl)images/luxury-logo-2.png" alt="" style="display: block;" width="201" height="100" border="0" />
+                                    </a>
+                                </td>
+                            </tr>
+                            <!-- Logo -->
+
+                            <tr>
+                                <td align="left" style="padding:10px 20px;" bgcolor="#f1f1f1">
+                                    <table width="100%" style="font-size: 14px; font-family: Arial, Verdana;" bgcolor="#f1f1f1">
+                                        <tr>
+                                            <td width="43" style="padding:10px 5px 10px 0px;">
+                                                <img src="@(Model.SiteUrl)images/check.png" alt="checked" width="33" height="34" style="display:block" />
+                                            </td>
+                                            <td style="font-size:13px; font-family: Arial, Verdana; color:#f76c00; text-transform:uppercase;">
+                                                <b>Your Booking is COMPLETE</b><br />
+                                                <span style="color:#545454; text-transform:capitalize">Thank you for booking with us</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td align="left" style="padding:0px 30px;" bgcolor="#f1f1f1">
+                                    <table width="100%" style="font-size: 14px; font-family: Arial, Verdana;">
+                                        <tr>
+                                            @*<td style="width:180px; padding-right:10px; display:none;">
+                                                    <img src="@(Model.SiteUrl)images/package.png" alt="checked" width="180" height="106" style="display:block">
+                                                </td>*@
+                                            <td style="font-size:13px; font-family: Arial, Verdana; color:#545454;">
+                                                <span style="color:#000; font-size:22px;">@Model.HotelName</span><br />
+                                                <span style="color:#222; line-height:30px;"><em>@Model.HotelCity - @Model.HotelCountry</em></span><br />
+                                                @*<span><b>Without transport</b></span>*@
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td align="left" style="padding:15px 30px;" bgcolor="#f1f1f1">
+                                    <table align="center" width="100%" style="font-size: 14px; font-family: Arial, Verdana;">
+                                          <tr>
+                                            <td style="padding:3px 0; width:90px">Booking Id :</td>
+                                            <td style="padding:3px 0;"><b>@Model.BookingId</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:3px 0; width:90px">Start Date :</td>
+                                            <td style="padding:3px 0;"><b>@(string.Format("{0:D}", Model.StartDate))</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:3px 0; width:90px">End Date :</td>
+                                            <td style="padding:3px 0;"><b>@(string.Format("{0:D}", Model.EndDate))</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:3px 0; width:90px">Duration:</td>
+                                            <td style="padding:3px 0;"><b>@nights @(nights == 1 ? "Night" : "Nights") </b></td>
+                                        </tr>
+                                        @*<tr>
+                                                <td style="padding:3px 0; width:90px">Participants:</td>
+                                                <td style="padding:3px 0;"><b>@Model.Participants</b></td>
+                                            </tr>*@
+                                        <tr>
+                                            <td style="padding:3px 0; width:90px">Deal Code:</td>
+                                            <td style="padding:3px 0;"><b>@Model.DealCode</b></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="padding:3px 0; width:90px">Room Type:</td>
+                                            <td style="padding:3px 0;"><b>@Model.RoomType</b></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            @if (Model.IsContactDetail == true)
+                            {
+                                <tr>
+                                    <td align="left" style="padding:10px 30px; color:#000; font-size: 13px; font-family: Arial, Verdana;" bgcolor="#e0e0e0"><b>Contact Detail</b></td>
+                                </tr>
+                                <tr>
+                                    <td align="left" style="padding:15px 30px;" bgcolor="#f1f1f1">
+                                        <table align="center" width="100%" style="font-size: 14px; font-family: Arial, Verdana;">
+                                            <tr>
+                                                <td style="padding:3px 0; width:90px">Name:</td>
+                                                <td style="padding:3px 0;"><b>@Model.FirstName @Model.LastName</b></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td style="padding:3px 0; width:90px">Mobile:</td>
+                                                <td style="padding:3px 0;"><b>@Model.Mobile</b></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td style="padding:3px 0; width:90px">Email:</td>
+                                                <td style="padding:3px 0;"><b>@Model.Email</b></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td style="padding:3px 0; width:90px; vertical-align:top;">Address:</td>
+                                                <td style="padding:3px 0;">
+                                                    <b>
+                                                        @Model.Address @Model.City - @Model.PinCode @Model.Country
+                                                    </b>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" style="padding:10px 30px; color:#000; font-size: 13px; font-family: Arial, Verdana;" bgcolor="#e0e0e0"><b>Traveler Detail</b></td>
+                                </tr>
+                                <tr>
+                                    <td align="left" style="padding:15px 30px;">
+                                        <table align="center" width="100%" style="font-size: 14px; font-family: Arial, Verdana;">
+                                            @{
+                                                var detail = Model.PersonDetail.OrderBy(x => x.RoomNo).GroupBy(x => x.RoomNo);
+                                            }
+                                            @foreach (var item in detail)
+                                            {
+                                                <tr>
+                                                    <td style="padding:3px 0; width:90px">Room @item.Key</td>
+                                                </tr>
+
+                                                foreach (var row in item)
+                                                {
+                                                    <tr>
+                                                        <td style="padding:3px 0; width:90px">Name:</td>
+                                                        <td style="padding:3px 0;"><b>@row.Salutation @row.FirstName @row.LastName</b></td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </table>
+                                    </td>
+                                </tr>
+                            }
+                            <tr>
+                                <td align="left" style="padding:10px 30px; color:#000; font-size: 13px; font-family: Arial, Verdana;" bgcolor="#e0e0e0"><b>Your Holiday</b></td>
+                            </tr>
+
+                            <tr>
+                                <td align="left" style="padding:15px 30px; border-bottom:1px solid #a7a7a7;" bgcolor="">
+                                    <table align="center" width="100%" style="font-size: 14px; font-family: Arial, Verdana;">
+                                        @if (Model.BookingType != Enums.CurrentDealType.Package)
+                                        {
+                                            <tr>
+                                                <td style="padding:3px 0;">Per Night Cost</td>
+                                                <td style="padding:3px 0; color:#f76c00" align="right"> <b>INR @Model.RoomCost.ToAmount() X @nights</b></td>
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td style="padding:3px 0;">Total</td>
+                                            <td style="padding:3px 0; color:#f76c00" align="right"> <b>INR @Model.BookingPrice.ToAmount()</b></td>
+                                        </tr>
+                                        @if (Model.WeekendPrice > 0)
+                                        {
+
+                                            <tr>
+                                                <td style="padding:3px 0;">Weekend Surcharge</td>
+                                                <td style="padding:3px 0; color:#f76c00" align="right"> <b>INR @Model.WeekendPrice.ToAmount()</b></td>
+                                            </tr>
+                                        }
+
+                                        <tr>
+                                            <td style="padding:3px 0;">Tax</td>
+                                            <td style="padding:3px 0; color:#f76c00" align="right"><b>INR @Model.GstAmount.ToAmount()</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding:3px 0;">Total inc. taxes</td>
+                                            <td style="padding:3px 0; color:#f76c00" align="right"><b>INR @((Model.BookingPrice + Model.WeekendPrice + Model.GstAmount).ToAmount())</b></td>
+                                        </tr>
+                                        @if (Model.BookingType == Enums.CurrentDealType.Package)
+                                        {
+                                            var pendingAmount = (Model.BookingPrice + Model.WeekendPrice + Model.GstAmount) - Model.PaidAmount;
+                                            if (pendingAmount > 0)
+                                            {
+                                                <tr>
+                                                    <td style="padding:3px 0;">Deposit Amount</td>
+                                                    <td style="padding:3px 0; color:#f76c00" align="right"><b>INR @((Model.PaidAmount).ToAmount())</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding:3px 0;">Pending Amount</td>
+                                                    <td style="padding:3px 0; color:#f76c00" align="right"><b>INR @pendingAmount.ToAmount()</b></td>
+                                                </tr>
+                                            }
+                                        }
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td align="center">
+                                    <table align="center" width="100%" cellspacing="0" cellpadding="0" bgcolor="#680866">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center" style="padding:30px 0 30px 0;">
+                                                    <img src="@(Model.SiteUrl)images/sup_bas.png" alt="Your registration is confirmed" style="display: block;" width="215" height="53" border="0" />
+                                                </td>
+                                            </tr>
+                                            @*<tr>
+                                                <td align="center" style="padding-bottom:30px;">
+                                                    <table width="160px">
+                                                        <tr>
+                                                            <td width="34" height="34">
+                                                                <a href="#" target="_blank">
+                                                                    <img src="@(Model.SiteUrl)images/facebook.png" alt="Twitter" style="display: block;" width="32" height="32" border="0" />
+                                                                </a>
+                                                            </td>
+                                                            <td width="34" height="34">
+                                                                <a href="#" target="_blank">
+                                                                    <img src="@(Model.SiteUrl)images/twitter.png" alt="Twitter" style="display: block;" width="32" height="32" border="0" />
+                                                                </a>
+                                                            </td>
+                                                            <td width="34" height="34">
+                                                                <a href="#" target="_blank">
+                                                                    <img src="@(Model.SiteUrl)images/instagram.png" alt="Twitter" style="display: block;" width="32" height="32" border="0" />
+                                                                </a>
+                                                            </td>
+                                                            <td width="34" height="34">
+                                                                <a href="#" target="_blank">
+                                                                    <img src="@(Model.SiteUrl)images/gplus.png" alt="Twitter" style="display: block;" width="32" height="32" border="0" />
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>*@
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

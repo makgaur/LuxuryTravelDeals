@@ -1,0 +1,103 @@
+﻿@model IList<CurrentDealsViewModel>
+
+@foreach (var item in Model)
+{
+    Double doublecost;
+    Decimal strikePrice;
+    var EndDays = (item.ValidTo) - (System.DateTime.Now);
+    if(item.IsHotelOnly)
+    {
+        doublecost = item.Cost;
+        strikePrice = item.StrikePrice;
+    }
+    else
+    {
+        doublecost = Math.Round(item.Cost * 0.5);
+        strikePrice = Math.Round(item.StrikePrice / 2);
+
+    }
+    var nights = int.Parse(item.Nights);
+
+    //var discountCost = doublecost - (doublecost * double.Parse(item.Discount.ToString())) / 100;
+    //if (doublecost == 0)
+    //{
+    //    continue;
+    //}
+
+    var redirectController = item.Type == Enums.CurrentDealType.Package ? Constants.Package : Constants.Deal;
+    var ispackage = item.Type == Enums.CurrentDealType.Package;
+    var dealType = item.DealType.Split(',');
+    var dealTypeFirst = dealType.Length > 0 ? dealType[0] : string.Empty;
+    var dealTypeSecond = dealType.Length == 2 ? dealType[1] : string.Empty;
+    <div class="white_box fullWidth @((EndDays.Days < 5) ? "" : "")">
+        
+        <div class="row home-deal-curation">
+            <a href="/@(redirectController)/details/@(ispackage?item.UrlTitle.ToLower():item.Id+"/"+SpecialChars.Remove(item.PackageName))" class="availability" data-dealprice="@item.Cost" data-dealenddate="@item.ValidTo.ToString("yyyy-MM-dd hh:mm:ss")" data-dealname="@item.PackageName" data-dealid="@item.Id">
+
+                <div class="col-sm-5" style="padding-left:0px !important; padding-right:0px !important;">
+                    <div class="box_packages">
+
+                        @if (!string.IsNullOrEmpty(item.ImageName))
+                        {
+                            <img src="~/packages/@item.ImageName" alt="deal-package-image" title="" class="img-responsive img-full"
+                                 auto-resize="true" width="440" height="283" asp-append-version="true" mode="Stretch" is-src="true" />
+                        }
+                        else
+                        {
+                            <img src="~/images/not-found.jpg" alt="deal-package-image" title="" class="img-responsive img-full"
+                                 auto-resize="true" width="440" height="283" asp-append-version="true" mode="Stretch" is-src="true" />
+                        }
+                        <div class="offers">Up to <p>@((item.Discount.ToAmount(true)))% <span>off</span> </p> Today</div>
+
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="box_contant">
+                        <div class="save-favourites"><img src="~/images/my-favourites.png" alt="my-favourites-image" /> Save to My Favourites</div>
+
+
+                        <h3 class="">@(string.IsNullOrEmpty(item.HotelName) ? string.Empty : item.HotelName)</h3>
+
+                        <h4 class="capitalize">@(item.CityList.Length > 0 ? item.CityList[0] : string.Empty), @(item.CountryNameList.Length > 0 ? item.CountryNameList[0] : string.Empty)</h4>
+                        <div class="packageEntity"></div>
+                        <div class="room_price">
+                            @*Up to <span class="border">- @((item.Discount).ToString("G29"))%</span> from*@
+                            <span class="packageEntity">@(item.Type == Enums.CurrentDealType.Package ? nights + " " + (nights > 1 ? "nights" : " night") : item.Id.ToString().ToLower() != "66cbf214-35a7-4590-3067-08d5580461c6" && item.Id.ToString().ToLower() != "6678d4c1-3e6b-46d9-6e41-08d55ca97d5b" ? "Per room For  " + nights + " " + (nights > 1 ? "nights" : " night") : nights + " " + (nights > 1 ? "nights" : " night")) From &nbsp;</span><span class="color"><i class="fa fa-inr" aria-hidden="true"></i>@(item.Type == Enums.CurrentDealType.Package ? doublecost.ToAmount() : (doublecost * nights).ToAmount())</span>
+                            <span class="texture">
+                                <i class="fa fa-inr" aria-hidden="true"></i>
+                                @(item.Type == Enums.CurrentDealType.Package ? (strikePrice).ToAmount() : (strikePrice * nights).ToAmount())
+                            </span> <span class="packageEntity"> / @(item.IsHotelOnly ? "Room " : "Person ")</span>
+
+                        </div>
+                        @if (!string.IsNullOrEmpty(item.Description))
+                        {
+                            <div class="inclusions">
+                                @this.Html.Raw(item.Description)
+                            </div>
+                        }
+                        <h4>@(item.DealQuotes)</h4>
+                        <div class="btn-setting">
+                            <div class="big_btn availability hidden-xs"> View Deal</div>
+                            @if (EndDays.Days < 5)
+                            {
+                                <div class="aboutTotime"><div class="home-flash-icon"><i class="fa fa-bolt"></i></div>&nbsp;<div class="abouttitle" style="display:inline;">Flash Deal Ends in </div><div class='deal-countdown' data-seconds="@EndDays.TotalSeconds">22h 05min 06sec</div></div>
+                                @*<span class="float_right endday"><i class="fa fa-bolt"></i> Deal Ends in <span class='deal-countdown' data-seconds="@EndDays.TotalSeconds">22h 05min 06sec</span></span>*@
+                            }
+                            else
+                            {
+                                <span class="float_right endday @((EndDays.Days == 0) ? "red-color" : "")"><i class="fa fa-bolt"></i> Flash Deal Ends in @((((EndDays.Minutes * 60) + EndDays.Seconds) > 0.0 ? (EndDays.Days) + 1 : (EndDays.TotalDays))) days</span>
+                            }
+
+
+                        </div>
+
+                    </div>
+                    @*<div style="bottom: 10px; float:left; color:black; margin:10px 5px 10px 5px; font-size: 12px;font-style: italic;">
+                        *Based on double occupancy
+                    </div>*@
+                </div>
+               
+            </a>
+        </div>
+    </div>
+}

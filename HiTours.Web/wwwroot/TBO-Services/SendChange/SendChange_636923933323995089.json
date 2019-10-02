@@ -1,0 +1,27 @@
+//-- SendChange Api Request --
+{
+  "EndUserIp": "192.168.11.120",
+  "TokenId": "90451c0b-69df-4eed-9816-ab4c750ca84e",
+  "BookingId": "1462412",
+  "RequestType": 1,
+  "CancellationType": 2,
+  "Sector": {
+    "Origin": "DEL",
+    "Destination": "MLE",
+    "TicketId": 1727636,
+    "Remarks": "Test"
+  }
+}
+//-- SendChange Api Response --
+{
+  "Response": {
+    "B2B2BStatus": false,
+    "TicketCRInfo": null,
+    "ResponseStatus": 2,
+    "TraceId": "c4cc254a-c568-4788-acf2-f915ce88cb9b",
+    "Error": {
+      "ErrorCode": 2,
+      "ErrorMessage": "We couldn't process your request due to some technical issue. Please contact Your Agent / Sales representative for details."
+    }
+  }
+}

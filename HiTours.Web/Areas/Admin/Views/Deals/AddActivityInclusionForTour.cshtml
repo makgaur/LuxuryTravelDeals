@@ -1,0 +1,63 @@
+﻿@model DealsAddOnViewModel
+<form asp-antiforgery="true" id="formActivityInclusion" method="post" enctype="multipart/form-data" style="margin-top:10px;">
+    <div class="form-group">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="InclusionId" />
+        <input type="hidden" asp-for="UpdatedBy" />
+        <input type="hidden" asp-for="UpdatedDate" />
+        <input type="hidden" asp-for="CreatedBy" />
+        <input type="hidden" asp-for="CreatedDate" />
+        <input type="hidden" asp-for="Image" />
+        <input type="hidden" asp-for="ItenaryId" />
+        <input type="hidden" asp-for="Description" />
+        <div class="box-body">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" type="text" class="form-control" />
+                    <span asp-validation-for="Name"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="AdultMinimumAge"></label>
+                    <input asp-for="AdultMinimumAge" type="text" class="form-control" />
+                    <span asp-validation-for="AdultMinimumAge"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="ChildMinimumAge"></label>
+                    <input asp-for="ChildMinimumAge" type="text" class="form-control" />
+                    <span asp-validation-for="ChildMinimumAge"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="AdultCharge"></label>
+                    <input asp-for="AdultCharge" type="text" class="form-control" />
+                    <span asp-validation-for="AdultCharge"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="ChildCharge"></label>
+                    <input asp-for="ChildCharge" type="text" class="form-control" />
+                    <span asp-validation-for="ChildCharge"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="InfantCharge"></label>
+                    <input asp-for="InfantCharge" type="text" class="form-control" />
+                    <span asp-validation-for="InfantCharge"></span>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label asp-for="Day"></label>
+                    <select asp-for="Day" class="form-control" selected="@Model.Day" select2-value="@Model.Day">
+                        @for (int i = 1; i <= Model.TotalDays; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                    <span asp-validation-for="Day"></span>
+                </div>
+                <input asp-for="VendorId" type="hidden" />
+            </div>
+        </div>
+        @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+    </div>
+</form>
+<script>
+
+</script>

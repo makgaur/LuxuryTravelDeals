@@ -1,0 +1,76 @@
+﻿@model PackageAssignPromotionViewModel
+<form asp-antiforgery="true" id="formPackagePromotionAssign" method="post" enctype="multipart/form-data">
+    <input asp-for="PackageId" hidden/>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label asp-for="PromotionsIds"></label>
+            <select asp-for="PromotionsIds" selected="@Model.PromotionsIds"  multiple class="form-control" id="PromoIds" asp-items="Model.PromotionItems"
+                    select2-value="@Model.PromotionsIds" select2-Url="/selectlist/GetPromotionsList"></select>
+            <span asp-validation-for="PromotionsIds"></span>
+        </div>
+    </div>
+    <div class="box-footer" align="center">
+        <button type="button" id="PackagePromotionAssignClick" class="btn btn-primary">Save</button><br />
+    </div>
+</form>
+<script>
+    $(document).off("click", '#PackagePromotionAssignClick')
+        .on("click", '#PackagePromotionAssignClick', function () {
+            //showWaitProcess();
+            //setTimeout(function () {
+            //    hideWaitProcess();
+            //}, 2000);
+             
+            var $form = $("#formPackagePromotionAssign");
+            if ($form.valid()) {
+                showWaitProcess();
+                var model = {}
+                model = $form.serialize();
+                var ErrorMsg = "";
+                $(".text-blank").each(function () {
+                    ErrorMsg += $(this).text();
+                })
+                if (ErrorMsg != "") {
+                    hideWaitProcess();
+                    return false;
+                }
+                else {
+                    $.ajax({
+                        url: '@Url.Action("AssignPackagePromotion","Promotions")',
+                        type: "JOSN",
+                        method: "POST",
+                        data: model,
+                        success: function (data) {
+                            hideWaitProcess();
+                            if (data == "success") {
+                                swal('', 'Successfully Inserted', 'success');
+                               $(".replaceView").click();
+                            }
+                            else if (data == "update") {
+                                swal('', 'Successfully Updated', 'success');
+                                $(".replaceView").click();
+                            }
+                            else
+                            {
+                                var errors = JSON.parse(data);
+                                $.each(errors, function (i, obj) {
+                                    var $span = $('span[data-valmsg-for="' + obj.key + '"]');
+                                    $span.addClass("field-validation-error").html('<span for="' + obj.key + '" class="field-validation-error">' + obj.error + '</span>');
+                                    $span.attr("data-valmsg-replace", "false");
+                                })
+
+                                 setTimeout(function () {
+                                        $("[data-valmsg-replace]").each(function () {
+                                            $(this).attr("data-valmsg-replace", "true");
+                                        })
+                                    }, 3000);
+                                return false;
+                            }
+                        }
+                    });
+                }
+            }
+            return false;
+
+        });
+</script>

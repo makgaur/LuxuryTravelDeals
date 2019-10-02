@@ -1,0 +1,139 @@
+﻿@model DestinationValidityAddViewModel
+<form asp-antiforgery="true" id="formAddDestinationValidity" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="DV_Id" />
+    <input type="hidden" asp-for="DV_IsActive" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <div class="box-header with-border">
+        <h5 class="box-title">Add Rate Plan</h5>
+    </div>
+    <div class="box-body">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="DV_DestinationId"></label>
+                <select asp-for="DV_DestinationId" selected="@Model.DV_DestinationId" class="form-control" id="DestinationId" asp-items="Model.DestinationItems"
+                        select2-value="@Model.DV_DestinationId" select2-Url="/selectlist/GeDestinationForValidity?packageId=@this.ViewBag.TourPackageId"></select>
+                <span asp-validation-for="DV_DestinationId"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="DV_ValidityStartDate"></label>
+                <input class="form-control" type="date" asp-for="DV_ValidityStartDate" />
+                <span asp-validation-for="DV_ValidityStartDate"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="DV_ValidityEndDate"></label>
+                <input class="form-control" type="date" asp-for="DV_ValidityEndDate" />
+                <span asp-validation-for="DV_ValidityEndDate"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="DV_AdultMinAge"></label>
+                <input class="form-control" type="number" asp-for="DV_AdultMinAge" />
+                <span asp-validation-for="DV_AdultMinAge"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="DV_InfantMaxAge"></label><br />
+                <input type="number" class="form-control" asp-for="DV_InfantMaxAge" />
+                <span asp-validation-for="DV_InfantMaxAge"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="DV_AdultPriceDBL"></label><br />
+                <input type="number" class="form-control" asp-for="DV_AdultPriceDBL" />
+                <span asp-validation-for="DV_AdultPriceDBL"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="DV_ChildPriceDBL"></label><br />
+                <input type="number" class="form-control" asp-for="DV_ChildPriceDBL" />
+                <span asp-validation-for="DV_ChildPriceDBL"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="DV_InfantPriceDBL"></label><br />
+                <input type="number" class="form-control" asp-for="DV_InfantPriceDBL" />
+                <span asp-validation-for="DV_InfantPriceDBL"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="DV_ExtraAdultPrice"></label>
+                <input asp-for="DV_ExtraAdultPrice" type="number" class="form-control">
+                <span asp-validation-for="DV_ExtraAdultPrice"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="DV_ExtraChildPrice"></label><br />
+                <input type="number" class="form-control" asp-for="DV_ExtraChildPrice" />
+                <span asp-validation-for="DV_ExtraChildPrice"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="DV_ExtraInfantPrice"></label><br />
+                <input type="number" class="form-control" asp-for="DV_ExtraInfantPrice" />
+                <span asp-validation-for="DV_ExtraInfantPrice"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="DV_SupplementAdult"></label><br />
+                <input type="number" class="form-control" asp-for="DV_SupplementAdult" />
+                <span asp-validation-for="DV_SupplementAdult"></span>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer" align="center">
+        <button type="button" id="DestinationValidityClick" class="btn btn-primary">Save</button><br />
+    </div>
+</form>
+<script>
+    $(document).off("click", '#DestinationValidityClick')
+        .on("click", '#DestinationValidityClick', function (e) {
+            var $form = $("#formAddDestinationValidity");
+            if ($form.valid()) {
+                showWaitProcess();
+                var model = {}
+                model = $form.serialize();
+                var ErrorMsg = "";
+                $(".text-blank").each(function () {
+                    ErrorMsg += $(this).text();
+                })
+                if (ErrorMsg != "") {
+                    hideWaitProcess();
+                    return false;
+                }
+                else {
+                    $.ajax({
+                        url: '@Url.Action("AddDestinationValidity", "Destination")',
+                        type: "JOSN",
+                        method: "POST",
+                        data: model,
+                        success: function (data) {
+                            hideWaitProcess();
+                            if (data == "success") {
+                                swal('', 'Successfully Inserted', 'success');
+                                $(".replaceView").click();
+                                return false;
+                            }
+                            else if (data == "update") {
+                                swal('', 'Successfully Updated', 'success');
+                                $(".replaceView").click();
+                                return false;
+                            }
+                            else
+                            {
+                                var errors = JSON.parse(data);
+                                $.each(errors, function (i, obj) {
+                                    var $span = $('span[data-valmsg-for="' + obj.key + '"]');
+                                    $span.addClass("field-validation-error").html('<span for="' + obj.key + '" class="field-validation-error">' + obj.error + '</span>');
+                                    $span.attr("data-valmsg-replace", "false");
+                                })
+
+                                 setTimeout(function () {
+                                        $("[data-valmsg-replace]").each(function () {
+                                            $(this).attr("data-valmsg-replace", "true");
+                                        })
+                                    }, 3000);
+                                return false;
+                            }
+                        }
+                    });
+                }
+            }
+    })
+</script>

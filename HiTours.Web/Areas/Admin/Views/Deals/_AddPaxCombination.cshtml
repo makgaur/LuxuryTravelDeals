@@ -1,0 +1,48 @@
+﻿@model DealsPaxCombinationViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+<tr>
+    @using (this.Html.BeginCollectionItem("GetDealsPaxCombinationViewModels"))
+    {
+    <td>
+        <input class="delete_row" asp-for="IsDeleted" type="hidden" />
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="PackageId" />
+        <input type="hidden" asp-for="Total" />
+        <input type="hidden" asp-for="UpdatedBy" />
+        <input type="hidden" asp-for="UpdatedDate" />
+        <input type="hidden" asp-for="CreatedBy" />
+        <input type="hidden" asp-for="CreatedDate" />
+        <div class="form-group col-md-12">
+
+            <span><input asp-for="Adult" id="Adult" type="number" class="minimal form-control" /></span>
+        </div>
+    </td>
+        <td>
+            <div class="form-group col-md-12">
+               
+                <span><input asp-for="Child" id="Child" type="number" class="minimal form-control" /></span>
+            </div>
+        </td>
+        <td>
+            <div class="form-group col-md-12">
+                
+                <span><input asp-for="Infant" id="Infant" type="number" class="minimal form-control" /></span>
+            </div>
+        </td>
+        <td>
+            <div class="form-group col-md-12">
+               
+                <span><input asp-for="AdultAge" id="AdultAge" type="number" class="minimal form-control" /></span>
+            </div>
+        </td>
+        <td>
+            <div class="form-group col-md-12">
+                
+                <span><input asp-for="ChildAge" id="ChildAge" type="number" class="minimal form-control" /></span>
+            </div>
+        </td>
+        <td valign="middle">
+            <a class="delete-item-row btn btn-block btn-danger" href="javaScript:void(0)"><i class="fa fa-trash-o"></i></a>
+        </td>
+    }
+</tr>

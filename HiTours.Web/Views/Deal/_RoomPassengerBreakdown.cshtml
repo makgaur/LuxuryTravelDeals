@@ -1,0 +1,89 @@
+﻿@using HtmlHelpers.BeginCollectionItemCore
+@model BookingHotelRoomViewModel
+@using (this.Html.BeginCollectionItem("BookingHotelRoomViewModels"))
+{
+    <div class="room-breakdown col-md-12"
+         data-max="@Model.Max"
+         data-room-name="@Model.RoomName"
+         data-plan-name="@Model.RatePlanName"
+         data-pricedbo="@Model.AdultPriceDbo"
+         data-pricesbo="@Model.AdultPriceSbo"
+         data-exadultprice="@Model.ExtraAdultPrice"
+         data-exchildprice="@Model.ExtraChildPrice"
+         data-exinfantprice="@Model.ExtraInfantPrice"
+         data-supplement ="@Model.Supplement"
+         data-markup="@Model.MarkUp"
+         data-inventory="@Model.InventorySerialized"
+         data-rc-serialized="@Model.RoomConfigSerialized"
+         data-phsupplement="@Model.SupplementPh"
+         data-freechild="@Model.FreeChild"
+         data-freeinfant="@Model.FreeInfant">
+        <input type="hidden" asp-for="FreeChild" />
+        <input type="hidden" asp-for="FreeInfant" />
+        <input type="hidden" asp-for="Max" />
+        <input type="hidden" asp-for="SupplementPh" />
+        <input type="hidden" asp-for="Supplement" />
+        <input type="hidden" asp-for="InventorySerialized" />
+        <input type="hidden" asp-for="Nights" />
+        <input type="hidden" asp-for="PriceAdult" />
+        <input type="hidden" asp-for="PriceChild" />
+        <input type="hidden" asp-for="RoomTypeId" />
+        <input type="hidden" asp-for="PriceInfant" />
+        <input type="hidden" asp-for="Rate" />
+        <input type="hidden" asp-for="RatePlanId" class="rate_plan_id"/>
+        <input type="hidden" asp-for="RoomConfigId" class="room_config_id" />
+        <input type="hidden" asp-for="RatePlanName" />
+        <input type="hidden" asp-for="RoomName" />
+        <input type="hidden" asp-for="Status" />
+        <input type="hidden" asp-for="BookingId" />
+        <input type="hidden" asp-for="CheckinDate" />
+        <input type="hidden" asp-for="CheckoutDate" />
+        <input type="hidden" asp-for="ConfirmedBy" />
+        <input type="hidden" asp-for="ConfirmedOn" />
+        <input type="hidden" asp-for="CreatedDate" />
+        <input type="hidden" asp-for="CreatedBy" />
+        <input type="hidden" asp-for="Discount" />
+        <input type="hidden" asp-for="DiscountAmount" />
+        <input type="hidden" asp-for="DiscountCoupon" />
+        <input type="hidden" asp-for="GST" />
+        <input type="hidden" asp-for="GSTAmount" />
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="IsCancelled" />
+        <input type="hidden" asp-for="RoomConfigSerialized" />
+        <div class="hidden-overflow">
+            <p>@Model.RatePlanName <span class="cost">@Model.Rate</span> <span class="remove-icon">Remove Room <img src="~/images/Remove_Icon.svg" alt="remove-icon" /></span></p>
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 adult-configuration no-padding-left-right">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 person-configuration no-padding-left-right" >
+                    <h2>Adults</h2>
+                    <p>Above 12 Years</p>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 room-quantity">
+                    <span class="decrease disabled">@*<img src="~/images/Decrease.png" alt="Decrease_icon"  />*@</span><span><input type="text" asp-for="Adult" data-min="1" class="input-passenger" readonly/></span><span class="increase">@*<img src="~/images/Increase.png" alt="increase_icon"  />*@</span>
+                </div>
+            </div>
+
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 kid-configuration no-right-padd">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 person-configuration no-padding-left-right">
+                    <h2>Kids</h2>
+                    <p>3-12 Years</p>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 room-quantity">
+                    <span class="decrease disabled"></span><span><input type="text" class="input-passenger" asp-for="Child" data-min="0" readonly /></span><span class="increase"></span>
+                </div>
+            </div>
+
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xs-12 infant-configuration no-right-padd">
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 person-configuration no-padding-left-right">
+                    <h2>Infants</h2>
+                    <p>Below 2 Years</p>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 room-quantity">
+                    <span class="decrease disabled"></span><span><input type="text" class="input-passenger" asp-for="Infant" data-min="0" readonly/></span><span class="increase"></span>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+}
+

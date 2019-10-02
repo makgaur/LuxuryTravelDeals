@@ -1,0 +1,32 @@
+﻿@model Guid
+@{
+    this.ViewBag.HeaderWithoutIcons = true;
+}
+<input type="hidden" name="_packageid_" value="@Model" />
+<input type="hidden" name="_packagename_" value="@this.ViewBag.PackageNameForUrl" />
+<div class="middle booking-container">
+    <div class="deal-booking-loading">
+        <div class="container">
+            <div id="eanContainer" class="calendar-container">
+                <span class="calendar-spinner">
+                    <i class="icon icon-refresh icon-spin calendar-spinner__gif"></i>
+                    <span class="calendar-spinner__text">Loading...</span>
+                </span>
+                <div id="loadingLayer" class="loading-layer"></div>
+                <div class="stepContainer checkIn ">
+                    <div class="ean contentContainer checkInContainer month-selection fixed-travel">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <link href="~/content/css/timeTo.css" rel="stylesheet" />
+    <link asp-append-version="true" href="~/css/ui-datepicker.css" rel="stylesheet" />
+    <script src="~/content/js/jquery.time-to.js"></script>
+    <script asp-append-version="true" src="~/js/package-booking.js"></script>
+
+}
+

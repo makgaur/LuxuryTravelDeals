@@ -1,0 +1,63 @@
+﻿@model EnquiryFormViewModel
+
+<form asp-antiforgery="true" method="post" asp-controller="home" asp-action="EnquiryForm">
+    <div class="box-body">
+        <div class="field_req EnquirySend" style="display:none;color:#000000;font-weight:bold;font-size:14px;margin-bottom:10px"> Your Enquiry has been successfully sent</div>
+        <div class="form-group col-sm-6">
+            <div class="formGroup">
+                <label asp-for="FirstName"></label>
+                <input type="text" asp-for="FirstName" class="form-control" />
+            </div>
+            </div>
+        <div class="form-group col-sm-6">
+            <div class="formGroup">
+                <label asp-for="LastName"></label>
+                <input type="text" asp-for="LastName" class="form-control" />
+            </div>
+            </div>
+        <div class="form-group col-sm-6">
+            <div class="formGroup">
+                <label asp-for="Email"></label>
+                <input type="email" asp-for="Email" class="form-control" />
+            </div>
+            </div>
+        <div class="form-group col-sm-6">
+            <div class="formGroup">
+                <label asp-for="MobileNo"></label>
+                <input type="tel" asp-for="MobileNo" class="form-control" />
+            </div>
+            </div>
+        </div>
+        <input type="submit" name="submit" id="btnLogin"  value="Submit" />
+        @*<div class="formGroup">
+                    <label for="email" class="EnqueryLable">Address (City) <span class="error">*</span>:</label>
+                    <input type="text" name="address" id="txtPlaces" placeholder="" class="form-control Address EnqueryFormControll" required>
+                </div>
+
+                <div class="formGroup">
+                    <label for="email" class="EnqueryLable">Start Date of Travelling <span class="error">*</span>:</label>
+                    <div class="input-group date datepicker" style="padding:0;">
+                        <input placeholder="dd-mm-yyyy" name="address" type="text" class="form-control Date EnqueryFormControll" required readonly autocomplete="off">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="formGroup">
+                    <label for="email" class="EnqueryLable">Enquiry <span class="error">*</span>:</label>
+                    <textarea name="Enquiry" placeholder="What would you like to know ?" class="form-control Enquiry EnqueryFormControll" required></textarea>
+                </div>
+                <div class="formGroup">
+                    <div>
+                        <input type="text" class="form-control entercaptcha" style="padding: 5px;float:left;width: 74%;" required placeholder="Enter captcha code" />
+                        <input type="text" class="CaptchValue" id="CaptchValue" style="float:right;width: 24%;background: #c1c1c1 none repeat scroll 0 0;float: right;padding: 5px;" readonly />
+                        <span style="position:absolute;right:0;top:8px;cursor:pointer" title="Refresh captcha" ng-click="DrawCaptcha()"><i class="fa fa-refresh" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="submit_button">
+                        <input type="submit" name="submit" id="btnLogin" class="search-button search-button-form" value="Submit" ng-click="SubmitEnquiryForm()" />
+                        <img src="~/images/buttonloader.gif" alt="Button Loader" class="buttonloaderforenquiry" style="margin: auto;position: absolute;right: 108px;top: 65px;display:none" />
+                    </div>
+                    <div class="field_req"> All * Fields are required</div>
+                </div>
+            </div>*@
+</form>

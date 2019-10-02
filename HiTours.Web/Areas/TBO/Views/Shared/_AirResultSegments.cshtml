@@ -1,0 +1,13 @@
+﻿@model AirResultSegments[][]
+@using HtmlHelpers.BeginCollectionItemCore
+@if (Model != null && Model.Length > 0)
+{
+    foreach (var item in Model)
+    {
+        <span class="hide"></span>
+        @using (this.Html.BeginCollectionItem("Segments"))
+        {
+            @*@Html.Partial("_AirResultSegment")*@
+        }
+    }
+}

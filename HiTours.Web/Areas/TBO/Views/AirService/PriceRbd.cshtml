@@ -1,0 +1,103 @@
+﻿@model AirServiceSearchPriceRBD
+@{  this.ViewBag.Title = "Advance Search Request- (PriceRBD )";}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+            </div>
+            <form asp-antiforgery="true" method="post">
+                <div class="box-body">
+                    <div class="form-group col-sm-6">
+                        <label asp-for="EndUserIp"></label>
+                        <input type="text" asp-for="EndUserIp" data-autocomplete="EndUserIp" class="form-control" />
+                        <span asp-validation-for="EndUserIp"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="TokenId"></label>
+                        <input type="text" asp-for="TokenId" data-autocomplete="TokenId" class="form-control" />
+                        <span asp-validation-for="TokenId"></span>
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <label asp-for="TraceId"></label>
+                        <input type="text" asp-for="TraceId" data-autocomplete="TraceId" class="form-control" />
+                        <span asp-validation-for="TraceId"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="AdultCount"></label>
+                        <input type="text" asp-for="AdultCount" class="form-control numericOnly" />
+                        <span asp-validation-for="AdultCount"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="ChildCount"></label>
+                        <input type="text" asp-for="ChildCount" class="form-control numericOnly" />
+                        <span asp-validation-for="ChildCount"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="InfantCount"></label>
+                        <input type="text" asp-for="InfantCount" class="form-control numericOnly" />
+                        <span asp-validation-for="InfantCount"></span>
+                    </div>
+
+                    <div class="form-group col-sm-12">
+                        <div class="box box-solid">
+                            <div class="box-header with-border">
+                                <h2 class="box-title">Search Result</h2>
+                            </div>
+                            <div class="box-body" id="apisearchresult">
+                                @if (Model.AirSearchResult != null && Model.AirSearchResult.Length > 0)
+                                {
+                                    @foreach (var item in Model.AirSearchResult)
+                                    {
+                                        <span class="hide"></span>
+                                        @Html.Partial("_AirSearchResult", item)
+                                    }
+                                }
+                            </div>
+                        </div>
+ 
+                    </div>
+
+
+                </div>
+                <div class="box-footer" align="center">
+                    <button type="submit" class="btn btn-primary">Get Result</button>
+                </div>
+            </form>
+        </div>
+        @Html.Partial("_ApiResult")
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(function () {
+            var apiClipBoard = api.clipBoard || {};
+            if (apiClipBoard[api.keys.airSearch] != undefined && apiClipBoard[api.keys.airSearch].length) {
+                $.ajax({
+                    url: '/tbo/shared/getadvancesearchsegments',
+                    method: 'post',
+                    dataType: 'html',
+                    data: { jsonData: JSON.stringify(apiClipBoard[api.keys.airSearch]) },
+                    success: function (html) {
+                        $("#apisearchresult").html(html);
+                        $(":text").filter("[value='01/01/0001']").val('');
+                        $("form").removeData("validator");
+                        $("form").removeData("unobtrusiveValidation");
+                        $.validator.unobtrusive.parse("form");
+                    },
+                    error: function (xhr, request, error) {
+
+                    }
+                });
+
+            }
+
+
+ 
+
+        })
+    </script>
+}

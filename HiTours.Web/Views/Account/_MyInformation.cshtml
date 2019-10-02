@@ -1,0 +1,205 @@
+﻿@model MyInformationViewModel
+    
+<form class="form-horizontal my-account-form" role="form" method="post" id="frmMyInformation">
+    @Html.HiddenFor(x => x.Id)
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Gender </label>
+                <div class="col-xs-9 col-sm-9">
+                    <select asp-for="Gender" class="form-control" asp-items="this.Html.GetEnumSelectList<Enums.Gender>()" select2-Dependent="true"></select>
+                    <span asp-validation-for="Gender"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">First Name </label>
+                <div class="col-xs-9 col-sm-9">
+                    <input class="form-control" placeholder="" type="text" asp-for="FirstName">
+                    <span asp-validation-for="FirstName"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Last Name</label>
+                <div class="col-xs-9 col-sm-9">
+                    <input class="form-control" placeholder="" asp-for="LastName" type="text">
+                    <span asp-validation-for="LastName"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Date of birth</label>
+                <div class="col-xs-9 col-sm-9">
+                    @Html.TextBoxFor(x => x.DateOfBirth, string.Format("{0:dd/MM/yyyy}", Model.DateOfBirth), new { @class = "form-control pull-right dob"})
+                    <span asp-validation-for="DateOfBirth"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Nationality</label>
+                <div class="col-xs-9 col-sm-9">
+                    <select asp-for="NationalityId" select2-value="@Model.NationalityId" class="form-control" asp-items="@Model.Nationality"
+                            select2-Url="/SelectList/GetPackageCountryList"></select>
+                    <span asp-validation-for="NationalityId"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Address</label>
+                <div class="col-xs-9 col-sm-9">
+                    <input class="form-control" placeholder="" type="text" asp-for="Address">
+                    <span asp-validation-for="Address"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Zip code</label>
+                <div class="col-xs-9 col-sm-9">
+                    <input class="form-control numericOnly" placeholder="" type="text" asp-for="ZipCode">
+                    <span asp-validation-for="ZipCode"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Country</label>
+                <div class="col-xs-9 col-sm-9">
+                    <select class="form-control"
+                            id="CountryId"
+                            asp-for="CountryId"
+                            asp-items="Model.Country"
+                            select2-value="@(Model.CountryId)" select2-Url="/selectlist/GetPackageCountryList"
+                            select2-Dependent="true" select2-Dependent-Control="#CityId"></select>
+                    <span asp-validation-for="CountryId"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">City</label>
+                <div class="col-xs-9 col-sm-9">
+                    <select asp-for="City"
+                            id="CityId"
+                            class="form-control "
+                            asp-items="Model.Cities"
+                            select2-value="@Model.City"
+                            select2-Url="/selectlist/GetPackageCityListByCountry"></select>
+
+                    <span asp-validation-for="City"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Country</label>
+                <div class="col-xs-9 col-sm-9">
+                    <select asp-for="CountryId" asp-items="Model.Country" select2-value="@Model.CountryId" class="form-control" select2-Url="/selectlist/UserCountries"></select>
+                    <span asp-validation-for="CountryId"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>*@
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Phone number</label>
+                <div class="col-xs-9 col-sm-9">
+                    <input class="form-control numericOnly" placeholder="" type="text" asp-for="PhoneNumber">
+                    <span asp-validation-for="PhoneNumber"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Mobile</label>
+                <div class="col-xs-9 col-sm-9">
+                    <input class="form-control numericOnly" placeholder="" type="text" asp-for="MobileNo">
+                    <span asp-validation-for="MobileNo"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Passport No</label>
+                <div class="col-xs-9 col-sm-9">
+                    <input class="form-control" placeholder="" type="text" asp-for="PassportNo">
+                    <span asp-validation-for="PassportNo"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Country of Issue</label>
+                <div class="col-xs-9 col-sm-9">
+                    <select asp-for="CountryofIssueId" class="form-control" asp-items="Model.CountryIssue" select2-value="@Model.CountryofIssueId"
+                            select2-Url="/selectlist/GetPackageCountryList"></select>
+                    <span asp-validation-for="CountryofIssueId"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Expiry Date</label>
+                <div class="col-xs-9 col-sm-9">
+                    @Html.TextBoxFor(x => x.ExpiryDate, string.Format("{0:dd/MM/yyyy}", Model.ExpiryDate), new { @class = "form-control pull-right datepicker" })
+                    <span asp-validation-for="ExpiryDate"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <p>You are responsible for the accuracy of the information you provide to us. You must also ensure that they comply with the requirements of the country you are travelling to.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-container">
+            <input type="submit" name="PersonalInformationForm" value="Submit" class="btn" title="Submit">
+        </div>
+    </div>
+</form>
+<script>
+    $(function () { 
+        $(".dob").datepicker("destroy");
+        $(".dob").datepicker({ format: dateformat, todayHighlight: true, autoclose: true, endDate: new Date() });
+    })
+</script>

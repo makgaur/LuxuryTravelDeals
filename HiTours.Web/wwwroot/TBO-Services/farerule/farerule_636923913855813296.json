@@ -1,0 +1,42 @@
+//-- farerule Api Request --
+{
+  "EndUserIp": "192.168.11.120",
+  "TokenId": "e98a1530-e28e-4399-9fbe-11125ba7c3ca",
+  "TraceId": "e26b3e5a-2409-4626-b88e-dcbf6ca41985",
+  "ResultIndex": "OB1"
+}
+//-- farerule Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "FareRules": [
+      {
+        "Airline": "SG",
+        "DepartureTime": "0001-01-01T00:00:00",
+        "Destination": "BLR",
+        "FareBasisCode": "USAVER",
+        "FareRestriction": null,
+        "FareRuleDetail": " \r\n\r\n Changes and cancellations are permitted as per applicable rules and charges.\r <br/> <br/>",
+        "FlightId": 0,
+        "Origin": "DEL",
+        "ReturnDate": "0001-01-01T00:00:00"
+      },
+      {
+        "Airline": "SG",
+        "DepartureTime": "0001-01-01T00:00:00",
+        "Destination": "PNY",
+        "FareBasisCode": "USAVER",
+        "FareRestriction": null,
+        "FareRuleDetail": " \r\n\r\n Changes and cancellations are permitted as per applicable rules and charges.\r <br/> <br/>",
+        "FlightId": 0,
+        "Origin": "BLR",
+        "ReturnDate": "0001-01-01T00:00:00"
+      }
+    ],
+    "ResponseStatus": 1,
+    "TraceId": "e26b3e5a-2409-4626-b88e-dcbf6ca41985"
+  }
+}

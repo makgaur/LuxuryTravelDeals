@@ -1,0 +1,456 @@
+//-- BookDetails Api Request --
+{
+  "EndUserIp": "192.168.11.120",
+  "TokenId": "e98a1530-e28e-4399-9fbe-11125ba7c3ca",
+  "TraceId": "e26b3e5a-2409-4626-b88e-dcbf6ca41985",
+  "BookingId": 1462399,
+  "PNR": null
+}
+//-- BookDetails Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "ResponseStatus": 1,
+    "TraceId": "e26b3e5a-2409-4626-b88e-dcbf6ca41985",
+    "FlightItinerary": {
+      "IssuancePcc": "Agenttest",
+      "TripIndicator": 1,
+      "BookingAllowedForRoamer": true,
+      "BookingId": 1462399,
+      "IsManual": false,
+      "PNR": "GC32TD",
+      "IsDomestic": false,
+      "Source": 25,
+      "Origin": "DEL",
+      "Destination": "PNY",
+      "AirlineCode": "SG",
+      "LastTicketDate": "9999-12-31T00:00:00",
+      "ValidatingAirlineCode": "SG",
+      "AirlineRemark": "",
+      "AirlineTollFreeNo": "9876543210",
+      "IsLCC": true,
+      "NonRefundable": false,
+      "FareType": "PUB",
+      "CreditNoteNo": null,
+      "Fare": {
+        "Currency": "INR",
+        "BaseFare": 8494,
+        "Tax": 1534,
+        "TaxBreakup": [
+          {
+            "key": "K3",
+            "value": 440
+          },
+          {
+            "key": "PSF",
+            "value": 794
+          },
+          {
+            "key": "YR",
+            "value": 100
+          },
+          {
+            "key": "OtherTaxes",
+            "value": 100
+          },
+          {
+            "key": "TotalTax",
+            "value": 1534
+          }
+        ],
+        "YQTax": 0,
+        "AdditionalTxnFeeOfrd": 0,
+        "AdditionalTxnFeePub": 0,
+        "PGCharge": 0,
+        "OtherCharges": 270.6,
+        "ChargeBU": [
+          {
+            "key": "TBOMARKUP",
+            "value": 0
+          },
+          {
+            "key": "OTHERCHARGE",
+            "value": 270.6
+          },
+          {
+            "key": "CONVENIENCECHARGE",
+            "value": 0
+          }
+        ],
+        "Discount": 0,
+        "PublishedFare": 10298.6,
+        "CommissionEarned": 169.88,
+        "PLBEarned": 312.98,
+        "IncentiveEarned": 499.44,
+        "OfferedFare": 9316.3,
+        "TdsOnCommission": 67.96,
+        "TdsOnPLB": 125.2,
+        "TdsOnIncentive": 199.78,
+        "ServiceFee": 0,
+        "TotalBaggageCharges": 0,
+        "TotalMealCharges": 0,
+        "TotalSeatCharges": 0,
+        "TotalSpecialServiceCharges": 0
+      },
+      "CreditNoteCreatedOn": null,
+      "Passenger": [
+        {
+          "PaxId": 2087924,
+          "Title": "Mr",
+          "FirstName": "Mayank",
+          "LastName": "Gaur",
+          "PaxType": 1,
+          "DateOfBirth": "1993-05-19T00:00:00",
+          "Gender": 1,
+          "PassportNo": "",
+          "AddressLine1": "Test",
+          "AddressLine2": "Test",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 4247,
+            "Tax": 767,
+            "TaxBreakup": [
+              {
+                "key": "K3",
+                "value": 220
+              },
+              {
+                "key": "PSF",
+                "value": 397
+              },
+              {
+                "key": "YR",
+                "value": 50
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 50
+              },
+              {
+                "key": "TotalTax",
+                "value": 767
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 135.3,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 135.3
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 5149.3,
+            "CommissionEarned": 84.94,
+            "PLBEarned": 156.49,
+            "IncentiveEarned": 249.72,
+            "OfferedFare": 4658.15,
+            "TdsOnCommission": 33.98,
+            "TdsOnPLB": 62.6,
+            "TdsOnIncentive": 99.89,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "City": "Delhi",
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "ContactNo": "9045025705",
+          "Email": "makgaur007@gmail.com",
+          "IsLeadPax": true,
+          "FFAirlineCode": null,
+          "FFNumber": null,
+          "Ssr": [],
+          "Ticket": {
+            "TicketId": 1727623,
+            "TicketNumber": "GC32TD",
+            "IssueDate": "2019-05-02T16:30:26",
+            "ValidatingAirline": "001",
+            "Remarks": "",
+            "ServiceFeeDisplayType": "ShowInTax",
+            "Status": "OK",
+            "ConjunctionNumber": "     ",
+            "TicketType": "N"
+          },
+          "SegmentAdditionalInfo": [
+            {
+              "FareBasis": "USAVER",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "USAVER",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            }
+          ]
+        },
+        {
+          "PaxId": 2087925,
+          "Title": "Mr",
+          "FirstName": "Shubham",
+          "LastName": "Shukla",
+          "PaxType": 1,
+          "DateOfBirth": "1993-07-15T00:00:00",
+          "Gender": 1,
+          "PassportNo": "",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 4247,
+            "Tax": 767,
+            "TaxBreakup": [
+              {
+                "key": "K3",
+                "value": 220
+              },
+              {
+                "key": "PSF",
+                "value": 397
+              },
+              {
+                "key": "YR",
+                "value": 50
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 50
+              },
+              {
+                "key": "TotalTax",
+                "value": 767
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 135.3,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 135.3
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 5149.3,
+            "CommissionEarned": 84.94,
+            "PLBEarned": 156.49,
+            "IncentiveEarned": 249.72,
+            "OfferedFare": 4658.15,
+            "TdsOnCommission": 33.98,
+            "TdsOnPLB": 62.6,
+            "TdsOnIncentive": 99.89,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "IsLeadPax": false,
+          "FFAirlineCode": null,
+          "FFNumber": null,
+          "Ssr": [],
+          "Ticket": {
+            "TicketId": 1727624,
+            "TicketNumber": "GC32TD",
+            "IssueDate": "2019-05-02T16:30:28",
+            "ValidatingAirline": "001",
+            "Remarks": "",
+            "ServiceFeeDisplayType": "ShowInTax",
+            "Status": "OK",
+            "ConjunctionNumber": "     ",
+            "TicketType": "N"
+          },
+          "SegmentAdditionalInfo": [
+            {
+              "FareBasis": "USAVER",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "USAVER",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            }
+          ]
+        }
+      ],
+      "CancellationCharges": null,
+      "Segments": [
+        {
+          "Baggage": null,
+          "CabinBaggage": null,
+          "TripIndicator": 1,
+          "SegmentIndicator": 1,
+          "Airline": {
+            "AirlineCode": "SG",
+            "AirlineName": "SpiceJet",
+            "FlightNumber": "191",
+            "FareClass": "U",
+            "OperatingCarrier": ""
+          },
+          "AirlinePNR": "",
+          "Origin": {
+            "Airport": {
+              "AirportCode": "DEL",
+              "AirportName": "Indira Gandhi Airport",
+              "Terminal": "1D",
+              "CityCode": "DEL",
+              "CityName": "Delhi",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "DepTime": "2019-05-29T06:10:00"
+          },
+          "Destination": {
+            "Airport": {
+              "AirportCode": "BLR",
+              "AirportName": "Hindustan",
+              "Terminal": "  ",
+              "CityCode": "BLR",
+              "CityName": "Bangalore",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "ArrTime": "2019-05-29T09:00:00"
+          },
+          "Duration": 170,
+          "GroundTime": 0,
+          "Mile": 0,
+          "StopOver": false,
+          "FlightInfoIndex": "1",
+          "StopPoint": "",
+          "StopPointArrivalTime": null,
+          "StopPointDepartureTime": null,
+          "Craft": "737",
+          "Remark": null,
+          "IsETicketEligible": true,
+          "FlightStatus": "Confirmed",
+          "Status": "HK"
+        },
+        {
+          "Baggage": null,
+          "CabinBaggage": null,
+          "TripIndicator": 1,
+          "SegmentIndicator": 2,
+          "Airline": {
+            "AirlineCode": "SG",
+            "AirlineName": "SpiceJet",
+            "FlightNumber": "3419",
+            "FareClass": "U",
+            "OperatingCarrier": ""
+          },
+          "AirlinePNR": "",
+          "Origin": {
+            "Airport": {
+              "AirportCode": "BLR",
+              "AirportName": "Hindustan",
+              "Terminal": "  ",
+              "CityCode": "BLR",
+              "CityName": "Bangalore",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "DepTime": "2019-05-29T12:35:00"
+          },
+          "Destination": {
+            "Airport": {
+              "AirportCode": "PNY",
+              "AirportName": "",
+              "Terminal": "  ",
+              "CityCode": "PNY",
+              "CityName": "Pondicherry",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "ArrTime": "2019-05-29T13:35:00"
+          },
+          "AccumulatedDuration": 445,
+          "Duration": 60,
+          "GroundTime": 215,
+          "Mile": 0,
+          "StopOver": false,
+          "FlightInfoIndex": "2",
+          "StopPoint": "",
+          "StopPointArrivalTime": null,
+          "StopPointDepartureTime": null,
+          "Craft": "DH8",
+          "Remark": null,
+          "IsETicketEligible": true,
+          "FlightStatus": "Confirmed",
+          "Status": "HK"
+        }
+      ],
+      "FareRules": [
+        {
+          "Origin": "DEL",
+          "Destination": "BLR",
+          "Airline": "SG",
+          "FareBasisCode": "USAVER",
+          "FareRuleDetail": " \n\n Changes and cancellations are permitted as per applicable rules and charges.\n <br/> <br/>",
+          "FareRestriction": "",
+          "FareFamilyCode": "",
+          "FareRuleIndex": ""
+        },
+        {
+          "Origin": "BLR",
+          "Destination": "PNY",
+          "Airline": "SG",
+          "FareBasisCode": "USAVER",
+          "FareRuleDetail": " \n\n Changes and cancellations are permitted as per applicable rules and charges.\n <br/> <br/>",
+          "FareRestriction": "",
+          "FareFamilyCode": "",
+          "FareRuleIndex": ""
+        }
+      ],
+      "Status": 5,
+      "InvoiceAmount": 9709,
+      "InvoiceNo": "IW/1920/1169",
+      "InvoiceStatus": 3,
+      "InvoiceCreatedOn": "2019-05-02T16:30:26",
+      "Remarks": ""
+    }
+  }
+}

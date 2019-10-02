@@ -1,0 +1,216 @@
+﻿@model UserDetailModel
+@if (this.Model != null)
+{
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <div class="row"><h3 align-center>User Deatils</h3></div>
+    <div class="row form-group">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3">Gender </label>
+                <div class="col-xs-9 col-sm-9">
+                    <select asp-for="Gender" class="form-control" asp-disabled="true" asp-items="this.Html.GetEnumSelectList<Enums.Gender>()" select2-Dependent="true"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3">First Name </label>
+                <div class="col-xs-9 col-sm-9 form-group">
+                    <input class="form-control" disabled="disabled" asp-for="FirstName">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6 form-group">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Last Name</label>
+                <div class="col-xs-9 col-sm-9">
+                    <input class="form-control" disabled="disabled" asp-disabled="true" asp-for="LastName" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Date of birth</label>
+                <div class="col-xs-9 col-sm-9">
+                    @Html.TextBoxFor(x => x.DateOfBirth, string.Format("{0:dd/MM/yyyy}", Model.DateOfBirth), new { @class = "form-control pull-right", @disabled = "disabled" })
+                </div>
+            </div>
+        </div>
+
+        @*<div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Nationality</label>
+                <div class="col-xs-9 col-sm-9">
+                    <select asp-for="NationalityId" select2-value="@Model.NationalityId" class="form-control"></select>
+                    <span asp-validation-for="NationalityId"></span>
+                </div>
+            </div>
+        </div>*@
+    </div>
+
+    <div class="row form-group">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Address</label>
+                <div class="col-xs-9 col-sm-9">
+                    <input class="form-control" disabled="disabled" asp-disabled="true" type="text" asp-for="Address">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="row form-group">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Zip code</label>
+                <div class="col-xs-9 col-sm-9">
+                    <input class="form-control" disabled="disabled" placeholder="" type="text" asp-for="ZipCode">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">City</label>
+                <div class="col-xs-9 col-sm-9">
+                    <span asp-validation-for="City"></span>
+                    <input class="form-control" disabled="disabled" placeholder="" type="text" asp-for="City">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Country</label>
+                <div class="col-xs-9 col-sm-9">
+                    <select asp-for="CountryId" select2-value="@Model.CountryId" class="form-control" select2-Url="/selectlist/UserCountries"></select>
+                    <span asp-validation-for="CountryId"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>*@
+
+    <div class="row form-group">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Phone number</label>
+                <div class="col-xs-9 col-sm-9">
+                    <input class="form-control" disabled="disabled" type="text" asp-for="PhoneNumber">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Mobile</label>
+                <div class="col-xs-9 col-sm-9">
+                    <input class="form-control" disabled="disabled" type="text" asp-for="MobileNo">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Passport No</label>
+                <div class="col-xs-9 col-sm-9">
+                    <input class="form-control" disabled="disabled" type="text" asp-for="PassportNo">
+                </div>
+            </div>
+        </div>
+
+        @*<div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Country of Issue</label>
+                <div class="col-xs-9 col-sm-9">
+                    <select asp-for="CountryofIssueId" class="form-control" select2-value="@Model.CountryofIssueId"
+                            select2-Url="/selectlist/UserCountries"></select>
+                    <span asp-validation-for="CountryofIssueId"></span>
+                </div>
+            </div>
+        </div>*@
+    </div>
+
+    <div class="row form-group">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-xs-3 col-sm-3" for="inputEmail1">Expiry Date</label>
+                <div class="col-xs-9 col-sm-9">
+                    @Html.TextBoxFor(x => x.ExpiryDate, string.Format("{0:dd/MM/yyyy}", Model.ExpiryDate), new { @class = "form-control pull-right", @disabled = "disabled" })
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-primary pull-right">Close</button>
+    </div>
+    <style>
+        #myModal1 .modal-content {
+            padding: 15px;
+        }
+        #myModal1 .modal-dialog .modal-content h3 {
+            font-size: 22px;
+            text-align: center;
+            background: #f2f2f2;
+            padding: 16px 0;
+            text-transform: uppercase;
+            margin-bottom: 34px;
+            color: #660866;
+            border-bottom: 3px solid #660866;
+            margin-top: -15px;
+        }
+
+        #myModal1 .modal-dialog .modal-content .close {
+            /* float: right; */
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+            text-shadow: inherit;
+            filter: alpha(opacity=20);
+            margin-top: 0;
+            background: #f00 !important;
+            /* margin-top: -15px; */
+            /* margin-right: -15px; */
+            padding: 6px 12px !important;
+            position: absolute;
+            top: -17px;
+            right: -14px;
+            border-radius: 50px;
+            padding: 10px !important;
+            height: 40px;
+            opacity: initial;
+            padding: 0px !important;
+            width: 40px;
+        }
+     #myModal1 .modal-dialog .modal-content .close:hover {
+                color: #fff;
+                text-decoration: none;
+                cursor: pointer;
+                filter: alpha(opacity=50);
+                opacity: initial;
+                background: #000 !important;
+            }
+
+        #dvModalDynmic .modal-dialog {
+            width: 50%;
+        }
+
+         
+
+    </style>
+}

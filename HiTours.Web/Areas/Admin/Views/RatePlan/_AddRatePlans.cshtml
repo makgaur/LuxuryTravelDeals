@@ -1,0 +1,141 @@
+﻿@model RatePlanAddViewModel
+<form asp-antiforgery="true" id="formAddRatePlan" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="RP_Id" />
+    <input type="hidden" asp-for="RP_IsDeleted" />
+    <input type="hidden" asp-for="RP_IsActive" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <div class="box-header with-border">
+        <h5 class="box-title">Add Rate Plan</h5>
+    </div>
+    <div class="box-body">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="RP_RoomConfigId"></label>
+                <select asp-for="RP_RoomConfigId" selected="@Model.RP_RoomConfigId" class="form-control" id="RoomId" asp-items="Model.RoomConfigItems"
+                        select2-value="@Model.RP_RoomConfigId" select2-Url="/selectlist/GetRoomConfigurationForInventoryList?packageId=@this.ViewBag.TourPackageId"></select>
+                <span asp-validation-for="RP_RoomConfigId"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="RP_Name"></label>
+                <input class="form-control" type="text" asp-for="RP_Name" />
+                <span asp-validation-for="RP_Name"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="RP_SellingPrice"></label>
+                <input class="form-control" type="number" asp-for="RP_SellingPrice" />
+                <span asp-validation-for="RP_SellingPrice"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="RP_FakePrice"></label>
+                <input class="form-control" type="number" asp-for="RP_FakePrice" />
+                <span asp-validation-for="RP_FakePrice"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="RP_BookingStartDate"></label><br />
+                <input type="date" class="form-control" asp-for="RP_BookingStartDate" />
+                <span asp-validation-for="RP_BookingStartDate"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="RP_BookingEndDate"></label><br />
+                <input type="date" class="form-control" asp-for="RP_BookingEndDate" />
+                <span asp-validation-for="RP_BookingEndDate"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="RP_TravelStartDate"></label><br />
+                <input type="date" class="form-control" asp-for="RP_TravelStartDate" />
+                <span asp-validation-for="RP_TravelStartDate"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="RP_TravelEndDate"></label><br />
+                <input type="date" class="form-control" asp-for="RP_TravelEndDate" />
+                <span asp-validation-for="RP_TravelEndDate"></span>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label asp-for="RP_ExtraAdultPrice"></label>
+                <input asp-for="RP_ExtraAdultPrice" type="number" class="form-control">
+                <span asp-validation-for="RP_ExtraAdultPrice"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="RP_ExtraChildPrice"></label><br />
+                <input type="number" class="form-control" asp-for="RP_ExtraChildPrice" />
+                <span asp-validation-for="RP_ExtraChildPrice"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="RP_ExtraInfantPrice"></label><br />
+                <input type="number" class="form-control" asp-for="RP_ExtraInfantPrice" />
+                <span asp-validation-for="RP_ExtraInfantPrice"></span>
+            </div>
+            <div class="form-group col-md-12">
+                <label asp-for="RatePlanAmeneties"></label><br />
+                <select asp-for="RatePlanAmeneties" class="form-control" multiple asp-items="Model.AmenetiesItems"
+                        select2-value="@Model.RatePlanAmeneties" select2-Url="/selectlist/GetAmenetiesList"></select>
+                <span asp-validation-for="RatePlanAmeneties"></span>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer" align="center">
+        <button type="button" id="RatePlanClick" class="btn btn-primary">Save</button><br />
+    </div>
+</form>
+<script>
+    $(document).off("click", '#RatePlanClick')
+        .on("click", '#RatePlanClick', function (e) {
+            var $form = $("#formAddRatePlan");
+            if ($form.valid()) {
+                showWaitProcess();
+                var model = {}
+                model = $form.serialize();
+                var ErrorMsg = "";
+                $(".text-blank").each(function () {
+                    ErrorMsg += $(this).text();
+                })
+                if (ErrorMsg != "") {
+                    hideWaitProcess();
+                    return false;
+                }
+                else {
+                    $.ajax({
+                        url: '@Url.Action("AddRatePlans", "RatePlan")',
+                        type: "JOSN",
+                        method: "POST",
+                        data: model,
+                        success: function (data) {
+                            hideWaitProcess();
+                            if (data == "success") {
+                                swal('', 'Successfully Inserted', 'success');
+                                $(".replaceView").click();
+                                return false;
+                            }
+                            else if (data == "update") {
+                                swal('', 'Successfully Updated', 'success');
+                                $(".replaceView").click();
+                                return false;
+                            }
+                            else
+                            {
+                                var errors = JSON.parse(data);
+                                $.each(errors, function (i, obj) {
+                                    var $span = $('span[data-valmsg-for="' + obj.key + '"]');
+                                    $span.addClass("field-validation-error").html('<span for="' + obj.key + '" class="field-validation-error">' + obj.error + '</span>');
+                                    $span.attr("data-valmsg-replace", "false");
+                                })
+
+                                 setTimeout(function () {
+                                        $("[data-valmsg-replace]").each(function () {
+                                            $(this).attr("data-valmsg-replace", "true");
+                                        })
+                                    }, 3000);
+                                return false;
+                            }
+                        }
+                    });
+                }
+            }
+    })
+</script>

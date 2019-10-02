@@ -1,0 +1,462 @@
+﻿@model DealsContentAndItineraryViewModel
+@{
+    var nextView = this.TempData["nextview"] != null ? this.TempData["nextview"].ToString() : "#content";
+    var packageId = Convert.ToInt32(this.ViewBag.PackageId);
+    var packageType = Convert.ToInt32(this.ViewBag.PackageType);
+}
+<style>
+    /*.panel-group{
+        padding-left:15px;
+        padding-right:15px;
+    }*/
+    .delete_highlight_row{
+        cursor:pointer;
+    }
+    .select2-container {
+        width: 100% !important;
+    }
+</style>
+<div>
+    <div class="row"> 
+        <div class="col-md-9">
+            <h4><i class="fa fa-fw fa-building"></i> Package Content</h4>
+        </div>
+        <div class="col-md-3">
+            <button type="button" id="moveContentFromMaster" class="btn btn-block btn-primary">Move Content From Master</button>
+        </div>
+    
+    </div>
+   
+
+    <form asp-antiforgery="true" id="formDealsContent" method="post" enctype="multipart/form-data" style="margin-top:10px;">
+        <input type="hidden" asp-for="DealContent.Id" />
+        <input type="hidden" asp-for="DealContent.PackageId" />
+        <input type="hidden" asp-for="DealContent.UpdatedBy" />
+        <input type="hidden" asp-for="DealContent.UpdatedDate" />
+        <input type="hidden" asp-for="DealContent.CreatedBy" />
+        <input type="hidden" asp-for="DealContent.CreatedDate" />
+
+        <div class="form-group col-md-12">
+            <label asp-for="DealContent.About"></label>
+            <textarea asp-for="DealContent.About" class="tinymceTextarea" placeholder="Place some text here"
+                      style="width: 100%; height: 50px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+            <span asp-validation-for="DealContent.About"></span>
+        </div>
+        <div class="form-group col-md-12">
+            <label asp-for="DealContent.TAUrl"></label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-fw fa-tripadvisor"></i></span>
+                <input type="text" class="form-control" asp-for="DealContent.TAUrl" placeholder="Trip Advisor Script">
+            </div>
+            <span asp-validation-for="DealContent.TAUrl"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="DealContent.OverallRating"></label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-fw fa-star"></i></span>
+                <input type="number" class="form-control" asp-for="DealContent.OverallRating">
+            </div>
+            <span asp-validation-for="DealContent.OverallRating"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="DealContent.OverallCleaninessRating"></label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-fw fa-leaf"></i></span>
+                <input type="number" class="form-control" asp-for="DealContent.OverallCleaninessRating">
+            </div>
+            <span asp-validation-for="DealContent.OverallCleaninessRating"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="DealContent.OverallComfortRating"></label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-fw fa-bed"></i></span>
+                <input type="number" class="form-control" asp-for="DealContent.OverallComfortRating">
+            </div>
+            <span asp-validation-for="DealContent.OverallComfortRating"></span>
+        </div>
+        <div class="form-group col-md-3">
+            <label asp-for="DealContent.OverallValueRating"></label>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-fw fa-money"></i></span>
+                <input type="number" class="form-control" asp-for="DealContent.OverallValueRating">
+            </div>
+            <span asp-validation-for="DealContent.OverallValueRating"></span>
+        </div>
+        <div class="col-md-12" style="padding-top:15px; padding-bottom:15px;">
+            <div class="form-group">
+                <div class="tax-tabel-wrap">
+                    <div class="table-responsive">
+                        <table id="ImagesTable" class="table table-standard table-bordered invoice-tabel-2">
+                            <thead>
+                                <tr>
+                                    <th>Image Name</th>
+                                    <th style="width:155px">Image</th>
+                                    @*<th>Dimention</th>*@
+                                    <th>Preview</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @if (packageType == 1)
+                                        {
+                                            <label asp-for="DealContent.LogoImg"></label>
+                                        }
+                                        else if (packageType == 2)
+                                        {
+                                            <label>About Image 1 (Ratio 19:10)</label>
+                                        }
+
+                                        <input type="hidden" asp-for="DealContent.LogoImg" />
+                                    </td>
+                                    <td align="center">
+                                        <input asp-for="DealContent.LogoImgFile" type="file" class="singleImg" />
+                                        <span asp-validation-for="DealContent.LogoImg"></span>
+                                    </td>
+                                    @*<td>
+                <span>Required Dimention</span>
+            </td>*@
+                                    <td>
+                                        <div class="img-thumbnail">
+                                            @if (string.IsNullOrEmpty(Model.DealContent.LogoImg))
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.DealContent.LogoImg" alt="">
+
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @if (packageType == 1)
+                                        {
+                                            <label asp-for="DealContent.CardImg"></label>
+                                        }
+                                        else if (packageType == 2)
+                                        {
+                                            <label>About Image 2 (Ratio 19:10)</label>
+                                        }
+
+                                        <input type="hidden" asp-for="DealContent.CardImg" />
+                                    </td>
+                                    <td align="center">
+                                        <input asp-for="DealContent.CardImgFile" type="file" class="singleImg" />
+                                        <span asp-validation-for="DealContent.CardImg"></span>
+                                    </td>
+                                    @*<td>
+                <span>Required Dimention</span>
+            </td>*@
+                                    <td>
+                                        <div class="img-thumbnail">
+                                            @if (string.IsNullOrEmpty(Model.DealContent.CardImg))
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.DealContent.CardImg" alt="">
+
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                                @if (packageType == 1)
+                                {
+                                    <tr>
+                                        <td>
+                                            <label asp-for="DealContent.AboutImg"></label>
+                                            <input type="hidden" asp-for="DealContent.AboutImg" />
+                                        </td>
+                                        <td align="center">
+                                            <input asp-for="DealContent.AboutImgFile" type="file" class="singleImg" />
+                                            <span asp-validation-for="DealContent.AboutImg"></span>
+                                        </td>
+                                        @*<td>
+                    <span>Required Dimention</span>
+                </td>*@
+                                        <td>
+                                            <div class="img-thumbnail">
+                                                @if (string.IsNullOrEmpty(Model.DealContent.AboutImg))
+                                                {
+                                                    <img class="preview" style="width:120px; height:60px;" alt="">
+                                                }
+                                                else
+                                                {
+                                                    <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.DealContent.AboutImg" alt="">
+
+                                                }
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td>
+                                        <label asp-for="DealContent.BannerImg4x4"></label>
+                                        <input type="hidden" asp-for="DealContent.BannerImg4x4" />
+                                    </td>
+                                    <td align="center">
+                                        <input asp-for="DealContent.BannerImg4x4File" type="file" class="singleImg" />
+                                        <span asp-validation-for="DealContent.BannerImg4x4"></span>
+                                    </td>
+                                    @*<td>
+                <span>Required Dimention</span>
+            </td>*@
+                                    <td>
+                                        <div class="img-thumbnail">
+                                            @if (string.IsNullOrEmpty(Model.DealContent.BannerImg4x4))
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.DealContent.BannerImg4x4" alt="">
+
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label asp-for="DealContent.BannerImg2x4"></label>
+                                        <input type="hidden" asp-for="DealContent.BannerImg2x4" />
+                                    </td>
+                                    <td align="center">
+                                        <input asp-for="DealContent.BannerImg2x4File" type="file" class="singleImg" />
+                                        <span asp-validation-for="DealContent.BannerImg2x4"></span>
+                                    </td>
+                                    @*<td>
+                <span>Required Dimention</span>
+            </td>*@
+                                    <td>
+                                        <div class="img-thumbnail">
+                                            @if (string.IsNullOrEmpty(Model.DealContent.BannerImg2x4))
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.DealContent.BannerImg2x4" alt="">
+
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label asp-for="DealContent.BannerImg2x2_1"></label>
+                                        <input type="hidden" asp-for="DealContent.BannerImg2x2_1" />
+                                    </td>
+                                    <td align="center">
+                                        <input asp-for="DealContent.BannerImg2x2_1File" type="file" class="singleImg" />
+                                        <span asp-validation-for="DealContent.BannerImg2x2_1"></span>
+                                    </td>
+                                    @*<td>
+                <span>Required Dimention</span>
+            </td>*@
+                                    <td>
+                                        <div class="img-thumbnail">
+                                            @if (string.IsNullOrEmpty(Model.DealContent.BannerImg2x2_1))
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.DealContent.BannerImg2x2_1" alt="">
+
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label asp-for="DealContent.BannerImg2x2_2"></label>
+                                        <input type="hidden" asp-for="DealContent.BannerImg2x2_2" />
+                                    </td>
+                                    <td align="center">
+                                        <input asp-for="DealContent.BannerImg2x2_2File" type="file" class="singleImg" />
+                                        <span asp-validation-for="DealContent.BannerImg2x2_2"></span>
+                                    </td>
+                                    @*<td>
+                <span>Required Dimention</span>
+            </td>*@
+                                    <td>
+                                        <div class="img-thumbnail">
+                                            @if (string.IsNullOrEmpty(Model.DealContent.BannerImg2x2_2))
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.DealContent.BannerImg2x2_2" alt="">
+
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label asp-for="DealContent.BannerImg2x2_3"></label>
+                                        <input type="hidden" asp-for="DealContent.BannerImg2x2_3" />
+                                    </td>
+                                    <td align="center">
+                                        <input asp-for="DealContent.BannerImg2x2_3File" type="file" class="singleImg" />
+                                        <span asp-validation-for="DealContent.BannerImg2x2_3"></span>
+                                    </td>
+                                    @*<td>
+                <span>Required Dimention</span>
+            </td>*@
+                                    <td>
+                                        <div class="img-thumbnail">
+                                            @if (string.IsNullOrEmpty(Model.DealContent.BannerImg2x2_3))
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.DealContent.BannerImg2x2_3" alt="">
+
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label asp-for="DealContent.BannerImg2x2_4"></label>
+                                        <input type="hidden" asp-for="DealContent.BannerImg2x2_4" />
+                                    </td>
+                                    <td align="center">
+                                        <input asp-for="DealContent.BannerImg2x2_4File" type="file" class="singleImg" />
+                                        <span asp-validation-for="DealContent.BannerImg2x2_4"></span>
+                                    </td>
+                                    @*<td>
+                <span>Required Dimention</span>
+            </td>*@
+                                    <td>
+                                        <div class="img-thumbnail">
+                                            @if (string.IsNullOrEmpty(Model.DealContent.BannerImg2x2_4))
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" alt="">
+                                            }
+                                            else
+                                            {
+                                                <img class="preview" style="width:120px; height:60px;" src="~/DealImages/@Model.DealContent.BannerImg2x2_4" alt="">
+
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4><i class="fa fa-fw fa-star"></i> LTD Specials</h4>
+        <div class="panel-group" id="highlightsContainer">
+            @if (Model.DealsHighlights != null)
+            {
+                foreach (var item in Model.DealsHighlights)
+                {
+                    @Html.Partial("_HighlightRow", item);
+                }
+
+            }
+        </div>
+        <div class="footer">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" style="margin-bottom:15px;"><button type="button" id="addHighlights" class="btn btn-block btn-primary">+ Add highlights</button></div>
+            <div class="col-md-4"></div>
+        </div>
+        @if (packageType != 1)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box no-top-border">
+                        <div class="nav-tabs-custom">
+                            <input type="hidden" name="tabs" data-default="@nextView" value="@nextView" />
+                            <ul id="itineraryNavs" class="nav nav-tabs">
+                                @foreach (DealsNightViewModel item in Model.DealsNights)
+                                {
+                                    string tabId = "#itineraryContent_night" + item.Id;
+                                    <li class=""><a href="@tabId" data-toggle="tab" data-href="@Url.Action("ManageItineraryContent","Deals", new {nightId = item.Id})"><i class="fa fa-fw fa-moon-o"></i> @item.Value Nights </a></li>
+
+                                }
+
+                            </ul>
+                            <div class="tab-content hotel-tabs">
+                                @foreach (DealsNightViewModel item in Model.DealsNights)
+                                {
+                                    string tabContentId = "itineraryContent_night" + item.Id;
+                                    <div class="tab-pane" id="@tabContentId"></div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+        @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+    </form>
+</div>
+<script>
+    $(document).on('click', '#moveContentFromMaster', function (e) {
+        showWaitProcess();
+        $.get('@Url.Action("MoveHotelierContentFromMaster", "Deals")', { 'packageId':@this.ViewBag.PackageId}, function (result) {
+            if (result == 'success') {
+                location.reload();
+            }
+            else if (result == "nodata") {
+                swal('', "No Data found In Master Table", 'warning');
+            }
+            else if (result == 'failure') {
+                swal('', 'Failed to Move', 'error');
+            }
+            hideWaitProcess();
+        });
+    })
+    $(document).ready(function (e) {
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $(input).parents('tr').find(".preview").attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $(document).on("change", ".singleImg", function () {
+            readURL(this);
+        });
+        $("#itineraryNavs li:first-child a").click();
+    })
+    $(document).on('click', "#addHighlights", function (e) {
+        debugger;
+        $.get('@Url.Action("AddHighLight", "Deals")', { "packageId": @this.ViewBag.PackageId }, function (result) {
+            $("#highlightsContainer").append(result);
+            BindValidation();
+        })
+    });
+    $(document).on('click', '.delete_highlight_row', function (e) {
+        e.preventDefault();
+        var row = $(this).closest('.panel-default');
+        $(row).find('.deleted_item').val(true);
+        $(row).hide();
+    })
+    function BindValidation() {
+        debugger;
+        var form = $('#formDealsContent');
+        form.removeData('validator');
+        form.removeData('unobtrusiveValidation');
+        $.validator.unobtrusive.parse(form);
+    }
+
+</script>

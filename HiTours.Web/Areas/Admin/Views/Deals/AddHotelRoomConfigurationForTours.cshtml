@@ -1,0 +1,56 @@
+﻿@model DealsInclusionViewModel;
+
+<form asp-antiforgery="true" id="formDealsTourHotelManage" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="TypeId" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <input type="hidden" asp-for="ItineraryId" />
+    <input type="hidden" asp-for="IsChargeable" />
+    <div class="box-body">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                @if (Model.TypeId == 1)
+                {
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <label>Hotelier</label>
+                            @if (this.ViewBag.DestinationCities != null)
+                            {
+                                <select asp-for="VendorId" id="vendorID" class="form-control" select2-Placeholder="Select Hotelier" select2-Multiple="false" select2-value="@Model.VendorId" select2-Url="/Selectlist/GetHoteliersForDealBasedOnDestinations?destinationCities=@this.ViewBag.DestinationCities" onchange="GetHotelRooms(@ViewBag.packageId);"></select>
+                            }
+                            else
+                            {
+                                <select asp-for="VendorId" id="vendorID" class="form-control" select2-Placeholder="Select Hotelier" select2-Multiple="false" select2-value="@Model.VendorId" select2-Url="/Selectlist/GetHoteliersForDeal" onchange="GetHotelRooms(@ViewBag.packageId);"></select>
+                            }
+
+                        </div>
+                    </div>
+                    @*<div class="form-row">
+                        <div class="form-group col-md-4" style="margin-top:30px;">
+                            <label>chargable</label>
+                            <input asp-for="IsChargeable" type="checkbox" class="minimal form-control">
+                        </div>
+                    </div>*@
+                }
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <div id="hotelRooms">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(document).ready(function (e) {
+        $('input[type="checkbox"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue'
+        });
+    });
+</script>

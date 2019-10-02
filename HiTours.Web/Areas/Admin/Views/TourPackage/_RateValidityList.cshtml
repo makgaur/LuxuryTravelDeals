@@ -1,0 +1,45 @@
+﻿@model List<TourPackageNightsValidityViewModel>
+@{
+    var validities = (Model ?? new List<TourPackageNightsValidityViewModel>())
+        .GroupBy(x => new { From = Convert.ToDateTime(x.RateValidFrom).Date, To = Convert.ToDateTime(x.RateValidTo).Date })
+        .Select(x => new TourPackageNightsValidityGroupedViewModel
+        {
+            FromDate = x.Key.From,
+            ToDate = x.Key.To,
+            Records = x.ToList()
+        }).ToList();
+}
+
+<span data-toggle="tooltip" data-title="User Details">
+    <a class="form-control btn-primary btn-xs auto-height add-ratevalidity" href="javascript:;" data-href="@Url.GetAdminUrl("tourpackage", "PackageRateValidty")">
+        <i class="fa fa-plus"></i>&nbsp;Add Rate Validity
+    </a>
+</span>
+<table class="table table-standard table-bordered table-striped" data-table="grid">
+    <thead>
+        <tr>
+            <th style="width:4%;" class="details-control"></th>
+            <th style="width:16%">From Date</th>
+            <th style="width:16%">To Date</th>
+            <th class="column-action text-center"></th>
+        </tr>
+    </thead>
+    <tbody class="contact-list clsBindResult">
+        @if (validities == null || validities.Count == 0)
+        {
+            <tr class="empty-row">
+                <td valign="top" colspan="7" class="dataTables_empty text-center">
+                    No data available in table
+                </td>
+            </tr>
+        }
+        else
+        {
+            foreach (var validity in validities)
+            {
+                @Html.Partial("_GroupRateValidity", validity)
+            }
+
+        }
+    </tbody>
+</table>

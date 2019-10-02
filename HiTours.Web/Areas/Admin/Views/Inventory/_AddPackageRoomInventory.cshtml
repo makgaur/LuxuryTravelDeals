@@ -1,0 +1,125 @@
+﻿@model RoomInventoryAddViewModel
+<form asp-antiforgery="true" id="formAddRoomInventory" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="RI_Id" />
+    <input type="hidden" asp-for="RI_IsActive" />
+    <input type="hidden" asp-for="RI_IsDeleted" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <div class="box-header with-border">
+        <h5 class="box-title">Add Inventory</h5>
+    </div>
+    <div class="box-body">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="RI_RoomConfigId"></label>
+                <select asp-for="RI_RoomConfigId" selected="@Model.RI_RoomConfigId" class="form-control" id="RoomId" asp-items="Model.RoomConfigItems"
+                        select2-value="@Model.RI_RoomConfigId" select2-Url="/selectlist/GetRoomConfigurationForInventoryList?packageId=@this.ViewBag.TourPackageId"></select>
+                <span asp-validation-for="RI_RoomConfigId"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="RI_Inventory"></label>
+                <input class="form-control" type="number" asp-for="RI_Inventory" />
+                <span asp-validation-for="RI_Inventory"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="RI_BaseRate"></label>
+                <input class="form-control" type="number" asp-for="RI_BaseRate" />
+                <span asp-validation-for="RI_BaseRate"></span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="RI_SurgeRate"></label>
+                <input class="form-control" type="number" asp-for="RI_SurgeRate" />
+                <span asp-validation-for="RI_SurgeRate"></span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="RI_ExtraAdultCost"></label>
+                <input asp-for="RI_ExtraAdultCost" type="number" class="form-control">
+                <span asp-validation-for="RI_ExtraAdultCost"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="RI_ExtraChildCost"></label><br />
+                <input type="number" class="form-control" asp-for="RI_ExtraChildCost" />
+                <span asp-validation-for="RI_ExtraChildCost"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="RI_ExtraInfantCost"></label><br />
+                <input type="number" class="form-control" asp-for="RI_ExtraInfantCost" />
+                <span asp-validation-for="RI_ExtraInfantCost"></span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="RI_StartDate"></label><br />
+                <input type="date" class="form-control" asp-for="RI_StartDate" />
+                <span asp-validation-for="RI_StartDate"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="RI_EndDate"></label><br />
+                <input type="date" class="form-control" asp-for="RI_EndDate" />
+                <span asp-validation-for="RI_EndDate"></span>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer" align="center">
+        <button type="button" id="RoomInventoryClick" class="btn btn-primary">Save</button><br />
+    </div>
+</form>
+<script>
+    $(document).off("click", '#RoomInventoryClick')
+        .on("click", '#RoomInventoryClick', function (e) {
+        var $form = $("#formAddRoomInventory");
+            if ($form.valid()) {
+                showWaitProcess();
+                var model = {}
+                model = $form.serialize();
+                var ErrorMsg = "";
+                $(".text-blank").each(function () {
+                    ErrorMsg += $(this).text();
+                })
+                if (ErrorMsg != "") {
+                    hideWaitProcess();
+                    return false;
+                }
+                else {
+                    $.ajax({
+                        url: '@Url.Action("AddPackageRoomInventory", "Inventory")',
+                        type: "JOSN",
+                        method: "POST",
+                        data: model,
+                        success: function (data) {
+                            hideWaitProcess();
+                            if (data == "success") {
+                                swal('', 'Successfully Inserted', 'success');
+                                $(".replaceView").click();
+                                return false;
+                            }
+                            else if (data == "update") {
+                                swal('', 'Successfully Updated', 'success');
+                                $(".replaceView").click();
+                                return false;
+                            }
+                            else
+                            {
+                                var errors = JSON.parse(data);
+                                $.each(errors, function (i, obj) {
+                                    var $span = $('span[data-valmsg-for="' + obj.key + '"]');
+                                    $span.addClass("field-validation-error").html('<span for="' + obj.key + '" class="field-validation-error">' + obj.error + '</span>');
+                                    $span.attr("data-valmsg-replace", "false");
+                                })
+
+                                 setTimeout(function () {
+                                        $("[data-valmsg-replace]").each(function () {
+                                            $(this).attr("data-valmsg-replace", "true");
+                                        })
+                                    }, 3000);
+                                return false;
+                            }
+                        }
+                    });
+                }
+            }
+    })
+</script>

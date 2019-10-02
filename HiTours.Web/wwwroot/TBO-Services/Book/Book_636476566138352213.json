@@ -1,0 +1,42 @@
+//-- Book Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "36e32957-322a-474a-927f-33c307ea4c6d",
+  "TraceId": "392d47da-0f02-4e83-a3be-1925a13ce1ec",
+  "ResultIndex": "OB7",
+  "Passenger": [
+    {
+      "AddressLine1": "address",
+      "AddressLine2": null,
+      "City": "Jaipur",
+      "ContactNo": "9785678298",
+      "CountryCode": "IN",
+      "CountryName": "india",
+      "DateOfBirth": "25/02/1995",
+      "Email": "test@mailinator.com",
+      "FFAirlineCode": null,
+      "FFNumber": null,
+      "FirstName": "Sumeet",
+      "GSTCompanyAddress": "address",
+      "GSTCompanyContactNumber": null,
+      "GSTCompanyEmail": "test@mailinator.com",
+      "GSTCompanyName": "tetra",
+      "GSTNumber": "gsgs101",
+      "Gender": 1,
+      "IsLeadPax": true,
+      "LastName": "Gupta",
+      "Nationality": null,
+      "PassportExpiry": null,
+      "PassportNo": null,
+      "PaxType": "adult",
+      "Title": "Mr"
+    }
+  ],
+  "Fares": null,
+  "Meals": null,
+  "Seats": null
+}
+//-- Book Api Response --
+{
+  "Message": "A task was canceled."
+}

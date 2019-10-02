@@ -1,0 +1,220 @@
+﻿@using HiTours.TBO.Models
+@model HiTours.ViewModels.FlightApi.FlightBookingViewModel
+<div class="row">
+    @if (Model == null || string.IsNullOrEmpty(Model.Response))
+    {
+        <div class="no-booking" style="text-align: center;line-height: 250px;font-size: 1.5em;"> Detail Not Found </div>
+    }
+    else
+    {
+        var details = JsonConvert.DeserializeObject<TicketLCCResult>(Model.Response);
+        if (details != null)
+        {
+            var flightItinerary = details.FlightItinerary;
+
+            if (flightItinerary != null)
+            {
+                var passengers = flightItinerary.Passenger;
+
+
+                <div class="col-sm-12 bhoechie-tab-container">
+                    <div class="col-sm-2 bhoechie-tab-menu">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item active">Flight Detail</a>
+                            @if (passengers != null)
+                            {
+                                <a href="#" class="list-group-item">Tickets</a>
+                            }
+
+
+                        </div>
+                    </div>
+                    <div class="col-sm-10 bhoechie-tab">
+                        <div class="bhoechie-tab-content active inner-nopadd">
+                            <div class="col-sm-6 inner-nopadd">
+                                <div class="col-sm-4">@(ToTitleCase(nameof(flightItinerary.BookingId)))</div>
+                                <div class="col-sm-1">:</div>
+                                <div class="col-sm-7">@(flightItinerary.BookingId )</div>
+                            </div>
+
+                            <div class="col-sm-6 inner-nopadd">
+                                <div class="col-sm-4">@(ToTitleCase(nameof(flightItinerary.Pnr)))</div>
+                                <div class="col-sm-1">:</div>
+                                <div class="col-sm-7">@(flightItinerary.Pnr )</div>
+                            </div>
+
+                            <div class="col-sm-6 inner-nopadd">
+                                <div class="col-sm-4">@(ToTitleCase(nameof(flightItinerary.IsDomestic).Replace("Is", String.Empty)))</div>
+                                <div class="col-sm-1">:</div>
+                                <div class="col-sm-7">@(flightItinerary.IsDomestic ? "Yes" : "No" )</div>
+                            </div>
+
+                            <div class="col-sm-6 inner-nopadd">
+                                <div class="col-sm-4">@(ToTitleCase(nameof(flightItinerary.Origin)))</div>
+                                <div class="col-sm-1">:</div>
+                                <div class="col-sm-7">@(flightItinerary.Origin )</div>
+                            </div>
+
+                            <div class="col-sm-6 inner-nopadd">
+                                <div class="col-sm-4">@(ToTitleCase(nameof(flightItinerary.Destination)))</div>
+                                <div class="col-sm-1">:</div>
+                                <div class="col-sm-7">@(flightItinerary.Destination )</div>
+                            </div>
+                            <div class="col-sm-6 inner-nopadd">
+                                <div class="col-sm-4">@(ToTitleCase(nameof(flightItinerary.AirlineCode)))</div>
+                                <div class="col-sm-1">:</div>
+                                <div class="col-sm-7">@(flightItinerary.AirlineCode)</div>
+                            </div>
+
+                            <div class="col-sm-6 inner-nopadd">
+                                <div class="col-sm-4">@(ToTitleCase(nameof(flightItinerary.LastTicketDate)))</div>
+                                <div class="col-sm-1">:</div>
+                                <div class="col-sm-7">@(flightItinerary.LastTicketDate)</div>
+                            </div>
+                            <div class="col-sm-6 inner-nopadd">
+                                <div class="col-sm-4">@(ToTitleCase(nameof(flightItinerary.NonRefundable)))</div>
+                                <div class="col-sm-1">:</div>
+                                <div class="col-sm-7">@(flightItinerary.NonRefundable ? "Yes" : "No")</div>
+                            </div>
+
+
+                            <div class="col-sm-6 inner-nopadd">
+                                <div class="col-sm-4">@(ToTitleCase(nameof(flightItinerary.InvoiceNo)))</div>
+                                <div class="col-sm-1">:</div>
+                                <div class="col-sm-7">@(flightItinerary.InvoiceNo )</div>
+                            </div>
+
+                            <div class="col-sm-6 inner-nopadd">
+                                <div class="col-sm-4">@("Invoice Date")</div>
+                                <div class="col-sm-1">:</div>
+                                <div class="col-sm-7">@(Convert.ToDateTime(flightItinerary.InvoiceCreatedOn) )</div>
+                            </div>
+
+                            <div class="col-sm-6 inner-nopadd">
+                                <div class="col-sm-4">@(ToTitleCase(nameof(flightItinerary.InvoiceAmount)))</div>
+                                <div class="col-sm-1">:</div>
+                                <div class="col-sm-7">@(flightItinerary.InvoiceAmount )</div>
+                            </div>
+
+                        </div>
+
+                        @if (passengers != null)
+                        {
+                            <div class="bhoechie-tab-content inner-nopadd">
+                                <div class="wrapper center-block">
+                                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                        @for (int i = 0; i < passengers.Length; i++)
+                                        {
+                                            var passenger = passengers[i];
+                                            var ticket = passenger.Ticket;
+
+
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading @(i == 0 ? "active" : "active")" role="tab" id="@(ticket.TicketId)">
+                                                    <h4 class="panel-title">
+                                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                            @($"{i + 1} Ticket" )
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="@(ticket.TicketId)" class="panel-collapse collapse @(i == 0 ? "in" : "in")" role="tabpanel" aria-labelledby="headingOne">
+                                                    <div class="panel-body">
+                                                        <div class="col-sm-6 inner-nopadd">
+                                                            <div class="col-sm-4">@(ToTitleCase(nameof(ticket.TicketId)))</div>
+                                                            <div class="col-sm-1">:</div>
+                                                            <div class="col-sm-7">@(ticket.TicketId )</div>
+                                                        </div>
+                                                        <div class="col-sm-6 inner-nopadd">
+                                                            <div class="col-sm-4">@(ToTitleCase(nameof(ticket.TicketNumber)))</div>
+                                                            <div class="col-sm-1">:</div>
+                                                            <div class="col-sm-7">@(ticket.TicketNumber )</div>
+                                                        </div>
+
+                                                        <div class="col-sm-6 inner-nopadd">
+                                                            <div class="col-sm-4">@(ToTitleCase(nameof(ticket.IssueDate)))</div>
+                                                            <div class="col-sm-1">:</div>
+                                                            <div class="col-sm-7">@(Convert.ToDateTime(ticket.IssueDate) )</div>
+                                                        </div>
+
+                                                        <div class="col-sm-6 inner-nopadd">
+                                                            <div class="col-sm-4">@(ToTitleCase(nameof(ticket.ValidatingAirline)))</div>
+                                                            <div class="col-sm-1">:</div>
+                                                            <div class="col-sm-7">@(ticket.ValidatingAirline )</div>
+                                                        </div>
+
+
+                                                        <div class="col-sm-6 inner-nopadd">
+                                                            <div class="col-sm-4">@(ToTitleCase(nameof(ticket.Status)))</div>
+                                                            <div class="col-sm-1">:</div>
+                                                            <div class="col-sm-7">@(ticket.Status )</div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+
+            }
+            else
+            {
+                <div class="no-booking" style="text-align: center;line-height: 250px;font-size: 1.5em;"> Detail Not Found </div>
+
+            }
+
+        }
+        else
+        {
+            <div class="no-booking" style="text-align: center;line-height: 250px;font-size: 1.5em;"> Detail Not Found </div>
+
+        }
+
+
+    }
+
+</div>
+
+<style>
+    .list-group-item.active,
+    .list-group-item.active:focus, .list-group-item.active:hover {
+        z-index: 2;
+        color: #fff;
+        background-color: #337ab7;
+        border-color: none;
+        border: none;
+    }
+
+        .list-group-item.active,
+        .list-group-item.active:focus, .list-group-item.active:hover {
+            background: none;
+        }
+
+    .inner-nopadd > div {
+        padding: 3px 2px !important;
+    }
+</style>
+
+@functions{
+
+    public string ToTitleCase(string text)
+    {
+        if (text == null) return text;
+        if (text.Length < 2) return text.ToUpper();
+
+        string result = text.Substring(0, 1).ToUpper();
+        for (int i = 1; i < text.Length; i++)
+        {
+            if (char.IsUpper(text[i])) result += " ";
+            result += text[i];
+        }
+
+        return result;
+    }
+}

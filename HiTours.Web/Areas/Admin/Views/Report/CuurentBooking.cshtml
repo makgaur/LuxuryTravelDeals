@@ -1,0 +1,40 @@
+﻿@{ this.ViewBag.Title = "Current Booking List"; }
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                @*<div class="pull-right top-buttons">
+                        @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/category/manage") })
+                    </div>*@
+            </div>
+            @this.Html.Partial("_DataTableGrid")
+        </div>
+    </div>
+
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+            BindGrid({
+                url: "@Url.Action("CuurentBooking")",
+                columns: [
+                    { "data": "BookingDate", "title": "Booking Date", "type": "string" },
+                    { "data": "BookFromDate", "title": "BookFrom Date", "type": "string" },
+                    { "data": "BookToDate", "title": "Book To Date", "type": "string" },
+                    { "data": "RoomPrice", "title": "Room Price", "type": "decimal" },
+                    { "data": "DiscountAmount", "title": "Discount Amount", "type": "decimal" },
+                    { "data": "Email", "title": "Email", "type": "string" },
+                    {
+                        "data": "IsConfirmed", "title": "Payment Status", "type": "bool", mRender: function (data, type, record) {
+                            var result = record.IsConfirmed = false ? 'Success' : 'Painding '
+                            return result;
+                        }
+                    },
+                    ]
+            });
+        });
+
+    </script>
+}

@@ -1,0 +1,64 @@
+//-- farerule Api Request --
+{
+  "EndUserIp": "192.168.11.120",
+  "TokenId": "14f34250-15cf-4d2b-afd1-959511696278",
+  "TraceId": "cae37733-5a22-498c-8091-175e639298bd",
+  "ResultIndex": "OB17"
+}
+//-- farerule Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "FareRules": [
+      {
+        "Airline": "G8",
+        "DepartureTime": "0001-01-01T00:00:00",
+        "Destination": "BOM",
+        "FareBasisCode": "KO9RBINF",
+        "FareRestriction": null,
+        "FareRuleDetail": " 1. All Guests, including children and infants, must present valid identification at check-in. It is your responsibility to ensure you have the appropriate travel documents at all times.\r\n \r\n2. Rescheduling -Rs. 950 per pax per segment plus difference of fare.\r\n \r\n3. Check-in starts \"2 hours\" before scheduled departure, and closes 45 minutes prior to the scheduled departure time. Guests are requested to report at least 2 hours prior to departure time, at Go Air Check-in counters.\r\n \r\n4. Cancellation / Changes within \"2 hours\" of departure or failure to check-in for a Go Air flight at least 45 minutes prior to the scheduled departure time will result in the fare being forfeited. We require the request atleast 4 hours prior to departure, After that ticket will be count as a No show.\r\n \r\n5. Cancellation-Rs. 950 per pax per segment plus difference of fare.\r\n \r\n6. Schedule is subject to change and regulatory authority approvals. <br/> <br/>",
+        "FlightId": 0,
+        "Origin": "DEL",
+        "ReturnDate": "0001-01-01T00:00:00"
+      },
+      {
+        "Airline": "G8",
+        "DepartureTime": "0001-01-01T00:00:00",
+        "Destination": "MLE",
+        "FareBasisCode": "PO9RIZZX",
+        "FareRestriction": null,
+        "FareRuleDetail": " 1. All Guests, including children and infants, must present valid identification at check-in. It is your responsibility to ensure you have the appropriate travel documents at all times.\r\n \r\n2. Rescheduling -Rs. 950 per pax per segment plus difference of fare.\r\n \r\n3. Check-in starts \"2 hours\" before scheduled departure, and closes 45 minutes prior to the scheduled departure time. Guests are requested to report at least 2 hours prior to departure time, at Go Air Check-in counters.\r\n \r\n4. Cancellation / Changes within \"2 hours\" of departure or failure to check-in for a Go Air flight at least 45 minutes prior to the scheduled departure time will result in the fare being forfeited. We require the request atleast 4 hours prior to departure, After that ticket will be count as a No show.\r\n \r\n5. Cancellation-Rs. 950 per pax per segment plus difference of fare.\r\n \r\n6. Schedule is subject to change and regulatory authority approvals. <br/> <br/>",
+        "FlightId": 0,
+        "Origin": "BOM",
+        "ReturnDate": "0001-01-01T00:00:00"
+      },
+      {
+        "Airline": "G8",
+        "DepartureTime": "0001-01-01T00:00:00",
+        "Destination": "BOM",
+        "FareBasisCode": "MO9RIZZX",
+        "FareRestriction": null,
+        "FareRuleDetail": " 1. All Guests, including children and infants, must present valid identification at check-in. It is your responsibility to ensure you have the appropriate travel documents at all times.\r\n \r\n2. Rescheduling -Rs. 950 per pax per segment plus difference of fare.\r\n \r\n3. Check-in starts \"2 hours\" before scheduled departure, and closes 45 minutes prior to the scheduled departure time. Guests are requested to report at least 2 hours prior to departure time, at Go Air Check-in counters.\r\n \r\n4. Cancellation / Changes within \"2 hours\" of departure or failure to check-in for a Go Air flight at least 45 minutes prior to the scheduled departure time will result in the fare being forfeited. We require the request atleast 4 hours prior to departure, After that ticket will be count as a No show.\r\n \r\n5. Cancellation-Rs. 950 per pax per segment plus difference of fare.\r\n \r\n6. Schedule is subject to change and regulatory authority approvals. <br/> <br/>",
+        "FlightId": 0,
+        "Origin": "MLE",
+        "ReturnDate": "0001-01-01T00:00:00"
+      },
+      {
+        "Airline": "G8",
+        "DepartureTime": "0001-01-01T00:00:00",
+        "Destination": "DEL",
+        "FareBasisCode": "HO9RBINF",
+        "FareRestriction": null,
+        "FareRuleDetail": " 1. All Guests, including children and infants, must present valid identification at check-in. It is your responsibility to ensure you have the appropriate travel documents at all times.\r\n \r\n2. Rescheduling -Rs. 950 per pax per segment plus difference of fare.\r\n \r\n3. Check-in starts \"2 hours\" before scheduled departure, and closes 45 minutes prior to the scheduled departure time. Guests are requested to report at least 2 hours prior to departure time, at Go Air Check-in counters.\r\n \r\n4. Cancellation / Changes within \"2 hours\" of departure or failure to check-in for a Go Air flight at least 45 minutes prior to the scheduled departure time will result in the fare being forfeited. We require the request atleast 4 hours prior to departure, After that ticket will be count as a No show.\r\n \r\n5. Cancellation-Rs. 950 per pax per segment plus difference of fare.\r\n \r\n6. Schedule is subject to change and regulatory authority approvals. <br/> <br/>",
+        "FlightId": 0,
+        "Origin": "BOM",
+        "ReturnDate": "0001-01-01T00:00:00"
+      }
+    ],
+    "ResponseStatus": 1,
+    "TraceId": "cae37733-5a22-498c-8091-175e639298bd"
+  }
+}

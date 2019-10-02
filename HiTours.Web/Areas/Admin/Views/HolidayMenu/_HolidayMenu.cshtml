@@ -1,0 +1,56 @@
+﻿@model PackageHolidayMenuViewModel
+@{ this.Layout = null;}
+<form asp-antiforgery="true" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <div class="box-body">
+        <div class="form-group col-sm-12">
+            <label asp-for="IsRegion" class="skip-required" ></label>
+            @if (Model.Id == 0)
+            {
+                <input type="checkbox" asp-for="IsRegion" data-value="@Model.IsRegion" />
+            }
+            else
+            {
+                <input type="hidden" asp-for="IsRegion" data-value="@Model.IsRegion" />
+                <input type="checkbox" asp-for="IsRegion" disabled />
+            }
+        </div>
+
+        <div id="divTemplate"></div>
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit) })
+</form>
+
+<script id="tmpCountry" type="text/html">
+    <div class="form-group col-sm-6" data-menu>
+        <label asp-for="Name">Country</label>
+        <select class="form-control" asp-for="Name" asp-items="Model.NameList"
+                select2-Dependent="true" select2-Dependent-Control="#CityId" select2-Url="/selectlist/getholidaymenucountrylist"></select>
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group col-sm-6" data-menu>
+        <label asp-for="MenuList">City</label>
+        <select class="form-control" id="CityId" asp-for="MenuList" select2-maximumSelectionLength="5" multiple asp-items="Model.ChildMenuList"
+                select2-value="@Model.MenuList" select2-Url="/selectlist/getholidaymenucitybycounryidasync"></select>
+        <span asp-validation-for="MenuList"></span>
+    </div>
+</script>
+<script id="tmpRegion" type="text/html">
+    <div class="form-group col-sm-6" data-menu>
+        <label asp-for="Name">Region</label>
+        <select asp-for="Name" selected="@Model.Name" class="form-control" asp-items="Model.NameList"
+                select2-value="@Model.Name" select2-Dependent="true" select2-Dependent-Control="#countryid" select2-Url="/selectlist/getholidaymenuregionlist"></select>
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group col-sm-6" data-menu>
+        <label asp-for="MenuList">Country</label>
+        <select class="form-control" asp-for="MenuList" id="countryid" multiple asp-items="Model.ChildMenuList"
+                select2-Url="/selectlist/getholidaymenucountrylist" select2-maximumSelectionLength="5" ></select>
+        <span asp-validation-for="MenuList"></span>
+    </div>
+</script>
+ 

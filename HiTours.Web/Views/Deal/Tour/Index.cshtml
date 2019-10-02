@@ -1,0 +1,2612 @@
+﻿@model ProductViewModel
+@{
+    ViewData["Title"] = string.IsNullOrEmpty(Model.TourProductViewModel.Name) ? "Tour" : Model.TourProductViewModel.Name;
+    Layout = "~/Views/Shared/_ProductLayout.cshtml";
+    Model.TourProductViewModel.BannerViewModel.MoreImage = Model.TourProductViewModel.ImageGalleryViewModel.DealsImageViewModels.Select(x => x.Image).FirstOrDefault();
+    this.ViewBag.ExtraImagesCount = Model.TourProductViewModel.ImageGalleryViewModel.DealsImageViewModels.Count;
+    if (!string.IsNullOrEmpty(Model.TourProductViewModel.BannerViewModel.BannerImg2x2_3))
+    {
+        Model.TourProductViewModel.ImageGalleryViewModel.DealsImageViewModels = Model.TourProductViewModel.ImageGalleryViewModel.DealsImageViewModels.Prepend(new DealsImageViewModel { Image = Model.TourProductViewModel.BannerViewModel.BannerImg2x2_3 }).ToList();
+    }
+    if (!string.IsNullOrEmpty(Model.TourProductViewModel.BannerViewModel.BannerImg2x2_2))
+    {
+        Model.TourProductViewModel.ImageGalleryViewModel.DealsImageViewModels = Model.TourProductViewModel.ImageGalleryViewModel.DealsImageViewModels.Prepend(new DealsImageViewModel { Image = Model.TourProductViewModel.BannerViewModel.BannerImg2x2_2 }).ToList();
+    }
+    if (!string.IsNullOrEmpty(Model.TourProductViewModel.BannerViewModel.BannerImg2x2_1))
+    {
+        Model.TourProductViewModel.ImageGalleryViewModel.DealsImageViewModels = Model.TourProductViewModel.ImageGalleryViewModel.DealsImageViewModels.Prepend(new DealsImageViewModel { Image = Model.TourProductViewModel.BannerViewModel.BannerImg2x2_1 }).ToList();
+    }
+    if (!string.IsNullOrEmpty(Model.TourProductViewModel.BannerViewModel.BannerImg4x4))
+    {
+        Model.TourProductViewModel.ImageGalleryViewModel.DealsImageViewModels = Model.TourProductViewModel.ImageGalleryViewModel.DealsImageViewModels.Prepend(new DealsImageViewModel { Image = Model.TourProductViewModel.BannerViewModel.BannerImg4x4 }).ToList();
+    }
+}
+
+<input type="hidden" name="IsMobileView" value="@(this.ViewBag.IsMobileView ? "true" : "false")" />
+
+
+<div class="container-fluid sticky-nav hidden-xs">
+    <div class="row">
+        <div class="product-options-container">
+            <div class="hidden-sm hidden-md col-lg-8 product_options product_options_desktop">
+                <ul>
+                    <li class="highlight-nav colored-nav" data-target=".Hotel_highlights">LTD Specials</li>
+                    <li class="Itinerary-nav" data-target=".Itinerary">Itinerary</li>
+                    <li class="about-nav" data-target=".Trip_Advisor">About The Destination</li>
+                    <li class="customer-review-nav" data-target=".Reviews-Ratings">Customer Reviews & Ratings</li>
+                </ul>
+            </div>
+            <div class="col-sm-9 hidden-md hidden-lg product_options product_options_medium">
+                <ul>
+                    <li class="highlight-nav colored-nav" data-target=".Hotel_highlights">LTD Specials</li>
+                    <li class="Itinerary-nav" data-target=".Itinerary">Itinerary</li>
+                    <li class="about-nav" data-target=".Trip_Advisor">About The Destination</li>
+                    <li class="customer-review-nav" data-target=".Reviews-Ratings">Customer Reviews & Ratings</li>
+                </ul>
+            </div>
+            <div class="col-md-9 hidden-sm hidden-lg product_options product_options_small">
+                <ul>
+                    <li class="highlight-nav colored-nav" data-target=".Hotel_highlights">LTD Specials</li>
+                    <li class="Itinerary-nav" data-target=".Itinerary">Itinerary</li>
+                    <li class="about-nav" data-target=".Trip_Advisor">About The Destination</li>
+                    <li class="customer-review-nav" data-target=".Reviews-Ratings">Customer Reviews & Ratings</li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-sm-3 col-lg-4 product_share">
+                <p>SHARE <img src="~/images/Share_Icon.svg" alt="share-icon" /></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*==========Products-Gallery============*@
+<input type="hidden" asp-for="TourProductViewModel.Id" id="dealId" />
+
+   @{ Model.TourProductViewModel.BannerViewModel.ImagesCount = Model.TourProductViewModel.ImageGalleryViewModel.DealsImageViewModels.Count;
+       Model.TourProductViewModel.ImageGalleryViewModel.ProductReviewViewModels = Model.TourProductViewModel.ProductReviewViewModels; 
+    }
+    <div class="hidden-sm hidden-md hidden-lg col-xs-12 product-banner-xs-head">
+        <span class="left-arrow" onclick="window.history.back();"><img src="~/images/left_arrow.svg" alt="left-arrow" /></span>
+        <span class="banner-xs-title-container">
+            <span class="banner-xs-title">@Model.TourProductViewModel.Name.ToUpper()</span>
+            @for (int i = 0; i < Model.TourProductViewModel.City.Count; i++)
+            {
+                <span class="banner-xs-title">@Model.TourProductViewModel.City[i]</span>
+            }
+        </span>
+        <span class="share-icon-xs"><img src="~/images/Share_Icon.svg" alt="share_icon" /></span>
+    </div>
+    @Html.Partial("_DealBanner", Model.TourProductViewModel.BannerViewModel)
+    @Html.Partial("_ImageGallery", Model.TourProductViewModel.ImageGalleryViewModel)
+    @Html.Partial("_PriceSummary")
+    <input type="hidden" asp-for="TourProductViewModel.Id" id="dealId" />
+    @if (!this.ViewBag.IsMobileView)
+    {
+        <section class="Hotel_Details hidden-xs hidden-sm hidden-md">
+            <div class="hotel-details-container">
+                <div class="row" id="top-content-row">
+                    <div class="col-sm-8 col-md-8 col-lg-8 no-padding-left-right border-bottom">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 Deal_duration no-padding-left-right">
+                            @for (int i = 0; i < Model.TourProductViewModel.City.Count; i++)
+                            {
+                                <span>@Model.TourProductViewModel.City[i]</span>
+                            }
+                            <h1>@Model.TourProductViewModel.Name</h1>
+                            @if (Model.TourProductViewModel.TravelStyle != null && Model.TourProductViewModel.TravelStyle.Item1 == 2)
+                            {
+                                <a>
+                                    <span>@Model.TourProductViewModel.TravelStyle.Item2</span><span class="fd_Timer">Ends in 24:38:56</span>
+                                </a>
+                            }
+                        </div>
+
+                        @if (Model.TourProductViewModel.HighlightsViewModels != null)
+                        {
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 Hotel_highlights section_desktop no-padding-left-right" data-nav-target=".product_options_desktop .highlight-nav">
+                                <h2>LTD Specials</h2>
+                                <hr class="hr-grey-bottom w75">
+                                <br>
+                                <ul>
+                                    @for (int i = 0; i < Model.TourProductViewModel.HighlightsViewModels.Count; i++)
+                                    {
+                                        <li class="@(i > 4 ? "hidden":string.Empty)">
+                                            <span class="highlight-title">
+                                                @Model.TourProductViewModel.HighlightsViewModels[i].Title
+                                                @if (Model.TourProductViewModel.HighlightsViewModels[i].StarRating > 0)
+                                                {
+                                                    <img src="~/images/Star Icon.png" alt="star_icon"/>
+                                                }
+                                            </span>
+                                            <span class="highlight-description">@Model.TourProductViewModel.HighlightsViewModels[i].Description</span>
+                                        </li>
+                                    }
+                                </ul>
+                                @if (Model.TourProductViewModel.HighlightsViewModels.Count > 5)
+                                {
+                                    <div class="show-more">Show @(Model.TourProductViewModel.HighlightsViewModels.Count - 5) Other Highlights<img src="~/images/Path 2.png" alt="down_icon" class="margin-left-6" /></div>
+                                }
+                            </div>
+
+
+                        }
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 Itinerary section_desktop no-padding-left-right" data-nav-target=".product_options_desktop .Itinerary-nav">
+                            <h2>Itinerary</h2>
+                            <hr class="hr-grey-bottom w75">
+                            <br>
+                            <div class="night-selector-container row nav nav-pills">
+                                @for (int m = 0; m < Model.TourProductViewModel.DealsNightsViewModels.Count; m++)
+                                {
+                                    <div class="pill @(m == 0 ? "active":string.Empty)" data-target="#view-@Model.TourProductViewModel.DealsNightsViewModels[m].Value-nights">
+                                        <span class="pill-nights">@Model.TourProductViewModel.DealsNightsViewModels[m].Value Nights</span>
+                                        @{
+                                            decimal fromPrice = 0;
+                                            DealsRatePlanViewModel minRatePlan = Model.TourProductViewModel.DealsNightsViewModels[m].DealsRatePlanViewModels.OrderBy(x => x.Price).FirstOrDefault();
+                                            if (minRatePlan != null)
+                                            {
+                                                fromPrice = fromPrice + (minRatePlan.Price + (minRatePlan.Price * minRatePlan.MarkUp.Value / 100));
+                                                fromPrice = fromPrice + minRatePlan.ExtraSupplement.Value + (minRatePlan.ExtraSupplement.Value * minRatePlan.MarkUp.Value / 100);
+                                            }
+                                        }
+                                        <span class="pill-price">FROM ₹@Math.Round(fromPrice, MidpointRounding.AwayFromZero).ToAmount() PER PERSON</span>
+                                    </div>
+                                }
+                            </div>
+                            <span class="breakdown-header">DAILY ITINERARY BREAKDOWN</span>
+                            <div class="padding-top-10">
+                                <hr class="hr-separate">
+                            </div>
+                            <div class="night-content-container tab-content clearfix">
+                                @for (int s = 0; s < Model.TourProductViewModel.DealsNightsViewModels.Count; s++)
+                                {
+                                    <div class="tab-pane @(s == 0 ? "active" : string.Empty)" id="view-@Model.TourProductViewModel.DealsNightsViewModels[s].Value-nights">
+                                        @for (int n = 0; n < Model.TourProductViewModel.DealsNightsViewModels[s].DealsItineraryViewModels.Count; n++)
+                                        {
+                                            var itinerary = Model.TourProductViewModel.DealsNightsViewModels[s].DealsItineraryViewModels[n];
+                                            string formattedTitle = string.Empty;
+                                            if (itinerary.StartDay == itinerary.EndDay)
+                                            {
+                                                formattedTitle = formattedTitle + "Day " + itinerary.StartDay;
+                                            }
+                                            else
+                                            {
+                                                formattedTitle = formattedTitle + "Day " + itinerary.StartDay + " - " + itinerary.EndDay;
+                                            }
+                                            if (!string.IsNullOrEmpty(itinerary.Title))
+                                            {
+                                                formattedTitle = formattedTitle + ": ";
+                                            }
+
+                                            <div class="itinerary-part">
+                                                <div class="itinerary-part-header">
+                                                    <span class="days">@formattedTitle</span>
+                                                    <span class="days-description">
+                                                        &nbsp;@itinerary.Title
+                                                    </span>
+                                                    <div class="show-selector">
+                                                        <span class="show-more @(n == 0 ? "hidden":string.Empty)" onclick="showItinearyPart(this);">
+                                                            SHOW MORE <img src="~/images/Chevron Down.svg" alt="down-icon"/>
+                                                        </span>
+                                                        <span class="show-less @(n == 0 ?string.Empty:"hidden")" onclick="hideItinearyPart(this);">
+                                                            SHOW LESS <img src="~/images/Chevron_Up.svg" alt="up-icon"/>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="itinerary-part-content row @(n == 0 ?string.Empty:"hidden")">
+                                                    @Html.Raw(itinerary.Description)
+                                                </div>
+                                                <div>
+                                                    <hr class="hr-separate">
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 Trip_Advisor section_desktop no-padding-left-right" data-nav-target=".product_options_desktop .about-nav">
+                            <h2>About The Destination</h2>
+                            <hr class="hr-grey-bottom w75">
+                            <br>
+                            <div class="col-md-4 TA_image no-padding-left-right">
+                                <div class="dest_img_1"> <img src="~/DealImages/@Model.TourProductViewModel.LogoImage" alt="I&B logo" /></div>
+                                <div class="dest_img_2"><img src="~/DealImages/@Model.TourProductViewModel.CardImage" alt="TA_Badge" /></div>
+                            </div>
+
+                            <div class="col-md-8 destination-content no-padding-left-right">
+                                <div class="TA_content_para">
+                                    @Html.Raw(Model.TourProductViewModel.AboutDestination)
+                                </div>
+
+                                <div class="show-more">Show More<img src="~/images/Chevron Down.svg" alt="down_icon" class="margin-left-6" /></div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 Reviews-Ratings section_desktop no-padding-left-right" data-nav-target=".product_options_desktop .customer-review-nav" >
+                            <h2>Customer Reviews & Ratings</h2>
+                            <hr class="hr-grey-bottom w75">
+                            <br>
+
+                            <div class="col-sm-6 col-md-6 col-lg-6 ratings">
+                               <h2>Overall Rating</h2>
+                               
+                                    @for (int i = 1; i <= Math.Round(Model.TourProductViewModel.Overallrating, MidpointRounding.AwayFromZero) && i <= 5; i++)
+                                    {
+                                        <img src="~/images/Star Icon.svg" alt="star_icon" />
+                                    }
+                                
+                                <p>@Model.TourProductViewModel.Overallrating.ToString("0.#") / 5 @*<span>@Model.TourProductViewModel.ReviewCount RATINGS</span>*@</p>
+
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6 ratings_point">
+                                <p>
+                                    <span class="text">Cleanliness</span>
+                                    <span class="rating-image">
+                                        @for (int i = 0; i < Math.Round(Model.TourProductViewModel.Cleanlinessrating, MidpointRounding.AwayFromZero); i++)
+                                        {
+                                            <img src="~/images/Star Icon.svg" alt="star_icon" />
+                                        }
+                                    </span>
+                                </p>
+                                <p>
+                                    <span class="text">Location</span>
+                                    <span class="rating-image">
+                                        @for (int i = 0; i < Math.Round(Model.TourProductViewModel.Locationrating, MidpointRounding.AwayFromZero); i++)
+                                        {
+                                            <img src="~/images/Star Icon.svg" alt="star_icon" />
+                                        }
+                                    </span>
+                                </p>
+                                <p>
+                                    <span class="text">Value For Money</span>
+                                    <span class="rating-image">
+                                        @for (int i = 0; i < Math.Round(Model.TourProductViewModel.Valuerating, MidpointRounding.AwayFromZero); i++)
+                                        {
+                                            <img src="~/images/Star Icon.svg" alt="star_icon" />
+                                        }
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="customer-reviews">
+                                @if (Model.TourProductViewModel.ProductReviewViewModels.Count > 0)
+                                {
+                                    for (int i = 0; i < Model.TourProductViewModel.ProductReviewViewModels.Count; i++)
+                                    {
+                                        var item = Model.TourProductViewModel.ProductReviewViewModels[i];
+                                        <div class="row review-detail @(i>2?"hidden":string.Empty)">
+                                            <div class="col-sm-3 col-md-3 col-lg-3 client-detail no-padding-left-right">
+                                                <h3>@item.Name</h3>
+                                                <p>@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.ReviewDate.Month)  @item.ReviewDate.Year</p>
+                                            </div>
+
+                                            <div class="col-sm-9 col-md-9 col-lg-9 client-review-content no-padding-left-right">
+                                                <p>@item.Review</p>
+                                                @if (item.Review != null && item.Review.Length > 260)
+                                                {
+                                                    <h4 class="show-more-comment">Show More<img src="~/images/Chevron Down.svg" alt="down_icon" class="margin-left-6"/></h4>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                    if (Model.TourProductViewModel.ProductReviewViewModels.Count > 3)
+                                    {
+                                        <h4 class="show-more">Show @(Model.TourProductViewModel.ProductReviewViewModels.Count - 1) Other Customer Reviews<img src="~/images/Chevron Down.svg" alt="down_icon" class="margin-left-6" /></h4>
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4 side-scroller-anchor"></div>
+                    <div class="col-sm-4 col-md-4 col-lg-4 side-scroller">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tour-book-now no-padding-left-right">
+                            <div class="@(Model.TourProductViewModel.DealsFlightViewModels == null ? "col-sm-12 col-md-12 col-lg-12 without_flight without_flight_only":"col-sm-6 col-md-6 col-lg-6 without_flight")">
+                                @if (Model.TourProductViewModel.DealsFlightViewModels != null)
+                                {
+                                    <h3>Without Flights</h3>
+
+                                }
+                                <p>From</p>
+                                <h2>
+                                    ₹@Math.Round(Model.TourProductViewModel.PriceWithoutFlight, MidpointRounding.AwayFromZero).ToAmount()<span class="person-span">/pers<sup>*</sup></span>
+                                    <span class="rack-rate"><span class="instead-span">Instead of </span><span class="rack-price">₹@Math.Round(Model.TourProductViewModel.RackPriceWithoutFlight, MidpointRounding.AwayFromZero).ToAmount()</span></span>
+                                </h2>
+                                <div class="flight-night">for minimum <span class="minimum-nights">@Model.TourProductViewModel.MinimumLOS nights</span></div>
+                            </div>
+                            @if (Model.TourProductViewModel.DealsFlightViewModels != null)
+                            {
+                                <div class="col-sm-6 col-md-6 col-lg-6 with_flight">
+                                    <input type="hidden" name="FlightSearchDate" value="@this.TempData["StartDate"]" id="startFlightDate" />
+                                    <h3>With Flights<span class="margin-left-5"><img class="flight-image" src="~/images/flight_icon.svg" alt="flight_icon" /></span></h3>
+                                    <p>From</p>
+                                    <h2>
+                                        <div class="inline-display" id="lblPriceWithFlight" data-price="@Math.Round(Model.TourProductViewModel.PriceWithoutFlight,MidpointRounding.AwayFromZero)">₹ @Math.Round(Model.TourProductViewModel.PriceWithoutFlight, MidpointRounding.AwayFromZero).ToAmount()<span class="person-span">/pers<sup>*</sup></span></div>
+                                        <span class="rack-rate">
+                                            <span id="lblRackPriceWithFlight" data-price="@Math.Round(Model.TourProductViewModel.RackPriceWithoutFlight,MidpointRounding.AwayFromZero)">₹ @Math.Round(Model.TourProductViewModel.RackPriceWithoutFlight, MidpointRounding.AwayFromZero).ToAmount()</span>
+                                        </span>
+                                    </h2>
+                                    <div class="flight-night">for minimum <span class="minimum-nights">@Model.TourProductViewModel.MinimumLOS nights</span></div>
+                                    
+                                </div>
+                            }
+
+                            </div>
+                        <a href="#" class="book-nav">
+                            <div class="col-sm-12 col-md-12 col-lg-12 book-now-btn">
+                                BOOK NOW
+
+                            </div>
+                        </a>
+                        <div class="row no-padding-left-right rate-notify clear-both">
+                            <sup>*</sup> Price calculated based on two adults.
+                        </div>
+                        @if (Model.TourProductViewModel.DealVisaViewModels != null && Model.TourProductViewModel.DealVisaViewModels.Count > 0)
+                        {
+                            <div class="visa-notify col-sm-12 col-md-12 col-lg-12">
+                                <div class="visa-text">
+                                    <span class="content-bold">Your destination requires a visa!</span><br />Don't fret, we provide this service to bring in more luxury to your travel.<br /><span class="content-bold">See Below!</span>
+
+                                </div>
+                                <div class="visa-image">
+                                    <img src="~/images/visa.svg" alt="visa-icon" />
+                                </div>
+                            </div>
+                        }
+                        @*<div class="col-sm-12 col-md-12 col-lg-12 book-now-card no-padding-left-right">
+                            <h2>Book Now, Pay Later!</h2>
+                            <hr class="hr-grey-bottom-unset-float w75">
+
+                            <h3><strong>Deposit</strong> a nominal 20% of your total payable amount now and confirm your deal. Pay the rest later.</h3>
+                            <hr class="book-now-hr">
+                            <p>Unsure yet? Fill in the booking form below and hold this deal for the next 5 days for free.</p>
+                            <div class="card-link"><span><a href="/home/policies" target="_blank">Terms & Conditions</a></span></div>
+
+                        </div>*@
+
+                        <div class="col-sm-12 col-md-12 col-lg-12 location-map no-padding-left-right">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <section class="Hotel_Details hidden-xs hidden-sm hidden-lg">
+            <div class="hotel-details-container">
+                <div class="row" id="top-content-row">
+                    <div class="col-sm-6 col-md-7 col-lg-8 no-padding-left-right">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 Deal_duration no-padding-left-right">
+                            @for (int i = 0; i < Model.TourProductViewModel.City.Count; i++)
+                            {
+                                <span>@Model.TourProductViewModel.City[i]</span>
+                            }
+                            <h1>@Model.TourProductViewModel.Name</h1>
+                            @if (Model.TourProductViewModel.TravelStyle != null && Model.TourProductViewModel.TravelStyle.Item1 == 2)
+                            {
+                                <a>
+                                    <span>@Model.TourProductViewModel.TravelStyle.Item2</span><span class="fd_Timer">Ends in 24:38:56</span>
+                                </a>
+                            }
+                        </div>
+
+                        @if (Model.TourProductViewModel.HighlightsViewModels != null)
+                        {
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 Hotel_highlights section_small no-padding-left-right" data-nav-target=".product_options_small .highlight-nav">
+                                <h2>LTD Specials</h2>
+                                <hr class="hr-grey-bottom w75">
+                                <br>
+                                <ul>
+                                    @for (int i = 0; i < Model.TourProductViewModel.HighlightsViewModels.Count; i++)
+                                    {
+                                        <li class="@(i > 4 ? "hidden":string.Empty)">
+                                            <span class="highlight-title">
+                                                @Model.TourProductViewModel.HighlightsViewModels[i].Title
+                                                @if (Model.TourProductViewModel.HighlightsViewModels[i].StarRating > 0)
+                                                {
+                                                    <img src="~/images/Star Icon.png" alt="star_icon"/>
+                                                }
+                                            </span>
+                                            <span class="highlight-description">@Model.TourProductViewModel.HighlightsViewModels[i].Description</span>
+                                        </li>
+                                    }
+                                </ul>
+                                @if (Model.TourProductViewModel.HighlightsViewModels.Count > 5)
+                                {
+                                    <div class="show-more">Show @(Model.TourProductViewModel.HighlightsViewModels.Count - 5) Other Highlights<img src="~/images/Path 2.png" alt="down_icon" class="margin-left-6"/></div>
+                                }
+                            </div>
+
+
+                        }
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 Itinerary section_small no-padding-left-right" data-nav-target=".product_options_small .Itinerary-nav">
+                            <h2>Itinerary</h2>
+                            <hr class="hr-grey-bottom w75">
+                            <br>
+                            <div class="night-selector-container row nav nav-pills">
+                                @for (int m = 0; m < Model.TourProductViewModel.DealsNightsViewModels.Count; m++)
+                                {
+                                    <div class="pill @(m == 0 ? "active":string.Empty)" data-target="#view-@Model.TourProductViewModel.DealsNightsViewModels[m].Value-nights">
+                                        <span class="pill-nights">@Model.TourProductViewModel.DealsNightsViewModels[m].Value Nights</span>
+                                        @{
+                                            decimal fromPrice = 0;
+                                            DealsRatePlanViewModel minRatePlan = Model.TourProductViewModel.DealsNightsViewModels[m].DealsRatePlanViewModels.OrderBy(x => x.Price).FirstOrDefault();
+                                            if (minRatePlan != null)
+                                            {
+                                                fromPrice = fromPrice + (minRatePlan.Price + (minRatePlan.Price * minRatePlan.MarkUp.Value / 100));
+                                                fromPrice = fromPrice + minRatePlan.ExtraSupplement.Value + (minRatePlan.ExtraSupplement.Value * minRatePlan.MarkUp.Value / 100);
+                                            }
+                                        }
+                                        <span class="pill-price">FROM ₹@Math.Round(fromPrice, MidpointRounding.AwayFromZero).ToAmount() PER PERSON</span>
+                                    </div>
+                                }
+                            </div>
+                            <span class="breakdown-header">DAILY ITINERARY BREAKDOWN</span>
+                            <div class="padding-top-10">
+                                <hr class="hr-separate">
+                            </div>
+                            <div class="night-content-container tab-content clearfix">
+                                @for (int s = 0; s < Model.TourProductViewModel.DealsNightsViewModels.Count; s++)
+                                {
+                                    <div class="tab-pane @(s == 0 ? "active" : string.Empty)" id="view-@Model.TourProductViewModel.DealsNightsViewModels[s].Value-nights">
+                                        @for (int n = 0; n < Model.TourProductViewModel.DealsNightsViewModels[s].DealsItineraryViewModels.Count; n++)
+                                        {
+                                            var itinerary = Model.TourProductViewModel.DealsNightsViewModels[s].DealsItineraryViewModels[n];
+                                            string formattedTitle = string.Empty;
+                                            if (itinerary.StartDay == itinerary.EndDay)
+                                            {
+                                                formattedTitle = formattedTitle + "Day " + itinerary.StartDay;
+                                            }
+                                            else
+                                            {
+                                                formattedTitle = formattedTitle + "Day " + itinerary.StartDay + " - " + itinerary.EndDay;
+                                            }
+                                            if (!string.IsNullOrEmpty(itinerary.Title))
+                                            {
+                                                formattedTitle = formattedTitle + ": ";
+                                            }
+
+                                            <div class="itinerary-part">
+                                                <div class="itinerary-part-header">
+                                                    <span class="days">@formattedTitle</span>
+                                                    <span class="days-description">
+                                                        &nbsp;@itinerary.Title
+                                                    </span>
+                                                    <div class="show-selector">
+                                                        <span class="show-more @(n == 0 ? "hidden":string.Empty)" onclick="showItinearyPart(this);">
+                                                            SHOW MORE <img src="~/images/Chevron Down.svg" alt="down-icon"/>
+                                                        </span>
+                                                        <span class="show-less @(n == 0 ?string.Empty:"hidden")" onclick="hideItinearyPart(this);">
+                                                            SHOW LESS <img src="~/images/Chevron_Up.svg" alt="up-icon"/>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="itinerary-part-content row @(n == 0 ?string.Empty:"hidden")">
+                                                    @Html.Raw(itinerary.Description)
+                                                </div>
+                                                @*<div>
+                                                    <hr style="height: 1px;border: none;width:100%; background-color: #E6E6E6;margin-top:0px;margin-bottom:0px;">
+                                                </div>*@
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-5 col-lg-4 side-scroller-anchor"></div>
+                    <div class="col-sm-6 col-md-5 col-lg-4 side-scroller">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tour-book-now no-padding-left-right">
+                            <div class="@(Model.TourProductViewModel.DealsFlightViewModels == null ? "col-sm-12 col-md-12 col-lg-12 without_flight without_flight_only":"col-sm-6 col-md-6 col-lg-6 without_flight")">
+                                @if (Model.TourProductViewModel.DealsFlightViewModels != null)
+                                {
+                                    <h3>Without Flights</h3>
+
+                                }
+                                <p>From</p>
+                                <h2>
+                                    ₹@Math.Round(Model.TourProductViewModel.PriceWithoutFlight, MidpointRounding.AwayFromZero).ToAmount()<span class="person-span">/pers<sup>*</sup></span>
+                                    <span class="rack-rate"><span class="instead-span">Instead of </span><span class="rack-price">₹@Math.Round(Model.TourProductViewModel.RackPriceWithoutFlight, MidpointRounding.AwayFromZero).ToAmount()</span></span>
+                                </h2>
+                                <div class="flight-night">for minimum <span class="minimum-nights">@Model.TourProductViewModel.MinimumLOS nights</span></div>
+                            </div>
+                            @if (Model.TourProductViewModel.DealsFlightViewModels != null)
+                            {
+                                <div class="col-sm-6 col-md-6 col-lg-6 with_flight">
+                                    <input type="hidden" name="FlightSearchDate" value="@this.TempData["StartDate"]" id="startFlightDate" />
+
+                                    <h3>With Flights<span class="margin-left-5"><img class="flight-image" src="~/images/flight_icon.svg" alt="flight_icon" /></span></h3>
+                                    <p>From</p>
+                                    <h2><div class="inline-display" id="lblPriceWithFlight" data-price="@Math.Round(Model.TourProductViewModel.PriceWithoutFlight,MidpointRounding.AwayFromZero)">₹ @Math.Round(Model.TourProductViewModel.PriceWithoutFlight, MidpointRounding.AwayFromZero).ToAmount()</div><span class="rack-rate"><span id="lblRackPriceWithFlight" data-price="@Math.Round(Model.TourProductViewModel.RackPriceWithoutFlight,MidpointRounding.AwayFromZero)">₹ @Math.Round(Model.TourProductViewModel.RackPriceWithoutFlight, MidpointRounding.AwayFromZero).ToAmount()</span></span></h2>
+                                    <div class="flight-night">for minimum <span class="minimum-nights">@Model.TourProductViewModel.MinimumLOS nights</span></div>
+                                   
+                                </div>
+                            }
+
+                            </div>
+                        <a href="#" class="book-nav">
+                            <div class="col-sm-12 col-md-12 col-lg-12 book-now-btn">
+                                BOOK NOW
+
+                            </div>
+                        </a>
+                        <div class="row no-padding-left-right rate-notify clear-both">
+                            <sup>*</sup> Price calculated based on two adults.
+                        </div>
+                        @if (Model.TourProductViewModel.DealVisaViewModels != null && Model.TourProductViewModel.DealVisaViewModels.Count > 0)
+                        {
+                            <div class="visa-notify col-sm-12 col-md-12 col-lg-12">
+                                <div class="visa-text">
+                                    <span class="content-bold">Your destination requires a visa!</span><br />Don't fret, we provide this service to bring in more luxury to your travel.<br /><span class="content-bold">See Below!</span>
+
+                                </div>
+                                <div class="visa-image">
+                                    <img src="~/images/visa.svg" alt="visa-icon" />
+                                </div>
+                            </div>
+                        }
+                        @*<div class="col-sm-12 col-md-12 col-lg-12 book-now-card no-padding-left-right">
+                            <h2>Book Now, Pay Later!</h2>
+                            <hr class="hr-grey-bottom-unset-float w75">
+
+                            <h3><strong>Deposit</strong> a nominal 20% of your total payable amount now and confirm your deal. Pay the rest later.</h3>
+                            <hr class="book-now-hr">
+                            <p>Unsure yet? Fill in the booking form below and hold this deal for the next 5 days for free.</p>
+                            <div class="card-link"><span><a href="/home/policies" target="_blank">Terms & Conditions</a></span></div>
+
+                        </div>*@
+
+                        <div class="col-sm-12 col-md-12 col-lg-12 location-map location-map-small no-padding-left-right">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                  
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 Trip_Advisor section_small no-padding-left-right" data-nav-target=".product_options_small .about-nav">
+                        <h2>About The Destination</h2>
+                        <hr class="hr-grey-bottom w75">
+                        <br>
+                        <div class="col-md-4 TA_image no-padding-left-right">
+                            <div class="dest_img_1"> <img src="~/DealImages/@Model.TourProductViewModel.LogoImage" alt="I&B logo" /></div>
+                            <div class="dest_img_2"><img src="~/DealImages/@Model.TourProductViewModel.CardImage" alt="TA_Badge" /></div>
+                        </div>
+
+                        <div class="col-md-8 destination-content no-padding-left-right">
+                            <div class="TA_content_para">
+                                @Html.Raw(Model.TourProductViewModel.AboutDestination)
+                            </div>
+
+                            <div class="show-more">Show More<img src="~/images/Chevron Down.svg" alt="down_icon" class="margin-left-6"/></div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 Reviews-Ratings section_small no-padding-left-right" data-nav-target=".product_options_small .customer-review-nav">
+                        <h2>Customer Reviews & Ratings</h2>
+                        <hr class="hr-grey-bottom">
+                        <br>
+
+                        <div class="col-sm-6 col-md-5 col-lg-6 ratings">
+                            <h2>Overall Rating</h2>
+
+                            @for (int i = 1; i <= Math.Round(Model.TourProductViewModel.Overallrating, MidpointRounding.AwayFromZero) && i <= 5; i++)
+                            {
+                                <img src="~/images/Star Icon.svg" alt="star_icon" />
+                            }
+
+                            <p>@Model.TourProductViewModel.Overallrating.ToString("0.#") / 5 @*<span>@Model.TourProductViewModel.ReviewCount RATINGS</span>*@</p>
+
+                        </div>
+                        <div class="col-sm-6 col-md-7 col-lg-6 ratings_point">
+                            <p>
+                                <span class="text">Cleanliness</span>
+                                <span class="rating-image">
+                                    @for (int i = 0; i < Math.Round(Model.TourProductViewModel.Cleanlinessrating, MidpointRounding.AwayFromZero); i++)
+                                    {
+                                        <img src="~/images/Star Icon.svg" alt="star_icon" />
+                                    }
+                                </span>
+                            </p>
+                            <p>
+                                <span class="text">Location</span>
+                                <span class="rating-image">
+                                    @for (int i = 0; i < Math.Round(Model.TourProductViewModel.Locationrating, MidpointRounding.AwayFromZero); i++)
+                                    {
+                                        <img src="~/images/Star Icon.svg" alt="star_icon" />
+                                    }
+                                </span>
+                            </p>
+                            <p>
+                                <span class="text">Value For Money</span>
+                                <span class="rating-image">
+                                    @for (int i = 0; i < Math.Round(Model.TourProductViewModel.Valuerating, MidpointRounding.AwayFromZero); i++)
+                                    {
+                                        <img src="~/images/Star Icon.svg" alt="star_icon" />
+                                    }
+                                </span>
+                            </p>
+                        </div>
+                        <div class="customer-reviews">
+                            @if (Model.TourProductViewModel.ProductReviewViewModels.Count > 0)
+                            {
+                                for (int i = 0; i < Model.TourProductViewModel.ProductReviewViewModels.Count; i++)
+                                {
+                                    var item = Model.TourProductViewModel.ProductReviewViewModels[i];
+                                    <div class="row review-detail @(i>2?"hidden":string.Empty)">
+                                        <div class="col-sm-3 col-md-3 col-lg-3 client-detail no-padding-left-right">
+                                            <h3>@item.Name</h3>
+                                            <p>@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.ReviewDate.Month)  @item.ReviewDate.Year</p>
+                                        </div>
+
+                                        <div class="col-sm-9 col-md-9 col-lg-9 client-review-content no-padding-left-right">
+                                            <p>@item.Review</p>
+                                            @if (item.Review != null && item.Review.Length > 260)
+                                            {
+                                                <h4 class="show-more-comment">Show More<img src="~/images/Chevron Down.svg" alt="down_icon" class="margin-left-6" /></h4>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                                if (Model.TourProductViewModel.ProductReviewViewModels.Count > 3)
+                                {
+                                    <h4 class="show-more">Show @(Model.TourProductViewModel.ProductReviewViewModels.Count - 1) Other Customer Reviews<img src="~/images/Chevron Down.svg" alt="down_icon" class="margin-left-6" /></h4>
+                                }
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <section class="Hotel_Details col-sm-12 hidden-md hidden-xs hidden-lg">
+            <div class="hotel-details-container col-sm-12 col-md-12">
+                <div class="row" id="top-content-row">
+                    <div class="col-sm-12 col-md-12 Deal_duration">
+                        @for (int i = 0; i < Model.TourProductViewModel.City.Count; i++)
+                        {
+                            <span>@Model.TourProductViewModel.City[i]</span>
+                        }
+                        <h1>@Model.TourProductViewModel.Name</h1>
+                        @if (Model.TourProductViewModel.TravelStyle != null && Model.TourProductViewModel.TravelStyle.Item1 == 2)
+                        {
+                            <a>
+                                <span>@Model.TourProductViewModel.TravelStyle.Item2</span><span class="fd_Timer">Ends in 24:38:56</span>
+                            </a>
+                        }
+                    </div>
+
+
+                    <div class="col-sm-12 col-md-12 book-now-container">
+                        <div class="col-sm-12 col-md-12 tour-book-now">
+                            <div class="@(Model.TourProductViewModel.DealsFlightViewModels == null ? "col-sm-12 col-md-12 without_flight without_flight_only":"col-sm-6 col-md-6 without_flight")">
+                                @if (Model.TourProductViewModel.DealsFlightViewModels != null)
+                                {
+                                    <h3>Without Flights</h3>
+
+                                }
+                                <p>From</p>
+                                <h2>₹@Math.Round(Model.TourProductViewModel.PriceWithoutFlight, MidpointRounding.AwayFromZero).ToAmount()<span class="person-span">/pers<sup>*</sup></span><span class="rack-rate"><span class="instead-span">Instead of </span><span class="rack-price">₹@Math.Round(Model.TourProductViewModel.RackPriceWithoutFlight, MidpointRounding.AwayFromZero).ToAmount()</span></span></h2>
+                                <div class="flight-night">for minimum <span class="minimum-nights">@Model.TourProductViewModel.MinimumLOS nights</span></div>
+                            </div>
+                            @if (Model.TourProductViewModel.DealsFlightViewModels != null)
+                            {
+                                <div class="col-sm-6 col-md-6 with_flight">
+                                    <input type="hidden" name="FlightSearchDate" value="@this.TempData["StartDate"]" id="startFlightDate" />
+
+                                    <h3>With Flights<span class="margin-left-5"><img src="~/images/flight_icon.svg" alt="flight_icon" /></span></h3>
+                                    <p>From</p>
+                                    <h2><div class="inline-display" id="lblPriceWithFlight" data-price="@Math.Round(Model.TourProductViewModel.PriceWithoutFlight,MidpointRounding.AwayFromZero)">₹@Math.Round(Model.TourProductViewModel.PriceWithoutFlight, MidpointRounding.AwayFromZero).ToAmount()<span class="person-span">/pers<sup>*</sup></span></div><span class="rack-rate"><span id="lblRackPriceWithFlight" data-price="@Math.Round(Model.TourProductViewModel.RackPriceWithoutFlight,MidpointRounding.AwayFromZero)">₹ @Math.Round(Model.TourProductViewModel.RackPriceWithoutFlight, MidpointRounding.AwayFromZero).ToAmount()</span></span></h2>
+                                    <div class="flight-night">for minimum <span class="minimum-nights">@Model.TourProductViewModel.MinimumLOS nights</span></div>
+                                </div>
+                            }
+
+                            </div>
+                        <a href="#" class="book-nav">
+                            <div class="col-sm-12 col-md-12 hidden-xs book-now-btn">
+                                BOOK NOW
+
+                            </div>
+                        </a>
+                        <div class="row no-padding-left-right rate-notify clear-both">
+                            <sup>*</sup> Price calculated based on two adults.
+                        </div>
+                    </div>
+                    
+
+                    @*<div class="col-sm-12 col-md-12  book-now-card">
+                        <h2>Book Now, Pay Later!</h2>
+                        <hr class="hr-grey-bottom-unset-float w75">
+
+                        <h3><strong>Deposit</strong> a nominal 20% of your total payable amount now and confirm your deal. Pay the rest later.</h3>
+                        <hr class="book-now-hr">
+                        <p>Unsure yet? Fill in the booking form below and hold this deal for the next 5 days for free.</p>
+                        <div class="card-link"><span><a href="/home/policies" target="_blank">Terms & Conditions</a></span></div>
+
+                    </div>*@
+
+                    @if (Model.TourProductViewModel.DealVisaViewModels != null && Model.TourProductViewModel.DealVisaViewModels.Count > 0)
+                    {
+                        <div class="visa-notify col-sm-12 col-md-12">
+                            <div class="visa-text">
+                                <span class="content-bold">Your destination requires a visa!</span><br />Don't fret, we provide this service to bring in more luxury to your travel.<br /><span class="content-bold">See Below!</span>
+
+                            </div>
+                            <div class="visa-image">
+                                <img src="~/images/visa.svg" alt="visa-icon" />
+                            </div>
+                        </div>
+                    }
+
+                    <div class="col-sm-12 col-md-12 location-map no-padding-left-right @(Model.TourProductViewModel.DealVisaViewModels != null && Model.TourProductViewModel.DealVisaViewModels.Count > 0 ? "with-visa":string.Empty) location-map-medium">
+
+
+                    </div>
+
+
+
+
+                    <div class="col-sm-12 col-md-12 no-padding-left-right border-bottom">
+
+
+                        @if (Model.TourProductViewModel.HighlightsViewModels != null)
+                        {
+                            <div class="padding-xs-left">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 Hotel_highlights section_medium no-padding-left-right" data-nav-target=".product_options_medium .highlight-nav">
+                                    <h2>LTD Specials</h2>
+                                    <hr class="hr-grey-bottom w75">
+                                    <br>
+                                    <ul>
+                                        @for (int i = 0; i < Model.TourProductViewModel.HighlightsViewModels.Count; i++)
+                                        {
+                                            <li class="@(i > 4 ? "hidden":string.Empty)">
+                                                <span class="highlight-title">
+                                                    @Model.TourProductViewModel.HighlightsViewModels[i].Title
+                                                    @if (Model.TourProductViewModel.HighlightsViewModels[i].StarRating > 0)
+                                                    {
+                                                        <img src="~/images/Star Icon.png" alt="star_icon">
+                                                    }
+                                                </span>
+                                                <span class="highlight-description">@Model.TourProductViewModel.HighlightsViewModels[i].Description</span>
+                                            </li>
+                                        }
+                                    </ul>
+                                    @if (Model.TourProductViewModel.HighlightsViewModels.Count > 5)
+                                    {
+                                        <h4 class="show-more">Show @(Model.TourProductViewModel.HighlightsViewModels.Count - 5) Other Highlights<img src="~/images/Path 2.png" alt="down_icon" class="margin-left-6" /></h4>
+                                    }
+                                </div>
+                            </div>
+
+                        }
+
+                        <div class="padding-xs-left">
+                            <div class="col-sm-12 col-md-12  Itinerary section_medium no-padding-left-right" data-nav-target=".product_options_medium .Itinerary-nav">
+                                <h2>Itinerary</h2>
+                                <hr class="hr-grey-bottom w75">
+                                <br>
+                                <div class="night-selector-container row nav nav-pills">
+                                    @for (int m = 0; m < Model.TourProductViewModel.DealsNightsViewModels.Count; m++)
+                                    {
+                                        <div class="pill @(m == 0 ? "active":string.Empty)" data-target="#view-@Model.TourProductViewModel.DealsNightsViewModels[m].Value-nights">
+                                            <span class="pill-nights">@Model.TourProductViewModel.DealsNightsViewModels[m].Value Nights</span>
+                                            @{
+                                                decimal fromPrice = 0;
+                                                DealsRatePlanViewModel minRatePlan = Model.TourProductViewModel.DealsNightsViewModels[m].DealsRatePlanViewModels.OrderBy(x => x.Price).FirstOrDefault();
+                                                if (minRatePlan != null)
+                                                {
+                                                    fromPrice = fromPrice + (minRatePlan.Price + (minRatePlan.Price * minRatePlan.MarkUp.Value / 100));
+                                                    fromPrice = fromPrice + minRatePlan.ExtraSupplement.Value + (minRatePlan.ExtraSupplement.Value * minRatePlan.MarkUp.Value / 100);
+                                                }
+                                            }
+                                            <span class="pill-price">FROM ₹@Math.Round(fromPrice, MidpointRounding.AwayFromZero).ToAmount() PER PERSON</span>
+                                        </div>
+                                    }
+                                </div>
+                                <span class="breakdown-header">DAILY ITINERARY BREAKDOWN</span>
+                                <div class="padding-top-10">
+                                    <hr class="hr-separate">
+                                </div>
+                                <div class="night-content-container tab-content clearfix">
+                                    @for (int s = 0; s < Model.TourProductViewModel.DealsNightsViewModels.Count; s++)
+                                    {
+                                        <div class="tab-pane @(s == 0 ? "active" : string.Empty)" id="view-@Model.TourProductViewModel.DealsNightsViewModels[s].Value-nights">
+                                            @for (int n = 0; n < Model.TourProductViewModel.DealsNightsViewModels[s].DealsItineraryViewModels.Count; n++)
+                                            {
+                                                var itinerary = Model.TourProductViewModel.DealsNightsViewModels[s].DealsItineraryViewModels[n];
+                                                string formattedTitle = string.Empty;
+                                                if (itinerary.StartDay == itinerary.EndDay)
+                                                {
+                                                    formattedTitle = formattedTitle + "Day " + itinerary.StartDay;
+                                                }
+                                                else
+                                                {
+                                                    formattedTitle = formattedTitle + "Day " + itinerary.StartDay + " - " + itinerary.EndDay;
+                                                }
+                                                if (!string.IsNullOrEmpty(itinerary.Title))
+                                                {
+                                                    formattedTitle = formattedTitle + ": ";
+                                                }
+
+                                                <div class="itinerary-part">
+                                                    <div class="itinerary-part-header">
+                                                        <span class="days">@formattedTitle</span>
+                                                        <span class="days-description">
+                                                            &nbsp;@itinerary.Title
+                                                        </span>
+                                                        <div class="show-selector">
+                                                            <span class="show-more @(n == 0 ? "hidden":string.Empty)" onclick="showItinearyPart(this);">
+                                                                SHOW MORE <img src="~/images/Chevron Down.svg" alt="down-icon" />
+                                                            </span>
+                                                            <span class="show-less @(n == 0 ?string.Empty:"hidden")" onclick="hideItinearyPart(this);">
+                                                                SHOW LESS <img src="~/images/Chevron_Up.svg" alt="up-icon" />
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="itinerary-part-content row @(n == 0 ?string.Empty:"hidden")">
+                                                        @Html.Raw(itinerary.Description)
+                                                    </div>
+                                                    <div>
+                                                        <hr class="hr-separate">
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="padding-xs-left">
+                            <div class="col-sm-12 col-md-12 Trip_Advisor section_medium no-padding-left-right" data-nav-target=".product_options_medium .about-nav">
+                                <h2>About The Destination</h2>
+                                <hr class="hr-grey-bottom w75">
+                                <br>
+                                <div class="col-sm-6 col-md-6 TA_image no-padding-left-right">
+                                    <div class="dest_img_1"> <img src="~/DealImages/@Model.TourProductViewModel.LogoImage" alt="I&B logo" /></div>
+                                    <div class="dest_img_2"><img src="~/DealImages/@Model.TourProductViewModel.CardImage" alt="TA_Badge" /></div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-6 destination-content no-padding-left-right">
+                                    <div class="TA_content_para">
+                                        @Html.Raw(Model.TourProductViewModel.AboutDestination)
+                                    </div>
+
+                                    <div class="show-more">Show More<img src="~/images/Chevron Down.svg" alt="down_icon" class="margin-left-6" /></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="padding-xs-left">
+                            <div class="col-sm-12 col-md-12 Reviews-Ratings section_medium no-padding-left-right" data-nav-target=".product_options_medium .customer-review-nav">
+                                <h2>Customer Reviews & Ratings</h2>
+                                <hr class="hr-grey-bottom w75">
+                                <br>
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 ratings">
+                                    <h2>Overall Rating</h2>
+
+                                    @for (int i = 1; i <= Math.Round(Model.TourProductViewModel.Overallrating, MidpointRounding.AwayFromZero) && i <= 5; i++)
+                                    {
+                                        <img src="~/images/Star Icon.svg" alt="star_icon" />
+                                    }
+
+                                    <p>@Model.TourProductViewModel.Overallrating.ToString("0.#") / 5 @*<span>@Model.TourProductViewModel.ReviewCount RATINGS</span>*@</p>
+
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-lg-6 ratings_point">
+                                    <p>
+                                        <span class="text">Cleanliness</span>
+                                        <span class="rating-image">
+                                            @for (int i = 0; i < Math.Round(Model.TourProductViewModel.Cleanlinessrating, MidpointRounding.AwayFromZero); i++)
+                                            {
+                                                <img src="~/images/Star Icon.svg" alt="star_icon" />
+                                            }
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span class="text">Location</span>
+                                        <span class="rating-image">
+                                            @for (int i = 0; i < Math.Round(Model.TourProductViewModel.Locationrating, MidpointRounding.AwayFromZero); i++)
+                                            {
+                                                <img src="~/images/Star Icon.svg" alt="star_icon" />
+                                            }
+                                        </span>
+                                    </p>
+                                    <p>
+                                        <span class="text">Value For Money</span>
+                                        <span class="rating-image">
+                                            @for (int i = 0; i < Math.Round(Model.TourProductViewModel.Valuerating, MidpointRounding.AwayFromZero); i++)
+                                            {
+                                                <img src="~/images/Star Icon.svg" alt="star_icon" />
+                                            }
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="customer-reviews">
+                                    @if (Model.TourProductViewModel.ProductReviewViewModels.Count > 0)
+                                    {
+                                        for (int i = 0; i < Model.TourProductViewModel.ProductReviewViewModels.Count; i++)
+                                        {
+                                            var item = Model.TourProductViewModel.ProductReviewViewModels[i];
+                                            <div class="row review-detail @(i>2?"hidden":string.Empty)">
+                                                <div class="col-sm-3 col-md-3 col-lg-3 client-detail no-padding-left-right">
+                                                    <h3>@item.Name</h3>
+                                                    <p>@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.ReviewDate.Month)  @item.ReviewDate.Year</p>
+                                                </div>
+
+                                                <div class="col-sm-9 col-md-9 col-lg-9 client-review-content no-padding-left-right">
+                                                    <p>@item.Review</p>
+                                                    @if (item.Review != null && item.Review.Length > 260)
+                                                    {
+                                                        <h4 class="show-more-comment">Show More<img src="~/images/Chevron Down.svg" alt="down_icon" class="margin-left-6" /></h4>
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+                                        if (Model.TourProductViewModel.ProductReviewViewModels.Count > 3)
+                                        {
+                                            <h4 class="show-more">Show @(Model.TourProductViewModel.ProductReviewViewModels.Count - 1) Other Customer Reviews<img src="~/images/Chevron Down.svg" alt="down_icon" class="margin-left-6" /></h4>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    }
+    else
+    {
+
+
+        <section class="Hotel_Details col-xs-12 hidden-sm hidden-md hidden-lg">
+            <div class="hotel-details-container col-xs-12">
+                <div class="row" id="top-content-row">
+
+                    <div class="col-xs-12 Deal_duration">
+                        @for (int i = 0; i < Model.TourProductViewModel.City.Count; i++)
+                        {
+                            <span>@Model.TourProductViewModel.City[i]</span>
+                        }
+                        <h1>@Model.TourProductViewModel.Name</h1>
+                        @if (Model.TourProductViewModel.TravelStyle != null && Model.TourProductViewModel.TravelStyle.Item1 == 2)
+                        {
+                            <a>
+                                <span>@Model.TourProductViewModel.TravelStyle.Item2</span><span class="fd_Timer">Ends in 24:38:56</span>
+                            </a>
+                        }
+                    </div>
+
+                    <div class="col-xs-12 book-now">
+                        <div class="@(Model.TourProductViewModel.DealsFlightViewModels == null? "col-xs-12 without_flight without_flight_only":"col-xs-6 without_flight")">
+                            @if (Model.TourProductViewModel.DealsFlightViewModels != null)
+                            {
+                                <h3>Without Flights</h3>
+
+                            }
+
+                            <p>From</p>
+                            <h2>₹@Math.Round(Model.TourProductViewModel.PriceWithoutFlight, MidpointRounding.AwayFromZero).ToAmount()<span class="person-span">/pers<sup>*</sup></span><span class="rack-rate"><span class="instead-span">Instead of </span><span class="rack-price">₹@Math.Round(Model.TourProductViewModel.RackPriceWithoutFlight, MidpointRounding.AwayFromZero).ToAmount()</span></span></h2>
+                            <div class="flight-night">for minimum <span class="minimum-nights">@Model.TourProductViewModel.MinimumLOS nights</span></div>
+                        </div>
+                        @if (Model.TourProductViewModel.DealsFlightViewModels != null)
+                        {
+                            <div class="col-xs-6 with_flight">
+                                <input type="hidden" name="FlightSearchDate" value="@this.TempData["StartDate"]" id="startFlightDate" />
+
+                                <h3>With Flights<span class="margin-left-5"><img class="flight-image" src="~/images/flight_icon.svg" alt="flight_icon" /></span></h3>
+                                <p>From</p>
+                                <h2><div class="inline-display" id="lblPriceWithFlight" data-price="@Math.Round(Model.TourProductViewModel.PriceWithoutFlight,MidpointRounding.AwayFromZero)">₹@Math.Round(Model.TourProductViewModel.PriceWithoutFlight, MidpointRounding.AwayFromZero).ToAmount()<span class="person-span">/pers<sup>*</sup></span></div><span class="rack-rate"><span id="lblRackPriceWithFlight" data-price="@Math.Round(Model.TourProductViewModel.RackPriceWithoutFlight,MidpointRounding.AwayFromZero)">₹ @Math.Round(Model.TourProductViewModel.RackPriceWithoutFlight, MidpointRounding.AwayFromZero).ToAmount()</span></span></h2>
+
+                                <div class="flight-night">for minimum <span class="minimum-nights">@Model.TourProductViewModel.MinimumLOS nights</span></div>
+                            </div>
+                        }
+                        </div>
+                    @*<div class="col-xs-12 tour-book-now">
+            <div class="col-xs-6 without_flight">
+                <h3>@(Model.TourProductViewModel.FlightIncluded ? "Without Flights" : "&nbsp;")</h3>
+                <p>From</p>
+                <h2>₹@Model.TourProductViewModel.PriceWithoutFlight.ToString("N2")<span>₹@Model.TourProductViewModel.RackPriceWithoutFlight.ToString("N2")</span></h2>
+                <h4>Per Person</h4>
+                <h5>Minimum @Model.TourProductViewModel.MinimumLOS Nights</h5>
+            </div>
+            <div class="col-xs-6 with_flight">
+                @if (Model.TourProductViewModel.FlightIncluded)
+                {
+                    <h3>With Flights<span style="margin-left:5px;"><img src="~/images/flight_icon.svg" alt="flight_icon" /></span></h3>
+                    <p>From</p>
+                    <h2>₹<div style="display:inline;" id="lblPriceWithFlight" data-price="@Model.TourProductViewModel.PriceWithoutFlight">@Model.TourProductViewModel.PriceWithoutFlight.ToString("N2")</div><span>₹<span id="lblRackPriceWithFlight" data-price="@Model.TourProductViewModel.RackPriceWithoutFlight">@Model.TourProductViewModel.RackPriceWithoutFlight.ToString("N2")</span></span></h2>
+                    <h4>Per Person</h4>
+                    <h5>Minimum @Model.TourProductViewModel.MinimumLOS Nights</h5>
+                }
+                else
+                {
+
+                }
+            </div>
+        </div>*@
+
+                    @*<div class="col-sm-12 col-md-12 col-lg-12 book-now-btn" style="padding-left:0px;padding-right:0px;">
+            <a href="#">BOOK NOW</a>
+        </div>*@
+                    <div class="row no-padding-left-right rate-notify clear-both">
+                        <sup>*</sup> Price calculated based on two adults.
+                    </div>
+                    @*<div class="col-xs-12 book-now-card">
+                        <h2>Book Now, Pay Later!</h2>
+                        <hr class="hr-grey-bottom-unset-float w75">
+
+                        <h3><strong>Deposit</strong> a nominal 20% of your total payable amount now and confirm your deal. Pay the rest later.</h3>
+                        <hr class="book-now-hr">
+                        <p>Unsure yet? Fill in the booking form below and hold this deal for the next 5 days for free.</p>
+                        <div class="card-link"><span><a href="/home/policies" target="_blank">Terms & Conditions</a></span></div>
+
+                    </div>*@
+
+                    <div class="col-xs-12 location-map no-padding-left-right">
+
+
+                    </div>
+
+
+                    @if (Model.TourProductViewModel.HighlightsViewModels != null)
+                    {
+                        <div class="padding-xs-left">
+                            <div class="col-xs-12 Hotel_highlights section no-padding-left-right" data-nav-target=".highlight-nav">
+                                <h2>LTD Specials</h2>
+                                <hr class="hr-grey-top w50">
+                                <br>
+                                <ul>
+                                    @for (int i = 0; i < Model.TourProductViewModel.HighlightsViewModels.Count; i++)
+                                    {
+                                        <li class="@(i > 4 ? "hidden":string.Empty)">
+                                            <span class="highlight-title">
+                                                @Model.TourProductViewModel.HighlightsViewModels[i].Title
+                                                @if (Model.TourProductViewModel.HighlightsViewModels[i].StarRating > 0)
+                                                {
+                                                    <img src="~/images/Star Icon.png" alt="star_icon" />
+                                                }
+                                            </span>
+                                            <span class="highlight-description">@Model.TourProductViewModel.HighlightsViewModels[i].Description</span>
+                                        </li>
+                                    }
+                                </ul>
+                                @if (Model.TourProductViewModel.HighlightsViewModels.Count > 5)
+                                {
+                                    <div class="show-more">Show @(Model.TourProductViewModel.HighlightsViewModels.Count - 5) Other Highlights<img src="~/images/Path 2.png" alt="down_icon" class="margin-left-6" /></div>
+                                }
+                            </div>
+                        </div>
+
+
+
+                    }
+
+                    <div class="padding-xs-left">
+                        <div class="col-xs-12 Itinerary section" data-nav-target=".Itinerary-nav">
+                            <h2>Itinerary</h2>
+                            <hr class="hr-grey-top w50">
+                            <br>
+                            <div class="night-selector-container row nav nav-pills">
+                                @for (int m = 0; m < Model.TourProductViewModel.DealsNightsViewModels.Count; m++)
+                                {
+                                    <div class="pill @(m == 0 ? "active":string.Empty)" data-target="#view-@Model.TourProductViewModel.DealsNightsViewModels[m].Value-nights">
+                                        <span class="pill-nights">@Model.TourProductViewModel.DealsNightsViewModels[m].Value Nights</span>
+                                        <span class="pill-price">FROM ₹@Model.TourProductViewModel.DealsNightsViewModels[m].DealsRatePlanViewModels.OrderBy(x => x.Price).Select(x => x.Price).FirstOrDefault().ToString("N2") PER PERSON</span>
+                                    </div>
+                                }
+                            </div>
+                            <span class="breakdown-header">DAILY ITINERARY BREAKDOWN</span>
+                            <div class="padding-top-10">
+                                <hr class="hr-separate">
+                            </div>
+                            <div class="night-content-container tab-content clearfix">
+                                @for (int s = 0; s < Model.TourProductViewModel.DealsNightsViewModels.Count; s++)
+                                {
+                                    <div class="tab-pane @(s == 0 ? "active" : string.Empty)" id="view-@Model.TourProductViewModel.DealsNightsViewModels[s].Value-nights">
+                                        @for (int n = 0; n < Model.TourProductViewModel.DealsNightsViewModels[s].DealsItineraryViewModels.Count; n++)
+                                        {
+                                            var itinerary = Model.TourProductViewModel.DealsNightsViewModels[s].DealsItineraryViewModels[n];
+                                            string formattedTitle = string.Empty;
+                                            if (itinerary.StartDay == itinerary.EndDay)
+                                            {
+                                                formattedTitle = formattedTitle + "Day " + itinerary.StartDay;
+                                            }
+                                            else
+                                            {
+                                                formattedTitle = formattedTitle + "Day " + itinerary.StartDay + " - " + itinerary.EndDay;
+                                            }
+                                            if (!string.IsNullOrEmpty(itinerary.Title))
+                                            {
+                                                formattedTitle = formattedTitle + ": ";
+                                            }
+
+                                            <div class="itinerary-part">
+                                                <div class="itinerary-part-header">
+                                                    <span class="days">@formattedTitle</span>
+                                                    <span class="days-description">
+                                                        &nbsp;@itinerary.Title
+                                                    </span>
+                                                    <div class="show-selector">
+                                                        <span class="show-more @(n == 0 ? "hidden":string.Empty)" onclick="showItinearyPart(this);">
+                                                            SHOW MORE <img src="~/images/Chevron Down.svg" alt="down-icon" />
+                                                        </span>
+                                                        <span class="show-less @(n == 0 ?string.Empty:"hidden")" onclick="hideItinearyPart(this);">
+                                                            SHOW LESS <img src="~/images/Chevron_Up.svg" alt="up-icon" />
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="itinerary-part-content row @(n == 0 ?string.Empty:"hidden")">
+                                                    @Html.Raw(itinerary.Description)
+                                                </div>
+                                                <div>
+                                                    <hr class="hr-separate">
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="padding-xs-left">
+                        <div class="col-xs-12 Trip_Advisor section" data-nav-target=".about-nav">
+                            <h2>About The Destination</h2>
+                            <hr class="hr-grey-top w50">
+                            <br>
+                            <div class="col-md-4 TA_image no-padding-left-right">
+                                <div class="dest_img_1"> <img src="~/DealImages/@Model.TourProductViewModel.LogoImage" alt="I&B logo" /></div>
+                                <div class="dest_img_2"><img src="~/DealImages/@Model.TourProductViewModel.CardImage" alt="TA_Badge" /></div>
+                            </div>
+
+                            <div class="col-xs-12 destination-content no-padding-left-right">
+                                <div class="TA_content_para">
+                                    @Html.Raw(Model.TourProductViewModel.AboutDestination)
+                                </div>
+                                <div class="show-more">Show More<img src="~/images/Chevron Down.svg" alt="down_icon" class="margin-left-6" /></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="padding-xs-left">
+                        <div class="col-xs-12 Reviews-Ratings section" data-nav-target=".customer-review-nav">
+                            <h2>Customer Reviews & Ratings</h2>
+                            <hr class="hr-grey-top w50">
+                            <br>
+
+                            <div class="col-xs-12 ratings">
+                                <h2>Overall Rating</h2>
+
+                                @for (int i = 1; i <= Math.Round(Model.TourProductViewModel.Overallrating, MidpointRounding.AwayFromZero) && i <= 5; i++)
+                                {
+                                    <img src="~/images/Star Icon.svg" alt="star_icon" />
+                                }
+
+                                <p>@ToTrimmedString(Model.TourProductViewModel.Overallrating) / 5 @*<span>@Model.TourProductViewModel.ReviewCount RATINGS</span>*@</p>
+
+                            </div>
+                            <div class="col-xs-12 ratings_point">
+                                <p>
+                                    <span class="text">Cleanliness</span>
+                                    <span class="rating-image">
+                                        @for (int i = 0; i < Math.Round(Model.TourProductViewModel.Cleanlinessrating, MidpointRounding.AwayFromZero); i++)
+                                        {
+                                            <img src="~/images/Star Icon.svg" alt="star_icon" />
+                                        }
+                                    </span>
+                                </p>
+                                <p>
+                                    <span class="text">Location</span>
+                                    <span class="rating-image">
+                                        @for (int i = 0; i < Math.Round(Model.TourProductViewModel.Locationrating, MidpointRounding.AwayFromZero); i++)
+                                        {
+                                            <img src="~/images/Star Icon.svg" alt="star_icon" />
+                                        }
+                                    </span>
+                                </p>
+                                <p>
+                                    <span class="text">Value For Money</span>
+                                    <span class="rating-image">
+                                        @for (int i = 0; i < Math.Round(Model.TourProductViewModel.Valuerating, MidpointRounding.AwayFromZero); i++)
+                                        {
+                                            <img src="~/images/Star Icon.svg" alt="star_icon" />
+                                        }
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="customer-reviews">
+                                @if (Model.TourProductViewModel.ProductReviewViewModels.Count > 0)
+                                {
+                                    for (int i = 0; i < Model.TourProductViewModel.ProductReviewViewModels.Count; i++)
+                                    {
+                                        var item = Model.TourProductViewModel.ProductReviewViewModels[i];
+                                        <div class="row review-detail @(i>2?"hidden":string.Empty)">
+                                            <div class="col-sm-3 col-md-3 col-lg-3 client-detail no-padding-left-right">
+                                                <h3>@item.Name</h3>
+                                                <p>@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.ReviewDate.Month)  @item.ReviewDate.Year</p>
+                                            </div>
+
+                                            <div class="col-sm-9 col-md-9 col-lg-9 client-review-content no-padding-left-right">
+                                                <p>@item.Review</p>
+                                                @if (item.Review != null && item.Review.Length > 260)
+                                                {
+                                                    <h4 class="show-more-comment">Show More<img src="~/images/Chevron Down.svg" alt="down_icon" class="margin-left-6" /></h4>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                    if (Model.TourProductViewModel.ProductReviewViewModels.Count > 3)
+                                    {
+                                        <h4 class="show-more">Show @(Model.TourProductViewModel.ProductReviewViewModels.Count - 1) Other Customer Reviews<img src="~/images/Chevron Down.svg" alt="down_icon" class="margin-left-6" /></h4>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    @*<div class="col-sm-4 col-md-4 col-lg-4 side-scroller-anchor"></div>*@
+
+
+
+                </div>
+            </div>
+
+        </section>
+    }
+
+
+    <div id="tourbookingflow" class="book-now-btn-xs col-xs-12 hidden-sm hidden-md hidden-lg">
+        <span>Book Now</span>
+    </div>
+    <form id="tourBookingForm" class="deal-form" action="/Deal/Booking" method="post">
+        <input type="hidden" asp-for="ModelSerialized" />
+        <input type="hidden" asp-for="Type" />
+        <input type="hidden" asp-for="TourProductViewModel.FlightInclusionId" id="inclusionId" />
+        <input type="hidden" asp-for="SummaryRendered" />
+        <input type="hidden" asp-for="BookingSummaryViewModelString" />
+        <input type="hidden" asp-for="TotalPassengers" class="total-passenger" />
+        <input type="hidden" asp-for="BookingInformationViewModel.NightId" />
+        <input type="hidden" asp-for="BookingInformationViewModel.DealId" />
+        <input type="hidden" asp-for="BookingInformationViewModel.IsHold" />
+        @if (!this.ViewBag.IsMobileView)
+        {
+            <section class="travel-plan hidden-xs">
+                <div class="travel-plan-container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-8 travel-plan-sm-container no-padding-left-right">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 travel-plan-heading no-padding-left-right">
+                                <h2>Plan Your Travel</h2>
+                                <hr class="hr-grey-bottom w75">
+
+                                <div class="booking-date-container">
+                                    <input type="hidden" asp-for="TourProductViewModel.IsFixedDeparture" />
+                                    <div class="header">
+                                        <div class="extender"></div><div class="heading"> Booking Dates</div> <div class="edit">EDIT</div>
+                                    </div>
+
+                                    <div class="selection">
+                                        <div class="date-night-selector-container row nav nav-pills">
+                                            @for (int i = 0; i < Model.TourProductViewModel.DealsNightsViewModels.Count; i++)
+                                            {
+                                                <div class="pill" data-night-id="@Model.TourProductViewModel.DealsNightsViewModels[i].Id" data-value="@Model.TourProductViewModel.DealsNightsViewModels[i].Value">
+                                                    <span class="pill-nights">@Model.TourProductViewModel.DealsNightsViewModels[i].Value Nights</span>
+                                                    @{
+                                                        decimal fromPrice = 0;
+                                                        DealsRatePlanViewModel minRatePlan = Model.TourProductViewModel.DealsNightsViewModels[i].DealsRatePlanViewModels.OrderBy(x => x.Price).FirstOrDefault();
+                                                        if (minRatePlan != null)
+                                                        {
+                                                            fromPrice = fromPrice + (minRatePlan.Price + (minRatePlan.Price * minRatePlan.MarkUp.Value / 100));
+                                                            fromPrice = fromPrice + minRatePlan.ExtraSupplement.Value + (minRatePlan.ExtraSupplement.Value * minRatePlan.MarkUp.Value / 100);
+                                                        }
+                                                    }
+                                                    <span class="pill-price">FROM ₹@Math.Round(fromPrice, MidpointRounding.AwayFromZero).ToAmount() PER PERSON</span>
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="sub-selection">
+
+                                        </div>
+                                        <div class="proceed-button calendar-proceed-btn">
+                                            <input type="hidden" asp-for="BookingInformationViewModel.Checkin" class="check-in-date" />
+                                            <input type="hidden" asp-for="BookingInformationViewModel.Checkout" class="check-out-date" />
+                                            <button type="button" class="btn pull-right">PROCEED TO NEXT STEP</button>
+                                        </div>
+                                        @*@this.Html.Partial("_LTD_Calendar", Model.TourProductViewModel.RatePlanViewModels);*@
+                                    </div>
+
+                                    <div class="rendered">
+
+                                    </div>
+                                </div>
+                                <div class="padding-top-10">
+                                    <hr class="hr-separate">
+                                </div>
+                                <div class="Room-handling collapsed">
+                                    <div class="header">
+                                        <div class="extender"></div><div class="heading"> Packages</div><div class="edit">EDIT</div>
+                                    </div>
+                                    <div class="selection">
+
+                                    </div>
+                                    <div class="proceed-button room-selection-proceed">
+                                        <button type="button" class="btn pull-right">PROCEED TO NEXT STEP</button>
+                                    </div>
+                                    <div class="rendered">
+
+                                    </div>
+                                </div>
+                                @if (Model.TourProductViewModel.DealVisaViewModels != null && Model.TourProductViewModel.DealVisaViewModels.Count > 0)
+                                {
+                                    <input type="hidden" asp-for="BookingInformationViewModel.VisaOptionAvailable" value="true" />
+                                    <div class="padding-top-10">
+                                        <hr class="hr-separate">
+                                    </div>
+                                    <div class="flight-visa-handling collapsed">
+                                        <div class="header">
+                                            <div class="extender"></div><div class="heading"> Visa Handling</div><div class="edit">EDIT</div>
+                                        </div>
+                                        <div class="selection">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 visa-handling no-padding-left-right">
+                                                    <p>Select Visa Handling Options</p>
+                                                    <div class="book-without-visa">
+                                                        <div class="container-header">
+                                                            <label class="radio-ltd">
+                                                                <input class="ltd-checkbox" type="radio" name="IsVisa" value="false" checked>
+                                                                <span class="selectmark"></span>
+                                                            </label>
+                                                            <div class="header">Book without Visa</div> <div class="visa-image"><img src="~/images/visa.svg" alt="visa-icon"/></div><div class="header-no-visa-text">We hope you have a valid VISA on your valid passport upto and until after 6 months of the travel period. If not, check with us, we will help you out!</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 book-with-visa no-padding-left-right">
+                                                        <div class="container-header">
+                                                            <label class="radio-ltd">
+                                                                <input class="ltd-checkbox" type="radio" name="IsVisa" value="true">
+                                                                <span class="selectmark"></span>
+                                                            </label>
+                                                            <div class="header">Book with Visa</div>
+                                                        </div>
+                                                        @Html.Partial("_VisaHandling", Model.TourProductViewModel.DealVisaViewModels)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="rendered">
+                                            <div class="visa-result">
+                                                <div class="visa-selection-result">
+                                                    Book <span>with visa</span>
+                                                </div>
+                                                <div class="visa-breakdown-result">
+                                                    Schegan Visa: <span>2 Passenger</span>
+                                                </div>
+                                                <div class="visa-breakdown-result">
+                                                    UK Visa: <span>2 Passenger</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="proceed-visa proceed-button active">
+                                            <button type="button" class="btn pull-right">PROCEED TO NEXT STEP</button>
+                                        </div>
+                                    </div>
+                                }
+
+                                @if (Model.TourProductViewModel.DealsFlightViewModels != null)
+                                {
+                                    <input type="hidden" asp-for="BookingInformationViewModel.FlightOptionAvailable" value="true" />
+                                    <div class="padding-top-10">
+                                        <hr class="hr-separate">
+                                    </div>
+                                    <div class="flight-handling-container collapsed">
+                                        <div class="header">
+                                            <div class="extender"></div><div class="heading"> Flights</div><div class="edit">EDIT</div>
+                                        </div>
+                                        <div class="selection">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 flight-handling no-padding-left-right">
+                                                    <p>Select Flight Options</p>
+                                                    <div class="book-without-flight">
+                                                        <div class="container-header">
+                                                            <label class="radio-ltd">
+                                                                <input class="ltd-checkbox" type="radio" name="Isflight" value="false">
+                                                                <span class="selectmark"></span>
+                                                            </label>
+                                                            <div class="header">Book without Flight</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 book-with-flight no-padding-left-right">
+                                                        <div class="container-header">
+                                                            <label class="radio-ltd">
+                                                                <input class="ltd-checkbox" type="radio" name="Isflight" value="true">
+                                                                <span class="selectmark"></span>
+                                                            </label>
+                                                            <div class="header">Book with Flight</div>
+                                                        </div>
+                                                        <div class="flight-content">
+                                                            <div class="col-sm-6 col-md-6 col-lg-6 no-padding-left-right">
+                                                                <span>Departure Airport</span>
+                                                                <div class="select-dropdown">
+                                                                    <div class="ltd-select">
+                                                                        <select id="ddlAirportDeparture" select2-stop-render="true">
+                                                                            <option value="0">Select Departure</option>
+                                                                            <option value="DEL" data-location="DELHI,INDIA">New Delhi (DEL)</option>
+                                                                            <option value="CCU" data-location="KOLKATA,INDIA">Kolkata (CCU)</option>
+                                                                            <option value="MAA" data-location="CHENNAI,INDIA">Chennai (MAA)</option>
+                                                                            <option value="BOM" data-location="MUMBAI,INDIA">Mumbai (BOM)</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <span class="font-size-8"><sup>*</sup> Indicative Price from Delhi</span>
+                                                            </div>
+                                                            <div class="col-sm-6 col-md-6 col-lg-6 booking-price no-padding-left-right">
+                                                                <h5>From</h5>
+                                                                <h2><div class="inline-display" id="lblFlightIndicativePrice">₹0</div><sup>*</sup></h2>
+                                                                <h6>Per Person (Incl. Taxes)<span>Flight Policy</span></h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="sub-selection">
+                                                @Html.Partial("_FlightHandling", Model.TourProductViewModel.DealsFlightViewModels)
+                                            </div>
+                                            <input type="hidden" asp-for="BookingFlightViewModel.TraceId" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.FlightIndex" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.IsLCC" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.IsLCCString" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.FareQuoteIndex" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.TokenId" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.Origin" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.Destination" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.NightId" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.Length" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.ItineraryId" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.BookingId" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.BookingDate" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.DayOfItinerary" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.TBOBookingId" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.PNR" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.UserTransactionId" />
+                                            <input type="hidden" asp-for="FlightRequired" />
+                                            <input type="hidden" asp-for="FlightRender" />
+                                        </div>
+                                        <div class="rendered">
+                                            <div class="flight-rendered-results">
+                                            </div>
+                                        </div>
+
+                                        @*<div class="proceed-button flight-proceed-button active">
+                                            <button type="button" class="btn pull-right">PROCEED TO BOOKING SUMMARY</button>
+                                        </div>*@
+                                    </div>
+                                }
+                                <div class="booking-summary">
+                                    <div>
+                                        <hr class="hr-separate">
+                                    </div>
+                                    <div class="price-summary-container">
+                                        <div class="header">
+                                            SUBTOTAL
+                                        </div>
+                                        <div class="details">
+                                            <div class="price-content">
+                                                <div class="price">₹<span>428,743</span></div>
+                                                <div class="tax">INCL. TAXES</div>
+                                                @*<a href="javascript:;" class="price-summary" data-toggle="modal" data-target="#summaryModal">SHOW PRICE SUMMARY</a>*@
+                                                <a href="javascript:;" class="price-summary">SHOW PRICE SUMMARY</a>
+                                            </div>
+                                            <div class="checkout-content">
+                                                <div class="checkout-content-style">
+                                                    @*<button type="button" class="btn hold-btn">HOLD FOR FREE</button>*@
+                                                    <button type="submit" class="btn checkout-btn">PROCEED TO CHECKOUT</button>
+                                                </div>
+                                                <div class="checkout-content-inner-style padding-top-5">
+                                                    @*<span class="hold-text"><img src="~/images/Info_Icon.svg" />WHAT IS HOLD?</span>*@
+                                                    @*<span class="deposit">(DEPOSIT 20% NOW. PAY THE REST LATER)</span>*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden-sm hidden-md col-lg-4 sidebar-recommendation">
+                            @if (Model.TourProductViewModel.AllReviewViewModels.Count > 0)
+                            {
+                                <div class="carousel carousel-fade slide col-xs-12 col-sm-12 col-md-12 col-lg-12 sidebar-review padding-left-0 top-border" data-ride="carousel">
+                                    <div class="carousel-inner sidebar-review-inner">
+                                        @for (int i = 0; i < Model.TourProductViewModel.AllReviewViewModels.Count; i++)
+                                        {
+                                            var item = Model.TourProductViewModel.AllReviewViewModels[i];
+
+                                            <div class="item @(i==0 ? "active":string.Empty) sidebar-carousel-review">
+                                                <img src="~/images/Blockquote Icon.svg" alt="quote-icon" class="quote-icon-style" />
+                                                <p>
+                                                    @item.Review
+                                                </p>
+                                                <h3>@item.Name</h3>
+                                                <h4>@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.ReviewDate.Month)  @item.ReviewDate.Year</h4>
+                                            </div>
+
+                                        }
+                                    </div>
+                                </div>
+
+                            }
+                            <div class="col-sm-12 col-md-12 col-lg-12" id="stuck-content">
+                                <div class="col-sm-12 col-md-12 col-lg-12 scroller-anchor"></div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 scroller customer-care top-border">
+                                    <h2>Stuck Somewhere? Give Us A Call!</h2>
+                                    <hr class="hr-grey-bottom-unset-float w75">
+                                    <h3>1800-108-0808</h3>
+                                    <hr class="book-now-hr">
+                                    <p>
+                                        Monday to Friday 8:00 AM – 8:00 PM<br> except Saturdays, Sundays & bank holidays
+                                    </p>
+                                    <hr class="book-now-hr">
+                                    <h4>Our Service Speaks for Itself</h4>
+                                    <a href="https://www.trustpilot.com/review/www.luxurytravel.deals?languages=all" target="_blank">
+                                        <div class="star-icon"><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /></div>
+                                        <h5>
+                                            496 RATINGS ON TRUSTPILOT
+                                        </h5>
+                                    </a>
+                                    <hr class="social-hr">
+                                    <a href="https://www.facebook.com/pg/luxurytraveldeal/reviews/" target="_blank">
+                                        <div class="star-icon"><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /><img src="~/images/Star Icon.svg" alt="star-icon" /></div>
+                                        <h5>
+                                            5,721 RATINGS ON FACEBOOK
+                                        </h5>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        }
+        else
+        {
+
+            <div class="expended-flight-section hidden">
+                <div class="flight-detail-mobile-header col-xs-12">
+                    <span>Flight Details</span><span class="flightdetailclose pull-right">
+                        <img src="~/images/Close_Icon.svg" alt="close_icon" />
+                    </span>
+                </div>
+                <div class="flight-expended-content">
+
+                </div>
+            </div>
+
+            <section class="travel-plan hidden-sm hidden-md hidden-lg">
+                <div class="travel-plan-container">
+                    <div class="row">
+                        <div class="col-xs-12 no-padding-left-right">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 travel-plan-heading no-padding-left-right">
+                                <div class="booking_flow_header col-xs-12">
+                                    <span class="pull-left" id="tourbookingflowclose"><img src="~/images/left_arrow.svg" alt="left_arrow" /></span><span>Plan Your Travel</span>
+                                </div>
+
+                                <div class="stepwizard bookingwizard">
+                                    <div class="stepwizard-row setup-panel">
+                                        @{
+                                            int step = 2;
+                                            string navClassName = string.Empty;
+                                            if (Model.TourProductViewModel.DealVisaViewModels != null && Model.TourProductViewModel.DealVisaViewModels.Count > 0)
+                                            {
+                                                step = step + 1;
+                                            }
+                                            if (Model.TourProductViewModel.DealsFlightViewModels != null)
+                                            {
+                                                step = step + 1;
+                                            }
+
+                                            switch (step)
+                                            {
+                                                case 2:
+                                                    navClassName = "col-xs-6";
+                                                    break;
+                                                case 3:
+                                                    navClassName = "col-xs-4";
+                                                    break;
+                                                case 4:
+                                                    navClassName = "col-xs-3";
+                                                    break;
+                                                default:
+                                                    navClassName = "col-xs-3";
+                                                    break;
+                                            }
+                                            int printStep = 3;
+                                        }
+                                        <div class="stepwizard-step step_booking_date @navClassName">
+                                            <a href="#step_booking_date" type="button" class="btn btn-success btn-circle" data-step="1">1</a>
+
+                                        </div>
+                                        <div class="stepwizard-step step_hotel_room @navClassName">
+                                            <a href="#step_hotel_room" type="button" class="btn btn-default btn-circle" data-step="2" disabled="disabled">2</a>
+
+                                        </div>
+
+                                        @if (Model.TourProductViewModel.DealVisaViewModels != null && Model.TourProductViewModel.DealVisaViewModels.Count > 0)
+                                        {
+                                            <div class="stepwizard-step step_visa @navClassName">
+                                                <a href="#step_visa" type="button" class="btn btn-default btn-circle" disabled="disabled">@printStep.ToString()</a>
+                                            </div>
+                                        }
+
+                                        @if (Model.TourProductViewModel.DealsFlightViewModels != null)
+                                        {
+                                            <div class="stepwizard-step step_flight @navClassName">
+                                                <a href="#step_flight" type="button" class="btn btn-default btn-circle" disabled="disabled">@step.ToString()</a>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="booking-date-container panel panel-primary setup-content" id="step_booking_date">
+                                    <input asp-for="TourProductViewModel.IsFixedDeparture" type="hidden" />
+                                    <div class="header">
+                                        <div class="heading"> Booking Dates</div>
+                                        <div class="edit">EDIT</div>
+                                    </div>
+
+                                    <div class="selection">
+                                        <div class="date-night-selector-container row nav nav-pills">
+                                            @for (int i = 0; i < Model.TourProductViewModel.DealsNightsViewModels.Count; i++)
+                                            {
+                                                <div class="pill" data-night-id="@Model.TourProductViewModel.DealsNightsViewModels[i].Id" data-value="@Model.TourProductViewModel.DealsNightsViewModels[i].Value">
+                                                    <span class="pill-nights">@Model.TourProductViewModel.DealsNightsViewModels[i].Value Nights</span>
+                                                    @{
+                                                        decimal fromPrice = 0;
+                                                        DealsRatePlanViewModel minRatePlan = Model.TourProductViewModel.DealsNightsViewModels[i].DealsRatePlanViewModels.OrderBy(x => x.Price).FirstOrDefault();
+                                                        if (minRatePlan != null)
+                                                        {
+                                                            fromPrice = fromPrice + (minRatePlan.Price + (minRatePlan.Price * minRatePlan.MarkUp.Value / 100));
+                                                            fromPrice = fromPrice + minRatePlan.ExtraSupplement.Value + (minRatePlan.ExtraSupplement.Value * minRatePlan.MarkUp.Value / 100);
+                                                        }
+                                                    }
+                                                    <span class="pill-price">FROM ₹@Math.Round(fromPrice, MidpointRounding.AwayFromZero).ToAmount() PER PERSON</span>
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="sub-selection">
+
+                                        </div>
+                                        <div class="proceed-button calendar-proceed-btn">
+                                            <input type="hidden" asp-for="BookingInformationViewModel.Checkin" class="check-in-date" />
+                                            <input type="hidden" asp-for="BookingInformationViewModel.Checkout" class="check-out-date" />
+                                            <button type="button" class="btn pull-right">Select Package</button>
+                                        </div>
+                                        @*@this.Html.Partial("_LTD_Calendar", Model.TourProductViewModel.RatePlanViewModels);*@
+                                    </div>
+
+                                    <div class="rendered">
+
+                                    </div>
+                                </div>
+
+                                <div class="Room-handling collapsed panel panel-primary setup-content" id="step_hotel_room">
+                                    <div class="header">
+                                        @*<div class="extender"></div>*@
+                                        <div class="heading"> Package</div>
+                                        <div class="edit">EDIT</div>
+                                    </div>
+                                    <div class="selection">
+
+                                    </div>
+                                    <div class="proceed-button room-selection-proceed">
+                                        <button type="button" class="btn"></button>
+                                    </div>
+                                    <div class="rendered">
+
+                                    </div>
+                                </div>
+                                @if (Model.TourProductViewModel.DealVisaViewModels != null && Model.TourProductViewModel.DealVisaViewModels.Count > 0)
+                                {
+                                    <input type="hidden" asp-for="BookingInformationViewModel.VisaOptionAvailable" value="true" />
+                                    <div class="flight-visa-handling collapsed panel panel-primary setup-content" id="step_visa">
+                                        <div class="header">
+                                            @*<div class="extender"></div>*@
+                                            <div class="heading"> Visa Handling</div>
+                                            <div class="edit">EDIT</div>
+                                        </div>
+                                        <div class="selection">
+                                            <div class="row">
+                                                @*// Visa Handling Mobile view*@
+                                                <div class="col-xs-12 hidden-sm hidden-md hidden-lg visa-handling">
+                                                    <p>Select Visa Handling Options</p>
+
+                                                    <div class="visa-tab-container">
+                                                        <ul class="nav nav-pills visa-nav-tab">
+
+                                                            <li class="col-xs-6 visa-tab-list active" data-target="#withvisa" data-value="true"><a href="#">Book with Visa</a></li>
+                                                            <li class="col-xs-6 visa-tab-list" data-target="#withoutvisa" data-value="false"><a href="#">Book without Visa</a></li>
+
+                                                        </ul>
+                                                        <input name="isVisa" type="hidden" value="true" />
+                                                        <div class="tab-content visa-tab-content">
+                                                            <div id="withvisa" class="tab-pane fade in active">
+                                                                @Html.Partial("_VisaHandling", Model.TourProductViewModel.DealVisaViewModels)
+                                                            </div>
+                                                            <div id="withoutvisa" class="tab-pane fade without-visa-content">
+                                                                <div class="table-display">
+                                                                    <img src="~/images/visa.svg" class="visa-image" alt="visa-icon"/> <span class="header-no-visa-text">We hope you have a valid VISA on your valid passport upto and until after 6 months of the travel period. If not, check with us, we will help you out!</span>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="rendered">
+                                            <div class="visa-result">
+                                                <div class="visa-selection-result">
+                                                    Book <span>with visa</span>
+                                                </div>
+                                                <div class="visa-breakdown-result">
+                                                    Schegan Visa: <span>2 Passenger</span>
+                                                </div>
+                                                <div class="visa-breakdown-result">
+                                                    UK Visa: <span>2 Passenger</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="proceed-visa proceed-button active">
+                                            <button type="button" class="btn"></button>
+                                        </div>
+                                    </div>
+                                }
+
+                                @if (Model.TourProductViewModel.DealsFlightViewModels != null)
+                                {
+                                    <input type="hidden" asp-for="BookingInformationViewModel.VisaOptionAvailable" value="true" />
+                                    <div class="flight-handling-container collapsed panel panel-primary setup-content" id="step_flight">
+                                        <div class="header">
+                                            @*<div class="extender"></div>*@
+                                            <div class="heading"> Flights</div>
+                                            <div class="edit">EDIT</div>
+                                        </div>
+                                        <div class="selection">
+                                            <div class="row">
+
+                                                @*// Flight Handling Mobile view*@
+
+                                                <div class="hidden-sm hidden-md hidden-lg col-xs-12 flight-handling no-padding-left-right">
+                                                    <p>Select Flight Options</p>
+
+                                                    <div class="flight-tab-container col-xs-12">
+                                                        <ul class="nav nav-pills flight-nav-tab">
+                                                            <li class="col-xs-6 flight-tab-list active" data-value="true" data-target="#withflight"><a href="#">Book with Flights</a></li>
+                                                            <li class="col-xs-6 flight-tab-list" data-value="false" data-target="#withoutflight"><a href="#">Book without Flights</a></li>
+                                                        </ul>
+                                                        <input name="Isflight" type="hidden" value="true" />
+                                                        <div class="tab-content flight-tab-content">
+                                                            <div id="withflight" class="tab-pane fade in active">
+                                                                <div class="flight-content">
+                                                                    <div class="col-xs-12 no-padding-left-right">
+                                                                        <p>Departure Airport</p>
+                                                                        <div class="select-dropdown">
+                                                                            <div class="ltd-select">
+                                                                                <select id="ddlAirportDeparture" select2-stop-render="true">
+                                                                                    <option value="0">Select Departure</option>
+                                                                                    <option value="DEL" data-location="DELHI,INDIA">New Delhi (DEL)</option>
+                                                                                    <option value="CCU" data-location="KOLKATA,INDIA">Kolkata (CCU)</option>
+                                                                                    <option value="MAA" data-location="CHENNAI,INDIA">Chennai (MAA)</option>
+                                                                                    <option value="BOM" data-location="MUMBAI,INDIA">Mumbai (BOM)</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-xs-12 booking-price no-padding-left-right">
+                                                                        <h5>From</h5>
+                                                                        <h2><div class="inline-display" id="lblFlightIndicativePrice">₹0</div></h2>
+                                                                        <h6>Per Person (Incl. Taxes)<span>Flight Policy</span></h6>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="withoutflight" class="tab-pane fade"></div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="sub-selection">
+                                                <span class="travel-itinerary-mobile hidden-sm hidden-md hidden-lg col-xs-12">Travel Itinerary</span>
+                                                @Html.Partial("_FlightHandling", Model.TourProductViewModel.DealsFlightViewModels)
+                                            </div>
+                                            <input type="hidden" asp-for="BookingFlightViewModel.TraceId" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.FlightIndex" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.IsLCC" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.IsLCCString" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.FareQuoteIndex" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.TokenId" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.Origin" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.Destination" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.NightId" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.Length" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.ItineraryId" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.BookingId" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.BookingDate" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.DayOfItinerary" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.TBOBookingId" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.PNR" />
+                                            <input type="hidden" asp-for="BookingFlightViewModel.UserTransactionId" />
+                                            <input type="hidden" asp-for="FlightRequired" />
+                                            <input type="hidden" asp-for="FlightRender" />
+
+                                        </div>
+                                        <div class="rendered">
+                                            <div class="flight-rendered-results">
+                                            </div>
+                                        </div>
+
+                                        <div class="proceed-button flight-proceed-button">
+                                            <button type="button" class="btn checkout-btn">VIEW BOOKING SUMMARY</button>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+        }
+
+
+
+    </form>
+
+
+
+@Html.Partial("_Footer_navigation")
+
+@section scripts{
+    <script src="~/js/custom-dropdown.js"></script>
+    <script src="~/js/custom-dropdown-small.js"></script>
+    @*<script src="~/js/LTD_Calender.js"></script>*@
+    <script src="~/js/flight_tab.js"></script>
+    <script src="~/js/jquery.product.tour.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=@this.Model.GoogleApiKey"></script>
+
+    <script type="text/javascript">
+        var isMobileView = @this.ViewBag.IsMobileView.ToString().ToLower();
+        function Mapdesktop() {
+
+            var canvas = $(".location-map");
+           // var map_marker = "/images/waypoint_marker.svg";
+            var map_marker = {
+                url: "/images/waypoint_marker.svg", // url
+                scaledSize: new google.maps.Size(15, 15), // scaled size
+                origin: new google.maps.Point(0, 0), // origin
+               // anchor: new google.maps.Point(0, 0) // anchor
+            };
+            var i = 0;
+            var points = JSON.parse('@Html.Raw(Json.Serialize(this.Model.TourProductViewModel.LatLong))');
+            var map = new google.maps.Map(canvas[0], { zoom: 15, mapTypeId: google.maps.MapTypeId.ROADMAP, fullscreenControl: false });
+            var bounds = new google.maps.LatLngBounds();
+            var waypts = [];
+            for (i = 0; i < points.length;++i)
+            {
+                var latitude = points[i].Item1;
+                var longitude = points[i].Item2;
+                if (latitude != 0 && longitude != 0)
+                {
+                    var latlng = new google.maps.LatLng(latitude, longitude);
+                    if (i == 0) {
+                        var src = latlng;
+                    }
+                    if (i == points.length-1) {
+                        var dest = latlng;
+                    }
+                    waypts.push({
+                        location: latlng,
+                        stopover: true
+                    });
+                    bounds.extend(latlng);
+                    //var marker = new google.maps.Marker({ map: map, position: new google.maps.LatLng(latitude, longitude), icon: map_marker });
+                    map.fitBounds(bounds);
+                }
+
+            }
+            var directionsService = new google.maps.DirectionsService();
+            directionsService.route({
+                origin: src,
+                destination: dest,
+                waypoints: waypts,
+                optimizeWaypoints: true,
+                travelMode: 'DRIVING'
+            }, function (response, status) {
+                if (status === 'OK') {
+                    new google.maps.DirectionsRenderer({
+                                map: map,
+                                markerOptions: { icon: map_marker },
+                                polylineOptions: {
+                                    strokeColor: '#973E94'
+                                },
+                                directions: response
+                            });
+                } else {
+                    //window.alert('Directions request failed due to ' + status);
+                }
+            });
+        }
+
+        function Maptablet() {
+
+            var canvas = $(".location-map-small");
+            // var map_marker = "/images/waypoint_marker.svg";
+            if (canvas.length > 0) {
+                var map_marker = {
+                url: "/images/waypoint_marker.svg", // url
+                scaledSize: new google.maps.Size(15, 15), // scaled size
+                origin: new google.maps.Point(0, 0), // origin
+               // anchor: new google.maps.Point(0, 0) // anchor
+            };
+            var i = 0;
+            var points = JSON.parse('@Html.Raw(Json.Serialize(this.Model.TourProductViewModel.LatLong))');
+            var map = new google.maps.Map(canvas[0], { zoom: 15, mapTypeId: google.maps.MapTypeId.ROADMAP, fullscreenControl: false });
+            var bounds = new google.maps.LatLngBounds();
+            var waypts = [];
+            for (i = 0; i < points.length;++i)
+            {
+                var latitude = points[i].Item1;
+                var longitude = points[i].Item2;
+                if (latitude != 0 && longitude != 0)
+                {
+                    var latlng = new google.maps.LatLng(latitude, longitude);
+                    if (i == 0) {
+                        var src = latlng;
+                    }
+                    if (i == points.length-1) {
+                        var dest = latlng;
+                    }
+                    waypts.push({
+                        location: latlng,
+                        stopover: true
+                    });
+                    bounds.extend(latlng);
+                    //var marker = new google.maps.Marker({ map: map, position: new google.maps.LatLng(latitude, longitude), icon: map_marker });
+                    map.fitBounds(bounds);
+                }
+
+            }
+            var directionsService = new google.maps.DirectionsService();
+            directionsService.route({
+                origin: src,
+                destination: dest,
+                waypoints: waypts,
+                optimizeWaypoints: true,
+                travelMode: 'DRIVING'
+            }, function (response, status) {
+                if (status === 'OK') {
+                    new google.maps.DirectionsRenderer({
+                                map: map,
+                                markerOptions: { icon: map_marker },
+                                polylineOptions: {
+                                    strokeColor: '#973E94'
+                                },
+                                directions: response
+                            });
+                } else {
+                    //window.alert('Directions request failed due to ' + status);
+                }
+            });
+            }
+            
+        }
+
+
+        if (!isMobileView)
+        {
+            function Mapmedium() {
+
+                // when latitude and longitude are given its working
+                var canvas = $(".location-map-medium");
+
+            var map_marker = {
+                url: "/images/waypoint_marker.svg", // url
+                scaledSize: new google.maps.Size(15, 15), // scaled size
+                origin: new google.maps.Point(0, 0), // origin
+               // anchor: new google.maps.Point(0, 0) // anchor
+            };
+            var i = 0;
+            var points = JSON.parse('@Html.Raw(Json.Serialize(this.Model.TourProductViewModel.LatLong))');
+            var map = new google.maps.Map(canvas[0], { zoom: 15, mapTypeId: google.maps.MapTypeId.ROADMAP, fullscreenControl: false });
+            var bounds = new google.maps.LatLngBounds();
+            var waypts = [];
+            for (i = 0; i < points.length;++i)
+            {
+                var latitude = points[i].Item1;
+                var longitude = points[i].Item2;
+                if (latitude != 0 && longitude != 0)
+                {
+                    var latlng = new google.maps.LatLng(latitude, longitude);
+                    if (i == 0) {
+                        var src = latlng;
+                    }
+                    if (i == points.length-1) {
+                        var dest = latlng;
+                    }
+                    waypts.push({
+                        location: latlng,
+                        stopover: true
+                    });
+                    bounds.extend(latlng);
+                    //var marker = new google.maps.Marker({ map: map, position: new google.maps.LatLng(latitude, longitude), icon: map_marker });
+                    map.fitBounds(bounds);
+                }
+
+            }
+            var directionsService = new google.maps.DirectionsService();
+            directionsService.route({
+                origin: src,
+                destination: dest,
+                waypoints: waypts,
+                optimizeWaypoints: true,
+                travelMode: 'DRIVING'
+            }, function (response, status) {
+                if (status === 'OK') {
+                    new google.maps.DirectionsRenderer({
+                                map: map,
+                                markerOptions: { icon: map_marker },
+                                polylineOptions: {
+                                    strokeColor: '#973E94'
+                                },
+                                directions: response
+                            });
+                } else {
+                    //window.alert('Directions request failed due to ' + status);
+                }
+            });
+            }
+            $(function () {
+                Mapmedium();
+            });
+        }
+
+
+
+
+        $(function () {
+            Mapdesktop();
+        });
+
+        $(function () {
+            Maptablet();
+        });
+        function GetLowestFlightPrice() {
+            //$('.flight-image').addClass('image-blink');
+            $('#lblPriceWithFlight').html('<img src="/images/ajax-loader.gif" class="flight-price-loader">');
+            $('#lblFlightIndicativePrice').html('<img src="/images/ajax-loader.gif" class="flight-price-loader">');
+            $('#lblRackPriceWithFlight').html('&nbsp;');
+                    $.get('/deal/GetLowestFlightPrice',
+                        {
+                            'inclusionId': parseInt($('#inclusionId').val()),
+                            'startDate': $("#startFlightDate").val()
+                        },
+                        function (result) {
+                            $('.flight-image').removeClass('image-blink');
+                            var lblPriceWithFlight = $('#lblPriceWithFlight');
+                            var lblRackPriceWithFlight = $('#lblRackPriceWithFlight');
+                            var lblFlightIndicativePrice = $('#lblFlightIndicativePrice');
+                            var pricewithFlight = parseFloat(lblPriceWithFlight.data('price')) + parseFloat(result);
+                            var rackPricewithFlight = parseFloat(lblRackPriceWithFlight.data('price')) + parseFloat(result);
+
+                            //lblPriceWithFlight.data('price', pricewithFlight);
+                            //lblRackPriceWithFlight.data('price', rackPricewithFlight);
+                            //lblFlightIndicativePrice.data('price', pricewithFlight);
+                            lblPriceWithFlight.html('₹' + pricewithFlight.toLocaleString('en-IN') + '<span class="person-span">/pers<sup>*</sup></span>');
+                            lblRackPriceWithFlight.html('<span class="instead-span">Instead of </span><span class="rack-price">₹' + rackPricewithFlight.toLocaleString('en-IN') + '</span> ');
+                            if (parseFloat(result) != 0) {
+                                lblFlightIndicativePrice.html('₹' + Math.round(parseFloat(result)).toLocaleString('en-IN'));
+                            }
+
+                        }
+                    );
+                }
+                function GalleryCarousalLeft() {
+                    $('#galleryCarousel').carousel('prev');
+                }
+                function GalleryCarousalRight() {
+                    $('#galleryCarousel').carousel('next');
+        }
+        function GalleryRoomLeft(id) {
+            $(id).carousel('prev');
+        }
+        function GalleryRoomRight(id) {
+            $(id).carousel('next');
+        }
+        $(function () {
+            
+                    GetLowestFlightPrice();
+                    $(document).on('click', '.product_banner .image-2x2 a, .product_banner .image-4x4 a, .product_banner .open-gallery-container', function (e) {
+                        $('#galleryModal').modal('toggle');
+                        if ($(this).data('name') != null && $(this).data('name') != undefined) {
+                            if ($(".gallery-carousel-bottom .gallery-indicators li[data-name='" + $(this).data('name') + "']").length > 0) {
+                                $(".gallery-carousel-bottom .gallery-indicators li[data-name='" + $(this).data('name') + "']").first().click();
+                            }
+                            if ($(".mobile-gallery-indicators li[data-name='" + $(this).data('name') + "']").length > 0) {
+                                $(".mobile-gallery-indicators li[data-name='" + $(this).data('name') + "']").first().click();
+                            }
+                        }
+            });
+            if (!isMobileView) {
+                $(document).on('click', '.room-container .room-image', function (e) {
+                    if ($(this).data('count') == '0') {
+                        return;
+                    }
+                    $($(this).data('target-gallery')).modal('show');
+                });
+            }
+                    
+                    if ($(".fd_Timer").length > 0)
+                    {
+                        var countDownDate = new Date("April 16, 2019 12:00:00");
+                        for (var i = 0; ; i++) {
+                            countDownDate.setDate(countDownDate.getDate() + 2);
+                            if (countDownDate >= new Date()) {
+                                break;
+                            }
+                        }
+                        countDownDate = countDownDate.getTime();
+
+                        // Update the count down every 1 second
+                        var x = setInterval(function () {
+
+                            // Get todays date and time
+                            var now = new Date().getTime();
+
+                            // Find the distance between now and the count down date
+                            var distance = countDownDate - now;
+
+                            // Time calculations for days, hours, minutes and seconds
+                            //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                            var hours = Math.floor((distance / (1000 * 60 * 60 * 24)) * 24).toLocaleString('en-IN', { minimumIntegerDigits: 2, useGrouping: false });
+                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toLocaleString('en-IN', { minimumIntegerDigits: 2, useGrouping: false });
+                            var seconds = Math.floor((distance % (1000 * 60)) / 1000).toLocaleString('en-IN', { minimumIntegerDigits: 2, useGrouping: false });
+
+                            // Output the result in an element with id="demo"
+                            $('.fd_Timer').html("Ends in " + hours + ":" + minutes + ":" + seconds);
+
+                            // If the count down is over, write some text
+                            if (distance < 0) {
+                                clearInterval(x);
+                                $('.fd_Timer').html("EXPIRED");
+                            }
+                        }, 1000);
+                    }
+                    $('.date-night-selector-container .pill').first().click();
+                    ////Gallery Thumbs Start
+                    $('.gallery_carousel_thumbnail .item').each(function () {
+                        var next = $(this).next();
+                        if (!next.length) next = $(this).siblings(':first');
+                        next.children(':first-child').clone().appendTo($(this));
+                    });
+                    $('.gallery_carousel_thumbnail .item').each(function () {
+                        var prev = $(this).prev();
+                        if (!prev.length) prev = $(this).siblings(':last');
+                        prev.children(':nth-last-child(2)').clone().prependTo($(this));
+                    });
+                    ////Gallery Thumbs End
+                    //test_flightBookingstart
+                    $('.showmore').click(function () {
+                        $('.display1').removeClass('hidden').addClass('active');
+                        $('.display2').addClass('hidden');
+
+                    });
+                    $('.showless').click(function () {
+                        $('.display2').removeClass('hidden').addClass('active');
+                        $('.display1').addClass('hidden');
+
+                    });
+                    $('.more').click(function () {
+                        $('.filter-hidden').removeClass('hidden').addClass('active');
+                        $('.more').addClass('hidden');
+                    });
+                    $('.tabbutton.result-header').first().click();
+                    //test_flightBookingend
+                    //$('.ltd-checkbox').iCheck({
+                    //    checkboxClass: 'icheckbox_flat-pink',
+                    //    radioClass: 'iradio_flat-pink'
+                    //});
+                    $('.Hotel_highlights .show-more').click(function () {
+                        $('.Hotel_highlights li.hidden').removeClass('hidden');
+                        $(this).addClass('hidden');
+                    });
+                    $('.Hotel_Amenities .show-more').click(function () {
+                        $('.Hotel_Amenities div.hidden').removeClass('hidden');
+                        $(this).addClass('hidden');
+                    });
+                    $('.Trip_Advisor .show-more').click(function () {
+                        $('.destination-content').css('min-height', 302).css('height', 'unset');
+                        $('.TA_content_para').css('max-height', 'unset');
+                        $(this).addClass('hidden');
+                    });
+                    $('.customer-reviews .show-more').click(function () {
+                        $('.customer-reviews div.hidden').removeClass('hidden');
+                        $(this).addClass('hidden');
+                    });
+                    $('.customer-reviews .show-more-comment').click(function () {
+                        $(this).parent().find('p').addClass('expended');
+                        $(this).addClass('hidden');
+                    });
+            //Plan your travel (Mobile View- Booking flow) start,
+
+            $("#tourbookingflow").click(function () {
+                $(".travel-plan").css("display", "block");
+                $(".product-banner-xs-head").hide();
+                $(".product_banner").css("display", "none");
+                $(".Hotel_Details").css("display", "none");
+                $("footer").css("display", "none");
+                $(".footer_bottom").css("display", "none");
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 1000);
+            });
+            $("#tourbookingflowclose").click(function () {
+                $(".travel-plan").css("display", "none");
+                $(".product-banner-xs-head").show();
+                $(".product_banner").css("display", "block");
+                $(".Hotel_Details").css("display", "block");
+                $("footer").css("display", "block");
+                $(".footer_bottom").css("display", "block");
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 1000);
+            });
+
+                    //Plan your travel (Mobile View- Booking flow) End....
+                    if (!isMobileView)
+                    {
+                        $(window).scroll(function(e) {
+                            NavScrollerHighlight();
+                            SidebarScroller();
+                            StuckSidebar();
+                        });
+                    }
+
+                    $('.product_options ul li').on('click', function (e) {
+                        $('html,body').animate({ scrollTop: $($(this).data('target')).offset().top - 85 }, 1000);
+                    });
+                    $('.book-nav, .side-scroller .tour-book-now').on('click', function (e) {
+                        $('html,body').animate({ scrollTop: $('.travel-plan').offset().top - 100 }, 1000);
+                    });
+                    function NavScrollerHighlight() {
+	                var $highlight = $(".Hotel_highlights");
+	                var $amenities = $(".Hotel_Amenities");
+	                var $aboutHotel = $(".Trip_Advisor");
+	                var $reviews = $(".Reviews-Ratings");
+
+	                var $navs_desktop = $('.product_options_desktop ul li');
+	                $('.section_desktop').each(function () {
+	                    if ($(window).scrollTop() + 90 >= $(this).offset().top) {
+	                        var navTarget = $(this).data('nav-target');
+	                        $navs_desktop.removeClass('colored-nav');
+	                        $(navTarget).addClass('colored-nav');
+	                    }
+	                })
+	                var $navs_medium = $('.product_options_medium ul li');
+	                $('.section_medium').each(function () {
+	                    if ($(window).scrollTop() + 90 >= $(this).offset().top) {
+	                        var navTarget = $(this).data('nav-target');
+	                        $navs_medium.removeClass('colored-nav');
+	                        $(navTarget).addClass('colored-nav');
+	                    }
+	                })
+
+                        var $navs_small = $('.product_options_small ul li');
+                        $('.section_small').each(function () {
+                            if ($(window).scrollTop() + 90 >= $(this).offset().top) {
+                                var navTarget = $(this).data('nav-target');
+                                $navs_small.removeClass('colored-nav');
+                                $(navTarget).addClass('colored-nav');
+                            }
+                        })
+	            }
+                    function StuckSidebar() {
+                        var stuck_scroll_start = $(this).scrollTop() - ($('.scroller-anchor').offset().top - ($('.sticky-nav').height() + $('.search-header').height()));
+                        if ($(this).scrollTop() < $('.scroller-anchor').offset().top) {
+                            $('.scroller').css({
+                                'top': '0px',
+                                'position': 'absolute',
+                                //'right': '0px',
+                                'left': 'unset'
+                            });
+
+                        }
+                        if (stuck_scroll_start >= 0) {
+
+                            var leftpos = ($('#top-content-row').position().left + $('.Deal_duration').outerWidth() + 30);
+
+
+                            $('.scroller').css({
+                                //'top': Math.round(scroll_start).toString() + 'px',
+                                'top': '118px',
+                                'position': 'fixed',
+                                'right': 'unset',
+                                'left': leftpos
+                            });
+
+                            if (($('.scroller').height() + $(this).scrollTop() + ($('.sticky-nav').height() + $('.search-header').height()) + 50) > $('footer').offset().top) {
+                                $('.scroller').css({
+                                    'position': 'absolute',
+                                    //'right': '0px',
+                                    'top': 'unset',
+                                    //'bottom': '15px',
+                                    'left': 'unset'
+                                });
+                                return;
+                            }
+
+                        }
+                    }
+                    function SidebarScroller() {
+                        var scroll_start = $(this).scrollTop() - ($('.side-scroller-anchor').offset().top - ($('.sticky-nav').height() + $('.search-header').height()));
+                        if ($(this).scrollTop() < $('.side-scroller-anchor').offset().top) {
+                            $('.side-scroller').css({
+                                'top': '0px',
+                                'position': 'absolute',
+                                'right': '0px',
+                                'left': 'unset'
+                            });
+                        }
+                        if (scroll_start >= 0) {
+
+                            var leftpos = ($('#top-content-row').position().left + $('.Deal_duration').outerWidth());
+
+                            $('.side-scroller').css({
+                                //'top': Math.round(scroll_start).toString() + 'px',
+                                'top': '118px',
+                                'position': 'fixed',
+                                'right': 'unset',
+                                'left': leftpos
+                            });
+
+                            if (($('.side-scroller').height() + $(this).scrollTop() + ($('.sticky-nav').height() + $('.search-header').height())) > $('.sidebar-recommendation').offset().top) {
+                                $('.side-scroller').css({
+                                    'position': 'absolute',
+                                    'right': '0px',
+                                    'top': 'unset',
+                                    //'bottom': '15px',
+                                    'left': 'unset'
+                                });
+                                return;
+                            }
+
+                        }
+                    }
+
+                    //Product page header-style on scroll
+
+
+                        //window.addEventListener("scroll", function () {
+                        //    var desitnation = document.getElementsByClassName('sticky-nav');
+
+                        //    if (window.pageYOffset > 70) {
+                        //        desitnation[0].style.display = "block";
+                        //    }
+                        //    else if (window.pageYOffset < 70) {
+                        //        desitnation[0].style.display = "none";
+                        //    }
+                        //}, false);
+
+                        // Hide Header on on scroll down
+                        //var didScroll;
+                        //var lastScrollTop = 0;
+                        //var delta = 5;
+                        //var navbarHeight = $('.search-header').outerHeight();
+
+                        //$(window).scroll(function (event) {
+                        //    didScroll = true;
+                        //});
+
+                        //setInterval(function () {
+                        //    if (didScroll) {
+                        //        hasScrolled();
+                        //        didScroll = false;
+                        //    }
+                        //}, 250);
+
+                        //function hasScrolled() {
+                        //    var st = $(this).scrollTop();
+
+                        //    // Make sure they scroll more than delta
+                        //    if (Math.abs(lastScrollTop - st) <= delta)
+                        //        return;
+
+                        //    // If they scrolled down and are past the navbar, add class .nav-up.
+                        //    // This is necessary so you never see what is "behind" the navbar.
+                        //    if (st > lastScrollTop && st > navbarHeight) {
+                        //        // Scroll Down
+                        //        $('.search-header').removeClass('nav-down').addClass('nav-up');
+                        //        $('.sticky-nav').css('top', '0px');
+                        //    } else {
+                        //        // Scroll Up
+                        //        if (st + $(window).height() < $(document).height()) {
+                        //            $('.search-header').removeClass('nav-up').addClass('nav-down');
+                        //            $('.sticky-nav').css('top', '68px');
+                        //        }
+                        //    }
+
+                        //    lastScrollTop = st;
+                        //}
+
+                        //Product page header-style on scroll
+                    if (!isMobileView)
+                    {
+                        
+                        $('#galleryCarousel').bind('slide.bs.carousel', function (e) {
+                            $('.current-slide-number').html(parseInt($(e.relatedTarget).data('count')) + 1);
+                            $('.gallery-carousel-title').html($(e.relatedTarget).data('caption'));
+                            $('.gallery-carousel-description').html($(e.relatedTarget).data('caption'));
+                        })
+                        $(document).on('click', '.gallery-carousel-bottom  .gallery-indicators li', function (e) {
+                            var targetSlideNumber = $(this).data('slide-to');
+                            
+                            $(this).parents('.gallery-carousel-bottom ').first().siblings('.gallery-carousel').first().find('.gallery-carousel-inner .item').removeClass('active');
+                            var $targetSlide = $(this).parents('.gallery-carousel-bottom ').first().siblings('.gallery-carousel').first().find('.gallery-carousel-inner .item[data-count="' + targetSlideNumber + '"]');
+                            $targetSlide.addClass('active');
+                            $(this).parents('.gallery-carousel-bottom').first().find('.current-slide-number').first().html(parseInt(targetSlideNumber) + 1);
+                            $(this).parents('.gallery-carousel-bottom').first().find('.gallery-carousel-title').first().html($targetSlide.data('caption'));
+                            $(this).parents('.gallery-carousel-bottom').first().find('.gallery-carousel-description').first().html($targetSlide.data('caption'));
+
+
+                        });
+
+                    }
+
+                    if (isMobileView)
+                    {
+                        
+                        $('#MobileGallery').bind('slide.bs.carousel', function (e) {
+                            $('.mobile-gallery-caption .mobile-gallery-title').html($(e.relatedTarget).data('caption'));
+                        })
+                        $('#MobileGallery').bsTouchSlider();
+                        $(document).on('click', '#MobileGallery .mobile-gallery-indicators li', function (e) {
+                            var targetSlideNumber = $(this).data('slide-to');
+                            $('#MobileGallery .mobile-gallery-inner .item').removeClass('active');
+                            var $targetSlide = $('#MobileGallery .mobile-gallery-inner .item[data-count="' + targetSlideNumber + '"]');
+                            $targetSlide.addClass('active');
+                            $('.mobile-gallery-caption .mobile-gallery-title').html($targetSlide.data('caption'));
+                        });
+                    }
+
+                    $(document).on('click', '.night-selector-container.nav .pill', function (e) {
+                        $('.night-selector-container.nav .pill').removeClass('active');
+                        $(this).addClass('active');
+                        $('.night-content-container.tab-content .tab-pane').removeClass('active');
+                        $($(this).data('target')).addClass('active');
+                    });
+            $(document).on('click', '.product_mobile_banner .product_main_image a, .product_mobile_banner .product_sub_image a, .product_mobile_banner .open-mobile-gallery-container', function (E) {
+                        $(".mobile_gallery").css("display", "block");
+
+                        $('.book-now-btn-xs').hide();
+                        $('.Hotel_Details').hide();
+                        $(".book-now-card").css("display", "none");
+                        $(".location-map").css("display", "none");
+                        $(".Hotel_highlights").css("display", "none");
+                        $(".Hotel_Amenities").css("display", "none");
+                        $(".Trip_Advisor").css("display", "none");
+                        $(".Reviews-Ratings").css("display", "none");
+                        $(".footer_bottom").css("display", "none");
+                        $("footer").css("display", "none");
+
+                    });
+            $(document).on('click', '.tour-room-gallery .room-details-container .TourRoomGallery', function (e) {
+                debugger;
+                if ($(this).data('count') == '0') {
+                    return;
+                }
+                $(".booking_flow_header").css("display", "none");
+                $(".bookingwizard").css("display", "none");
+                $(".Room-handling .header").css("display", "none");
+                $(".Room-handling .proceed-button .btn").css("display", "none");
+                $(".Room-handling .select-room").css("display", "none");
+                $(".book-now-btn-xs").css("display", "none");
+                var target = $(this).data('target-gallery');
+                $(target).css("display", "block");
+
+
+            });
+
+            $(document).on('click', '.Tour_mobile_gallery_room .mobile-gallery-left-arrow', function (E) {
+                debugger;
+                $(".booking_flow_header").css("display", "block");
+                $(".bookingwizard").css("display", "table");
+                $(".Room-handling .header").css("display", "table");
+                $(".Room-handling .proceed-button .btn").css("display", "block");
+                $(".Room-handling .select-room").css("display", "block");
+                $(".book-now-btn-xs").css("display", "block");
+                $(".Tour_mobile_gallery_room").css("display", "none");
+
+
+            });
+                    $("#mobile_gallery_close").click(function () {
+                        $('.book-now-btn-xs').show();
+                        $(".mobile_gallery").css("display", "none");
+                        $('.Hotel_Details').show();
+                        $(".book-now-card").css("display", "block");
+                        $(".location-map").css("display", "block");
+                        $(".Hotel_highlights").css("display", "block");
+                        $(".Hotel_Amenities").css("display", "block");
+                        $(".Trip_Advisor").css("display", "block");
+                        $(".Reviews-Ratings").css("display", "block");
+                        $(".footer_bottom").css("display", "block");
+                        $("footer").css("display", "block");
+
+                    }); 
+                });
+                function showItinearyPart(element) {
+
+                    $(element).parent().parent().siblings('.itinerary-part-content').removeClass('hidden');
+                    $(element).siblings().removeClass('hidden');
+                    $(element).addClass('hidden');
+                }
+                function hideItinearyPart(element) {
+
+                    $(element).parent().parent().siblings('.itinerary-part-content').addClass('hidden');
+                    $(element).siblings().removeClass('hidden');
+                    $(element).addClass('hidden');
+                }
+
+
+    </script>
+}
+@functions{
+    public static string ToTrimmedString(decimal target)
+    {
+        string strValue = target.ToString(); //Get the stock string
+
+        //If there is a decimal point present
+        if (strValue.Contains("."))
+        {
+            //Remove all trailing zeros
+            strValue = strValue.TrimEnd('0');
+
+            //If all we are left with is a decimal point
+            if (strValue.EndsWith(".")) //then remove it
+                strValue = strValue.TrimEnd('.');
+        }
+
+        return strValue;
+    }
+}

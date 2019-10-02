@@ -1,0 +1,208 @@
+﻿@model VendorGroupViewModel
+<style>
+    .select2-container.select2-container--default.select2-container--open{
+        z-index:1500;
+    }
+</style>
+<form asp-antiforgery="true" id="formVendorGroupManage" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="IsActive" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <div class="box-body">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label asp-for="Name"></label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                    <input asp-for="Name" type="text" class="form-control" placeholder="Full Business Name">
+                </div>
+                <span asp-validation-for="Name"></span>
+            </div>
+        </div>
+        <div class="row" style="padding: 0px 15px;">
+            <div class="form-group col-md-3">
+                <label asp-for="Designation"></label>
+                <div class="input-group">
+
+                    <select asp-for="Designation" selected="@Model.Designation" class="form-control" placeholder="Designation" asp-items="Model.DesignationItems"
+                            select2-value="@Model.Designation"
+                            select2-Url="/selectlist/GetDesignation"></select>
+                    <span class="input-group-addon"><a href="@Url.Action("DesignationMaster","Master", new { @area = "Admin" })" target="_blank"><i class="fa fa-plus"></i></a></span>
+                </div>
+                
+                @*<input asp-for="Designation" type="text" class="form-control" placeholder="Designation">*@
+                <span asp-validation-for="Designation"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="Salutation"></label>
+                <div class="input-group">
+
+                    <select asp-for="Salutation" selected="@Model.Salutation" class="form-control" placeholder="Salutation" asp-items="Model.SalutationItems"
+                            select2-value="@Model.Salutation"
+                            select2-Url="/selectlist/GetSalutation"></select>
+                    <span class="input-group-addon"><a href="@Url.Action("SalutationMaster","Master", new { @area = "Admin" })" target="_blank"><i class="fa fa-plus"></i></a></span>
+                </div>
+                
+                @*<input asp-for="Salutation" type="text" class="form-control" placeholder="Mr.">*@
+                <span asp-validation-for="Salutation"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="FName"></label>
+                <input asp-for="FName" type="text" class="form-control" placeholder="First Name">
+                <span asp-validation-for="FName"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="LName"></label>
+                <input asp-for="LName" type="text" class="form-control" placeholder="Last Name">
+                <span asp-validation-for="LName"></span>
+            </div>
+        </div>
+
+        <div class="row" style="padding: 0px 15px;">
+            <div class="form-group col-md-4">
+                <label asp-for="WorkPhone"></label>
+                <input asp-for="WorkPhone" type="text" class="form-control intl-phone-no" id="input-work-phone-vendor-group">
+                <span asp-validation-for="WorkPhone"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="PhoneNo"></label>
+                <input asp-for="PhoneNo" type="text" class="form-control intl-phone-no" id="input-phone-vendor-group">
+                <span asp-validation-for="PhoneNo"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="EmailId"></label>
+                <div class="input-group">
+                    <span class="input-group-addon">@@</span>
+                    <input asp-for="EmailId" type="email" class="form-control" placeholder="Email Address">
+                </div>
+                <span asp-validation-for="EmailId"></span>
+            </div>
+        </div>
+        <div class="row"></div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label asp-for="AddressLine1"></label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-address-card"></i></span>
+                    <input type="text" class="form-control" asp-for="AddressLine1" placeholder="1234 Main St">
+                </div>
+                <span asp-validation-for="AddressLine1"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label asp-for="AddressLine2"></label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-address-card-o"></i></span>
+                    <input type="text" class="form-control" asp-for="AddressLine2" placeholder="Apartment, studio, or floor">
+                </div>
+                <span asp-validation-for="AddressLine2"></span>
+            </div>
+        </div>
+        @{
+            var countryctrl = Guid.NewGuid().ToString("N");
+            var statectrl = Guid.NewGuid().ToString("N");
+            var cityctrl = Guid.NewGuid().ToString("N");
+        }
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="CountryId"></label>
+                <select asp-for="CountryId" selected="@Model.CountryId" class="form-control @(countryctrl)" id="CountryId" asp-items="Model.CountryItems"
+                        select2-value="@Model.CountryId" select2-Url="/selectlist/GetCountryList"
+                        select2-Dependent="true" select2-Dependent-Control=".@(statectrl)"></select>
+                <span asp-validation-for="CountryId"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="StateId"></label>
+                <select asp-for="StateId" selected="@Model.StateId" class="form-control @statectrl" id="StateId" asp-items="Model.StateItems"
+                        select2-value="@Model.StateId" select2-Url="/selectlist/GetTourPackageStatesByCountrId"
+                        select2-Dependent="true" select2-Dependent-Control=".@(cityctrl)" select2-Dependent-OtherControl=".@countryctrl"></select>
+                <span asp-validation-for="StateId"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="CityId"></label>
+                <select asp-for="CityId" selected="@Model.CityId" id="CityId" class="form-control packagecitydes @(cityctrl)" asp-items="Model.CityItems"
+                        select2-value="@Model.CityId" select2-Url="/selectlist/GetTourPackageCityByCounryIdorStateIdAsync"></select>
+                <span asp-validation-for="CityId"></span>
+            </div>
+        </div>
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit) })
+</form>
+<script>
+    $(document).ready(function (e) {
+        $("[data-val-required]").parents('.form-group').find('label').not(".skip-required").each(function () {
+            if ($(this).find(".danger").length == 0) {
+                $(this).append('<span class="danger"> *</span>')
+            }
+        });
+        var input = document.querySelector("#input-phone-vendor-group");
+        var iti = window.intlTelInput(input, {
+            //nationalMode: true,
+            //autoPlaceholder: "aggressive",
+            formatOnDisplay: true,
+            initialCountry: "auto",
+            geoIpLookup: function (callback) {
+                $.get("http://ipinfo.io", function () { }, "jsonp").always(function (resp) {
+                    var countryCode = (resp && resp.country) ? resp.country : "";
+                    callback(countryCode);
+                });
+            },
+            // localizedCountries: { 'de': 'Deutschland' },
+            nationalMode: false,
+            // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+            // placeholderNumberType: "MOBILE",
+            // preferredCountries: ['cn', 'jp'],
+            // separateDialCode: true,
+            utilsScript: "/js/utils.js"
+        });
+        var input2 = document.querySelector("#input-work-phone-vendor-group");
+        var itiGroup = window.intlTelInput(input2, {
+            //nationalMode: true,
+            //autoPlaceholder: "aggressive",
+            formatOnDisplay: true,
+            initialCountry: "auto",
+            geoIpLookup: function (callback) {
+                $.get("http://ipinfo.io", function () { }, "jsonp").always(function (resp) {
+                    var countryCode = (resp && resp.country) ? resp.country : "";
+                    callback(countryCode);
+                });
+            },
+            // localizedCountries: { 'de': 'Deutschland' },
+            nationalMode: false,
+            // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+            // placeholderNumberType: "MOBILE",
+            // preferredCountries: ['cn', 'jp'],
+            // separateDialCode: true,
+            utilsScript: "/js/utils.js"
+        });
+        //BindPhonePlugin("#input-phone-vendor-group");
+        //BindPhonePlugin("#input-work-phone-vendor-group");
+    })
+    function BindPhonePlugin(id) {
+        debugger;
+        var input = document.querySelector(id);
+        var iti = window.intlTelInput(input, {
+            //nationalMode: true,
+            //autoPlaceholder: "aggressive",
+            formatOnDisplay: true,
+            initialCountry: "auto",
+            geoIpLookup: function (callback) {
+                $.get("http://ipinfo.io", function () { }, "jsonp").always(function (resp) {
+                    var countryCode = (resp && resp.country) ? resp.country : "";
+                    callback(countryCode);
+                });
+            },
+            // localizedCountries: { 'de': 'Deutschland' },
+            nationalMode: true,
+            // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+            // placeholderNumberType: "MOBILE",
+            // preferredCountries: ['cn', 'jp'],
+            // separateDialCode: true,
+            utilsScript: "/js/utils.js"
+        });
+    }
+</script>

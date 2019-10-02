@@ -1,0 +1,82 @@
+﻿<div class="nav-tabs-custom">
+    <ul class="nav nav-tabs pull-right">
+        <li class=""><a href="#add-package-cancellation" class="replaceAdd" data-toggle="tab" data-href="/admin/cancellationpolicy/addnewpackagecancellation?Id=@(this.ViewBag.TourPackageId)"><i class="fa fa-plus"></i> Add New</a></li>
+        <li class=""><a href="#assign-package-cancellation" class="replaceAssign" data-toggle="tab" data-href="/admin/cancellationpolicy/AssignPackageCancellation?Id=@(this.ViewBag.TourPackageId)"><i class="fa fa-caret-square-o-down"></i> Assign Cancellation Policy</a></li>
+        <li class=""><a href="#view-package-cancellation" class="replaceView" data-toggle="tab" data-href="/admin/cancellationpolicy/GetAssignedPackageCancellationView?Id=@(this.ViewBag.TourPackageId)"><i class="fa fa-list"></i> View List</a></li>
+    </ul>
+    <div class="tab-content hotel-tabs">
+        <div class="tab-pane" id="add-package-cancellation"></div>
+        <div class="tab-pane" id="assign-package-cancellation"></div>
+        <div class="tab-pane" id="view-package-cancellation"></div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.replaceView').click();
+    });
+
+    $(document).off("click", '#PackageNightClick')
+        .on("click", '#PackageNightClick', function () {
+            //showWaitProcess();
+            //setTimeout(function () {
+            //    hideWaitProcess();
+            //}, 2000);
+             
+           
+            return false;
+
+        });
+    $(document).on('submit', "#formCancellationPolicyManage", function (e) {
+        e.preventDefault();
+        var $form = $("#formCancellationPolicyManage");
+        $('#formCancellationPolicyManage input[name="Id"]').val(0);
+            if ($form.valid()) {
+                showWaitProcess();
+                var model = {}
+                model = $form.serialize();
+                var ErrorMsg = "";
+                $(".text-blank").each(function () {
+                    ErrorMsg += $(this).text();
+                })
+                if (ErrorMsg != "") {
+                    hideWaitProcess();
+                    return false;
+                }
+                else {
+                    $.ajax({
+                        url: '@Url.Action("Manage","CancellationPolicy")',
+                        type: "JOSN",
+                        method: "POST",
+                        data: model+'&key=Partial',
+                        success: function (data) {
+                            hideWaitProcess();
+                            if (data == "success") {
+                                swal('', 'Successfully Inserted', 'success');
+                                $(".replaceAssign").click();
+                            }
+                            else if (data == "update") {
+                                swal('', 'Successfully Updated', 'success');
+                                $(".replaceAssign").click();
+                            }
+                            else
+                            {
+                                var errors = JSON.parse(data);
+                                $.each(errors, function (i, obj) {
+                                    var $span = $('span[data-valmsg-for="' + obj.key + '"]');
+                                    $span.addClass("field-validation-error").html('<span for="' + obj.key + '" class="field-validation-error">' + obj.error + '</span>');
+                                    $span.attr("data-valmsg-replace", "false");
+                                })
+
+                                 setTimeout(function () {
+                                        $("[data-valmsg-replace]").each(function () {
+                                            $(this).attr("data-valmsg-replace", "true");
+                                        })
+                                    }, 3000);
+                                return false;
+                            }
+                        }
+                    });
+                }
+            }
+    })
+</script>

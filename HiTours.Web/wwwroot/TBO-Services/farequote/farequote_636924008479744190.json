@@ -1,0 +1,270 @@
+//-- farequote Api Request --
+{
+  "EndUserIp": "192.168.11.120",
+  "TokenId": "4c407b37-693e-4276-b443-79e7f9fc1e1a",
+  "TraceId": "cd08e34f-de1c-4de9-8b2f-87d0e9e88df7",
+  "ResultIndex": "OB4",
+  "IsLCC": false,
+  "Origin": null,
+  "Destination": null,
+  "Airline": null,
+  "FareBasisCode": null,
+  "FareRuleDetail": null,
+  "FareRestriction": null
+}
+//-- farequote Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "IsPriceChanged": false,
+    "ResponseStatus": 1,
+    "Results": {
+      "ResultIndex": "OB4",
+      "Source": 4,
+      "IsLCC": false,
+      "IsRefundable": true,
+      "GSTAllowed": true,
+      "IsGSTMandatory": false,
+      "IsHoldAllowed": true,
+      "AirlineRemark": null,
+      "Fare": {
+        "Currency": "INR",
+        "BaseFare": 21890,
+        "Tax": 3802,
+        "TaxBreakup": [
+          {
+            "key": "K3",
+            "value": 0
+          },
+          {
+            "key": "YQTax",
+            "value": 0
+          },
+          {
+            "key": "YR",
+            "value": 0
+          },
+          {
+            "key": "PSF",
+            "value": 0
+          },
+          {
+            "key": "UDF",
+            "value": 0
+          },
+          {
+            "key": "INTax",
+            "value": 0
+          },
+          {
+            "key": "TransactionFee",
+            "value": 0
+          },
+          {
+            "key": "OtherTaxes",
+            "value": 0
+          }
+        ],
+        "YQTax": 2110,
+        "AdditionalTxnFeeOfrd": 0,
+        "AdditionalTxnFeePub": 0,
+        "PGCharge": 0,
+        "OtherCharges": 24.6,
+        "ChargeBU": [
+          {
+            "key": "TBOMARKUP",
+            "value": 0
+          },
+          {
+            "key": "CONVENIENCECHARGE",
+            "value": 0
+          },
+          {
+            "key": "OTHERCHARGE",
+            "value": 24.6
+          }
+        ],
+        "Discount": 0,
+        "PublishedFare": 25716.6,
+        "CommissionEarned": 200,
+        "PLBEarned": 0,
+        "IncentiveEarned": 0,
+        "OfferedFare": 25516.6,
+        "TdsOnCommission": 80,
+        "TdsOnPLB": 0,
+        "TdsOnIncentive": 0,
+        "ServiceFee": 0,
+        "TotalBaggageCharges": 0,
+        "TotalMealCharges": 0,
+        "TotalSeatCharges": 0,
+        "TotalSpecialServiceCharges": 0
+      },
+      "FareBreakdown": [
+        {
+          "Currency": "INR",
+          "PassengerType": 1,
+          "PassengerCount": 1,
+          "BaseFare": 11830,
+          "Tax": 1945,
+          "YQTax": 1055,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0
+        },
+        {
+          "Currency": "INR",
+          "PassengerType": 2,
+          "PassengerCount": 1,
+          "BaseFare": 8875,
+          "Tax": 1797,
+          "YQTax": 1055,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0
+        },
+        {
+          "Currency": "INR",
+          "PassengerType": 3,
+          "PassengerCount": 1,
+          "BaseFare": 1185,
+          "Tax": 60,
+          "YQTax": 0,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0
+        }
+      ],
+      "Segments": [
+        [
+          {
+            "Baggage": "30 KG",
+            "CabinBaggage": null,
+            "TripIndicator": 1,
+            "SegmentIndicator": 1,
+            "Airline": {
+              "AirlineCode": "UL",
+              "AirlineName": "Sri Lankan Airlines",
+              "FlightNumber": "196",
+              "FareClass": "V",
+              "OperatingCarrier": "UL"
+            },
+            "Origin": {
+              "Airport": {
+                "AirportCode": "DEL",
+                "AirportName": "Indira Gandhi Airport",
+                "Terminal": "3",
+                "CityCode": "DEL",
+                "CityName": "Delhi",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "DepTime": "2019-05-30T18:45:00"
+            },
+            "Destination": {
+              "Airport": {
+                "AirportCode": "CMB",
+                "AirportName": "Katunayake",
+                "Terminal": "",
+                "CityCode": "CMB",
+                "CityName": "Colombo",
+                "CountryCode": "LK",
+                "CountryName": "Sri Lanka"
+              },
+              "ArrTime": "2019-05-30T22:20:00"
+            },
+            "Duration": 0,
+            "GroundTime": 0,
+            "Mile": 0,
+            "StopOver": false,
+            "FlightInfoIndex": "",
+            "StopPoint": "",
+            "StopPointArrivalTime": "2019-05-30T22:20:00",
+            "StopPointDepartureTime": "2019-05-30T18:45:00",
+            "Craft": "32B",
+            "Remark": null,
+            "IsETicketEligible": true,
+            "FlightStatus": "Confirmed",
+            "Status": ""
+          },
+          {
+            "Baggage": "30 KG",
+            "CabinBaggage": null,
+            "TripIndicator": 1,
+            "SegmentIndicator": 2,
+            "Airline": {
+              "AirlineCode": "UL",
+              "AirlineName": "Sri Lankan Airlines",
+              "FlightNumber": "101",
+              "FareClass": "V",
+              "OperatingCarrier": "UL"
+            },
+            "Origin": {
+              "Airport": {
+                "AirportCode": "CMB",
+                "AirportName": "Katunayake",
+                "Terminal": "",
+                "CityCode": "CMB",
+                "CityName": "Colombo",
+                "CountryCode": "LK",
+                "CountryName": "Sri Lanka"
+              },
+              "DepTime": "2019-05-31T07:20:00"
+            },
+            "Destination": {
+              "Airport": {
+                "AirportCode": "MLE",
+                "AirportName": "Male Int'l",
+                "Terminal": "",
+                "CityCode": "MLE",
+                "CityName": "Male",
+                "CountryCode": "MV",
+                "CountryName": "Maldives"
+              },
+              "ArrTime": "2019-05-31T08:15:00"
+            },
+            "AccumulatedDuration": 840,
+            "Duration": 0,
+            "GroundTime": 0,
+            "Mile": 0,
+            "StopOver": false,
+            "FlightInfoIndex": "",
+            "StopPoint": "",
+            "StopPointArrivalTime": "2019-05-31T08:15:00",
+            "StopPointDepartureTime": "2019-05-31T07:20:00",
+            "Craft": "333",
+            "Remark": null,
+            "IsETicketEligible": true,
+            "FlightStatus": "Confirmed",
+            "Status": ""
+          }
+        ]
+      ],
+      "LastTicketDate": "30MAY19",
+      "TicketAdvisory": "PENALTY APPLIES \nLAST TKT DTE 30MAY19  - DATE OF ORIGIN \n",
+      "FareRules": [
+        {
+          "Origin": "DEL",
+          "Destination": "CMB",
+          "Airline": "UL",
+          "FareBasisCode": "VOWIZ",
+          "FareRuleDetail": null,
+          "FareRestriction": null
+        },
+        {
+          "Origin": "CMB",
+          "Destination": "MLE",
+          "Airline": "UL",
+          "FareBasisCode": "VOWIZ",
+          "FareRuleDetail": null,
+          "FareRestriction": null
+        }
+      ],
+      "AirlineCode": "UL",
+      "ValidatingAirline": "UL"
+    },
+    "TraceId": "cd08e34f-de1c-4de9-8b2f-87d0e9e88df7"
+  }
+}

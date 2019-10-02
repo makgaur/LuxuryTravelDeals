@@ -1,0 +1,534 @@
+﻿ 
+
+.no-top-border {
+    border-top: none;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.form-control.input-validation-error, .select2-container.input-validation {
+    border: 1px solid #CAC9C9;
+}
+
+.form-control.input-validation-error, .select2-container.input-validation {
+    border-color: #db4c4a !important;
+}
+
+.select2-container.input-validation-error, .select2-container.input-validation-error .select2-arrow,
+.select2-container.input-validation-error .select2-chosen,
+.select2-container.input-validation-error .select2-arrow
+{
+    border: 1px solid #CAC9C9;
+}
+
+    .select2-container.input-validation-error .select2-choice {
+        border: 1px solid #DB4C4A;
+    }
+
+.field-validation-error {
+    color: #db4c4a !important;
+    margin-top: 5px;
+    display: block;
+    font-size: 0.9em;
+    font-style: italic;
+    /*position:absolute;*/
+    width: 100%;
+    text-transform: capitalize;
+}
+
+    .field-validation-error.show-error {
+        display: block !important;
+    }
+
+select.input-validation-error + .select2-container {
+    border: 1px solid #db4c4a !important;
+}
+
+.filters-wrap .form-control {
+    width: auto;
+    display: inline-block;
+}
+
+.filters-wrap.text-right .dropdown-menu {
+    left: auto;
+    right: 0;
+}
+
+    .filters-wrap.text-right .dropdown-menu::before,
+    .filters-wrap.text-right .dropdown-menu::after {
+        left: inherit !important;
+        right: 10px !important;
+    }
+
+.filters-wrap .dropdown {
+    font-weight: 500
+}
+
+    .filters-wrap .dropdown .fa {
+        margin-right: 10px;
+    }
+
+    .filters-wrap .dropdown .dropdown-menu {
+        padding: 0 !important
+    }
+
+        .filters-wrap .dropdown .dropdown-menu:before {
+            border-bottom: 8px solid #ccc;
+            border-right: 8px solid transparent;
+            border-left: 8px solid transparent;
+            position: absolute;
+            top: -8px;
+            content: "";
+            display: block;
+            width: 8px;
+            z-index: 1;
+            left: 10px;
+        }
+
+        .filters-wrap .dropdown .dropdown-menu:after {
+            border-bottom: 7px solid #fff;
+            border-right: 7px solid transparent;
+            border-left: 7px solid transparent;
+            position: absolute;
+            top: -7px;
+            content: "";
+            display: block;
+            width: 7px;
+            z-index: 2;
+            left: 11px;
+        }
+
+        .filters-wrap .dropdown .dropdown-menu > li > a {
+            font-weight: 500;
+            padding: 4px 10px;
+            font-size: 12px;
+        }
+
+            .filters-wrap .dropdown .dropdown-menu > li > a:hover {
+                background: #31719b;
+                color: #fff;
+            }
+
+/*.select2-container .select2-choice {
+    display: block;
+    height: 34px;
+    padding: 0 0 0 8px;
+    overflow: hidden;
+    position: relative;
+    color: #666666;
+    white-space: nowrap;
+    line-height: 34px;
+    text-decoration: none;
+    border-radius: 0px;
+    background-clip: padding-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #fff;
+    background-image: none;
+}*/
+
+
+
+.modal-content {
+    border-radius: 0px;
+}
+
+/*.select2-container .select2-choice .select2-arrow {
+    border-radius: 0px;
+}*/
+
+
+.pagination > li > a, .pagination > li > span {
+    padding: 6px 15px;
+}
+
+/*.select2-container .select2-selection--single {
+    height: 30px;
+}*/
+
+.page-title {
+    padding: 5px 16px;
+}
+
+.no-left-padd {
+    padding-left: 0px !important;
+}
+
+/*.form-group .select2-container {
+    display: block !important;
+}*/
+
+[data-buttons="filter"] {
+    display: inline-block !important;
+}
+
+.pagination {
+    margin: 0;
+}
+
+.dataTables_paginate.paging_full_numbers {
+    display: inline;
+    float: right;
+}
+
+.btn-form-control:hover, .btn-form-control:focus {
+    background: #31719b;
+    border-color: #31719b;
+    color: #fff;
+}
+
+.btn-form-control {
+    cursor: pointer;
+}
+
+.numericOnly, .decimalOnly {
+}
+
+.top-buttons > a {
+    cursor: pointer;
+    background: #fff;
+    color: #204d74;
+    height: 31px;
+    padding: 4px 12px;
+}
+
+.min-height-250 {
+    min-height: 250px;
+}
+
+
+.details .form-group .control-label {
+    padding-top: 0px !important;
+}
+
+.top-buttons > a {
+    display: inline;
+    margin-right: 4px !important;
+}
+
+.column-action > a {
+    padding: 1px 5px;
+    margin-right: 1px !important;
+    line-height: 22px;
+    height: auto;
+}
+
+label {
+    font-size: 12px;
+}
+
+.icheck-outer {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.package-image-thumbnail {
+    position: relative;
+    display: inline-block;
+}
+
+    .package-image-thumbnail a.remove-package-image {
+        display: none;
+        position: absolute;
+        top: 42%;
+        left: 22%;
+        font-size: 10px;
+    }
+
+    .package-image-thumbnail:hover a.remove-package-image {
+        display: block;
+    }
+
+
+.package-images {
+    width: 90px;
+    height: 90px;
+    cursor: pointer;
+}
+
+.delete-confirm {
+}
+
+.display-label {
+    font-size: 1.1em;
+    font-weight: normal;
+    border: 1px solid whitesmoke;
+}
+
+.input-daterange input {
+    text-align: left;
+}
+
+.timer, .timer-done, .timer-loop {
+    font-size: 30px;
+    color: black;
+    padding: 10px;
+}
+
+.deal-countdown .jst-hours,
+.deal-countdown .jst-minutes,
+.deal-countdown .jst-seconds {
+    font-size: 14px;
+    color: #f1751d !important;
+    font-family: 'NexaLight';
+}
+
+
+.jst-hours {
+    float: left;
+}
+
+.jst-minutes {
+    float: left;
+}
+
+.jst-seconds {
+    float: left;
+}
+
+.jst-clearDiv {
+    clear: both;
+}
+
+.jst-timeout {
+    color: red;
+}
+
+.is-complete {
+    color: red;
+    -webkit-animation-name: blinker;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: cubic-bezier(1.0,0,0,1.0);
+    -webkit-animation-duration: 1s;
+}
+
+@-webkit-keyframes blinker {
+    from {
+        opacity: 1.0;
+    }
+
+    to {
+        opacity: 0.0;
+    }
+}
+
+.no-discount::before {
+    content: none;
+}
+
+.tour-info1 .tour-time {
+    width: auto !important;
+    margin-top: 7px;
+}
+
+.tour-info1 {
+    padding: 30px 22px;
+}
+.time-remain {
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #f1751d;
+}
+.deal-box-five h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 7px;
+    margin-bottom: 18px;
+}
+.sent-btn button {
+    background: #660866;
+    padding: 10px 15px;
+    color: #ff8c00;
+    border: none;
+    cursor: pointer;
+}
+label.person-number {
+    display: inline-block !IMPORTANT;
+    padding: 15px 5px;
+}
+
+.no-border {
+    text-align: center;
+    padding: 20px;
+}
+    .no-border > label {
+        font-size: 1.2em;
+        color: #777;
+    }
+.form-control-checkbox {
+    display: block;
+}
+
+.coming_soon {
+    border: 1px solid #f5f2f2;
+}
+.deal-image {
+    width: 780px !important;
+    height: 500px !important;
+    position: absolute;
+    top: 0;
+}
+
+.left-offer {
+    top: 0;
+}
+.tour-info1 .tour-offer {
+    width: 70px !important;
+    height: 70px !important;
+    font-size: 15px;
+}
+    .tour-info1 .tour-offer span {
+        font-size: 24px;
+    }
+
+.tour-info1 {
+    overflow-y: auto;
+}
+
+
+textarea {
+resize:vertical;
+}
+span.danger {
+    color: red;
+}
+
+.image-selection.checked {
+    background-image: url("../../images/checked.png");
+    width: 14px;
+    height: 10px;
+    display: inline-block;
+    margin: 0 5px;
+    margin: 0 0.5rem
+}
+.select2-container--default.select2-container--focus, .select2-selection.select2-container--focus, .select2-container--default:focus, .select2-selection:focus, .select2-container--default:active, .select2-selection:active {
+    outline: none;
+    border-color: #3c8dbc !important;
+    border-width: 0.5px;
+}
+
+.tab-content > .active {
+    display: inline-block;
+    width: 100%;
+    min-height: 250px;
+}
+
+.content .overlay,
+.tab-pane .overlay, .overlay-wrapper .overlay,
+.modal-body .overlay, .overlay-wrapper .overlay {
+    z-index: 50;
+    background: rgba(255,255,255,0.7);
+    border-radius: 3px
+}
+
+    .content .overlay > .fa, .overlay-wrapper .overlay > .fa,
+    .tab-pane .overlay > .fa, .overlay-wrapper .overlay > .fa,
+    .modal-body .overlay > .fa, .overlay-wrapper .overlay > .fa {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -15px;
+        margin-top: -15px;
+        color: #000;
+        font-size: 30px
+    }
+
+
+    .content .overlay.dark, .overlay-wrapper .overlay.dark,
+    .tab-pane .overlay.dark, .overlay-wrapper .overlay.dark,
+    .modal-body .overlay.dark, .overlay-wrapper .overlay.dark {
+        background: rgba(0,0,0,0.5)
+    }
+
+
+.content > .overlay, .overlay-wrapper > .overlay, .content > .loading-img, .overlay-wrapper > .loading-img,
+.tab-pane > .overlay, .overlay-wrapper > .overlay, .content > .loading-img, .tab-pane > .loading-img,
+.modal-body > .overlay, .overlay-wrapper > .overlay, .content > .loading-img, .modal-body > .loading-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+.edit-partial {
+    display: inline-block;
+}
+
+.select2-container-addchild .select2-selection--single {
+    float: left !important;
+    width: 90% !important;
+}
+
+.select2-container-addchild .select2-selection__arrow {
+    right: 52px !important;
+}
+
+.edit-partial a {
+    margin-left: 3px;
+}
+.flight-cluded {
+    margin-top:28px;
+}
+.flight-cluded label{
+        float: left;
+    margin-right: 10px;
+}
+.flight-cluded input {
+    margin-top:0px;
+    }
+h2.city-text-details {
+    clear: both;
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f2f2f2;
+    padding-bottom: 10px;
+}
+#tourCities thead tr {
+    background:#f2f2f2;
+}
+    #tourCities thead tr th, #itemmaster thead tr th {
+        text-align: center;
+    }
+.city-delete-row-box {
+    padding: 0px !important;
+    text-align: center;
+    line-height: 48px !important;
+    margin: 0px;
+}
+.city-delete-row-box a{
+    background: #f00;
+    padding: 4px 8px;
+    border-radius: 3px;
+    color: #fff;
+}
+    .city-delete-row-box a:hover {
+        opacity:0.8;
+    }
+
+.city-edit-row-box { padding: 0px !important; text-align: center; line-height: 48px !important; margin: 0px; }
+.city-edit-row-box a { background: #3c8cbc; padding: 4px 8px; border-radius: 3px; color: #fff; }
+.city-edit-row-box a:hover { opacity: 0.8; }
+#addrow {
+    float:right;
+    margin-bottom:20px;
+}
+.itemmaster-row .field-col .select2-container--default {
+    width: 100% !important;
+}
+
+td.details-control {
+    background: url('../img/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('../img/details_close.png') no-repeat center center;
+}
+#TourRateValidaity thead tr th {
+    text-align:center;
+}

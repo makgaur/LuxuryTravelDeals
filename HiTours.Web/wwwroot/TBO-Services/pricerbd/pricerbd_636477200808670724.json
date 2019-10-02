@@ -1,0 +1,47 @@
+//-- pricerbd Api Request --
+{
+  "AdultCount": 1,
+  "ChildCount": 1,
+  "InfantCount": 1,
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "4bed8b26-f56b-4046-97fa-89d49104909f",
+  "TraceId": "16c1f0d5-c601-461f-9ff7-708845404a7e",
+  "AirSearchResult": [
+    {
+      "ResultIndex": "Obd",
+      "Source": 4,
+      "IsLCC": false,
+      "IsRefundable": false,
+      "AirlineRemark": "AI TEST",
+      "Segments": [
+        [
+          {
+            "TripIndicator": 1,
+            "SegmentIndicator": 1,
+            "Airline": {
+              "AirlineCode": "AI",
+              "AirlineName": "Air India",
+              "FlightNumber": "9643",
+              "FareClass": "U",
+              "OperatingCarrier": "9I"
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}
+//-- pricerbd Api Response --
+{
+  "Response": {
+    "ResponseStatus": 3,
+    "Error": {
+      "ErrorCode": 3,
+      "ErrorMessage": "Invalid Result Index"
+    },
+    "TraceId": "16c1f0d5-c601-461f-9ff7-708845404a7e",
+    "Origin": null,
+    "Destination": null,
+    "IsPriced": false
+  }
+}

@@ -1,0 +1,54 @@
+﻿@model System.IO.FileInfo[]
+@{ this.ViewBag.Title = "Package Images";}
+<style>
+    .copy-link {
+    display:none;
+    }
+    .view-copylink:hover .copy-link {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -6% 0 0 -17%;
+        display:block;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-antiforgery="true" method="post" enctype="multipart/form-data">
+            <div class="box no-top-border">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Upload @this.ViewBag.Title </h3>
+                    <span class="pull-right">
+                        <button id="btnSubmit" type="submit" name="Submit" class="btn btn-primary">Upload</button>
+                    </span>
+                </div>
+
+                <div class="box-body">
+                    <div class="form-group col-sm-6">
+                        <label>Upload Images</label>
+                        <input type="file" name="files" multiple />
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <div class="row text-center text-lg-left">
+                            @if (Model != null && Model.Length > 0)
+                            {
+                                foreach (var path in Model)
+                                {
+                                    <div class="col-lg-3 col-md-4 col-xs-6 view-copylink">
+                                        <span href="#" class="d-block mb-4 h-100">
+                                            <img class="img-fluid img-thumbnail" src="~/HotelImages/@path.Name" alt="@path.Name" style="width:245px;height:143px" />
+
+                                        </span>
+                                        <a href="javascript:;" class="copy-link btn btn-default copylinkToclipboard">Copy Link</a>
+                                    </div>
+                                }
+
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

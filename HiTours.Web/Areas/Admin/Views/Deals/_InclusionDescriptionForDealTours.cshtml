@@ -1,0 +1,197 @@
+﻿@model List<DealsInclusionViewModel>
+@{
+    int packageTypeID = this.ViewBag.packageTypeId;
+    int packageId = this.ViewBag.packageId;
+}
+
+<div class="panel-group" id="subAccordian">
+    @foreach (DealsInclusionViewModel inclusionModel in Model)
+    {
+        string identifier = Guid.NewGuid().ToString();
+        if (inclusionModel.TypeId == 1) //IE:Hotel
+        {
+            <div class="panel">
+                <div class="panel-heading btn-primary">
+                    <h4 class="panel-title ">
+                        <a data-toggle="collapse" data-parent="#subAccordian" href="#collapse_@identifier"><i class="fa fa-fw fa-building"></i> @Html.Raw(inclusionModel.HotelName)</a>
+                        <div class="pull-right">
+                            <a class="btn btn-xs btn-flat btn-danger margin-left-5 delete-remote-itenary" data-toggle="tooltip" title="Remove this Hotel Inclusion." href="javascript:;" data-href="@Url.Action("DeleteHotelInclusion", "Deals", new {@hotelId = inclusionModel.Id, @packageTypeId = packageTypeID, @packageId = packageId })"><i class=" fa fa-trash-o"></i> Remove</a>
+                        </div>
+                    </h4>
+                </div>
+                <div id="collapse_@identifier" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="tax-tabel-wrap">
+                            <div class="table-responsive">
+                                <table id="InclusionTable" class="table table-standard table-bordered invoice-tabel-2">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Room Type
+                                            </th>
+                                            <th>
+                                                Adult
+                                            </th>
+                                            <th>
+                                                Child
+                                            </th>
+                                            <th>
+                                                Infant
+                                            </th>
+                                            <th style="width:10px;">
+                                                Action
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (DealRoomConfigViewModel roomConfig in inclusionModel.RoomConfigurations)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <i class="fa fa-fw fa-hotel"></i> @Html.Raw(roomConfig.RoomName)
+                                                </td>
+                                                <td>
+                                                    @Html.Raw(roomConfig.Adult)
+                                                </td>
+                                                <td>
+                                                    @Html.Raw(roomConfig.Child)
+                                                </td>
+                                                <td>
+                                                    @Html.Raw(roomConfig.Infant)
+                                                </td>
+                                                <td>
+                                                    <div class="pull-right">
+                                                        <a class="btn btn-xs btn-flat btn-danger margin-left-5 delete-remote-itenary" data-toggle="tooltip" title="Remove Room Type." href="javascript:;" data-href="@Url.Action("DeleteRoomTypeInclusion", "Deals", new {@roomTypeId = roomConfig.Id, @packageTypeId = packageTypeID, @packageId = packageId })"><i class=" fa fa-trash-o"></i> Remove</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        if (inclusionModel.TypeId == 2) // IE:Flights
+        {
+            <div class="panel">
+                <div class="panel-heading btn-success">
+                    <h4 class="panel-title ">
+                        <a data-toggle="collapse" data-parent="#subAccordian" href="#collapse_@identifier"><i class="fa fa-fw fa-plane"></i> Flight on Day @inclusionModel.Day.ToString()  </a>
+                        <div class="pull-right">
+                            <a class="btn btn-xs btn-flat btn-primary margin-left-5 " data-toggle="tooltip" title="Edit this Flight Inclusion." href="javascript:;" onclick="AddFlight(@ViewBag.packageId, @ViewBag.ItinaryId, @this.ViewBag.TotalNights, @inclusionModel.Id)"><i class=" fa fa-edit"></i> Edit</a>
+                            <a class="btn btn-xs btn-flat btn-danger margin-left-5 delete-remote-itenary" data-toggle="tooltip" title="Remove this Flight Inclusion." href="javascript:;"  data-href="@Url.Action("DeleteFlightInclusion", "Deals", new {@inclusionId = inclusionModel.Id, @packageTypeId = packageTypeID, @packageId = packageId })"><i class=" fa fa-trash-o"></i> Remove</a>
+                        </div>
+                    </h4>
+                </div>
+                <div id="collapse_@identifier" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="tax-tabel-wrap">
+                            <div class="table-responsive">
+                                <table id="InclusionTable" class="table table-standard table-bordered invoice-tabel-2">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Origin
+                                            </th>
+                                            <th>
+                                                Destination
+                                            </th>
+                                            <th>
+                                                Start Time
+                                            </th>
+                                            <th>
+                                                End Time
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (DealsFlightViewModel flightViewModel in inclusionModel.FlightViewModels)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.Raw(flightViewModel.OriginName)
+                                                </td>
+                                                <td>
+                                                    @Html.Raw(flightViewModel.DestinationName)
+                                                </td>
+                                                <td>
+                                                    @Html.Raw(flightViewModel.StartTime)
+                                                </td>
+                                                <td>
+                                                    @Html.Raw(flightViewModel.EndTime)
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        if (inclusionModel.TypeId == 5) // IE: Activity
+        {
+            <div class="panel">
+                <div class="panel-heading btn-warning">
+                    <h4 class="panel-title ">
+                        <a data-toggle="collapse" data-parent="#subAccordian" href="#collapse_@identifier"><i class="fa fa-fw fa-soccer-ball-o"></i> @inclusionModel.AddOnViewModels.FirstOrDefault().Name on Day @inclusionModel.Day.ToString()</a>
+                        <div class="pull-right">
+                            <a class="btn btn-xs btn-flat btn-primary margin-left-5 " data-toggle="tooltip" title="Edit this Activity." href="javascript:;" onclick="AddActivityItinerary(@ViewBag.packageId, @ViewBag.ItinaryId, @this.ViewBag.TotalNights, @inclusionModel.Id);"><i class=" fa fa-edit"></i> Edit</a>
+                            <a class="btn btn-xs btn-flat btn-danger margin-left-5 delete-remote-itenary" data-toggle="tooltip" title="Remove this Activity." href="javascript:;" data-href="@Url.Action("DeleteAddOnInclusion", "Deals", new {@inclusionId = inclusionModel.Id, @packageTypeId = packageTypeID, @packageId = packageId })"><i class=" fa fa-trash-o"></i> Remove</a>
+                        </div>
+                    </h4>
+                </div>
+                <div id="collapse_@identifier" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="tax-tabel-wrap">
+                            <div class="table-responsive">
+                                <table id="InclusionTable" class="table table-standard table-bordered invoice-tabel-2">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Name
+                                            </th>
+                                            <th>
+                                                Adult Price
+                                            </th>
+                                            <th>
+                                                Child Price
+                                            </th>
+                                            <th>
+                                                Infant Price
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (DealsAddOnViewModel addOnViewModel in inclusionModel.AddOnViewModels)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.Raw(addOnViewModel.Name)
+                                                </td>
+                                                <td>
+                                                    @Html.Raw(addOnViewModel.AdultCharge)
+                                                </td>
+                                                <td>
+                                                    @Html.Raw(addOnViewModel.ChildCharge)
+                                                </td>
+                                                <td>
+                                                    @Html.Raw(addOnViewModel.InfantCharge)
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    }
+</div>

@@ -1,0 +1,59 @@
+﻿@model SeoDetailViewModel
+@*<div class="box-header with-border">
+        <h3 class="box-title">@this.ViewBag.Title</h3>
+        <div class="pull-right top-buttons">
+            @if (this.Model != null && this.Model.Id != 0)
+            {
+                @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/seodetail/manage") })
+            }
+            @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.ViewList, "/admin/seodetail") })
+        </div>
+    </div>*@
+<form asp-antiforgery="true" method="post" asp-action="manage" id="seodetailForm">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="PageType" />
+    <input type="hidden" asp-for="PageId" />
+
+    <div class="box-body">
+        <div class="form-group col-sm-6">
+            <label asp-for="Title"></label>
+            <input type="text" asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title"></span>
+        </div>
+
+        <div class="form-group col-sm-6">
+            <label asp-for="MetaDescription"></label>
+            <textarea asp-for="MetaDescription" class="form-control"></textarea>
+            <span asp-validation-for="MetaDescription"></span>
+        </div>
+
+        <div class="form-group col-sm-6">
+            <label asp-for="MetaKeyword"></label>
+            <textarea asp-for="MetaKeyword" class="form-control"></textarea>
+            <span asp-validation-for="MetaKeyword"></span>
+        </div>
+
+        <div class="form-group col-sm-6">
+            <label asp-for="HeaderMetaCode"></label>
+            <textarea asp-for="HeaderMetaCode" class="form-control"></textarea>
+            <span asp-validation-for="HeaderMetaCode"></span>
+        </div>
+
+        <div class="form-group col-sm-6">
+            <label asp-for="Schema"></label>
+            <textarea asp-for="Schema" class="form-control"></textarea>
+            <span asp-validation-for="Schema"></span>
+        </div>
+
+        <div class="form-group col-sm-6 hide">
+            <label asp-for="AltTag"></label>
+            <textarea asp-for="AltTag" class="form-control"></textarea>
+            <span asp-validation-for="AltTag"></span>
+        </div>
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit), new Button(Enums.ButtonType.Cancel) })
+</form>

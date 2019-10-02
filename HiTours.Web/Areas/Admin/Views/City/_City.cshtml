@@ -1,0 +1,100 @@
+﻿    @model PackageCityViewModel
+@{
+    this.Layout = null;
+    var countryctrl = Guid.NewGuid().ToString();
+    var statectrl = Guid.NewGuid().ToString();
+    var cityctrl = Guid.NewGuid().ToString();
+
+}
+
+<form asp-antiforgery="true" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    @if (Model.Id > 0)
+    {
+    <input type="hidden" name="CountryId" value="@Model.CountryId" />
+    @*<input type="hidden" name="StateId" value="@Model.StateId" />*@
+    }
+    <div class="box-body">
+        @if (Constants.CityCount >= Model.Id && Model.Id > 0)
+        {
+            <div class="form-group col-sm-6">
+                <label asp-for="Name"></label>
+                <input type="text" asp-for="Name" class="form-control" readonly />
+                <span asp-validation-for="Name"></span>
+            </div>
+
+            <div class="form-group col-sm-6">
+                <label asp-for="Code"></label>
+                <input type="text" asp-for="Code" class="form-control" readonly />
+                <span asp-validation-for="Code"></span>
+            </div>
+
+            <div class="form-group col-sm-6">
+                <label asp-for="CountryId"></label>
+                <select class="form-control @(countryctrl)" asp-for="CountryId" id="CountryId" asp-items="Model.Coutries" asp-disabled="true"
+                        select2-value="@Model.CountryId" select2-Url="/selectlist/GetPackageCountryList"
+                        select2-Dependent="true" select2-Dependent-Control=".@(statectrl)"></select>
+                <span asp-validation-for="CountryId"></span>
+            </div>
+
+            <div class="form-group col-sm-6">
+                <label asp-for="StateId"></label>
+                <select asp-for="StateId" selected="@Model.StateId" id="StateId" class="form-control @(statectrl)" asp-items="Model.States"
+                        select2-value="@Model.StateId" select2-Url="/selectlist/GetPackageSateList"
+                        select2-Dependent="true" select2-Dependent-Control=".@(cityctrl)"></select>
+                <span asp-validation-for="StateId"></span>
+            </div>
+        }
+        else
+        {
+
+            <div class="form-group col-sm-6">
+                <label asp-for="Name"></label>
+                <input type="text" asp-for="Name" class="form-control " />
+                <span asp-validation-for="Name"></span>
+            </div>
+
+            <div class="form-group col-sm-6">
+                <label asp-for="Code"></label>
+                <input type="text" asp-for="Code" class="form-control" />
+                <span asp-validation-for="Code"></span>
+            </div>
+
+            <div class="form-group col-sm-6">
+                <label asp-for="CountryId"></label>
+                <select class="form-control @(countryctrl)" asp-for="CountryId" id="CountryId" asp-items="Model.Coutries"
+                        select2-value="@Model.CountryId" select2-Url="/selectlist/GetPackageCountryList"
+                        select2-Dependent="true" select2-Dependent-Control=".@(statectrl)"></select>
+                <span asp-validation-for="CountryId"></span>
+            </div>
+
+            <div class="form-group col-sm-6">
+                <label asp-for="StateId"></label>
+                <select asp-for="StateId" selected="@Model.StateId" id="StateId" class="form-control @(statectrl)" asp-items="Model.States"
+                        select2-value="@Model.StateId" select2-Url="/selectlist/GetPackageSateList"
+                        select2-Dependent="true" select2-Dependent-Control=".@(cityctrl)"></select>
+                <span asp-validation-for="StateId"></span>
+            </div>
+        }
+        <div class="form-group col-sm-6">
+            <label asp-for="CityDescription"></label>
+            <textarea asp-for="CityDescription" class="form-control "></textarea>
+            <span asp-validation-for="CityDescription"></span>
+        </div>
+        <div class="form-group col-sm-6">
+            <label>Upload Images (Ratio 4:3)</label>
+            <input type="file" class="image-upload" asp-for="ImageFile">
+            <input type="text" class="form-control" asp-for="Image" readonly>
+            @*<div class="input-group" style="width:100%;padding-right:10px;">
+                <span class="input-group-btn">
+                    <span class="btn btn-default btn-file">
+                        Browse…
+                    </span>
+                </span>
+
+                <span asp-validation-for="Image"></span>
+            </div>*@
+        </div>
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit) })
+</form>

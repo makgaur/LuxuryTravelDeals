@@ -1,0 +1,121 @@
+﻿@model HiTours.Data.DataBase.Model.HotelierPromotionViewModel
+
+<form asp-antiforgery="true" id="formHotelPromotion" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="IsActive" />
+    <input type="hidden" asp-for="IsDeleted" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <input type="hidden" asp-for="HotelId" />
+
+    <div class="box-body">
+        <div class="form-group col-md-4">
+            <label asp-for="Type"></label>
+            <select asp-for="Type" selected="@Model.Type" class="form-control packagecountry" asp-items="Model.PromotionTypeItems"
+                    select2-value="@Model.Type"></select>
+            <span asp-validation-for="Type"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="DiscountType"></label>
+            <select asp-for="DiscountType" selected="@Model.DiscountType" class="form-control packagecountry" asp-items="Model.MarginTypeItems"
+                    select2-value="@Model.DiscountType"></select>
+            <span asp-validation-for="DiscountType"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="DiscountValue"></label>
+            <input class="form-control" asp-for="DiscountValue" type="number" placeholder="Discount Value" />
+            <span asp-validation-for="DiscountValue"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label asp-for="StartDay"></label>
+            <input class="form-control" asp-for="StartDay" type="number" placeholder="Start Day" />
+            <span asp-validation-for="StartDay"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label asp-for="EndDay"></label>
+            <input class="form-control" asp-for="EndDay" type="number" placeholder="End Day" />
+            <span asp-validation-for="StartDay"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label asp-for="BookingStartDate"></label>
+            <input class="form-control datepicker" asp-for="BookingStartDate" type="text" placeholder="Booking Start Date" />
+            <span asp-validation-for="BookingStartDate"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label asp-for="BookingEndDate"></label>
+            <input class="form-control datepicker" asp-for="BookingEndDate" type="text" placeholder="Booking End Date" />
+            <span asp-validation-for="BookingEndDate"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label asp-for="TravelStartDate"></label>
+            <input class="form-control datepicker" asp-for="TravelStartDate" type="text" placeholder="Travel Start Date" />
+            <span asp-validation-for="TravelStartDate"></span>
+        </div>
+        <div class="form-group col-md-2">
+            <label asp-for="TravelEndDate"></label>
+            <input class="form-control datepicker" asp-for="TravelEndDate" type="text" placeholder="Travel End Date" />
+            <span asp-validation-for="TravelEndDate"></span>
+        </div>
+        <div class="row" style="padding-left:15px; padding-right:15px;">
+            <div class="form-group col-md-2">
+                <label asp-for="AllWeek"></label>
+                <input asp-for="AllWeek" type="checkbox" class="minimal">
+            </div>
+            <div class="form-group col-md-1">
+                <label asp-for="Mon"></label>
+                <input asp-for="Mon" type="checkbox" class="minimal">
+            </div>
+            <div class="form-group col-md-1">
+                <label asp-for="Tue"></label>
+                <input asp-for="Tue" type="checkbox" class="minimal">
+            </div>
+            <div class="form-group col-md-1">
+                <label asp-for="Wed"></label>
+                <input asp-for="Wed" type="checkbox" class="minimal">
+            </div>
+            <div class="form-group col-md-1">
+                <label asp-for="Thu"></label>
+                <input asp-for="Thu" type="checkbox" class="minimal">
+            </div>
+            <div class="form-group col-md-1">
+                <label asp-for="Fri"></label>
+                <input asp-for="Fri" type="checkbox" class="minimal">
+            </div>
+            <div class="form-group col-md-1">
+                <label asp-for="Sat"></label>
+                <input asp-for="Sat" type="checkbox" class="minimal">
+            </div>
+            <div class="form-group col-md-1">
+                <label asp-for="Sun"></label>
+                <input asp-for="Sun" type="checkbox" class="minimal">
+            </div>
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="form-group col-md-4">
+        <label asp-for="CouponCode"></label>
+        <input class="form-control" asp-for="CouponCode" type="text" placeholder="Coupon Code" />
+        <span asp-validation-for="CouponCode"></span>
+    </div>
+    <div class="form-group col-md-4">
+        <label asp-for="LengthOfStay"></label>
+        <input class="form-control" asp-for="LengthOfStay" type="number" placeholder="Length Of Stay" />
+        <span asp-validation-for="LengthOfStay"></span>
+    </div>
+    <div class="form-group col-md-4">
+        <label asp-for="Remark"></label>
+        <input class="form-control" asp-for="Remark" type="text" placeholder="Remark (Internal)" />
+        <span asp-validation-for="Remark"></span>
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+</form>
+<script>
+
+    $(document).ready(function (e) {
+        $('input[type="checkbox"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue'
+        });
+    })
+</script>

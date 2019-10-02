@@ -1,0 +1,166 @@
+﻿@model AirSearchResponse
+@{
+    var apiError = new ApiError();
+    var outBondFligts = new List<AirSearchResult>();
+    var inBoundFlights = new List<AirSearchResult>();
+    var interNationalReturnFlight = false;
+    if (Model != null && Model.Response != null)
+    {
+        apiError = Model.Response.Error ?? new ApiError();
+        if (Model.Response != null)
+        {
+            if (Model.Response.Results != null)
+            {
+                outBondFligts.AddRange(Model.Response.Results.FirstOrDefault());
+
+                if (Model.Response.Results.Length == 2)
+                {
+                    inBoundFlights.AddRange(Model.Response.Results.LastOrDefault());
+                }
+            }
+
+            interNationalReturnFlight = Model.Response.InterNationalReturnFlight;
+        }
+    }
+
+}
+<div>
+    <input type="hidden" name="apierror" value="@Model.Response.Error.ErrorMessage" />
+    <input type="hidden" name="SearchTokenId" value="@Model.Response.TokenId" />
+    <input type="hidden" name="SearchTraceId" value="@Model.Response.TraceId" />
+    <input type="hidden" asp-for="Response.SessionExpired" />
+    <input type="hidden" name="flight-list" value="@(JsonConvert.SerializeObject(outBondFligts))" />
+    @if ((Model.Response.JourneyType == (int)JourneyType.Return) && (!interNationalReturnFlight) && !(outBondFligts.Count == 0 && inBoundFlights.Count == 0))
+    {
+        <div class="selectedFlightBox" id="selectedFlights" style="padding-bottom:0px;">
+            <div class="row">
+                <div class="col-sm-5">
+
+                    <ul class="selectFlightView">
+                        <li class="results_sorting">
+                            <label class="result_label">Airline</label>
+                            <label class="result_label">Depart</label>
+                            <label class="result_label">Arrival</label>
+                        </li>
+
+                        <li class="result_selectFlight outbond-flight">
+                            <ul class="airline_details_card">
+                                <li class="airline_details"><i></i></li>
+                                <li class="airline_details__name">
+                                    <span></span>
+                                    <span class="airline_code">
+                                        <span></span>
+                                    </span>
+                                </li>
+                            </ul>
+                            <div class="result_flight__departure_and_stops">
+                                <span class="result_flight__departure_and_stops__departure min_height_66"><span class="jrny_date"></span></span>
+                            </div>
+                            <div class="result_flight__arrival">
+                                <span class="result_flight__arrival__wrapper min_height_66">
+                                    <span class="arrival">
+                                        <span><span class="result_flight__arrival__next_day"></span></span>
+                                    </span>
+                                </span>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                    <a class="result_flight__details_button change-flight" data-scroll=".outbound-flight-list">Change OutBound Flight</a>
+                </div>
+
+                <div class="col-sm-5">
+                    <ul class="selectFlightView">
+                        <li class="results_sorting">
+                            <label class="result_label">Airline</label>
+                            <label class="result_label">Depart</label>
+                            <label class="result_label">Arrival</label>
+                        </li>
+
+                        <li class="result_selectFlight inbond-flight">
+                            <ul class="airline_details_card">
+                                <li class="airline_details"><i></i></li>
+                                <li class="airline_details__name">
+                                    <span></span>
+                                    <span class="airline_code">
+                                        <span></span>
+                                    </span>
+                                </li>
+                            </ul>
+                            <div class="result_flight__departure_and_stops">
+                                <span class="result_flight__departure_and_stops__departure min_height_66"><span class="jrny_date"></span></span>
+                            </div>
+                            <div class="result_flight__arrival">
+                                <span class="result_flight__arrival__wrapper min_height_66">
+                                    <span class="arrival">
+                                        <span><span class="result_flight__arrival__next_day"></span></span>
+                                    </span>
+                                </span>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                    <a class="result_flight__details_button change-flight" data-scroll=".inbound-flight-list">Change InBound Flight</a>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="result_flight__price shift_down_40">
+                        <span class="">
+                            ₹ <span id="dvflightPrice" style="display:inline-block;">0</span>
+                        </span><br>
+                    </div>
+
+                    <div class="flight_book_btn_wrapper">
+                        <button class="button_search_panel_new book-virtual">Book</button>
+                        <button class="button_search_panel_new hide" data-flight="book">Book</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    }
+
+
+    <div>
+        @if (Model.Response.ResponseStatus == 1)
+        {
+            if (!interNationalReturnFlight)
+            {
+                <div class="row outbound-flight-list">
+                    <div class="col-sm-6">
+                        <div class="flight-heading">All OutBounds flights(@(outBondFligts.Count))</div>
+                    </div>
+                </div>
+                @Html.Partial("AirSearchResults", outBondFligts)
+                <div class="row inbound-flight-list">
+                    <div class="col-sm-6">
+                        <div class="flight-heading">All InBounds flights(@(inBoundFlights.Count))</div>
+                    </div>
+                </div>
+                @Html.Partial("AirSearchResults", inBoundFlights)
+            }
+            else
+            {
+                <div class="row outbound-flight-list">
+                    <div class="col-sm-6">
+                        <div class="flight-heading">All flights(@(outBondFligts.Count))</div>
+                    </div>
+                </div>
+                @Html.Partial("AirSearchResults", outBondFligts, new ViewDataDictionary(ViewData) { { "IsLCC", interNationalReturnFlight } })
+            }
+
+
+        }
+        else
+        {
+            <div style="text-align: center;color: #660866;font-size: 1.2em;line-height: 150px;">
+                @Model.Response.Error.ErrorMessage
+            </div>
+        }
+      
+    </div>
+    <div style="clear:both"></div>
+</div>

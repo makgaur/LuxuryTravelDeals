@@ -1,0 +1,115 @@
+﻿@model AirSearch
+@{  this.ViewBag.Title = "Search Request";}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+            </div>
+            <form asp-antiforgery="true" method="post">
+                <div class="box-body">
+                    <div class="form-group col-sm-6">
+                        <label asp-for="EndUserIp"></label>
+                        <input type="text" asp-for="EndUserIp" data-autocomplete="EndUserIp" class="form-control" />
+                        <span asp-validation-for="EndUserIp"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="TokenId"></label>
+                        <input type="text" asp-for="TokenId" data-autocomplete="TokenId" class="form-control" />
+                        <span asp-validation-for="TokenId"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="AdultCount"></label>
+                        <input type="text" asp-for="AdultCount" class="form-control numericOnly" />
+                        <span asp-validation-for="AdultCount"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="ChildCount"></label>
+                        <input type="text" asp-for="ChildCount" class="form-control numericOnly" />
+                        <span asp-validation-for="ChildCount"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="InfantCount"></label>
+                        <input type="text" asp-for="InfantCount" class="form-control numericOnly" />
+                        <span asp-validation-for="InfantCount"></span>
+                    </div>
+
+                    <div class="form-group col-sm-4">
+                        <label asp-for="DirectFlight"></label>
+                        <div class="form-control ">
+                            <div class="radiobtn-group">
+                                <label class="">Yes</label>
+                                @this.Html.RadioButtonFor(model => model.DirectFlight, "true")
+                            </div>
+                            <div class="radiobtn-group">
+                                <label class="">No</label>
+                                @this.Html.RadioButtonFor(model => model.DirectFlight, "false")
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-4">
+                        <label asp-for="OneStopFlight"></label>
+                        <div class="form-control ">
+                            <div class="radiobtn-group">
+                                <label class="">Yes</label>
+                                @this.Html.RadioButtonFor(model => model.OneStopFlight, "true")
+                            </div>
+                            <div class="radiobtn-group">
+                                <label class="">No</label>
+                                @this.Html.RadioButtonFor(model => model.OneStopFlight, "false")
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="JourneyType"></label>
+                        <select class="form-control " asp-for="JourneyType" asp-items="@Html.EnumSelectList<JourneyType>(true)"></select>
+                        <span asp-validation-for="JourneyType"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="PreferredAirlines"></label>
+                        <select class="form-control" asp-for="PreferredAirlines" asp-items="@Html.EnumSelectList<AirLinePreferred>(true,false)"></select>
+                    </div>
+
+                    <div class="form-group col-sm-4">
+                        <label asp-for="Sources"></label>
+                        <select class="form-control"
+                                asp-for="Sources"
+                                asp-items="@Html.EnumSelectList<AirLineSource>(true,false)"></select>
+                    </div>
+                    <div class="form-group col-sm-12">
+                        <div class="segments">
+                            <div class="segment-header">
+                                <span class="pull-left"> Segments</span>
+                                <span class="pull-right"> <a class="btn btn-primary btn-xs addnew-segment hide"><i class="fa fa-plus"></i> Add New</a></span>
+                            </div>
+                            <div id="segments-body">
+                                @if (Model.Segments != null && Model.Segments.Length > 0)
+                                {
+                                    foreach (var item in Model.Segments)
+                                    {
+                                        <span class="hide"></span>
+                                        @Html.Partial("_Segment", item);
+
+                                    }
+                                }
+
+                            </div>
+                            <div style="clear:both"></div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+                <div class="box-footer" align="center">
+                    <button type="submit" class="btn btn-primary">Get Result</button>
+                </div>
+            </form>
+        </div>
+        @Html.Partial("_ApiResult")
+    </div>
+</div>
+

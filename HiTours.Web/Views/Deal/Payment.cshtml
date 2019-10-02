@@ -1,0 +1,203 @@
+﻿@model BookingPayment
+@{
+
+    string[] dayNames = CultureInfo.CurrentCulture.DateTimeFormat.AbbreviatedDayNames;
+    ////var dealEndTime = (package.ValidTo - DateTime.Now);
+
+    this.ViewBag.HeaderWithoutIcons = true;
+}
+<div class="wrapper gray_bg">
+    <div class="container">
+        <section class="main-detail-box">
+            <aside id="breadcrumb">
+                <div class="page-center">
+                    <div class="breadcrumb-container">
+                        <div class="step-container left active">
+                            <span class="step">1</span>
+                            <p class="step-title">Create</p>
+                        </div>
+                        <div class="step-container middle">
+                            <span class="step">2</span>
+                            <p class="step-title">Payment</p>
+                        </div>
+                        <div class="step-container right">
+                            <span class="step">3</span>
+                            <p class="step-title">Confirmation</p>
+                        </div>
+                        <span class="line left active"></span>
+                        <span class="line right"></span>
+                    </div>
+                </div>
+            </aside>
+            <div class="row">
+                <div class="col-md-8 detail-left">
+                    <div class="details-passenger-box">
+
+                        <div class="border-box">
+                            <h2 class="detail-tab">Your Contact Details</h2>
+                            <div class="row">
+                                <div class="form-group col-sm-2">
+                                    <label>Title</label>
+                                    <select class="form-control" asp-for="Salutation" asp-items="@(new SelectList(Html.GetEnumSelectList<Enums.Salutation>(),"Text","Text"))" class="skip-select2" asp-disabled="true"></select>
+
+                                </div>
+
+                                <div class="form-group col-sm-5">
+                                    <label >First Name</label>
+                                    <span class="form-control">@Model.FirstName</span>
+
+                                </div>
+
+                                <div class="form-group col-sm-5">
+                                    <label>Last Name</label>
+                                    <span class="form-control">@Model.LastName</span>
+
+                                </div>
+
+                                <div class="form-group col-sm-6">
+                                    <label asp-for="Email"></label>
+                                    <span class="form-control">@Model.Email</span>
+
+                                </div>
+
+                                <div class="form-group col-sm-6">
+                                    <label>Mobile<span>*</span></label>
+                                    <span class="form-control">@Model.Mobile</span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="clr"></div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-4 detail-right">
+                    <div class="deal-box-five">
+                        <div class="tour-time" align="center">
+                            <img src="/packages/@Model.PackageImage"
+                                 class="img-responsive" auto-resize="true" width="323" height="219"
+                                 style="margin-top: 13px;width: 323px;height: 219px;" />
+
+                        </div>
+
+                        <p>
+                            @Model.HotelName<br />
+                            @Model.CityName - @Model.CountryName<br />
+                            @Model.DealQuotes
+                        </p>
+
+                    </div>
+
+                    <div class="product-details-box-two">
+                        <ul>
+                            <li>City: </li>
+                            <li>@Model.CityName </li>
+                            <li>Start date: </li>
+                            <li>@($"{dayNames[(int)Model.CheckInDate.DayOfWeek]} {Model.CheckInDate.ToString("dd MMM yyyy")}") </li>
+                            <li>End date : </li>
+                            <li>@($"{dayNames[(int)Model.CheckOutDate.DayOfWeek]} {Model.CheckOutDate.ToString("dd MMM yyyy")}") </li>
+                            <li>Duration : </li>
+                            <li>@($"{Model.Days} Days - {Model.Nights} Nights")</li>
+                        </ul>
+                        <div class="clr"></div>
+                    </div>
+
+                    <div class="participants-adult-box">
+                        <h2>Participants : <span id="spnTotalAdults">@(Model.TotalAdults)</span> @(Model.TotalAdults > 1 ? "Travellers" : "Traveller")</h2>
+                        @(Model.AdultDescriptions)
+                        <div class="clr"></div>
+                    </div>
+
+                    <div class="total-amout-box">
+                        <ul>
+                            <li>Holiday price</li>
+                            <li class="amount-box"><i><i class="fa fa-inr" aria-hidden="true"></i> </i>@((Model.BookingPrice).ToAmount())</li>
+                            <li>Tax</li>
+                            <li class="amount-box"><i><i class="fa fa-inr" aria-hidden="true"></i> </i>@((Model.GstAmount).ToAmount())</li>
+                            <li>Total inc.taxes</li>
+                            <li class="amount-box"><i><i class="fa fa-inr" aria-hidden="true"></i> </i>@((Model.BookingPrice + Model.GstAmount).ToAmount())</li>
+                        </ul>
+                        <div class="clr"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>
+<form action="bookingconfirmation" method="post">
+    <script src="@Model.JsSrc"
+            data-key="@Model.DataKey"
+            data-amount="@Model.DataAmount"
+            data-name="@Model.DataName"
+            data-description="@Model.DataDescription"
+            data-order_id="@Model.DataOrderId"
+            data-image="@Model.DataImage"
+            data-prefill.name="@Model.DataPrefillName"
+            data-prefill.email="@Model.DataPrefillEmail"
+            data-prefill.contact="@Model.DataPrefillContact"
+            data-theme.color="@Model.DataThemeColor"
+            data-modal.escape="false"
+            data-modal.ondismiss="getnamesuccess">
+       
+    </script>
+    <input type="hidden" value="Hidden Element" name="hidden">
+
+</form>
+
+@*<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        var options = {
+            "key": "@Model.DataKey",
+            "amount": "@Model.DataAmount", // 2000 paise = INR 20
+            "name": "@Model.DataName",
+            "description": "@Model.DataDescription",
+            "image": "/@Model.DataImage",
+            "handler": function (response) {
+                alert(response.razorpay_payment_id);
+            },
+            "prefill": {
+                "name": "@Model.DataPrefillName",
+                "email": "@Model.DataPrefillEmail"
+            },
+
+            "modal": {
+                "ondismiss": function () { alert('dismis') },
+                "escape":false
+            },
+            "theme": {
+                "color": "#F37254"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+
+        rzp1.open();
+
+    </script>*@
+@section scripts {
+    <script>
+        
+        $(function () {                
+                $(".razorpay-payment-button").click();
+                $(".razorpay-payment-button").hide();
+                ////options = {
+
+                ////    modal: {
+                ////        escape: false,
+                ////        ondismiss: function () {
+                ////            alert('test');
+                ////            // you can place return url logic here.
+                ////            // e.g. location.href = 'https://return-url';
+                ////        }
+                ////    }
+                ////}
+            })
+    </script>
+}
+
+
+

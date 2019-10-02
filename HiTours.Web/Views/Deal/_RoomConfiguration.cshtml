@@ -1,0 +1,511 @@
+﻿@model  List<DealRoomConfigViewModel>
+@using HiTours.Models
+<div class="row hidden-xs">
+    <div class="col-sm-12 col-md-12 col-lg-12 select-room no-padding-left-right" >
+        <p>SELECT ROOMS</p>
+        <div class="room-list">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var identifier = Guid.NewGuid();
+                var RoomImage = Model[i].RoomImageGalleryViewModel.HotelierRoomImageViewModels;
+                <div class="modal fade hidden-xs" id="galleryModal_@identifier.ToString()" role="dialog">
+                    <div class="modal-dialog gallery_modal_dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content gallery-model-content">
+                            <div class="gallery-model-Header">
+                                <button type="button" class="close gallery-model-close" data-dismiss="modal"><img src="~/images/Close_Icon.svg" alt="close_icon" class="image-small-24" /></button>
+                                <h4 class="gallery-modal-title">@Model[i].RoomName</h4>
+                                <hr class="hr-grey-bottom w75">
+                            </div>
+                            <div class="gallery-modal-body">
+                                <div class="gallery-carousel">
+
+
+                                 <div id="galleryRoom_@identifier" class="carousel slide gallery_carousel_thumbnail slide galleryRoom" data-interval="false" data-ride="carousel">
+                                   
+                                <!-- Wrapper for slides -->
+                                        <div class="carousel-inner gallery-carousel-inner">
+                                            @for (int j = 0; j < RoomImage.Count; j++)
+                                            {
+                                                <div class="item @(j == 0 ? "active": string.Empty)" data-count="@(j)" data-caption="@RoomImage[j].Caption">
+                                                    <div class="col-xs-12 col-sm-4 image-padding" id="remove-caption">
+                                                        <img src="~/DealImages/@RoomImage[j].Image" alt="Gallery_main_image" />
+
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="gallery-navigation gallery-navigation-left">
+                                            <a href="javascript:;" role="button" onclick="GalleryRoomLeft('#galleryRoom_@identifier')"><img src="~/images/Gallery_left_icon.svg" alt="Gallery_left_icon" class="image-small-48" /></a>
+                                        </div>
+                                        <div class="gallery-navigation gallery-navigation-right">
+                                            <a href="javascript:;" role="button" onclick="GalleryRoomRight('#galleryRoom_@identifier')"><img src="~/images/Gallery_right_icon.svg" alt="Gallery_left_icon" class="image-small-48" /></a>
+                                        </div>
+
+                                    </div>
+                                    <!--/.Carousel Wrapper-->
+                                </div>
+                                <div class="gallery-carousel-bottom ">
+                                    <!-- Indicators -->
+                                    <div class="col-sm-12 col-md-12 col-lg-12 gallery-carousel-caption">
+
+                                        <h3 class="gallery-carousel-title">@RoomImage.Select(x => x.Caption).FirstOrDefault()</h3>
+                                        @*<p class="gallery-carousel-description">@Model.Select(x => x.Caption).FirstOrDefault()</p>*@
+                                        <div class="gallery-carousel-arrow">
+                                            <a href="javascript:;" role="button" onclick="GalleryRoomLeft('#galleryRoom_@identifier')"><img src="~/images/Chevron_left_pink.svg" alt="left_arrow" class="image-small-24" /></a> <span> <span class="current-slide-number">1</span> / @RoomImage.Count </span><a href="javascript:;" role="button" onclick="GalleryRoomRight('#galleryRoom_@identifier')"><img src="~/images/Chevron_Right_Pink.svg" alt="right_arrow" class="image-small-24" /></a>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12 col-lg-8">
+
+
+                                        <ol class="gallery-indicators">
+                                            @for (int j = 0; j < RoomImage.Count ; j++)
+                                            {
+                                                <li data-target="#galleryRoom_@identifier" data-slide-to="@j" class="@(j == 0? "active": string.Empty)"><img src="~/DealImages/@RoomImage[j].Image" alt="gallery_thumbnail" /></li>
+                                            }
+                                        </ol>
+                                    </div>
+
+                                    <div id="" class="carousel gallery-carousel-review-container carousel-fade slide col-sm-12 col-md-12 col-lg-4" data-ride="carousel">
+
+
+                                        <!-- Wrapper for slides -->
+                                        <div class="carousel-inner gallery-carousel-review-inner slick-mobile-gallery">
+                                            @if (Model[i].RoomImageGalleryViewModel.ProductReviewViewModels != null)
+                                            {
+                                                for (int k = 0; k < Model[i].RoomImageGalleryViewModel.ProductReviewViewModels.Count; k++)
+                                                {
+                                                    var item = Model[i].RoomImageGalleryViewModel.ProductReviewViewModels[k];
+
+                                                    <div class="item @(k==0 ? "active":string.Empty) gallery-carousel-review">
+                                                        <img src="~/images/Blockquote Icon.svg" alt="quote-icon" class="blackquote-icon" />
+                                                        <p>
+                                                            @item.Review
+                                                        </p>
+                                                        <h3>@item.Name</h3>
+                                                        <h4>@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.ReviewDate.Month)  @item.ReviewDate.Year</h4>
+                                                    </div>
+
+                                                }
+                                            }
+
+
+
+                                        </div>
+
+
+
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="room-container">
+                    <div class="room-details-container">
+                        <div class="room-image" data-target-gallery="#galleryModal_@identifier.ToString()" data-count="@Model[i].RoomImageGalleryViewModel.HotelierRoomImageViewModels.Count">
+                            <img src="~/DealImages/@Model[i].CardImg" alt="room_photo" />
+                            <div class="room-expand-container">
+
+                                @if (Model[i].RoomImageGalleryViewModel.HotelierRoomImageViewModels.Count > 0)
+                                {
+                                    <img src="~/images/room_expand.svg" alt="room_expand_icon" />
+                                    <span class="room_expand_text">@Model[i].RoomImageGalleryViewModel.HotelierRoomImageViewModels.Count More Photos</span>
+                                }
+
+                            </div>
+                            
+                        </div>
+                        <div class="room-detail">
+                            <div class="room-name-header row">
+                                <span class="col-sm-6 col-md-6 col-lg-6 no-padding-left-right">
+                                    @Model[i].RoomName
+                                @if (!string.IsNullOrEmpty(Model[i].Description))
+                                {
+                                    <span class="cursor-pointer"><img src="~/images/Info_Icon.svg" alt="info-icon" data-toggle="tooltip" title="@Model[i].Description" /></span>
+                                }
+
+                                                            </span>
+                                <span class="col-sm-6 col-md-6 col-lg-6 no-right-padd padding-left-47">Accommodates Upto</span>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 room-price no-padding-left-right">
+                                @{ 
+                                    DealsRatePlanViewModel minRatePlan = Model[i].DealsRatePlanViewModels.FirstOrDefault();
+                                    List<DealInventoryModel> inventoryModels = JsonConvert.DeserializeObject<List<DealInventoryModel>>(minRatePlan.InventorySerialized);
+                                    decimal totalPriceBase = 0;
+                                    foreach (var item in inventoryModels)
+                                    {
+                                        totalPriceBase = totalPriceBase + (item.Price.Value + item.Surgcharge.Value /*+ ((item.Price.Value + item.Surgcharge.Value) * (minRatePlan.MarkUp.HasValue ? minRatePlan.MarkUp.Value : 0)) / 100*/);
+                                    }
+                                    totalPriceBase = totalPriceBase + (totalPriceBase * (minRatePlan.MarkUp.HasValue ? minRatePlan.MarkUp.Value : 0) / 100);
+                                    totalPriceBase = totalPriceBase / 2;
+                                    totalPriceBase = totalPriceBase + (minRatePlan.ExtraSupplement.HasValue ? (minRatePlan.ExtraSupplement.Value / 2) + ((minRatePlan.ExtraSupplement.Value / 2) * (minRatePlan.MarkUp.HasValue ? minRatePlan.MarkUp.Value : 0)/100)  : 0);
+                                }
+                                <h2>₹ @Math.Round(totalPriceBase, MidpointRounding.AwayFromZero).ToAmount()<span class="person-span">/pers<sup>*</sup></span></h2>
+                                <h6>for @((this.ViewBag.SelectedEndDate - this.ViewBag.SelectedStartDate).Days) nights</h6>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 room-price-right no-padding-left-right">
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 room-price-adult no-right-padd">
+                                    @if (Model[i].Adult != 0)
+                                    {
+                                        <h2>@Model[i].Adult x <img src="~/images/Adults_Icon.svg" alt="adult-icon" /></h2>
+                                        <h6>Adults</h6>
+                                    }
+
+                                </div>
+                                <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 room-price-kid no-right-padd">
+                                    @if (Model[i].Child != 0)
+                                    {
+                                        <h2>@Model[i].Child x <img src="~/images/Adults_Icon.svg" alt="adult-icon" /></h2>
+                                        <h6>Kids (2 - 12)</h6>
+                                    }
+                                </div>
+                            </div>
+                            <div class="room-features">
+                                @for (int a = 0; a < Model[i].RoomAmenties.Count; a++)
+                                {
+                                    <div class="col-md-6 col-sm-6 no-padding-left-right @(a%2 == 1 ? "align-right": string.Empty)">
+                                        <span>@Model[i].RoomAmenties[a]</span>
+                                    </div>
+                                }
+
+                                @*<div class="col-md-6 align-right" style="padding-left:0px; padding-right:0px;">
+                                <span>Sleeps up to four people</span>
+                            </div>
+                            <div class="col-md-6" style="padding-left:0px; padding-right:0px;">
+                                <span>Private jacuzzi</span>
+                            </div>
+                            <div class="col-md-6 align-right" style="padding-left:0px; padding-right:0px;">
+                                <span>Queen-size bed</span>
+                            </div>
+                            <div class="col-md-6" style="padding-left:0px; padding-right:0px;">
+                                <span>Queen-size bed</span>
+                            </div>
+                            <div class="col-md-6 align-right" style="padding-left:0px; padding-right:0px;">
+                                <span>Queen-size bed</span>
+                            </div>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="room-add">
+                        <div class="room-add-title">
+                            <span>ADD ROOM</span>
+                        </div>
+                        <div class="rate-plans">
+                            @{List<DealsRatePlanViewModel> ratePlans = Model[i].DealsRatePlanViewModels;
+                                for (int k = 0; k < ratePlans.Count; k++)
+                                {
+                                    <div class="room col-md-6 col-sm-6">
+                                        <div class="col-sm-8 col-md-8 col-lg-8 no-padding-left-right">
+                                            <h2>@ratePlans[k].Name</h2>
+                                            @{
+                                                DealsRatePlanViewModel thisRatePlan = ratePlans[k];
+                                                List<DealInventoryModel> inventoryModelsSubRatePlan = JsonConvert.DeserializeObject<List<DealInventoryModel>>(thisRatePlan.InventorySerialized);
+                                                decimal totalPriceThisPlan = 0;
+                                                foreach (var item in inventoryModelsSubRatePlan)
+                                                {
+                                                    totalPriceThisPlan = totalPriceThisPlan + (item.Price.Value + item.Surgcharge.Value + ((item.Price.Value + item.Surgcharge.Value) * (thisRatePlan.MarkUp.HasValue ? thisRatePlan.MarkUp.Value : 0)) / 100) / 2;
+                                                }
+                                                totalPriceThisPlan = totalPriceThisPlan + (thisRatePlan.ExtraSupplement.HasValue ? (thisRatePlan.ExtraSupplement.Value / 2) + ((thisRatePlan.ExtraSupplement.Value /2) * (thisRatePlan.MarkUp.HasValue ? thisRatePlan.MarkUp.Value : 0)/100) : 0);
+                                            }
+                                            <h6>@(k == 0 ? "No Additional Cost" : totalPriceThisPlan - totalPriceBase == 0 ? "No Additional Cost" : "+ ₹" + Math.Round(totalPriceThisPlan - totalPriceBase,MidpointRounding.AwayFromZero).ToAmount()) </h6>
+
+                                        </div>
+
+                                        <div class="col-sm-4 col-md-4 col-lg-4 no-padding-left-right">
+                                            <button type="button"
+                                                    data-rc-id="@Model[i].Id"
+                                                    data-rateplan-id="@ratePlans[k].Id"
+                                                    data-room-type-id="@Model[i].RoomTypeId"
+                                                    data-target="#room_expand_@identifier"
+                                                    class="btn-add-room"
+                                                    data-max="@Model[i].Max"
+                                                    data-adult="@Model[i].Adult"
+                                                    data-aprice-dbo="@ratePlans[k].Price"
+                                                    data-aprice-sbo="@ratePlans[k].SingleSupplement"
+                                                    data-exaprice="@ratePlans[k].ExtraAdult"
+                                                    data-excprice="@ratePlans[k].ExtraChild_WB"
+                                                    data-exiprice="@ratePlans[k].ExtraInfant"
+                                                    data-markup="@ratePlans[k].MarkUp"
+                                                    data-supplement="@ratePlans[k].ExtraSupplement"
+                                                    data-child="@Model[i].Child"
+                                                    data-infants="@Model[i].Infant"
+                                                    data-room-name="@Model[i].RoomName"
+                                                    data-rate-plan-name="@ratePlans[k].Name"
+                                                    data-inventory="@ratePlans[k].InventorySerialized"
+                                                    data-phsupplement="@ratePlans[k].ExtraSupplementPerHead"
+                                                    data-freechild="@Model[i].FreeChild"
+                                                    data-freeinfant="@Model[i].FreeInfant"
+                                                    data-rc-serialized="@JsonConvert.SerializeObject(Model[i])"
+                                                    data-price-text="@(k == 0 ? "No Additional Cost" : totalPriceThisPlan - totalPriceBase == 0 ? "No Additional Cost" : "+ ₹" + Math.Round(totalPriceThisPlan - totalPriceBase, MidpointRounding.AwayFromZero).ToAmount())">
+                                                ADD
+                                            </button>
+                                        </div>
+                                    </div>
+                                };
+                            }
+                        </div>
+
+
+                    </div>
+                    <div id="room_expand_@identifier" class="room-expand" data-room-name="@Model[i].RoomName">
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@*Room_configuration_mobile_view*@ 
+
+<div class="row hidden-sm hidden-md hidden-lg">
+    <div class="col-xs-12 select-room no-padding-left-right">
+        <p class="select-room-text">SELECT ROOMS</p>
+        <div class="room-list">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var identifier = Model[i].Id;
+                var RoomImage = Model[i].RoomImageGalleryViewModel.HotelierRoomImageViewModels;
+           
+                <div class="room-container room-gallery col-xs-12">
+                    <div class="room-details-container col-xs-12">
+                        <p class="room-name-text">
+                            @Model[i].RoomName
+                                                @if (!string.IsNullOrEmpty(Model[i].Description))
+                                                {
+                            <img src="~/images/Info_Icon.svg" alt="info-icon" data-toggle="tooltip" title="@Model[i].Description" />
+                                                }
+
+                                                
+                                            </p>
+                        <div class="room-image RoomGallery col-xs-12" data-target-gallery="#MobileGallery_@identifier.ToString()" data-count="@Model[i].RoomImageGalleryViewModel.HotelierRoomImageViewModels.Count">
+                            <div class="col-xs-4 room-image-left RoomGalleryImage">
+                                <img src="~/DealImages/@Model[i].CardImg" alt="room_photo" />
+                            </div>
+
+                            <div class="col-xs-4 no-padding-left-right RoomGalleryImage">
+                                <img src="~/DealImages/@(Model[i].RoomImageGalleryViewModel.HotelierRoomImageViewModels.Count > 0 ? Model[i].RoomImageGalleryViewModel.HotelierRoomImageViewModels.Select(x => x.Image).FirstOrDefault() : Model[i].CardImg) " alt="room_photo" />
+                            </div>
+
+
+                            <div class="col-xs-4 room-image-right RoomGalleryImage">
+                                <div class="open-room-container">
+                                    @if (Model[i].RoomImageGalleryViewModel.HotelierRoomImageViewModels.Count > 0)
+                                    {
+                                        <span> +@(Model[i].RoomImageGalleryViewModel.HotelierRoomImageViewModels.Count > 0 ? (Model[i].RoomImageGalleryViewModel.HotelierRoomImageViewModels.Count - 2) < 0 ? "0" : (Model[i].RoomImageGalleryViewModel.HotelierRoomImageViewModels.Count - 2).ToString() : "0")</span>
+                                    }
+
+                                </div>
+                                <div class="dark-overlay">
+                                    <img src="~/DealImages/@(Model[i].RoomImageGalleryViewModel.HotelierRoomImageViewModels.Count > 0 ? Model[i].RoomImageGalleryViewModel.HotelierRoomImageViewModels.Select(x => x.Image).Skip(1).FirstOrDefault() : Model[i].CardImg)" alt="room_photo" />
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="room-detail col-xs-12">
+                            <div class="col-xs-6 room-price no-padding-left-right">
+                                @{
+                                    DealsRatePlanViewModel minRatePlan = Model[i].DealsRatePlanViewModels.FirstOrDefault();
+                                    List<DealInventoryModel> inventoryModels = JsonConvert.DeserializeObject<List<DealInventoryModel>>(minRatePlan.InventorySerialized);
+                                    decimal totalPriceBase = 0;
+                                    foreach (var item in inventoryModels)
+                                    {
+                                        totalPriceBase = totalPriceBase + (item.Price.Value + item.Surgcharge.Value /*+ ((item.Price.Value + item.Surgcharge.Value) * (minRatePlan.MarkUp.HasValue ? minRatePlan.MarkUp.Value : 0)) / 100*/);
+                                    }
+                                    totalPriceBase = totalPriceBase + (totalPriceBase * (minRatePlan.MarkUp.HasValue ? minRatePlan.MarkUp.Value : 0) / 100);
+                                    totalPriceBase = totalPriceBase / 2;
+                                    totalPriceBase = totalPriceBase + (minRatePlan.ExtraSupplement.HasValue ? (minRatePlan.ExtraSupplement.Value / 2) + ((minRatePlan.ExtraSupplement.Value / 2) * (minRatePlan.MarkUp.HasValue ? minRatePlan.MarkUp.Value : 0) / 100) : 0);
+                                }
+                                <h2>₹ @Math.Round(totalPriceBase, MidpointRounding.AwayFromZero).ToAmount()<span class="person-span">/pers<sup>*</sup></span></h2>
+                                <h6>for @((this.ViewBag.SelectedEndDate - this.ViewBag.SelectedStartDate).Days) nights</h6>
+                            </div>
+                            <div class="col-xs-6 room-price-right no-padding-left-right">
+                                <div class="col-xs-6 room-price-adult no-right-padd">
+                                    @if (Model[i].Adult != 0)
+                                    {
+                                        <h2>@Model[i].Adult x <img src="~/images/Adults_Icon.svg" alt="adult-icon" /></h2>
+                                        <h6>Adults</h6>
+                                    }
+                                </div>
+                                <div class="col-xs-6 room-price-kid no-right-padd">
+                                    @if (Model[i].Child != 0)
+                                    {
+                                        <h2>@Model[i].Child x <img src="~/images/Adults_Icon.svg" alt="adult-icon" /></h2>
+                                        <h6>Kids (2 - 12)</h6>
+                                    }
+
+                                </div>
+                            </div>
+                            <div class="room-features col-xs-12">
+                                @for (int a = 0; a < Model[i].RoomAmenties.Count; a++)
+                                {
+                                    <div class="col-xs-6 no-padding-left-right @(a%2 == 1 ? "align-right": string.Empty)">
+                                        <span>@Model[i].RoomAmenties[a]</span>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="room-add">
+                        <div class="rate-plans">
+                            @{List<DealsRatePlanViewModel> ratePlans = Model[i].DealsRatePlanViewModels;
+                                for (int k = 0; k < ratePlans.Count; k++)
+                                {
+                                    <div class="room col-xs-12">
+                                        <div class="col-xs-8 no-padding-left-right">
+                                            <h2>@ratePlans[k].Name</h2>
+                                            @{
+                                                DealsRatePlanViewModel thisRatePlan = ratePlans[k];
+                                                List<DealInventoryModel> inventoryModelsSubRatePlan = JsonConvert.DeserializeObject<List<DealInventoryModel>>(thisRatePlan.InventorySerialized);
+                                                decimal totalPriceThisPlan = 0;
+                                                foreach (var item in inventoryModelsSubRatePlan)
+                                                {
+                                                    totalPriceThisPlan = totalPriceThisPlan + (item.Price.Value + item.Surgcharge.Value + ((item.Price.Value + item.Surgcharge.Value) * (thisRatePlan.MarkUp.HasValue ? thisRatePlan.MarkUp.Value : 0)) / 100) / 2;
+                                                }
+                                                totalPriceThisPlan = totalPriceThisPlan + (thisRatePlan.ExtraSupplement.HasValue ? (thisRatePlan.ExtraSupplement.Value / 2) + ((thisRatePlan.ExtraSupplement.Value / 2) * (thisRatePlan.MarkUp.HasValue ? thisRatePlan.MarkUp.Value : 0) / 100) : 0);
+                                            }
+                                            <h6>@(k == 0 ? "No Additional Cost" : totalPriceThisPlan - totalPriceBase == 0 ? "No Additional Cost" : "+ ₹" + Math.Round(totalPriceThisPlan - totalPriceBase, MidpointRounding.AwayFromZero).ToAmount()) </h6>
+
+                                        </div>
+
+                                        <div class="col-xs-4 no-padding-left-right">
+                                            <button type="button"
+                                                    data-rc-id="@Model[i].Id"
+                                                    data-rateplan-id="@ratePlans[k].Id"
+                                                    data-room-type-id="@Model[i].RoomTypeId"
+                                                    data-target="#room_expand_@identifier"
+                                                    class="btn-add-room"
+                                                    data-max="@Model[i].Max"
+                                                    data-adult="@Model[i].Adult"
+                                                    data-aprice-dbo="@ratePlans[k].Price"
+                                                    data-aprice-sbo="@ratePlans[k].SingleSupplement"
+                                                    data-exaprice="@ratePlans[k].ExtraAdult"
+                                                    data-excprice="@ratePlans[k].ExtraChild_WB"
+                                                    data-exiprice="@ratePlans[k].ExtraInfant"
+                                                    data-markup="@ratePlans[k].MarkUp"
+                                                    data-supplement="@ratePlans[k].ExtraSupplement"
+                                                    data-child="@Model[i].Child"
+                                                    data-infants="@Model[i].Infant"
+                                                    data-room-name="@Model[i].RoomName"
+                                                    data-rate-plan-name="@ratePlans[k].Name"
+                                                    data-inventory="@ratePlans[k].InventorySerialized"
+                                                    data-phsupplement="@ratePlans[k].ExtraSupplementPerHead"
+                                                    data-freechild="@Model[i].FreeChild"
+                                                    data-freeinfant="@Model[i].FreeInfant"
+                                                    data-price-text="@(k == 0 ? "No Additional Cost" : totalPriceThisPlan - totalPriceBase == 0 ? "No Additional Cost" : "+ ₹" + Math.Round(totalPriceThisPlan - totalPriceBase, MidpointRounding.AwayFromZero).ToAmount())">
+                                                ADD
+                                            </button>
+                                        </div>
+                                    </div>
+                                };
+                            }
+                        </div>
+
+
+                    </div>
+                    <div id="room_expand_@identifier" class="room-expand" data-room-name="@Model[i].RoomName">
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row hidden-sm hidden-md hidden-lg">
+    <div class="col-xs-12 no-padding-left-right">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var identifier = Model[i].Id;
+                var RoomImage = Model[i].RoomImageGalleryViewModel.HotelierRoomImageViewModels;
+                <div id="MobileGallery_@identifier.ToString()" class="carousel carousel-fade slide mobile_gallery_room hidden-sm hidden-md hidden-lg" data-interval="false" role="dialog">
+
+                    <div class="col-xs-12 mobile-gallery-header">
+                        <span class="mobile-gallery-left-arrow"><img src="~/images/left_arrow.svg" alt="left_arrow" /></span><span>Room Gallery</span><span class="mobile-gallery-share-icon"><img src="~/images/Share_Icon.svg" alt="share_icon" /></span>
+                    </div>
+                    <div class="carousel-inner mobile-gallery-inner slick-mobile-gallery">
+                        @for (int j = 0; j < RoomImage.Count; j++)
+                        {
+                            <div class="item @(j == 0 ? "active": string.Empty)" data-count="@(j)" data-caption="@RoomImage[j].Caption">
+                                <div class="col-xs-12 gallery-mobile-image" id="remove-caption">
+                                    <img src="~/DealImages/@RoomImage[j].Image" alt="Gallery_main_image" />
+
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+
+                    <!-- Indicators -->
+
+                    <div class="col-xs-12 mobile-gallery-caption">
+
+                        <h3 class="mobile-gallery-title">@RoomImage.Select(x => x.Caption).FirstOrDefault()</h3>
+                    </div>
+
+                    <ol class="mobile-gallery-indicators">
+                        @for (int j = 0; j < RoomImage.Count; j++)
+                        {
+                            <li data-target="#MobileGallery_@identifier" data-slide-to="@j" class="@(j == 0? "active": string.Empty)"><img src="~/DealImages/@RoomImage[j].Image" alt="gallery_thumbnail" /></li>
+                        }
+
+                    </ol>
+                    @*<div id="" class="carousel mobile-gallery-review-container carousel-fade slide col-xs-12" data-ride="carousel">*@
+                    <div id="" class="carousel mobile-gallery-review-container carousel-fade slide col-xs-12">
+
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner mobile-gallery-review-inner">
+                            @if (Model[i].RoomImageGalleryViewModel.ProductReviewViewModels != null)
+                            {
+                                for (int k = 0; k < Model[i].RoomImageGalleryViewModel.ProductReviewViewModels.Count; k++)
+                                {
+                                    var item = Model[i].RoomImageGalleryViewModel.ProductReviewViewModels[k];
+
+                                    <div class="item @(k==0 ? "active":string.Empty) mobile-gallery-review">
+                                        <img src="~/images/Blockquote Icon.svg" alt="quote-icon" />
+                                        <p>
+                                            @item.Review
+                                        </p>
+                                        <h3>@item.Name</h3>
+                                        <h4>@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.ReviewDate.Month)  @item.ReviewDate.Year</h4>
+                                    </div>
+                                }
+                            }
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+               
+            }
+        
+    </div>
+</div>
+<script>
+    $('[data-toggle="tooltip"]').tooltip({ html: true, placement: "bottom" }); 
+
+    $('.galleryRoom').bind('slide.bs.carousel', function (e) {
+        $(this).parent().siblings('.gallery-carousel-bottom ').first().find('.current-slide-number').first().html(parseInt($(e.relatedTarget).data('count')) + 1);
+        $(this).parent().siblings('.gallery-carousel-bottom ').first().find('.gallery-carousel-title').first().html($(e.relatedTarget).data('caption'));
+     })
+</script>

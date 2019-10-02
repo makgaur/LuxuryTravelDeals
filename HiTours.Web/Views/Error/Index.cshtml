@@ -1,0 +1,7 @@
+﻿@model ErrorHandler
+@{this.ViewBag.HeaderWithoutIcons = true;}
+@if (string.IsNullOrEmpty(this.Model.Layout))
+{
+    this.Layout = null;
+}
+@Html.Partial("PartialError", this.Model)

@@ -1,0 +1,525 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    var recommendedDeals = TempData["recommended"] as IEnumerable<PackageDeatilsViewModel>;
+    bool videoBannerFlag = Convert.ToBoolean(Configuration.GetSection("HomeBanner")["Video"]);
+    string posterLink = Configuration.GetSection("HomeBanner")["PosterLink"];
+    string vidLink = Configuration.GetSection("HomeBanner")["VideoLink"];
+    string continueLink = Configuration.GetSection("HomeBanner")["ContinueLink"];
+}
+
+<style>
+    .select-items {
+        max-height: 150px;
+        overflow-y: scroll;
+    }
+
+    .select-selected {
+        width: 148px;
+    }
+</style>
+@try
+{
+    <div id="carouselFade" class="carousel slide carousel-fade main-home-page-banner" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            @if (!videoBannerFlag)
+            {
+                @Html.Partial("_HomeBanners")
+            }
+            else
+            {
+                <div class="promo-vid-container">
+                    <video class="promo-vid" poster="@posterLink" playsinline autoplay muted loop>
+                        <source src="@(vidLink + ".webm")" type="video/webm">
+                        <source src="@(vidLink + ".mp4")" type="video/mp4">
+                        <source src="@(vidLink + ".ogg")" type="video/ogg">
+                    </video>
+                    <div class="promo-vid-button-container">
+                        <a href="@continueLink" target="_blank">WATCH FULL VIDEO</a>
+                    </div>
+                </div>
+            }
+
+        </div>
+        @*<a class="left carousel-control" href="#carouselFade" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                </a>
+            <a class="right carousel-control" href="#carouselFade" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+
+            </a>*@
+
+        <div class="search-panel" id="search_panel">
+            <div class="search-container" id="search_container">
+                <div class="searchInput">
+                    <div class="searchDestination">
+                        @*<i id="search-icon" class="fa fa-search"></i>*@
+                        <div class="destinationSearchBar">
+                            <div class="typeahead__container">
+                                <div class="typeahead__field">
+                                    <span class="typeahead__query">
+                                        <input id="searchInput" class="searchInputDestination" placeholder="" name="q" type="search" data-search-type="@((int)Enums.SearchType.Query)" data-search-value="0" autofocus autocomplete="off">
+                                        <span id="searchButton" class="hidden-xs"></span>
+                                        <span id="searchButtonMobile" class="hidden-sm hidden-md hidden-lg"></span>
+                                        <span id="closeMobileSearch" class="hidden-sm hidden-md hidden-lg"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="divSearchExtend" class="dropdown_search ExtendDropdown">
+                            <div id="navsearch" class="nav_search">
+                                @*<span id="close_search" class="hidden-lg hidden-md hidden-sm right"><img src="~/images/Close Icon.png" alt="close_icon" style="margin-top:6px;" /></span>*@
+                                <div class="dropdown-search-list">
+                                    <div class="container-fluid search-list-container">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-6 col-sm-6 col-lg-6 search-calender">
+
+                                                <div class="search-calender-inner">
+                                                    <div class="dropdown-search-title">Check In-Check Out</div>
+                                                    @*dropdown dropdown-toggle*@
+                                                    <div class="filtersearch filtersearch-calender" id="ltd-calendar-container">
+                                                        @*data-toggle="dropdown"*@
+                                                        <input id="searchDatepicker" data-startdate="" data-enddate="" data-seleted="false" data-scrolled="false" class="ltd-datepicker inputborder" readonly placeholder="Select Check In - Check Out Date" name="checkin_date" type="text">
+                                                        <span class="calender" id="calendarTriggerIcon">
+                                                            <img src="~/images/Calendar.svg" alt="check-in_icon" id="calendarTriggerIcon" />
+                                                        </span>
+                                                        @if (this.ViewBag.IsMobileView)
+                                                        {
+                                                            @Html.Partial("_LTD_Calendar_Mobile");
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="home-calender dropdown-menu" id="hide-calender">
+                                                                @Html.Partial("_LTD_Calendar")
+                                                            </div>
+                                                        }
+
+                                                    </div>
+                                                    @*<div class="filtersearch filtersearch-calender hidden-sm hidden-md hidden-lg" id="ltd-calendar-container" style="border-top:none;">
+
+                                                            <input id="searchDatepicker" data-startdate="" data-enddate="" data-seleted="false" data-scrolled="false" class="ltd-datepicker inputborder" readonly placeholder="Select check out date" name="checkin_date" type="text">
+                                                            <span class="calender" id="calendarTriggerIcon">
+                                                                <img src="~/images/Calendar.svg" alt="check-in_icon" id="calendarTriggerIcon" />
+                                                            </span>
+                                                            <div class="home-calender dropdown-menu" id="hide-calender">
+                                                                @Html.Partial("_LTD_Calendar")
+                                                            </div>
+                                                        </div>*@
+                                                </div>
+                                            </div>
+                                            @if (this.ViewBag.IsMobileView)
+                                            {
+
+                                                <div class="col-xs-12 hidden-sm hidden-md hidden-lg guest_room_selector">
+                                                    <div class="dropdown-search-title">Guests/Rooms</div>                                                   
+                                                    <ul class="omnibox-sub-dropdown">
+                                                        <li>
+                                                            <div class="box-description">
+                                                                <p>Adults</p>
+                                                                <span>ABOVE 12 YEARS</span>
+                                                            </div>
+                                                            <div class="box-value">
+                                                                <span class="decrease disabled" data-target="#addAdults">                                                                    
+                                                                </span>
+                                                                <span>
+                                                                    <input class="input-box-value" type="text" data-min="1" id="addAdults" value="1" readonly />
+                                                                </span>
+                                                                <span data-target="#addAdults" class="increase">                                                                    
+                                                                </span>
+                                                            </div>
+
+                                                        </li>
+                                                        <hr class="hr-separate">
+                                                        <li>
+                                                            <div class="box-description">
+                                                                <p>Kids</p>
+                                                                <span>2-12 YEARS</span>
+                                                            </div>
+                                                            <div class="box-value">
+                                                                <span data-target="#addKids" class="decrease disabled">                                                                    
+                                                                </span>
+                                                                <span>
+                                                                    <input class="input-box-value" data-min="0" type="text" id="addKids" value="0" readonly />
+                                                                </span>
+                                                                <span data-target="#addKids" class="increase">                                                                    
+                                                                </span>
+                                                            </div>
+
+                                                        </li>
+                                                        <li>
+                                                            <input type="text" id="addInfants" style="display:none;" value="0" />
+                                                            <div id="likidage" class='row'>
+
+                                                            </div>
+                                                        </li>
+                                                        <span class="error-message" id="errormessage"></span>                                                        
+                                                    </ul>
+                                                    <div class="omnibox-sub-dropdown">
+                                                        <ul>
+                                                            <li>
+                                                                <div class="box-description">
+                                                                    <p>Rooms</p>
+                                                                    <span>OPTIONAL</span>
+                                                                </div>
+                                                                <div class="box-value">
+                                                                    <span data-target="#addRoom" class="decrease disabled">                                                                       
+                                                                    </span>
+                                                                    <span>
+                                                                        <input class="input-box-value" type="text" data-min="1" id="addRoom" value="1" readonly />
+                                                                    </span>
+                                                                    <span data-target="#addRoom" class="increase">                                                                      
+                                                                    </span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+
+                                                    </div> 
+                                                    <div>
+                                                        <button type="button" class="btn btn-apply guest-dropdown" id="btnApply">
+                                                            Apply
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+
+                                                <div class="col-md-6 col-sm-6 col-lg-6 hidden-xs no-padding-left-right">
+                                                    <div class="dropdown-search-title">Guests/Rooms</div>
+                                                    <div id="testIdRoomBreakdown" class="filtersearch room-filter dropdown dropdown-toggle">                                                        
+                                                        <input class="inputborder width-94" readonly id="stepperString" placeholder="Select Guests/Room" name="select_room" type="text">
+                                                        <span class="chevron-up" id="triggerPassSelect"></span>
+                                                        <div class="dropdown-menu  custom-omnibox-dropdown">
+                                                            <ul class="omnibox-sub-dropdown">
+                                                                <li>
+                                                                    <div class="box-description">
+                                                                        <p>Adults</p>
+                                                                        <span>ABOVE 12 YEARS</span>
+                                                                    </div>
+                                                                    <div class="box-value">
+                                                                        <span class="decrease disabled" data-target="#addAdults">                                                                            
+                                                                        </span>
+                                                                        <span>
+                                                                            <input class="input-box-value" type="text" data-min="1" id="addAdults" value="1" readonly />
+                                                                        </span>
+                                                                        <span data-target="#addAdults" class="increase">                                                                            
+                                                                        </span>
+                                                                    </div>
+                                                                </li>
+                                                                <hr class="hr-separate">
+                                                                <li>
+                                                                    <div class="box-description">
+                                                                        <p>Kids</p>
+                                                                        <span>2-12 YEARS</span>
+                                                                    </div>
+                                                                    <div class="box-value">
+                                                                        <span data-target="#addKids" class="decrease disabled">
+                                                                        </span>
+                                                                        <span>
+                                                                            <input class="input-box-value" data-min="0" type="text" id="addKids" value="0" readonly />
+                                                                            <input type="text" id="addChilds" style="display:none;" value="0" />
+                                                                        </span>
+                                                                        <span data-target="#addKids" class="increase">
+                                                                        </span>
+                                                                    </div>
+                                                                </li>
+
+                                                                <li id="li_Infant" class="hidden">
+                                                                    <input type="text" id="addInfants" style="display:none;" value="0" />
+                                                                    <div id="likidage" class='row'>
+
+                                                                    </div>
+                                                                </li>
+
+                                                                <span class="error-message hidden" id="errormessage"></span>
+                                                            </ul>
+                                                            <div class="omnibox-sub-dropdown">
+                                                                <ul>
+                                                                    <li>
+                                                                        <div class="box-description">
+                                                                            <p>Rooms</p>
+                                                                            <span>OPTIONAL</span>
+                                                                        </div>
+                                                                        <div class="box-value">
+                                                                            <span data-target="#addRoom" class="decrease disabled">
+                                                                            </span>
+                                                                            <span>
+                                                                                <input class="input-box-value" type="text" data-min="1" id="addRoom" value="1" readonly />
+                                                                            </span>
+                                                                            <span data-target="#addRoom" class="increase">
+                                                                            </span>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+
+                                                            <div>
+                                                                <button type="button" class="btn btn-apply guest-dropdown" id="btnApply">
+                                                                    Apply
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        </div>
+                                    </div>
+                                    <div class="row recent_deals">
+                                        <div class="col-md-12 col-xs-12 no-padding-left-right">
+                                            <div class="dropdown-search-title margin-bottom-0">Recent Searches</div>
+                                            <div class="recent-search">
+                                                @*<li class="col-md-3"><a href="#"><img src="~/images/Recent Icon.png" alt="recent_icon" /><span>Mauritius</span></a></li>
+                                                    <li class="col-md-3"><a href="#"><img src="~/images/Recent Icon.png" alt="recent_icon" /><span>Indonesia</span></a></li>
+                                                    <li class="col-md-3"><a href="#"><img src="~/images/Recent Icon.png" alt="recent_icon" /><span>Thailand</span></a></li>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="home-mobile-search-button col-xs-12 hidden-sm hidden-md hidden-lg">
+                                    <button type="button" class="btn btn-block">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        @*<div class="carousel-bottom-explore">
+                <p>EXPLORE GREAT OFFERS</p>
+            </div>*@
+    </div>
+
+    @*============= New- layout- Design =============*@
+
+    @if (this.ViewBag.TravelStyle != null)
+    {
+
+        @Html.Partial("_filters")
+
+    }
+
+
+
+    @if (this.ViewBag.CurationBanner != null)
+    {
+        @this.Html.Partial("_Curation")
+    }
+    @if (this.ViewBag.FlashDeals != null)
+    {
+        <div class="flash-deal-container">
+            <div class="flash-heading">
+                <span class="flash-heading-text">Flash Deals</span>
+                <span class="fd_Timer"><img src="~/images/clock.svg" alt="clock_icon"> <span>72:23:54 Left </span></span>
+                <input type="hidden" id="fd_ExpiryDate" value="@DateTime.Now.AddDays(3).Date" />
+            </div>
+            <div class="deals-container">
+                <div class="display-table">
+                    @{
+                        List<PackageCurationViewModel> flashDealModel = this.ViewBag.FlashDeals;
+                        string idsFlashDeal = string.Join(',', flashDealModel.Select(x => x.Id).ToArray());
+                    }
+                    @this.Html.Partial("_CurrentDeals", flashDealModel)
+
+                </div>
+            </div>
+            <div class="show-more-btn-style">
+                <button data-search-term="Flash Deal" data-search-type="@((int)HiTours.Core.Enums.SearchType.FlashDeal)" class="show-more-home">SHOW MORE</button>
+                @*<div class="loader" style="display:none;">
+                        <img src="~/images/ajax-loader.gif" style="width:24px;height:24px;" />
+                    </div>*@
+                <div class="show-more-style">
+                    <hr class="hr-separate">
+                </div>
+            </div>
+        </div>
+    }
+    @if (this.ViewBag.DealOfMonth != null)
+    {
+        <div class="flash-deal-container">
+            <div class="flash-heading">
+                <span class="flash-heading-text">Deals of the Month</span>
+            </div>
+            <div class="deals-container">
+                <div class="display-table">
+                    @{
+                        List<PackageCurationViewModel> domModel = this.ViewBag.DealOfMonth;
+                        string idsDom = string.Join(',', domModel.Select(x => x.Id).ToArray());
+                    }
+                    @this.Html.Partial("_CurrentDeals", domModel)
+
+                </div>
+            </div>
+            <div class="deal-month-show-more-style">
+                <button class="show-more-home" data-search-term="Deals Of The Month" data-search-type="@((int)HiTours.Core.Enums.SearchType.DealOfTheMonth)">SHOW MORE</button>
+                @*<div class="loader" style="display:none;">
+                        <img src="~/images/ajax-loader.gif" alt="ajax-loader" class="image-small-24" />
+                    </div>*@
+                @*<div style="padding-top:10px;">
+                        <hr style="height: 1px;border: none;width:100%; background-color: #E6E6E6;margin-top:10px; margin-bottom:0px;">
+                    </div>*@
+            </div>
+        </div>
+    }
+    @if (this.ViewBag.LocationBasedCuration != null)
+    {
+
+        List<LocationDealsCurationViewModel> cities = this.ViewBag.LocationBasedCuration;
+
+        if (cities.Count > 0)
+        {
+            for (int i = 0; i < cities.Count; i++)
+            {
+                <div class="city-deal-container">
+                    <div class="flash-heading">
+                        <span class="flash-heading-text">@cities[i].Text</span>
+                    </div>
+                    <div class="deals-container">
+                        <div class="display-table">
+                            @{
+                                List<PackageCurationViewModel> domModel = cities[i].Results;
+                            }
+                            @this.Html.Partial("_CurrentDeals", domModel)
+
+                        </div>
+                    </div>
+                    <div class="center-btn-style">
+                        <button class="show-more-home" data-search-term="@cities[i].CityName"@(!string.IsNullOrEmpty(cities[i].CountryName) ? "data-sub-search-term=" + cities[i].CountryName : string.Empty ) data-city-id="@cities[i].City" data-search-type="@((int)HiTours.Core.Enums.SearchType.City)">SHOW MORE</button>
+                        @*<div class="loader" style="display:none;">
+                                <img src="~/images/ajax-loader.gif" alt="ajax-loader" class="image-small-24" />
+                            </div>*@
+                        @*<div style="padding-top:10px;">
+                                <hr style="height: 1px;border: none;width:100%; background-color: #E6E6E6;margin-top:10px; margin-bottom:0px;">
+                            </div>*@
+                    </div>
+                </div>
+            }
+
+        }
+
+    }
+    @*<div class="flash-deal-container">
+            <div class="flash-heading">
+                <span class="flash-heading-text">A Rendezvous in Bali</span>
+            </div>
+            <div class="deals-container">
+                <div class="row">
+                    @if (this.ViewBag.CurrentDeals != null)
+                    {
+                        @this.Html.Partial("_CurrentDeals")
+                    }
+                </div>
+            </div>
+        </div>*@
+
+
+
+    <div id="upcomingDeals"></div>
+    @if (this.ViewBag.PopularDestinations != null)
+    {
+        @this.Html.Partial("_PopularDestination")
+    }
+
+    @*============= New- layout- Design =============*@
+    @if (this.ViewBag.BlogPosts != null)
+    {
+        @this.Html.Partial("_BlogPosts")
+
+    }
+
+    <section id="featured_logo" class="hidden-xs hidden-sm">
+        <div class="featured-logo-container">
+            <div class="row ">
+                <h2>Our Partners</h2>
+                <hr class="partner-hr">
+                <ul class="featured_logo_style">
+                    <li> <img src="~/images/FooterIcons/Sheraton-Hotels.svg" alt="Sheraton_Hotels_logo" /></li>
+                    <li> <img src="~/images/FooterIcons/courtyard-by-marriott-logo.svg" alt="courtyard_logo" /></li>
+                    <li> <img src="~/images/FooterIcons/radisson-hotels-logo.svg" alt="radisson_logo" /></li>
+                    <li> <img src="~/images/FooterIcons/le-meridien.svg" alt="le-meridien_logo" /></li>
+                    <li> <img src="~/images/FooterIcons/Westin.svg" alt="Westin_logo" /></li>
+                    <li> <img src="~/images/FooterIcons/Taj.svg" alt="Taj_logo" class="padding-bottom-30" /></li>
+
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="featured_logo" class="featured-logo-mobile-container hidden-lg hidden-md">
+        <div class="row">
+            <h2>Our Partners</h2>
+            @*<hr style="height: 4px;border: none; width:75px; background-color: #fca32b;margin-top:0px;">*@
+            <div class="partner-seperator"></div>
+            @*<div id="myCarousel" class="carousel custom_carousel slide" data-ride="carousel">*@
+            <div class="custom_carousel">
+
+                <div class="featured_logo_slider custom-carousel-inner">
+                    <div class="item active">
+                        <img src="~/images/FooterIcons/Sheraton-Hotels.svg" alt="Sheraton_Hotels_logo" />
+                    </div>
+
+                    <div class="item">
+                        <img src="~/images/FooterIcons/courtyard-by-marriott-logo.svg" alt="courtyard_logo" />
+                    </div>
+
+                    <div class="item">
+                        <img src="~/images/FooterIcons/radisson-hotels-logo.svg" alt="radisson_logo" />
+                    </div>
+
+                    <div class="item">
+                        <img src="~/images/FooterIcons/le-meridien.svg" alt="le-meridien_logo" />
+                    </div>
+
+                    <div class="item">
+                        <img src="~/images/FooterIcons/Westin.svg" alt="Westin_logo" />
+                    </div>
+
+                    <div class="item">
+                        <img src="~/images/FooterIcons/Taj.svg" alt="Taj_logo" />
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <input type="text" id="txtKidsAge" style="display:none;" />
+}
+catch (Exception ex)
+{
+    var msg = ex.ToString();
+}
+<!-- Carousel-Banner -->
+
+
+
+@section scripts{
+    <link href="~/Styles/Calender.css" rel="stylesheet" />
+    <link href="~/content/css/timeTo.css" rel="stylesheet" />
+    @*<link href="~/css/buttons.css" rel="stylesheet" />*@
+    <script src="~/content/js/jquery.time-to.js"></script>
+    <script src="~/js/LTD_Calender.js"></script>
+    <script src="~/js/custom-dropdown.js"></script>
+    <script src="~/js/jquery.home.js"></script>
+    <script>
+
+        function HomeCarousalLeft() {
+            $('#carouselFade').carousel('prev');
+        }
+        function HomeCarousalRight() {
+            $('#carouselFade').carousel('next');
+        }
+
+
+    </script>
+}

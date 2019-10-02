@@ -1,0 +1,96 @@
+﻿@model List<DealRoomConfigViewModel>
+<style>
+    .delete_deal_room:hover {
+        cursor: pointer;
+    }
+</style>
+@if (Model.Count > 0)
+{
+    <form asp-antiforgery="true" id="formRoomConfig" method="post" enctype="multipart/form-data">
+        <div class="form-group col-md-12" style="margin-top:10px;">
+            <div class="panel-group" id="accordion">
+
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <div class="panel panel-default">
+                        <input type="hidden" asp-for="@Model[i].Id" />
+                        <input type="hidden" asp-for="@Model[i].InclusionId" />
+                        <input type="hidden" asp-for="@Model[i].RoomTypeId" />
+                        <input type="hidden" asp-for="@Model[i].CreatedBy" />
+                        <input type="hidden" asp-for="@Model[i].CreatedDate" />
+                        <input type="hidden" asp-for="@Model[i].UpdatedDate" />
+                        <input type="hidden" asp-for="@Model[i].UpdatedBy" />
+                        <input type="hidden" asp-for="@Model[i].IsActive" />
+                        <input type="hidden" asp-for="@Model[i].IsDeleted" class="delete_row" />
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse_@i"><i class="fa fa-fw fa-bed"></i> @Model[i].RoomTypeName</a>
+                                <span class="pull-right delete_deal_room"><i class="fa fa-fw fa-trash"></i></span>
+                            </h4>
+                        </div>
+                        <div id="collapse_@i" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="form-group col-md-4">
+                                    <label asp-for="@Model[i].Max"></label>
+                                    <input class="form-control" type="number" asp-for="@Model[i].Max" />
+                                    <span asp-validation-for="@Model[i].Max"></span>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label asp-for="@Model[i].AdultAge"></label>
+                                    <input asp-for="@Model[i].AdultAge" class="form-control" type="number" />
+                                    <span asp-validation-for="@Model[i].AdultAge"></span>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label asp-for="@Model[i].ChildAge"></label>
+                                    <input asp-for="@Model[i].ChildAge" class="form-control" type="number" />
+                                    <span asp-validation-for="@Model[i].ChildAge"></span>
+                                </div>
+                                <input asp-for="@Model[i].InfantAge" type="hidden" />
+                                <div class="form-group col-md-4">
+                                    <label asp-for="@Model[i].Adult"></label>
+                                    <input asp-for="@Model[i].Adult" type="number" class="form-control">
+                                    <span asp-validation-for="@Model[i].Adult"></span>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label asp-for="@Model[i].Child"></label><br />
+                                    <input type="number" class="form-control" asp-for="@Model[i].Child" />
+                                    <span asp-validation-for="@Model[i].Child"></span>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label asp-for="@Model[i].Infant"></label><br />
+                                    <input type="number" class="form-control" asp-for="@Model[i].Infant" />
+                                    <span asp-validation-for="@Model[i].Infant"></span>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label asp-for="@Model[i].FreeChild"></label>
+                                    <input asp-for="@Model[i].FreeChild" class="form-control" type="number" />
+                                    <span asp-validation-for="@Model[i].FreeChild"></span>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label asp-for="@Model[i].FreeInfant"></label>
+                                    <input asp-for="@Model[i].FreeInfant" class="form-control" type="number" />
+                                    <span asp-validation-for="@Model[i].FreeInfant"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                    <div style="margin-top:20px;">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <button class="btn btn-block btn-primary" type="submit">Update Data</button>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                
+            </div>
+        </div>
+    </form>
+}
+<script>
+    $(document).on('click', '.delete_deal_room', function (e) {
+        var row = $(this).closest('.panel');
+        $(row).find('.delete_row').val(true);
+        $(row).hide();
+    })
+</script>

@@ -1,0 +1,29 @@
+﻿@{
+    var routeData = this.ViewContext.RouteData.Values;
+    var nextView = this.TempData["nextview"] != null ? this.TempData["nextview"].ToString() : "#package-adons";
+    var id = routeData["id"] != null ? Guid.Parse(routeData["id"].ToString()) : Guid.Empty;
+}
+<input type="hidden" name="tabs" data-default="@nextView" value="@nextView" />
+<form class="hide">
+    @foreach (var key in routeData.Keys)
+    {
+        <input type="hidden" name="@key" value="@(routeData[key])" />
+    }
+</form>
+<div class="nav-tabs-custom">
+    <ul class="nav nav-tabs pull-right">
+        <li class=""><a href="#package-optional-tours" class="replaceOPTour" data-toggle="tab" data-href="/admin/optionaltour/packageoptionaltours?Id=@(this.ViewBag.TourPackageId)"><i class="fa fa-taxi "></i> Optional Tour</a></li>
+        <li class=""><a href="#package-insurance" class="replaceInsurance" data-toggle="tab" data-href="/admin/insurance/packageinsurance?Id=@(this.ViewBag.TourPackageId)"><i class="fa fa-medkit"></i> Insurance</a></li>
+        <li class=""><a href="#package-visa" class="replaceVisa" data-toggle="tab" data-href="/admin/visa/packagevisa?Id=@(this.ViewBag.TourPackageId)"><i class="fa fa-vcard-o"></i> Visa</a></li>
+    </ul>
+    <div class="tab-content hotel-tabs">
+        <div class="tab-pane" id="package-optional-tours"></div>
+        <div class="tab-pane" id="package-insurance"></div>
+        <div class="tab-pane" id="package-visa"></div>
+    </div>
+</div>
+<script>
+    $(document).ready(function (event) {
+        $('.replaceVisa').click();
+    });
+</script>

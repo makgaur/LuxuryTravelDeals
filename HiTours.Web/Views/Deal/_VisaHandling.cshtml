@@ -1,0 +1,80 @@
+﻿@model List<DealVisaViewModel>
+
+@if (!this.ViewBag.IsMobileView)
+{
+    <div class="visa-selection hidden-xs">
+        <div class="col-sm-6 col-md-6 col-lg-6 no-padding-left-right">
+            <h4>Visa Type</h4>
+            <ul class="visa-options">
+                @foreach (DealVisaViewModel item in Model)
+                {
+
+                    @Html.Partial("_BookingVisaInput", new BookingVisaViewModel { CountryName = item.CountryName, IsRequired = false, Count = 2, Price = item.AdultPrice, VisaId = item.Id, Markup = item.Markup })
+                }
+
+            </ul>
+
+        </div>
+
+        <div class="col-sm-6 col-md-6 col-lg-6 booking-price no-right-padd">
+            <h5>VISA PROCESSING FEE</h5>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <h2>₹ @((Model[i].AdultPrice + Model[i].Markup).ToAmount())</h2>
+                <h6>Per Person (Incl. Taxes)<span class="visa-policy-button" onclick="$('#visaPolicyModal_@Model[i].Id').modal('toggle')">Visa Handling Policy</span></h6>
+                @Html.Partial("_VisaHandlingPolicy",Model[i])
+            }
+
+
+        </div>
+    </div>
+
+}
+else
+{
+     <div class="visa-selection hidden-sm hidden-md hidden-lg">
+        <h4>Visa Type</h4>
+        <div class="visa-type-container row">
+            <div class="col-xs-12 no-padding-left-right">
+
+                <ul class="visa-options">
+                    @for  (int i=0; i<Model.Count; i++)
+                    {
+                        @Html.Partial("_BookingVisaInput", new BookingVisaViewModel { CountryName = Model[i].CountryName, IsRequired = false, Count = 2, Price = Model[i].AdultPrice, VisaId = Model[i].Id, Markup = Model[i].Markup })
+
+                        @*<div class="col-xs-12 booking-price no-right-padd">
+                            <h2>₹ @((Model[i].AdultPrice + Model[i].Markup).ToAmount())</h2>
+                            <h6>Per Person (Incl. Taxes)<span class="visa-policy-button" onclick="$('#visaPolicyModal_@(Model[i].Id)').modal('toggle')">Visa Handling Policy</span></h6>
+                            @Html.Partial("_VisaHandlingPolicy", Model[i])
+                        </div>*@
+
+                    <div class="col-xs-12 booking-price no-right-padd">
+                        <h2>₹ @((Model[i].AdultPrice + Model[i].Markup).ToAmount())</h2>
+                        <h6>Per Person (Incl. Taxes)<span class="visa-policy-button visa-mobile-policy-button">Visa Handling Policy</span></h6>
+                        @Html.Partial("_VisaHandlingPolicy", Model[i])
+                    </div>
+
+                        if (i != 0)
+                        {
+                            <hr class="visa-seperator-mobile"/>
+                        }
+                    }
+
+                </ul>
+
+
+            </div>
+
+            
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
+
+

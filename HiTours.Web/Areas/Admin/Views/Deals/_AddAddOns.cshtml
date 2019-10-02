@@ -1,0 +1,70 @@
+﻿@*@model DealsAddOnViewModel
+
+<form asp-antiforgery="true" id="formAddon" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="PackageId" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <div class="form-group col-md-4">
+        <label asp-for="AdultCharge"></label>
+        <input asp-for="AdultCharge" class="form-control" type="number" placeholder="First Name" />
+        <span asp-validation-for="AdultCharge"></span>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label asp-for="ChildCharge"></label>
+        <input asp-for="ChildCharge" class="form-control" type="number" placeholder="Last Name" />
+        <span asp-validation-for="ChildCharge"></span>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label asp-for="InfantCharge"></label>
+        <input asp-for="InfantCharge" class="form-control" type="number" placeholder="Last Name" />
+        <span asp-validation-for="InfantCharge"></span>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label asp-for="AdultAge"></label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-fw fa-star"></i></span>
+            <input type="number" class="form-control" asp-for="AdultAge">
+        </div>
+        <span asp-validation-for="AdultAge"></span>
+    </div>
+    <div class="form-group col-md-4">
+        <label asp-for="ChildAge"></label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-fw fa-star"></i></span>
+            <input type="number" class="form-control" asp-for="ChildAge">
+        </div>
+        <span asp-validation-for="ChildAge"></span>
+    </div>
+    <div class="form-group col-md-4">
+        <label asp-for="MinimumAge"></label>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-fw fa-star"></i></span>
+            <input type="number" class="form-control" asp-for="MinimumAge">
+        </div>
+        <span asp-validation-for="MinimumAge"></span>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label asp-for="IsChargeable"></label>
+        <input asp-for="IsChargeable" type="checkbox" class="minimal form-control">
+    </div>
+    <div class="form-group col-md-6">
+        <label asp-for="IsIncluded"></label>
+        <input asp-for="IsIncluded" type="checkbox" class="minimal form-control">
+    </div>
+
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+</form>*@
+<script>
+    $(document).ready(function (e) {
+        $('input[type="checkbox"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue'
+        });
+    })
+</script>

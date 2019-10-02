@@ -1,0 +1,45 @@
+﻿@model Logout
+@{  this.ViewBag.Title = "Logout";}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+            </div>
+            <form asp-antiforgery="true" method="post" asp-action="Logout">
+                <div class="box-body">
+                    <div class="form-group col-sm-6">
+                        <label asp-for="ClientId"></label>
+                        <input type="text" asp-for="ClientId" class="form-control" data-autocomplete="ClientId" />
+                        <span asp-validation-for="ClientId"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="TokenAgencyId"></label>
+                        <input type="text" asp-for="TokenAgencyId" data-autocomplete="AgencyId" class="form-control" />
+                        <span asp-validation-for="TokenAgencyId"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="TokenMemberId"></label>
+                        <input type="text" asp-for="TokenMemberId" data-autocomplete="MemberId" class="form-control" />
+                        <span asp-validation-for="TokenMemberId"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="EndUserIp"></label>
+                        <input type="text" asp-for="EndUserIp" data-autocomplete="EndUserIp" class="form-control" />
+                        <span asp-validation-for="EndUserIp"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="TokenId"></label>
+                        <input type="text" asp-for="TokenId" data-autocomplete="TokenId" class="form-control" />
+                        <span asp-validation-for="TokenId"></span>
+                    </div>
+
+                </div>
+                <div class="box-footer" align="center">
+                    <button type="submit" class="btn btn-primary">Get Result</button>
+                </div>
+            </form>
+        </div>
+        @Html.Partial("_ApiResult")
+    </div>
+</div>

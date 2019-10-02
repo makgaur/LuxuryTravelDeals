@@ -1,0 +1,23 @@
+﻿@{
+    var routeData = this.ViewContext.RouteData.Values;
+    var nextView = this.TempData["nextview"] != null ? this.TempData["nextview"].ToString() : "#view-package-night";
+}
+<div class="nav-tabs-custom">
+    <input type="hidden" name="tabs" data-default="@nextView" value="@nextView" />
+    <form class="hide">
+        @foreach (var key in routeData.Keys)
+        {
+            <input type="hidden" name="@key" value="@(routeData[key])" />
+        }
+        <input type="hidden" name="Id" value="@(this.ViewBag.TourPackageId)" />
+        <input type="hidden" name="tourpackagetype" value="@this.ViewBag.TourPackageType" />
+        <input type="hidden" name="RowIdentifier" value="" />
+    </form>
+
+    <ul class="nav nav-tabs pull-right">
+        <li class=""><a href="#add-packagenight" class="replaceAdd" data-toggle="tab" data-href="@Url.Action("PackageNights")"><i class="fa fa-plus"></i> Add Package Night</a></li>        
+    </ul>
+    <div class="tab-content hotel-tabs">
+        <div class="tab-pane" id="add-packagenight"></div>        
+    </div>
+</div>

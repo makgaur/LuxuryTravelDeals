@@ -1,0 +1,249 @@
+﻿@model BookingSummaryViewModel
+@using HiTours.Models
+@{
+    decimal ExtraSupplementCharge = 0;
+    List<DealInventoryModel> inventoryModels = new List<DealInventoryModel>(); //// Hotel
+    DealInventoryModel inventoryModel = new DealInventoryModel(); //// Tour
+    DateTime startDate = Model.BookingHotelRooms.FirstOrDefault().CheckinDate;
+    DateTime endDate = Model.BookingHotelRooms.FirstOrDefault().CheckoutDate;
+}
+<div class="main-summary">
+    <div class="Hotel-Summary col-sm-12 col-md-12 col-xs-12">
+        @if (Model.BookingHotelRooms.Count > 0)
+        {
+
+        <h3 class="summary-list-title"> @startDate.Date.Day.ToString() @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(startDate.Month) @startDate.Year to @endDate.Date.Day.ToString() @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(endDate.Month) @endDate.Year (@(((endDate - startDate).TotalDays).ToString()) Nights)</h3>
+            foreach (var item in Model.BookingHotelRooms)
+            {<div class="hidden-overflow">
+                    <h3 class="summary-list-title">@item.RoomName (@item.RatePlanName)</h3>
+                    <div class="Hotel-Summary-Details col-sm-12 col-md-12 col-xs-12">
+                        @if (item.Adult == 1)
+                        {
+                            <span class="summary-title"><span class="summary_quantity">@item.Adult.ToString().PadLeft(2, '0')</span>Adult</span>
+                        }
+                        else
+                        {
+                            <span class="summary-title"><span class="summary_quantity">@(2.ToString().PadLeft(2, '0'))</span>Adults</span>
+                        }
+
+                        @{
+                            decimal SingleAdultRoomPrice = 0;
+                            ExtraSupplementCharge = 0;
+                            if (Model.Type == 1) //// Hotel
+                            {
+                                inventoryModels = JsonConvert.DeserializeObject<List<DealInventoryModel>>(item.InventorySerialized);
+                                ExtraSupplementCharge = ExtraSupplementCharge + item.Supplement + (item.Supplement * item.MarkUp / 100);
+                                ExtraSupplementCharge = ExtraSupplementCharge / item.Adult;
+                                if (item.Adult == 1)
+                                {
+                                    foreach (var invItem in inventoryModels)
+                                    {
+                                        SingleAdultRoomPrice = SingleAdultRoomPrice + invItem.SingleSupplement.Value + invItem.Surgcharge.Value + (((invItem.SingleSupplement.Value + invItem.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                    }
+
+                                    SingleAdultRoomPrice = SingleAdultRoomPrice + item.SupplementPh + ExtraSupplementCharge;
+                                }
+                                else
+                                {
+                                    foreach (var invItem in inventoryModels)
+                                    {
+                                        SingleAdultRoomPrice = SingleAdultRoomPrice + invItem.Price.Value + invItem.Surgcharge.Value + (((invItem.Price.Value + invItem.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                    }
+
+                                    SingleAdultRoomPrice = SingleAdultRoomPrice + (item.SupplementPh * 2) + (ExtraSupplementCharge * 2);
+
+                                    SingleAdultRoomPrice = SingleAdultRoomPrice / 2;
+                                }
+                            }
+                            else //// Tour
+                            {
+                                inventoryModel = JsonConvert.DeserializeObject<DealInventoryModel>(item.InventorySerialized);
+                                //ExtraSupplementCharge = ExtraSupplementCharge + item.Supplement + (item.Supplement * item.MarkUp / 100);
+                                //ExtraSupplementCharge = ExtraSupplementCharge / item.Adult;
+                                if (item.Adult == 1)
+                                {
+
+                                    SingleAdultRoomPrice = SingleAdultRoomPrice + inventoryModel.Price.Value + inventoryModel.SingleSupplement.Value + inventoryModel.Surgcharge.Value + (((inventoryModel.Price.Value + inventoryModel.SingleSupplement.Value + inventoryModel.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                    SingleAdultRoomPrice = SingleAdultRoomPrice + item.SupplementPh + (item.SupplementPh * (item.MarkUp) / 100)/*+ ExtraSupplementCharge*/;
+                                }
+                                else
+                                {
+
+                                    SingleAdultRoomPrice = SingleAdultRoomPrice + (inventoryModel.Price.Value * 2) + (inventoryModel.Surgcharge.Value * 2) + ((((inventoryModel.Price.Value * 2) + (inventoryModel.Surgcharge.Value * 2)) * (item.MarkUp)) / 100);
+                                    SingleAdultRoomPrice = SingleAdultRoomPrice + (item.SupplementPh * 2) + (item.SupplementPh * 2 * item.MarkUp / 100)/*+ (ExtraSupplementCharge * 2)*/;
+                                    SingleAdultRoomPrice = SingleAdultRoomPrice / 2;
+                                }
+
+                            }
+
+                        }
+                        <span class="individual-price">x<span class="individual-price-style"><span> ₹</span>@Math.Round(SingleAdultRoomPrice, MidpointRounding.AwayFromZero).ToAmount()</span> @*per person*@@*<span class="summary-info-icon"><img src="~/images/Info_Icon.svg" style="width:24px;height:24px;" /></span>*@</span>
+                        <span class="total-price"><span> ₹</span>@(item.Adult == 1 ? Math.Round(SingleAdultRoomPrice, MidpointRounding.AwayFromZero).ToAmount() : Math.Round(SingleAdultRoomPrice * 2, MidpointRounding.AwayFromZero).ToAmount())</span>
+                        @if (item.Adult - 2 >= 1) //// More than 2 Adults
+                        {
+                            SingleAdultRoomPrice = 0;
+                            int ExtraAdults = item.Adult - 2;
+                            if (Model.Type == 1)////Hotel
+                            {
+                                foreach (var invItem in inventoryModels)
+                                {
+                                    SingleAdultRoomPrice = SingleAdultRoomPrice + invItem.ExtraAdult.Value + invItem.Surgcharge.Value + (((invItem.ExtraAdult.Value + invItem.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                }
+                                SingleAdultRoomPrice = SingleAdultRoomPrice + item.SupplementPh;
+                            }
+                            else //// Tour
+                            {
+                                SingleAdultRoomPrice = SingleAdultRoomPrice + inventoryModel.ExtraAdult.Value + inventoryModel.Surgcharge.Value + (((inventoryModel.ExtraAdult.Value + inventoryModel.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                SingleAdultRoomPrice = SingleAdultRoomPrice + item.SupplementPh + (item.SupplementPh * item.MarkUp / 100);/*+ ExtraSupplementCharge*/;
+                            }
+
+
+                            <div class="Hotel-Summary-Details col-sm-12 col-md-12 col-xs-12">
+                                <span class="summary-title"><span class="summary_quantity">@ExtraAdults.ToString().PadLeft(2, '0')</span>Extra Adult</span>
+                                <span class="individual-price">x<span class="individual-price-style"><span> ₹</span>@Math.Round(SingleAdultRoomPrice, MidpointRounding.AwayFromZero).ToAmount()</span> @*per person*@@*<span class="summary-info-icon"><img src="~/images/Info_Icon.svg" style="width:24px;height:24px;" /></span>*@</span>
+                                <span class="total-price"><span> ₹</span>@Math.Round(SingleAdultRoomPrice * ExtraAdults, MidpointRounding.AwayFromZero).ToAmount()</span>
+                            </div>
+
+                        }
+                        @if (item.Child > 0) //// Childrens
+                        {
+                            decimal SingleChildPrice = 0;
+                            int FreeChild = item.Child - item.ChargableChild;
+                            int ChargableChild = item.ChargableChild;
+                            if (Model.Type == 1) // // Hotel
+                            {
+                                foreach (var invItem in inventoryModels)
+                                {
+                                    SingleChildPrice = SingleChildPrice + invItem.ExtraChild_WB.Value + invItem.Surgcharge.Value + (((invItem.ExtraChild_WB.Value + invItem.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                }
+                                SingleChildPrice = SingleChildPrice + item.SupplementPh;
+                            }
+                            else
+                            {
+                                SingleChildPrice = SingleChildPrice + inventoryModel.ExtraChild_WB.Value + inventoryModel.Surgcharge.Value + (((inventoryModel.ExtraChild_WB.Value + inventoryModel.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                SingleChildPrice = SingleChildPrice + item.SupplementPh + (item.SupplementPh * item.MarkUp / 100);
+                            }
+                            @if (ChargableChild > 0)
+                            {
+                                <div class="Hotel-Summary-Details col-sm-12 col-md-12 col-xs-12">
+                                    <span class="summary-title"><span class="summary_quantity">@ChargableChild.ToString().PadLeft(2, '0')</span>Extra Child</span>
+                                    <span class="individual-price">x<span class="individual-price-style"><span> ₹</span>@Math.Round(SingleChildPrice, MidpointRounding.AwayFromZero).ToAmount()</span> @*per person*@@*<span class="summary-info-icon"><img src="~/images/Info_Icon.svg" style="width:24px;height:24px;" /></span>*@</span>
+                                    <span class="total-price"><span> ₹</span>@Math.Round(SingleChildPrice * item.ChargableChild, MidpointRounding.AwayFromZero).ToAmount()</span>
+                                </div>
+                            }
+
+                            @if (FreeChild > 0)
+                            {
+                                <div class="Hotel-Summary-Details col-sm-12 col-md-12 col-xs-12">
+                                    <span class="summary-title"><span class="summary_quantity">@FreeChild.ToString().PadLeft(2, '0')</span>Free Child</span>
+                                    <span class="individual-price">x<span class="individual-price-style"><span> ₹</span>0</span> @*per person*@@*<span class="summary-info-icon"><img src="~/images/Info_Icon.svg" style="width:24px;height:24px;" /></span>*@</span>
+                                    <span class="total-price"><span> ₹</span>0</span>
+                                </div>
+                            }
+                        }
+                        @if (item.Infant > 0) //// Infant
+                        {
+                            decimal SingleInfantPrice = 0;
+                            int FreeInfant = item.Infant - item.ChargableInfant;
+                            int ChargableInfant = item.ChargableInfant;
+                            if (Model.Type == 1)
+                            {
+                                foreach (var invItem in inventoryModels)
+                                {
+                                    SingleInfantPrice = SingleInfantPrice + invItem.ExtraInfant.Value + invItem.Surgcharge.Value + (((invItem.ExtraInfant.Value + invItem.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                }
+                                SingleInfantPrice = SingleInfantPrice + item.SupplementPh;
+                            }
+                            else
+                            {
+                                SingleInfantPrice = SingleInfantPrice + inventoryModel.ExtraInfant.Value + inventoryModel.Surgcharge.Value + (((inventoryModel.ExtraInfant.Value + inventoryModel.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                SingleInfantPrice = SingleInfantPrice + item.SupplementPh + (item.SupplementPh * item.MarkUp / 100);
+                            }
+                            @if (ChargableInfant > 0)
+                            {
+                                <div class="Hotel-Summary-Details col-sm-12 col-md-12 col-xs-12">
+                                    <span class="summary-title"><span class="summary_quantity">@ChargableInfant.ToString().PadLeft(2, '0')</span>Extra Infant</span>
+                                    <span class="individual-price">x<span class="individual-price-style"><span> ₹</span>@Math.Round(SingleInfantPrice, MidpointRounding.AwayFromZero).ToAmount()</span> @*per person*@@*<span class="summary-info-icon"><img src="~/images/Info_Icon.svg" style="width:24px;height:24px;" /></span>*@</span>
+                                    <span class="total-price"><span> ₹</span>@Math.Round(SingleInfantPrice * ChargableInfant, MidpointRounding.AwayFromZero).ToAmount()</span>
+                                </div>
+                            }
+                            @if (FreeInfant > 0)
+                            {
+                                <div class="Hotel-Summary-Details col-sm-12 col-md-12 col-xs-12">
+                                    <span class="summary-title"><span class="summary_quantity">@FreeInfant.ToString().PadLeft(2, '0')</span>Free Infant</span>
+                                    <span class="individual-price">x<span class="individual-price-style"><span> ₹</span>0</span> @*per person*@@*<span class="summary-info-icon"><img src="~/images/Info_Icon.svg" style="width:24px;height:24px;" /></span>*@</span>
+                                    <span class="total-price"><span> ₹</span>0</span>
+                                </div>
+                            }
+
+                        }
+                    </div>
+                </div>
+
+
+
+            }
+        }
+
+    </div>
+    @if (Model.IsFlight)
+    {
+        <div class="Flight-Summary col-sm-12 col-md-12 col-xs-12">
+            <h3 class="summary-list-title">Flight</h3>
+            <div class="Hotel-Summary-Details col-sm-12 col-md-12 col-xs-12">
+                <span class="summary-title"><span class="summary_quantity">@((Model.PassengerBreakDown.Adults + Model.PassengerBreakDown.Childs + Model.PassengerBreakDown.Infants).ToString().PadLeft(2, '0'))</span>Passengers</span>
+                <span class="individual-price">x<span class="individual-price-style"><span> ₹</span>@(Math.Round((Model.FlightPrice + 100) / (Model.PassengerBreakDown.Adults + Model.PassengerBreakDown.Childs + Model.PassengerBreakDown.Infants),MidpointRounding.AwayFromZero).ToAmount())</span> @*per Person*@</span>
+                <span class="total-price"><span> ₹</span>@(Math.Round(Model.FlightPrice + 100, MidpointRounding.AwayFromZero).ToAmount())</span>
+            </div>
+        </div>
+    }
+
+    @if (Model.IsVisa && Model.VisaInformation.Count > 0)
+    {
+        <div class="Visa-Summary col-sm-12 col-md-12 col-xs-12">
+            <h3 class="summary-list-title">Visa Handling</h3>
+            @foreach (var item in Model.VisaInformation)
+            {
+                <div class="Hotel-Summary-Details col-sm-12 col-md-12 col-xs-12">
+                    <span class="summary-title"><span class="summary_quantity">@item.Count.ToString().PadLeft(2, '0')</span>Passengers</span>
+                    <span class="individual-price">x<span class="individual-price-style"><span> ₹</span>@(Math.Round(item.Price + (item.ServiceFee / item.Count), MidpointRounding.AwayFromZero).ToAmount())</span> @*per Passenger*@@*<span class="summary-info-icon"><img src="~/images/Info_Icon.svg" style="width:24px;height:24px;" /></span>*@</span>
+                    <span class="total-price"><span> ₹</span>@(Math.Round((item.Price + (item.ServiceFee/item.Count)) * item.Count, MidpointRounding.AwayFromZero).ToAmount())</span>
+                </div>
+            }
+        </div>
+    }
+    @*@if (ExtraSupplementCharge != 0)
+    {
+        <div class="service-charge-section col-sm-12 col-md-12 col-xs-12">
+            <span class="title">Service Charge</span>
+            <span class="value">₹@Math.Round(ExtraSupplementCharge,MidpointRounding.AwayFromZero).ToAmount()</span>
+        </div>
+    }*@
+
+    <div class="tax-section col-sm-12 col-md-12 col-xs-12">
+        <span class="title">Taxes & Charges</span>
+        <span class="value">₹@Math.Round(Model.TotalTax, MidpointRounding.AwayFromZero).ToAmount()</span>
+    </div>
+
+</div>
+
+<div class="Total-Summary col-sm-12 col-md-12 col-xs-12">
+    <h3 class="summary-list-title">Subtotal</h3>
+    <div class="total-Summary-Details col-sm-12 col-md-12 col-xs-12">
+        <div class="col-sm-4 col-md-4 col-lg-4 no-padding-left-right">
+            <span class="subtotal-price"><span> ₹</span>@(Math.Round(Model.TotalPrice + Model.TotalServiceFee + Model.TotalTax, MidpointRounding.AwayFromZero).ToAmount())</span>
+            <p>Incl. Taxes</p>
+        </div>
+
+        <div class="col-sm-8 col-md-8 col-lg-8 no-padding-left-right" >
+            @*<div class="col-sm-5 col-md-5 col-lg-5" style="padding-left:0px;padding-right:0px;">
+                    <button type="button" class="hold-btn">Hold For Free</button>
+                </div>*@
+            <div class="col-sm-5 col-md-5 col-lg-5 no-padding-left-right">
+            </div>
+            <div class="col-sm-7 col-md-7 col-lg-7 no-padding-left-right">
+                <button type="button" class="checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+</div>

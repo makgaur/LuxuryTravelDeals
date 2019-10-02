@@ -1,0 +1,72 @@
+﻿@model PackageDeatilsViewModel
+@{
+    var package = this.Model ?? new PackageDeatilsViewModel();
+    var hotelRoomTypes = this.Model.HotelRoomTypes == null
+            ? new List<HotelRoomTypeViewModel>()
+            : this.Model.HotelRoomTypes as List<HotelRoomTypeViewModel>;
+
+    var index = 0;
+    var nights = int.Parse(Model.Nights);
+}
+@foreach (var item in hotelRoomTypes)
+{
+    index++;
+    var selectOptions = new { item.RoomTypeId, item.HotelPriceId };
+    var price = (item.DoubleCost.Value + item.MarkUpAmount.Value);
+    var discount = item.DiscountPercent.Value;
+
+    if ((item.DoubleCost + item.MarkUpAmount) > 0)
+    {
+        item.RoomPerDay = item.RoomPerDay == 0 ? 1 : item.RoomPerDay;
+        <div class="book-now-box room-type-box   @(index == 1? "active" : string.Empty)">
+            <div class="row room-type-header">
+                <div class="col-xs-8 col-sm-8 full-xs">
+                    <div class="room-type">
+                        <h3>@item.RoomType </h3>
+                        <div class="sleep-up">
+                            <div class="adult-count">Sleeps up to</div>
+                            <div class="adult">
+                                <img src="/images/adult.png" alt="adukt-icon"/>
+                                <img src="/images/adult.png"alt="adukt-icon"/>
+                            </div>
+                            <div class="adult-count">Tell me more</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-4 col-sm-4 full-xs">
+                    <div class="room-offers">
+                        <div class="from-price">From <span><i class="fa fa-inr" aria-hidden="true"></i>@((price * nights).ToAmount()) price</span></div>
+                        <div class="per-person"></div>
+                        @if (discount > 0)
+                        {
+                            <div class="upto-offer">Upto -<span>@discount.ToAmount(true)%</span></div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="room-type-details @(index == 1?  string.Empty : "hide" )">
+                <div class="room-facility">
+                    @Html.Raw(item.RoomTypeDescription)
+                </div>
+
+                <div class="book-now-box-bottom">
+                    <div class="room-counting">
+                        <select class="room-number skip-select2" data-options="@(JsonConvert.SerializeObject(selectOptions))">
+                            @for (int i = 1; i <= item.RoomPerDay; i++)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+                        Rooms
+                    </div>
+
+                    @*<div class="offer-details">
+                            <a href="javascript:;">Offer Details</a>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    }
+}

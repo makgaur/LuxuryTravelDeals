@@ -1,0 +1,180 @@
+//-- farequote Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "5b072321-4f95-480a-a807-fd6958a0a068",
+  "TraceId": "8ad38f64-1240-4ee4-8c81-c9caab44eb54",
+  "ResultIndex": "OB1",
+  "IsLCC": false
+}
+//-- farequote Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "IsPriceChanged": true,
+    "ResponseStatus": 1,
+    "Results": {
+      "ResultIndex": "OB1",
+      "Source": 6,
+      "IsLCC": true,
+      "IsRefundable": true,
+      "GSTAllowed": true,
+      "AirlineRemark": "Indigo API Fare",
+      "Fare": {
+        "Currency": "INR",
+        "BaseFare": 8520,
+        "Tax": 3294,
+        "TaxBreakup": [
+          {
+            "key": "YQTax",
+            "value": 1950
+          },
+          {
+            "key": "YR",
+            "value": 100
+          },
+          {
+            "key": "PSF",
+            "value": 478
+          },
+          {
+            "key": "UDF",
+            "value": 300
+          },
+          {
+            "key": "JNTax",
+            "value": 0
+          },
+          {
+            "key": "INTax",
+            "value": 0
+          },
+          {
+            "key": "TransactionFee",
+            "value": 366
+          },
+          {
+            "key": "OtherTaxes",
+            "value": 100
+          }
+        ],
+        "YQTax": 1950,
+        "AdditionalTxnFeeOfrd": 0,
+        "AdditionalTxnFeePub": 628,
+        "PGCharge": 0,
+        "OtherCharges": 400,
+        "ChargeBU": [
+          {
+            "key": "TBOMARKUP",
+            "value": 0
+          },
+          {
+            "key": "CONVENIENCECHARGE",
+            "value": 0
+          },
+          {
+            "key": "OTHERCHARGE",
+            "value": 400
+          }
+        ],
+        "Discount": 0,
+        "PublishedFare": 12842,
+        "CommissionEarned": 199.37,
+        "PLBEarned": 208.57,
+        "IncentiveEarned": 141.45,
+        "OfferedFare": 11664.61,
+        "TdsOnCommission": 39.87,
+        "TdsOnPLB": 41.71,
+        "TdsOnIncentive": 28.29,
+        "ServiceFee": 0,
+        "TotalBaggageCharges": 0,
+        "TotalMealCharges": 0,
+        "TotalSeatCharges": 0,
+        "TotalSpecialServiceCharges": 0
+      },
+      "FareBreakdown": [
+        {
+          "Currency": "INR",
+          "PassengerType": 1,
+          "PassengerCount": 2,
+          "BaseFare": 8520,
+          "Tax": 3294,
+          "YQTax": 1950,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 628,
+          "PGCharge": 0
+        }
+      ],
+      "Segments": [
+        [
+          {
+            "Baggage": "20 Kg",
+            "CabinBaggage": "7 Kg",
+            "TripIndicator": 1,
+            "SegmentIndicator": 1,
+            "Airline": {
+              "AirlineCode": "6E",
+              "AirlineName": "Indigo",
+              "FlightNumber": "175",
+              "FareClass": "O",
+              "OperatingCarrier": ""
+            },
+            "Origin": {
+              "Airport": {
+                "AirportCode": "JAI",
+                "AirportName": "Sanganeer",
+                "Terminal": "2",
+                "CityCode": "JAI",
+                "CityName": "Jaipur",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "DepTime": "2017-12-11T21:30:00"
+            },
+            "Destination": {
+              "Airport": {
+                "AirportCode": "CCU",
+                "AirportName": "Calcutta",
+                "Terminal": "",
+                "CityCode": "CCU",
+                "CityName": "Kolkata",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "ArrTime": "2017-12-11T23:50:00"
+            },
+            "Duration": 140,
+            "GroundTime": 0,
+            "Mile": 0,
+            "StopOver": false,
+            "StopPoint": "",
+            "StopPointArrivalTime": "2017-12-11T23:50:00",
+            "StopPointDepartureTime": "2017-12-11T21:30:00",
+            "Craft": "320",
+            "Remark": null,
+            "IsETicketEligible": true,
+            "FlightStatus": "Confirmed",
+            "Status": ""
+          }
+        ]
+      ],
+      "LastTicketDate": null,
+      "TicketAdvisory": null,
+      "FareRules": [
+        {
+          "Origin": "JAI",
+          "Destination": "CCU",
+          "Airline": "6E",
+          "FareBasisCode": "O0IP",
+          "FareRuleDetail": "",
+          "FareRestriction": ""
+        }
+      ],
+      "AirlineCode": "6E",
+      "ValidatingAirline": "6E"
+    },
+    "TraceId": "8ad38f64-1240-4ee4-8c81-c9caab44eb54"
+  }
+}

@@ -1,0 +1,209 @@
+﻿@model HotelDealBookingViewModel
+@{
+    var package = Model.Package != null ? Model.Package : new PackageDeatilsViewModel();
+    string[] dayNames = CultureInfo.CurrentCulture.DateTimeFormat.AbbreviatedDayNames;
+    var dealEndTime = (package.ValidTo - DateTime.UtcNow);
+}
+
+<div class="container">
+    <section class="main-detail-box">
+        <aside id="breadcrumb">
+            <div class="page-center">
+                <div class="breadcrumb-container">
+                    <div class="step-container left active">
+                        <span class="step">1</span>
+                        <p class="step-title">Create</p>
+                    </div>
+                    <div class="step-container middle">
+                        <span class="step">2</span>
+                        <p class="step-title">Payment</p>
+                    </div>
+                    <div class="step-container right">
+                        <span class="step">3</span>
+                        <p class="step-title">Confirmation</p>
+                    </div>
+                    <span class="line left active"></span>
+                    <span class="line right"></span>
+                </div>
+            </div>
+        </aside>
+
+        <div class="row">
+            <div class="col-md-8 detail-left">
+                <div class="details-passenger-box">
+                    <form asp-antiforgery="false" asp-controller="Deal" asp-action="BookNow" method="post">
+                        <input type="hidden" asp-for="PackageId" />
+                        <input type="hidden" asp-for="HotelPriceId" />
+                        <input type="hidden" asp-for="RoomTypeId" />
+                        <input type="hidden" asp-for="CheckInDate" />
+                        <input type="hidden" asp-for="CheckOutDate" />
+                        <input type="hidden" asp-for="Rooms" />
+                        <div class="border-box">
+                            <h2 class="detail-tab">Your Contact Details</h2>
+                            <div class="row">
+                                <div class="form-group col-sm-2">
+                                    <label>Title</label>
+                                    <select class="form-control skip-select2" asp-for="HotelBooking.Salutation" asp-items="@(new SelectList(Html.GetEnumSelectList<Enums.Salutation>(),"Text","Text"))" ></select>
+                                    <span asp-validation-for="HotelBooking.Salutation"></span>
+                                </div>
+
+                                <div class="form-group col-sm-5">
+                                    <label asp-for="HotelBooking.FirstName"></label>
+                                    <input type="text" asp-for="HotelBooking.FirstName" class="form-control" />
+                                    <span asp-validation-for="HotelBooking.FirstName"></span>
+                                </div>
+
+                                <div class="form-group col-sm-5">
+                                    <label asp-for="HotelBooking.LastName"></label>
+                                    <input type="text" asp-for="HotelBooking.LastName" class="form-control" />
+                                    <span asp-validation-for="HotelBooking.LastName"></span>
+                                </div>
+
+                                <div class="form-group col-sm-6">
+                                    <label asp-for="HotelBooking.Email"></label>
+                                    <input type="text" asp-for="HotelBooking.Email" class="form-control" />
+                                    <span asp-validation-for="HotelBooking.Email"></span>
+                                </div>
+
+                                <div class="form-group col-sm-6">
+                                    <label asp-for="HotelBooking.Mobile"></label>
+                                    <input type="text" asp-for="HotelBooking.Mobile" class="numericOnly form-control" />
+                                    <span asp-validation-for="HotelBooking.Mobile"></span>
+                                </div>
+                            </div>
+
+                            <h3>@*Billing address*@</h3>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <label asp-for="HotelBooking.BillingAddress"></label>
+                                    <textarea asp-for="HotelBooking.BillingAddress" class="form-control" />
+                                    <span asp-validation-for="HotelBooking.BillingAddress"></span>
+                                </div>
+
+                                <div class="form-group col-sm-4">
+                                    <label asp-for="HotelBooking.CountryId"></label>
+                                    <select asp-for="HotelBooking.CountryId" class="form-control" asp-items="@(Model.HotelBooking.Countries)"
+                                            select2-Url="/SelectList/UserCountries"></select>
+                                    <span asp-validation-for="HotelBooking.CountryId"></span>
+                                </div>
+
+                                <div class="form-group col-sm-4">
+                                    <label asp-for="HotelBooking.City"></label>
+                                    <input type="text" asp-for="HotelBooking.City" class="form-control" />
+                                    <span asp-validation-for="HotelBooking.City"></span>
+                                </div>
+
+                                <div class="form-group col-sm-4">
+                                    <label asp-for="HotelBooking.PinCode"></label>
+                                    <input type="text" asp-for="HotelBooking.PinCode" class="numericOnly form-control" />
+                                    <span asp-validation-for="HotelBooking.PinCode"></span>
+                                </div>
+                            </div>
+
+                            <div class="pass-detail-box">
+                                <h2 class="detail-tab">Passenger Details</h2>
+                                <p>Please check that your first name & last name match what is indicated on the passport or ID you will be showing at the airport on they day of departure.</p>
+                                <div class="contact-box-details">
+                                    @if (this.Model != null && this.Model.PassengerDetails != null && this.Model.PassengerDetails.Count > 0)
+                                    {
+                                        @for (int counter = 0; counter < this.Model.PassengerDetails.Count; counter++)
+                                        {
+                                            @this.Html.Partial("_PassengerDetails", this.Model.PassengerDetails[counter])
+                                            <hr />
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="pass-detail-box">
+                                <h2 class="detail-tab">Booking terms and conditions</h2>
+                                <div class="tram-condition-box">
+                                    <input type="checkbox" asp-for="TermsAndConditions" required="required" />
+                                    <h4><label asp-for="TermsAndConditions">I have read and accept Luxury Travel Deals's <a href="/home/termandcondtion" target="_blank">terms and conditions</a>. <span class="danger">*</span></label></h4>
+                                    <span asp-validation-for="TermsAndConditions"></span>
+                                </div>
+                            </div>
+
+                            <div class="total-text-box">
+                                <div class="text-left-text">
+                                    <h2>Total including pre-payable taxes<br><span>(Including Extras)</span></h2>
+                                </div>
+                                <div class="text-right-text">
+                                    <h2><i><i class="fa fa-inr" aria-hidden="true"></i></i>@((Model.BookingPrice + Model.GstAmount).ToAmount())</h2>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+
+                            <div class="sent-btn">
+                                <p class="mand-fild-text"><span>*</span> Mandatory fields</p>
+                                <button type="submit">Buy Now</button>
+                            </div><div class="clr"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-sm-4 col-md-4 detail-right">
+                <div class="deal-box-five">
+                    <h2 class="time-remain">Time Remaining</h2>
+                    <div class="tour-time" align="center">
+                        <div class='deal-countdown' data-seconds="@dealEndTime.TotalSeconds"></div>
+                        @if (package.PackageImages != null && package.PackageImages.Count > 0)
+                        {
+                            <img src="/packages/@package.PackageImages.OrderBy(x=>x.SequenceNo).FirstOrDefault().ImageName"
+                                 class="img-responsive" auto-resize="true" width="323" height="219"
+                                 style="margin-top: 13px;width: 323px;height: 219px;" alt="deal-package-image"/>
+                        }
+                    </div>
+
+                    <p>
+                        @package.HotelName<br />
+                        @package.CityName - @package.CountryName<br />
+                        @package.DealQuotes
+                    </p>
+                </div>
+
+                <div class="product-details-box-two">
+                    <ul>
+                        <li>City: </li>
+                        <li>@package.CityName </li>
+                        <li>Start date: </li>
+                        <li>@($"{dayNames[(int)Model.CheckInDate.DayOfWeek]} {Model.CheckInDate.ToString("dd MMM yyyy")}") </li>
+                        <li>End date : </li>
+                        <li>@($"{dayNames[(int)Model.CheckOutDate.DayOfWeek]} {Model.CheckOutDate.ToString("dd MMM yyyy")}") </li>
+                        <li>Duration : </li>
+                        <li>@($"{Model.Days} Days - {Model.Nights} Nights")</li>
+                    </ul>
+                    <div class="clr"></div>
+                </div>
+
+                <div class="participants-adult-box">
+                    <h2>Participants : <span id="spnTotalAdults">@(Model.TotalAdults)</span> @(Model.TotalAdults > 1 ? "Travellers" : "Traveller")</h2>
+                    @Html.Raw(Model.AdultDescriptions)
+                    <div class="clr"></div>
+                </div>
+
+                <div class="total-amout-box">
+                    <ul>
+                        <li>Holiday price</li>
+                        <li class="amount-box"><i><i class="fa fa-inr" aria-hidden="true"></i> </i>@((Model.BookingPrice).ToAmount())</li>
+                        <li>Tax</li>
+                        <li class="amount-box"><i><i class="fa fa-inr" aria-hidden="true"></i> </i>@((Model.GstAmount).ToAmount())</li>
+                        <li>Total inc.taxes</li>
+                        <li class="amount-box"><i><i class="fa fa-inr" aria-hidden="true"></i> </i>@((Model.BookingPrice + Model.GstAmount).ToAmount())</li>
+                    </ul>
+                    <div class="clr"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<section class="gray_bg deals-page">
+    <div class="container">
+        <div class="col-sm-8 col-md-8">
+        </div>
+        <div class="col-sm-4 col-md-4">
+        </div>
+    </div>
+</section>

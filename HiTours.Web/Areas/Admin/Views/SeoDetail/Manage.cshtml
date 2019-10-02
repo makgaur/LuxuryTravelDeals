@@ -1,0 +1,63 @@
+﻿@{ this.ViewBag.Title = "Seo Detail";}
+@model SeoPageTypeDetail;
+<style>
+    #drpPageType {
+        width: 100% !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            
+            <div class="box-body">
+                <input type="hidden" asp-for="PageType" />
+                <div class="form-group col-sm-6">
+                    <label>@Model.PageIdTitle</label>
+                    <select id="drpPage" class="form-control" select2-Url="@Model.PageIdOptionUrl"></select>
+                    <span class="field-validation-error hide" data-valmsg-for="Title" data-valmsg-replace="true"><span for="Title" class="">The Page Name field is required.</span></span>
+                </div>
+                @*<div data-type="@Enums.SeoPageType.Package" class="form-group col-sm-6">
+            <label>Package</label>
+            <select class="form-control" select2-Url="/selectlist/StaticPageMasters"></select>
+        </div>
+        <div data-type="@Enums.SeoPageType.Hotel" class="form-group col-sm-6">
+            <label>Hotel</label>
+            <select class="form-control" select2-Url="/selectlist/StaticPageMasters"></select>
+        </div>*@
+            </div>
+            <div id="dvSeoDetail"></div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        function getSeoDetail(pType, pId) {
+            if (pType != null && pId != null) {
+                showWaitProcess();
+                $.ajax({
+                    type: "Get",
+                    url: '/admin/seodetail/GetDetail',
+                    data: { pageType: pType, pageId: pId },
+                    success: function (response) {
+                        hideWaitProcess();
+                        $("#dvSeoDetail").html(response);
+                        $.validator.unobtrusive.parse("form");
+
+                    }
+                });
+            }
+            else {
+                $("#dvSeoDetail").html('');
+            }
+
+        }
+        
+        $(document).on("change", "#drpPage", function () {
+            getSeoDetail($("#PageType").val(), $(this).val());
+        })
+
+        getSeoDetail($("#PageType").val(), $("#drpPage").val());
+       
+    </script>
+}

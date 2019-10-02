@@ -1,0 +1,14 @@
+﻿@{
+    var controller = this.ViewContext.RouteData.Values["controller"].ToString();
+    var action = this.ViewContext.RouteData.Values["action"].ToString();
+    var isDashBoard = controller.ToUpper() == "DASHBOARD";
+}
+
+<ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+    <li><a href="@Url.Content("~/admin/dashboard")"><i class="fa fa-home"></i> Dashboard</a></li>
+    @if (!isDashBoard)
+    {
+        <li><a href="javascript:;"  class="capitalize">@controller</a></li>
+    }
+  
+</ul>

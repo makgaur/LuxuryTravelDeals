@@ -1,0 +1,861 @@
+﻿@model BookingThankYouViewModel
+@using HiTours.Models
+@using Newtonsoft.Json.Converters
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Luxury Travel Deals</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+
+</head>
+@{
+    decimal ExtraSupplementCharge = 0;
+    List<DealInventoryModel> inventoryModels = new List<DealInventoryModel>(); //// Hotel
+    DealInventoryModel inventoryModel = new DealInventoryModel(); //// Tour
+}
+
+@try
+{
+    <body>
+        <table bgcolor="#fafafa" style="padding:30px 90px 0px 90px; margin:0px auto;" width="680">
+            <tbody>
+                <tr>
+                    <td bgcolor="#FFFFFF">
+                        <table align="center" width="500" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <table align="center" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+                                            <tbody>
+                                                <!-- Logo -->
+                                                <tr style="padding-top:50px;" align="center">
+                                                    <td align="center" bgcolor="" style="padding-top:50px;">
+                                                        <img src="~/images/ltd-logo.png" alt="ltd_logo" style="display:inline-block;" width="27" height="25" border="0" />
+                                                    </td>
+                                                    <td style="padding-top:50px;padding-left:7px;">
+                                                        <span style="font-size: 16px; font-family: IBM Plex Sans; color:#6F1A7D; font-weight:500;line-height:20px;text-decoration:none;display:inline-block;">Luxury<span style="font-weight:400">Travel</span>Deals</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Logo -->
+                        <table cellspacing="0" cellpadding="0" border="0" width="500" style="width: 500px !important;">
+                            <tbody>
+                                <tr>
+                                    <td align="left" style="padding:10px 0px;">
+                                        <table>
+                                            <tr>
+                                                <td style="padding:10px 5px 22px 33px;">
+                                                    <h3 style="font-size: 15px; font-family: IBM Plex Sans; color:#646464; font-weight:400;line-height:20px;margin-top:0px;margin-bottom:0px;">Hello, @Model.LeadName</h3>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td style="font-size: 24px; font-family: Abhaya Libre; color:#505050; font-weight:500;line-height:30px;padding:0px 33px;">
+                                                    <b>Your Booking is confirmed with us</b><br />
+                                                    <!-- <div style="width:75px;height:4px;background-color:#FCA32B;border:none;margin:9px 0px 0px;line-height:4px;">&nbsp;</div> -->
+
+                                                </td>
+
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table cellspacing="0" cellpadding="0" border="0" align="left">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:0px 33px;">
+                                        <table>
+                                            <tr>
+                                                <td align="left" valign="top" width="75" height="4" style="background-color: #FCA32B; border-collapse:collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; mso-line-height-rule: exactly; line-height: 1px;padding-left:40px;"><!--[if gte mso 15]>&nbsp;<![endif]--></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                        <table cellspacing="0" cellpadding="0" border="0" width="500">
+                            <tbody>
+                                <tr>
+                                    <td align="left" style="padding:10px 33px 0px;">
+                                        <table width="434">
+                                            <tr style="width:100%;">
+                                                <td style="font-size: 16px; font-family: IBM Plex Sans; color:#646464; font-weight:400;line-height:20px;text-align:left;width:50%;">
+                                                    <p style="margin-top:0px;margin-bottom:0px;">Booking ID:</p>
+
+                                                </td>
+
+                                                <td style="font-size: 16px; font-family: IBM Plex Sans; color:#323232; font-weight:500;line-height:20px;text-align:right;width:50%;">
+                                                    <p style="margin-top:0px;margin-bottom:0px;">@Model.BookingReferenceNumber</p>
+
+                                                </td>
+                                            </tr>
+
+                                            <tr width="100%">
+                                                <td align="left" width="50%" style="font-size: 16px; font-family: IBM Plex Sans; color:#646464; font-weight:400;line-height:20px;">
+                                                    <p style="margin-top:0px;margin-bottom:0px;"><span style="padding-right:7px;" width="16px" height="16px"><img src="~/images/confirm-icon.png" alt="" width="16px" height="16px" border="0" /></span>Booking Status</p>
+
+                                                </td>
+
+                                                <td align="right" width="50%" style="font-size: 16px; font-family: IBM Plex Sans; color:#0AC65A; font-weight:500;line-height:20px;">
+                                                    <p style="margin-top:0px;margin-bottom:0px;">Confirmed</p>
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                        <table cellspacing="0" cellpadding="0" border="0" width="500">
+                            <tbody>
+                                <tr>
+                                    <td align="left" style="padding:15px 33px 10px;">
+                                        <table style="width:100%;">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width:100%;height:200px;">
+                                                        <img src="~/DealImages/@Model.CardImage" alt="deal-image" width="100%" height="100%" border="0" />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table cellspacing="0" cellpadding="0" border="0" width="500">
+                            <tbody>
+                                <tr>
+                                    <td align="left" style="padding:0px 33px;">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td style="font-size: 25px; font-family: Abhaya Libre; color:#973E94; font-weight:700;line-height:30px;">
+                                                    <p style="margin-top:0px;margin-bottom:0px;">@Model.DealName</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table cellspacing="0" cellpadding="0" border="0" width="500">
+                            <tbody>
+                                <tr>
+                                    <td align="left" style="padding:12px 33px 0px;">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td style="font-size: 16px; font-family: IBM Plex Sans; color:#646464; font-weight:400;line-height:20px;">
+                                                    @if (Model.DealType == 1)
+                                                    {
+                                                        <p style="margin-top:0px;margin-bottom:0px;"><span style="padding-right:13px;" width="14px" height="20px"><img src="~/images/Deal-location.png" alt="" width="14px" height="20px" border="0" /></span>@(Model.HotelName + " ," + Model.Locations.FirstOrDefault())</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        {
+                                                            string location = string.Empty;
+
+                                                            @for (int i = 0; i < Model.Locations.Count; i++)
+                                                            {
+                                                                { location = location + Model.Locations[i]; }
+                                                                if (i != Model.Locations.Count - 1)
+                                                                {
+                                                                    location = location + ", ";
+                                                                }
+                                                            }
+                                                            <p style="margin-top:0px;margin-bottom:0px;"><span style="padding-right:13px;" width="14px" height="20px"><img src="~/images/Deal-location.png" alt="" width="14px" height="20px" border="0" /></span>@location</p>
+                                                        }
+                                                    }
+                                                </td>
+
+
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table cellspacing="0" cellpadding="0" border="0" width="500">
+                            <tbody>
+                                <tr>
+                                    <td align="left" style="padding:15px 33px;">
+                                        <table style="width:100%;">
+                                            <tr style="width:100%;">
+                                                <td style="width:60%;">
+                                                    <table style="width:100%;">
+                                                        <tr style="width:100%;">
+                                                            <td style="font-size: 18px; font-family: IBM Plex Sans; color:#505050; font-weight:500;line-height:20px;width:100%;">
+                                                                @{
+                                                                    string packageDescriptionString = string.Empty;
+                                                                    int nights = (Model.EndDate - Model.StartDate).Days;
+                                                                    packageDescriptionString = nights.ToString() + " Nights";
+                                                                    if (Model.VisaOpted)
+                                                                    {
+                                                                        packageDescriptionString = packageDescriptionString + " + Visa";
+                                                                    }
+                                                                    if (Model.FlightOpted)
+                                                                    {
+                                                                        packageDescriptionString = packageDescriptionString + " + Flights";
+                                                                    }
+
+                                                                }
+                                                                <p style="margin-top:0px;margin-bottom:0px;">@packageDescriptionString</p>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr style="width:100%;">
+                                                            <td style="font-size: 16px; font-family: IBM Plex Sans; color:#646464; font-weight:400;line-height:20px;margin-top:10px;width:100%;">
+                                                                <p style="margin-top:0px;margin-bottom:0px;"><span style="padding-right:10px;" width="24px" height="24px"><img src="~/images/email-Calendar.png" alt="" width="24px" height="24px" border="0" /></span>@Model.StartDate.Day @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.StartDate.Month).Substring(0, 3) @Model.EndDate.Year - @Model.EndDate.Day @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(Model.EndDate.Month).Substring(0, 3) @Model.EndDate.Year</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+
+                                                <td style="width:40%;">
+                                                    <table style="width:100%;">
+                                                        <tr style="width:100%;">
+                                                            <td style="font-size: 25px; font-family: IBM Plex Sans; color:#973E94; font-weight:500;line-height:35px;">
+                                                                <p style="margin-top:0px;margin-bottom:0px;"> @Model.Adults x <img src="~/images/adult-icon-24.png" alt="" width="24px" height="24px" border="0" /></p>
+                                                            </td>
+                                                            @if ((Model.Childs + Model.Infants) > 0)
+                                                            {
+                                                                <td style="font-size: 25px; font-family: IBM Plex Sans; color:#973E94; font-weight:500;line-height:35px;">
+                                                                    <p style="margin-top:0px;margin-bottom:0px;"> @(Model.Childs + Model.Infants) x <img src="~/images/adult-icon-12.png" alt="" width="12px" height="12px" border="0" /></p>
+                                                                </td>
+                                                            }
+                                                        </tr>
+
+                                                        <tr style="width:100%;">
+                                                            <td style="font-size: 12px; font-family: IBM Plex Sans; color:#969696; font-weight:500;line-height:15px;text-transform:uppercase;">
+                                                                <p style="margin-top:0px;margin-bottom:0px;">Adults</p>
+                                                            </td>
+
+                                                            @if ((Model.Childs + Model.Infants) > 0)
+                                                            {
+                                                                <td style="font-size: 12px; font-family: IBM Plex Sans; color:#969696; font-weight:500;line-height:15px;text-transform:uppercase;">
+                                                                    <p style="margin-top:0px;margin-bottom:0px;">Kids (0 - 12)</p>
+                                                                </td>
+                                                            }
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table cellspacing="0" cellpadding="0" border="0" width="500">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:0px 33px;">
+                                        <table width="434">
+                                            <tr>
+                                                <td align="left" valign="top" height="1" style="background-color: #E6E6E6; border-collapse:collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; mso-line-height-rule: exactly; line-height: 1px;padding-left:40px;"><!--[if gte mso 15]>&nbsp;<![endif]--></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table cellspacing="0" cellpadding="0" border="0" width="500">
+                            <tbody>
+                                <tr>
+                                    <td align="left" style="padding:15px 33px">
+                                        <table>
+                                            <tr>
+                                                <td style="font-size:20px; font-family: Abhaya Libre;line-height:30px;font-weight:bold;color:#973E94;">
+                                                    <span style="text-transform:uppercase;">LTD</span> specials
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    <ul style="margin-top:10px;margin-bottom:5px;padding-left:20px;">
+                                                        @for (int i = 0; i < Model.Highlights.Count; i++)
+                                                        {
+                                                            <li style="font-size:15px; font-family: 'IBM Plex Sans';line-height:20px;font-weight:500;color:#505050;text-transform:uppercase;">@Model.Highlights[i]</li>
+                                                        }
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table cellspacing="0" cellpadding="0" border="0" width="500">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:0px 33px;">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td align="left" valign="top" height="1" style="background-color: #E6E6E6; border-collapse:collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; mso-line-height-rule: exactly; line-height: 1px;padding-left:40px;"><!--[if gte mso 15]>&nbsp;<![endif]--></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        @{
+                            BookingSummaryViewModel bookingSummaryViewModel = JsonConvert.DeserializeObject<BookingSummaryViewModel>(Model.BookingSummarySerialized, new IsoDateTimeConverter { DateTimeFormat = "dd/MM/yyyy" });
+                        }
+                        <table cellspacing="0" cellpadding="0" border="0" width="500">
+                            <tbody>
+                                <tr>
+                                    <td align="left" style="padding:15px 33px">
+                                        <table>
+                                            <tr>
+                                                <td style="font-size:20px; font-family: Abhaya Libre;line-height:30px;font-weight:bold;color:#973E94;">
+                                                    <span style="text-transform:capitalize;">Price Summmary</span>
+                                                </td>
+                                            </tr>
+
+                                            @foreach (var item in bookingSummaryViewModel.BookingHotelRooms)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <table width="430">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td style="font-size:15px; font-family: 'IBM Plex Sans';line-height:20px;font-weight:500;color:#505050;text-transform:uppercase;">
+                                                                        @item.RoomName (@item.RatePlanName)
+                                                                    </td>
+                                                                </tr>
+                                                                <tr style="font-size:15px; font-family: 'IBM Plex Sans';line-height:20px;font-weight:500;">
+                                                                    @if (item.Adult == 1)
+                                                                    {
+                                                                        <td style="width:135px;max-width:135px; margin-right:10px;">
+                                                                            <table>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td style="color: #0ac65a;margin-right: 5px;border-radius:5px;padding: 5px;background-color: #b9e8cd;">
+                                                                                            @item.Adult.ToString().PadLeft(2, '0')
+                                                                                        </td>
+                                                                                        <td style="color:#969696;">
+                                                                                            Adult
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td style="width: 135px;max-width: 135px; margin-right:10px;">
+                                                                            <table>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td style="color: #0ac65a;margin-right: 5px;border-radius:5px;padding: 5px;background-color: #b9e8cd;">
+                                                                                            @(2.ToString().PadLeft(2, '0'))
+                                                                                        </td>
+                                                                                        <td style="color:#969696;">
+                                                                                            Adults
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    }
+                                                                    @{
+                                                                        decimal SingleAdultRoomPrice = 0;
+                                                                        ExtraSupplementCharge = 0;
+                                                                        if (Model.DealType == 1) //// Hotel
+                                                                        {
+                                                                            inventoryModels = JsonConvert.DeserializeObject<List<DealInventoryModel>>(item.InventorySerialized);
+                                                                            ExtraSupplementCharge = ExtraSupplementCharge + item.Supplement + (item.Supplement * item.MarkUp / 100);
+                                                                            ExtraSupplementCharge = ExtraSupplementCharge / item.Adult;
+                                                                            if (item.Adult == 1)
+                                                                            {
+                                                                                foreach (var invItem in inventoryModels)
+                                                                                {
+                                                                                    SingleAdultRoomPrice = SingleAdultRoomPrice + invItem.SingleSupplement.Value + invItem.Surgcharge.Value + (((invItem.SingleSupplement.Value + invItem.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                                                }
+
+                                                                                SingleAdultRoomPrice = SingleAdultRoomPrice + item.SupplementPh + ExtraSupplementCharge;
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                foreach (var invItem in inventoryModels)
+                                                                                {
+                                                                                    SingleAdultRoomPrice = SingleAdultRoomPrice + invItem.Price.Value + invItem.Surgcharge.Value + (((invItem.Price.Value + invItem.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                                                }
+
+                                                                                SingleAdultRoomPrice = SingleAdultRoomPrice + (item.SupplementPh * 2) + (ExtraSupplementCharge * 2);
+
+                                                                                SingleAdultRoomPrice = SingleAdultRoomPrice / 2;
+                                                                            }
+                                                                        }
+                                                                        else //// Tour
+                                                                        {
+                                                                            inventoryModel = JsonConvert.DeserializeObject<DealInventoryModel>(item.InventorySerialized);
+                                                                            //ExtraSupplementCharge = ExtraSupplementCharge + item.Supplement + (item.Supplement * item.MarkUp / 100);
+                                                                            //ExtraSupplementCharge = ExtraSupplementCharge / item.Adult;
+                                                                            if (item.Adult == 1)
+                                                                            {
+
+                                                                                SingleAdultRoomPrice = SingleAdultRoomPrice + inventoryModel.Price.Value + inventoryModel.SingleSupplement.Value + inventoryModel.Surgcharge.Value + (((inventoryModel.Price.Value + inventoryModel.SingleSupplement.Value + inventoryModel.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                                                SingleAdultRoomPrice = SingleAdultRoomPrice + item.SupplementPh + (item.SupplementPh * (item.MarkUp) / 100)/*+ ExtraSupplementCharge*/;
+                                                                            }
+                                                                            else
+                                                                            {
+
+                                                                                SingleAdultRoomPrice = SingleAdultRoomPrice + (inventoryModel.Price.Value * 2) + (inventoryModel.Surgcharge.Value * 2) + ((((inventoryModel.Price.Value * 2) + (inventoryModel.Surgcharge.Value * 2)) * (item.MarkUp)) / 100);
+                                                                                SingleAdultRoomPrice = SingleAdultRoomPrice + (item.SupplementPh * 2) + (item.SupplementPh * 2 * item.MarkUp / 100)/*+ (ExtraSupplementCharge * 2)*/;
+                                                                                SingleAdultRoomPrice = SingleAdultRoomPrice / 2;
+                                                                            }
+
+                                                                        }
+                                                                    }
+                                                                    <td>
+                                                                        <span style="color:#969696;">x<span style="color:#505050;">₹@Math.Round(SingleAdultRoomPrice, MidpointRounding.AwayFromZero).ToAmount()</span> @*per Night*@</span>
+                                                                    </td>
+                                                                    <td style="color:#505050;text-align:right;">₹@(item.Adult == 1 ? Math.Round(SingleAdultRoomPrice, MidpointRounding.AwayFromZero).ToAmount() : Math.Round(SingleAdultRoomPrice * 2, MidpointRounding.AwayFromZero).ToAmount())</td>
+
+                                                                </tr>
+                                                                @if (item.Adult - 2 >= 1) //// More than 2 Adults
+                                                                {
+                                                                    SingleAdultRoomPrice = 0;
+                                                                    int ExtraAdults = item.Adult - 2;
+                                                                    if (Model.DealType == 1)////Hotel
+                                                                    {
+                                                                        foreach (var invItem in inventoryModels)
+                                                                        {
+                                                                            SingleAdultRoomPrice = SingleAdultRoomPrice + invItem.ExtraAdult.Value + invItem.Surgcharge.Value + (((invItem.ExtraAdult.Value + invItem.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                                        }
+                                                                        SingleAdultRoomPrice = SingleAdultRoomPrice + item.SupplementPh;
+                                                                    }
+                                                                    else //// Tour
+                                                                    {
+                                                                        SingleAdultRoomPrice = SingleAdultRoomPrice + inventoryModel.ExtraAdult.Value + inventoryModel.Surgcharge.Value + (((inventoryModel.ExtraAdult.Value + inventoryModel.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                                        SingleAdultRoomPrice = SingleAdultRoomPrice + item.SupplementPh + (item.SupplementPh * item.MarkUp / 100);/*+ ExtraSupplementCharge*/;
+                                                                    }
+
+
+                                                                    <tr style="font-size:15px; font-family: 'IBM Plex Sans';line-height:20px;font-weight:500;">
+                                                                        <td style="width: 135px;max-width: 135px; margin-right:10px;">
+                                                                            <table>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td style="color: #0ac65a;margin-right: 5px;border-radius:5px;padding:5px;background-color: #b9e8cd;">
+                                                                                            @ExtraAdults.ToString().PadLeft(2, '0')
+                                                                                        </td>
+                                                                                        <td style="color:#969696;">
+                                                                                            Extra Adult
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span style="color:#969696;">x<span style="color:#505050;">₹@Math.Round(SingleAdultRoomPrice, MidpointRounding.AwayFromZero).ToAmount()</span> @*per person*@</span>
+                                                                        </td>
+                                                                        <td style="color:#505050;text-align:right;">₹@Math.Round(SingleAdultRoomPrice * ExtraAdults, MidpointRounding.AwayFromZero).ToAmount()</td>
+                                                                    </tr>
+                                                                }
+                                                                @if (item.Child > 0) //// Childrens
+                                                                {
+                                                                    decimal SingleChildPrice = 0;
+                                                                    int FreeChild = item.Child - item.ChargableChild;
+                                                                    int ChargableChild = item.ChargableChild;
+                                                                    if (Model.DealType == 1) // // Hotel
+                                                                    {
+                                                                        foreach (var invItem in inventoryModels)
+                                                                        {
+                                                                            SingleChildPrice = SingleChildPrice + invItem.ExtraChild_WB.Value + invItem.Surgcharge.Value + (((invItem.ExtraChild_WB.Value + invItem.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                                        }
+                                                                        SingleChildPrice = SingleChildPrice + item.SupplementPh;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        SingleChildPrice = SingleChildPrice + inventoryModel.ExtraChild_WB.Value + inventoryModel.Surgcharge.Value + (((inventoryModel.ExtraChild_WB.Value + inventoryModel.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                                        SingleChildPrice = SingleChildPrice + item.SupplementPh + (item.SupplementPh * item.MarkUp / 100);
+                                                                    }
+                                                                    @if (ChargableChild > 0)
+                                                                    {
+                                                                        <tr style="font-size:15px; font-family: 'IBM Plex Sans';line-height:20px;font-weight:500;">
+                                                                            <td style="width: 135px;max-width: 135px; margin-right:10px;">
+                                                                                <table>
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td style="color: #0ac65a;margin-right: 5px;border-radius:5px;padding:5px;background-color: #b9e8cd;">
+                                                                                                @ChargableChild.ToString().PadLeft(2, '0')
+                                                                                            </td>
+                                                                                            <td style="color:#969696;">
+                                                                                                Extra Child
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span style="color:#969696;">x<span style="color:#505050;">₹@Math.Round(SingleChildPrice, MidpointRounding.AwayFromZero).ToAmount()</span> @*per person*@</span>
+                                                                            </td>
+                                                                            <td style="color:#505050;text-align:right;">₹@Math.Round(SingleChildPrice * item.ChargableChild, MidpointRounding.AwayFromZero).ToAmount()</td>
+                                                                        </tr>
+                                                                    }
+
+                                                                    @if (FreeChild > 0)
+                                                                    {
+                                                                        <tr style="font-size:15px; font-family: 'IBM Plex Sans';line-height:20px;font-weight:500;">
+                                                                            <td style="width: 135px;max-width: 135px; margin-right:10px;">
+                                                                                <table>
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td style="color: #0ac65a;margin-right: 5px;border-radius:5px;padding:5px;background-color: #b9e8cd;">
+                                                                                                @FreeChild.ToString().PadLeft(2, '0')
+                                                                                            </td>
+                                                                                            <td style="color:#969696;">
+                                                                                                Free Child
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span style="color:#969696;">x<span style="color:#505050;">₹0</span> @*per person*@</span>
+                                                                            </td>
+                                                                            <td style="color:#505050;text-align:right;">₹0</td>
+                                                                        </tr>
+                                                                    }
+                                                                }
+                                                                @if (item.Infant > 0) //// Infant
+                                                                {
+                                                                    decimal SingleInfantPrice = 0;
+                                                                    int FreeInfant = item.Infant - item.ChargableInfant;
+                                                                    int ChargableInfant = item.ChargableInfant;
+                                                                    if (Model.DealType == 1)
+                                                                    {
+                                                                        foreach (var invItem in inventoryModels)
+                                                                        {
+                                                                            SingleInfantPrice = SingleInfantPrice + invItem.ExtraInfant.Value + invItem.Surgcharge.Value + (((invItem.ExtraInfant.Value + invItem.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                                        }
+                                                                        SingleInfantPrice = SingleInfantPrice + item.SupplementPh;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        SingleInfantPrice = SingleInfantPrice + inventoryModel.ExtraInfant.Value + inventoryModel.Surgcharge.Value + (((inventoryModel.ExtraInfant.Value + inventoryModel.Surgcharge.Value) * (item.MarkUp)) / 100);
+                                                                        SingleInfantPrice = SingleInfantPrice + item.SupplementPh + (item.SupplementPh * item.MarkUp / 100);
+                                                                    }
+                                                                    @if (ChargableInfant > 0)
+                                                                    {
+                                                                        <tr style="font-size:15px; font-family: 'IBM Plex Sans';line-height:20px;font-weight:500;">
+                                                                            <td style="width: 135px;max-width: 135px; margin-right:10px;">
+                                                                                <table>
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td style="color: #0ac65a;margin-right: 5px;border-radius:5px;padding:5px;background-color: #b9e8cd;">
+                                                                                                @ChargableInfant.ToString().PadLeft(2, '0')
+                                                                                            </td>
+                                                                                            <td style="color:#969696;">
+                                                                                                Extra Infant
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span style="color:#969696;">x<span style="color:#505050;">₹@Math.Round(SingleInfantPrice, MidpointRounding.AwayFromZero).ToAmount()</span> @*per person*@</span>
+                                                                            </td>
+                                                                            <td style="color:#505050;text-align:right;">₹@Math.Round(SingleInfantPrice * ChargableInfant, MidpointRounding.AwayFromZero).ToAmount()</td>
+                                                                        </tr>
+                                                                    }
+                                                                    @if (FreeInfant > 0)
+                                                                    {
+                                                                        <tr style="font-size:15px; font-family: 'IBM Plex Sans';line-height:20px;font-weight:500;">
+                                                                            <td style="width: 135px; max-width: 135px; margin-right: 10px;">
+                                                                                <table>
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td style="color: #0ac65a;margin-right: 5px;border-radius:5px;padding:5px;background-color: #b9e8cd;">
+                                                                                                @FreeInfant.ToString().PadLeft(2, '0')
+                                                                                            </td>
+                                                                                            <td style="color:#969696;">
+                                                                                                Free Infant
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span style="color:#969696;">x<span style="color:#505050;">₹0</span> @*per person*@</span>
+                                                                            </td>
+                                                                            <td style="color:#505050;text-align:right;">₹0</td>
+                                                                        </tr>
+                                                                    }
+
+                                                                }
+
+
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                            @if (Model.FlightOpted)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <table width="430">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td style="font-size:15px; font-family: 'IBM Plex Sans';line-height:20px;font-weight:500;color:#505050;text-transform:uppercase;">
+                                                                        Flight
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr style="font-size:15px; font-family: 'IBM Plex Sans';line-height:20px;font-weight:500;">
+                                                                    <td style="width: 135px;max-width: 135px; margin-right: 10px;">
+                                                                        <table>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td style="color: #0ac65a;margin-right: 5px;border-radius:5px;padding:5px;background-color: #b9e8cd;">
+                                                                                        @((bookingSummaryViewModel.PassengerBreakDown.Adults + bookingSummaryViewModel.PassengerBreakDown.Childs + bookingSummaryViewModel.PassengerBreakDown.Infants).ToString().PadLeft(2, '0'))
+                                                                                    </td>
+                                                                                    <td style="color:#969696;">
+                                                                                        Passengers
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                    <td>
+                                                                        <span style="color:#969696;">x<span style="color:#505050;">₹@(Math.Round((bookingSummaryViewModel.FlightPrice + 100) / (bookingSummaryViewModel.PassengerBreakDown.Adults + bookingSummaryViewModel.PassengerBreakDown.Childs + bookingSummaryViewModel.PassengerBreakDown.Infants), MidpointRounding.AwayFromZero).ToAmount())</span> @*per person*@</span>
+                                                                    </td>
+                                                                    <td style="color:#505050;text-align:right;">₹@(Math.Round(bookingSummaryViewModel.FlightPrice + 100, MidpointRounding.AwayFromZero).ToAmount())</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                            @if (Model.VisaOpted)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <table width="430">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td style="font-size:15px; font-family: 'IBM Plex Sans';line-height:20px;font-weight:500;color:#505050;text-transform:uppercase;">
+                                                                        Visa Handling
+                                                                    </td>
+                                                                </tr>
+                                                                @foreach (var item in bookingSummaryViewModel.VisaInformation)
+                                                                {
+
+                                                                    <tr style="font-size:15px; font-family: 'IBM Plex Sans';line-height:20px;font-weight:500;">
+                                                                        <td style="width: 135px;max-width: 135px; margin-right:10px;">
+                                                                            <table>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td style="color: #0ac65a; margin-right: 5px;border-radius:5px; padding:5px; background-color: #b9e8cd;">
+                                                                                            @item.Count.ToString().PadLeft(2, '0')
+                                                                                        </td>
+                                                                                        <td style="color:#969696;">
+                                                                                            Passengers
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                        <td>
+                                                                            <span style="color:#969696;">x<span style="color:#505050;">₹@(Math.Round(item.Price + (item.ServiceFee / item.Count), MidpointRounding.AwayFromZero).ToAmount())</span> @*per Passenger*@</span>
+                                                                        </td>
+                                                                        <td style="color:#505050;text-align:right;">₹@(Math.Round((item.Price + (item.ServiceFee / item.Count)) * item.Count, MidpointRounding.AwayFromZero).ToAmount())</td>
+                                                                    </tr>
+                                                                }
+
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            }
+
+
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table cellspacing="0" cellpadding="0" border="0" width="500">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:0px 33px;">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td align="left" valign="top" height="1" style="background-color: #E6E6E6; border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace: 0pt; mso-line-height-rule: exactly; line-height: 1px;padding-left:40px;"><!--[if gte mso 15]>&nbsp;<![endif]--></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table cellspacing="0" cellpadding="0" border="0" width="500">
+                            <tbody>
+                                <tr style="font-weight:500;">
+                                    <td style="padding:0px 33px;">
+                                        <table width="430">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="60%" style="font-family:'IBM Plex Sans';font-weight:500;color:#505050;line-height:20px;">
+                                                        <span style="font-size:15px;">Tax and Charges</span>
+                                                        <!--<span style="font-size:15px;margin-left:15px;text-transform:uppercase;">(Incl. Taxes)</span>-->
+                                                    </td>
+
+                                                    <td width="40%" style="font-family:'IBM Plex Sans';font-weight:500;color:#505050;font-size:15px;line-height:20px;text-align:right;">
+                                                        <span style="color:#973E94;text-align:right;">₹@Math.Round(bookingSummaryViewModel.TotalTax, MidpointRounding.AwayFromZero).ToAmount()</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table cellspacing="0" cellpadding="0" border="0" width="500">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:0px 33px;">
+                                        <table style="width:100%;">
+                                            <tr>
+                                                <td align="left" valign="top" height="1" style="background-color: #E6E6E6; border-collapse:collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; mso-line-height-rule: exactly; line-height: 1px;padding-left:40px;"><!--[if gte mso 15]>&nbsp;<![endif]--></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table cellspacing="0" cellpadding="0" border="0" width="500">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:0px 33px;">
+                                        <table width="430">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="60%" style="font-family:'IBM Plex Sans';font-weight:500;color:#505050;line-height:30px;">
+                                                        <span style="font-size:20px;">Net Paid</span>
+                                                        <span style="font-size:15px;margin-left:15px;text-transform:capitalize;">(Incl. Taxes)</span>
+                                                    </td>
+
+                                                    <td width="40%" style="font-family:'IBM Plex Sans';font-weight:500;color:#505050;line-height:35px;font-size:20px;line-height:35px;text-align:right;">
+                                                        <span style="color:#973E94;text-align:right;">₹@(Math.Round(bookingSummaryViewModel.TotalPrice + bookingSummaryViewModel.TotalServiceFee + bookingSummaryViewModel.TotalTax, MidpointRounding.AwayFromZero).ToAmount())</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table cellspacing="0" cellpadding="0" border="0" width="500">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:50px 33px">
+                                        <table align="center">
+                                            <tr>
+                                                <td style="font-size:12px; font-family: IBM Plex Sans;line-height:15px;  text-transform:uppercase; padding:12px 19.5px;border-radius:5px; cursor:pointer;" bgcolor="#660666" align="center">
+                                                    <a href="https://www.luxurytravel.deals/user/MyBookings?bookingId=@(Model.BookingId)" type="button" style="color:#FFFFFF; text-align:center;background-color: transparent;border: none;font-weight:500;text-decoration:none;">View my booking details</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <table align="center" cellspacing="0" cellpadding="0" bgcolor="#FAFAFA">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:50px 0px 15px;">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td width="17.6" height="17.6">
+                                                        <a href="https://www.linkedin.com/company/luxurytravel-deals/" target="_blank" style="text-decoration:none;"><img src="~/images/linkedin-icon.png" alt="linkedIn" style="display:inline-block; max-width:17.6px;" width="17.6" border="0" height="17.6" /></a>
+                                                    </td>
+                                                    <td style="width:17.6px;" width="17.6">&nbsp;</td>
+                                                    <td valign="top" width="17.6" height="17.6">
+                                                        <a href="https://www.instagram.com/luxurytraveldeals/" target="_blank" style="text-decoration:none;"><img src="~/images/Instagram_Icon.png" alt="instagram" style="display:inline-block; max-width:17.6px;" width="17.6" border="0" height="17.6" /></a>
+                                                    </td>
+                                                    <td style="width:17.6px;" width="17.6">&nbsp;</td>
+                                                    <td valign="top" width="17.6" height="17.6">
+                                                        <a href="https://twitter.com/luxtravdeals" target="_blank" style="text-decoration:none;"><img src="~/images/Twitter_Bird.png" alt="twitter" style="display:inline-block; max-width:17.6px;" width="17.6" border="0" height="17.6" /></a>
+                                                    </td>
+                                                    <td style="width:17.6px;" width="17.6">&nbsp;</td>
+                                                    <td valign="top" width="17.6" height="17.6">
+                                                        <a href="https://www.facebook.com/luxurytraveldeal" target="_blank" style="text-decoration:none;"><img src="~/images/Facebook_Icon.png" alt="facebook" style="display:inline-block; max-width:17.6px;" width="17.6" border="0" height="17.6" /></a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                        <table align="center" cellspacing="0" cellpadding="0" bgcolor="#FAFAFA">
+                            <tbody>
+                                <tr>
+                                    <td style="padding:10px 0px 40px;">
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="font-size: 12px; font-family: IBM Plex Sans; color:#646464; font-weight:400;line-height:15px;">
+                                                        <p>Copyright &copy; 2019 LuxuryTravelDeals</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+    </body>
+}
+catch(Exception ex)
+{
+    var msg = ex.ToString();
+}
+</html>

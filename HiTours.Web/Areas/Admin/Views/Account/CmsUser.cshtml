@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "CMS Users List";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{ this.ViewBag.Title = "CMS Users List"; }
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/account/addcmsuser") })
+                </div>
+            </div>
+            @this.Html.Partial("_DataTableGrid")
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        $(function () {
+            BindGrid({
+                url: "@Url.Action("CrmUserList", "Account")",
+                columns: [
+                    { "data": "Name", "title": "User Name", "type": "string" },
+                    { "data": "UserId", "title": "User ID", "type": "string" },
+                    { "data": "CreatedBy", "title": "Created By", "type": "string" },
+                    { "data": "CreatedDate", "title": "Created Date", "type": "string" },
+                    { "data": "UpdatedBy", "title": "Updated By", "type": "string" },
+                    { "data": "UpdatedDate", "title": "Updated Date", "type": "string" },
+                    {
+                        "data": "IsActive",
+                        "title": " Active Status",
+                        "class": "text-center",
+                        "type": "bool", "width": '15%', mRender: function (data, type, record) {
+                            var url = '@Url.GetAdminUrl("Account", "ChangeActiveStatus")/' + record.Id;
+                            return appendToggleCheckBox(url, record.IsActive, 'Successfully Activated', 'Successfully DeActivated')
+                        }
+                    },
+                    {
+                        "data": null, "title": "Action",
+                        "targets": -1,
+                        "width": '10%',
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                            var action = "";
+                            ////action += '<a class="form-control btn-default" href="@Url.GetAdminUrl("region", "manage")/' + record.Id + '"><i class="fa fa-eye"></i>&nbsp;</a>';
+                            ////action += '<a class="form-control btn-success" href="@Url.GetAdminUrl("Account", "managecrm")/' + record.Id+ '"><i class="fa fa-edit"></i>&nbsp;</a>';
+                            action += '<a class="form-control btn-danger delete-row" data-delete href="@Url.GetAdminUrl("Account", "DeleteCrmUser")/' + record.Id+ '"><i class="fa fa-trash-o"></i>&nbsp;</a>';
+                            return action;
+                        }
+                    }
+                ],
+            });
+        });
+
+    </script>
+}
+

@@ -1,0 +1,87 @@
+﻿@using HiTours.TBO.Models
+@model HiTours.TBO.Models.AirSearch
+@{
+    Layout = null;
+    var isReturnFlight = Model.Segments.Length == 2;
+    var outBondFlight = Model.Segments.FirstOrDefault();
+    var inBondFlight = Model.Segments.LastOrDefault();
+    var isRoundTrip = outBondFlight.Origin == inBondFlight.Destination &&
+                     outBondFlight.Destination == inBondFlight.Origin;
+}
+<div id="dvSearchCriteria">
+    <div class="topFlightBox search-segments">
+        @if (outBondFlight != null)
+        {
+            <div class="box_col">
+                <h4>From</h4>
+                <div class="col_block">
+                    <span data-segments="0" data-OriginCityName="">@outBondFlight.OriginCityName</span>
+                    <span class="code_airports" data-segments="0" data-origin="">@outBondFlight.Origin</span>
+                </div>
+            </div>
+
+            <div class="box_col">
+                <h4>To</h4>
+                <div class="col_block">
+                    <span data-segments="0" data-destinationcityname="">@outBondFlight.DestinationCityName</span>
+                    <span class="destination_code_airports code_airports" data-segments="0" data-Destination="">@outBondFlight.Destination</span>
+                </div>
+            </div>
+
+            <div class="box_col">
+                <h4>Departure</h4>
+                <div class="col_block">@outBondFlight.PreferredDepartureTime.ToString("ddd, d MMM")</div>
+            </div>
+        }
+        @if (inBondFlight != null)
+        {
+
+
+            <div class="box_col isRoundTrip @(isRoundTrip ? "hide":string.Empty)">
+                <h4>From</h4>
+                <div class="col_block">
+                    <span data-segments="1" data-origincityname="">@inBondFlight.OriginCityName</span>
+                    <span class="code_airports" data-segments="1" data-origin="">@inBondFlight.Origin</span>
+                </div>
+            </div>
+
+            <div class="box_col isRoundTrip @(isRoundTrip ? "hide":string.Empty)">
+                <h4>To</h4>
+                <div class="col_block">
+                    <span data-segments="1" data-destinationcityname="">@inBondFlight.DestinationCityName</span> 
+                    <span class="destination_code_airports code_airports" data-segments="1" data-destination="">@inBondFlight.Destination</span>
+                </div>
+            </div>
+
+
+            <div class="box_col">
+                <h4>Return</h4>
+                <div class="col_block">@inBondFlight.PreferredDepartureTime.ToString("ddd, d MMM")</div>
+            </div>
+        }
+
+
+        <div class="box_col box_last_col">
+            <button type="button" class="button_search_panel_new modifySearch" data-flight="search-modify">
+                MODIFY SEARCH
+                <span class="mdl-button__ripple-container">
+                    <span class="mdl-ripple"></span>
+                </span>
+            </button>
+        </div>
+        <div class="box_col box_last_col">
+            <h4>Passenger, Cabin Class</h4>
+            <div class="col_block col_passengers no_margin">
+                @((Model.AdultCount > 0 ? $"{Model.AdultCount} Adult" : ""))
+                @((Model.ChildCount > 0 ? $", {Model.ChildCount} Child" : ""))
+                @((Model.ChildCount > 0 ? $",{Model.InfantCount} Infant" : ""))
+                @($", ") <span class="spncabin-class">@outBondFlight.FlightCabinClass</span>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="search_modify_new_content search-modify" style="display:none;">
+        @Html.Partial("ModifySearch", Model)
+    </div>
+</div>

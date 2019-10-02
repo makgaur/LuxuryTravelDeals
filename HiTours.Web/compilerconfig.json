@@ -1,0 +1,70 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/main.css",
+    "inputFile": "wwwroot/css/main.less"
+  },
+  {
+    "outputFile": "wwwroot/Styles/main.css",
+    "inputFile": "wwwroot/Styles/main.less"
+  },
+  {
+    "outputFile": "wwwroot/Styles/fonts.css",
+    "inputFile": "wwwroot/Styles/fonts.less"
+  },
+  {
+    "outputFile": "wwwroot/Styles/variables.css",
+    "inputFile": "wwwroot/Styles/variables.less"
+  },
+  {
+    "outputFile": "wwwroot/Styles/product.css",
+    "inputFile": "wwwroot/Styles/product.less"
+  },
+  {
+    "outputFile": "wwwroot/Styles/UIElements.css",
+    "inputFile": "wwwroot/Styles/UIElements.less"
+  },
+  {
+    "outputFile": "wwwroot/Styles/Calender.css",
+    "inputFile": "wwwroot/Styles/Calender.less"
+  },
+  {
+    "outputFile": "wwwroot/Styles/search.css",
+    "inputFile": "wwwroot/Styles/search.less"
+  },
+  {
+    "outputFile": "wwwroot/Styles/Booking.css",
+    "inputFile": "wwwroot/Styles/Booking.less"
+  },
+  {
+    "outputFile": "wwwroot/slick/slick-theme.css",
+    "inputFile": "wwwroot/slick/slick-theme.less"
+  },
+  {
+    "outputFile": "wwwroot/Styles/Policy.css",
+    "inputFile": "wwwroot/Styles/Policy.less"
+  },
+  {
+    "outputFile": "wwwroot/Styles/AboutUsPage.css",
+    "inputFile": "wwwroot/Styles/AboutUsPage.less"
+  },
+  {
+    "outputFile": "wwwroot/Styles/mybooking.css",
+    "inputFile": "wwwroot/Styles/mybooking.less"
+  },
+  {
+    "outputFile": "wwwroot/css/jquery.typeahead.css",
+    "inputFile": "wwwroot/css/jquery.typeahead.scss"
+  },
+  {
+    "outputFile": "wwwroot/js/jquery.validate.unobtrusive.es5.js",
+    "inputFile": "wwwroot/js/jquery.validate.unobtrusive.js"
+  },
+  {
+    "outputFile": "wwwroot/Styles/helperstyles.css",
+    "inputFile": "wwwroot/Styles/helperstyles.less"
+  },
+  {
+    "outputFile": "wwwroot/Styles/Thankyou.css",
+    "inputFile": "wwwroot/Styles/Thankyou.less"
+  }
+]

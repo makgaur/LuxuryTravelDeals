@@ -1,0 +1,49 @@
+﻿@{
+    var headerWithoutIcons = this.ViewBag.HeaderWithoutIcons != null && this.ViewBag.HeaderWithoutIcons == true;
+    var hosturl = string.Format("{0}://{1}", Context.Request.Scheme, Context.Request.Host);
+}
+
+
+
+@*==========New Layout Header==============*@
+
+<header class="product-header hidden-xs">
+    <div class="@(headerWithoutIcons?"inner-header-bg":string.Empty) ">
+        <div class="navbar-wrapper @(headerWithoutIcons?"modify-nav":string.Empty)">
+            <div class="container-fluid search-header">
+                <nav class="navbar navbar-inverse NavCustomize ProductNav">
+                    <div class="navbar-header no-float">
+                        <button type="button" class="navbar-toggle collapsed" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand ProductNavbar-brand hidden-xs" href="@hosturl"><img src="~/images/LTD_mobile_logo.svg" class="img-responsive logo-ltd-style" alt="Luxury Travel Deals Logo" title="Luxury Travel Deals"/><div class="hidden-sm"><span class="medium">Luxury</span>Travel<span class="medium">Deals</span></div> </a>
+                        <a class="navbar-brand hidden-lg hidden-md hidden-sm" href="@hosturl"><img src="~/images/LTD_mobile_logo.svg" class="img-responsive logo-ltd-style" alt="Luxury Travel Deals Logo" title="Luxury Travel Deals" /></a>
+                        <div class="custom-header-icon hidden-sm hidden-lg hidden-md pull-right">
+
+                            @*For Mobile View*@
+                            <ul>
+                                <li class="myaccount margin-top-15">
+                                    <input type="hidden" id="UserEmail" value="" />
+                                    <a href="/user" class="signin">SIGN IN</a>
+                                </li>
+
+
+                            </ul>
+
+                        </div>
+
+                        @this.Html.Partial("_ProductSubheader")
+                    </div>
+
+
+
+
+                </nav>
+            </div>
+        </div>
+    </div>
+
+</header>

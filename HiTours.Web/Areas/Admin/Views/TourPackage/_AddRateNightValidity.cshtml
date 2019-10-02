@@ -1,0 +1,81 @@
+﻿@{
+    var newguid = Guid.NewGuid().ToString();
+}
+@using HtmlHelpers.BeginCollectionItemCore;
+@model TourPackageNightsValidityViewModel
+@if (this.Layout == null)
+{
+    <tr class="itemmaster-row" id="@newguid">
+        @using (this.Html.BeginCollectionItem("TourPackageNightsValidity"))
+        {
+            <td>
+                <div class="field-col">
+                    <input type="hidden" asp-for="Id" />
+                    @{ var hotelRoomTypeName = Guid.NewGuid().ToString("N");}
+                    <input type="hidden" asp-for="RoomTypeName" class="@hotelRoomTypeName" />
+                    <select asp-for="HotelRoomTypeId" selected="@Model.HotelRoomTypeId" class="form-control hotelroomType" asp-items="Model.HotelList"
+                            select2-hold=".@hotelRoomTypeName"
+                            select2-value="@Model.HotelRoomTypeId" select2-Url="/selectlist/GetPackageHoteRoomTypeList"></select>
+                    <span asp-validation-for="HotelRoomTypeId"></span>
+                </div>
+            </td>
+            <td>
+                <div class="field-col">
+                    <input type="text" asp-for="MaxAdult" class="form-control numericOnly" />
+                    <span asp-validation-for="MaxAdult"></span>
+                </div>
+            </td>
+            <td>
+                <div class="field-col">
+                    <input type="text" asp-for="MaxChild" class="form-control numericOnly" />
+                    <span asp-validation-for="MaxChild"></span>
+                </div>
+            </td>
+            <td>
+                <div class="field-col">
+                    <input type="text" asp-for="TwinRateWeekDays" class="form-control min decimalOnly" />
+                    <span asp-validation-for="TwinRateWeekDays"></span>
+                    <span class="text-center error-msg" align="center"></span>
+                </div>
+            </td>
+
+
+            <td>
+                <div class="field-col">
+                    <input type="text" asp-for="TwinRateWeekend" class="form-control max" />
+                    <span class="text-center error-msg" align="center"></span>
+                </div>
+            </td>
+            <td>
+                <div class="field-col">
+                    @{ var departCityName = Guid.NewGuid().ToString("N");}
+                    <input type="hidden" asp-for="DepartCityName" class="@departCityName" />
+                    <select asp-for="DepartCityId" selected="@Model.DepartCityId" class="form-control departCity packagecountry" asp-items="Model.CityList"
+                            select2-value="@Model.DepartCityId" select2-hold=".@departCityName" select2-Url="/selectlist/GetPackageCityList"></select>
+                    <span asp-validation-for="DepartCityId"></span>
+                </div>
+            </td>
+            <td>
+                <div class="field-col">
+                    <input type="text" asp-for="RoomCapacity" class="form-control numericOnly" />
+                    <span asp-validation-for="RoomCapacity"></span>
+                </div>
+            </td>
+            <td valign="middle" class="city-edit-row-box">
+                <div class="field-col text-center">
+                    <input type="hidden" asp-for="Descriptions" class="form-control" data-description="@newguid" />
+                    <a href="javascript:;" data-description-click="@newguid" title="Add Package Description"> <i class="fa fa-list-alt" aria-hidden="true"></i></a>
+                    <span asp-validation-for="Descriptions"></span>
+                </div>
+            </td>
+            <td valign="middle" class="city-delete-row-box" width="">
+                <a class="delete-item-row" href="javaScript:void(0)"><i class="fa fa-trash-o"></i></a>
+            </td>
+        }
+    </tr>
+}
+<script>
+    $(document).ready(function () {
+        initPluggins();
+    });
+</script>

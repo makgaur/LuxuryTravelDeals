@@ -1,0 +1,211 @@
+﻿@model HomeBannerViewModel
+@{ this.ViewBag.Title = "Banners Images";}
+<style>
+    .copy-link {
+        display: none;
+    }
+
+    .view-copylink:hover .copy-link {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -6% 0 0 -17%;
+        display: block;
+    }
+</style>
+
+
+<div class="row">
+
+    <div class="col-md-12">
+        <form asp-antiforgery="true" method="post" enctype="multipart/form-data">
+            <input asp-for="Id" type="hidden" />
+            <div class="box no-top-border">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Upload @this.ViewBag.Title </h3>
+
+                </div>
+                <div class="pull-right top-buttons">
+                    @if (this.Model != null && this.Model.Id != 0)
+                    {
+                        @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/homebanners/uploadimages") })
+                    }
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.ViewList, "/admin/homebanners") })
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        @*<div class="form-group col-sm-6">
+            <label>Upload Images(1600px X 435px)</label>
+            <input asp-for="ImageName" type="file" name="file" />
+        </div>*@
+                        <div class="form-group col-sm-6">
+                            <label>Upload Images(Ratio 683 : 384) (Desktop Devices 1366 px and Above)</label>
+                            <div class="input-group" style="width:100%;padding-right:10px;">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" class="image-upload" data-target="img-upload-card" asp-for="ImageFile">
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" asp-for="ImageName" readonly>
+                                <span asp-validation-for="ImageName"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label>Upload Images Small (Ratio 40 : 71) (320px and Above)</label>
+                            <div class="input-group" style="width:100%;padding-right:10px;">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" class="image-upload" data-target="img-upload-card" asp-for="ImageNameMobileSFile">
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" asp-for="ImageNameMobileS" readonly>
+                                <span asp-validation-for="ImageNameMobileS"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label>Upload Images Medium (Ratio 375 : 812) (375px and Above)</label>
+                            <div class="input-group" style="width:100%;padding-right:10px;">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" class="image-upload" data-target="img-upload-card" asp-for="ImageNameMobileMFile">
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" asp-for="ImageNameMobileM" readonly>
+                                <span asp-validation-for="ImageNameMobileM"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label>Upload Images Large (Ratio 207 : 448) (425px and Above)</label>
+                            <div class="input-group" style="width:100%;padding-right:10px;">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" class="image-upload" data-target="img-upload-card" asp-for="ImageNameMobileLFile">
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" asp-for="ImageNameMobileL" readonly>
+                                <span asp-validation-for="ImageNameMobileL"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label>Upload Images Tablet (Ratio 3 : 4) (768px and Above)</label>
+                            <div class="input-group" style="width:100%;padding-right:10px;">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" class="image-upload" data-target="img-upload-card" asp-for="ImageNameMobileTFile">
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" asp-for="ImageNameMobileT" readonly>
+                                <span asp-validation-for="ImageNameMobileT"></span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label>Upload Images Laptops (Ratio 8 : 5) (1024px and Above)</label>
+                            <div class="input-group" style="width:100%;padding-right:10px;">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" class="image-upload" data-target="img-upload-card" asp-for="ImageNameMobileLaptopFile">
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" asp-for="ImageNameMobileLaptop" readonly>
+                                <span asp-validation-for="ImageNameMobileLaptop"></span>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="form-group col-sm-12">
+                            <div class="row text-center text-lg-left">
+                               @if (Model != null && Model.File != null)
+                                {
+                                        <div class="col-lg-3 col-md-4 col-xs-6 view-copylink">
+                                            <span href="#" class="d-block mb-4 h-100">
+                                                <img class="img-fluid img-thumbnail" src="~/BannerImages/@Model.ImageName" alt="@path.Name" style="width:245px;height:143px" />
+                                            </span>
+                                            <a data-delete class="btn btn-danger remove-package-image btn-xs "
+                                               href="/admin/uploadbanners/DeleteBanners?name=@path.Name">Remove</a>
+                                        </div>
+
+                                }
+                            </div>
+                        </div>*@
+
+                    <div class="row">
+                        <div class="box-body">
+                            <div class="form-group col-sm-4">
+                                <label asp-for="Text1"></label>
+                                <input type="text" asp-for="Text1" class="form-control" />
+                                <span asp-validation-for="Text1"></span>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label asp-for="Text2"></label>
+                                <input type="text" asp-for="Text2" class="form-control" />
+                                <span asp-validation-for="Text2"></span>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label asp-for="Text3"></label>
+                                <input type="text" asp-for="Text3" class="form-control" />
+                                <span asp-validation-for="Text3"></span>
+                            </div>
+                            @*<div class="form-group col-sm-3">
+            <label asp-for="Text4"></label>
+            <input type="text" asp-for="Text4" class="form-control" />
+            <span asp-validation-for="Text4"></span>
+        </div>*@
+                            <div class="form-group col-sm-6">
+                                <label>Redirect URL</label>
+                                <input type="text" asp-for="RedirectUrl" class="form-control" />
+                                <span asp-validation-for="RedirectUrl"></span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <span class="pull-right">
+                        <button type="submit" name="Submit" class="btn btn-primary">Upload</button>
+                    </span>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+@section scripts {
+
+    <script>
+        $(document).ready(function () {
+            $(document).on('change', '.btn-file :file', function () {
+                var input = $(this),
+                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                input.trigger('fileselect', [label]);
+            });
+
+            $('.btn-file :file').on('fileselect', function (event, label) {
+
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = label;
+
+                if (input.length) {
+                    input.val(log);
+                } else {
+                    if (log) alert(log);
+                }
+
+            });
+            function readURL(input, id) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#' + id).attr('src', e.target.result);
+                        $('#' + id).parent('div').removeClass('hidden');
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $(".image-upload").change(function () {
+                readURL(this, $(this).data('target'));
+            });
+        });
+
+    </script>
+}

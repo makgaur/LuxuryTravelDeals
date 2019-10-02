@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewData["Title"] = "Booking";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    string title = string.Empty;
+    if (this.ViewBag.Type == 1)
+    {
+        title = "Hotel Booking";
+    }
+    if (this.ViewBag.Type == 2)
+    {
+        title = "Tour Booking";
+    }
+
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@title</h3>
+                @*<div class="pull-right top-buttons">
+                    <a id="anchorAddNew" href="@Url.Action("Manage",new { @mode = this.ViewBag.Mode ,@id=0}) " class="form-control btn-form-control btn-form-control-sm btn-has-count  btn-primary">
+                        <i class="fa fa-plus"></i>&nbsp;
+                        Add Curation
+                    </a>
+                </div>*@
+            </div>
+            @this.Html.Partial("_DataTableGrid")
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        $(function () {
+            BindGrid({
+                url: "@Url.Action("Index", new { @type = this.ViewBag.Type})",
+                columns: [
+                    { "data": "Id", "title": "ID", "type": "string"},
+                    { "data": "BookingRefrenceNumber", "title": "Ref", "type": "string"},
+                    { "data": "BookingPerson", "title": "Lead Name", "type": "string","width": '8%'},
+                    { "data": "BookingDate", "title": "Booking Date", "type": "string"},
+                    {
+                        "data": null,
+                        "title": "Deal Code",
+                        "targets": -1,
+                        "width": '2%',
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                                    
+                            var action = "";
+                            if (record.DealType == 1)
+                            {
+                                action = "HT" + record.DealId;
+                            }
+                            else if (record.DealType == 2) {
+                                action = "TR" + record.DealId;
+                            }
+                            return action;
+                        }
+                    },
+                    { "data": "DealName", "title": "Deal Name", "type": "string" },
+                    { "data": "Email", "title": "Email", "type": "string" },
+                    { "data": "Phone", "title": "Phone Number", "type": "string" },
+                    { "data": "TotalAmount", "title": "Total Amount", "type": "string" },
+                    { "data": "PaymentStatus", "title": "Payment Status", "type": "string", "width": '2%', },
+                     {
+                        "data": null,
+                        "title": "View",
+                        "targets": -1,
+                        "width": '2%',
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                            var action = "";
+                            action += '<a class="form-control btn-success" target="_blank" href="../../user/MyBookings?bookingId=' + record.Id + '"><i class="fa fa-eye"></i>&nbsp;</a>';
+                            return action;
+                        }
+                    }
+                    @*@if(this.ViewBag.Mode != "feature")
+                    {
+                        @:{ "data": "Line3", "title": "Line 3", "type": "string" },
+                    }
+                    { "data": "Url", "title": "Redirect Url", "type": "string" },
+                    { "data": "CreatedDate", "title": "Created Date", "type": "string" },
+                    {
+                        "data": "IsActive",
+                        "title": " Active Status",
+                        "class": "text-center",
+                        "type": "bool", "width": '15%',
+                        mRender: function (data, type, record) {
+                                    var url = '@Url.GetAdminUrl("Blog", "ChangeActiveStatus")/' + record.Id;
+                                    return appendToggleCheckBox(url, record.IsActive, 'Successfully Activated', 'Successfully DeActivated')
+                        }
+                    },
+                    {
+                        "data": null,
+                        "title": "Action",
+                        "targets": -1,
+                        "width": '15%',
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                                    var manageUrl = "@Url.Action("manage", "Blog", new {@mode = this.ViewBag.Mode })" + "&id=" + record.Id;
+                                    var action = "";
+                                    ////action += '<a class="form-control btn-default" href="@Url.GetAdminUrl("tourpackage", "PackageNights")/' + record.Id + '" title="Add Package Nights"><i class="fa fa-plus"></i>&nbsp;</a>';
+                                    action += '<a class="form-control btn-success" href="' + manageUrl + '"><i class="fa fa-edit"></i>&nbsp;</a>';
+                                    action += '<a class="form-control btn-danger delete-row" data-delete href="@Url.GetAdminUrl("Blog", "delete")/' + record.Id+ '"><i class="fa fa-trash-o"></i>&nbsp;</a>';
+                                    return action;
+                        }
+                    }*@]
+            });
+        });
+
+    </script>
+}
+

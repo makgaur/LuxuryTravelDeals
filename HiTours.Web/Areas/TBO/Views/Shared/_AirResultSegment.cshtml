@@ -1,0 +1,51 @@
+﻿@model AirResultSegments
+@using HtmlHelpers.BeginCollectionItemCore
+<div class="segments-item section-row">
+    @using (this.Html.BeginCollectionItem("CustomSegments"))
+            {
+        <div class="form-group col-sm-2">
+            <label asp-for="TripIndicator"></label>
+            <input type="text" asp-for="TripIndicator" class="form-control" />
+            <span asp-validation-for="TripIndicator"></span>
+        </div>
+        <div class="form-group col-sm-2">
+            <label asp-for="SegmentIndicator"></label>
+            <input type="text" asp-for="SegmentIndicator" class="form-control" />
+            <span asp-validation-for="SegmentIndicator"></span>
+        </div>
+            @if (Model.Airline != null)
+            {
+                <div class="form-group col-sm-2">
+                    <label asp-for="Airline.AirlineCode"></label>
+                    <input type="text" asp-for="Airline.AirlineCode" class="form-control" />
+                    <span asp-validation-for="Airline.AirlineCode"></span>
+                </div>
+
+                <div class="form-group col-sm-2">
+                    <label asp-for="Airline.AirlineName"></label>
+                    <input type="text" asp-for="Airline.AirlineName" class="form-control" />
+                    <span asp-validation-for="Airline.AirlineName"></span>
+                </div>
+
+
+                <div class="form-group col-sm-2">
+                    <label asp-for="Airline.FlightNumber"></label>
+                    <input type="text" asp-for="Airline.FlightNumber" class="form-control" />
+                    <span asp-validation-for="Airline.FlightNumber"></span>
+                </div>
+
+                <div class="form-group col-sm-2">
+                    <label asp-for="Airline.FareClass"></label>
+                    <input type="text" asp-for="Airline.FareClass" class="form-control" />
+                    <span asp-validation-for="Airline.FareClass"></span>
+                </div>
+
+                <div class="form-group col-sm-2">
+                    <label asp-for="Airline.OperatingCarrier"></label>
+                    <input type="text" asp-for="Airline.OperatingCarrier" class="form-control" />
+                    <span asp-validation-for="Airline.OperatingCarrier"></span>
+                </div>
+
+            }
+    }
+</div>

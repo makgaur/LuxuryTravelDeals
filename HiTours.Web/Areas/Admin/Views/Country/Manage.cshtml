@@ -1,0 +1,64 @@
+﻿@{  this.ViewBag.Title = "Country";}
+@model PackageCountryViewModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                        @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.ViewList, "/admin/country") })
+                    </div>
+            </div>
+            <form asp-antiforgery="true" method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Id" />
+                <div class="box-body">
+                    <div class="form-group col-sm-6">
+                        @*asp-disabled="true"*@
+                        @*select2-Dependent="true" select2-Dependent-Control="#RegionId" *@
+                        <label asp-for="Name"></label>
+                        <input class="form-control" type="text" asp-for="Name" />
+                        @*<select asp-for="Name" selected="@Model.Name" class="form-control country" asp-items="Model.CountryList"
+            select2-value="@Model.Name" select2-Url="/selectlist/GetPackageCountryList"></select>*@
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label asp-for="RegionId"></label>
+                        <select asp-for="RegionId" selected="@Model.RegionId" class="form-control" asp-items="Model.RegionList"
+                                select2-value="@Model.RegionId" select2-Url="/selectlist/GetPackageRegionList"></select>
+                        <span asp-validation-for="RegionId"></span>
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <label asp-for="Description"></label>
+                        <textarea asp-for="Description" class="form-control "></textarea>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label>Country Phone Code</label>
+                        <input class="form-control" type="text" asp-for="PhoneCode" placeholder="Eg. +XX" />
+                        <span asp-validation-for="PhoneCode"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label>Upload Images (Ratio 4:3)</label>
+                        <input type="file" class="image-upload" asp-for="ImageFile">
+                        <input type="text" class="form-control" asp-for="Image" readonly>
+                    </div>
+                </div>
+                @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit) })
+            </form>
+        </div>
+    </div>
+
+</div>
+@section scripts
+    {
+    <script>
+        $('.country').on('change', function () {
+            var options = $(".country").data('select2').data() || [];
+            if (options.length > 0 && options[0] && options[0].hasOwnProperty("Description"))
+            {
+                var description = options[0].Description;
+                $("#Description").val(description !== null ? description : '');
+            }
+        })
+    </script>
+}

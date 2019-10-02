@@ -1,0 +1,650 @@
+-----------------------------------------------------------------------------
+Date : 13-03-2019 13:00:27
+
+System.NullReferenceException
+Message : Object reference not set to an instance of an object.
+StackTrace :    at HiTours.Web.Controllers.DealController.PostAsync(String url, String content) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 632
+   at HiTours.Web.Controllers.DealController.GetFlightDetails(String startDate, String returnDate, Int32 adults, Int32 childs, Int32 infants, Int32 inclusionId, String departure) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 450
+-----------------------------------------------------------------------------
+Date : 16-03-2019 10:54:18
+
+Newtonsoft.Json.JsonReaderException
+Message : After parsing a value an unexpected character was encountered: :. Path 'Response.TraceId', line 1, position 89.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParsePostValue(Boolean ignoreComments)
+   at Newtonsoft.Json.JsonTextReader.Read()
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.SetPropertyValue(JsonProperty property, JsonConverter propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at HiTours.Web.Controllers.DealController.GetFlightDetails(String startDate, String returnDate, Int32 adults, Int32 childs, Int32 infants, Int32 inclusionId, String departure) in D:\LTD-TFS\Luxury Travel Deals 2.0\SourceCode\HiTours.Web\Controllers\DealController.cs:line 535
+-----------------------------------------------------------------------------
+Date : 29-04-2019 17:51:21
+
+System.NullReferenceException
+Message : Object reference not set to an instance of an object.
+StackTrace :    at HiTours.Web.Controllers.DealController.PostAsync(String url, String content) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1146
+   at HiTours.Web.Controllers.DealController.GetFlightDetails(String startDate, String returnDate, Int32 adults, Int32 childs, Int32 infants, Int32 inclusionId, String departure, String destination) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 644
+-----------------------------------------------------------------------------
+Date : 29-04-2019 18:08:00
+
+System.NullReferenceException
+Message : Object reference not set to an instance of an object.
+StackTrace :    at HiTours.Web.Controllers.DealController.PostAsync(String url, String content) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1146
+   at HiTours.Web.Controllers.DealController.GetFlightDetails(String startDate, String returnDate, Int32 adults, Int32 childs, Int32 infants, Int32 inclusionId, String departure, String destination) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 644
+-----------------------------------------------------------------------------
+Date : 29-04-2019 18:09:16
+
+System.NullReferenceException
+Message : Object reference not set to an instance of an object.
+StackTrace :    at HiTours.Web.Controllers.DealController.PostAsync(String url, String content) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1146
+   at HiTours.Web.Controllers.DealController.GetFlightDetails(String startDate, String returnDate, Int32 adults, Int32 childs, Int32 infants, Int32 inclusionId, String departure, String destination) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 644
+-----------------------------------------------------------------------------
+Date : 29-04-2019 18:10:45
+
+System.NullReferenceException
+Message : Object reference not set to an instance of an object.
+StackTrace :    at HiTours.Web.Controllers.DealController.PostAsync(String url, String content) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1146
+   at HiTours.Web.Controllers.DealController.GetFlightDetails(String startDate, String returnDate, Int32 adults, Int32 childs, Int32 infants, Int32 inclusionId, String departure, String destination) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 644
+-----------------------------------------------------------------------------
+Date : 29-04-2019 18:11:46
+
+System.NullReferenceException
+Message : Object reference not set to an instance of an object.
+StackTrace :    at HiTours.Web.Controllers.DealController.PostAsync(String url, String content) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1146
+   at HiTours.Web.Controllers.DealController.GetFlightDetails(String startDate, String returnDate, Int32 adults, Int32 childs, Int32 infants, Int32 inclusionId, String departure, String destination) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 644
+-----------------------------------------------------------------------------
+Date : 29-04-2019 18:12:21
+
+System.NullReferenceException
+Message : Object reference not set to an instance of an object.
+StackTrace :    at HiTours.Web.Controllers.DealController.PostAsync(String url, String content) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1146
+   at HiTours.Web.Controllers.DealController.GetFlightDetails(String startDate, String returnDate, Int32 adults, Int32 childs, Int32 infants, Int32 inclusionId, String departure, String destination) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 644
+-----------------------------------------------------------------------------
+Date : 29-04-2019 18:13:51
+
+System.NullReferenceException
+Message : Object reference not set to an instance of an object.
+StackTrace :    at HiTours.Web.Controllers.DealController.PostAsync(String url, String content) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1146
+   at HiTours.Web.Controllers.DealController.GetFlightDetails(String startDate, String returnDate, Int32 adults, Int32 childs, Int32 infants, Int32 inclusionId, String departure, String destination) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 644
+-----------------------------------------------------------------------------
+Date : 18-06-2019 17:02:24
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Parse(String json, JsonLoadSettings settings)
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1573
+   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1532
+   at HiTours.Web.Controllers.DealController.GetFlightDetails(String startDate, String returnDate, Int32 adults, Int32 childs, Int32 infants, Int32 inclusionId, String departure, String destination) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 773
+-----------------------------------------------------------------------------
+Date : 18-06-2019 17:13:10
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Parse(String json, JsonLoadSettings settings)
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1573
+   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1532
+   at HiTours.Web.Controllers.DealController.GetFlightDetails(String startDate, String returnDate, Int32 adults, Int32 childs, Int32 infants, Int32 inclusionId, String departure, String destination) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 773
+-----------------------------------------------------------------------------
+Date : 19-06-2019 10:49:21
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.Linq.JObject.Load(JsonReader reader, JsonLoadSettings settings)
+   at Newtonsoft.Json.Linq.JObject.Parse(String json, JsonLoadSettings settings)
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1649
+   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1608
+   at HiTours.Web.Controllers.DealController.GetFlightDetails(String startDate, String returnDate, Int32 adults, Int32 childs, Int32 infants, Int32 inclusionId, String departure, String destination) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 770
+-----------------------------------------------------------------------------
+Date : 21-06-2019 11:27:25
+
+System.IO.IOException
+Message : The process cannot access the file 'D:\Hi Tours TFS\SourceCode\HiTours.Web\wwwroot\Logs\TBO\21-06-2019\Login.Txt' because it is being used by another process.
+StackTrace :    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.AppendText(String path)
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1705
+
+URL : http://api.tektravels.com/SharedServices/SharedData.svc/rest/Authenticate 
+Method : Authenticate
+Result : {"IsSuccess":false,"Request":"{\"ClientId\":\"ApiIntegrationNew\",\"UserName\":\"HiTours\",\"Password\":\"Tours@123\",\"EndUserIp\":\"192.168.11.120\"}","Response":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1609","Exception":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1609"}
+-----------------------------------------------------------------------------
+Date : 21-06-2019 11:27:26
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.Controllers.DealController.FormatJson(String json) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1640
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1716
+
+URL : http://api.tektravels.com/SharedServices/SharedData.svc/rest/Authenticate 
+Method : Authenticate
+Result : {"IsSuccess":false,"Request":"{\"ClientId\":\"ApiIntegrationNew\",\"UserName\":\"HiTours\",\"Password\":\"Tours@123\",\"EndUserIp\":\"192.168.11.120\"}","Response":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1609","Exception":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1609"}
+-----------------------------------------------------------------------------
+Date : 21-06-2019 11:30:07
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.Controllers.DealController.FormatJson(String json) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1640
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1716
+
+URL : http://api.tektravels.com/SharedServices/SharedData.svc/rest/Authenticate 
+Method : Authenticate
+Result : {"IsSuccess":false,"Request":"{\"ClientId\":\"ApiIntegrationNew\",\"UserName\":\"HiTours\",\"Password\":\"Tours@123\",\"EndUserIp\":\"192.168.11.120\"}","Response":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1609","Exception":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1609"}
+-----------------------------------------------------------------------------
+Date : 21-06-2019 14:28:08
+
+System.IO.IOException
+Message : The process cannot access the file 'D:\Hi Tours TFS\SourceCode\HiTours.Web\wwwroot\Logs\TBO\21-06-2019\Login.Txt' because it is being used by another process.
+StackTrace :    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.AppendText(String path)
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1705
+
+URL : http://api.tektravels.com/SharedServices/SharedData.svc/rest/Authenticate 
+Method : Authenticate
+Result : {"IsSuccess":true,"Request":"{\"ClientId\":\"ApiIntegrationNew\",\"UserName\":\"HiTours\",\"Password\":\"Tours@123\",\"EndUserIp\":\"192.168.11.120\"}","Response":"{\"Status\":1,\"TokenId\":\"463ecaca-5e23-4985-a57c-03b32ab64afc\",\"Error\":{\"ErrorCode\":0,\"ErrorMessage\":\"\"},\"Member\":{\"FirstName\":\"Hunar\",\"LastName\":\"Syal\",\"Email\":\"basantp@travelboutiqueonline.com\",\"MemberId\":46044,\"AgencyId\":46073,\"LoginName\":\"HiTours\",\"LoginDetails\":\"Login Success at#@ 10\\/30\\/2018 11:43:46 AM #@ IPAddress: 192.168.4.65\",\"isPrimaryAgent\":false}}","Exception":""}
+-----------------------------------------------------------------------------
+Date : 21-06-2019 14:42:19
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.Controllers.DealController.FormatJson(String json) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1640
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1716
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"430ba369-8f20-4ba0-b709-a6b37001a125\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"UDR\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-07-06T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-07-07T00:00:00+05:30\"\r\n    },\r\n    {\r\n      \"Origin\": \"UDR\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-07-11T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-07-12T00:00:00+05:30\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1609","Exception":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1609"}
+-----------------------------------------------------------------------------
+Date : 25-06-2019 10:43:51
+
+System.IO.IOException
+Message : The process cannot access the file 'D:\Hi Tours TFS\SourceCode\HiTours.Web\wwwroot\Logs\TBO\25-06-2019\Login.Txt' because it is being used by another process.
+StackTrace :    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.AppendText(String path)
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1709
+
+URL : http://api.tektravels.com/SharedServices/SharedData.svc/rest/Authenticate 
+Method : Authenticate
+Result : {"IsSuccess":true,"Request":"{\"ClientId\":\"ApiIntegrationNew\",\"UserName\":\"HiTours\",\"Password\":\"Tours@123\",\"EndUserIp\":\"192.168.11.120\"}","Response":"{\"Status\":1,\"TokenId\":\"bebf70ae-2d75-4660-aeeb-01fb728839bb\",\"Error\":{\"ErrorCode\":0,\"ErrorMessage\":\"\"},\"Member\":{\"FirstName\":\"Hunar\",\"LastName\":\"Syal\",\"Email\":\"basantp@travelboutiqueonline.com\",\"MemberId\":46044,\"AgencyId\":46073,\"LoginName\":\"HiTours\",\"LoginDetails\":\"Login Success at#@ 10\\/30\\/2018 11:43:46 AM #@ IPAddress: 192.168.4.65\",\"isPrimaryAgent\":false}}","Exception":""}
+-----------------------------------------------------------------------------
+Date : 25-06-2019 11:59:59
+
+System.IO.IOException
+Message : The process cannot access the file 'D:\Hi Tours TFS\SourceCode\HiTours.Web\wwwroot\Logs\TBO\25-06-2019\Login.Txt' because it is being used by another process.
+StackTrace :    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.AppendText(String path)
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1744
+
+URL : http://api.tektravels.com/SharedServices/SharedData.svc/rest/Authenticate 
+Method : Authenticate
+Result : {"IsSuccess":true,"Request":"{\"ClientId\":\"ApiIntegrationNew\",\"UserName\":\"HiTours\",\"Password\":\"Tours@123\",\"EndUserIp\":\"192.168.11.120\"}","Response":"{\"Status\":1,\"TokenId\":\"dd22fb0f-db61-4e8a-93f7-7abc4b2904ad\",\"Error\":{\"ErrorCode\":0,\"ErrorMessage\":\"\"},\"Member\":{\"FirstName\":\"Hunar\",\"LastName\":\"Syal\",\"Email\":\"basantp@travelboutiqueonline.com\",\"MemberId\":46044,\"AgencyId\":46073,\"LoginName\":\"HiTours\",\"LoginDetails\":\"Login Success at#@ 10\\/30\\/2018 11:43:46 AM #@ IPAddress: 192.168.4.65\",\"isPrimaryAgent\":false}}","Exception":""}
+-----------------------------------------------------------------------------
+Date : 25-06-2019 12:01:42
+
+System.IO.IOException
+Message : The process cannot access the file 'D:\Hi Tours TFS\SourceCode\HiTours.Web\wwwroot\Logs\TBO\25-06-2019\Exceptions.Txt' because it is being used by another process.
+StackTrace :    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.AppendText(String path)
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1744
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"dd22fb0f-db61-4e8a-93f7-7abc4b2904ad\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"MLE\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-07-10T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-07-11T00:00:00+05:30\"\r\n    },\r\n    {\r\n      \"Origin\": \"MLE\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-07-15T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-07-16T00:00:00+05:30\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1648","Exception":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1648"}
+-----------------------------------------------------------------------------
+Date : 25-06-2019 12:01:42
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.Controllers.DealController.FormatJson(String json) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1679
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1755
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"3a90628e-9ad1-4191-9aae-368c6da1cc2d\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"MLE\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-07-22T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-07-23T00:00:00\"\r\n    },\r\n    {\r\n      \"Origin\": \"MLE\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-07-27T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-07-28T00:00:00\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1648","Exception":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1648"}
+-----------------------------------------------------------------------------
+Date : 25-06-2019 12:17:05
+
+System.IO.IOException
+Message : The process cannot access the file 'D:\Hi Tours TFS\SourceCode\HiTours.Web\wwwroot\Logs\TBO\25-06-2019\Login.Txt' because it is being used by another process.
+StackTrace :    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.AppendText(String path)
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1744
+
+URL : http://api.tektravels.com/SharedServices/SharedData.svc/rest/Authenticate 
+Method : Authenticate
+Result : {"IsSuccess":true,"Request":"{\"ClientId\":\"ApiIntegrationNew\",\"UserName\":\"HiTours\",\"Password\":\"Tours@123\",\"EndUserIp\":\"192.168.11.120\"}","Response":"{\"Status\":1,\"TokenId\":\"ea296a0a-613a-4d7a-8b81-79a67b06e026\",\"Error\":{\"ErrorCode\":0,\"ErrorMessage\":\"\"},\"Member\":{\"FirstName\":\"Hunar\",\"LastName\":\"Syal\",\"Email\":\"basantp@travelboutiqueonline.com\",\"MemberId\":46044,\"AgencyId\":46073,\"LoginName\":\"HiTours\",\"LoginDetails\":\"Login Success at#@ 10\\/30\\/2018 11:43:46 AM #@ IPAddress: 192.168.4.65\",\"isPrimaryAgent\":false}}","Exception":""}
+-----------------------------------------------------------------------------
+Date : 26-06-2019 11:55:47
+
+System.IO.IOException
+Message : The process cannot access the file 'D:\Hi Tours TFS\SourceCode\HiTours.Web\wwwroot\Logs\TBO\26-06-2019\Login.Txt' because it is being used by another process.
+StackTrace :    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.AppendText(String path)
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1754
+
+URL : http://api.tektravels.com/SharedServices/SharedData.svc/rest/Authenticate 
+Method : Authenticate
+Result : {"IsSuccess":true,"Request":"{\"ClientId\":\"ApiIntegrationNew\",\"UserName\":\"HiTours\",\"Password\":\"Tours@123\",\"EndUserIp\":\"192.168.11.120\"}","Response":"{\"Status\":1,\"TokenId\":\"f6a85aa8-4c35-43c0-ae7b-a4b3cef82044\",\"Error\":{\"ErrorCode\":0,\"ErrorMessage\":\"\"},\"Member\":{\"FirstName\":\"Hunar\",\"LastName\":\"Syal\",\"Email\":\"basantp@travelboutiqueonline.com\",\"MemberId\":46044,\"AgencyId\":46073,\"LoginName\":\"HiTours\",\"LoginDetails\":\"Login Success at#@ 10\\/30\\/2018 11:43:46 AM #@ IPAddress: 192.168.4.65\",\"isPrimaryAgent\":false}}","Exception":""}
+-----------------------------------------------------------------------------
+Date : 26-06-2019 11:56:08
+
+System.IO.IOException
+Message : The process cannot access the file 'D:\Hi Tours TFS\SourceCode\HiTours.Web\wwwroot\Logs\TBO\26-06-2019\Exceptions.Txt' because it is being used by another process.
+StackTrace :    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.AppendText(String path)
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1754
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"f6a85aa8-4c35-43c0-ae7b-a4b3cef82044\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"MLE\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-07-15T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-07-16T00:00:00\"\r\n    },\r\n    {\r\n      \"Origin\": \"MLE\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-07-20T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-07-21T00:00:00\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: The remote server returned an error: (503) Service Unavailable.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1658","Exception":"System.Net.WebException: The remote server returned an error: (503) Service Unavailable.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1658"}
+-----------------------------------------------------------------------------
+Date : 26-06-2019 11:56:18
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.Controllers.DealController.FormatJson(String json) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1689
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1765
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"33e698d7-2045-44d5-89f8-eaec7509f4eb\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"MLE\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-07-11T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-07-12T00:00:00+05:30\"\r\n    },\r\n    {\r\n      \"Origin\": \"MLE\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-07-16T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-07-17T00:00:00+05:30\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: The remote server returned an error: (503) Service Unavailable.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1658","Exception":"System.Net.WebException: The remote server returned an error: (503) Service Unavailable.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1658"}
+-----------------------------------------------------------------------------
+Date : 04-07-2019 12:55:16
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.Controllers.DealController.FormatJson(String json) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1760
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1836
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"a1730ab9-760f-4aeb-b2bb-588988d82bb9\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"BOM\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-07-19T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-07-20T00:00:00+05:30\"\r\n    },\r\n    {\r\n      \"Origin\": \"BOM\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-07-24T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-07-25T00:00:00+05:30\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1729","Exception":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1729"}
+-----------------------------------------------------------------------------
+Date : 04-07-2019 12:55:20
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.Controllers.DealController.FormatJson(String json) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1760
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1836
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"a1730ab9-760f-4aeb-b2bb-588988d82bb9\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"BOM\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-07-15T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-07-16T00:00:00\"\r\n    },\r\n    {\r\n      \"Origin\": \"BOM\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-07-20T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-07-21T00:00:00\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1729","Exception":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1729"}
+-----------------------------------------------------------------------------
+Date : 04-07-2019 13:01:52
+
+System.IO.IOException
+Message : The process cannot access the file 'D:\Hi Tours TFS\SourceCode\HiTours.Web\wwwroot\Logs\TBO\04-07-2019\Exceptions.Txt' because it is being used by another process.
+StackTrace :    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.AppendText(String path)
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1825
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"a1730ab9-760f-4aeb-b2bb-588988d82bb9\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"GOI\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-08-12T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-08-13T00:00:00\"\r\n    },\r\n    {\r\n      \"Origin\": \"GOI\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-08-17T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-08-18T00:00:00\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: An error occurred while sending the request. Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error)\r\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.GetResult(Int16 token)\r\n   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpConnectionPool.SendWithNtConnectionAuthAsync(HttpConnection connection, HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpClient.FinishSendAsyncUnbuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)\r\n   at System.Net.HttpWebRequest.SendRequest()\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1729","Exception":"System.Net.WebException: An error occurred while sending the request. Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error)\r\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.GetResult(Int16 token)\r\n   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpConnectionPool.SendWithNtConnectionAuthAsync(HttpConnection connection, HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpClient.FinishSendAsyncUnbuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)\r\n   at System.Net.HttpWebRequest.SendRequest()\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1729"}
+-----------------------------------------------------------------------------
+Date : 04-07-2019 17:11:05
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.Controllers.DealController.FormatJson(String json) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1767
+   at HiTours.Web.Controllers.DealController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Controllers\DealController.cs:line 1843
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"a1730ab9-760f-4aeb-b2bb-588988d82bb9\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"GOI\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-07-15T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-07-16T00:00:00\"\r\n    },\r\n    {\r\n      \"Origin\": \"GOI\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 0,\r\n      \"PreferredDepartureTime\": \"2019-07-20T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-07-21T00:00:00\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond ---> System.Net.Http.HttpRequestException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond\r\n   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)\r\n   at System.Threading.Tasks.ValueTask`1.get_Result()\r\n   at System.Net.Http.HttpConnectionPool.CreateConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Threading.Tasks.ValueTask`1.get_Result()\r\n   at System.Net.Http.HttpConnectionPool.WaitForCreatedConnectionAsync(ValueTask`1 creationTask)\r\n   at System.Threading.Tasks.ValueTask`1.get_Result()\r\n   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpClient.FinishSendAsyncUnbuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)\r\n   at System.Net.HttpWebRequest.SendRequest()\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1736","Exception":"System.Net.WebException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond ---> System.Net.Http.HttpRequestException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond\r\n   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)\r\n   at System.Threading.Tasks.ValueTask`1.get_Result()\r\n   at System.Net.Http.HttpConnectionPool.CreateConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Threading.Tasks.ValueTask`1.get_Result()\r\n   at System.Net.Http.HttpConnectionPool.WaitForCreatedConnectionAsync(ValueTask`1 creationTask)\r\n   at System.Threading.Tasks.ValueTask`1.get_Result()\r\n   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpClient.FinishSendAsyncUnbuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)\r\n   at System.Net.HttpWebRequest.SendRequest()\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.Controllers.DealController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Controllers\\DealController.cs:line 1736"}
+-----------------------------------------------------------------------------
+Date : 10-07-2019 11:06:01
+
+System.IO.IOException
+Message : The process cannot access the file 'D:\Hi Tours TFS\SourceCode\HiTours.Web\wwwroot\Logs\TBO\10-07-2019\Login.Txt' because it is being used by another process.
+StackTrace :    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.AppendText(String path)
+   at HiTours.Web.TBOController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Framework\TBOController.cs:line 243
+
+URL : http://api.tektravels.com/SharedServices/SharedData.svc/rest/Authenticate 
+Method : Authenticate
+Result : {"IsSuccess":true,"Request":"{\"ClientId\":\"ApiIntegrationNew\",\"UserName\":\"HiTours\",\"Password\":\"Tours@123\",\"EndUserIp\":\"192.168.11.120\"}","Response":"{\"Status\":1,\"TokenId\":\"0df29b6b-1f85-4e0c-84f9-b1519880be96\",\"Error\":{\"ErrorCode\":0,\"ErrorMessage\":\"\"},\"Member\":{\"FirstName\":\"Hunar\",\"LastName\":\"Syal\",\"Email\":\"basantp@travelboutiqueonline.com\",\"MemberId\":46044,\"AgencyId\":46073,\"LoginName\":\"HiTours\",\"LoginDetails\":\"Login Success at#@ 10\\/30\\/2018 11:43:46 AM #@ IPAddress: 192.168.4.65\",\"isPrimaryAgent\":false}}","Exception":""}
+-----------------------------------------------------------------------------
+Date : 10-07-2019 12:58:42
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.TBOController.FormatJson(String json) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Framework\TBOController.cs:line 291
+   at HiTours.Web.TBOController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Framework\TBOController.cs:line 254
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"201441cb-aaa9-41b4-a60a-14f0c6cb75c4\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"BOM\",\r\n      \"FlightCabinClass\": 1,\r\n      \"PreferredDepartureTime\": \"2019-07-21T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-07-21T00:00:00\"\r\n    },\r\n    {\r\n      \"Origin\": \"BOM\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 1,\r\n      \"PreferredDepartureTime\": \"2019-07-25T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-07-26T00:00:00\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Framework\\TBOController.cs:line 152","Exception":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Framework\\TBOController.cs:line 152"}
+-----------------------------------------------------------------------------
+Date : 10-07-2019 17:36:44
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.TBOController.FormatJson(String json) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Framework\TBOController.cs:line 291
+   at HiTours.Web.TBOController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Framework\TBOController.cs:line 254
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"201441cb-aaa9-41b4-a60a-14f0c6cb75c4\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"BOM\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-07-22T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-07-23T00:00:00\"\r\n    },\r\n    {\r\n      \"Origin\": \"BOM\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-07-27T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-07-28T00:00:00\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: An error occurred while sending the request. Unable to read data from the transport connection: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.IO.IOException: Unable to read data from the transport connection: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error)\r\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.GetResult(Int16 token)\r\n   at System.Net.Http.HttpConnection.FillAsync()\r\n   at System.Net.Http.HttpConnection.ReadNextResponseHeaderLineAsync(Boolean foldedHeadersAllowed)\r\n   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpConnectionPool.SendWithNtConnectionAuthAsync(HttpConnection connection, HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpClient.FinishSendAsyncUnbuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)\r\n   at System.Net.HttpWebRequest.SendRequest()\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Framework\\TBOController.cs:line 152","Exception":"System.Net.WebException: An error occurred while sending the request. Unable to read data from the transport connection: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.IO.IOException: Unable to read data from the transport connection: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error)\r\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.GetResult(Int16 token)\r\n   at System.Net.Http.HttpConnection.FillAsync()\r\n   at System.Net.Http.HttpConnection.ReadNextResponseHeaderLineAsync(Boolean foldedHeadersAllowed)\r\n   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpConnectionPool.SendWithNtConnectionAuthAsync(HttpConnection connection, HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpClient.FinishSendAsyncUnbuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)\r\n   at System.Net.HttpWebRequest.SendRequest()\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Framework\\TBOController.cs:line 152"}
+-----------------------------------------------------------------------------
+Date : 11-07-2019 10:37:44
+
+System.IO.IOException
+Message : The process cannot access the file 'D:\Hi Tours TFS\SourceCode\HiTours.Web\wwwroot\Logs\TBO\11-07-2019\Login.Txt' because it is being used by another process.
+StackTrace :    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.AppendText(String path)
+   at HiTours.Web.TBOController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Framework\TBOController.cs:line 243
+
+URL : http://api.tektravels.com/SharedServices/SharedData.svc/rest/Authenticate 
+Method : Authenticate
+Result : {"IsSuccess":true,"Request":"{\"ClientId\":\"ApiIntegrationNew\",\"UserName\":\"HiTours\",\"Password\":\"Tours@123\",\"EndUserIp\":\"192.168.11.120\"}","Response":"{\"Status\":1,\"TokenId\":\"be214afa-cafa-43ae-9569-6faa627c65b6\",\"Error\":{\"ErrorCode\":0,\"ErrorMessage\":\"\"},\"Member\":{\"FirstName\":\"Hunar\",\"LastName\":\"Syal\",\"Email\":\"basantp@travelboutiqueonline.com\",\"MemberId\":46044,\"AgencyId\":46073,\"LoginName\":\"HiTours\",\"LoginDetails\":\"Login Success at#@ 10\\/30\\/2018 11:43:46 AM #@ IPAddress: 192.168.4.65\",\"isPrimaryAgent\":false}}","Exception":""}
+-----------------------------------------------------------------------------
+Date : 11-07-2019 11:18:44
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.TBOController.FormatJson(String json) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Framework\TBOController.cs:line 291
+   at HiTours.Web.TBOController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Framework\TBOController.cs:line 254
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"be214afa-cafa-43ae-9569-6faa627c65b6\",\r\n  \"AdultCount\": 2,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"BOM\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-07-21T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-07-21T00:00:00\"\r\n    },\r\n    {\r\n      \"Origin\": \"BOM\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-07-26T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-07-27T00:00:00\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Framework\\TBOController.cs:line 152","Exception":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Framework\\TBOController.cs:line 152"}
+-----------------------------------------------------------------------------
+Date : 11-07-2019 18:21:08
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.TBOController.FormatJson(String json) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Framework\TBOController.cs:line 291
+   at HiTours.Web.TBOController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\SourceCode\HiTours.Web\Framework\TBOController.cs:line 254
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"be214afa-cafa-43ae-9569-6faa627c65b6\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"BOM\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-07-26T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-07-27T00:00:00+05:30\"\r\n    },\r\n    {\r\n      \"Origin\": \"BOM\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-07-31T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-08-01T00:00:00+05:30\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Framework\\TBOController.cs:line 152","Exception":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\SourceCode\\HiTours.Web\\Framework\\TBOController.cs:line 152"}
+-----------------------------------------------------------------------------
+Date : 25-07-2019 11:14:57
+
+System.IO.IOException
+Message : The process cannot access the file 'D:\Hi Tours TFS\Luxury Travel Deals\HiTours.Web\wwwroot\Logs\TBO\25-07-2019\Login.Txt' because it is being used by another process.
+StackTrace :    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.AppendText(String path)
+   at HiTours.Web.TBOController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\Luxury Travel Deals\HiTours.Web\Framework\TBOController.cs:line 243
+
+URL : http://api.tektravels.com/SharedServices/SharedData.svc/rest/Authenticate 
+Method : Authenticate
+Result : {"IsSuccess":true,"Request":"{\"ClientId\":\"ApiIntegrationNew\",\"UserName\":\"HiTours\",\"Password\":\"Tours@123\",\"EndUserIp\":\"192.168.11.120\"}","Response":"{\"Status\":1,\"TokenId\":\"61debcd0-f81e-4b37-a67f-56e6132b187a\",\"Error\":{\"ErrorCode\":0,\"ErrorMessage\":\"\"},\"Member\":{\"FirstName\":\"Hunar\",\"LastName\":\"Syal\",\"Email\":\"basantp@travelboutiqueonline.com\",\"MemberId\":46044,\"AgencyId\":46073,\"LoginName\":\"HiTours\",\"LoginDetails\":\"Login Success at#@ 10\\/30\\/2018 11:43:46 AM #@ IPAddress: 192.168.4.65\",\"isPrimaryAgent\":false}}","Exception":""}
+-----------------------------------------------------------------------------
+Date : 25-07-2019 12:16:25
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.TBOController.FormatJson(String json) in D:\Hi Tours TFS\Luxury Travel Deals\HiTours.Web\Framework\TBOController.cs:line 291
+   at HiTours.Web.TBOController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\Luxury Travel Deals\HiTours.Web\Framework\TBOController.cs:line 254
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"3be89d03-c988-438b-a3bb-28091fb90e7f\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"MLE\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-08-21T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-08-22T00:00:00\"\r\n    },\r\n    {\r\n      \"Origin\": \"MLE\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-08-26T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-08-27T00:00:00\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: An error occurred while sending the request. Unable to read data from the transport connection: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.IO.IOException: Unable to read data from the transport connection: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error)\r\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.GetResult(Int16 token)\r\n   at System.Net.Http.HttpConnection.FillAsync()\r\n   at System.Net.Http.HttpConnection.ReadNextResponseHeaderLineAsync(Boolean foldedHeadersAllowed)\r\n   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpConnectionPool.SendWithNtConnectionAuthAsync(HttpConnection connection, HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpClient.FinishSendAsyncUnbuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)\r\n   at System.Net.HttpWebRequest.SendRequest()\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\Luxury Travel Deals\\HiTours.Web\\Framework\\TBOController.cs:line 152","Exception":"System.Net.WebException: An error occurred while sending the request. Unable to read data from the transport connection: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.IO.IOException: Unable to read data from the transport connection: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error)\r\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.GetResult(Int16 token)\r\n   at System.Net.Http.HttpConnection.FillAsync()\r\n   at System.Net.Http.HttpConnection.ReadNextResponseHeaderLineAsync(Boolean foldedHeadersAllowed)\r\n   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpConnectionPool.SendWithNtConnectionAuthAsync(HttpConnection connection, HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpClient.FinishSendAsyncUnbuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)\r\n   at System.Net.HttpWebRequest.SendRequest()\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\Luxury Travel Deals\\HiTours.Web\\Framework\\TBOController.cs:line 152"}
+-----------------------------------------------------------------------------
+Date : 28-07-2019 01:30:07
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.TBOController.FormatJson(String json) in D:\Hi Tours TFS\Luxury Travel Deals\HiTours.Web\Framework\TBOController.cs:line 291
+   at HiTours.Web.TBOController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\Luxury Travel Deals\HiTours.Web\Framework\TBOController.cs:line 254
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"1c744c2a-72ce-4e44-a6c6-7aaf4f210033\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"MAA\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-08-20T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-08-20T00:00:00\"\r\n    },\r\n    {\r\n      \"Origin\": \"MAA\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-08-23T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-08-24T00:00:00\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\Luxury Travel Deals\\HiTours.Web\\Framework\\TBOController.cs:line 152","Exception":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\Luxury Travel Deals\\HiTours.Web\\Framework\\TBOController.cs:line 152"}
+-----------------------------------------------------------------------------
+Date : 01-08-2019 10:17:29
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.TBOController.FormatJson(String json) in D:\LTD_git3.0\HiTours.Web\Framework\TBOController.cs:line 291
+   at HiTours.Web.TBOController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\LTD_git3.0\HiTours.Web\Framework\TBOController.cs:line 254
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"52f8b683-5059-4730-b4ba-e2999160e9f7\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-08-16T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-08-17T00:00:00+05:30\"\r\n    },\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-08-21T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-08-22T00:00:00+05:30\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\LTD_git3.0\\HiTours.Web\\Framework\\TBOController.cs:line 152","Exception":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\LTD_git3.0\\HiTours.Web\\Framework\\TBOController.cs:line 152"}
+-----------------------------------------------------------------------------
+Date : 01-08-2019 10:25:34
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.TBOController.FormatJson(String json) in D:\LTD_git3.0\HiTours.Web\Framework\TBOController.cs:line 291
+   at HiTours.Web.TBOController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\LTD_git3.0\HiTours.Web\Framework\TBOController.cs:line 254
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"52f8b683-5059-4730-b4ba-e2999160e9f7\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-08-16T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-08-17T00:00:00+05:30\"\r\n    },\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-08-21T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-08-22T00:00:00+05:30\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\LTD_git3.0\\HiTours.Web\\Framework\\TBOController.cs:line 152","Exception":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\LTD_git3.0\\HiTours.Web\\Framework\\TBOController.cs:line 152"}
+-----------------------------------------------------------------------------
+Date : 01-08-2019 13:08:43
+
+System.IO.IOException
+Message : The process cannot access the file 'D:\LTD_git3.0\HiTours.Web\wwwroot\Logs\TBO\01-08-2019\Login.Txt' because it is being used by another process.
+StackTrace :    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.AppendText(String path)
+   at HiTours.Web.TBOController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\LTD_git3.0\HiTours.Web\Framework\TBOController.cs:line 243
+
+URL : http://api.tektravels.com/SharedServices/SharedData.svc/rest/Authenticate 
+Method : Authenticate
+Result : {"IsSuccess":true,"Request":"{\"ClientId\":\"ApiIntegrationNew\",\"UserName\":\"HiTours\",\"Password\":\"Tours@123\",\"EndUserIp\":\"192.168.11.120\"}","Response":"{\"Status\":1,\"TokenId\":\"45698134-7f3e-4a3a-b7fb-1aa4a6befab2\",\"Error\":{\"ErrorCode\":0,\"ErrorMessage\":\"\"},\"Member\":{\"FirstName\":\"Hunar\",\"LastName\":\"Syal\",\"Email\":\"basantp@travelboutiqueonline.com\",\"MemberId\":46044,\"AgencyId\":46073,\"LoginName\":\"HiTours\",\"LoginDetails\":\"Login Success at#@ 10\\/30\\/2018 11:43:46 AM #@ IPAddress: 192.168.4.65\",\"isPrimaryAgent\":false}}","Exception":""}
+-----------------------------------------------------------------------------
+Date : 01-08-2019 16:08:51
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.TBOController.FormatJson(String json) in D:\LTD_git3.0\HiTours.Web\Framework\TBOController.cs:line 291
+   at HiTours.Web.TBOController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\LTD_git3.0\HiTours.Web\Framework\TBOController.cs:line 254
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"4cda1704-5410-44e4-b9d1-fa4b21e9d325\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"GOI\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-08-16T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-08-17T00:00:00+05:30\"\r\n    },\r\n    {\r\n      \"Origin\": \"GOI\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-08-21T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-08-22T00:00:00+05:30\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\LTD_git3.0\\HiTours.Web\\Framework\\TBOController.cs:line 152","Exception":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\LTD_git3.0\\HiTours.Web\\Framework\\TBOController.cs:line 152"}
+-----------------------------------------------------------------------------
+Date : 20-08-2019 13:04:56
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.TBOController.FormatJson(String json) in C:\Users\Bitniti-IND-011\Desktop\HiTours Latest\HiTours\HiTours.Web\Framework\TBOController.cs:line 291
+   at HiTours.Web.TBOController.CreateTBOLogs(ApiResponse result, String url, String methodName) in C:\Users\Bitniti-IND-011\Desktop\HiTours Latest\HiTours\HiTours.Web\Framework\TBOController.cs:line 254
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"837fe4b4-f367-45b6-a4a9-0e6fac019615\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"MLE\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-08-26T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-08-27T00:00:00\"\r\n    },\r\n    {\r\n      \"Origin\": \"MLE\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-08-31T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-09-01T00:00:00\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: An error occurred while sending the request. Unable to read data from the transport connection: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.IO.IOException: Unable to read data from the transport connection: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error)\r\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.GetResult(Int16 token)\r\n   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpConnectionPool.SendWithNtConnectionAuthAsync(HttpConnection connection, HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpClient.FinishSendAsyncUnbuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)\r\n   at System.Net.HttpWebRequest.SendRequest()\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in C:\\Users\\Bitniti-IND-011\\Desktop\\HiTours Latest\\HiTours\\HiTours.Web\\Framework\\TBOController.cs:line 152","Exception":"System.Net.WebException: An error occurred while sending the request. Unable to read data from the transport connection: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. ---> System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.IO.IOException: Unable to read data from the transport connection: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond. ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error)\r\n   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.GetResult(Int16 token)\r\n   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Http.HttpConnection.SendAsyncCore(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpConnectionPool.SendWithNtConnectionAuthAsync(HttpConnection connection, HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpClient.FinishSendAsyncUnbuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)\r\n   at System.Net.HttpWebRequest.SendRequest()\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in C:\\Users\\Bitniti-IND-011\\Desktop\\HiTours Latest\\HiTours\\HiTours.Web\\Framework\\TBOController.cs:line 152"}
+-----------------------------------------------------------------------------
+Date : 26-08-2019 14:36:27
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.TBOController.FormatJson(String json) in D:\Hi Tours TFS\Luxury Travel Deals\HiTours.Web\Framework\TBOController.cs:line 291
+   at HiTours.Web.TBOController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\Luxury Travel Deals\HiTours.Web\Framework\TBOController.cs:line 254
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"dc948b13-50ba-45ee-8b11-fa6dc1fb6893\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"DPS\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-09-10T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-09-11T00:00:00+05:30\"\r\n    },\r\n    {\r\n      \"Origin\": \"DPS\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-09-15T00:00:00+05:30\",\r\n      \"PreferredArrivalTime\": \"2019-09-16T00:00:00+05:30\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond ---> System.Net.Http.HttpRequestException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond\r\n   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)\r\n   at System.Threading.Tasks.ValueTask`1.get_Result()\r\n   at System.Net.Http.HttpConnectionPool.CreateConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Threading.Tasks.ValueTask`1.get_Result()\r\n   at System.Net.Http.HttpConnectionPool.WaitForCreatedConnectionAsync(ValueTask`1 creationTask)\r\n   at System.Threading.Tasks.ValueTask`1.get_Result()\r\n   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpClient.FinishSendAsyncUnbuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)\r\n   at System.Net.HttpWebRequest.SendRequest()\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\Luxury Travel Deals\\HiTours.Web\\Framework\\TBOController.cs:line 152","Exception":"System.Net.WebException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond ---> System.Net.Http.HttpRequestException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond\r\n   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Http.ConnectHelper.ConnectAsync(String host, Int32 port, CancellationToken cancellationToken)\r\n   at System.Threading.Tasks.ValueTask`1.get_Result()\r\n   at System.Net.Http.HttpConnectionPool.CreateConnectionAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Threading.Tasks.ValueTask`1.get_Result()\r\n   at System.Net.Http.HttpConnectionPool.WaitForCreatedConnectionAsync(ValueTask`1 creationTask)\r\n   at System.Threading.Tasks.ValueTask`1.get_Result()\r\n   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean doRequestAuth, CancellationToken cancellationToken)\r\n   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.DiagnosticsHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)\r\n   at System.Net.Http.HttpClient.FinishSendAsyncUnbuffered(Task`1 sendTask, HttpRequestMessage request, CancellationTokenSource cts, Boolean disposeCts)\r\n   at System.Net.HttpWebRequest.SendRequest()\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\Luxury Travel Deals\\HiTours.Web\\Framework\\TBOController.cs:line 152"}
+-----------------------------------------------------------------------------
+Date : 29-08-2019 12:40:31
+
+System.IO.IOException
+Message : The process cannot access the file 'D:\Hi Tours TFS\Luxury Travel Deals\HiTours.Web\wwwroot\Logs\TBO\29-08-2019\Login.Txt' because it is being used by another process.
+StackTrace :    at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamWriter..ctor(String path, Boolean append)
+   at System.IO.File.AppendText(String path)
+   at HiTours.Web.TBOController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\Luxury Travel Deals\HiTours.Web\Framework\TBOController.cs:line 243
+
+URL : http://api.tektravels.com/SharedServices/SharedData.svc/rest/Authenticate 
+Method : Authenticate
+Result : {"IsSuccess":true,"Request":"{\"ClientId\":\"ApiIntegrationNew\",\"UserName\":\"HiTours\",\"Password\":\"Tours@123\",\"EndUserIp\":\"192.168.11.120\"}","Response":"{\"Status\":1,\"TokenId\":\"13d63b06-c138-4cb8-8f07-3c83e7a20e50\",\"Error\":{\"ErrorCode\":0,\"ErrorMessage\":\"\"},\"Member\":{\"FirstName\":\"Hunar\",\"LastName\":\"Syal\",\"Email\":\"basantp@travelboutiqueonline.com\",\"MemberId\":46044,\"AgencyId\":46073,\"LoginName\":\"HiTours\",\"LoginDetails\":\"Login Success at#@ 10\\/30\\/2018 11:43:46 AM #@ IPAddress: 192.168.4.65\",\"isPrimaryAgent\":false}}","Exception":""}
+-----------------------------------------------------------------------------
+Date : 29-08-2019 13:11:20
+
+Newtonsoft.Json.JsonReaderException
+Message : Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+StackTrace :    at Newtonsoft.Json.JsonTextReader.ParseValue()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at HiTours.Web.TBOController.FormatJson(String json) in D:\Hi Tours TFS\Luxury Travel Deals\HiTours.Web\Framework\TBOController.cs:line 291
+   at HiTours.Web.TBOController.CreateTBOLogs(ApiResponse result, String url, String methodName) in D:\Hi Tours TFS\Luxury Travel Deals\HiTours.Web\Framework\TBOController.cs:line 254
+
+URL : http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search
+Method : Search
+Result : {"IsSuccess":false,"Request":"{\r\n  \"EndUserIp\": \"192.168.11.120\",\r\n  \"TokenId\": \"bd5921c7-d213-460f-94e9-0dc8b3860460\",\r\n  \"AdultCount\": 1,\r\n  \"ChildCount\": 0,\r\n  \"InfantCount\": 0,\r\n  \"DirectFlight\": true,\r\n  \"OneStopFlight\": true,\r\n  \"JourneyType\": 2,\r\n  \"Segments\": [\r\n    {\r\n      \"Origin\": \"DEL\",\r\n      \"Destination\": \"CMB\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-09-16T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-09-17T00:00:00\"\r\n    },\r\n    {\r\n      \"Origin\": \"CMB\",\r\n      \"Destination\": \"DEL\",\r\n      \"FlightCabinClass\": 2,\r\n      \"PreferredDepartureTime\": \"2019-09-21T00:00:00\",\r\n      \"PreferredArrivalTime\": \"2019-09-22T00:00:00\"\r\n    }\r\n  ],\r\n  \"ReturnFlight\": true\r\n}","Response":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\Luxury Travel Deals\\HiTours.Web\\Framework\\TBOController.cs:line 152","Exception":"System.Net.WebException: The operation has timed out.\r\n   at System.Net.HttpWebRequest.GetResponse()\r\n   at HiTours.Web.TBOController.PostCustom(String url, String content, String methodName) in D:\\Hi Tours TFS\\Luxury Travel Deals\\HiTours.Web\\Framework\\TBOController.cs:line 152"}

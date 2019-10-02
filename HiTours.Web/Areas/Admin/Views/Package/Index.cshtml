@@ -1,0 +1,58 @@
+﻿@{
+    this.ViewBag.Title = "Packges List";
+}
+@model PackageViewModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/package/manage") })
+                </div>
+            </div>
+            @this.Html.Partial("_DataTableGrid")
+        </div>
+    </div>
+
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+            BindGrid({
+                url: "/admin/package/index",
+                columns: [
+                    { "data": "DealCode", "title": "Deal Code", "type": "string" },
+                    { "data": "Name", "title": "Deal Name", "type": "string" },
+                    { "data": "HotelName", "title": "Hotel Name", "type": "string" },
+                    { "data": "CountryName", "title": "Country", "type": "string" },
+                    { "data": "CityName", "title": "City", "type": "string" },
+                    { "data": "ValidFrom", "title": "Valid From","type":"date"},
+                    { "data": "ValidTo", "title": "Valid To", "type": "date"},
+                    {
+                        "data": "IsActive", "title": "Status", "type": "bool",
+                        "width": '9%', mRender: function (data, type, record) {
+                            var url = '@Url.GetAdminUrl("package","ChangeActiveStatus")/' + record.Id;
+                            return appendToggleCheckBox(url , record.IsActive,'Successfully Activated','Successfully DeActivated' );
+                    } },
+                    {
+                        "data": null, "title": "Action",
+                        "targets": -1,
+                        "width": '12%',
+                        "class": "column-action text-center pdf-font",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                            var action = "";
+                            action += '<a class="form-control btn-success" href="@Url.GetAdminUrl("package","manage")/' + record.Id+ '"><i class="fa fa-edit"></i>&nbsp;</a>';
+                            action += '<a class="form-control btn-danger delete-row" data-delete href="@Url.GetAdminUrl( "package", "delete")/' + record.Id+ '"><i class="fa fa-trash-o"></i>&nbsp;</a>';
+                            return action;
+
+                        }
+                    }]
+            });
+        });
+
+    </script>
+}

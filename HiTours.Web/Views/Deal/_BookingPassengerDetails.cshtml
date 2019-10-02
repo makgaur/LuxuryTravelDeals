@@ -1,0 +1,70 @@
+﻿@using HtmlHelpers.BeginCollectionItemCore
+@model BookingPassengerViewModel
+@using (this.Html.BeginCollectionItem("BookingPassengerViewModels"))
+{
+    string personString = string.Empty;
+    string dateClass = string.Empty;
+    if(Model.PassengerType == (int)Enums.PersonType.Adult)
+    {
+        personString = "Adult";
+        dateClass = "datepicker-adult";
+    }
+    if (Model.PassengerType == (int)Enums.PersonType.Child)
+    {
+        personString = "Child";
+        dateClass = "datepicker-child";
+    }
+    if (Model.PassengerType == (int)Enums.PersonType.Infant)
+    {
+        personString = "Infant";
+        dateClass = "datepicker-infant";
+    }
+<div class="col-sm-12 col-md-12 col-lg-12 passenger-details">
+    <p>Passenger @Model.Index (@personString)</p>
+    <input type="hidden" asp-for="PassengerType" />
+    <div class="col-sm-2 col-md-2 col-lg-2 passenger-input">
+        <select asp-for="Salutation" select2-Default="false">
+            @if (Model.PassengerType == (int)Enums.PersonType.Infant)
+            {
+                <option value="Mstr">Mstr</option>
+                <option value="Miss">Miss</option>
+            }
+            else
+            {
+                <option value="Mr">Mr</option>
+                <option value="Mrs">Ms</option>
+                <option value="Mrs">Mrs</option>
+            }
+
+        </select>
+        <span asp-validation-for="Salutation"></span>
+    </div>
+    <div class="col-sm-3 col-md-3 col-lg-3 passenger-input">
+        <input type="text" asp-for="FirstName" placeholder="Enter First Name" />
+        <span asp-validation-for="FirstName"></span>
+    </div>
+
+    <div class="col-sm-3 col-md-3 col-lg-3 passenger-input">
+        <input type="text" asp-for="LastName" placeholder="Enter Last Name" />
+        <span asp-validation-for="LastName"></span>
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4 passenger-input">
+        <input type="text" asp-for="DOB" placeholder="Select Date of Birth" class="datepicker-custom @dateClass" />
+        <span class="passenger-calender image-small-24"><img src="~/images/Calendar.png" alt="calender-icon" /></span>
+        <span asp-validation-for="DOB"></span>
+    </div>
+    @if (Model.PassportRequired)
+    {
+        <div class="col-sm-6 col-md-6 col-lg-6 passenger-input passport-input">
+            <input type="text" asp-for="PassportNumber"  placeholder="Passport Number" />
+            <span asp-validation-for="PassportNumber"></span>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 passenger-input">
+            <input type="text" asp-for="PassportExpiryDate" placeholder="Passport Expiry Date" class="datepicker-custom datepicker-passport-expiry" />
+            <span class="passenger-calender"><img class="image-small-24" src="~/images/Calendar.png"  alt="calender-icon"/></span>
+            <span asp-validation-for="PassportExpiryDate"></span>
+        </div>
+    }
+</div>
+}

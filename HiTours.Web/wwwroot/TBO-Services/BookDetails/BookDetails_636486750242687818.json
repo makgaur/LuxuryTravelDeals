@@ -1,0 +1,526 @@
+//-- BookDetails Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "b3a35706-f724-4c31-ba07-a82c0ba8cbd9",
+  "TraceId": "498da11a-2dc4-4ae3-9ac6-d6f2b7235edf",
+  "BookingId": 50433,
+  "PNR": "LCM8IN"
+}
+//-- BookDetails Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "ResponseStatus": 1,
+    "TraceId": "498da11a-2dc4-4ae3-9ac6-d6f2b7235edf",
+    "FlightItinerary": {
+      "BookingId": 50433,
+      "IsManual": false,
+      "PNR": "LCM8IN",
+      "IsDomestic": true,
+      "Source": 4,
+      "Origin": "DEL",
+      "Destination": "BOM",
+      "AirlineCode": "9W",
+      "LastTicketDate": "12DEC17",
+      "ValidatingAirlineCode": "9W",
+      "AirlineRemark": "",
+      "IsLCC": false,
+      "NonRefundable": true,
+      "FareType": "RP",
+      "CreditNoteNo": null,
+      "Fare": {
+        "Currency": "INR",
+        "BaseFare": 35180,
+        "Tax": 12480,
+        "TaxBreakup": [],
+        "YQTax": 7200,
+        "AdditionalTxnFeeOfrd": 0,
+        "AdditionalTxnFeePub": 0,
+        "PGCharge": 0,
+        "OtherCharges": 600,
+        "ChargeBU": [
+          {
+            "key": "TBOMARKUP",
+            "value": 0
+          },
+          {
+            "key": "CONVENIENCECHARGE",
+            "value": 0
+          },
+          {
+            "key": "OTHERCHARGE",
+            "value": 600
+          }
+        ],
+        "Discount": 0,
+        "PublishedFare": 48260,
+        "CommissionEarned": 276.4,
+        "PLBEarned": 0,
+        "IncentiveEarned": 0,
+        "OfferedFare": 47983.6,
+        "TdsOnCommission": 55.28,
+        "TdsOnPLB": 0,
+        "TdsOnIncentive": 0,
+        "ServiceFee": 0,
+        "TotalBaggageCharges": 0,
+        "TotalMealCharges": 0,
+        "TotalSeatCharges": 0,
+        "TotalSpecialServiceCharges": 0
+      },
+      "CreditNoteCreatedOn": null,
+      "Passenger": [
+        {
+          "PaxId": 68840,
+          "Title": "Mr",
+          "FirstName": "Sumeet",
+          "LastName": "Gupta",
+          "PaxType": 1,
+          "DateOfBirth": "1994-12-13T00:00:00",
+          "Gender": 1,
+          "PassportNo": "",
+          "AddressLine1": "dsfdfdf",
+          "AddressLine2": "dsfdfdf",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 8130,
+            "Tax": 3021,
+            "TaxBreakup": null,
+            "YQTax": 1800,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 150,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 150
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 11301,
+            "CommissionEarned": 69.1,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 11231.9,
+            "TdsOnCommission": 13.82,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "City": "dfdfdf",
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "ContactNo": "8521452154",
+          "Email": "jhg@gmail.com",
+          "IsLeadPax": true,
+          "FFAirlineCode": "  ",
+          "FFNumber": "",
+          "Meal": {
+            "Code": null,
+            "Description": null
+          },
+          "GSTCompanyAddress": "",
+          "GSTCompanyContactNumber": "",
+          "GSTCompanyEmail": "",
+          "GSTCompanyName": "",
+          "GSTNumber": ""
+        },
+        {
+          "PaxId": 68841,
+          "Title": "Mr",
+          "FirstName": "sagar",
+          "LastName": "gupta",
+          "PaxType": 1,
+          "DateOfBirth": "1992-12-13T00:00:00",
+          "Gender": 1,
+          "PassportNo": "",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 8130,
+            "Tax": 3021,
+            "TaxBreakup": null,
+            "YQTax": 1800,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 150,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 150
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 11301,
+            "CommissionEarned": 69.1,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 11231.9,
+            "TdsOnCommission": 13.82,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "City": "dfgdf",
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "IsLeadPax": true,
+          "FFAirlineCode": "  ",
+          "FFNumber": "",
+          "Meal": {
+            "Code": null,
+            "Description": null
+          },
+          "GSTCompanyAddress": "",
+          "GSTCompanyContactNumber": "",
+          "GSTCompanyEmail": "",
+          "GSTCompanyName": "",
+          "GSTNumber": ""
+        },
+        {
+          "PaxId": 68842,
+          "Title": "Mr",
+          "FirstName": "nishu",
+          "LastName": "gupta",
+          "PaxType": 2,
+          "DateOfBirth": "2005-12-14T00:00:00",
+          "Gender": 1,
+          "PassportNo": "",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 8130,
+            "Tax": 3021,
+            "TaxBreakup": null,
+            "YQTax": 1800,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 150,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 150
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 11301,
+            "CommissionEarned": 69.1,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 11231.9,
+            "TdsOnCommission": 13.82,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "City": "jaipur",
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "IsLeadPax": true,
+          "FFAirlineCode": "  ",
+          "FFNumber": "",
+          "Meal": {
+            "Code": null,
+            "Description": null
+          },
+          "GSTCompanyAddress": "",
+          "GSTCompanyContactNumber": "",
+          "GSTCompanyEmail": "",
+          "GSTCompanyName": "",
+          "GSTNumber": ""
+        },
+        {
+          "PaxId": 68843,
+          "Title": "Mr",
+          "FirstName": "Nisha",
+          "LastName": "gupta",
+          "PaxType": 2,
+          "DateOfBirth": "2005-12-20T00:00:00",
+          "Gender": 1,
+          "PassportNo": "",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 8130,
+            "Tax": 3021,
+            "TaxBreakup": null,
+            "YQTax": 1800,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 150,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 150
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 11301,
+            "CommissionEarned": 69.1,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 11231.9,
+            "TdsOnCommission": 13.82,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "City": "dfdf",
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "IsLeadPax": true,
+          "FFAirlineCode": "  ",
+          "FFNumber": "",
+          "Meal": {
+            "Code": null,
+            "Description": null
+          },
+          "GSTCompanyAddress": "",
+          "GSTCompanyContactNumber": "",
+          "GSTCompanyEmail": "",
+          "GSTCompanyName": "",
+          "GSTNumber": ""
+        },
+        {
+          "PaxId": 68844,
+          "Title": "",
+          "FirstName": "Pari",
+          "LastName": "gupta",
+          "PaxType": 3,
+          "DateOfBirth": "2017-11-27T00:00:00",
+          "Gender": 1,
+          "PassportNo": "",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 2660,
+            "Tax": 396,
+            "TaxBreakup": null,
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 3056,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 3056,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "City": "dfdfdf",
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "IsLeadPax": true,
+          "FFAirlineCode": "  ",
+          "FFNumber": "",
+          "Meal": {
+            "Code": null,
+            "Description": null
+          },
+          "GSTCompanyAddress": "",
+          "GSTCompanyContactNumber": "",
+          "GSTCompanyEmail": "",
+          "GSTCompanyName": "",
+          "GSTNumber": ""
+        }
+      ],
+      "CancellationCharges": null,
+      "Segments": [
+        {
+          "Baggage": null,
+          "CabinBaggage": null,
+          "TripIndicator": 1,
+          "SegmentIndicator": 1,
+          "Airline": {
+            "AirlineCode": "9W",
+            "AirlineName": "Jet Airways",
+            "FlightNumber": "316",
+            "FareClass": "K",
+            "OperatingCarrier": "9W"
+          },
+          "AirlinePNR": "",
+          "Origin": {
+            "Airport": {
+              "AirportCode": "DEL",
+              "AirportName": "DEL",
+              "Terminal": "3 ",
+              "CityCode": "DEL",
+              "CityName": "Delhi",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "DepTime": "2017-12-13T11:30:00"
+          },
+          "Destination": {
+            "Airport": {
+              "AirportCode": "BOM",
+              "AirportName": "Mumbai",
+              "Terminal": "2 ",
+              "CityCode": "BOM",
+              "CityName": "Mumbai",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "ArrTime": "2017-12-13T13:40:00"
+          },
+          "AccumulatedDuration": 130,
+          "Duration": 130,
+          "GroundTime": 0,
+          "Mile": 0,
+          "StopOver": false,
+          "StopPoint": "",
+          "StopPointArrivalTime": null,
+          "StopPointDepartureTime": null,
+          "Craft": "738",
+          "Remark": "010 EY 8967 /KQ 3705 /VS 8110, SEE RTSVC",
+          "IsETicketEligible": false,
+          "FlightStatus": "Confirmed",
+          "Status": "HK"
+        },
+        {
+          "Baggage": null,
+          "CabinBaggage": null,
+          "TripIndicator": 2,
+          "SegmentIndicator": 1,
+          "Airline": {
+            "AirlineCode": "9W",
+            "AirlineName": "Jet Airways",
+            "FlightNumber": "839",
+            "FareClass": "W",
+            "OperatingCarrier": "9W"
+          },
+          "AirlinePNR": "",
+          "Origin": {
+            "Airport": {
+              "AirportCode": "BOM",
+              "AirportName": "Mumbai",
+              "Terminal": "2 ",
+              "CityCode": "BOM",
+              "CityName": "Mumbai",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "DepTime": "2017-12-14T09:00:00"
+          },
+          "Destination": {
+            "Airport": {
+              "AirportCode": "DEL",
+              "AirportName": "DEL",
+              "Terminal": "3 ",
+              "CityCode": "DEL",
+              "CityName": "Delhi",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "ArrTime": "2017-12-14T11:10:00"
+          },
+          "AccumulatedDuration": 130,
+          "Duration": 130,
+          "GroundTime": 0,
+          "Mile": 0,
+          "StopOver": false,
+          "StopPoint": "",
+          "StopPointArrivalTime": null,
+          "StopPointDepartureTime": null,
+          "Craft": "739",
+          "Remark": "010 EY 8990 /HM 5580 /VS 8117, SEE RTSVC",
+          "IsETicketEligible": false,
+          "FlightStatus": "Confirmed",
+          "Status": "HK"
+        }
+      ],
+      "FareRules": [
+        {
+          "Origin": "DEL",
+          "Destination": "BOM",
+          "Airline": "9W",
+          "FareBasisCode": "K2IPO",
+          "FareRuleDetail": "<ul><li><b>There is no Minimum Stay requirement</b><br><li><b>Maximum Stay</b><br>Fare Component <b>W2IPOA</b>&emsp; Sector <b>BOM-DEL</b> &nbsp;<ul><li>Travel must be completed before <b>No restriction</b></li><li>Travel must commence before <b>12DEC18  0000 from BOM</b></li></ul></li><fieldset><legend><b><b>Child</b><br></b></legend><ul><li><b>Revalidation/Reissue</b><br>Fare Component <b>K2IPO</b>&emsp; Sector <b>DEL-BOM</b> &nbsp;<ul><li>Revalidation before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li>Reissue, including failure to show at first flight : <b>Allowed with Restrictions</b></li><li>Revalidation/Reissue request, including failure to show at first flight, must be made prior to <b>12DEC18  0000</b></li><li>Revalidation/Reissue request, including failure to show at subsequent flight(s), must be made prior to <b>13DEC18  0000</b></li><li><b>Prior to Departure of journey</b><ul><u>Reissue</u><li>Penalty fee : <b>2400 INR(at today exchange rates 2400 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>6300 INR</b></li></ul></li><li><b>Failure to show at first flight</b><ul><u>Reissue</u><li>Penalty fee : <b>4800 INR(at today exchange rates 4800 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>12600 INR</b></li></ul></li><li><b>After departure of journey</b><ul></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul></ul></li></ul></li><li><b>Revalidation/Reissue</b><br>Fare Component <b>W2IPOA</b>&emsp; Sector <b>BOM-DEL</b> &nbsp;<ul><li>Revalidation before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li>Reissue before/after departure, including failure to show at first/subsequent flight(s) : <b>Allowed with Restrictions</b></li><li>Revalidation/Reissue request, including failure to show at first flight, must be made prior to <b>12DEC18  0000</b></li><li>Revalidation/Reissue request, including failure to show at subsequent flight(s), must be made prior to <b>13DEC18  0000</b></li><li><b>Prior to Departure of journey</b><ul><u>Reissue</u><li>Penalty fee : <b>3900 INR(at today exchange rates 3900 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>6300 INR</b></li></ul></li><li><b>Failure to show at first flight</b><ul><u>Reissue</u><li>Penalty fee : <b>12600 INR(at today exchange rates 12600 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>12600 INR</b></li></ul></li><li><b>After departure of journey</b><ul><u>Reissue</u><li>Penalty fee : <b>3900 INR(at today exchange rates 3900 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>3900 INR</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><u>Reissue</u><li>Penalty fee : <b>7800 INR(at today exchange rates 7800 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>7800 INR</b></li></ul></li></ul></li><li><b>Refund</b><br>Fare Component <b>K2IPO</b>&emsp; Sector <b>DEL-BOM</b> &nbsp;Fare Component <b>W2IPOA</b>&emsp; Sector <b>BOM-DEL</b> &nbsp;<ul><li>Refund, including failure to show at subsequent flight(s) : <b>Not Allowed</b></li><li><b>Prior to Departure of journey</b><ul><li>Refund : <b>Allowed with Restrictions</b></li><li>Penalty fee : <b>7600 INR(at today exchange rates 7600 INR) </b></td></tr><li>Maximum Refund penalty fee for entire ticket : <b>7600 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Refund : <b>Not Allowed</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><br><b>* Revalidation is a modification of the original ticket without any reissue of a new ticket.</b><br><b>* For Reissue, Penalty fees are in addition to any difference in fare.</b><br><b>* For Refund, certain Taxes are non-refundable.</b></ul></fieldset></ul><ul><fieldset><legend><b><b>Adult</b><br></b></legend><ul><li><b>Revalidation/Reissue</b><br>Fare Component <b>K2IPO</b>&emsp; Sector <b>DEL-BOM</b> &nbsp;<ul><li>Revalidation before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li>Reissue, including failure to show at first flight : <b>Allowed with Restrictions</b></li><li>Revalidation/Reissue request, including failure to show at first flight, must be made prior to <b>12DEC18  0000</b></li><li>Revalidation/Reissue request, including failure to show at subsequent flight(s), must be made prior to <b>13DEC18  0000</b></li><li><b>Prior to Departure of journey</b><ul><u>Reissue</u><li>Penalty fee : <b>2400 INR(at today exchange rates 2400 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>6300 INR</b></li></ul></li><li><b>Failure to show at first flight</b><ul><u>Reissue</u><li>Penalty fee : <b>4800 INR(at today exchange rates 4800 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>12600 INR</b></li></ul></li><li><b>After departure of journey</b><ul></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul></ul></li></ul></li><li><b>Revalidation/Reissue</b><br>Fare Component <b>W2IPOA</b>&emsp; Sector <b>BOM-DEL</b> &nbsp;<ul><li>Revalidation before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li>Reissue before/after departure, including failure to show at first/subsequent flight(s) : <b>Allowed with Restrictions</b></li><li>Revalidation/Reissue request, including failure to show at first flight, must be made prior to <b>12DEC18  0000</b></li><li>Revalidation/Reissue request, including failure to show at subsequent flight(s), must be made prior to <b>13DEC18  0000</b></li><li><b>Prior to Departure of journey</b><ul><u>Reissue</u><li>Penalty fee : <b>3900 INR(at today exchange rates 3900 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>6300 INR</b></li></ul></li><li><b>Failure to show at first flight</b><ul><u>Reissue</u><li>Penalty fee : <b>12600 INR(at today exchange rates 12600 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>12600 INR</b></li></ul></li><li><b>After departure of journey</b><ul><u>Reissue</u><li>Penalty fee : <b>3900 INR(at today exchange rates 3900 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>3900 INR</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><u>Reissue</u><li>Penalty fee : <b>7800 INR(at today exchange rates 7800 INR) </b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>7800 INR</b></li></ul></li></ul></li><li><b>Refund</b><br>Fare Component <b>K2IPO</b>&emsp; Sector <b>DEL-BOM</b> &nbsp;Fare Component <b>W2IPOA</b>&emsp; Sector <b>BOM-DEL</b> &nbsp;<ul><li>Refund, including failure to show at subsequent flight(s) : <b>Not Allowed</b></li><li><b>Prior to Departure of journey</b><ul><li>Refund : <b>Allowed with Restrictions</b></li><li>Penalty fee : <b>7600 INR(at today exchange rates 7600 INR) </b></td></tr><li>Maximum Refund penalty fee for entire ticket : <b>7600 INR</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Refund : <b>Not Allowed</b></li><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><br><b>* Revalidation is a modification of the original ticket without any reissue of a new ticket.</b><br><b>* For Reissue, Penalty fees are in addition to any difference in fare.</b><br><b>* For Refund, certain Taxes are non-refundable.</b></ul></fieldset></ul><ul><fieldset><legend><b><b>Infant</b><br></b></legend><ul><li><b>Revalidation/Reissue</b><br>Fare Component <b>K2IPO</b>&emsp; Sector <b>DEL-BOM</b> &nbsp;<ul><li>Revalidation before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li>Reissue, including failure to show at first flight : <b>Allowed with Restrictions</b></li><li>Revalidation/Reissue request, including failure to show at first flight, must be made prior to <b>12DEC18  0000</b></li><li>Revalidation/Reissue request, including failure to show at subsequent flight(s), must be made prior to <b>13DEC18  0000</b></li><li><b>Prior to Departure of journey</b><ul><u>Reissue</u><li>Reissue : <b>Allowed, Free of charge</b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>No charge</b></li></ul></li><li><b>Failure to show at first flight</b><ul><u>Reissue</u><li>Reissue : <b>Allowed, Free of charge</b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>No charge</b></li></ul></li><li><b>After departure of journey</b><ul></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul></ul></li></ul></li><li><b>Revalidation/Reissue</b><br>Fare Component <b>W2IPOA</b>&emsp; Sector <b>BOM-DEL</b> &nbsp;<ul><li>Revalidation before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li>Reissue before/after departure, including failure to show at first/subsequent flight(s) : <b>Allowed with Restrictions</b></li><li>Revalidation/Reissue request, including failure to show at first flight, must be made prior to <b>12DEC18  0000</b></li><li>Revalidation/Reissue request, including failure to show at subsequent flight(s), must be made prior to <b>13DEC18  0000</b></li><li><b>Prior to Departure of journey</b><ul><u>Reissue</u><li>Reissue : <b>Allowed, Free of charge</b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>No charge</b></li></ul></li><li><b>Failure to show at first flight</b><ul><u>Reissue</u><li>Reissue : <b>Allowed, Free of charge</b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>No charge</b></li></ul></li><li><b>After departure of journey</b><ul><u>Reissue</u><li>Reissue : <b>Allowed, Free of charge</b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>No charge</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><u>Reissue</u><li>Reissue : <b>Allowed, Free of charge</b></li><li>Maximum reissue penalty fee for entire ticket (per reissue) : <b>No charge</b></li></ul></li></ul></li><li><b>Refund</b><br>Fare Component <b>K2IPO</b>&emsp; Sector <b>DEL-BOM</b> &nbsp;Fare Component <b>W2IPOA</b>&emsp; Sector <b>BOM-DEL</b> &nbsp;<ul><li>Refund before/after departure, including failure to show at first/subsequent flight(s) : <b>Not Allowed</b></li><li><b>Prior to Departure of journey</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at first flight</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>After departure of journey</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li><li><b>Failure to show at subsequent flight(s)</b><ul><li>Refund request must be made prior to : <b>No restriction</b></li></ul></li></ul></li><br><b>* Revalidation is a modification of the original ticket without any reissue of a new ticket.</b><br><b>* For Reissue, Penalty fees are in addition to any difference in fare.</b><br><b>* For Refund, certain Taxes are non-refundable.</b></ul></fieldset></ul>",
+          "FareRestriction": "Y"
+        },
+        {
+          "Origin": "BOM",
+          "Destination": "DEL",
+          "Airline": "9W",
+          "FareBasisCode": "W2IPOA",
+          "FareRuleDetail": "Please refer above.",
+          "FareRestriction": "Y"
+        }
+      ],
+      "Status": 1
+    }
+  }
+}

@@ -1,0 +1,22 @@
+//-- GetAgencyBalance Api Request --
+{
+  "ClientId": "ApiIntegrationNew",
+  "TokenAgencyId": "46094",
+  "TokenMemberId": "46088",
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "2d627a31-b3e8-4e6a-b0eb-82d9ff6b386c"
+}
+//-- GetAgencyBalance Api Response --
+{
+  "AgencyType": 1,
+  "CashBalance": 1500000,
+  "CashBalanceInPrefCurrency": null,
+  "CreditBalance": 0,
+  "CreditBalanceInPrefCurrency": null,
+  "Error": {
+    "ErrorCode": 0,
+    "ErrorMessage": ""
+  },
+  "PreferredCurrency": null,
+  "Status": 1
+}

@@ -1,0 +1,179 @@
+﻿@model HotelierImageMasterViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+
+<form asp-antiforgery="true" id="formHotelierImages" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="VendorId" />
+    <input type="hidden" id="hotelId" asp-for="HotelId" />
+    <h4>Hotel Images</h4>
+    <div class="form-group">
+        <div class="tax-tabel-wrap">
+            <div class="table-responsive">
+                <table id="HotelImageTable" class="table table-standard table-bordered invoice-tabel-2">
+                    <thead>
+                        <tr>
+                            <th style="width:155px">Image</th>
+                            <th>Preview</th>
+                            <th>Caption</th>
+                            <th>Dimension</th>
+                            <th>Sort Order</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @if (Model.HotelierImageViewModels.Count > 0)
+                        {
+                            for (int i = 0; i < Model.HotelierImageViewModels.Count; i++)
+                            {
+                                @this.Html.Partial("_HotelierImage", Model.HotelierImageViewModels[i])
+                            }
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6" style="text-align:left">
+                                <input type="file" id="HotelImageFilesUploader" name="HotelImageFiles" data-container="#HotelImageTable" data-url="@Url.Action("HotelImageUpload", "Hotelier")" class="bulkImageUpload hidden" data-identifier="@Model.HotelId" multiple />
+                                <a href="javascript:void(0);" id="btnHotelImagesUpload" data-uploader="HotelImageFilesUploader" data-table="#HotelImageTable" title="Upload Bulk Image" class="btn btn-primary btnBulkImageUploader">Upload Bulk Image(Ratio 871 : 545)</a>
+                            </td>
+                            <td colspan="6" style="text-align:right"><a href="javascript:void(0);" data-table="#HotelImageTable" title="Add Row" class="btn btn-primary add_image_row_hotel">+ Add Row</a></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    @if (Model.HotelierRoomConfigurationViewModels.Count > 0)
+    {
+        <h4> <i class="fa fa-fw fa-bed"></i> Configured Rooms</h4>
+        <div class="form-group" style="margin-top:10px;">
+            <div class="panel-group" id="accordion">
+                @for (int j = 0; j < Model.HotelierRoomConfigurationViewModels.Count; j++)
+                {
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse_hotel_room_Images_@Model.HotelierRoomConfigurationViewModels[j].Id"><i class="fa fa-fw fa-bed"></i> @Model.HotelierRoomConfigurationViewModels[j].PackageHotelRoomTypeViewModel.Name, <i class="fa fa-fw fa-male"></i>  <span class="text-sm font-bold">x @Model.HotelierRoomConfigurationViewModels[j].Max</span></a>
+                            </h4>
+                        </div>
+                        <div id="collapse_hotel_room_Images_@Model.HotelierRoomConfigurationViewModels[j].Id" class="panel-collapse collapse in">
+
+                            <div class="panel-body">
+                                <div class="col-md-12" style="padding-top:15px; padding-bottom:15px;">
+                                    <div class="form-group">
+                                        <div class="tax-tabel-wrap">
+                                            <div class="table-responsive">
+                                                <table id="HotelRoomTable_@j" class="table table-standard table-bordered invoice-tabel-2">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="width:155px">Image</th>
+                                                            <th>Preview</th>
+                                                            <th>Caption</th>
+                                                            <th>Dimension</th>
+                                                            <th>Sort Order</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    @{
+                                                        var imagesItems = Model.HotelierRoomImageViewModels.Where(x => x.RoomConfigId == Model.HotelierRoomConfigurationViewModels[j].Id).ToList();
+                                                    }
+                                                    <tbody>
+                                                        @if (imagesItems.Count > 0)
+                                                        {
+                                                            for (int k = 0; k < imagesItems.Count; k++)
+                                                            {
+                                                                @this.Html.Partial("_HotelierRoomImage", imagesItems[k])
+                                                            }
+                                                        }
+                                                    </tbody>
+
+                                                    <tfoot>
+                                                        <tr>
+                                                            <td colspan="6" style="text-align:left">
+                                                                <input type="file" id="HotelRoomImageFilesUploader_@j" name="HotelRoomImageFiles" data-container="#HotelRoomTable_@j" data-url="@Url.Action("HotelRoomImageUpload", "Hotelier")" class="bulkImageUpload hidden" data-identifier="@Model.HotelierRoomConfigurationViewModels[j].Id" multiple />
+                                                                <a href="javascript:void(0);" id="btnHotelRoomImagesUpload" data-uploader="HotelRoomImageFilesUploader_@j" data-table="#HotelRoomTable_@j" title="Upload Bulk Image" class="btn btn-primary btnBulkImageUploader">Upload Bulk Image</a>
+                                                            </td>
+                                                            <td colspan="6" style="text-align:right"><a href="javascript:void(0);" data-table="#HotelRoomTable_@j" data-sequence="@j" data-roomconfig="@Model.HotelierRoomConfigurationViewModels[j].Id" title="Add Row" class="btn btn-primary add_image_row_hotel_room">+ Add Row</a></td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    }
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+</form>
+<script>
+    $(document).off('click', ".add_image_row_hotel").on('click', ".add_image_row_hotel", function (e) {
+        var target = $(this).data('table');
+        $.get('@Url.Action("HotelImagePartial","Hotelier")', { 'hotelId': $('#hotelId').val() }, function (result) {
+            $(target + " tbody").append(result);
+        })
+    });
+    $(document).on('click', '.delete_image_row', function (e) {
+        e.preventDefault();
+        var row = $(this).closest('tr');
+        $(row).find('.isDeleted').val(true);
+        $(row).hide();
+    }) 
+    $(document).on('click', '.delete_Roomimage_row', function (e) {
+        e.preventDefault();
+        var row = $(this).closest('tr');
+        $(row).find('.isDeleted').val(true);
+        $(row).hide();
+    })
+    $(document).off('click', ".add_image_row_hotel_room").on('click', ".add_image_row_hotel_room", function (e) {
+        var target = $(this).data('table');
+        var roomConfigId = $(this).data('roomconfig');
+        $.get('@Url.Action("HotelRoomImagePartial","Hotelier")', { 'roomConfigId': roomConfigId }, function (result) {
+            $(target + " tbody").append(result);
+        })
+    })
+    $(document).on("click", '.btnBulkImageUploader', function () {
+        debugger;
+        var target = $(this).data("uploader");
+        $("#" + target).click();
+    });
+
+    
+    $(document).on("change", ".bulkImageUpload", function () {
+        var uploader = $(this); 
+        debugger;
+        var target = uploader.data("container");
+        var files = this.files;
+        var url = uploader.data('url');
+        for (var i = 0; i < files.length; i++) {
+            var formData = new FormData();
+            formData.append("file", files[i]);
+            formData.append("identifer", uploader.data('identifier'));
+            
+            $.ajax({
+                type: "POST",
+                url: url,
+                contentType:false,
+                processData: false,
+                data: formData,
+                success: function (result) {
+                    debugger
+                    $(target + " tbody").append(result);
+                },
+                error: function () {
+                    alert("There was error uploading files!");
+                }
+            });
+        }
+    });
+</script>

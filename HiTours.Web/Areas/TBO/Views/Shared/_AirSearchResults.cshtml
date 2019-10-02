@@ -1,0 +1,10 @@
+﻿@model AirSearchResult[]
+@if (Model != null && Model.Length > 0)
+{
+    foreach (var item in Model)
+    {
+        <span class="hide"></span>
+        @Html.Partial("_AirSearchResult", item)
+
+    }
+}

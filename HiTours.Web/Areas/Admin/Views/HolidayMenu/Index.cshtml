@@ -1,0 +1,51 @@
+﻿@{ this.ViewBag.Title = "Holiday Menu List"; }
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/holidaymenu/manage") })
+                </div>
+            </div>
+            @this.Html.Partial("_DataTableGrid")
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        $(function () {
+            BindGrid({
+                url: "@Url.Action("Index")",
+                columns: [
+                    { "data": "Name", "title": "Name", "type": "string" },
+                    { "data": "ChildMenu", "title": "Child Menu", "type": "string" },
+                    {
+                        "data": "IsRegion", "title": "Is Region", "mRender": function (data, type, record) {
+                            if (record.IsRegion)
+                                return "Region";
+                            else
+                                return "Country";
+                        }
+                     },
+                    {
+                        "data": null, "title": "Action",
+                        "targets": -1,
+                        "width": '15%',
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                            var action = "";
+                            ////action += '<a class="form-control btn-default" href="@Url.GetAdminUrl("holidaymenu", "manage")/' + record.Id + '"><i class="fa fa-eye"></i>&nbsp;</a>';
+                            action += '<a class="form-control btn-success" href="@Url.GetAdminUrl("holidaymenu", "manage")/' + record.Id+ '"><i class="fa fa-edit"></i>&nbsp;</a>';
+                           action += '<a class="form-control btn-danger delete-row" data-delete href="@Url.GetAdminUrl("holidaymenu", "Delete")/' + record.Id+ '"><i class="fa fa-trash-o"></i>&nbsp;</a>';
+                            return action;
+
+                        }
+                    }]
+            });
+        });
+
+    </script>
+}

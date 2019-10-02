@@ -1,0 +1,31 @@
+//-- farerule Api Request --
+{
+  "EndUserIp": "192.168.11.120",
+  "TokenId": "281a28d0-c54f-4792-83a8-c3c4e1e0c694",
+  "TraceId": "48cb893a-4b37-4b0f-ae6f-67b21707df57",
+  "ResultIndex": "OB3"
+}
+//-- farerule Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "FareRules": [
+      {
+        "Airline": "SG",
+        "DepartureTime": "0001-01-01T00:00:00",
+        "Destination": "BOM",
+        "FareBasisCode": "VSAVER",
+        "FareRestriction": null,
+        "FareRuleDetail": " \r\n\r\n Changes and cancellations are permitted as per applicable rules and charges.\r <br/> <br/>",
+        "FlightId": 0,
+        "Origin": "DEL",
+        "ReturnDate": "0001-01-01T00:00:00"
+      }
+    ],
+    "ResponseStatus": 1,
+    "TraceId": "48cb893a-4b37-4b0f-ae6f-67b21707df57"
+  }
+}

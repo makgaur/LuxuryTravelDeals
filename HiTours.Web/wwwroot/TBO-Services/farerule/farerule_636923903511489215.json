@@ -1,0 +1,31 @@
+//-- farerule Api Request --
+{
+  "EndUserIp": "192.168.11.120",
+  "TokenId": "ff235bef-7434-438c-b368-42275759a50b",
+  "TraceId": "e27dad3f-7aa2-4fc0-a458-35166e555fca",
+  "ResultIndex": "OB10"
+}
+//-- farerule Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "FareRules": [
+      {
+        "Airline": "G8",
+        "DepartureTime": "0001-01-01T00:00:00",
+        "Destination": "IXL",
+        "FareBasisCode": "CO9REINX",
+        "FareRestriction": null,
+        "FareRuleDetail": " 1. All Guests, including children and infants, must present valid identification at check-in. It is your responsibility to ensure you have the appropriate travel documents at all times.\r\n2. Rescheduling - Rs. 1000 per pax per segment plus difference of fare.\r\n3. Check-in starts \"2 hours\" before scheduled departure, and closes 45 minutes prior to the scheduled departure time. Guests are requested to report at least 2 hours prior to departure time, at Go Air Check-in counters.\r\n4. Cancellation / Changes within \"2 hours\" of departure or failure to check-in for a Go Air flight at least 45 minutes prior to the scheduled departure time will result in the fare being forfeited. We require the request atleast 4 hours prior to departure, After that ticket will be count as a No show.\r\n5. Cancellation- Rs. 1000 per pax per segment plus difference of fare.\r\n6. Schedule is subject to change and regulatory authority approvals.\r\n <br/> <br/>",
+        "FlightId": 0,
+        "Origin": "DEL",
+        "ReturnDate": "0001-01-01T00:00:00"
+      }
+    ],
+    "ResponseStatus": 1,
+    "TraceId": "e27dad3f-7aa2-4fc0-a458-35166e555fca"
+  }
+}

@@ -1,0 +1,42 @@
+﻿@model FareRuleRequest
+@{  this.ViewBag.Title = "Fare Rule";}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+            </div>
+            <form asp-antiforgery="true" method="post">
+                <div class="box-body">
+                    <div class="form-group col-sm-4">
+                        <label asp-for="EndUserIp"></label>
+                        <input type="text" asp-for="EndUserIp" data-autocomplete="EndUserIp"  class="form-control" />
+                        <span asp-validation-for="EndUserIp"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="TokenId"></label>
+                        <input type="text" asp-for="TokenId"  data-autocomplete="TokenId"  class="form-control" />
+                        <span asp-validation-for="TokenId"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="TraceId"></label>
+                        <input type="text" asp-for="TraceId" data-autocomplete="TraceId" class="form-control" />
+                        <span asp-validation-for="TraceId"></span>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label asp-for="ResultIndex"></label>
+                        <select asp-for="ResultIndex"  class="form-control" selected="@Model.ResultIndex"  data-bind="searchresult">
+                        </select>
+                     
+                        <span asp-validation-for="ResultIndex"></span>
+                    </div>
+
+                </div>
+                <div class="box-footer" align="center">
+                    <button type="submit" class="btn btn-primary">Get Result</button>
+                </div>
+            </form>
+        </div>
+        @Html.Partial("_ApiResult")
+    </div>
+</div>

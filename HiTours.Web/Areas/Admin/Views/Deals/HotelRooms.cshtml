@@ -1,0 +1,84 @@
+﻿@model DealsHotelInfoViewModel
+@{
+    var routeData = this.ViewContext.RouteData.Values;
+    var nextView = this.TempData["nextview"] != null ? this.TempData["nextview"].ToString() : "#ratePlans";
+}
+<style>
+    .invoice{
+        margin:0px !important;
+    }
+    .color-yellow {
+        color: #ffc400;
+    }
+</style>
+<section class="invoice">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="page-header">
+                <i class="fa fa-building"></i> @Model.HotelName
+                <small class="pull-right">Created Date: @Model.CreatedDate.ToString("dd/MM/yyyy")</small>
+            </h2>
+        </div>
+        <!-- /.col -->
+    </div>
+    <div class="row invoice-info">
+        <div class="col-sm-4 invoice-col">
+            <strong>Address:</strong>
+            <address>
+                @Model.AddressLine1<br>
+                @Model.AddressLine2<br>
+                @Model.CityName, @(string.IsNullOrEmpty(@Model.StateName) ? Model.CountryName : Model.StateName + ", " + Model.CountryName)<br>
+                Postal Code: @Model.PostalCode<br />
+                Website: @Model.Website
+            </address>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+            <strong>Miscellaneous Information:</strong>
+            <address>
+                Property Type: @Model.PropertyType<br>
+                Star Rating:@for (int i = 0; i < Model.StarRating; i++)
+                {<i class="fa fa-fw fa-star color-yellow"></i>}<br>
+                Check In: @(Model.IsOpenCheckIn ? "Open" : DateTime.Today.Add((TimeSpan)Model.CheckInTime).ToString("hh:mm tt"))<br>
+                Check Out: @(Model.IsOpenCheckIn ? "Open" : DateTime.Today.Add((TimeSpan)Model.CheckOutTime).ToString("hh:mm tt"))<br>
+                Currency: @Model.CurrencyName
+            </address>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+            <strong>Contact:</strong>
+            <address>
+                @Model.ContactPersonName<br />
+                Work Phone: @Model.WorkPhone<br />
+                Mobile Phone: @Model.MobilePhone<br />
+                Email: @Model.EmailId
+
+            </address>
+        </div>
+        <!-- /.col -->
+    </div>
+</section>
+
+<div class="nav-tabs-custom">
+    <input type="hidden" name="tabs" data-default="@nextView" value="@nextView" />
+    <form class="hide">
+        @foreach (var key in routeData.Keys)
+        {
+            <input type="hidden" name="@key" value="@(routeData[key])" />
+        }
+    </form>
+
+    <ul class="nav nav-tabs pull-right">
+        <li class=""><a href="#add-roomconfig" class="replaceMaster" data-toggle="tab" data-href="@Url.Action("RoomsMaster","Deals",new {@hotelId = Model.HotelId, @packageId = Model.PackageId})"><i class="fa fa-plus"></i> Add Room Cofiguration From Master</a></li>
+        <li class=""><a href="#view-roomconfig " class="replacePackage" data-toggle="tab" data-href="@Url.Action("RoomsPackage","Deals",new { @packageId = Model.PackageId})"><i class="fa fa-list"></i> View Deal Room Configuration</a></li>
+    </ul>
+    <div class="tab-content hotel-tabs">
+        <div class="tab-pane" id="add-roomconfig"></div>
+        <div class="tab-pane" id="view-roomconfig"></div>
+    </div>
+</div>
+<script>
+    $(document).ready(function (e) {
+        $('.replacePackage').click();
+    })
+</script>

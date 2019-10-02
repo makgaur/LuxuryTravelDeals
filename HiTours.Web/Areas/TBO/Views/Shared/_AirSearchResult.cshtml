@@ -1,0 +1,63 @@
+﻿@model AirSearchResult
+@using HtmlHelpers.BeginCollectionItemCore
+<div class="segments-item section-row">
+    @using (this.Html.BeginCollectionItem("AirSearchResult"))
+    {
+        <div class="form-group col-sm-3">
+            <label asp-for="ResultIndex"></label>
+            <input type="text" asp-for="ResultIndex" class="form-control" />
+            <span asp-validation-for="ResultIndex"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="Source"></label>
+            <input type="text" asp-for="Source" class="form-control" />
+            <span asp-validation-for="Source"></span>
+        </div>
+
+        <div class="form-group col-sm-6">
+            <label asp-for="IsLCC"></label>
+            <div class="form-control ">
+                <div class="radiobtn-group">
+                    <label class="">Yes</label>
+                    @this.Html.RadioButtonFor(model => model.IsLCC, "true")
+                </div>
+                <div class="radiobtn-group">
+                    <label class="">No</label>
+                    @this.Html.RadioButtonFor(model => model.IsLCC, "false")
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-sm-6">
+            <label asp-for="IsRefundable"></label>
+            <div class="form-control ">
+                <div class="radiobtn-group">
+                    <label class="">Yes</label>
+                    @this.Html.RadioButtonFor(model => model.IsRefundable, "true")
+                </div>
+                <div class="radiobtn-group">
+                    <label class="">No</label>
+                    @this.Html.RadioButtonFor(model => model.IsRefundable, "false")
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-sm-3">
+            <label asp-for="AirlineRemark"></label>
+            <input type="text" asp-for="AirlineRemark" class="form-control" />
+            <span asp-validation-for="AirlineRemark"></span>
+        </div>
+
+        <div id="segments-body">
+            @if (Model.CustomSegments != null && Model.CustomSegments.Length > 0)
+            {
+                foreach (var segment in Model.CustomSegments)
+                {
+                    <span class="hide"></span>
+                    @Html.Partial("_AirResultSegment", segment);
+                }
+            }
+        </div>
+
+    }
+</div>

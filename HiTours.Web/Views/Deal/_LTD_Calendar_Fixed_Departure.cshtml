@@ -1,0 +1,128 @@
+﻿@model List<DealFixedDepartureDateViewModel>
+@{
+    List<DateTime> uniqueMonths = Model.Select(x => x.StartDate).ToList().Select(d => new DateTime(d.Year, d.Month, 1)).Distinct().ToList();
+}
+<p class="booking-date-header">SELECT BOOKING DATE</p>
+@try
+{
+    <div class="fd_calendar_container">
+        <div class="fd_calendar_head">
+            <div class="fd_head_element fd_nav_left">
+                <img src="~/images/fd_nav_left.svg" />
+            </div>
+            <div class="fd_head_element fd_months">
+                @for (int i = 0; i < uniqueMonths.Count; i++)
+                {
+                    if (!this.ViewBag.IsMobileView)
+                    {
+                        <div class="fd_month_select @(i==0?"active":string.Empty)" data-target="@i">@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(uniqueMonths[i].Month).ToUpper() @uniqueMonths[i].Year</div>
+                    }
+                    else
+                    {
+                        <div class="fd_month_select @(i==0?"active":string.Empty)" data-target="@i">@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(uniqueMonths[i].Month).ToUpper().Substring(0, 3) @uniqueMonths[i].Year.ToString().Substring(2,2)</div>
+                    }
+
+                }
+
+                @*<div class="fd_month_select" data-target="2">FEBRUARY 2019</div>
+        <div class="fd_month_select " data-target="12">MARCH 2019</div>
+        <div class="fd_month_select" data-target="3">APRIL 2019</div>
+        <div class="fd_month_select" data-target="4">MAY 2019</div>
+        <div class="fd_month_select" data-target="5">JUNE 2019</div>
+        <div class="fd_month_select" data-target="6">JULY 2019</div>
+        <div class="fd_month_select" data-target="7">AUGUST 2019</div>
+        <div class="fd_month_select" data-target="8">SEPTEMBER 2019</div>
+        <div class="fd_month_select" data-target="9">OCTOBER 2019</div>
+        <div class="fd_month_select" data-target="10">NOVEMBER 2019</div>
+        <div class="fd_month_select" data-target="11">DECEMBER 2019</div>*@
+            </div>
+
+            <div class="fd_head_element fd_nav_right">
+                <img src="~/images/fd_nav_right.svg" />
+            </div>
+        </div>
+        <div class="fd_calender_month_description_container">
+            @for (int i = 0; i < uniqueMonths.Count; i++)
+            {
+                <div class="fd_calendar_month @(i == 0 ? "active":string.Empty)" data-target="@i">
+                    @{
+                        var monthItems = Model.Where(x => x.StartDate.Month == uniqueMonths[i].Month).OrderBy(x => x.StartDate).ToList();
+                        decimal lowestPrice = Model.OrderBy(x => x.StartingPrice).Select(x => x.StartingPrice).FirstOrDefault();
+                    }
+                    @for (int j = 0; j < monthItems.Count; j++)
+                    {
+                        string classes = string.Empty;
+                        <div class="fd_calendar_day">
+                            <div class="fd_day_date_container">
+                                <div class="fd_date_top_conatiner">
+                                    <div class="fd_day_start_date">
+                                        @monthItems[j].StartDate.Day @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(monthItems[j].StartDate.Month), @monthItems[j].StartDate.Year
+                                    </div>
+                                    <div class="fd_date_seperator">
+                                        &mdash;
+                                    </div>
+                                    <div class="fd_day_end_date">
+                                        @monthItems[j].EndDate.Day @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(monthItems[j].EndDate.Month), @monthItems[j].EndDate.Year
+                                    </div>
+                                </div>
+                                <div class="fd_date_bottom_conatiner">
+                                    <div class="fd_date_day_name_start">
+                                        @CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(monthItems[j].StartDate.DayOfWeek)
+                                    </div>
+                                    <div class="fd_date_day_name_end">
+                                        @CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(monthItems[j].EndDate.DayOfWeek)
+                                    </div>
+                                </div>
+                            </div>
+                            @{ 
+                                if(monthItems[j].StartingPrice == lowestPrice)
+                                {
+                                    classes = "lowest";
+                                }
+                            }
+                            <div class="fd_day_seperator_mobile"></div>
+                            <div class="fd_day_price_container">
+                                <div class="fd_day_price_table">
+                                    <div class="fd_day_price">
+                                        <div class="fd_day_amount @classes">
+                                            ₹@Math.Round(monthItems[j].StartingPrice, MidpointRounding.AwayFromZero).ToAmount()
+                                        </div>
+                                        <div class="fd_day_amount_placeholder">
+                                            PER PERSON
+                                        </div>
+                                    </div>
+                                    <div class="fd_day_selection">
+                                        <button type="button" 
+                                                data-start-month="@monthItems[j].StartDate.Month"
+                                                data-start-year="@monthItems[j].StartDate.Year"
+                                                data-start-day="@monthItems[j].StartDate.Day"
+                                                data-start-month-name="@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(monthItems[j].StartDate.Month)"
+                                                data-end-month="@monthItems[j].EndDate.Month"
+                                                data-end-year="@monthItems[j].EndDate.Year"
+                                                data-end-day="@monthItems[j].EndDate.Day"
+                                                data-end-month-name="@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(monthItems[j].EndDate.Month)"
+                                                data-start-date="@monthItems[j].StartDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)" 
+                                                data-end-date="@monthItems[j].EndDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)">
+                                            SELECT
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @if (j != monthItems.Count - 1) //No Seperator below last date
+                        {
+                            <div class="fd_calendar_day_seperator"></div>
+                        }
+                    }
+
+
+                </div>
+            }
+        </div>
+    </div>
+}
+catch (Exception ex)
+{
+    string msg = ex.ToString();
+}
+

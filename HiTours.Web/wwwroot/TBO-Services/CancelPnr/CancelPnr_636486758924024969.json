@@ -1,0 +1,19 @@
+//-- CancelPnr Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "b3a35706-f724-4c31-ba07-a82c0ba8cbd9",
+  "BookingId": "50433",
+  "Source": "4"
+}
+//-- CancelPnr Api Response --
+{
+  "Response": {
+    "B2B2BStatus": null,
+    "ResponseStatus": 1,
+    "TraceId": "da6fefde-6f7a-477f-900c-0890834be236",
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    }
+  }
+}

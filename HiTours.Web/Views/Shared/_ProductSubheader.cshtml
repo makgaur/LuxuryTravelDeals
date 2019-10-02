@@ -1,0 +1,180 @@
+﻿@using System.Security.Claims
+@using HiTours.Data.DataBase.Model
+<div id="navbar" class="navbar-collapse collapse js-navbar-collapse customizeNavCollapse">
+    <div class="nav_mobile">
+        <div class="nav_mobile_head hidden-sm hidden-md hidden-lg">
+            <a href="#">
+                <img src="~/images/LTD Nav Logo.png" class="img-responsive ltd-logo-product" alt="Luxury Travel Deals Logo" title="Luxury Travel Deals" />
+            </a>
+
+            <a href="/user" class="nav_mobile_signin">SIGN IN</a>
+
+            <button class="close-btn navbar-toggle collapsed"  aria-expanded="false" aria-controls="navbar"><img src="~/images/Close Icon.png" alt="close_icon"class="margin-top-6"/></button>
+
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+
+            <li class="dropdown-list-icon" id="recentView">
+
+                <a href="#" class="recentviewfirst">Recently Viewed <span class="hidden-lg hidden-md hidden-sm chevron-right-mob"><img src="~/images/Chevron right.png" alt="down_icon" /></span></a>
+
+                <ul class="dropdown-menu dropdown-recent-view-custom-style recently-view-box-shadow">
+                    <div class="arrow-up recentViewlist"></div>
+                    <div class="custom_recent_dropdown" id="scrollbar-style">
+                        @{
+                            List<RecentlyViewedDealsViewModel> recentlyViewedDeals = this.ViewBag.RecentlyViewedDeals as List<RecentlyViewedDealsViewModel>;
+                        }
+                        @if (recentlyViewedDeals.Count > 0)
+                        {
+                            recentlyViewedDeals = recentlyViewedDeals.OrderByDescending(x => x.SortOrder).ToList();
+                            for (int i = 0; i < recentlyViewedDeals.Count; i++)
+                            {
+                                <div class="recent_dropdown_list">
+                                    <div class="recent_dropdown_image" data-url="@recentlyViewedDeals[i].Url">
+                                        <img src="~/DealImages/@recentlyViewedDeals[i].Image" class="img-responsive" alt="deal-image"/>
+                                    </div>
+                                    <div class="recent_dropdown_content">
+                                        <h4>@recentlyViewedDeals[i].DealName</h4>
+                                        <ul class="recent-view-city">
+                                            @foreach (var item in recentlyViewedDeals[i].Location)
+                                            {
+                                                <li>@item</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                                if (i != recentlyViewedDeals.Count - 1)
+                                {
+                                    <hr class="recently-view-seperator">
+                                }
+
+                            }
+
+                        }
+                        else
+                        {
+                            <div class="empty">
+                                <span>No Recently Viewed Deals</span>
+                            </div>
+                        }
+                    </div>
+                </ul>
+            </li>
+
+            <hr class="hidden-lg hidden-md hidden-sm mobile-home-menu-seperator" >
+
+            <li class="recentViewlist dropdown-list-icon">
+                <a href="tel:18001080808">Contact Us <span class="hidden-lg hidden-md hidden-sm chevron-right-mob"><img src="~/images/Chevron_Right_Pink.svg" alt="right_icon" /></span></a>
+                <ul class="dropdown-menu dropdown-deal-custom-style contact-us-xs">
+                    <div class="arrow-up hidden-xs arrow-contact-us"></div>
+
+                    <div class="custom_dropdown_deal contact-us-hover" id="scrollbar-style">
+                        <div class="text-sales">SALES & SUPPORT</div>
+                        <div class="text-number">1800-108-0808</div>
+                    </div>
+                </ul>
+            </li>
+            <hr class="hidden-lg hidden-md hidden-sm mobile-home-menu-seperator">
+
+            <li class="recentViewlist dropdown-list-icon">
+                <a href="#">Deals In India <span class="hidden-lg hidden-md hidden-sm chevron-right-mob" ><img src="~/images/Chevron right.png" alt="down_icon" /></i></span></a>
+                @{List<Tuple<PackageStateModel, int>> stateDealBreakDown = this.ViewBag.StateDealCount;  }
+                @if (stateDealBreakDown.Count > 0)
+                {
+                    <ul class="dropdown-menu dropdown-deal-custom-style">
+                        <div class="arrow-up"></div>
+                        <div class="custom_dropdown_deal city-deal-counts" id="scrollbar-style">
+                            @foreach (var item in stateDealBreakDown)
+                            {
+                                <li>
+                                    <a href="#" data-text="@item.Item1.Name" data-value="@item.Item1.Id" data-subtext="INDIA">
+                                        <div class="breakdown-container">
+                                            <div class="breakdown-image">
+                                                <img src="~/images/State/@item.Item1.Image" class="img-responsive" alt="breakdown-icon"/>
+                                            </div>
+                                            <div class="breakdown-detail">
+                                                <h5>@item.Item1.Name</h5>
+                                                <div class="border-bottom">
+                                                    <span class="deal-quantity">@item.Item2 Deals</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </a>
+
+                                </li>
+                            }
+                        </div>
+
+                    </ul>
+                }
+            </li>
+            <hr class="hidden-lg hidden-md hidden-sm mobile-home-menu-seperator" >
+
+            <li class="recentViewlist dropdown-list-icon">
+                <a href="#">International Deals<span class="hidden-lg hidden-md hidden-sm chevron-right-mob" ><img src="~/images/Chevron right.png" alt="down_icon" /></span></a>
+                @{List<Tuple<PackageCountryModel, int>> countryDealBreakDown = this.ViewBag.CountryDealCount; }
+                @if (countryDealBreakDown.Count > 0)
+                {
+                    <ul class="dropdown-menu dropdown-deal-custom-style">
+                        <div class="arrow-up"></div>
+                        <div class="custom_dropdown_deal country-deals-count" id="scrollbar-style">
+                            @foreach (var item in countryDealBreakDown)
+                            {
+                                <li>
+                                    <a href="#" data-text="@item.Item1.Name" data-value="@item.Item1.Id">
+                                        <div class="breakdown-container">
+                                            <div class="breakdown-image">
+                                                <img src="~/images/Country/@item.Item1.Image" class="img-responsive" alt="country-image" />
+                                            </div>
+                                            <div class="breakdown-detail">
+                                                <h5>@item.Item1.Name</h5>
+                                                <div class="border-bottom">
+                                                    <span class="deal-quantity">@item.Item2 Deals</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </a>
+
+                                </li>
+                            }
+                        </div>
+
+                    </ul>
+                }
+
+            </li>
+            <hr class="hidden-lg hidden-md hidden-sm mobile-home-menu-seperator">
+
+            @*<li class="recentViewlist dropdown-list-icon hidden-lg hidden-md hidden-sm"><a href="#">Notifications <span class="hidden-lg hidden-md hidden-sm chevron-right-mob"><img src="~/images/Chevron right.png" alt="down_icon" /></span></a></li>*@
+            @*<hr class="hidden-lg hidden-md hidden-sm mobile-home-menu-seperator">*@
+
+            @*<li class="hidden-xs"><a href="#" class="padding-top-22"><img src="~/images/Product_notification_bell.svg" class="img-responsive" alt="notification_bell_icon" /></a></li>*@
+
+
+            @if (this.User.Identity.IsAuthenticated && (User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Actor) == null || User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Actor).Value == string.Empty))
+            {
+                <li class="margin-top-unset margin-left-unset">
+                    <input type="hidden" id="UserEmail" value="@this.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value" />
+
+                    <a class="dropdown-toggle padding-top-21" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><i class="fa fa-user-circle-o fa-2x"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/user/mybookings">My Bookings</a></li>
+                        <li><a href="/user/logout">Log Out</a></li>
+                    </ul>
+                </li>
+            }
+            else
+            {
+                <li class="myaccount hidden-xs">
+                    <input type="hidden" id="UserEmail" value="" />
+                    <a href="javascript:;" onclick="SignInSignUp('signin', true)" class="signin Productsignin"><span>SIGN IN</span></a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+

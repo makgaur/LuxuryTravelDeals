@@ -1,0 +1,27 @@
+﻿@model SpecificPriceViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+<tr>
+    @using (this.Html.BeginCollectionItem("SpecificPriceList"))
+    {
+        <td>
+            <div class="input-group input-daterange">
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <input asp-for="Date" type="text" class="form-control pull-right txtSpecificDate"  value="@(Model.Date == DateTime.MinValue ? string.Empty : Model.Date.ToString("dd/MM/yyyy"))" />
+            </div>
+            <span asp-validation-for="Date"></span>
+        </td>
+        <td>
+            <input type="text" asp-for="Price" class="form-control decimalOnly" />
+            <span asp-validation-for="Price"></span>
+        </td>
+        <td class="text-center">
+            <i class="fa fa-remove remove-price "></i>
+        </td>
+
+    }
+</tr>
+
+
+

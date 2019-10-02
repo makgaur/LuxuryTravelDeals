@@ -1,0 +1,130 @@
+﻿@model HotelierRoomConfigurationViewModel
+
+<form asp-antiforgery="true" id="formRoomConfig" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="HotelId" value="@Model.HotelId" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <input type="hidden" asp-for="Description" />
+    <input type="hidden" asp-for="CardImg" />
+    <input type="hidden" asp-for="IsActive" />
+    <div class="row" style="padding:0px 15px;">
+        <div class="form-group col-md-4">
+            <label asp-for="RoomTypeId"></label>
+            <div class="input-group">
+                <select asp-for="RoomTypeId" selected="@Model.RoomTypeId" class="form-control" id="RoomTypeId" asp-items="Model.RoomTypeItems"
+                        select2-value="@Model.RoomTypeId" select2-Url="/selectlist/GetPackageHoteRoomTypeList"></select>
+                @*<span class="input-group-addon"><a href="@Url.Action("Manage","HotelRoomType", new { @area = "Admin" })" target="_blank"><i class="fa fa-plus"></i></a></span>*@
+                <span class="input-group-addon"><a href="javascript:;" onclick="AddRoom()"><i class="fa fa-plus"></i></a></span>
+            </div>
+
+            <span asp-validation-for="RoomTypeId"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Max"></label>
+            <input class="form-control" type="number" asp-for="Max" />
+            <span asp-validation-for="Max"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="AdultAge"></label>
+            <input asp-for="AdultAge" class="form-control" type="number" />
+            <span asp-validation-for="AdultAge"></span>
+        </div>
+    </div>
+   
+    <div class="row" style="padding:0 15px;">
+        <div class="form-group col-md-4">
+            <label asp-for="ChildAge"></label>
+            <input asp-for="ChildAge" class="form-control" type="number" />
+            <span asp-validation-for="ChildAge"></span>
+        </div>
+        <input asp-for="InfantAge" type="hidden" />
+        <div class="form-group col-md-4">
+            <label asp-for="Adult"></label>
+            <input asp-for="Adult" type="number" class="form-control">
+            <span asp-validation-for="Adult"></span>
+        </div>
+        <div class="form-group col-md-4">
+            <label asp-for="Child"></label><br />
+            <input type="number" class="form-control" asp-for="Child" />
+            <span asp-validation-for="Child"></span>
+        </div>
+    </div>
+    
+    <div class="form-group col-md-4">
+        <label asp-for="Infant"></label><br />
+        <input type="number" class="form-control" asp-for="Infant" />
+        <span asp-validation-for="Infant"></span>
+    </div>
+    <div class="form-group col-md-4">
+        <label asp-for="FreeChild"></label>
+        <input asp-for="FreeChild" class="form-control" type="number" />
+        <span asp-validation-for="FreeChild"></span>
+    </div>
+    <div class="form-group col-md-4">
+        <label asp-for="FreeInfant"></label>
+        <input asp-for="FreeInfant" class="form-control" type="number" />
+        <span asp-validation-for="FreeInfant"></span>
+    </div>
+    <div class="row"></div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+</form>
+<script>
+    $(document).ready(function (e) {
+        $('input[type="checkbox"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue'
+        });
+    })
+    function AddRoom(e)
+    {
+        var $modal = $('#application-modal');
+        var url = '@Url.Action("Manage","HotelRoomType", new { @area = "Admin" })';
+        if ($modal) {
+            $modal.find(".modal-title").html("Add Room");
+            $modal.find('.modal-body').html(overlayTemplate);
+            $modal.modal({ keyboard: false, backdrop: false }).show();
+            $.ajax({
+                    url: url,
+                    data: { 'id': 0 },
+                    method: 'get',
+                    dataType: 'html',
+                    success: function (html) {
+                        $modal.find('.modal-body').html(html);
+                        debugger;
+                        //initSelect2();
+                        //initPluggins();
+                        var _form = $("#btnSubmit").parents('form');
+                        //if ($.validator.unobtrusive != undefined) {
+                        //    $.validator.unobtrusive.parse(_form);
+                        //}
+                        var $divPartial = $('#application-modal');
+                        $divPartial.find("#btnSubmit").on("click", function () {
+                            debugger;
+                            if ($(_form).valid()) {
+                                _form.append('<input name="method" type="hidden" value="ajax" />');
+                                $.ajax({
+                                    type: "POST",
+                                    dataType: 'json',
+                                    url: _form.attr('action'),
+                                    data: _form.serialize(),
+                                    success: function (json) {
+                                        $modal.toggle();
+                                        if (json.success) {
+                                            swal('','Successfully Inserted','success')
+                                        }
+                                        return false;
+                                    },
+                                    error: function (response) {
+                                    },
+                                });
+                            }
+                            return false;
+                        });
+                    },
+                    error: function (xhr, request, error) { }
+                });
+        }
+    }
+</script>

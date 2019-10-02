@@ -1,0 +1,3134 @@
+//-- search Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "4bed8b26-f56b-4046-97fa-89d49104909f",
+  "AdultCount": 1,
+  "ChildCount": 1,
+  "InfantCount": 1,
+  "DirectFlight": false,
+  "OneStopFlight": false,
+  "JourneyType": 1,
+  "PreferredAirlines": [
+    "Ai"
+  ],
+  "Segments": [
+    {
+      "Origin": "DEL",
+      "Destination": "JAI",
+      "FlightCabinClass": 1,
+      "PreferredDepartureTime": "2017-12-01T00:00:00",
+      "PreferredArrivalTime": "2017-12-02T00:00:00"
+    }
+  ],
+  "Sources": null
+}
+//-- search Api Response --
+{
+  "Response": {
+    "ResponseStatus": 1,
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "TraceId": "16c1f0d5-c601-461f-9ff7-708845404a7e",
+    "Origin": "DEL",
+    "Destination": "JAI",
+    "Results": [
+      [
+        {
+          "ResultIndex": "OB1",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": false,
+          "GSTAllowed": false,
+          "AirlineRemark": "AI TEST",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 6200,
+            "Tax": 642,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 0
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 6842,
+            "CommissionEarned": 40.8,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 6801.2,
+            "TdsOnCommission": 8.16,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 2400,
+              "Tax": 286,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 2400,
+              "Tax": 286,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 1400,
+              "Tax": 70,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "15 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "AI",
+                  "AirlineName": "Air India",
+                  "FlightNumber": "9643",
+                  "FareClass": "U",
+                  "OperatingCarrier": "9I"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "3",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T17:45:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "JAI",
+                    "AirportName": "Sanganeer",
+                    "Terminal": "2",
+                    "CityCode": "JAI",
+                    "CityName": "Jaipur",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-01T18:45:00"
+                },
+                "AccumulatedDuration": 60,
+                "Duration": 60,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-01T18:45:00",
+                "StopPointDepartureTime": "2017-12-01T17:45:00",
+                "Craft": "ATR",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "01DEC17",
+          "TicketAdvisory": "TICKETS ARE NON REFUNDABLE BEFORE DEPARTURE \nLAST TKT DTE 01DEC17  - SEE ADV PURCHASE \n",
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "JAI",
+              "Airline": "AI",
+              "FareBasisCode": "UIP9I",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "AI",
+          "ValidatingAirline": "AI",
+          "BaggageAllowance": "15 KG"
+        },
+        {
+          "ResultIndex": "OB2",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "this is a test from aditya",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 7998,
+            "Tax": 958,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 100
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 426
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 8956,
+            "CommissionEarned": 178.45,
+            "PLBEarned": 113.96,
+            "IncentiveEarned": 115.93,
+            "OfferedFare": 8547.66,
+            "TdsOnCommission": 35.69,
+            "TdsOnPLB": 22.79,
+            "TdsOnIncentive": 23.19,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 3499,
+              "Tax": 479,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 3499,
+              "Tax": 479,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 1000,
+              "Tax": 0,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "10 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "2627",
+                  "FareClass": "L",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1D",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T15:15:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "JAI",
+                    "AirportName": "Sanganeer",
+                    "Terminal": "2",
+                    "CityCode": "JAI",
+                    "CityName": "Jaipur",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-01T16:10:00"
+                },
+                "Duration": 55,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-01T16:10:00",
+                "StopPointDepartureTime": "2017-12-01T15:15:00",
+                "Craft": "DH8",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "JAI",
+              "Airline": "SG",
+              "FareBasisCode": "LSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "OB3",
+          "Source": 6,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "Indigo API Fare",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 7520,
+            "Tax": 2392,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 1050
+              },
+              {
+                "key": "YR",
+                "value": 100
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 378
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 1050,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 447,
+            "PGCharge": 0,
+            "OtherCharges": 400,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 400
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 10759,
+            "CommissionEarned": 149.76,
+            "PLBEarned": 156.67,
+            "IncentiveEarned": 106.25,
+            "OfferedFare": 9899.32,
+            "TdsOnCommission": 29.95,
+            "TdsOnPLB": 31.33,
+            "TdsOnIncentive": 21.25,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 3200,
+              "Tax": 1196,
+              "YQTax": 525,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 223.5,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 3200,
+              "Tax": 1196,
+              "YQTax": 525,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 223.5,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 1120,
+              "Tax": 0,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "20 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "6E",
+                  "AirlineName": "Indigo",
+                  "FlightNumber": "244",
+                  "FareClass": "V",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T20:10:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "JAI",
+                    "AirportName": "Sanganeer",
+                    "Terminal": "2",
+                    "CityCode": "JAI",
+                    "CityName": "Jaipur",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-01T20:55:00"
+                },
+                "Duration": 45,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-01T20:55:00",
+                "StopPointDepartureTime": "2017-12-01T20:10:00",
+                "Craft": "320",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "JAI",
+              "Airline": "6E",
+              "FareBasisCode": "V0IP",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "6E",
+          "ValidatingAirline": "6E"
+        },
+        {
+          "ResultIndex": "OB6",
+          "Source": 6,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "Indigo API Fare",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 7520,
+            "Tax": 2874,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 1050
+              },
+              {
+                "key": "YR",
+                "value": 100
+              },
+              {
+                "key": "PSF",
+                "value": 300
+              },
+              {
+                "key": "UDF",
+                "value": 564
+              },
+              {
+                "key": "JNTax",
+                "value": 400
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 260
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 200
+              }
+            ],
+            "YQTax": 1050,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 448,
+            "PGCharge": 0,
+            "OtherCharges": 400,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 400
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 11242,
+            "CommissionEarned": 149.76,
+            "PLBEarned": 156.67,
+            "IncentiveEarned": 106.25,
+            "OfferedFare": 10381.32,
+            "TdsOnCommission": 29.95,
+            "TdsOnPLB": 31.33,
+            "TdsOnIncentive": 21.25,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 3200,
+              "Tax": 1437,
+              "YQTax": 525,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 224,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 3200,
+              "Tax": 1437,
+              "YQTax": 525,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 224,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 1120,
+              "Tax": 0,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "20 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "6E",
+                  "AirlineName": "Indigo",
+                  "FlightNumber": "307",
+                  "FareClass": "V",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T17:50:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "CCU",
+                    "AirportName": "Calcutta",
+                    "Terminal": "",
+                    "CityCode": "CCU",
+                    "CityName": "Kolkata",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-01T20:00:00"
+                },
+                "Duration": 130,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-01T20:00:00",
+                "StopPointDepartureTime": "2017-12-01T17:50:00",
+                "Craft": "320",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "20 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "6E",
+                  "AirlineName": "Indigo",
+                  "FlightNumber": "832",
+                  "FareClass": "V",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "CCU",
+                    "AirportName": "Calcutta",
+                    "Terminal": "",
+                    "CityCode": "CCU",
+                    "CityName": "Kolkata",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T21:00:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "JAI",
+                    "AirportName": "Sanganeer",
+                    "Terminal": "",
+                    "CityCode": "JAI",
+                    "CityName": "Jaipur",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-01T23:15:00"
+                },
+                "AccumulatedDuration": 325,
+                "Duration": 135,
+                "GroundTime": 60,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-01T23:15:00",
+                "StopPointDepartureTime": "2017-12-01T21:00:00",
+                "Craft": "320",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "CCU",
+              "Airline": "6E",
+              "FareBasisCode": "V0IP",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            },
+            {
+              "Origin": "CCU",
+              "Destination": "JAI",
+              "Airline": "6E",
+              "FareBasisCode": "V0IP",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "6E",
+          "ValidatingAirline": "6E"
+        },
+        {
+          "ResultIndex": "OB7",
+          "Source": 6,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "Indigo API Fare",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 7520,
+            "Tax": 2874,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 1050
+              },
+              {
+                "key": "YR",
+                "value": 100
+              },
+              {
+                "key": "PSF",
+                "value": 300
+              },
+              {
+                "key": "UDF",
+                "value": 564
+              },
+              {
+                "key": "JNTax",
+                "value": 400
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 260
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 200
+              }
+            ],
+            "YQTax": 1050,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 448,
+            "PGCharge": 0,
+            "OtherCharges": 400,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 400
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 11242,
+            "CommissionEarned": 149.76,
+            "PLBEarned": 156.67,
+            "IncentiveEarned": 106.25,
+            "OfferedFare": 10381.32,
+            "TdsOnCommission": 29.95,
+            "TdsOnPLB": 31.33,
+            "TdsOnIncentive": 21.25,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 3200,
+              "Tax": 1437,
+              "YQTax": 525,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 224,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 3200,
+              "Tax": 1437,
+              "YQTax": 525,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 224,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 1120,
+              "Tax": 0,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "20 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "6E",
+                  "AirlineName": "Indigo",
+                  "FlightNumber": "4677",
+                  "FareClass": "V",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T18:50:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BLR",
+                    "AirportName": "Hindustan",
+                    "Terminal": "",
+                    "CityCode": "BLR",
+                    "CityName": "Bangalore",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-01T21:25:00"
+                },
+                "Duration": 155,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-01T21:25:00",
+                "StopPointDepartureTime": "2017-12-01T18:50:00",
+                "Craft": "320",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "20 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "6E",
+                  "AirlineName": "Indigo",
+                  "FlightNumber": "164",
+                  "FareClass": "V",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BLR",
+                    "AirportName": "Hindustan",
+                    "Terminal": "",
+                    "CityCode": "BLR",
+                    "CityName": "Bangalore",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T23:20:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "JAI",
+                    "AirportName": "Sanganeer",
+                    "Terminal": "",
+                    "CityCode": "JAI",
+                    "CityName": "Jaipur",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-02T01:45:00"
+                },
+                "AccumulatedDuration": 415,
+                "Duration": 145,
+                "GroundTime": 115,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-02T01:45:00",
+                "StopPointDepartureTime": "2017-12-01T23:20:00",
+                "Craft": "320",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "BLR",
+              "Airline": "6E",
+              "FareBasisCode": "V0IP",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            },
+            {
+              "Origin": "BLR",
+              "Destination": "JAI",
+              "Airline": "6E",
+              "FareBasisCode": "V0IP",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "6E",
+          "ValidatingAirline": "6E"
+        },
+        {
+          "ResultIndex": "OB4",
+          "Source": 6,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "Indigo API Fare",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 7520,
+            "Tax": 2874,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 1050
+              },
+              {
+                "key": "YR",
+                "value": 100
+              },
+              {
+                "key": "PSF",
+                "value": 300
+              },
+              {
+                "key": "UDF",
+                "value": 564
+              },
+              {
+                "key": "JNTax",
+                "value": 400
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 260
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 200
+              }
+            ],
+            "YQTax": 1050,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 448,
+            "PGCharge": 0,
+            "OtherCharges": 400,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 400
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 11242,
+            "CommissionEarned": 149.76,
+            "PLBEarned": 156.67,
+            "IncentiveEarned": 106.25,
+            "OfferedFare": 10381.32,
+            "TdsOnCommission": 29.95,
+            "TdsOnPLB": 31.33,
+            "TdsOnIncentive": 21.25,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 3200,
+              "Tax": 1437,
+              "YQTax": 525,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 224,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 3200,
+              "Tax": 1437,
+              "YQTax": 525,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 224,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 1120,
+              "Tax": 0,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "20 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "6E",
+                  "AirlineName": "Indigo",
+                  "FlightNumber": "747",
+                  "FareClass": "V",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T15:55:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "HYD",
+                    "AirportName": "Shamsabad International Airport",
+                    "Terminal": "",
+                    "CityCode": "HYD",
+                    "CityName": "Hyderabad",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-01T18:25:00"
+                },
+                "Duration": 150,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-01T18:25:00",
+                "StopPointDepartureTime": "2017-12-01T15:55:00",
+                "Craft": "320",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "20 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "6E",
+                  "AirlineName": "Indigo",
+                  "FlightNumber": "638",
+                  "FareClass": "V",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "HYD",
+                    "AirportName": "Shamsabad International Airport",
+                    "Terminal": "",
+                    "CityCode": "HYD",
+                    "CityName": "Hyderabad",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T19:30:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "JAI",
+                    "AirportName": "Sanganeer",
+                    "Terminal": "2",
+                    "CityCode": "JAI",
+                    "CityName": "Jaipur",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-01T21:25:00"
+                },
+                "AccumulatedDuration": 330,
+                "Duration": 115,
+                "GroundTime": 65,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-01T21:25:00",
+                "StopPointDepartureTime": "2017-12-01T19:30:00",
+                "Craft": "320",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "HYD",
+              "Airline": "6E",
+              "FareBasisCode": "V0IP",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            },
+            {
+              "Origin": "HYD",
+              "Destination": "JAI",
+              "Airline": "6E",
+              "FareBasisCode": "V0IP",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "6E",
+          "ValidatingAirline": "6E"
+        },
+        {
+          "ResultIndex": "OB5",
+          "Source": 6,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "Indigo API Fare",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 7520,
+            "Tax": 2874,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 1050
+              },
+              {
+                "key": "YR",
+                "value": 100
+              },
+              {
+                "key": "PSF",
+                "value": 300
+              },
+              {
+                "key": "UDF",
+                "value": 564
+              },
+              {
+                "key": "JNTax",
+                "value": 400
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 260
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 200
+              }
+            ],
+            "YQTax": 1050,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 448,
+            "PGCharge": 0,
+            "OtherCharges": 400,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 400
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 11242,
+            "CommissionEarned": 149.76,
+            "PLBEarned": 156.67,
+            "IncentiveEarned": 106.25,
+            "OfferedFare": 10381.32,
+            "TdsOnCommission": 29.95,
+            "TdsOnPLB": 31.33,
+            "TdsOnIncentive": 21.25,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 3200,
+              "Tax": 1437,
+              "YQTax": 525,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 224,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 3200,
+              "Tax": 1437,
+              "YQTax": 525,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 224,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 1120,
+              "Tax": 0,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "20 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "6E",
+                  "AirlineName": "Indigo",
+                  "FlightNumber": "283",
+                  "FareClass": "V",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T16:40:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "CCU",
+                    "AirportName": "Calcutta",
+                    "Terminal": "",
+                    "CityCode": "CCU",
+                    "CityName": "Kolkata",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-01T19:20:00"
+                },
+                "Duration": 160,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-01T19:20:00",
+                "StopPointDepartureTime": "2017-12-01T16:40:00",
+                "Craft": "320",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "20 Kg",
+                "CabinBaggage": "7 Kg",
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "6E",
+                  "AirlineName": "Indigo",
+                  "FlightNumber": "832",
+                  "FareClass": "V",
+                  "OperatingCarrier": ""
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "CCU",
+                    "AirportName": "Calcutta",
+                    "Terminal": "",
+                    "CityCode": "CCU",
+                    "CityName": "Kolkata",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T21:00:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "JAI",
+                    "AirportName": "Sanganeer",
+                    "Terminal": "",
+                    "CityCode": "JAI",
+                    "CityName": "Jaipur",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-01T23:15:00"
+                },
+                "AccumulatedDuration": 395,
+                "Duration": 135,
+                "GroundTime": 100,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-01T23:15:00",
+                "StopPointDepartureTime": "2017-12-01T21:00:00",
+                "Craft": "320",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "CCU",
+              "Airline": "6E",
+              "FareBasisCode": "V0IP",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            },
+            {
+              "Origin": "CCU",
+              "Destination": "JAI",
+              "Airline": "6E",
+              "FareBasisCode": "V0IP",
+              "FareRuleDetail": "",
+              "FareRestriction": ""
+            }
+          ],
+          "AirlineCode": "6E",
+          "ValidatingAirline": "6E"
+        },
+        {
+          "ResultIndex": "OB8",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "AI TEST",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 16250,
+            "Tax": 1366,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 210
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 17616,
+            "CommissionEarned": 117.72,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 17498.28,
+            "TdsOnCommission": 23.54,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 6925,
+              "Tax": 586,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 6925,
+              "Tax": 586,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 2400,
+              "Tax": 194,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "15 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "AI",
+                  "AirlineName": "Air India",
+                  "FlightNumber": "431",
+                  "FareClass": "S",
+                  "OperatingCarrier": "AI"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "3",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T12:25:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "LKO",
+                    "AirportName": "Amausi",
+                    "Terminal": "2",
+                    "CityCode": "LKO",
+                    "CityName": "Lucknow",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-01T13:30:00"
+                },
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-01T13:30:00",
+                "StopPointDepartureTime": "2017-12-01T12:25:00",
+                "Craft": "321",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "15 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "AI",
+                  "AirlineName": "Air India",
+                  "FlightNumber": "9692",
+                  "FareClass": "U",
+                  "OperatingCarrier": "9I"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "LKO",
+                    "AirportName": "Amausi",
+                    "Terminal": "2",
+                    "CityCode": "LKO",
+                    "CityName": "Lucknow",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T20:20:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "JAI",
+                    "AirportName": "Sanganeer",
+                    "Terminal": "2",
+                    "CityCode": "JAI",
+                    "CityName": "Jaipur",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-01T22:15:00"
+                },
+                "AccumulatedDuration": 590,
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-01T22:15:00",
+                "StopPointDepartureTime": "2017-12-01T20:20:00",
+                "Craft": "ATR",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "01DEC17",
+          "TicketAdvisory": "PENALTY APPLIES \nLAST TKT DTE 01DEC17  - SEE ADV PURCHASE \n",
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "LKO",
+              "Airline": "AI",
+              "FareBasisCode": "SIP",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            },
+            {
+              "Origin": "LKO",
+              "Destination": "JAI",
+              "Airline": "AI",
+              "FareBasisCode": "UIP9I",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "AI",
+          "ValidatingAirline": "AI",
+          "BaggageAllowance": "15 KG"
+        },
+        {
+          "ResultIndex": "OB10",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "AI TEST",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 29200,
+            "Tax": 2234,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 420
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 31434,
+            "CommissionEarned": 225.25,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 31208.75,
+            "TdsOnCommission": 45.05,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 13250,
+              "Tax": 976,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 13250,
+              "Tax": 976,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 2700,
+              "Tax": 282,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "25 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "AI",
+                  "AirlineName": "Air India",
+                  "FlightNumber": "191",
+                  "FareClass": "T",
+                  "OperatingCarrier": "AI"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "3",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T21:00:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-01T23:10:00"
+                },
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-01T23:10:00",
+                "StopPointDepartureTime": "2017-12-01T21:00:00",
+                "Craft": "77W",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "25 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "AI",
+                  "AirlineName": "Air India",
+                  "FlightNumber": "611",
+                  "FareClass": "U",
+                  "OperatingCarrier": "AI"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-02T11:35:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "JAI",
+                    "AirportName": "Sanganeer",
+                    "Terminal": "2",
+                    "CityCode": "JAI",
+                    "CityName": "Jaipur",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-02T13:15:00"
+                },
+                "AccumulatedDuration": 975,
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-02T13:15:00",
+                "StopPointDepartureTime": "2017-12-02T11:35:00",
+                "Craft": "321",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "01DEC17",
+          "TicketAdvisory": "PENALTY APPLIES \nLAST TKT DTE 01DEC17  - SEE ADV PURCHASE \n",
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "BOM",
+              "Airline": "AI",
+              "FareBasisCode": "TIP",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            },
+            {
+              "Origin": "BOM",
+              "Destination": "JAI",
+              "Airline": "AI",
+              "FareBasisCode": "UIP",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "AI",
+          "ValidatingAirline": "AI",
+          "BaggageAllowance": "25 KG"
+        },
+        {
+          "ResultIndex": "OB9",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "AI TEST",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 29200,
+            "Tax": 2234,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 420
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 31434,
+            "CommissionEarned": 225.25,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 31208.75,
+            "TdsOnCommission": 45.05,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 13250,
+              "Tax": 976,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 13250,
+              "Tax": 976,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 2700,
+              "Tax": 282,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "25 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "AI",
+                  "AirlineName": "Air India",
+                  "FlightNumber": "317",
+                  "FareClass": "T",
+                  "OperatingCarrier": "AI"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "3",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T23:00:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-02T01:15:00"
+                },
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-02T01:15:00",
+                "StopPointDepartureTime": "2017-12-01T23:00:00",
+                "Craft": "788",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "25 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "AI",
+                  "AirlineName": "Air India",
+                  "FlightNumber": "611",
+                  "FareClass": "U",
+                  "OperatingCarrier": "AI"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-02T11:35:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "JAI",
+                    "AirportName": "Sanganeer",
+                    "Terminal": "2",
+                    "CityCode": "JAI",
+                    "CityName": "Jaipur",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-02T13:15:00"
+                },
+                "AccumulatedDuration": 855,
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-02T13:15:00",
+                "StopPointDepartureTime": "2017-12-02T11:35:00",
+                "Craft": "321",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "01DEC17",
+          "TicketAdvisory": "PENALTY APPLIES \nLAST TKT DTE 01DEC17  - SEE ADV PURCHASE \n",
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "BOM",
+              "Airline": "AI",
+              "FareBasisCode": "TIP",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            },
+            {
+              "Origin": "BOM",
+              "Destination": "JAI",
+              "Airline": "AI",
+              "FareBasisCode": "UIP",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "AI",
+          "ValidatingAirline": "AI",
+          "BaggageAllowance": "25 KG"
+        },
+        {
+          "ResultIndex": "OB11",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "AI TEST",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 29400,
+            "Tax": 2465,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 630
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 31865,
+            "CommissionEarned": 221,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 31644,
+            "TdsOnCommission": 44.2,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 13000,
+              "Tax": 1037,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 13000,
+              "Tax": 1037,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 3400,
+              "Tax": 391,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "25 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "AI",
+                  "AirlineName": "Air India",
+                  "FlightNumber": "13",
+                  "FareClass": "T",
+                  "OperatingCarrier": "AI"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "3",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T20:05:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "AMD",
+                    "AirportName": "Ahmedabad",
+                    "Terminal": "2",
+                    "CityCode": "AMD",
+                    "CityName": "Ahmedabad",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-01T21:40:00"
+                },
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-01T21:40:00",
+                "StopPointDepartureTime": "2017-12-01T20:05:00",
+                "Craft": "321",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "25 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "AI",
+                  "AirlineName": "Air India",
+                  "FlightNumber": "30",
+                  "FareClass": "U",
+                  "OperatingCarrier": "AI"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "AMD",
+                    "AirportName": "Ahmedabad",
+                    "Terminal": "2",
+                    "CityCode": "AMD",
+                    "CityName": "Ahmedabad",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-02T03:30:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-02T04:45:00"
+                },
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-02T04:45:00",
+                "StopPointDepartureTime": "2017-12-02T03:30:00",
+                "Craft": "788",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "25 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 3,
+                "Airline": {
+                  "AirlineCode": "AI",
+                  "AirlineName": "Air India",
+                  "FlightNumber": "611",
+                  "FareClass": "U",
+                  "OperatingCarrier": "AI"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-02T11:35:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "JAI",
+                    "AirportName": "Sanganeer",
+                    "Terminal": "2",
+                    "CityCode": "JAI",
+                    "CityName": "Jaipur",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-02T13:15:00"
+                },
+                "AccumulatedDuration": 1030,
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-02T13:15:00",
+                "StopPointDepartureTime": "2017-12-02T11:35:00",
+                "Craft": "321",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "01DEC17",
+          "TicketAdvisory": "PENALTY APPLIES \nLAST TKT DTE 01DEC17  - SEE ADV PURCHASE \n",
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "AMD",
+              "Airline": "AI",
+              "FareBasisCode": "TIP",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            },
+            {
+              "Origin": "AMD",
+              "Destination": "BOM",
+              "Airline": "AI",
+              "FareBasisCode": "UEPP",
+              "FareRuleDetail": "",
+              "FareRestriction": "N"
+            },
+            {
+              "Origin": "BOM",
+              "Destination": "JAI",
+              "Airline": "AI",
+              "FareBasisCode": "UEPP",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "AI",
+          "ValidatingAirline": "AI",
+          "BaggageAllowance": "25 KG"
+        },
+        {
+          "ResultIndex": "OB12",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "AI TEST",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 30700,
+            "Tax": 2308,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 420
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 33008,
+            "CommissionEarned": 238,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 32770,
+            "TdsOnCommission": 47.6,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 14000,
+              "Tax": 1013,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 14000,
+              "Tax": 1013,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 2700,
+              "Tax": 282,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "25 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "AI",
+                  "AirlineName": "Air India",
+                  "FlightNumber": "805",
+                  "FareClass": "U",
+                  "OperatingCarrier": "AI"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "3",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T20:00:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-01T22:15:00"
+                },
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-01T22:15:00",
+                "StopPointDepartureTime": "2017-12-01T20:00:00",
+                "Craft": "319",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "25 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "AI",
+                  "AirlineName": "Air India",
+                  "FlightNumber": "611",
+                  "FareClass": "U",
+                  "OperatingCarrier": "AI"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-02T11:35:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "JAI",
+                    "AirportName": "Sanganeer",
+                    "Terminal": "2",
+                    "CityCode": "JAI",
+                    "CityName": "Jaipur",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-02T13:15:00"
+                },
+                "AccumulatedDuration": 1035,
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-02T13:15:00",
+                "StopPointDepartureTime": "2017-12-02T11:35:00",
+                "Craft": "321",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "02DEC17",
+          "TicketAdvisory": "PENALTY APPLIES \nLAST TKT DTE 02DEC17  - DATE OF ORIGIN \n",
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "BOM",
+              "Airline": "AI",
+              "FareBasisCode": "UIP",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            },
+            {
+              "Origin": "BOM",
+              "Destination": "JAI",
+              "Airline": "AI",
+              "FareBasisCode": "UIP",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "AI",
+          "ValidatingAirline": "AI",
+          "BaggageAllowance": "25 KG"
+        },
+        {
+          "ResultIndex": "OB13",
+          "Source": 4,
+          "IsLCC": false,
+          "IsRefundable": true,
+          "GSTAllowed": false,
+          "AirlineRemark": "AI TEST",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 32700,
+            "Tax": 2630,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 630
+              },
+              {
+                "key": "PSF",
+                "value": 0
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "JNTax",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 0
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 35330,
+            "CommissionEarned": 248.2,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 35081.8,
+            "TdsOnCommission": 49.64,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 1,
+              "BaseFare": 14600,
+              "Tax": 1117,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 2,
+              "PassengerCount": 1,
+              "BaseFare": 14600,
+              "Tax": 1117,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            },
+            {
+              "Currency": "INR",
+              "PassengerType": 3,
+              "PassengerCount": 1,
+              "BaseFare": 3500,
+              "Tax": 396,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "25 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "AI",
+                  "AirlineName": "Air India",
+                  "FlightNumber": "10",
+                  "FareClass": "L",
+                  "OperatingCarrier": "AI"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "3",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-01T16:30:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "AMD",
+                    "AirportName": "Ahmedabad",
+                    "Terminal": "2",
+                    "CityCode": "AMD",
+                    "CityName": "Ahmedabad",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-01T18:15:00"
+                },
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-01T18:15:00",
+                "StopPointDepartureTime": "2017-12-01T16:30:00",
+                "Craft": "321",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "25 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "AI",
+                  "AirlineName": "Air India",
+                  "FlightNumber": "30",
+                  "FareClass": "U",
+                  "OperatingCarrier": "AI"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "AMD",
+                    "AirportName": "Ahmedabad",
+                    "Terminal": "2",
+                    "CityCode": "AMD",
+                    "CityName": "Ahmedabad",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-02T03:30:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-02T04:45:00"
+                },
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-02T04:45:00",
+                "StopPointDepartureTime": "2017-12-02T03:30:00",
+                "Craft": "788",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "25 KG",
+                "CabinBaggage": null,
+                "TripIndicator": 1,
+                "SegmentIndicator": 3,
+                "Airline": {
+                  "AirlineCode": "AI",
+                  "AirlineName": "Air India",
+                  "FlightNumber": "611",
+                  "FareClass": "U",
+                  "OperatingCarrier": "AI"
+                },
+                "NoOfSeatAvailable": 4,
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BOM",
+                    "AirportName": "Mumbai",
+                    "Terminal": "2",
+                    "CityCode": "BOM",
+                    "CityName": "Mumbai",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2017-12-02T11:35:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "JAI",
+                    "AirportName": "Sanganeer",
+                    "Terminal": "2",
+                    "CityCode": "JAI",
+                    "CityName": "Jaipur",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2017-12-02T13:15:00"
+                },
+                "AccumulatedDuration": 1245,
+                "Duration": 0,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "StopPoint": "",
+                "StopPointArrivalTime": "2017-12-02T13:15:00",
+                "StopPointDepartureTime": "2017-12-02T11:35:00",
+                "Craft": "321",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": "01DEC17",
+          "TicketAdvisory": "PENALTY APPLIES \nLAST TKT DTE 01DEC17  - DATE OF ORIGIN \n",
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "AMD",
+              "Airline": "AI",
+              "FareBasisCode": "LIP",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            },
+            {
+              "Origin": "AMD",
+              "Destination": "BOM",
+              "Airline": "AI",
+              "FareBasisCode": "UEPP",
+              "FareRuleDetail": "",
+              "FareRestriction": "N"
+            },
+            {
+              "Origin": "BOM",
+              "Destination": "JAI",
+              "Airline": "AI",
+              "FareBasisCode": "UEPP",
+              "FareRuleDetail": "",
+              "FareRestriction": "Y"
+            }
+          ],
+          "AirlineCode": "AI",
+          "ValidatingAirline": "AI",
+          "BaggageAllowance": "25 KG"
+        }
+      ]
+    ]
+  }
+}

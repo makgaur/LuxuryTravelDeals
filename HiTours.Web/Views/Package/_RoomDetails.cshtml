@@ -1,0 +1,28 @@
+﻿@{
+    int.TryParse(ViewContext.HttpContext.Request.Query["roomcount"].ToString(), out int roomno);
+    int.TryParse(ViewContext.HttpContext.Request.Query["adultcount"].ToString(), out int adultcount);
+    int.TryParse(ViewContext.HttpContext.Request.Query["childcount"].ToString(), out int childcount);
+}
+@for (int i = 1; i <= roomno; i++)
+{
+    <div class="roomWisePax hidden">
+        <span>Room @i</span>
+        <span>
+            <input type="hidden" name="RoomNo" value="@i" />
+            <select type="hidden" name="Adult" class="form-control skip-select2 persons">
+                @for (int counter = 1; counter <= adultcount; counter++)
+                {
+                    <option value="@counter">@counter Adult</option>
+                }
+            </select>
+        </span>
+        <span>
+            <select type="hidden" name="Child" class="form-control skip-select2">
+                @for (int counter = 0; counter <= childcount; counter++)
+                {
+                    <option value="@counter">@counter Child</option>
+                }
+            </select>
+        </span>
+    </div>
+}

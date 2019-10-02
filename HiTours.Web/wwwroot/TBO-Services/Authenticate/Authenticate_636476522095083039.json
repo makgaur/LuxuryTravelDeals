@@ -1,0 +1,16 @@
+//-- Authenticate Api Request --
+{
+  "ClientId": "ApiIntegrationNew",
+  "UserName": "HiTours",
+  "Password": "HiTours@124",
+  "EndUserIp": "181.181.181.181"
+}
+//-- Authenticate Api Response --
+{
+  "Status": 4,
+  "TokenId": null,
+  "Error": {
+    "ErrorCode": 1,
+    "ErrorMessage": "Incorrect Password"
+  }
+}

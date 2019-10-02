@@ -1,0 +1,27 @@
+﻿@{this.Layout = "~/Views/Shared/_LayoutFlightSearch.cshtml";}
+
+@model HiTours.TBO.Models.FlightBook
+<style>
+    .field-validation-error {
+        position: absolute;
+        display:none !important;
+    }
+</style>
+ 
+<input type="hidden" name="flightBooking" value="true" />
+<div class="middle white-clr">
+    <section class="flight-page">
+        <div class="container" data-flight="dvFlightBooking">
+            <div class="flights">
+                <div class="box" style="min-height:250px;">
+                    <div class="overlay">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+ 

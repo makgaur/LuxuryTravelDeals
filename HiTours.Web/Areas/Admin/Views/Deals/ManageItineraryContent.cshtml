@@ -1,0 +1,40 @@
+﻿@model List<DealsItineraryViewModel>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box no-top-border">
+                <div class="form-group col-md-12" style="margin-top:10px;">
+                    <div class="panel-group" id="accordion">
+                        @foreach (DealsItineraryViewModel itinerary in Model)
+                        {
+                            string formattedTitle = string.Empty;
+                            if (itinerary.StartDay == itinerary.EndDay)
+                            {
+                                formattedTitle = formattedTitle + "Day " + itinerary.StartDay;
+                            }
+                            else
+                            {
+                                formattedTitle = formattedTitle + "Day " + itinerary.StartDay + " - " + itinerary.EndDay;
+                            }
+                            if (!string.IsNullOrEmpty(itinerary.Title))
+                            {
+                                formattedTitle = formattedTitle + ": " + itinerary.Title;
+                            }
+                            <div class="panel">
+                                <div class="panel-heading bg-gray-active">
+                                    <h4 class="panel-title ">
+                                        <a data-toggle="collapse" class="" data-parent="#accordion" href="#collapse_@itinerary.Id"><i class="fa fa-fw fa-calendar"></i> @formattedTitle</a>
+                                    </h4>
+                                </div>
+                                <div id="collapse_@itinerary.Id" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        @this.Html.Partial("_AddItineraryContent", itinerary)
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

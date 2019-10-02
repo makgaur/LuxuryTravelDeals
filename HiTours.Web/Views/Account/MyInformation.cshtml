@@ -1,0 +1,167 @@
+﻿@{
+    this.ViewBag.HeaderWithoutIcons = true;
+}
+@*@this.Html.Partial("_MyAccountHeader")*@
+<div class="my-information-box">
+    <div class="my-subscriptions">
+        <div class="container">
+            <section class="forms-section information">
+                <paragraph class="clearfix ">
+                    <h4 class="title my-subscriptions-heading">
+                        My Information <em>—</em>
+                    </h4>
+                    <div id="myinfo">
+                    </div>
+                </paragraph>
+                @*<paragraph class="clearfix">
+                        <h4 class="title my-subscriptions-heading">
+                            @if (this.User.Identities.FirstOrDefault().AuthenticationType != Constants.ApplicationCookies)
+                            {
+                                <span>Set Password</span>
+
+                            }
+                            else
+                            {
+                                <span> My Details<em>—</em> </span>
+                            }
+                        </h4>
+                        @this.Html.Partial("_MyDetails")
+                    </paragraph>*@
+            </section>
+        </div>
+    </div>
+</div>
+<style>
+    .loading-profile {
+        text-align: center;
+        min-height: 250px;
+        position: relative;
+    }
+
+        .loading-profile > img {
+            position: absolute;
+            top: 35%;
+        }
+</style>
+
+@section scripts {
+    <script>
+        function getMyInformation() {
+
+            $("#myinfo").addClass("loading-profile").append("<img src='/content/img/Loding.gif' />");
+
+            $.ajax({
+                url: '/Account/GetMyInformation',
+                method: "POST",
+                success: function (data) {
+                    $("#myinfo").removeClass("loading-profile").html(data);
+                    var _form = $("#myinfo").find('form').eq(0);
+                    if ($.validator.unobtrusive != undefined) {
+                        $.validator.unobtrusive.parse(_form);
+                    }
+                    initPluggins();
+                    submitInformation();
+
+                },
+            })
+        }
+        function submitInformation() {
+            $("#frmMyInformation").on("submit", function (event) {
+                event.preventDefault();
+                if ($(this).valid()) {
+                    showWaitProcess();
+                    $.ajax({
+                        url: '/Account/UpdateMyInformation',
+                        method: "POST",
+                        data: $(this).serialize(),
+                        success: function (data) {
+                            hideWaitProcess()
+                            if (data.Status) {
+                                $("[type=password]").val('');
+                                $.bootstrapGrowl(data.Message, { type: 'success', delay: 2000, });
+                                smartech('create', 'ADGMOT35CHFLVDHBJNIG50K969M2CP4N22UB4JPT4SRLRK91B7CG');
+
+                                var formData = {
+
+                                    'pk^email': $("#UserEmail").val(),
+
+                                    'mobile': $("#MobileNo").val(),
+
+                                    'ADDRESS': $("#Address").val(),
+
+                                    'CITY': $("#CityId option:selected").text(),
+
+                                    'COUNTRY': $("#CountryId option:selected").text(),
+
+                                    'DOB': $("#DateOfBirth").val(),
+
+                                    'FIRSTNAME': $("#FirstName").val(),
+
+                                    'GENDER': $("#Gender option:selected").text(),
+
+                                    'LASTNAME': $("#LastName").val(),
+
+                                    'NATIONALITY': $("#NationalityId option:selected").text(),
+
+                                    'PASSPORT': $("#PassportNo").val(),
+
+                                    'PASSPORT_COUNTRY': $("#CountryofIssueId option:selected").text(),
+
+                                    'PASSPORT_EXPIRY': $("#ExpiryDate").val(),
+
+                                    'ZIPCODE': $("#ZipCode").val()
+
+                                };
+
+                                smartech('contact', 8, formData);
+
+                            }
+                            else {
+                                $.bootstrapGrowl(data.Message, { type: 'danger', delay: 2000, });
+                            }
+
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            hideWaitProcess()
+                            $.bootstrapGrowl(errorThrown, { type: 'danger', delay: 2000, });
+
+                        }
+                    })
+                }
+
+                return false;
+            });
+            $("#frmMydeatils").on("submit", function (event) {
+                event.preventDefault();
+                if ($(this).valid()) {
+                    showWaitProcess();
+                    $.ajax({
+                        url: '/Account/UserChangePassword',
+                        method: "POST",
+                        data: $(this).serialize(),
+                        success: function (data) {
+                            hideWaitProcess()
+                            if (data.Status) {
+                                $.bootstrapGrowl(data.Message, { type: 'success', delay: 2000, });
+                            }
+                            else {
+                                $.bootstrapGrowl(data.Message, { type: 'danger', delay: 2000, });
+                            }
+                            $('#frmMydeatils')[0].reset();
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                            hideWaitProcess()
+                            $.bootstrapGrowl(errorThrown, { type: 'danger', delay: 2000, });
+                        }
+                    })
+                }
+                return false;
+            });
+        }
+
+        $(document).ready(function () {
+            getMyInformation();
+
+        })
+    </script>
+}

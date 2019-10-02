@@ -1,0 +1,166 @@
+﻿@{
+    var routeData = this.ViewContext.RouteData.Values;
+    var nextView = this.TempData["nextview"] != null ? this.TempData["nextview"].ToString() : "#vendor-contract";
+}
+<style>
+    
+</style>
+<div class="nav-tabs-custom">
+    <input type="hidden" name="tabs" data-default="@nextView" value="@nextView" />
+    <form class="hide">
+        @foreach (var key in routeData.Keys)
+        {
+            <input type="hidden" name="@key" value="@(routeData[key])" />
+        }
+        <input type="hidden" name="RowIdentifier" value="" />
+    </form>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box no-top-border">
+                <div class="box-header with-border">
+                    <h4 class="box-title">Contracts</h4>
+                    <div class="pull-right top-buttons">
+                        <button class="btn btn-sm btn-primary" onclick="EditContract(0)"><i class="fa fa-fw fa-plus"></i> Add Contract</button>
+                    </div>
+                </div>
+                @this.Html.Partial("_DataTableGrid")
+            </div>
+        </div>
+    </div>
+    <div class="box-footer" align="center">
+        <button class="nexttab-vendorcontract btn btn-primary">Next</button>
+    </div>
+
+</div>
+<script>
+    $(document).on('click', '.nexttab-vendorcontract', function () {
+        $('#vendorBank').trigger('click');
+    });
+    $(document).on('submit', "#formVendorContract", function (e) {
+        e.preventDefault();
+        var $form = $("#formVendorContract");
+        //$('#formPackagePromotionManage input[name="Id"]').val(0);
+            if ($form.valid()) {
+                showWaitProcess();
+                var model = {}
+                model = $form.serialize();
+                var ErrorMsg = "";
+                $(".text-blank").each(function () {
+                    ErrorMsg += $(this).text();
+                })
+                if (ErrorMsg != "") {
+                    hideWaitProcess();
+                    return false;
+                }
+                else {
+                    $.ajax({
+                        url: '@Url.Action("ContractAdd","Vendor")',
+                        type: "JOSN",
+                        method: "POST",
+                        data: model,
+                        success: function (data) {
+                            hideWaitProcess();
+                            if (data == "success") {
+                                swal('', 'Successfully Inserted', 'success');
+                                $(".replaceView").click();
+                            }
+                            else if (data == "update") {
+                                swal('', 'Successfully Updated', 'success');
+                                $(".replaceView").click();
+                            }
+                            else
+                            {
+                                var errors = JSON.parse(data);
+                                $.each(errors, function (i, obj) {
+                                    var $span = $('span[data-valmsg-for="' + obj.key + '"]');
+                                    $span.addClass("field-validation-error").html('<span for="' + obj.key + '" class="field-validation-error">' + obj.error + '</span>');
+                                    $span.attr("data-valmsg-replace", "false");
+                                })
+
+                                 setTimeout(function () {
+                                        $("[data-valmsg-replace]").each(function () {
+                                            $(this).attr("data-valmsg-replace", "true");
+                                        })
+                                    }, 3000);
+                                return false;
+                            }
+                        }
+                    });
+                }
+            }
+    })
+     $(function () {
+            BindGrid({
+                url: "@Url.Action("GetContractGrid",new { @id=this.ViewBag.VendorId })",
+                columns: [
+                    { "data": "StartDate", "title": "Start Date", "type": "string" },
+                    { "data": "EndDate", "title": "End Date", "type": "string" },
+                    { "data": "MarginType", "title": "Margin Type", "type": "string" },
+                    { "data": "MarginValue", "title": "Margin Value", "type": "string" },
+
+                    {
+                        "data": null, "title": "Action",
+                        "targets": -1,
+                        "width": '15%',
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                            var action = "";
+                            action += '<a class="form-control btn-success" href="javascript:;" onclick="EditContract(' + record.Id + ')"><i class="fa fa-edit"></i>&nbsp;</a>';
+                            action += '<a class="form-control btn-danger delete-row" data-delete href="@Url.GetAdminUrl("Vendor", "DeleteContract")/' + record.Id+ '"><i class="fa fa-trash-o"></i>&nbsp;</a>';
+                            return action;
+                        }
+                    }]
+            });
+        });
+        function EditContract(id) {
+            var $modal = $('#application-modal');
+            var url = '@Url.Action("ContractAdd","Vendor")';
+            if ($modal) {
+                $modal.find(".modal-title").html("Edit Contract Details");
+                $modal.find('.modal-body').html(overlayTemplate);
+                $modal.modal({ keyboard: false, backdrop: false }).show();
+                $.ajax({
+                    url: url,
+                    data: { 'id': id, 'vendorId':@this.ViewBag.VendorId},
+                    method: 'get',
+                    dataType: 'html',
+                    success: function (html) {
+                        $modal.find('.modal-body').html(html);
+                        initSelect2();
+                        var _form = $("#btnSaveandReload").parents('form');
+                        if ($.validator.unobtrusive != undefined) {
+                            $.validator.unobtrusive.parse(_form);
+                        }
+                        var $divPartial = $('#application-modal');
+                        $divPartial.find("#btnSaveandReload").on("click", function () {
+                            if ($(_form).valid()) {
+                                _form.append('<input name="method" type="hidden" value="ajax" />');
+                                $.ajax({
+                                    type: "POST",
+                                    dataType: 'json',
+                                    url: _form.attr('action'),
+                                    data: _form.serialize(),
+                                    success: function (json) {
+                                        $modal.toggle();
+                                        debugger;
+                                        if (json == 'success') {
+
+                                            location.reload();
+                                        }
+                                        
+                                        return false;
+                                    },
+                                    error: function (response) {
+                                    },
+                                });
+                            }
+                            return false;
+                        });
+                    },
+                    error: function (xhr, request, error) { }
+                });
+            }
+        }
+</script>

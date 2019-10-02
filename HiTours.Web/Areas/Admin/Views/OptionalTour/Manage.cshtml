@@ -1,0 +1,98 @@
+﻿@model OptionalTourAndItemsAddViewModel;
+@{
+    this.ViewBag.Title = ViewData["Title"] = (Model.Id == 0 ? "Add Optional Tour" : "Edit Optional Tour");
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.ViewList, Url.Action("index", "optionaltour", new { @area = "Admin" })) })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box no-top-border">
+                        @this.Html.Partial("_AddOptionalTourAndItemMaster", Model);
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).on('click', '.classAdd', function (e) {
+            var rowCount = $('.data-tour-item').length;
+            var tourItem = '<tr class="data-tour-item" data-counter="' + rowCount + '">' +
+                '                                    <td>' +
+                '                                        <input class="form-control t_name" placeholder="Tour Name" id="t_name_' + rowCount + '" type="text" data-val="true" data-val-required="Name is required" name="TourItems[' + rowCount + '].TourName">' +
+                '                                        <span class="field-validation-valid" data-valmsg-for="TourItems[' + rowCount + '].TourName" data-valmsg-replace="true"></span>' +
+                '                                    </td>' +
+                '                                    <td>' +
+                '                                        <input type="number" class="form-control a_price" placeholder="Adult Price" id="a_price_' + rowCount + '" data-val="true" data-val-number="The field AdultPrice must be a number." data-val-required="Adult Price is required" name="TourItems[' + rowCount + '].AdultPrice">' +
+                '                                        <span class="field-validation-valid" data-valmsg-for="TourItems[' + rowCount + '].AdultPrice" data-valmsg-replace="true"></span>' +
+                '                                    </td>' +
+                '                                    <td>' +
+                '                                        <input type="number" class="form-control c_price" placeholder="Child Price" id="c_price_' + rowCount + '" data-val="true" data-val-number="The field ChildPrice must be a number." data-val-required="Child Price is required" name="TourItems[' + rowCount + '].ChildPrice">' +
+                '                                        <span class="field-validation-valid" data-valmsg-for="TourItems[' + rowCount + '].ChildPrice" data-valmsg-replace="true"></span>' +
+                '                                    </td>' +
+                '                                    <td><button type="button" id="btnDelete" class="deleteItem btn btn btn-danger btn-xs">Remove</button></td>' +
+                '                                </tr>';
+            $('#tourItemtable').append(tourItem); // Adding these controls to Main table class
+            $('#formOptionalTourManage').data('validator', null);
+            $.validator.unobtrusive.parse($('#tourItemtable'));
+        });
+        $(document).on("click", ".deleteItem", function () {
+            $(this).closest("tr").remove();
+        }); 
+        function getAllItemData() {
+            var data = [];
+            $('tr.data-tour-item').each(function () {
+                var TourName = $(this).find('.t_name').val(); 
+                var AdultPrice = $(this).find('.a_price').val();
+                var ChildPrice = $(this).find('.c_price').val();
+                var alldata = {
+                    'TourName': TourName, 
+                    'AdultPrice': AdultPrice, 
+                    'ChildPrice': ChildPrice  
+                }
+                data.push(alldata);
+            });
+            //console.log(data);
+            return data;
+        }
+        $("#btnSave").click(function (event) {
+            event.preventDefault();
+            showWaitProcess();
+            var modelData = {
+                'Id': $('#ot_id').val(),
+                'VendorId': $('#VendorId').val(),
+                'CountryId': $('#CountryId').val(),
+                'IsActive': $('#ot_isActive').val(),
+                'CreatedDate': $('#ot_CreatedDate').val(),
+                'CreatedBy': $('#ot_CreatedBy').val(),
+                'UpdatedDate': $('#ot_UpdatedDate').val(),
+                'UpdatedBy': $('#ot_UpdatedBy').val(),
+                'TourItems': getAllItemData()
+            }
+            //console.log(data);    
+            $.ajax({
+                url: '@Url.Action("Manage","OptionalTour")',
+                type: 'POST',
+                data: {'model': JSON.stringify(modelData)},
+                success: function () {
+                    window.location = $('#anchorViewList').attr('href');
+                },
+                error: function () {
+                    window.location = $('#anchorViewList').attr('href');
+                }
+            });
+        }); 
+    </script>
+}
+
+

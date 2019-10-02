@@ -1,0 +1,636 @@
+//-- BookDetails Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "15d62697-efe8-4631-817b-27eee07fcc4a",
+  "TraceId": "ac114888-05ce-48c0-b6f0-3e67e8bfd5f6",
+  "BookingId": 50340,
+  "PNR": "XYSMTP"
+}
+//-- BookDetails Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "ResponseStatus": 1,
+    "TraceId": "ac114888-05ce-48c0-b6f0-3e67e8bfd5f6",
+    "FlightItinerary": {
+      "BookingId": 50340,
+      "IsManual": false,
+      "PNR": "XYSMTP",
+      "IsDomestic": true,
+      "Source": 6,
+      "Origin": "DEL",
+      "Destination": "BOM",
+      "AirlineCode": "6E",
+      "LastTicketDate": "12DEC17",
+      "ValidatingAirlineCode": "6E",
+      "AirlineRemark": "",
+      "IsLCC": true,
+      "NonRefundable": false,
+      "FareType": "PUB",
+      "CreditNoteNo": null,
+      "Fare": {
+        "Currency": "INR",
+        "BaseFare": 20700,
+        "Tax": 13221,
+        "TaxBreakup": [
+          {
+            "key": "YQTax",
+            "value": 5850
+          },
+          {
+            "key": "JNTax",
+            "value": 1404
+          },
+          {
+            "key": "YR",
+            "value": 300
+          },
+          {
+            "key": "UDF",
+            "value": 2106
+          },
+          {
+            "key": "PSF",
+            "value": 900
+          },
+          {
+            "key": "TransactionFee",
+            "value": 930
+          },
+          {
+            "key": "INTax",
+            "value": 1431
+          },
+          {
+            "key": "OtherTaxes",
+            "value": 300
+          },
+          {
+            "key": "TotalTax",
+            "value": 13221
+          }
+        ],
+        "YQTax": 5850,
+        "AdditionalTxnFeeOfrd": 0,
+        "AdditionalTxnFeePub": 0,
+        "PGCharge": 0,
+        "OtherCharges": 0,
+        "ChargeBU": [
+          {
+            "key": "TBOMARKUP",
+            "value": 0
+          },
+          {
+            "key": "CONVENIENCECHARGE",
+            "value": 0
+          },
+          {
+            "key": "OTHERCHARGE",
+            "value": 0
+          }
+        ],
+        "Discount": 0,
+        "PublishedFare": 33921,
+        "CommissionEarned": 484.38,
+        "PLBEarned": 506.73,
+        "IncentiveEarned": 343.68,
+        "OfferedFare": 32586.21,
+        "TdsOnCommission": 96.87,
+        "TdsOnPLB": 101.34,
+        "TdsOnIncentive": 68.73,
+        "ServiceFee": 0,
+        "TotalBaggageCharges": 0,
+        "TotalMealCharges": 0,
+        "TotalSeatCharges": 0,
+        "TotalSpecialServiceCharges": 0
+      },
+      "CreditNoteCreatedOn": null,
+      "Passenger": [
+        {
+          "PaxId": 68697,
+          "Title": "Mr",
+          "FirstName": "Sumeet",
+          "LastName": "gupta",
+          "PaxType": 1,
+          "DateOfBirth": "1992-12-20T00:00:00",
+          "Gender": 1,
+          "PassportNo": "",
+          "AddressLine1": "dfdfd",
+          "AddressLine2": "dfdfd",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 6900,
+            "Tax": 4407,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 1950
+              },
+              {
+                "key": "JNTax",
+                "value": 468
+              },
+              {
+                "key": "YR",
+                "value": 100
+              },
+              {
+                "key": "UDF",
+                "value": 702
+              },
+              {
+                "key": "PSF",
+                "value": 300
+              },
+              {
+                "key": "TransactionFee",
+                "value": 310
+              },
+              {
+                "key": "INTax",
+                "value": 477
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 100
+              },
+              {
+                "key": "TotalTax",
+                "value": 4407
+              }
+            ],
+            "YQTax": 1950,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 11307,
+            "CommissionEarned": 161.46,
+            "PLBEarned": 168.91,
+            "IncentiveEarned": 114.56,
+            "OfferedFare": 10862.07,
+            "TdsOnCommission": 32.29,
+            "TdsOnPLB": 33.78,
+            "TdsOnIncentive": 22.91,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "City": "dfdf",
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "ContactNo": "9632587412",
+          "Email": "hgfgh@gmail.com",
+          "IsLeadPax": true,
+          "FFAirlineCode": "  ",
+          "FFNumber": "",
+          "Meal": {
+            "Code": null,
+            "Description": null
+          },
+          "Ticket": {
+            "TicketId": 41701,
+            "TicketNumber": "XYSMTP",
+            "IssueDate": "2017-12-12T14:08:04",
+            "ValidatingAirline": "708",
+            "Remarks": "",
+            "ServiceFeeDisplayType": "ShowInTax",
+            "Status": "OK"
+          },
+          "GSTCompanyAddress": "",
+          "GSTCompanyContactNumber": "",
+          "GSTCompanyEmail": "",
+          "GSTCompanyName": "",
+          "GSTNumber": "",
+          "SegmentAdditionalInfo": [
+            {
+              "FareBasis": "T0IPRT",
+              "NVA": null,
+              "NVB": null,
+              "Baggage": "20 Kg",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "T0IPRT",
+              "NVA": null,
+              "NVB": null,
+              "Baggage": "20 Kg",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            }
+          ]
+        },
+        {
+          "PaxId": 68698,
+          "Title": "Mr",
+          "FirstName": "sagar",
+          "LastName": "gupta",
+          "PaxType": 1,
+          "DateOfBirth": "1994-12-20T00:00:00",
+          "Gender": 1,
+          "PassportNo": "",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 6900,
+            "Tax": 4407,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 1950
+              },
+              {
+                "key": "JNTax",
+                "value": 468
+              },
+              {
+                "key": "YR",
+                "value": 100
+              },
+              {
+                "key": "UDF",
+                "value": 702
+              },
+              {
+                "key": "PSF",
+                "value": 300
+              },
+              {
+                "key": "TransactionFee",
+                "value": 310
+              },
+              {
+                "key": "INTax",
+                "value": 477
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 100
+              },
+              {
+                "key": "TotalTax",
+                "value": 4407
+              }
+            ],
+            "YQTax": 1950,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 11307,
+            "CommissionEarned": 161.46,
+            "PLBEarned": 168.91,
+            "IncentiveEarned": 114.56,
+            "OfferedFare": 10862.07,
+            "TdsOnCommission": 32.29,
+            "TdsOnPLB": 33.78,
+            "TdsOnIncentive": 22.91,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "City": "jaipur",
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "IsLeadPax": true,
+          "FFAirlineCode": "  ",
+          "FFNumber": "",
+          "Meal": {
+            "Code": null,
+            "Description": null
+          },
+          "Ticket": {
+            "TicketId": 41702,
+            "TicketNumber": "XYSMTP",
+            "IssueDate": "2017-12-12T14:08:04",
+            "ValidatingAirline": "708",
+            "Remarks": "",
+            "ServiceFeeDisplayType": "ShowInTax",
+            "Status": "OK"
+          },
+          "GSTCompanyAddress": "",
+          "GSTCompanyContactNumber": "",
+          "GSTCompanyEmail": "",
+          "GSTCompanyName": "",
+          "GSTNumber": "",
+          "SegmentAdditionalInfo": [
+            {
+              "FareBasis": "T0IPRT",
+              "NVA": null,
+              "NVB": null,
+              "Baggage": "20 Kg",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "T0IPRT",
+              "NVA": null,
+              "NVB": null,
+              "Baggage": "20 Kg",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            }
+          ]
+        },
+        {
+          "PaxId": 68699,
+          "Title": "Mr",
+          "FirstName": "kalpana",
+          "LastName": "gupta",
+          "PaxType": 2,
+          "DateOfBirth": "2005-12-21T00:00:00",
+          "Gender": 1,
+          "PassportNo": "",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 6900,
+            "Tax": 4407,
+            "TaxBreakup": [
+              {
+                "key": "YQTax",
+                "value": 1950
+              },
+              {
+                "key": "JNTax",
+                "value": 468
+              },
+              {
+                "key": "YR",
+                "value": 100
+              },
+              {
+                "key": "UDF",
+                "value": 702
+              },
+              {
+                "key": "PSF",
+                "value": 300
+              },
+              {
+                "key": "TransactionFee",
+                "value": 310
+              },
+              {
+                "key": "INTax",
+                "value": 477
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 100
+              },
+              {
+                "key": "TotalTax",
+                "value": 4407
+              }
+            ],
+            "YQTax": 1950,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 11307,
+            "CommissionEarned": 161.46,
+            "PLBEarned": 168.91,
+            "IncentiveEarned": 114.56,
+            "OfferedFare": 10862.07,
+            "TdsOnCommission": 32.29,
+            "TdsOnPLB": 33.78,
+            "TdsOnIncentive": 22.91,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "City": "uyhjghjg",
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "IsLeadPax": true,
+          "FFAirlineCode": "  ",
+          "FFNumber": "",
+          "Meal": {
+            "Code": null,
+            "Description": null
+          },
+          "Ticket": {
+            "TicketId": 41703,
+            "TicketNumber": "XYSMTP",
+            "IssueDate": "2017-12-12T14:08:04",
+            "ValidatingAirline": "708",
+            "Remarks": "",
+            "ServiceFeeDisplayType": "ShowInTax",
+            "Status": "OK"
+          },
+          "GSTCompanyAddress": "",
+          "GSTCompanyContactNumber": "",
+          "GSTCompanyEmail": "",
+          "GSTCompanyName": "",
+          "GSTNumber": "",
+          "SegmentAdditionalInfo": [
+            {
+              "FareBasis": "T0IPRT",
+              "NVA": null,
+              "NVB": null,
+              "Baggage": "20 Kg",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "T0IPRT",
+              "NVA": null,
+              "NVB": null,
+              "Baggage": "20 Kg",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            }
+          ]
+        }
+      ],
+      "CancellationCharges": null,
+      "Segments": [
+        {
+          "Baggage": null,
+          "CabinBaggage": null,
+          "TripIndicator": 1,
+          "SegmentIndicator": 1,
+          "Airline": {
+            "AirlineCode": "6E",
+            "AirlineName": "IndiGo",
+            "FlightNumber": "185",
+            "FareClass": "T",
+            "OperatingCarrier": ""
+          },
+          "AirlinePNR": "",
+          "Origin": {
+            "Airport": {
+              "AirportCode": "DEL",
+              "AirportName": "DEL",
+              "Terminal": "1 ",
+              "CityCode": "DEL",
+              "CityName": "Delhi",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "DepTime": "2017-12-12T20:30:00"
+          },
+          "Destination": {
+            "Airport": {
+              "AirportCode": "BOM",
+              "AirportName": "Mumbai",
+              "Terminal": "  ",
+              "CityCode": "BOM",
+              "CityName": "Mumbai",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "ArrTime": "2017-12-12T22:40:00"
+          },
+          "Duration": 130,
+          "GroundTime": 0,
+          "Mile": 0,
+          "StopOver": false,
+          "StopPoint": "",
+          "StopPointArrivalTime": null,
+          "StopPointDepartureTime": null,
+          "Craft": "320",
+          "Remark": null,
+          "IsETicketEligible": false,
+          "FlightStatus": "Confirmed",
+          "Status": "HK"
+        },
+        {
+          "Baggage": null,
+          "CabinBaggage": null,
+          "TripIndicator": 2,
+          "SegmentIndicator": 1,
+          "Airline": {
+            "AirlineCode": "6E",
+            "AirlineName": "IndiGo",
+            "FlightNumber": "439",
+            "FareClass": "T",
+            "OperatingCarrier": ""
+          },
+          "AirlinePNR": "",
+          "Origin": {
+            "Airport": {
+              "AirportCode": "BOM",
+              "AirportName": "Mumbai",
+              "Terminal": "1 ",
+              "CityCode": "BOM",
+              "CityName": "Mumbai",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "DepTime": "2017-12-13T18:40:00"
+          },
+          "Destination": {
+            "Airport": {
+              "AirportCode": "DEL",
+              "AirportName": "DEL",
+              "Terminal": "1 ",
+              "CityCode": "DEL",
+              "CityName": "Delhi",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "ArrTime": "2017-12-13T20:45:00"
+          },
+          "Duration": 125,
+          "GroundTime": 0,
+          "Mile": 0,
+          "StopOver": false,
+          "StopPoint": "",
+          "StopPointArrivalTime": null,
+          "StopPointDepartureTime": null,
+          "Craft": "320",
+          "Remark": null,
+          "IsETicketEligible": false,
+          "FlightStatus": "Confirmed",
+          "Status": "HK"
+        }
+      ],
+      "FareRules": [
+        {
+          "Origin": "DEL",
+          "Destination": "BOM",
+          "Airline": "6E",
+          "FareBasisCode": "T0IPRT",
+          "FareRuleDetail": " \r\n IndiGo Fares Terms & Conditions\r\n============================================================\r\n Regular / Promo Fare\r\n-------------------------------------------------------------------------------------\r\nBaggage Conditions:\r\nCheck-in Baggage Allowance: 15 kg for Domestic sectors and 20 kg for International Sectors except 30 Kg for Dubai, Muscat, Sharjah, Doha and Singapore.\r\nHand Baggage Allowance: 7 Kg.\r\nChange Fee:\r\nDomestic India & Nepal Travel: Rs 2,250 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if changed within 2 hrs from scheduled departure.\r\nInternational except Nepal: Rs 2,500 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 4hrs before the scheduled departure. No-show charges will be levied if changed within 4 hrs from scheduled departure. \r\nCancellation Fee:\r\nDomestic India & Nepal Travel: Rs 3,000 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if cancelled within 2 hrs from scheduled departure.     \r\nInternational except Nepal: Rs 3,500 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 4hrs before the scheduled departure. No-show charges will be levied if cancelled within 4 hrs from scheduled departure. \r\n============================================================\r\n Return Fare\r\n-------------------------------------------------------------------------------------\r\nApplicable for Round-Trip journey.\r\nBaggage Conditions:\r\nCheck-in Baggage Allowance: 15 kg for Domestic sectors and 20 kg for International Sectors except 30 Kg for Dubai, Muscat, Sharjah, Doha and Singapore.\r\nHand Baggage Allowance:  7 Kg.\r\nChange Fee:\r\nDomestic India & Nepal Travel: Rs 2,250 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if changed within 2 hrs from scheduled departure.     \r\nInternational except Nepal: Rs 2,500 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 4hrs before the schedule departure. No-show charges will be levied if changed within 4 hrs from scheduled departure. \r\nCancellation Fee:\r\nDomestic India & Nepal Travel: Rs 3,000 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if cancelled within 2 hrs from scheduled departure.     \r\nInternational except Nepal: Rs 3,500 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 4hrs before the scheduled departure. No-show charges will be levied if cancelled within 4 hrs from scheduled departure. \r\n============================================================\r\n Family Fare\r\n-------------------------------------------------------------------------------------\r\nApplicable on a minimum of 4 pax booked on the same PNR.\r\nNot available on international sectors.\r\nBaggage Conditions:\r\nCheck-in Baggage Allowance: 15 kg for Domestic sectors.\r\nHand Baggage Allowance:  7 Kg.\r\nChange Fee:\r\nDomestic India: Rs 2,250 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if changed within 2 hrs from scheduled departure.     \r\nCancellation Fee:\r\nDomestic India: Rs 3,000 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if cancelled within 2 hrs from scheduled departure.     \r\n============================================================\r\n  Flexi Fare\r\n Allows unlimited changes till 2 hours before the scheduled departure for domestic sectors and 4 hours before the scheduled departure for international sectors. Fare difference applies.\r\nBaggage Conditions:\r\nCheck-in Baggage Allowance: 15 kg for Domestic sectors and 20 kg for International Sectors except 30 Kg for Dubai, Muscat, Sharjah, Doha and Singapore.\r\nHand Baggage Allowance:  7 Kg.\r\nChange Fee:\r\nDomestic India & Nepal Travel: No Change Fee: if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if changed within 2 hrs from scheduled departure.\r\nInternational except Nepal: No Change Fee: if changed at least 4hrs before the scheduled departure. No-show charges will be levied if changed within 4 hrs from scheduled departure. \r\nCancellation Fee:\r\nDomestic India & Nepal Travel: Rs 3,000 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if cancelled within 2 hrs from scheduled departure.     \r\nInternational except Nepal: Rs 3,500 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 4hrs before the scheduled departure. No-show charges will be levied if cancelled within 4 hrs from scheduled departure. \r\n============================================================\r\n Lite Fare\r\n-------------------------------------------------------------------------------------\r\nApplicable for travel without a check-in baggage. Applicable for travel beyond 15 days from the booking date.\r\nFor a multi-leg/return journey, Lite Fare will be available only if it is available and selected on each of the individual legs.\r\nNot available on international sectors.\r\nBaggage Conditions:\r\nCheck-in Baggage Allowance: No check-in baggage allowed.\r\nHand Baggage Allowance:  7 Kg.\r\nChange Fee:\r\nDomestic India: Rs 2,250 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if changed within 2 hrs from scheduled departure.     \r\nCancellation Fee:\r\nDomestic India: Rs 3,000 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if cancelled within 2 hrs from scheduled departure.     \r\n============================================================\r\n Corporate / Coupon Fare\r\n-------------------------------------------------------------------------------------\r\nAvailable for contracted Corporate Customers only. Allows unlimited flexibility to change / cancel, extra hand-baggage allowance, complimentary seat and meal (1 food item & 1 beverage). \r\nBaggage Conditions:\r\nCheck-in Baggage Allowance: 15 kg for Domestic sectors and 20 kg for International Sectors except 30 Kg for Dubai, Muscat, Sharjah, Doha and Singapore.\r\nHand Baggage Allowance: 10 Kg.\r\nChange Fee:\r\nDomestic India & Nepal Travel: No Change Fee: if changed at least 1 hr before the scheduled departure. No-show charges will be levied if changed within 1 hrs from scheduled departure.     \r\nInternational except Nepal: No Change Fee: if changed at least 4 hr before the scheduled departure. No-show charges will be levied if changed within 4 hrs from scheduled departure. \r\nCancellation Fee:\r\nDomestic India & Nepal Travel: No Cancellation Fee: if cancelled at least 1 hr before the scheduled departure. No-show charges will be levied if cancelled within 1 hrs from scheduled departure.     \r\nInternational except Nepal: No Cancellation Fee: if changed at least 4 hrs before the scheduled departure. No-show charges will be levied if cancelled within 4 hrs from scheduled departure. \r ",
+          "FareRestriction": ""
+        },
+        {
+          "Origin": "BOM",
+          "Destination": "DEL",
+          "Airline": "6E",
+          "FareBasisCode": "T0IPRT",
+          "FareRuleDetail": " \r\n IndiGo Fares Terms & Conditions\r\n============================================================\r\n Regular / Promo Fare\r\n-------------------------------------------------------------------------------------\r\nBaggage Conditions:\r\nCheck-in Baggage Allowance: 15 kg for Domestic sectors and 20 kg for International Sectors except 30 Kg for Dubai, Muscat, Sharjah, Doha and Singapore.\r\nHand Baggage Allowance: 7 Kg.\r\nChange Fee:\r\nDomestic India & Nepal Travel: Rs 2,250 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if changed within 2 hrs from scheduled departure.\r\nInternational except Nepal: Rs 2,500 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 4hrs before the scheduled departure. No-show charges will be levied if changed within 4 hrs from scheduled departure. \r\nCancellation Fee:\r\nDomestic India & Nepal Travel: Rs 3,000 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if cancelled within 2 hrs from scheduled departure.     \r\nInternational except Nepal: Rs 3,500 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 4hrs before the scheduled departure. No-show charges will be levied if cancelled within 4 hrs from scheduled departure. \r\n============================================================\r\n Return Fare\r\n-------------------------------------------------------------------------------------\r\nApplicable for Round-Trip journey.\r\nBaggage Conditions:\r\nCheck-in Baggage Allowance: 15 kg for Domestic sectors and 20 kg for International Sectors except 30 Kg for Dubai, Muscat, Sharjah, Doha and Singapore.\r\nHand Baggage Allowance:  7 Kg.\r\nChange Fee:\r\nDomestic India & Nepal Travel: Rs 2,250 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if changed within 2 hrs from scheduled departure.     \r\nInternational except Nepal: Rs 2,500 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 4hrs before the schedule departure. No-show charges will be levied if changed within 4 hrs from scheduled departure. \r\nCancellation Fee:\r\nDomestic India & Nepal Travel: Rs 3,000 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if cancelled within 2 hrs from scheduled departure.     \r\nInternational except Nepal: Rs 3,500 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 4hrs before the scheduled departure. No-show charges will be levied if cancelled within 4 hrs from scheduled departure. \r\n============================================================\r\n Family Fare\r\n-------------------------------------------------------------------------------------\r\nApplicable on a minimum of 4 pax booked on the same PNR.\r\nNot available on international sectors.\r\nBaggage Conditions:\r\nCheck-in Baggage Allowance: 15 kg for Domestic sectors.\r\nHand Baggage Allowance:  7 Kg.\r\nChange Fee:\r\nDomestic India: Rs 2,250 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if changed within 2 hrs from scheduled departure.     \r\nCancellation Fee:\r\nDomestic India: Rs 3,000 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if cancelled within 2 hrs from scheduled departure.     \r\n============================================================\r\n  Flexi Fare\r\n Allows unlimited changes till 2 hours before the scheduled departure for domestic sectors and 4 hours before the scheduled departure for international sectors. Fare difference applies.\r\nBaggage Conditions:\r\nCheck-in Baggage Allowance: 15 kg for Domestic sectors and 20 kg for International Sectors except 30 Kg for Dubai, Muscat, Sharjah, Doha and Singapore.\r\nHand Baggage Allowance:  7 Kg.\r\nChange Fee:\r\nDomestic India & Nepal Travel: No Change Fee: if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if changed within 2 hrs from scheduled departure.\r\nInternational except Nepal: No Change Fee: if changed at least 4hrs before the scheduled departure. No-show charges will be levied if changed within 4 hrs from scheduled departure. \r\nCancellation Fee:\r\nDomestic India & Nepal Travel: Rs 3,000 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if cancelled within 2 hrs from scheduled departure.     \r\nInternational except Nepal: Rs 3,500 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 4hrs before the scheduled departure. No-show charges will be levied if cancelled within 4 hrs from scheduled departure. \r\n============================================================\r\n Lite Fare\r\n-------------------------------------------------------------------------------------\r\nApplicable for travel without a check-in baggage. Applicable for travel beyond 15 days from the booking date.\r\nFor a multi-leg/return journey, Lite Fare will be available only if it is available and selected on each of the individual legs.\r\nNot available on international sectors.\r\nBaggage Conditions:\r\nCheck-in Baggage Allowance: No check-in baggage allowed.\r\nHand Baggage Allowance:  7 Kg.\r\nChange Fee:\r\nDomestic India: Rs 2,250 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if changed within 2 hrs from scheduled departure.     \r\nCancellation Fee:\r\nDomestic India: Rs 3,000 or 100% of airfare charge (whichever is lower) per passenger per segment will be levied if changed at least 2 hrs before the scheduled departure. No-show charges will be levied if cancelled within 2 hrs from scheduled departure.     \r\n============================================================\r\n Corporate / Coupon Fare\r\n-------------------------------------------------------------------------------------\r\nAvailable for contracted Corporate Customers only. Allows unlimited flexibility to change / cancel, extra hand-baggage allowance, complimentary seat and meal (1 food item & 1 beverage). \r\nBaggage Conditions:\r\nCheck-in Baggage Allowance: 15 kg for Domestic sectors and 20 kg for International Sectors except 30 Kg for Dubai, Muscat, Sharjah, Doha and Singapore.\r\nHand Baggage Allowance: 10 Kg.\r\nChange Fee:\r\nDomestic India & Nepal Travel: No Change Fee: if changed at least 1 hr before the scheduled departure. No-show charges will be levied if changed within 1 hrs from scheduled departure.     \r\nInternational except Nepal: No Change Fee: if changed at least 4 hr before the scheduled departure. No-show charges will be levied if changed within 4 hrs from scheduled departure. \r\nCancellation Fee:\r\nDomestic India & Nepal Travel: No Cancellation Fee: if cancelled at least 1 hr before the scheduled departure. No-show charges will be levied if cancelled within 1 hrs from scheduled departure.     \r\nInternational except Nepal: No Cancellation Fee: if changed at least 4 hrs before the scheduled departure. No-show charges will be levied if cancelled within 4 hrs from scheduled departure. \r ",
+          "FareRestriction": ""
+        }
+      ],
+      "Status": 5,
+      "InvoiceAmount": 32853,
+      "InvoiceNo": "DW/1718/26861",
+      "InvoiceStatus": 3,
+      "InvoiceCreatedOn": "2017-12-12T14:08:04",
+      "Remarks": ""
+    }
+  }
+}

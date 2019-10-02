@@ -1,0 +1,96 @@
+﻿@model AirSearchResult
+@if (Model != null)
+{
+    var flight = Model;
+    var segments = Model.Segments.FirstOrDefault();
+
+    var isMultiCarrier = segments.Select(x => x.Airline.AirlineCode).Distinct().Count() > 1;
+    var airlineIcon = isMultiCarrier ? "af" : $"go_{segments.FirstOrDefault().Airline.AirlineCode}";
+    var airlineName = string.Join(", ", segments.Select(x => x.Airline.AirlineName).Distinct());
+    var airlineCode = string.Join(" | ", segments.Select(x => x.Airline.AirlineCode + x.Airline.FlightNumber).Distinct());
+    var originSegment = Model.Segments.FirstOrDefault().FirstOrDefault();
+    var destinationSegment = Model.Segments.LastOrDefault().LastOrDefault();
+
+
+    TimeSpan outbondDuration = TimeSpan.FromMinutes(Model.Segments.FirstOrDefault().Sum(x => x.Duration));
+    TimeSpan inboundDuration = TimeSpan.FromMinutes(Model.Segments.LastOrDefault().Sum(x => x.Duration));
+    <li class="result_flight"
+        data-price="@flight.TotalAmount.ToAmount()">
+        <input type="hidden" class="resultindex" name="ibflightindex" value="@flight.ResultIndex" />
+        <ul class="airline_details_card">
+            <li class="airline_details">
+                <i class="flightImagesNewdib flight-carrier-sprite @(airlineIcon)"></i>
+            </li>
+            <li class="airline_details__name">
+                <span>@airlineName</span>
+                <span class="airline_code">
+                    <span>@airlineCode</span>
+                </span>
+            </li>
+        </ul>
+        <div class="result_flight__origin_destination_details">
+           <span>@($"{originSegment.Origin.Airport.CityName} - {originSegment.Destination.Airport.CityName}")</span>
+            <span>
+            @($"{destinationSegment.Origin.Airport.CityName} - {destinationSegment.Destination.Airport.CityName}")
+            </span>
+        </div>
+        <div class="result_flight__departure_and_stops">
+            <span class="result_flight__departure_and_stops__departure min_height_66">@(string.Format("{0:HH:mm}", originSegment.StopPointDepartureTime))<span class="jrny_date">@(originSegment.StopPointDepartureTime.ToString("dd MMM"))</span></span>
+            <span class="result_flight__departure_and_stops__departure min_height_66">@(string.Format("{0:HH:mm}", destinationSegment.StopPointDepartureTime))<span class="jrny_date">@(destinationSegment.StopPointDepartureTime.ToString("dd MMM"))</span></span>
+        </div>
+        <div class="result_flight__arrival">
+            <span class="result_flight__arrival__wrapper min_height_66">
+                <span class="arrival">
+                   
+                   @(string.Format("{0:HH:mm}", originSegment.StopPointArrivalTime))
+                </span>
+
+                <span class="arrival">
+                    @(string.Format("{0:HH:mm}", destinationSegment.StopPointArrivalTime))
+                </span>
+            </span>
+        </div>
+        <div class="result_flight__duration">
+            <div class="duration_stops_wrapper">
+                <span class="result_flight__duration__wrapper">
+                    @($"{outbondDuration.ToString("hh")}h {outbondDuration.ToString("mm")}m")
+                    <span class="result_flight__layover">
+                        <span data-tip="1 Short layover" data-html="true" currentitem="false">
+                            <i class="gm gm-layover icon material-icons mtop_8"></i>
+                        </span>
+                    </span>
+                </span>
+                @*<span class="number_of_stops">
+                    <span>1 Stop</span>
+                </span>*@
+            </div>
+            <div class="duration_stops_wrapper">
+                <span class="result_flight__duration__wrapper">
+                    @($"{inboundDuration.ToString("hh")}h {inboundDuration.ToString("mm")}m")
+                    <span class="result_flight__layover">
+                        <span data-tip="1 Short layover" data-html="true" currentitem="false">
+                            <i class="gm gm-layover icon material-icons mtop_8"></i>
+                        </span>
+                    </span>
+                </span>
+                @*<span class="number_of_stops">
+                    <span>1 Stop</span>
+                </span>*@
+            </div>
+
+        </div>
+
+
+        <div class="result_flight__price shift_down_40">
+            <span class=""> ₹ @flight.TotalAmount.ToAmount()</span>@*@(flight.IsRefundable ? "Refundable" : "Non-refundable")*@<br>
+            <a class="result_flight__details_button" style="display:none">Flight details</a>
+            <div class="result_flight__book_now earn-points skip-html">
+                <div class="flight_book_btn_wrapper">
+                    <button type="button" class="button_search_panel_new" data-flight="book" data-result-index="@flight.ResultIndex">Book</button>
+                </div>
+            </div>
+        </div>
+        @Html.Partial("FlightDetails", flight)
+    </li>
+}
+

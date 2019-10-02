@@ -1,0 +1,45 @@
+﻿@model VendorContractViewModel
+
+<form asp-antiforgery="true" id="formVendorContract" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="VendorId" value="@Model.VendorId" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+    <div class="form-group col-md-4">
+        <label asp-for="StartDate"></label>
+        <input asp-for="StartDate" class="form-control datepicker-custom" type="text" placeholder="Start Date" />
+        <span asp-validation-for="StartDate"></span>
+    </div>
+    <div class="form-group col-md-4">
+        <label asp-for="EndDate"></label>
+        <input asp-for="EndDate" class="form-control datepicker-custom" type="text" placeholder="End Date" />
+        <span asp-validation-for="EndDate"></span>
+    </div>
+    <div class="row"></div>
+    <div class="form-group col-md-4">
+        <label asp-for="MarginType"></label>                
+        <select asp-for="MarginType" selected="@Model.MarginType" id="MarginTypeId" class="form-control" asp-items="Model.MarginTypeItems"
+                                                                    select2-value="@Model.MarginType" select2-Url="/selectlist/GetMarginTypes"></select>
+        <span asp-validation-for="MarginType"></span>
+    </div>
+    <div class="form-group col-md-4">
+        <label asp-for="MarginValue"></label>
+        <input asp-for="MarginValue" class="form-control" type="number" placeholder="MArgin Value" />
+        <span asp-validation-for="MarginValue"></span>
+    </div>
+    <div class="row"></div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+</form>
+<script>
+    $(document).ready(function (e) {
+        
+        $('input[type="checkbox"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue'
+        });
+
+        $('.datepicker-custom').datepicker({ format: 'dd/mm/yyyy', autoclose: true });
+
+    })
+</script>

@@ -1,0 +1,172 @@
+﻿@model CurationsAddViewModel
+@{ 
+    string title = string.Empty;
+    if (this.ViewBag.Mode == "1x1")
+    {
+        title = "Curation One x One";
+    }
+    if (this.ViewBag.Mode == "1x2")
+    {
+        title = "Curation One x Two";
+    }
+    if (this.ViewBag.Mode == "2x2")
+    {
+        title = "Curation Two x Two";
+    }
+}
+<style>
+    .copy-link {
+        display: none;
+    }
+
+    .view-copylink:hover .copy-link {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -6% 0 0 -17%;
+        display: block;
+    }
+</style>
+
+
+<div class="row">
+
+    <div class="col-md-12">
+        <form asp-antiforgery="true" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="IsActive" />
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="OneXOne" />
+            <input type="hidden" asp-for="OneXTwo" />
+            <input type="hidden" asp-for="TwoXTwo" />
+            <input type="hidden" asp-for="CreatedDate" />
+            <input type="hidden" asp-for="CreatedBy" />
+            <input type="hidden" asp-for="UpdatedDate" />
+            <input type="hidden" asp-for="UpdatedBy" />
+            <input asp-for="Mode" type="hidden"/>
+            <div class="box no-top-border">
+                <div class="box-header with-border">
+                    <h3 class="box-title">@title</h3>
+
+                </div>
+                <div class="pull-right top-buttons">
+                    @{
+
+                        string indexUrl = Url.Action("index", "Curation", new { @mode = this.ViewBag.Mode });
+                    }
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.ViewList, indexUrl) })
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        @*<div class="form-group col-sm-6">
+                        <label>Upload Images(1600px X 435px)</label>
+                        <input asp-for="ImageName" type="file" name="file" />
+                    </div>*@
+                        <div class="form-group col-sm-6">
+                            @if (this.ViewBag.Mode == "1x1")
+                            {
+                                <label>Upload Images(Ratio 77 : 50)</label>
+                            }
+                            @if (this.ViewBag.Mode == "1x2")
+                            {
+                                <label>Upload Images(Ratio 77 : 103)</label>
+                            }
+                           @if (this.ViewBag.Mode == "2x2")
+                            {
+                                <label>Upload Images (Ratio 157 : 103)</label>
+                            }
+                            
+                            <div class="input-group" style="width:100%;padding-right:10px;">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-default btn-file">
+                                        Browse… <input type="file" class="image-upload" data-target="img-upload-card" asp-for="ImageFile">
+                                    </span>
+                                </span>
+                                <input type="text" class="form-control" asp-for="Image" readonly>
+                                <span asp-validation-for="Image"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="box-body">
+                            <div class="form-group col-sm-3">
+                                <label asp-for="Line1"></label>
+                                <input type="text" asp-for="Line1" class="form-control" />
+                                <span asp-validation-for="Line1"></span>
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label asp-for="Line2"></label>
+                                <input type="text" asp-for="Line2" class="form-control" />
+                                <span asp-validation-for="Line2"></span>
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label asp-for="Line3"></label>
+                                <input type="text" asp-for="Line3" class="form-control" />
+                                <span asp-validation-for="Line3"></span>
+                            </div>
+                            <div class="form-group col-sm-3">
+                                <label asp-for="Line4"></label>
+                                <input type="text" asp-for="Line4" class="form-control" />
+                                <span asp-validation-for="Line4"></span>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label>Redirect URL</label>
+                                <input type="text" asp-for="Url" class="form-control" />
+                                <span asp-validation-for="Url"></span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <span class="pull-right">
+                        <button type="submit" name="Submit" class="btn btn-primary">Upload</button>
+                    </span>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+@section scripts {
+
+    <script>
+        $(document).ready(function () {
+            $(document).on('change', '.btn-file :file', function () {
+                var input = $(this),
+                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                input.trigger('fileselect', [label]);
+            });
+
+            $('.btn-file :file').on('fileselect', function (event, label) {
+
+                var input = $(this).parents('.input-group').find(':text'),
+                    log = label;
+
+                if (input.length) {
+                    input.val(log);
+                } else {
+                    if (log) alert(log);
+                }
+
+            });
+            function readURL(input, id) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#' + id).attr('src', e.target.result);
+                        $('#' + id).parent('div').removeClass('hidden');
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $(".image-upload").change(function () {
+                readURL(this, $(this).data('target'));
+            });
+        });
+
+    </script>
+}

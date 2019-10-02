@@ -1,0 +1,240 @@
+﻿@model HotelierInfoViewModel
+
+
+<form asp-antiforgery="true" id="formHotelInformation" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="IsActive" />
+    <input type="hidden" asp-for="IsDeleted" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+
+    <div id="sectionVendorInformation">
+        <input type="hidden" asp-for="VendorInformationViewModel.Id" />
+        <input type="hidden" asp-for="VendorInformationViewModel.IsActive" />
+        <input type="hidden" asp-for="VendorInformationViewModel.UpdatedBy" />
+        <input type="hidden" asp-for="VendorInformationViewModel.UpdatedDate" />
+        <input type="hidden" asp-for="VendorInformationViewModel.CreatedBy" />
+        <input type="hidden" asp-for="VendorInformationViewModel.CreatedDate" />
+        <input type="hidden" asp-for="VendorInformationViewModel.Category" />
+        @{
+            var vendorGroupCtrl = Guid.NewGuid().ToString("N");
+            var vendorCtrl = Guid.NewGuid().ToString("N");
+            var countryctrl = Guid.NewGuid().ToString("N");
+            var statectrl = Guid.NewGuid().ToString("N");
+            var cityctrl = Guid.NewGuid().ToString("N");
+        }
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label asp-for="VendorInformationViewModel.Group"></label>
+                <select asp-for="VendorInformationViewModel.Group" selected="@Model.VendorInformationViewModel.Group" class="form-control @(vendorGroupCtrl)" id="vendorGroupId" placeholder="Select Vendor Group" 
+                        asp-items="Model.VendorInformationViewModel.VendorGroupItems"
+                        select2-value="@Model.VendorInformationViewModel.Group"
+                        select2-Url="/selectlist/GetVendorGroup"
+                        select2-partial-title="Add New Group"
+                        select2-Dependent="true"
+                        select2-partial-Url="@Url.Action("ManageGroup","Vendor", new { @area = "Admin" , @id=0})"
+                        select2-Dependent-Control=".@(vendorCtrl)"></select>
+                <span asp-validation-for="VendorInformationViewModel.Group"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label asp-for="VendorId"></label>
+                <select asp-for="VendorId" selected="@Model.VendorId" class="form-control @(vendorCtrl)" id="VendorId" placeholder="Select Vendor" asp-items="Model.VendorItems"
+                        select2-value="@Model.VendorId"
+                        select2-Url="/selectlist/GetVendorsByVendorType?vendorTypeId=1002"
+                        select2-partial-title="Add New Vendor"
+                        select2-partial-Url="@Url.Action("Manage","Vendor", new { @area = "Admin" , @id=0})"></select>
+                <span asp-validation-for="VendorId"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label asp-for="Name"></label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                    <input asp-for="Name" type="text" class="form-control counter-control" placeholder="Hotel Property Name">
+                </div>
+                <span asp-validation-for="Name"></span>
+                @*<h6 class="pull-right counter"></h6>*@
+            </div>
+
+        </div>
+        <div class="form-row">
+            @*<div class="form-group col-md-6">
+                    <label asp-for="VendorInformationViewModel.Category"></label>
+                    <select asp-for="VendorInformationViewModel.Category" selected="@Model.VendorInformationViewModel.Category" class="form-control" id="VendorCategory" asp-items="Model.VendorInformationViewModel.CategoryItems"
+                            select2-value="@Model.VendorInformationViewModel.Category" select2-Url="/selectlist/GetVendorCategoryList"></select>
+                    <span asp-validation-for="VendorInformationViewModel.Category"></span>
+                </div>*@
+            <div class="form-group col-md-12">
+                <label asp-for="VendorInformationViewModel.Currency"></label>
+                <select asp-for="VendorInformationViewModel.Currency" selected="@Model.VendorInformationViewModel.Currency" class="form-control" id="VendorCurrency" asp-items="Model.VendorInformationViewModel.CurrencyItems"
+                        select2-value="@Model.VendorInformationViewModel.Currency" select2-Url="/selectlist/GetCurrencyDropDownList"></select>
+                <span asp-validation-for="VendorInformationViewModel.Currency"></span>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label asp-for="Address1"></label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-address-card"></i></span>
+                        <input type="text" class="form-control" asp-for="Address1" placeholder="1234 Main St">
+                    </div>
+                    <span asp-validation-for="Address1"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label asp-for="Address2"></label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-address-card-o"></i></span>
+                        <input type="text" class="form-control" asp-for="Address2" placeholder="Apartment, studio, or floor">
+                    </div>
+                    <span asp-validation-for="Address2"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="Country"></label>
+                <select asp-for="Country" selected="@Model.Country" class="form-control @(countryctrl)" id="CountryId" asp-items="@Model.CountryItems"
+                        select2-value="@Model.Country" select2-Url="/selectlist/GetCountryList"
+                        select2-Dependent="true" select2-Dependent-Control=".@(statectrl)"></select>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="State"></label>
+                <select asp-for="State" selected="@Model.State" class="form-control @statectrl" id="StateId"
+                        select2-value="@Model.State" select2-Url="/selectlist/GetTourPackageStatesByCountrId" asp-items="@Model.StateItems"
+                        select2-Dependent="true" select2-Dependent-Control=".@(cityctrl)" select2-Dependent-OtherControl=".@countryctrl"></select>
+                <span asp-validation-for="State"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="City"></label>
+                <select asp-for="City" selected="@Model.City" id="CityId" class="form-control packagecitydes @(cityctrl)" asp-items="@Model.CityItems"
+                        select2-value="@Model.City" select2-Url="/selectlist/GetTourPackageCityByCounryIdorStateIdAsync"></select>
+                <span asp-validation-for="City"></span>
+            </div>
+
+            <div class="form-group col-md-2">
+                <label asp-for="PostalCode"></label>
+                <input asp-for="PostalCode" type="text" class="form-control">
+                <span asp-validation-for="PostalCode"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Url"></label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+                    <input asp-for="Url" class="form-control" placeholder="Website">
+                </div>
+                <span asp-validation-for="Url"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="StarRating"></label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-star"></i></span>
+                    <select asp-for="StarRating" class="form-control" select2-Placeholder="Select">
+                        <option value="">Select</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <span asp-validation-for="StarRating"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="PropertyType"></label>
+                <select asp-for="PropertyType" selected="@Model.PropertyType" class="form-control" id="PropertyTypeId" asp-items="Model.PropertyTypeItems"
+                        select2-value="@Model.PropertyType" select2-Url="/selectlist/GetPropertyType"></select>
+                <span asp-validation-for="PropertyType"></span>
+            </div>
+            <div class="form-group col-md-2">
+                <label asp-for="IsOpenCheckIn"></label><br />
+                <input asp-for="IsOpenCheckIn" id="checkTime" type="checkbox" class="minimal form-control">
+            </div>
+            <div class="bootstrap-timepicker col-md-5">
+                <div class="form-group">
+                    <label asp-for="CheckInTime"></label>
+                    <div class="input-group">
+                        @if (Model.IsOpenCheckIn)
+                        {
+                            <input asp-for="CheckInTime" type="text" class="form-control timepicker" id="checkInTime" placeholder="">
+                        }
+                        else
+                        {
+                            <input asp-for="CheckInTime" type="text" class="form-control timepicker" id="checkInTime" placeholder="">
+                        }
+
+                        <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                    </div>
+                    <span asp-validation-for="CheckInTime"></span>
+                </div>
+            </div>
+            <div class="bootstrap-timepicker col-md-5">
+                <div class="form-group">
+                    <label asp-for="CheckOutTime"></label>
+                    <div class="input-group">
+                        @if (Model.IsOpenCheckIn)
+                        {
+
+                            <input asp-for="CheckOutTime" type="text" class="form-control timepicker" id="checkOutTime" placeholder="">
+                        }
+                        else
+                        {
+                            <input asp-for="CheckOutTime" type="text" class="form-control timepicker" id="checkOutTime" placeholder="">
+                        }
+
+                        <span class="input-group-addon"><i class="fa fa-clock-o"></i></span>
+                    </div>
+                    <span asp-validation-for="CheckOutTime"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload), new Button(Enums.ButtonType.SubmitAndNext), new Button(Enums.ButtonType.SubmitAndClose) })
+        </div>
+
+    </div>
+
+
+
+</form>
+<script>
+    $(document).ready(function (e) {
+        $('input[type="checkbox"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue'
+        });
+        $(".timepicker").timepicker({
+            showInputs: false
+        });
+        //$('.counter-control').each(function (index, element) {
+        //    $(this).parent('div').parent('div').find('h6').html($(this).val().length + "/20 Characters");
+        //    if ($(this).val().length > 20) {
+        //        $(this).parent('div').parent('div').find('h6').css({ 'color': 'red' });
+        //    }
+        //    else {
+        //        $(this).parent('div').parent('div').find('h6').css({ 'color': 'black' });
+        //    }
+        //});
+        //$(document).on('keyup', '.counter-control', function (e) {
+        //    $(this).parent('div').parent('div').find('h6').html($(this).val().length + "/20 Characters");
+        //    if ($(this).val().length > 20) {
+        //        $(this).parent('div').parent('div').find('h6').css({ 'color': 'red' });
+        //    }
+        //    else {
+        //        $(this).parent('div').parent('div').find('h6').css({ 'color': 'black' });
+        //    }
+        //});
+        //$('#checkTime').on('ifChecked',function (event) {
+        //    $('#checkInTime').attr('disabled', 'disabled');
+        //    $('#checkOutTime').attr('disabled', 'disabled');
+        //});
+        //$('#checkTime').on('ifUnchecked', function (event) {
+        //    $('#checkInTime').removeAttr('disabled');
+        //    $('#checkOutTime').removeAttr('disabled');
+        //});
+    })
+</script>

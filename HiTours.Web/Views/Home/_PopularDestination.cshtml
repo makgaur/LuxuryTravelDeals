@@ -1,0 +1,74 @@
+﻿@{ List<PopularDestinationViewModel> model = this.ViewBag.PopularDestinations; }
+@if(model != null)
+{
+<div class="popular-destination">
+    <div class="popular-destination-container">
+        <div class="pd-header">
+            <span class="pd-header-text">Popular Destinations</span>
+            <div class="pd-seperator">
+            </div>
+        </div>
+        @if (!this.ViewBag.IsMobileView)
+        {
+
+            <div class="pd-content hidden-xs">
+                <div class="popular-destination-left" aria-label="Previous">
+                    <div class="img-circle">
+                        <img src="~/images/Chevron_left_pink.svg" alt="left-pink-icon" />
+                    </div>
+                </div>
+                <div class="slider-popular-destination row">
+                    @foreach (var item in model)
+                    {
+                        <div class="col-md-3">
+                            <a href="javascript:;" data-type="@item.Type" data-value="@item.CountryId" data-text="@CultureInfo.CurrentCulture.TextInfo.ToTitleCase(item.CountryName.ToLower())" @(!string.IsNullOrEmpty(item.SubName)?"data-subtext="+item.SubName: string.Empty)>
+                                <div class="pd-item-container">
+                                    <img class="pd-image" src="~/BannerImages/@item.Image" alt="@item.CountryName"/>
+                                    <div class="pd-description">
+                                        <div class="pd-description-country">@item.CountryName.ToLower()</div>
+                                        <div class="pd-description-text">@item.Text1 &mdash; @item.Text2</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+                <div class="popular-destination-right" aria-label="Next">
+                    <div class="img-circle">
+                        <img src="~/images/Chevron_Right_Pink.svg" alt="right-pink-icon"/>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="hidden-sm hidden-md hidden-lg">
+                <div class="pd-slick-slider">
+                    @foreach (var item in model)
+                    {
+                        <div class="content-1x1">
+                            <a href="javascript:;" data-type="@item.Type" data-value="@item.CountryId" data-text="@CultureInfo.CurrentCulture.TextInfo.ToTitleCase(item.CountryName.ToLower())" @(!string.IsNullOrEmpty(item.SubName)?"data-subtext="+item.SubName: string.Empty)>
+                                <div class="pd-mobile-image">
+
+                                    <img class="img-responsive" src="~/BannerImages/@item.Image" alt="@item.CountryName"/>
+                                    <div class="pd-mobile-text">
+
+                                        <span class="title1">@item.CountryName.ToLower()</span>
+                                        <span class="title2">@item.Text1 &mdash; @item.Text2</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+
+        @*Popular_Destination_mobile_view*@
+
+
+
+    </div>
+</div>
+}

@@ -1,0 +1,37 @@
+﻿@model Segments
+@using HtmlHelpers.BeginCollectionItemCore
+<div class="segments-item section-row">
+    @using (this.Html.BeginCollectionItem("Segments"))
+    {
+        <div class="form-group col-sm-2">
+            <label asp-for="Origin"></label>
+            <select asp-for="Origin" class="form-control" selected="@Model.Origin"
+                    select2-value="@Model.Origin" select2-Url="/selectlist/GetFlightDestinationsList"></select>
+            <span asp-validation-for="Origin"></span>
+        </div>
+        <div class="form-group col-sm-2">
+            <label asp-for="Destination"></label>
+            <select asp-for="Destination" selected="@Model.Destination" class="form-control"
+                    select2-value="@Model.Destination" select2-Url="/selectlist/GetFlightDestinationsList"></select>
+            <span asp-validation-for="Destination"></span>
+        </div>
+
+        <div class="form-group col-sm-3">
+            <label asp-for="FlightCabinClass"></label>
+            <select class="form-control" asp-for="FlightCabinClass" asp-items="@Html.EnumSelectList<FlightCabin>()"></select>
+            <span asp-validation-for="Destination"></span>
+        </div>
+        <div class="form-group col-sm-2">
+            <label asp-for="PreferredDepartureTime"></label>
+            @Html.TextBoxFor(x => x.PreferredDepartureTime, string.Format("{0:dd/MM/yyyy}", Model.PreferredDepartureTime), new { @class = "form-control pull-right datepicker" })
+            <span asp-validation-for="PreferredDepartureTime"></span>
+        </div>
+        <div class="form-group col-sm-2">
+            <label asp-for="PreferredArrivalTime"></label>
+            @Html.TextBoxFor(x => x.PreferredArrivalTime, string.Format("{0:dd/MM/yyyy}", Model.PreferredArrivalTime), new { @class = "form-control pull-right datepicker" })
+            <span asp-validation-for="PreferredArrivalTime"></span>
+        </div>
+     
+
+    }
+</div>

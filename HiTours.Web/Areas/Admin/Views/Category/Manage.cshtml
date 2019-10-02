@@ -1,0 +1,36 @@
+﻿@{  this.ViewBag.Title = "Category";}
+@model CategoryViewModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    @if (this.Model != null && this.Model.ID != 0)
+                    {
+                        @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/category/manage") })
+                    }
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.ViewList, "/admin/category") })
+                </div>
+            </div>
+            <form asp-antiforgery="true" method="post">
+                <input type="hidden" asp-for="ID" />
+                <input type="hidden" asp-for="CreatedBy" />
+                <input type="hidden" asp-for="CreatedDate" />
+                <input type="hidden" asp-for="UpdatedBy" />
+                <input type="hidden" asp-for="UpdatedDate" />
+                <input type="hidden" asp-for="IsActive" />
+
+                <div class="box-body">
+                    <div class="form-group col-sm-6">
+                        <label asp-for="Name"></label>
+                        <input type="text" asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                </div>
+                @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.Submit), new Button(Enums.ButtonType.Cancel) })
+            </form>
+        </div>
+    </div>
+
+</div>

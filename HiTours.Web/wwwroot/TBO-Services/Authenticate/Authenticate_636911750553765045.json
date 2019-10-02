@@ -1,0 +1,11 @@
+//-- Authenticate Api Request --
+{
+  "ClientId": "ApiIntegrationNew",
+  "UserName": "HiTours",
+  "Password": "Tours@123",
+  "EndUserIp": "192.168.11.120"
+}
+//-- Authenticate Api Response --
+{
+  "Message": "A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond"
+}

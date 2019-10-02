@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "Manage";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    this.ViewBag.BoxTitle = "Package Promotion";
+}
+@model PackagePromotionsManageViewModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title"></h3>
+                <div class="pull-right top-buttons">
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.ViewList, "/admin/promotions/index") })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box no-top-border">
+                        @this.Html.Partial("_PackagePromotion", Model);
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        
+        $(document).ready(function (e) {
+            BindPeriodTime();
+            BindMarginTypeIcon();
+            $('input[type="checkbox"].minimal').iCheck({
+                checkboxClass: 'icheckbox_minimal-blue'
+            });
+            $('#TypeId').on('change', BindMarginTypeIcon);
+        })
+        function BindMarginTypeIcon() {
+            var valueSelected = $('#TypeId').val();
+            if (valueSelected == '1') {
+                $('#marginTypeIcon').removeClass().addClass('fa fa-percent');
+            }
+            else if (valueSelected == '2') {
+                $('#marginTypeIcon').removeClass().addClass('fa fa-rupee');
+            }
+        }
+        function BindPeriodTime() {
+            $('#isPeriodPromo').on('ifChecked', function (event) {
+                $('#periodStartDate').removeAttr('disabled');
+                $('#periodEndDate').removeAttr('disabled');
+            });
+            $('#isPeriodPromo').on('ifUnchecked', function (event) {
+                $('#periodStartDate').attr('disabled', 'disabled');
+                $('#periodEndDate').attr('disabled', 'disabled');
+            });
+        }
+    </script>
+
+}

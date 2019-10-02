@@ -1,0 +1,70 @@
+﻿@{  this.ViewBag.Title = "City";}
+@model PackageCityViewModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="box no-top-border">
+            <div class="box-header with-border">
+                <h3 class="box-title">@this.ViewBag.Title</h3>
+                <div class="pull-right top-buttons">
+                    @if (this.Model != null && this.Model.Id != 0)
+                    {
+                        @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.AddNew, "/admin/city/manage") })
+                    }
+                    @this.Html.ButtonTop(new[] { new Button(Enums.ButtonType.ViewList, "/admin/city") })
+                </div>
+            </div>
+         @Html.Partial("_city")
+        </div>
+    </div>
+
+</div>
+@section scripts
+    {
+    <script>
+        
+        $('.hidecountry').on('change', function () {
+
+            var name = $('.hidecountry').select2('data')[0].text;
+            if (name != 'India') {
+                $('#packagstate').attr('disabled', 'disabled');
+            }
+        });
+        //$(document).ready(function () {
+        //    $(document).on('change', '.btn-file :file', function () {
+        //        var input = $(this),
+        //            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        //        input.trigger('fileselect', [label]);
+        //    });
+
+        //    $('.btn-file :file').on('fileselect', function (event, label) {
+
+        //        var input = $(this).parents('.input-group').find(':text'),
+        //            log = label;
+
+        //        if (input.length) {
+        //            input.val(log);
+        //        } else {
+        //            if (log) alert(log);
+        //        }
+
+        //    });
+        //    function readURL(input, id) {
+        //        if (input.files && input.files[0]) {
+        //            var reader = new FileReader();
+
+        //            reader.onload = function (e) {
+        //                $('#' + id).attr('src', e.target.result);
+        //                $('#' + id).parent('div').removeClass('hidden');
+        //            }
+
+        //            reader.readAsDataURL(input.files[0]);
+        //        }
+        //    }
+
+        //    $(".image-upload").change(function () {
+        //        debugger;
+        //        readURL(this, $(this).data('target'));
+        //    });
+        //});
+    </script>
+}

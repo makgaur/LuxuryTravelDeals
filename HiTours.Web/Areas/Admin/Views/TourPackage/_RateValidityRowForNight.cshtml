@@ -1,0 +1,57 @@
+﻿@model TourPackageNightsValidityViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+
+<tr id="@(Model.Id == Guid.Empty ? string.Empty : Model.Id.ToString())">
+    @using (this.Html.BeginCollectionItem("TourPackageNightsValidity"))
+    {
+        <td class="hide">
+
+            <input type="hidden" class="rowtpnvId" data-name="Id" asp-for="Id" />
+            <input type="hidden" data-name="TourPackageNightsId" asp-for="TourPackageNightsId" />
+            <input type="hidden" data-name="HotelRoomTypeId" asp-for="HotelRoomTypeId" />
+            <input type="hidden" data-name="RoomTypeName" asp-for="RoomTypeName" />
+            <input type="hidden" data-name="RateValidFrom" asp-for="RateValidFrom" 
+                   data-replacedata="@Model.RateValidFrom.ToString("MM/dd/yyyy")"
+                   value="@(Model.RateValidFrom)" />
+            <input type="hidden" data-name="RateValidTo" asp-for="RateValidTo" 
+                   data-replacedata="@Model.RateValidTo.ToString("MM/dd/yyyy")"
+                   value="@(Model.RateValidTo)"  />
+            <input type="hidden" data-name="TripleRateWeekDays" asp-for="TripleRateWeekDays" />
+            <input type="hidden" data-name="TwinRateWeekDays" asp-for="TwinRateWeekDays" />
+            <input type="hidden" data-name="SingleRateWeekDays" asp-for="SingleRateWeekDays" />
+            <input type="hidden" data-name="ChildWithBedRateWeekDays" asp-for="ChildWithBedRateWeekDays" />
+            <input type="hidden" data-name="ChildWithoutBedRateWeekDays" asp-for="ChildWithoutBedRateWeekDays" />
+            <input type="hidden" data-name="TripleRateWeekend" asp-for="TripleRateWeekend" />
+            <input type="hidden" data-name="TwinRateWeekend" asp-for="TwinRateWeekend" />
+            <input type="hidden" data-name="SingleRateWeekend" asp-for="SingleRateWeekend" />
+            <input type="hidden" data-name="ChildWithBedRateWeekend" asp-for="ChildWithBedRateWeekend" />
+            <input type="hidden" data-name="ChildWithoutBedRateWeekend" asp-for="ChildWithoutBedRateWeekend" />
+            <input type="hidden" data-name="DepartCityId" asp-for="DepartCityId" />
+            <input type="hidden" data-name="RateTypeApplied" asp-for="RateTypeApplied" />
+            <input type="hidden" data-name="IsActive" asp-for="IsActive" />
+            <input type="hidden" data-name="CreatedDate" asp-for="CreatedDate" />
+            <input type="hidden" name="TrIndentifier" value="@Model.TrIndentifier" />
+            <input type="hidden" data-name="RowIdentifier" value="@Model.RowIdentifier" />
+
+            <input type="hidden" name="TrRowId" value="@Model.RowId" />
+        </td>
+        <td>@Model.RoomTypeName</td>
+        @*<td class="text-center"> @Model.TripleRateWeekDays.ToAmount()</td>
+        <td class="text-center"> @Model.TripleRateWeekend.ToAmount()</td>*@
+        <td class="text-center"> @Model.TwinRateWeekDays.ToAmount()</td>
+        <td class="text-center"> @Model.TwinRateWeekend.ToAmount()</td>
+        @*<td class="text-center"> @Model.SingleRateWeekDays.ToAmount()</td>
+        <td class="text-center"> @Model.SingleRateWeekend.ToAmount()</td>
+        <td class="text-center"> @Model.ChildWithBedRateWeekDays.ToAmount()</td>
+        <td class="text-center"> @Model.ChildWithoutBedRateWeekDays.ToAmount()</td>
+        <td class="text-center"> @Model.ChildWithBedRateWeekend.ToAmount()</td>
+        <td class="text-center"> @Model.ChildWithoutBedRateWeekend.ToAmount()</td>*@
+
+        <td class="text-center">
+            <a class="btn btn-xs btn-warning edit-ratevalidity"
+               href="javascript:;" data-href="@($"{Url.GetAdminUrl("tourpackage", "PackageRateValidty")}/{Model.Id}")"
+               data-id="@Model.Id"><i class="fa fa-pencil-square-o"></i></a>
+            <a class="btn btn-xs btn-danger removecontactlist delete-item-row"><i class="fa fa-trash-o"></i></a>
+        </td>
+    }
+</tr>

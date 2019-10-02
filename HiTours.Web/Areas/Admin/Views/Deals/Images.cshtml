@@ -1,0 +1,118 @@
+﻿@model List<DealsImageViewModel>
+@using HtmlHelpers.BeginCollectionItemCore
+<div>
+    <button class="btn btn-primary" onclick="MoveImagesFromMaster();">Move Image From Master</button>
+</div>
+<form asp-antiforgery="true" id="formHotelierImages" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <div class="tax-tabel-wrap">
+            <div class="table-responsive">
+                <table id="DealsImageTable" class="table table-standard table-bordered invoice-tabel-2">
+                    <thead>
+                        <tr>
+                            <th style="width:155px">Image</th>
+                            <th>Preview</th>
+                            <th>Caption</th>
+                            <th>Dimension</th>
+                            <th>Sort Order</th>
+                            <th style="width:60px;"><i class="fa fa-fw fa-trash"></i></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @if (Model.Count > 0)
+                        {
+                            for (int i = 0; i < Model.Count; i++)
+                            {
+                                @this.Html.Partial("_AddImage", Model[i])
+                            }
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6" style="text-align:left">
+                                <input type="file" id="DealImageFilesUploader" name="DealImageFiles" data-container="#DealsImageTable" data-url="@Url.Action("DealImageUpload", "Deals")" class="bulkImageUpload hidden" data-identifier="@this.ViewBag.PackageId" multiple />
+                                <a href="javascript:void(0);" id="btnDealImagesUpload" data-uploader="DealImageFilesUploader" data-table="#DealsImageTable" title="Upload Bulk Image" class="btn btn-primary btnBulkImageUploader">Upload Bulk Image(Ratio 871 : 545)</a>
+                            </td>
+                            <td colspan="6" style="text-align:right"><a href="javascript:void(0);" data-table="#DealsImageTable" title="Add Row" class="btn btn-primary add_image_deals">+ Add Row</a></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+</form>
+<script>
+    $(document).on('click', ".add_image_deals", function (e) {
+       $.get('@Url.Action("AddImage","Deals")', { 'PackageId': @this.ViewBag.PackageId }, function (result) {
+           $('#DealsImageTable tbody').append(result);
+        })
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(input).parents('tr').find(".preview").attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $(document).on("change", ".singleImg", function () {
+        readURL(this);
+    });
+    $(document).on('click', '.delete_image_item', function (e) {
+        e.preventDefault();
+        var row = $(this).closest('tr');
+        $(row).find('.delete_image_row').val(true);
+        $(row).hide();
+    });
+    function MoveImagesFromMaster() {
+        showWaitProcess();
+        $.get('@Url.Action("MoveHotelierImagesFromMaster", "Deals")', { 'packageId':@this.ViewBag.PackageId}, function (result) {
+            if (result == 'success') {
+                location.reload();
+            }
+            else if (result == "nodata") {
+                swal('', "No Data found In Master Table", 'warning');
+            }
+            else if (result == 'failure') {
+                swal('', 'Failed to Move', 'error');
+            }
+            hideWaitProcess();
+        });
+    }
+
+    $(document).on("click", '.btnBulkImageUploader', function () {
+        var target = $(this).data("uploader");
+        $("#" + target).click();
+    });
+
+
+    $(document).on("change", ".bulkImageUpload", function () {
+        var uploader = $(this);
+        var target = uploader.data("container");
+        var files = this.files;
+        var url = uploader.data('url');
+        for (var i = 0; i < files.length; i++) {
+            var formData = new FormData();
+            formData.append("file", files[i]);
+            formData.append("identifer", uploader.data('identifier'));
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function (result) {
+                    $(target + " tbody").append(result);
+                },
+                error: function () {
+                    alert("There was error uploading files!");
+                }
+            });
+        }
+    });
+</script>

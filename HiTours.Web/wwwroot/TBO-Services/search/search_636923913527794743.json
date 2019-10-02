@@ -1,0 +1,1399 @@
+//-- search Api Request --
+{
+  "EndUserIp": "192.168.11.120",
+  "TokenId": "e98a1530-e28e-4399-9fbe-11125ba7c3ca",
+  "AdultCount": 2,
+  "ChildCount": 0,
+  "InfantCount": 0,
+  "DirectFlight": false,
+  "OneStopFlight": false,
+  "JourneyType": 2,
+  "PreferredAirlines": null,
+  "Segments": [
+    {
+      "Origin": "DEL",
+      "Destination": "PNY",
+      "FlightCabinClass": 1,
+      "PreferredDepartureTime": "2019-05-29T00:00:00",
+      "PreferredArrivalTime": "2019-05-30T00:00:00"
+    },
+    {
+      "Origin": "PNY",
+      "Destination": "DEL",
+      "FlightCabinClass": 1,
+      "PreferredDepartureTime": "2019-06-10T00:00:00",
+      "PreferredArrivalTime": "2019-06-11T00:00:00"
+    }
+  ],
+  "Sources": null,
+  "ReturnFlight": false
+}
+//-- search Api Response --
+{
+  "Response": {
+    "ResponseStatus": 1,
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "TraceId": "e26b3e5a-2409-4626-b88e-dcbf6ca41985",
+    "Origin": "DEL",
+    "Destination": "PNY",
+    "Results": [
+      [
+        {
+          "ResultIndex": "OB1",
+          "Source": 25,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": true,
+          "IsGSTMandatory": false,
+          "AirlineRemark": "Remarks for star Coupon.",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 8494,
+            "Tax": 1534,
+            "TaxBreakup": [
+              {
+                "key": "K3",
+                "value": 440
+              },
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 100
+              },
+              {
+                "key": "PSF",
+                "value": 794
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 100
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 270.6,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 270.6
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 10298.6,
+            "CommissionEarned": 169.88,
+            "PLBEarned": 312.99,
+            "IncentiveEarned": 499.45,
+            "OfferedFare": 9316.28,
+            "TdsOnCommission": 67.95,
+            "TdsOnPLB": 125.2,
+            "TdsOnIncentive": 199.78,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 8494,
+              "Tax": 1534,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "20 KG",
+                "CabinBaggage": "7 KG",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "191",
+                  "FareClass": "U",
+                  "OperatingCarrier": ""
+                },
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1D",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2019-05-29T06:10:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BLR",
+                    "AirportName": "Hindustan",
+                    "Terminal": "",
+                    "CityCode": "BLR",
+                    "CityName": "Bangalore",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2019-05-29T09:00:00"
+                },
+                "Duration": 170,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "FlightInfoIndex": "",
+                "StopPoint": "",
+                "StopPointArrivalTime": "2019-05-29T09:00:00",
+                "StopPointDepartureTime": "2019-05-29T06:10:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "20 KG",
+                "CabinBaggage": "7 KG",
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "3419",
+                  "FareClass": "U",
+                  "OperatingCarrier": ""
+                },
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BLR",
+                    "AirportName": "Hindustan",
+                    "Terminal": "",
+                    "CityCode": "BLR",
+                    "CityName": "Bangalore",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2019-05-29T12:35:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "PNY",
+                    "AirportName": "",
+                    "Terminal": "",
+                    "CityCode": "PNY",
+                    "CityName": "",
+                    "CountryCode": "",
+                    "CountryName": ""
+                  },
+                  "ArrTime": "2019-05-29T13:35:00"
+                },
+                "AccumulatedDuration": 445,
+                "Duration": 60,
+                "GroundTime": 215,
+                "Mile": 0,
+                "StopOver": false,
+                "FlightInfoIndex": "",
+                "StopPoint": "",
+                "StopPointArrivalTime": "2019-05-29T13:35:00",
+                "StopPointDepartureTime": "2019-05-29T12:35:00",
+                "Craft": "DH8",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "BLR",
+              "Airline": "SG",
+              "FareBasisCode": "USAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": "",
+              "FareFamilyCode": "",
+              "FareRuleIndex": ""
+            },
+            {
+              "Origin": "BLR",
+              "Destination": "PNY",
+              "Airline": "SG",
+              "FareBasisCode": "USAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": "",
+              "FareFamilyCode": "",
+              "FareRuleIndex": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "OB2",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": true,
+          "IsGSTMandatory": false,
+          "AirlineRemark": "this is a test from aditya.",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 8494,
+            "Tax": 1534,
+            "TaxBreakup": [
+              {
+                "key": "K3",
+                "value": 440
+              },
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 100
+              },
+              {
+                "key": "PSF",
+                "value": 794
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 100
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 270.6,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 270.6
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 10298.6,
+            "CommissionEarned": 169.88,
+            "PLBEarned": 312.99,
+            "IncentiveEarned": 499.45,
+            "OfferedFare": 9316.28,
+            "TdsOnCommission": 67.95,
+            "TdsOnPLB": 125.2,
+            "TdsOnIncentive": 199.78,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 8494,
+              "Tax": 1534,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "20 KG",
+                "CabinBaggage": "7 KG",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "191",
+                  "FareClass": "U",
+                  "OperatingCarrier": ""
+                },
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1D",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2019-05-29T06:10:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BLR",
+                    "AirportName": "Hindustan",
+                    "Terminal": "",
+                    "CityCode": "BLR",
+                    "CityName": "Bangalore",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2019-05-29T09:00:00"
+                },
+                "Duration": 170,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "FlightInfoIndex": "",
+                "StopPoint": "",
+                "StopPointArrivalTime": "2019-05-29T09:00:00",
+                "StopPointDepartureTime": "2019-05-29T06:10:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "20 KG",
+                "CabinBaggage": "7 KG",
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "3419",
+                  "FareClass": "U",
+                  "OperatingCarrier": ""
+                },
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BLR",
+                    "AirportName": "Hindustan",
+                    "Terminal": "",
+                    "CityCode": "BLR",
+                    "CityName": "Bangalore",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2019-05-29T12:35:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "PNY",
+                    "AirportName": "",
+                    "Terminal": "",
+                    "CityCode": "PNY",
+                    "CityName": "",
+                    "CountryCode": "",
+                    "CountryName": ""
+                  },
+                  "ArrTime": "2019-05-29T13:35:00"
+                },
+                "AccumulatedDuration": 445,
+                "Duration": 60,
+                "GroundTime": 215,
+                "Mile": 0,
+                "StopOver": false,
+                "FlightInfoIndex": "",
+                "StopPoint": "",
+                "StopPointArrivalTime": "2019-05-29T13:35:00",
+                "StopPointDepartureTime": "2019-05-29T12:35:00",
+                "Craft": "DH8",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "DEL",
+              "Destination": "BLR",
+              "Airline": "SG",
+              "FareBasisCode": "USAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": "",
+              "FareFamilyCode": "",
+              "FareRuleIndex": ""
+            },
+            {
+              "Origin": "BLR",
+              "Destination": "PNY",
+              "Airline": "SG",
+              "FareBasisCode": "USAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": "",
+              "FareFamilyCode": "",
+              "FareRuleIndex": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        }
+      ],
+      [
+        {
+          "ResultIndex": "IB1",
+          "Source": 25,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": true,
+          "IsGSTMandatory": false,
+          "AirlineRemark": "Remarks for star Coupon.",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 10724,
+            "Tax": 1592,
+            "TaxBreakup": [
+              {
+                "key": "K3",
+                "value": 548
+              },
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 0
+              },
+              {
+                "key": "PSF",
+                "value": 844
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 100
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 270.6,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 270.6
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 12586.6,
+            "CommissionEarned": 214.48,
+            "PLBEarned": 395.16,
+            "IncentiveEarned": 630.57,
+            "OfferedFare": 11346.39,
+            "TdsOnCommission": 85.79,
+            "TdsOnPLB": 158.06,
+            "TdsOnIncentive": 252.23,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 10724,
+              "Tax": 1592,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "20 KG",
+                "CabinBaggage": "7 KG",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "3420",
+                  "FareClass": "U",
+                  "OperatingCarrier": ""
+                },
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "PNY",
+                    "AirportName": "",
+                    "Terminal": "",
+                    "CityCode": "PNY",
+                    "CityName": "",
+                    "CountryCode": "",
+                    "CountryName": ""
+                  },
+                  "DepTime": "2019-06-10T14:00:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BLR",
+                    "AirportName": "Hindustan",
+                    "Terminal": "",
+                    "CityCode": "BLR",
+                    "CityName": "Bangalore",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2019-06-10T14:55:00"
+                },
+                "Duration": 55,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "FlightInfoIndex": "",
+                "StopPoint": "",
+                "StopPointArrivalTime": "2019-06-10T14:55:00",
+                "StopPointDepartureTime": "2019-06-10T14:00:00",
+                "Craft": "DH8",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "20 KG",
+                "CabinBaggage": "7 KG",
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "8720",
+                  "FareClass": "A",
+                  "OperatingCarrier": ""
+                },
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BLR",
+                    "AirportName": "Hindustan",
+                    "Terminal": "",
+                    "CityCode": "BLR",
+                    "CityName": "Bangalore",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2019-06-10T22:00:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "2",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2019-06-11T00:45:00"
+                },
+                "AccumulatedDuration": 645,
+                "Duration": 165,
+                "GroundTime": 425,
+                "Mile": 0,
+                "StopOver": false,
+                "FlightInfoIndex": "",
+                "StopPoint": "",
+                "StopPointArrivalTime": "2019-06-11T00:45:00",
+                "StopPointDepartureTime": "2019-06-10T22:00:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "PNY",
+              "Destination": "BLR",
+              "Airline": "SG",
+              "FareBasisCode": "USAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": "",
+              "FareFamilyCode": "",
+              "FareRuleIndex": ""
+            },
+            {
+              "Origin": "BLR",
+              "Destination": "DEL",
+              "Airline": "SG",
+              "FareBasisCode": "ASAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": "",
+              "FareFamilyCode": "",
+              "FareRuleIndex": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "IB2",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": true,
+          "IsGSTMandatory": false,
+          "AirlineRemark": "this is a test from aditya.",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 10724,
+            "Tax": 1592,
+            "TaxBreakup": [
+              {
+                "key": "K3",
+                "value": 548
+              },
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 0
+              },
+              {
+                "key": "PSF",
+                "value": 844
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 100
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 270.6,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 270.6
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 12586.6,
+            "CommissionEarned": 214.48,
+            "PLBEarned": 395.16,
+            "IncentiveEarned": 630.57,
+            "OfferedFare": 11346.39,
+            "TdsOnCommission": 85.79,
+            "TdsOnPLB": 158.06,
+            "TdsOnIncentive": 252.23,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 10724,
+              "Tax": 1592,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "20 KG",
+                "CabinBaggage": "7 KG",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "3420",
+                  "FareClass": "U",
+                  "OperatingCarrier": ""
+                },
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "PNY",
+                    "AirportName": "",
+                    "Terminal": "",
+                    "CityCode": "PNY",
+                    "CityName": "",
+                    "CountryCode": "",
+                    "CountryName": ""
+                  },
+                  "DepTime": "2019-06-10T14:00:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BLR",
+                    "AirportName": "Hindustan",
+                    "Terminal": "",
+                    "CityCode": "BLR",
+                    "CityName": "Bangalore",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2019-06-10T14:55:00"
+                },
+                "Duration": 55,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "FlightInfoIndex": "",
+                "StopPoint": "",
+                "StopPointArrivalTime": "2019-06-10T14:55:00",
+                "StopPointDepartureTime": "2019-06-10T14:00:00",
+                "Craft": "DH8",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "20 KG",
+                "CabinBaggage": "7 KG",
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "8720",
+                  "FareClass": "A",
+                  "OperatingCarrier": ""
+                },
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BLR",
+                    "AirportName": "Hindustan",
+                    "Terminal": "",
+                    "CityCode": "BLR",
+                    "CityName": "Bangalore",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2019-06-10T22:00:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "2",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2019-06-11T00:45:00"
+                },
+                "AccumulatedDuration": 645,
+                "Duration": 165,
+                "GroundTime": 425,
+                "Mile": 0,
+                "StopOver": false,
+                "FlightInfoIndex": "",
+                "StopPoint": "",
+                "StopPointArrivalTime": "2019-06-11T00:45:00",
+                "StopPointDepartureTime": "2019-06-10T22:00:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "PNY",
+              "Destination": "BLR",
+              "Airline": "SG",
+              "FareBasisCode": "USAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": "",
+              "FareFamilyCode": "",
+              "FareRuleIndex": ""
+            },
+            {
+              "Origin": "BLR",
+              "Destination": "DEL",
+              "Airline": "SG",
+              "FareBasisCode": "ASAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": "",
+              "FareFamilyCode": "",
+              "FareRuleIndex": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "IB3",
+          "Source": 25,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": true,
+          "IsGSTMandatory": false,
+          "AirlineRemark": "Remarks for star Coupon.",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 20590,
+            "Tax": 2084,
+            "TaxBreakup": [
+              {
+                "key": "K3",
+                "value": 1040
+              },
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 0
+              },
+              {
+                "key": "PSF",
+                "value": 844
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 100
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 270.6,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 270.6
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 22944.6,
+            "CommissionEarned": 411.8,
+            "PLBEarned": 758.7,
+            "IncentiveEarned": 1210.69,
+            "OfferedFare": 20563.41,
+            "TdsOnCommission": 164.72,
+            "TdsOnPLB": 303.48,
+            "TdsOnIncentive": 484.28,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 20590,
+              "Tax": 2084,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "20 KG",
+                "CabinBaggage": "7 KG",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "3420",
+                  "FareClass": "U",
+                  "OperatingCarrier": ""
+                },
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "PNY",
+                    "AirportName": "",
+                    "Terminal": "",
+                    "CityCode": "PNY",
+                    "CityName": "",
+                    "CountryCode": "",
+                    "CountryName": ""
+                  },
+                  "DepTime": "2019-06-10T14:00:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BLR",
+                    "AirportName": "Hindustan",
+                    "Terminal": "",
+                    "CityCode": "BLR",
+                    "CityName": "Bangalore",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2019-06-10T14:55:00"
+                },
+                "Duration": 55,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "FlightInfoIndex": "",
+                "StopPoint": "",
+                "StopPointArrivalTime": "2019-06-10T14:55:00",
+                "StopPointDepartureTime": "2019-06-10T14:00:00",
+                "Craft": "DH8",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "20 KG",
+                "CabinBaggage": "7 KG",
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "198",
+                  "FareClass": "L",
+                  "OperatingCarrier": ""
+                },
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BLR",
+                    "AirportName": "Hindustan",
+                    "Terminal": "",
+                    "CityCode": "BLR",
+                    "CityName": "Bangalore",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2019-06-10T20:45:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1C",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2019-06-10T23:35:00"
+                },
+                "AccumulatedDuration": 575,
+                "Duration": 170,
+                "GroundTime": 350,
+                "Mile": 0,
+                "StopOver": false,
+                "FlightInfoIndex": "",
+                "StopPoint": "",
+                "StopPointArrivalTime": "2019-06-10T23:35:00",
+                "StopPointDepartureTime": "2019-06-10T20:45:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "PNY",
+              "Destination": "BLR",
+              "Airline": "SG",
+              "FareBasisCode": "USAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": "",
+              "FareFamilyCode": "",
+              "FareRuleIndex": ""
+            },
+            {
+              "Origin": "BLR",
+              "Destination": "DEL",
+              "Airline": "SG",
+              "FareBasisCode": "LSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": "",
+              "FareFamilyCode": "",
+              "FareRuleIndex": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        },
+        {
+          "ResultIndex": "IB4",
+          "Source": 3,
+          "IsLCC": true,
+          "IsRefundable": true,
+          "GSTAllowed": true,
+          "IsGSTMandatory": false,
+          "AirlineRemark": "this is a test from aditya.",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 20590,
+            "Tax": 2084,
+            "TaxBreakup": [
+              {
+                "key": "K3",
+                "value": 1040
+              },
+              {
+                "key": "YQTax",
+                "value": 0
+              },
+              {
+                "key": "YR",
+                "value": 0
+              },
+              {
+                "key": "PSF",
+                "value": 844
+              },
+              {
+                "key": "UDF",
+                "value": 0
+              },
+              {
+                "key": "INTax",
+                "value": 0
+              },
+              {
+                "key": "TransactionFee",
+                "value": 0
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 100
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 270.6,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 270.6
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 22944.6,
+            "CommissionEarned": 411.8,
+            "PLBEarned": 758.7,
+            "IncentiveEarned": 1210.69,
+            "OfferedFare": 20563.41,
+            "TdsOnCommission": 164.72,
+            "TdsOnPLB": 303.48,
+            "TdsOnIncentive": 484.28,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "FareBreakdown": [
+            {
+              "Currency": "INR",
+              "PassengerType": 1,
+              "PassengerCount": 2,
+              "BaseFare": 20590,
+              "Tax": 2084,
+              "YQTax": 0,
+              "AdditionalTxnFeeOfrd": 0,
+              "AdditionalTxnFeePub": 0,
+              "PGCharge": 0
+            }
+          ],
+          "Segments": [
+            [
+              {
+                "Baggage": "20 KG",
+                "CabinBaggage": "7 KG",
+                "TripIndicator": 1,
+                "SegmentIndicator": 1,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "3420",
+                  "FareClass": "U",
+                  "OperatingCarrier": ""
+                },
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "PNY",
+                    "AirportName": "",
+                    "Terminal": "",
+                    "CityCode": "PNY",
+                    "CityName": "",
+                    "CountryCode": "",
+                    "CountryName": ""
+                  },
+                  "DepTime": "2019-06-10T14:00:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "BLR",
+                    "AirportName": "Hindustan",
+                    "Terminal": "",
+                    "CityCode": "BLR",
+                    "CityName": "Bangalore",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2019-06-10T14:55:00"
+                },
+                "Duration": 55,
+                "GroundTime": 0,
+                "Mile": 0,
+                "StopOver": false,
+                "FlightInfoIndex": "",
+                "StopPoint": "",
+                "StopPointArrivalTime": "2019-06-10T14:55:00",
+                "StopPointDepartureTime": "2019-06-10T14:00:00",
+                "Craft": "DH8",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              },
+              {
+                "Baggage": "20 KG",
+                "CabinBaggage": "7 KG",
+                "TripIndicator": 1,
+                "SegmentIndicator": 2,
+                "Airline": {
+                  "AirlineCode": "SG",
+                  "AirlineName": "SpiceJet",
+                  "FlightNumber": "198",
+                  "FareClass": "L",
+                  "OperatingCarrier": ""
+                },
+                "Origin": {
+                  "Airport": {
+                    "AirportCode": "BLR",
+                    "AirportName": "Hindustan",
+                    "Terminal": "",
+                    "CityCode": "BLR",
+                    "CityName": "Bangalore",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "DepTime": "2019-06-10T20:45:00"
+                },
+                "Destination": {
+                  "Airport": {
+                    "AirportCode": "DEL",
+                    "AirportName": "Indira Gandhi Airport",
+                    "Terminal": "1C",
+                    "CityCode": "DEL",
+                    "CityName": "Delhi",
+                    "CountryCode": "IN",
+                    "CountryName": "India"
+                  },
+                  "ArrTime": "2019-06-10T23:35:00"
+                },
+                "AccumulatedDuration": 575,
+                "Duration": 170,
+                "GroundTime": 350,
+                "Mile": 0,
+                "StopOver": false,
+                "FlightInfoIndex": "",
+                "StopPoint": "",
+                "StopPointArrivalTime": "2019-06-10T23:35:00",
+                "StopPointDepartureTime": "2019-06-10T20:45:00",
+                "Craft": "737",
+                "Remark": null,
+                "IsETicketEligible": true,
+                "FlightStatus": "Confirmed",
+                "Status": ""
+              }
+            ]
+          ],
+          "LastTicketDate": null,
+          "TicketAdvisory": null,
+          "FareRules": [
+            {
+              "Origin": "PNY",
+              "Destination": "BLR",
+              "Airline": "SG",
+              "FareBasisCode": "USAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": "",
+              "FareFamilyCode": "",
+              "FareRuleIndex": ""
+            },
+            {
+              "Origin": "BLR",
+              "Destination": "DEL",
+              "Airline": "SG",
+              "FareBasisCode": "LSAVER",
+              "FareRuleDetail": "",
+              "FareRestriction": "",
+              "FareFamilyCode": "",
+              "FareRuleIndex": ""
+            }
+          ],
+          "AirlineCode": "SG",
+          "ValidatingAirline": "SG"
+        }
+      ]
+    ]
+  }
+}

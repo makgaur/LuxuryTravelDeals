@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Button>
+@{
+    var list = this.Model;
+    var grouped = this.Model.Where(x => x.Group && x.Visible);
+    var unGrouped = this.Model.Where(x => !x.Group && x.Visible);
+}
+
+@if (list.Count() > 0)
+{
+
+    <div class="box-footer" align="center">
+        <div class="col-md-12">
+            @if (unGrouped.Count() > 0)
+            {
+            @foreach (var item in unGrouped)
+            {
+            if (item.Visible)
+            {
+            var attribute = item.Type.ToButtonAttribute();
+            var btnType = ((string.IsNullOrEmpty(attribute.Type)) ? "button" : attribute.Type).ToLower();
+            <button id="btn@(item.Type)" type="@btnType" name="@item.Type" class="btn @((string.IsNullOrEmpty(attribute.Class)) ? " " : attribute.Class)">@(string.IsNullOrEmpty(item.Text) ? attribute.Text : item.Text)</button>
+            }
+            }
+            }
+
+
+            @if (grouped.Count() > 0)
+            {
+            <div class="btn-group">
+                <button type="button" class="btn btn-grey">Action</button>
+                <button type="button" data-toggle="dropdown" class="btn btn-grey dropdown-toggle">
+                    <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul role="menu" class="dropdown-menu">
+                    @foreach (var item in grouped)
+                    {
+                    var attribute = item.Type.ToButtonAttribute();
+                    <li>
+                        <a id="anchor@(item.Type)" href="@(string.IsNullOrEmpty(item.RedirectUrl) ?" javascript:;":item.RedirectUrl)" class="@item.Class">
+                            @(string.IsNullOrEmpty(item.Text) ? attribute.Text : item.Text)
+                        </a>
+                    </li>
+                    }
+                </ul>
+            </div>
+            }
+        </div>
+        
+    </div>
+}

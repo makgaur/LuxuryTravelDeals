@@ -1,0 +1,107 @@
+﻿@{this.Layout = "~/Views/Shared/_LayoutFlightSearch.cshtml";}
+@model HiTours.TBO.Models.FlightBookResult
+@{ BookingPayment bookingPayment = this.ViewBag.BookingPayment;}
+
+@if (this.ViewBag.ClearSearch != null)
+{
+    <input type="hidden" name="ClearSearch" value="true" />
+    <input type="hidden" name="NoModal" value="true" />
+}
+
+
+<div class="middle">
+    <div class="payment-option-box" id="frmFlightBook">
+        <div class="container">
+            <div class="row">
+                <div class="flight-booking-box">
+                    <div class="col-sm-12">
+                        <div class="flight-payment-option-left">
+                            <h2>Booking Status</h2>
+                            <div class="flight-tabing-part-box">
+                                <br />
+                                <br />
+                                <br />
+                                @if (Model.Status)
+                                {
+                                    <div> Your Boooking has been Successfully done. </div>
+                                    @foreach (var booking in Model.Bookings)
+                                    {
+                                        <div>@($"Origin : {booking.Origin} - Destination: {booking.Destination}") </div>
+                                        <div>@($"BookingId : {booking.BookingId}") </div>
+                                        <div>@($"PNR Number: {booking.Pnr}") </div>
+                                        <hr />
+                                    }
+                                    <a href="/account/flightbookings">Go To My Account</a>
+                                }
+                                else
+                                {
+                                    <div> @(Model.Error != null ? Model.Error.ErrorMessage : string.Empty) </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clr"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (bookingPayment != null && bookingPayment.DataAmount > 0)
+    {
+        <form action="ConfirmPayment" method="post">
+            <script src="@bookingPayment.JsSrc"
+                    data-key="@bookingPayment.DataKey"
+                    data-amount="@bookingPayment.DataAmount"
+                    data-name="@bookingPayment.DataName"
+                    data-description="@bookingPayment.DataDescription"
+                    data-order_id="@bookingPayment.DataOrderId"
+                    data-image="@bookingPayment.DataImage"
+                    data-prefill.name="@bookingPayment.DataPrefillName"
+                    data-prefill.email="@bookingPayment.DataPrefillEmail"
+                    data-prefill.contact="@bookingPayment.DataPrefillContact"
+                    data-theme.color="@bookingPayment.DataThemeColor"
+                    data-modal.escape="false"
+                    data-modal.ondismiss="getnamesuccess">
+            </script>
+            <input type="hidden" value="Hidden Element" name="hidden">
+        </form>
+
+    }
+    <style>
+        .flight-tabing-part-box {
+            min-height: 200px;
+        }
+    </style>
+
+</div>
+
+@if (bookingPayment != null && bookingPayment.DataAmount > 0)
+{
+    @section scripts {
+        <script>
+
+            $(function () {
+                $(".razorpay-payment-button").click();
+                $(".razorpay-payment-button").hide();
+                $('[data-flight="confirmpayment"]').remove();
+
+                $(".razorpay-payment-button").on('click', function () { 
+                     
+                    smartech('create', 'ADGMOT35CHFLVDHBJNIG50K969M2CP4N22UB4JPT4SRLRK91B7CG');
+                    smartech('register', '7118711369bb8028c468d27da6066644');
+                    smartech('identify', '');
+                    smartech('dispatch', 29, {
+                        "s^payment_method": "Razorpay",
+                        "f^holiday_price": $("#hfHolidayPrice").val(),
+                        "f^tax": $("#hfTax").val(),
+                        "f^total_price": $("#hfTotalincludingtaxes").val()
+                    });
+
+                })
+            })
+        </script>
+
+    }
+}
+

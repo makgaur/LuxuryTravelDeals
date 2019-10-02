@@ -1,0 +1,14 @@
+﻿@model List<Passengers>
+@if (Model != null && Model.Count > 0)
+{
+    for (int i = 1; i <= Model.Count; i++)
+    {
+        <span></span>
+        @Html.Partial("_LLCPassenger", Model[i - 1])
+        if (i < Model.Count)
+        {
+
+            <hr style="clear:both" />
+        }
+    }
+}

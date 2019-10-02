@@ -1,0 +1,514 @@
+﻿/*@font-face {
+    font-family: Abhaya Libre;
+    src: url('https://fonts.googleapis.com/css?family=Abhaya+Libre:400,500');
+}*/
+/*@font-face {
+    font-family: Abhaya Libre Medium;
+    src: url(../fonts/AbhayaLibre-Medium.ttf);
+}*/
+/*@font-face {
+    font-family: IBM Plex sans;
+    src: url(../fonts/IBMPlexSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: IBM Plex sans Thin;
+    src: url(../fonts/IBMPlexSans-Thin.ttf);
+}*/
+@import "UIElements.css";
+@font-face {
+  font-family: Tostada;
+  src: url(../fonts/TOSTADA.ttf);
+}
+/*@font-face {
+    font-family: IBM Plex sans;
+    src: url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,500');
+}*/
+/*@font-face {
+    font-family: Abhaya Libre Bold;
+    src: url(../fonts/AbhayaLibre-Bold.ttf);
+}
+
+@font-face {
+    font-family: Tostada;
+    src: url('../fonts/TOSTADA_Italic.ttf');
+}*/
+/*@font-face {
+    font-family: Stardos Stencil;
+    src: url('../fonts/StardosStencil-Regular.ttf');
+}*/
+/*................New_footer_css...............*/
+/*----------Career_banner---------*/
+.career-banner {
+  padding: 0px;
+}
+.career-banner .career-banner-container {
+  position: relative;
+  height: 77vh;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .career-banner .career-banner-container {
+    height: 90vh;
+  }
+}
+.career-banner .career-banner-container img {
+  width: 100%;
+  height: 77vh;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .career-banner .career-banner-container img {
+    height: 90vh;
+    object-fit: cover;
+  }
+}
+.career-banner .career-banner-container .banner-caption-container {
+  text-align: center;
+  padding: 0px 302px;
+  position: absolute;
+  top: 144px;
+  width: 100%;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .career-banner .career-banner-container .banner-caption-container {
+    padding: 0px 60px;
+  }
+}
+.career-banner .career-banner-container .banner-caption-container .banner-caption {
+  display: block;
+  overflow: hidden;
+  font-family: Abhaya Libre;
+  font-size: 62px;
+  color: #FFFFFF;
+  font-weight: 700;
+  line-height: 71px;
+  width: 100%;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .career-banner .career-banner-container .banner-caption-container .banner-caption {
+    font-size: 40px;
+    padding-left: 0px;
+    padding-right: 0px;
+    top: 117px;
+    line-height: 48px;
+  }
+}
+.career-banner .career-banner-container .banner-caption-container .opening-text {
+  font-family: 'IBM Plex Sans';
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 20px;
+  margin-top: 6px;
+  margin-bottom: 25px;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .career-banner .career-banner-container .banner-caption-container .opening-text {
+    margin-top: 24px;
+    margin-bottom: 34px;
+    line-height: 20px;
+    font-size: 16px;
+  }
+}
+.career-banner .career-banner-container .banner-caption-container .explore-btn {
+  font-family: 'IBM Plex Sans';
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 20px;
+  padding: 15px 25px 16px 27px;
+  background-color: #660666;
+  border-radius: 2px;
+  width: 147px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .career-banner .career-banner-container .banner-caption-container .explore-btn {
+    width: 163px;
+    border-radius: 5px;
+    padding: 10px 34px;
+  }
+}
+.career-banner .career-banner-container .banner-caption-container .explore-btn button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding: 0px;
+}
+.career-banner .banner-caption-bottom {
+  text-align: center;
+  padding: 50px 90px;
+  color: #973E94;
+  font-family: Abhaya Libre;
+  font-size: 30px;
+  height: 172px;
+  background-color: #fafafa;
+  font-weight: 500;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .career-banner .banner-caption-bottom {
+    text-align: center;
+    padding: 21px 10px 22px 9px;
+    color: #973E94;
+    font-family: Abhaya Libre;
+    font-size: 20px;
+    height: unset;
+    line-height: 25px;
+    font-weight: 700;
+  }
+}
+/*----------Career_gallery---------*/
+.career-gallery-heading {
+  display: block;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .career-gallery-heading {
+    padding-top: 16px;
+    padding-bottom: 26px;
+  }
+}
+.career-gallery-heading:after {
+  display: block;
+  content: "";
+  width: 150px;
+  height: 4px;
+  margin: 10px auto 0px auto;
+  background: #fca32b;
+  /*left: 44.5%;
+            position: absolute;*/
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .career-gallery-heading:after {
+    height: 4px;
+    margin: 5px auto 0px auto;
+    width: 48px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .career-gallery-heading:after {
+    width: 130px;
+  }
+}
+.career-gallery-heading .career-gallery-text {
+  font-size: 40px;
+  font-family: 'Abhaya Libre';
+  color: #505050;
+  font-weight: 500;
+  line-height: 50px;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .career-gallery-heading .career-gallery-text {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .career-gallery-heading .career-gallery-text {
+    font-size: 35px;
+    line-height: 40px;
+  }
+}
+/*----------Opportunity---------*/
+.opportunity-container {
+  clear: both;
+}
+.opportunity-container .opportunity-heading {
+  display: block;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-heading {
+    padding-top: 20px;
+    padding-bottom: 34px;
+  }
+}
+.opportunity-container .opportunity-heading:after {
+  display: block;
+  content: "";
+  width: 150px;
+  height: 4px;
+  margin: 10px auto 0px auto;
+  background: #fca32b;
+  /*left: 44.5%;
+            position: absolute;*/
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-heading:after {
+    height: 4px;
+    margin: 5px auto 0px auto;
+    width: 48px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .opportunity-container .opportunity-heading:after {
+    width: 130px;
+  }
+}
+.opportunity-container .opportunity-heading .opportunity-text {
+  font-size: 40px;
+  font-family: 'Abhaya Libre';
+  color: #505050;
+  font-weight: 500;
+  line-height: 50px;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-heading .opportunity-text {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .opportunity-container .opportunity-heading .opportunity-text {
+    font-size: 35px;
+    line-height: 40px;
+  }
+}
+.opportunity-container .opportunity-content-container {
+  padding-left: 90px;
+  padding-right: 90px;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-content-container {
+    padding-left: 9px;
+    padding-right: 10px;
+  }
+}
+.opportunity-container .opportunity-content-container .opportunity-content {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.opportunity-container .opportunity-content-container .opportunity-content .designation {
+  border: 1px solid #E6E6E6;
+  height: 700px;
+  display: table;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-bottom: none;
+  border-right: none;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-content-container .opportunity-content .designation {
+    border: 1px solid #E6E6E6;
+  }
+}
+.opportunity-container .opportunity-content-container .opportunity-content .designation .desg-heading-container {
+  padding: 32px 33px 30px 14px;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-content-container .opportunity-content .designation .desg-heading-container {
+    padding: 32px 22px 30px 24px;
+  }
+}
+.opportunity-container .opportunity-content-container .opportunity-content .designation .desg-heading-container .department {
+  display: table-cell;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.opportunity-container .opportunity-content-container .opportunity-content .designation .desg-heading-container .department .desg-heading {
+  font-family: 'IBM Plex Sans';
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 20px;
+  color: #660666;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-content-container .opportunity-content .designation .desg-heading-container .department .desg-heading {
+    font-size: 18px;
+  }
+}
+.opportunity-container .opportunity-content-container .opportunity-content .designation .desg-heading-container .dept-location {
+  display: table-cell;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.opportunity-container .opportunity-content-container .opportunity-content .designation .desg-heading-container .dept-location .desg-heading {
+  font-family: 'IBM Plex Sans';
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 20px;
+  color: #660666;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-content-container .opportunity-content .designation .desg-heading-container .dept-location .desg-heading {
+    font-size: 18px;
+  }
+}
+.opportunity-container .opportunity-content-container .opportunity-content .designation .desg-heading-container .dept-sign {
+  display: table-cell;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.opportunity-container .opportunity-content-container .opportunity-content .designation .desg-heading-container .dept-sign .desg-heading {
+  font-family: 'IBM Plex Sans';
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 20px;
+  color: #660666;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-content-container .opportunity-content .designation .desg-heading-container .dept-sign .desg-heading {
+    font-size: 18px;
+  }
+}
+.opportunity-container .opportunity-content-container .opportunity-content .designation .desg-list-container {
+  padding-bottom: 23px;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-content-container .opportunity-content .designation .desg-list-container {
+    padding-bottom: 0px;
+  }
+}
+.opportunity-container .opportunity-content-container .opportunity-content .designation .desg-list-container .desg-list {
+  padding: 20px 33px 17px 14px;
+  display: table;
+  border-bottom: 1px solid #E6E6E6;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-content-container .opportunity-content .designation .desg-list-container .desg-list {
+    padding: 32px 22px 30px 24px;
+  }
+}
+.opportunity-container .opportunity-content-container .opportunity-content .designation .desg-list-container .desg-list .dept-title {
+  display: table-cell;
+  font-family: 'Abhaya Libre';
+  font-size: 20px;
+  font-weight: 500;
+  color: #505050;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-content-container .opportunity-content .designation .desg-list-container .desg-list .dept-title {
+    font-size: 14px;
+  }
+}
+.opportunity-container .opportunity-content-container .opportunity-content .designation .desg-list-container .desg-list .dept-title span {
+  color: #FCA32B;
+}
+.opportunity-container .opportunity-content-container .opportunity-content .designation .desg-list-container .desg-list .loc-title {
+  display: table-cell;
+  font-family: 'Abhaya Libre';
+  font-size: 20px;
+  font-weight: 500;
+  color: #505050;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-content-container .opportunity-content .designation .desg-list-container .desg-list .loc-title {
+    font-size: 14px;
+  }
+}
+.opportunity-container .opportunity-content-container .opportunity-content .designation .desg-list-container .desg-list .sign-title {
+  display: table-cell;
+  font-family: 'Abhaya Libre';
+  font-size: 20px;
+  font-weight: 500;
+  color: #505050;
+  padding-left: 0px;
+  padding-right: 0px;
+  text-align: right;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-content-container .opportunity-content .designation .desg-list-container .desg-list .sign-title {
+    font-size: 14px;
+  }
+}
+.opportunity-container .opportunity-content-container .opportunity-content .designation .desg-list-container .desg-list:last-child {
+  border-bottom: none;
+}
+.opportunity-container .opportunity-content-container .opportunity-content .opportunity-images {
+  padding-left: 0px;
+  padding-right: 0px;
+  height: 700px;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-content-container .opportunity-content .opportunity-images {
+    margin-top: 6px;
+    height: unset;
+    margin-bottom: 6px;
+  }
+}
+.opportunity-container .opportunity-content-container .opportunity-content .opportunity-images .opportunity-images-content {
+  padding-left: 0px;
+  padding-right: 0px;
+  height: 50%;
+  width: 100%;
+  position: relative;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-content-container .opportunity-content .opportunity-images .opportunity-images-content {
+    height: 100%;
+  }
+}
+.opportunity-container .opportunity-content-container .opportunity-content .opportunity-images .opportunity-images-content img {
+  width: 100%;
+}
+.opportunity-container .opportunity-content-container .opportunity-content .opportunity-images .opportunity-images-content .opportunity-image-text {
+  position: absolute;
+  padding: 0px 32.5px 15px 30.5px;
+  bottom: 0px;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-content-container .opportunity-content .opportunity-images .opportunity-images-content .opportunity-image-text {
+    padding: 0px 9px 15px 13px;
+  }
+}
+.opportunity-container .opportunity-content-container .opportunity-content .opportunity-images .opportunity-images-content .opportunity-image-text .title1 {
+  font-family: 'Abhaya Libre';
+  font-size: 25px;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 25px;
+  margin-bottom: 20px;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-content-container .opportunity-content .opportunity-images .opportunity-images-content .opportunity-image-text .title1 {
+    margin-bottom: 10px;
+  }
+}
+.opportunity-container .opportunity-content-container .opportunity-content .opportunity-images .opportunity-images-content .opportunity-image-text .title2 {
+  font-family: 'IBM Plex Sans';
+  font-size: 14px;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 12px;
+}
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .opportunity-container .opportunity-content-container .opportunity-content .opportunity-images .opportunity-images-content .opportunity-image-text .title2 {
+    line-height: 20px;
+  }
+}
+/*----------Mobile_View---------*/
+.career-header-xs {
+  display: inline-block;
+  padding: 17px 10px 17px 9px;
+  font-family: 'IBM Plex Sans';
+  font-size: 16px;
+  font-weight: 400;
+  color: #323232;
+  line-height: 20px;
+  height: 54px;
+  position: sticky;
+  margin-bottom: 5px;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  text-transform: uppercase;
+  z-index: 1;
+  text-align: center;
+  box-shadow: 0px 0px 5px 0px rgba(100, 100, 100, 0.15);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(100, 100, 100, 0.15);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(100, 100, 100, 0.15);
+}
+.career-header-xs .left-arrow {
+  float: left;
+}
+.career-header-xs .share-icon-xs {
+  float: right;
+}

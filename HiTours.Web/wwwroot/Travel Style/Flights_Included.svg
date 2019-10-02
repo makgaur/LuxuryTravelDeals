@@ -1,0 +1,14 @@
+<svg id="Flights_Included_Icon" data-name="Flights Included Icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <rect id="Placeholder" width="48" height="48" fill="none"/>
+  <path id="Path_52" data-name="Path 52" d="M43,24l2-8H41l-5.6,8Z" fill="#fca32b" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+  <path id="Path_53" data-name="Path 53" d="M6.4,32H31.2a17.392,17.392,0,0,0,11.3-5.1L45,24H13.8a10.542,10.542,0,0,0-8,3.6l-.9,1A2.058,2.058,0,0,0,6.4,32Z" fill="#ebebeb" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+  <path id="Path_54" data-name="Path 54" d="M32.3,36.1a2.2,2.2,0,0,0-.8-.1,4.55,4.55,0,0,0-3.7,1.9L16,28h9Z" fill="#fca32b" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+  <line id="Line_5" data-name="Line 5" transform="translate(10 28)" fill="#fca32b" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+  <line id="Line_6" data-name="Line 6" transform="translate(13 28)" fill="#fca32b" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+  <line id="Line_7" data-name="Line 7" transform="translate(29 28)" fill="#fca32b" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+  <line id="Line_8" data-name="Line 8" transform="translate(32 28)" fill="#fca32b" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+  <line id="Line_9" data-name="Line 9" transform="translate(35 28)" fill="#fca32b" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+  <path id="Path_55" data-name="Path 55" d="M18,17.5V18H5v-.5A4.481,4.481,0,0,1,9.5,13a4.13,4.13,0,0,1,3.3,1.5,3.371,3.371,0,0,1,1.7-.5A3.543,3.543,0,0,1,18,17.5Z" fill="none" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+  <path id="Path_56" data-name="Path 56" d="M40,40.5V41H27v-.5a4.457,4.457,0,0,1,.8-2.6A4.537,4.537,0,0,1,31.5,36a2.2,2.2,0,0,1,.8.1,4.448,4.448,0,0,1,2.5,1.4,3.371,3.371,0,0,1,1.7-.5A3.543,3.543,0,0,1,40,40.5Z" fill="none" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+  <path id="Path_57" data-name="Path 57" d="M39,10.5V11H27v-.5A2.476,2.476,0,0,1,29.5,8a2.016,2.016,0,0,1,1.1.3A4.42,4.42,0,0,1,34.5,6,4.481,4.481,0,0,1,39,10.5Z" fill="none" stroke="#231f20" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+</svg>

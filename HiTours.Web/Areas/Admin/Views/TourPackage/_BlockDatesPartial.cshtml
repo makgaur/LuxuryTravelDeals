@@ -1,0 +1,74 @@
+﻿@model BlockBookingViewModel
+<style>
+    .date-picker-multiple {
+        z-index: 9999 !important;
+    }
+</style>
+@if (Model.DataIncomplete)
+{
+    <h3>The Data is Incomplete to Block Booking Date. Please Complete Data and Try again.</h3>
+
+}
+else
+{
+
+    <form id="formBlockingDates">
+        <input asp-for="BB_PackageId" type="hidden" />
+        <input asp-for="CreatedBy" type="hidden" />
+        <input asp-for="CreatedDate" type="hidden" />
+        <input asp-for="UpdatedBy" type="hidden" />
+        <input asp-for="UpdatedDate" type="hidden" />
+        <input asp-for="IsHotel" type="hidden" />
+        @{
+            this.ViewBag.RangeLength = Model.Ranges.Count;
+        }
+        @for (int i = 0; i < Model.Ranges.Count; i++)
+        {
+            <input class="start_date_@i" asp-for="Ranges[i].Key" type="hidden" />
+            <input class="end_date_@i" asp-for="Ranges[i].Value" type="hidden" />
+        }
+
+        <input id="maximumDate" asp-for="PackageEndDate" type="hidden" />
+        <input id="minimumDate" asp-for="PackageStartDate" type="hidden" />
+        <div class="form-group col-sm-12">
+            <label asp-for="Dates"></label>
+            <input asp-for="Dates" type="text" class="form-control date-picker-multiple" />
+            <span asp-validation-for="Dates"></span>
+        </div>
+    </form>
+}
+@if (!Model.DataIncomplete)
+{
+    <script>
+         $(document).ready(function() {
+            var rangeLength = @ViewBag.RangeLength;
+            var ranges = [];
+            for (var i = 0; i < rangeLength; i++)
+            {
+                ranges.push({ startDate: $('.start_date_' + i).val(), endDate: $('.end_date_' + i).val() });
+            }
+            var mindate = new Date(Date.parse($('#minimumDate').val()));
+            var maxdate = new Date(Date.parse($('#maximumDate').val()));
+
+            $('.date-picker-multiple').datepicker({
+                format: 'dd/mm/yyyy',
+                multidate: true,
+                startDate: mindate,
+                endDate: maxdate,
+                defaultDate: mindate,
+                //startDate: new Date(Date.parse($('#minimumDate').val())),
+                beforeShowDay: function (date) {
+                    var flag = false;
+                    for (var i = 0; i < ranges.length; i++) {
+                        var subMinDate = new Date(Date.parse(ranges[i].startDate));
+                        var subMaxDate = new Date(Date.parse(ranges[i].endDate));
+                        if (date >= subMinDate && date <= subMaxDate) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            });
+         });
+    </script>
+}

@@ -1,0 +1,85 @@
+﻿<div class="wrapper">
+    <div id="carouselFade" class="carousel slide carousel-fade main-home-page-banner  main-home-page-banner-style" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img class="first-slide" src="/images/home-page-banner1.jpg" alt="First slide">
+            </div>
+            <div class="item">
+                <img class="second-slide" src="/images/home-page-banner2.jpg" alt="Second slide">
+            </div>
+            <div class="item">
+                <img class="second-slide" src="/images/home-page-banner3.jpg" alt="third-slide">
+            </div>
+        </div>
+    </div>
+    <!-- /.carousel -->
+    <!-- Recently Viewed -->
+
+    <section class="gray_bg marginTwenty cityTourset">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li>@this.ViewBag.MenuName</li>
+            </ul>
+            <div class="new-sale-newest-box">
+                <div class="recently-home">
+                    <h2>
+                        @this.ViewBag.MenuName:
+
+                        <span class="button">
+                            <span class="replacedeals">Deals Ending Soon</span><i class="glyphicon glyphicon-chevron-down"></i>
+                            <ul class="hover-text">
+                                <i class="glyphicon glyphicon-triangle-top top-btn-arrow"></i>
+                                <li><a href="javascript:void(0);" data-deals="0" class="getdeals">New Deals</a></li>
+                                <li><a href="javascript:void(0);" data-deals="1" class="active getdeals">Deals Ending Soon</a></li>
+                                <li><a href="javascript:void(0);" data-deals="2" class="getdeals">Upcoming</a></li>
+                            </ul><div class="clearfix"></div>
+                        </span>
+                        @*@Html.Raw(this.ViewBag.Collection)*@
+                    </h2>
+                </div>
+            </div>
+
+            <div>
+                <div class="stylepage">
+                    @*@Html.Partial("_TalkExpert", new TalkToExpertViewModel { Name = string.Empty, PageUrl = string.Format("{0}://{1}{2}{3}", Context.Request.Scheme, Context.Request.Host, Context.Request.Path, Context.Request.QueryString) })
+                        <div class="talkExpert">
+                            <div class="heaDing2">
+                                <a href="javascript:;" data-action="enquire" data-toggle="modal" data-destination="@this.ViewBag.MenuName" data-target="#myModalrequestcallback" class="book_btn">Enquire</a>
+                            </div>
+                        </div>*@
+                </div>
+                <div class="stlepage">
+                    <div id="dCurrentDeals"></div>
+                    <div id="loader_image" class="displaymessage"><img src="~/images/preload/loader.gif" alt="preloader" width="24" height="24"> Loading...please wait</div>
+                    <div id="loader_message" class="displaymessage"></div>
+                    <div id="search_message" class="displaymessage"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <div class="float-req-button hidden-xs">
+        <div>
+            <div id="talkToExperts" class="talkExpert">
+                <div class="heaDing">
+                    <span>Talk to our Holiday Expert</span>
+                    <a href="tel:18001080808">1800-108-0808</a>
+                </div>
+            </div>
+            <a class="float-expert-btn" href="tel:18001080808"><i class="fa fa-phone"></i></a>
+        </div>
+        <div style="float:right;">
+            <div id="enquireExperts" class="talkExpert">
+                <div class="heaDing2">
+                    <a href="javascript:;" data-action="enquire" data-toggle="modal" data-destination="@this.ViewBag.MenuName" data-target="#myModalrequestcallback" class="book_btn">Enquire</a>
+                </div>
+            </div>
+            <a class="float-enquire-btn" data-action="enquire" data-toggle="modal" data-destination="@this.ViewBag.MenuName" data-target="#myModalrequestcallback"><i class="fa fa-pencil"></i></a>
+        </div>
+    </div>
+    <div class="float-req-button-mob hidden-lg hidden-md hidden-sm">
+        <a class="float-expert-btn" href="tel:18001080808"><i class="fa fa-phone"></i></a>
+        <a class="float-enquire-btn pull-right" data-action="enquire" data-toggle="modal" data-destination="@this.ViewBag.MenuName" data-target="#myModalrequestcallback"><i class="fa fa-pencil"></i></a>
+    </div>
+</div>

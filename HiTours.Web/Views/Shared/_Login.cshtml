@@ -1,0 +1,181 @@
+﻿@model LoginViewModel
+
+
+<div class="left-right-pad-15">
+    <div class="nav nav-pills">
+        <div class="pill @(Model.Mode == "signin"? "active" : string.Empty)" data-target="#view-sign-in" id="div-sign-in">
+            <a href="javascript:;">SIGN IN</a>
+        </div>
+        <div class="pill @(Model.Mode == "signup"? "active" : string.Empty)" data-target="#view-sign-up" id="div-sign-up">
+            <a href="javascript:;">SIGN UP</a>
+        </div>
+    </div>
+</div>
+
+<div class="tab-content clearfix">
+    <div class="tab-pane  @(Model.Mode == "signin"? "active" : string.Empty)" id="view-sign-in">
+        <div class="left-right-pad-15">
+            <div class="form-signin-otp">
+                <span class="success-message" id="successmessage"></span>
+
+                <form id="formSignInOtp" asp-antiforgery="true" method="post" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="Mode" />
+                    <input type="hidden" asp-for="Redirection" />
+                    <div class="form-group col-md-12" id="mob">
+                        <label class="field-placeholder" asp-for="MobileNo">MOBILE NUMBER</label>
+                        <input class="form-control" asp-for="MobileNo" placeholder="Enter your mobile number" id="txtmobile" autocomplete="off" />
+                        <span asp-validation-for="MobileNo"></span>
+                    </div>
+
+                    <div class="form-group col-md-12 text-center hidden" id="changemobile">
+                        <p>We have shared an OTP on <span id="otpmobile"></span> <a href="#" class="left-right-pad-15 link-change" id="linkchange"></a></p>
+                    </div>
+
+                    <div class="form-group col-md-12 hidden" id="otp">
+                        <label class="field-placeholder" asp-for="OTP">ENTER OTP</label>
+                        <input class="form-control" asp-for="OTP" autocomplete="off" />
+                        <span asp-validation-for="OTP"></span>
+                    </div>
+
+                    <div class="form-group col-md-12 progress">
+                        <div class="progress-bar hidden" role="progressbar" id="otp-progress-bar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>                        
+                    </div>
+
+                    <div class="form-group col-md-12" id="divsendOtp">
+                        <button type="button" class="btn btn-block btn-send-otp" id="sendOtp" onclick="SendOTP()">SEND OTP</button>
+                    </div>
+
+                    @*<div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                <span class="sr-only">70% Complete</span>
+            </div>
+        </div>*@
+
+                    <div class="form-group col-md-12 text-center hidden" id="divresendOtp">
+                        <p>Didn't Receive OTP? <a class="left-right-pad-15 link-icon resendotp" id="btnresendotp">RESEND OTP</a></p>
+                    </div>
+                    <span class="error-message" id="errormessage"></span>
+
+                    <button type="submit" class="btn btn-block btn-sign-in hidden" id="sign-in-otp">SUBMIT</button>
+                </form>
+            </div>
+        </div>
+
+        @*<div class="seperator"></div>*@
+
+        <div class="left-right-pad-15">
+            <div class="login-external-btns">
+                <div class="sign-in-external google">
+                    <div class="symbol">
+                        <img src="~/images/google-color.svg" alt="google-icon" />
+                    </div>
+                    <div class="seperator-v"></div>
+                    <div class="text">
+                        SIGN IN WITH GOOGLE
+                    </div>
+                </div>
+                <div class="pad-top-20"></div>
+                <div class="sign-in-external facebook">
+                    <div class="symbol">
+                        <img src="~/images/facebook-color.svg" alt="facebook-icon" />
+                    </div>
+                    <div class="seperator-v"></div>
+                    <div class="text">
+                        SIGN IN WITH FACEBOOK
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="tab-pane @(Model.Mode == "signup"? "active" : string.Empty)" id="view-sign-up">
+        @this.Html.Partial("_SignUp", new UserDetailViewModel { Id = 0 })
+    </div>
+</div>
+<script>
+    $('#linkchange').click(function (e) {
+        $('#mob').removeClass('hidden');
+        $('#divsendOtp').removeClass('hidden');
+
+        $('#otp-progress-bar').addClass('hidden');
+        $('#changemobile').addClass('hidden');
+        $('#divresendOtp').addClass('hidden');
+        $('#otp').addClass('hidden');
+        $('#sign-in-otp').addClass('hidden');
+    });
+
+    $('#btnresendotp').click(function (e) {
+        debugger;
+        e.preventDefault();
+        if ($(this).hasClass('resendotp'))
+            return false;
+        else
+            SendOTP();
+    });
+
+
+    function SendOTP() {
+        $("#successmessage").html('');
+
+        var form = $('#formSignInOtp');
+        form.data('validator', null);
+        $.validator.unobtrusive.parse(form);
+        $('#sendOtp').rules('remove', 'remote');
+        if ($('#formSignInOtp').valid()) {
+            showWaitProcess();
+            $.ajax({
+                url: '/user/sendOTP',
+                data: $('#formSignInOtp').serialize(),
+                success: function (data) {
+                    debugger;
+                    hideWaitProcess();
+                    if (data.Status) {
+                        $("#otpmobile").html($('#txtmobile').val());
+                        $('#mob').addClass('hidden');
+                        $('#divsendOtp').addClass('hidden');
+
+                        $('#otp-progress-bar').removeClass('hidden');
+                        $('#changemobile').removeClass('hidden');
+                        $('#divresendOtp').removeClass('hidden');
+                        $('#otp').removeClass('hidden');
+                        $('#sign-in-otp').removeClass('hidden');
+
+                        $("#btnresendotp").removeAttr('href');
+                        $('#btnresendotp').addClass('resendotp');
+
+                        var seconds = parseInt(1);
+                        interval = setInterval(function () {                            
+                            $("#otp-progress-bar").width(seconds + "%");
+                            seconds++;
+                        }, 1200);
+
+                        setTimeout(function () {
+                            clearInterval(interval);
+                            $("#btnresendotp").attr('href', '#');
+                            $('#btnresendotp').removeClass('resendotp');
+                        }, 120000);
+
+                    }
+                    else if (data.Key == "InActive") {
+                        swal('', data.Message, 'error');
+                    }
+                    else {
+                        $("#div-sign-in").removeClass("active");
+                        $("#div-sign-up").addClass("active");
+
+                        $("#view-sign-in").removeClass("active");
+                        $("#view-sign-up").addClass("active");
+                        $("#txtmobilesignup").val($('#txtmobile').val());
+                        //swal('', data.Message, 'error');
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    hideWaitProcess();
+                    swal('', errorThrown, 'error');
+                }
+            })
+        }
+    }
+
+</script>
+

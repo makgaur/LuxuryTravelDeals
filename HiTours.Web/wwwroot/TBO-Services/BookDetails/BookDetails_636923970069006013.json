@@ -1,0 +1,1019 @@
+//-- BookDetails Api Request --
+{
+  "EndUserIp": "192.168.11.120",
+  "TokenId": "c5193cdf-d23a-4f3e-8d9b-8ff1f9b68adf",
+  "TraceId": "dccaaeec-e9e5-4ee2-bbab-cd666a250cc0",
+  "BookingId": 1462454,
+  "PNR": null
+}
+//-- BookDetails Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "ResponseStatus": 1,
+    "TraceId": "dccaaeec-e9e5-4ee2-bbab-cd666a250cc0",
+    "FlightItinerary": {
+      "IssuancePcc": "GoAirLoginName8",
+      "TripIndicator": 1,
+      "BookingAllowedForRoamer": true,
+      "BookingId": 1462454,
+      "IsManual": false,
+      "PNR": "QFD4PR",
+      "IsDomestic": false,
+      "Source": 10,
+      "Origin": "DEL",
+      "Destination": "MLE",
+      "AirlineCode": "G8",
+      "LastTicketDate": "9999-12-31T00:00:00",
+      "ValidatingAirlineCode": "G8",
+      "AirlineRemark": "",
+      "AirlineTollFreeNo": "9876543210",
+      "IsLCC": true,
+      "NonRefundable": false,
+      "FareType": "PUB",
+      "CreditNoteNo": null,
+      "Fare": {
+        "Currency": "INR",
+        "BaseFare": 64644,
+        "Tax": 27228,
+        "TaxBreakup": [
+          {
+            "key": "PSF",
+            "value": 976
+          },
+          {
+            "key": "YR",
+            "value": 596
+          },
+          {
+            "key": "YQTax",
+            "value": 6400
+          },
+          {
+            "key": "OtherTaxes",
+            "value": 17288
+          },
+          {
+            "key": "K3",
+            "value": 1968
+          },
+          {
+            "key": "TotalTax",
+            "value": 27228
+          }
+        ],
+        "YQTax": 6400,
+        "AdditionalTxnFeeOfrd": 0,
+        "AdditionalTxnFeePub": 0,
+        "PGCharge": 0,
+        "OtherCharges": 0,
+        "ChargeBU": [
+          {
+            "key": "TBOMARKUP",
+            "value": 0
+          },
+          {
+            "key": "OTHERCHARGE",
+            "value": 0
+          },
+          {
+            "key": "CONVENIENCECHARGE",
+            "value": 0
+          }
+        ],
+        "Discount": 0,
+        "PublishedFare": 91872,
+        "CommissionEarned": 0,
+        "PLBEarned": 0,
+        "IncentiveEarned": 0,
+        "OfferedFare": 91872,
+        "TdsOnCommission": 0,
+        "TdsOnPLB": 0,
+        "TdsOnIncentive": 0,
+        "ServiceFee": 0,
+        "TotalBaggageCharges": 0,
+        "TotalMealCharges": 0,
+        "TotalSeatCharges": 0,
+        "TotalSpecialServiceCharges": 0
+      },
+      "CreditNoteCreatedOn": null,
+      "Passenger": [
+        {
+          "PaxId": 2087983,
+          "Title": "Mr",
+          "FirstName": "Mayank",
+          "LastName": "Gaur",
+          "PaxType": 1,
+          "DateOfBirth": "1977-09-20T00:00:00",
+          "Gender": 1,
+          "PassportNo": "",
+          "AddressLine1": "Test",
+          "AddressLine2": "Test",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 15014,
+            "Tax": 6779,
+            "TaxBreakup": [
+              {
+                "key": "K3",
+                "value": 464
+              },
+              {
+                "key": "PSF",
+                "value": 244
+              },
+              {
+                "key": "YR",
+                "value": 149
+              },
+              {
+                "key": "YQTax",
+                "value": 1600
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 4322
+              },
+              {
+                "key": "TotalTax",
+                "value": 6779
+              }
+            ],
+            "YQTax": 1600,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 21793,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 21793,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "City": "Delhi",
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "ContactNo": "9045025705",
+          "Email": "makgaur007@gmail.com",
+          "IsLeadPax": true,
+          "FFAirlineCode": null,
+          "FFNumber": null,
+          "Ssr": [],
+          "Ticket": {
+            "TicketId": 1727681,
+            "TicketNumber": "QFD4PR",
+            "IssueDate": "2019-05-02T17:58:43",
+            "ValidatingAirline": "82*",
+            "Remarks": "",
+            "ServiceFeeDisplayType": "ShowInTax",
+            "Status": "OK",
+            "ConjunctionNumber": "     ",
+            "TicketType": "N"
+          },
+          "SegmentAdditionalInfo": [
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            }
+          ]
+        },
+        {
+          "PaxId": 2087984,
+          "Title": "Mr",
+          "FirstName": "Amit",
+          "LastName": "Bhatt",
+          "PaxType": 1,
+          "DateOfBirth": "1989-10-18T00:00:00",
+          "Gender": 1,
+          "PassportNo": "",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 15014,
+            "Tax": 6779,
+            "TaxBreakup": [
+              {
+                "key": "K3",
+                "value": 464
+              },
+              {
+                "key": "PSF",
+                "value": 244
+              },
+              {
+                "key": "YR",
+                "value": 149
+              },
+              {
+                "key": "YQTax",
+                "value": 1600
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 4322
+              },
+              {
+                "key": "TotalTax",
+                "value": 6779
+              }
+            ],
+            "YQTax": 1600,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 21793,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 21793,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "IsLeadPax": false,
+          "FFAirlineCode": null,
+          "FFNumber": null,
+          "Ssr": [],
+          "Ticket": {
+            "TicketId": 1727682,
+            "TicketNumber": "QFD4PR",
+            "IssueDate": "2019-05-02T17:58:46",
+            "ValidatingAirline": "82*",
+            "Remarks": "",
+            "ServiceFeeDisplayType": "ShowInTax",
+            "Status": "OK",
+            "ConjunctionNumber": "     ",
+            "TicketType": "N"
+          },
+          "SegmentAdditionalInfo": [
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            }
+          ]
+        },
+        {
+          "PaxId": 2087985,
+          "Title": "Mr",
+          "FirstName": "Anshul",
+          "LastName": "Varun",
+          "PaxType": 2,
+          "DateOfBirth": "2009-10-21T00:00:00",
+          "Gender": 1,
+          "PassportNo": "",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 15014,
+            "Tax": 6779,
+            "TaxBreakup": [
+              {
+                "key": "K3",
+                "value": 464
+              },
+              {
+                "key": "PSF",
+                "value": 244
+              },
+              {
+                "key": "YR",
+                "value": 149
+              },
+              {
+                "key": "YQTax",
+                "value": 1600
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 4322
+              },
+              {
+                "key": "TotalTax",
+                "value": 6779
+              }
+            ],
+            "YQTax": 1600,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 21793,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 21793,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "IsLeadPax": false,
+          "FFAirlineCode": null,
+          "FFNumber": null,
+          "Ssr": [
+            {
+              "Detail": "21/10/2009",
+              "SsrCode": "CHLD",
+              "SsrStatus": null,
+              "Status": 1
+            }
+          ],
+          "Ticket": {
+            "TicketId": 1727683,
+            "TicketNumber": "QFD4PR",
+            "IssueDate": "2019-05-02T17:58:50",
+            "ValidatingAirline": "82*",
+            "Remarks": "",
+            "ServiceFeeDisplayType": "ShowInTax",
+            "Status": "OK",
+            "ConjunctionNumber": "     ",
+            "TicketType": "N"
+          },
+          "SegmentAdditionalInfo": [
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            }
+          ]
+        },
+        {
+          "PaxId": 2087986,
+          "Title": "Mr",
+          "FirstName": "Ankit",
+          "LastName": "Shrivastav",
+          "PaxType": 2,
+          "DateOfBirth": "2010-06-22T00:00:00",
+          "Gender": 1,
+          "PassportNo": "",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 15014,
+            "Tax": 6779,
+            "TaxBreakup": [
+              {
+                "key": "K3",
+                "value": 464
+              },
+              {
+                "key": "PSF",
+                "value": 244
+              },
+              {
+                "key": "YR",
+                "value": 149
+              },
+              {
+                "key": "YQTax",
+                "value": 1600
+              },
+              {
+                "key": "OtherTaxes",
+                "value": 4322
+              },
+              {
+                "key": "TotalTax",
+                "value": 6779
+              }
+            ],
+            "YQTax": 1600,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 21793,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 21793,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "IsLeadPax": false,
+          "FFAirlineCode": null,
+          "FFNumber": null,
+          "Ssr": [
+            {
+              "Detail": "22/06/2010",
+              "SsrCode": "CHLD",
+              "SsrStatus": null,
+              "Status": 1
+            }
+          ],
+          "Ticket": {
+            "TicketId": 1727684,
+            "TicketNumber": "QFD4PR",
+            "IssueDate": "2019-05-02T17:58:54",
+            "ValidatingAirline": "82*",
+            "Remarks": "",
+            "ServiceFeeDisplayType": "ShowInTax",
+            "Status": "OK",
+            "ConjunctionNumber": "     ",
+            "TicketType": "N"
+          },
+          "SegmentAdditionalInfo": [
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "20 KG",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            }
+          ]
+        },
+        {
+          "PaxId": 2087987,
+          "Title": "Mr",
+          "FirstName": "Shubham",
+          "LastName": "Shukla",
+          "PaxType": 3,
+          "DateOfBirth": "2018-12-20T00:00:00",
+          "Gender": 1,
+          "PassportNo": "",
+          "Fare": {
+            "Currency": "INR",
+            "BaseFare": 4588,
+            "Tax": 112,
+            "TaxBreakup": [
+              {
+                "key": "K3",
+                "value": 112
+              },
+              {
+                "key": "TotalTax",
+                "value": 112
+              }
+            ],
+            "YQTax": 0,
+            "AdditionalTxnFeeOfrd": 0,
+            "AdditionalTxnFeePub": 0,
+            "PGCharge": 0,
+            "OtherCharges": 0,
+            "ChargeBU": [
+              {
+                "key": "TBOMARKUP",
+                "value": 0
+              },
+              {
+                "key": "OTHERCHARGE",
+                "value": 0
+              },
+              {
+                "key": "CONVENIENCECHARGE",
+                "value": 0
+              }
+            ],
+            "Discount": 0,
+            "PublishedFare": 4700,
+            "CommissionEarned": 0,
+            "PLBEarned": 0,
+            "IncentiveEarned": 0,
+            "OfferedFare": 4700,
+            "TdsOnCommission": 0,
+            "TdsOnPLB": 0,
+            "TdsOnIncentive": 0,
+            "ServiceFee": 0,
+            "TotalBaggageCharges": 0,
+            "TotalMealCharges": 0,
+            "TotalSeatCharges": 0,
+            "TotalSpecialServiceCharges": 0
+          },
+          "CountryCode": "IN",
+          "Nationality": "IN",
+          "IsLeadPax": false,
+          "FFAirlineCode": null,
+          "FFNumber": null,
+          "Ssr": [
+            {
+              "Detail": "20/12/2018",
+              "SsrCode": "INFT",
+              "SsrStatus": null,
+              "Status": 1
+            }
+          ],
+          "Ticket": {
+            "TicketId": 1727685,
+            "TicketNumber": "QFD4PR",
+            "IssueDate": "2019-05-02T17:58:57",
+            "ValidatingAirline": "82*",
+            "Remarks": "",
+            "ServiceFeeDisplayType": "ShowInTax",
+            "Status": "OK",
+            "ConjunctionNumber": "     ",
+            "TicketType": "N"
+          },
+          "SegmentAdditionalInfo": [
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "0 Kg",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "0 Kg",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "0 Kg",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            },
+            {
+              "FareBasis": "QO9RBINX",
+              "NVA": "",
+              "NVB": "",
+              "Baggage": "0 Kg",
+              "Meal": "0 Platter",
+              "Seat": "",
+              "SpecialService": ""
+            }
+          ]
+        }
+      ],
+      "CancellationCharges": null,
+      "Segments": [
+        {
+          "Baggage": null,
+          "CabinBaggage": null,
+          "TripIndicator": 1,
+          "SegmentIndicator": 1,
+          "Airline": {
+            "AirlineCode": "G8",
+            "AirlineName": "GoAir",
+            "FlightNumber": "113",
+            "FareClass": "Q",
+            "OperatingCarrier": ""
+          },
+          "AirlinePNR": "",
+          "Origin": {
+            "Airport": {
+              "AirportCode": "DEL",
+              "AirportName": "Indira Gandhi Airport",
+              "Terminal": "2 ",
+              "CityCode": "DEL",
+              "CityName": "Delhi",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "DepTime": "2019-05-29T05:50:00"
+          },
+          "Destination": {
+            "Airport": {
+              "AirportCode": "BLR",
+              "AirportName": "Hindustan",
+              "Terminal": "  ",
+              "CityCode": "BLR",
+              "CityName": "Bangalore",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "ArrTime": "2019-05-29T08:40:00"
+          },
+          "Duration": 170,
+          "GroundTime": 0,
+          "Mile": 0,
+          "StopOver": false,
+          "FlightInfoIndex": "1",
+          "StopPoint": "",
+          "StopPointArrivalTime": null,
+          "StopPointDepartureTime": null,
+          "Craft": "320",
+          "Remark": null,
+          "IsETicketEligible": true,
+          "FlightStatus": "Confirmed",
+          "Status": "HK"
+        },
+        {
+          "Baggage": null,
+          "CabinBaggage": null,
+          "TripIndicator": 1,
+          "SegmentIndicator": 2,
+          "Airline": {
+            "AirlineCode": "G8",
+            "AirlineName": "GoAir",
+            "FlightNumber": "43",
+            "FareClass": "P",
+            "OperatingCarrier": ""
+          },
+          "AirlinePNR": "",
+          "Origin": {
+            "Airport": {
+              "AirportCode": "BLR",
+              "AirportName": "Hindustan",
+              "Terminal": "  ",
+              "CityCode": "BLR",
+              "CityName": "Bangalore",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "DepTime": "2019-05-29T14:30:00"
+          },
+          "Destination": {
+            "Airport": {
+              "AirportCode": "MLE",
+              "AirportName": "Male Int'l",
+              "Terminal": "  ",
+              "CityCode": "MLE",
+              "CityName": "Male",
+              "CountryCode": "MV",
+              "CountryName": "Maldives"
+            },
+            "ArrTime": "2019-05-29T16:00:00"
+          },
+          "AccumulatedDuration": 640,
+          "Duration": 120,
+          "GroundTime": 350,
+          "Mile": 0,
+          "StopOver": false,
+          "FlightInfoIndex": "2",
+          "StopPoint": "",
+          "StopPointArrivalTime": null,
+          "StopPointDepartureTime": null,
+          "Craft": "32A",
+          "Remark": "THIS FLIGHT IS SUBJECTED TO REGULATORY APPROVAL.",
+          "IsETicketEligible": true,
+          "FlightStatus": "Confirmed",
+          "Status": "HK"
+        },
+        {
+          "Baggage": null,
+          "CabinBaggage": null,
+          "TripIndicator": 2,
+          "SegmentIndicator": 1,
+          "Airline": {
+            "AirlineCode": "G8",
+            "AirlineName": "GoAir",
+            "FlightNumber": "24",
+            "FareClass": "M",
+            "OperatingCarrier": ""
+          },
+          "AirlinePNR": "",
+          "Origin": {
+            "Airport": {
+              "AirportCode": "MLE",
+              "AirportName": "Male Int'l",
+              "Terminal": "  ",
+              "CityCode": "MLE",
+              "CityName": "Male",
+              "CountryCode": "MV",
+              "CountryName": "Maldives"
+            },
+            "DepTime": "2019-06-06T17:00:00"
+          },
+          "Destination": {
+            "Airport": {
+              "AirportCode": "BOM",
+              "AirportName": "Mumbai",
+              "Terminal": "2 ",
+              "CityCode": "BOM",
+              "CityName": "Mumbai",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "ArrTime": "2019-06-06T20:20:00"
+          },
+          "Duration": 170,
+          "GroundTime": 0,
+          "Mile": 0,
+          "StopOver": false,
+          "FlightInfoIndex": "3",
+          "StopPoint": "",
+          "StopPointArrivalTime": null,
+          "StopPointDepartureTime": null,
+          "Craft": "32A",
+          "Remark": null,
+          "IsETicketEligible": true,
+          "FlightStatus": "Confirmed",
+          "Status": "HK"
+        },
+        {
+          "Baggage": null,
+          "CabinBaggage": null,
+          "TripIndicator": 2,
+          "SegmentIndicator": 2,
+          "Airline": {
+            "AirlineCode": "G8",
+            "AirlineName": "GoAir",
+            "FlightNumber": "329",
+            "FareClass": "K",
+            "OperatingCarrier": ""
+          },
+          "AirlinePNR": "",
+          "Origin": {
+            "Airport": {
+              "AirportCode": "BOM",
+              "AirportName": "Mumbai",
+              "Terminal": "1 ",
+              "CityCode": "BOM",
+              "CityName": "Mumbai",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "DepTime": "2019-06-07T06:05:00"
+          },
+          "Destination": {
+            "Airport": {
+              "AirportCode": "DEL",
+              "AirportName": "Indira Gandhi Airport",
+              "Terminal": "2 ",
+              "CityCode": "DEL",
+              "CityName": "Delhi",
+              "CountryCode": "IN",
+              "CountryName": "India"
+            },
+            "ArrTime": "2019-06-07T08:15:00"
+          },
+          "AccumulatedDuration": 885,
+          "Duration": 130,
+          "GroundTime": 585,
+          "Mile": 0,
+          "StopOver": false,
+          "FlightInfoIndex": "4",
+          "StopPoint": "",
+          "StopPointArrivalTime": null,
+          "StopPointDepartureTime": null,
+          "Craft": "320",
+          "Remark": null,
+          "IsETicketEligible": true,
+          "FlightStatus": "Confirmed",
+          "Status": "HK"
+        }
+      ],
+      "FareRules": [
+        {
+          "Origin": "DEL",
+          "Destination": "BLR",
+          "Airline": "G8",
+          "FareBasisCode": "QO9RBINX",
+          "FareRuleDetail": " 1. All Guests, including children and infants, must present valid identification at check-in. It is your responsibility to ensure you have the appropriate travel documents at all times.\n \n2. Rescheduling -Rs. 950 per pax per segment plus difference of fare.\n \n3. Check-in starts \"2 hours\" before scheduled departure, and closes 45 minutes prior to the scheduled departure time. Guests are requested to report at least 2 hours prior to departure time, at Go Air Check-in counters.\n \n4. Cancellation / Changes within \"2 hours\" of departure or failure to check-in for a Go Air flight at least 45 minutes prior to the scheduled departure time will result in the fare being forfeited. We require the request atleast 4 hours prior to departure, After that ticket will be count as a No show.\n \n5. Cancellation-Rs. 950 per pax per segment plus difference of fare.\n \n6. Schedule is subject to change and regulatory authority approvals. <br/> <br/>",
+          "FareRestriction": "",
+          "FareFamilyCode": "",
+          "FareRuleIndex": ""
+        },
+        {
+          "Origin": "BLR",
+          "Destination": "MLE",
+          "Airline": "G8",
+          "FareBasisCode": "PO9RIZZX",
+          "FareRuleDetail": " 1. All Guests, including children and infants, must present valid identification at check-in. It is your responsibility to ensure you have the appropriate travel documents at all times.\n \n2. Rescheduling -Rs. 950 per pax per segment plus difference of fare.\n \n3. Check-in starts \"2 hours\" before scheduled departure, and closes 45 minutes prior to the scheduled departure time. Guests are requested to report at least 2 hours prior to departure time, at Go Air Check-in counters.\n \n4. Cancellation / Changes within \"2 hours\" of departure or failure to check-in for a Go Air flight at least 45 minutes prior to the scheduled departure time will result in the fare being forfeited. We require the request atleast 4 hours prior to departure, After that ticket will be count as a No show.\n \n5. Cancellation-Rs. 950 per pax per segment plus difference of fare.\n \n6. Schedule is subject to change and regulatory authority approvals. <br/> <br/>",
+          "FareRestriction": "",
+          "FareFamilyCode": "",
+          "FareRuleIndex": ""
+        },
+        {
+          "Origin": "MLE",
+          "Destination": "BOM",
+          "Airline": "G8",
+          "FareBasisCode": "MO9RIZZX",
+          "FareRuleDetail": " 1. All Guests, including children and infants, must present valid identification at check-in. It is your responsibility to ensure you have the appropriate travel documents at all times.\n \n2. Rescheduling -Rs. 950 per pax per segment plus difference of fare.\n \n3. Check-in starts \"2 hours\" before scheduled departure, and closes 45 minutes prior to the scheduled departure time. Guests are requested to report at least 2 hours prior to departure time, at Go Air Check-in counters.\n \n4. Cancellation / Changes within \"2 hours\" of departure or failure to check-in for a Go Air flight at least 45 minutes prior to the scheduled departure time will result in the fare being forfeited. We require the request atleast 4 hours prior to departure, After that ticket will be count as a No show.\n \n5. Cancellation-Rs. 950 per pax per segment plus difference of fare.\n \n6. Schedule is subject to change and regulatory authority approvals. <br/> <br/>",
+          "FareRestriction": "",
+          "FareFamilyCode": "",
+          "FareRuleIndex": ""
+        },
+        {
+          "Origin": "BOM",
+          "Destination": "DEL",
+          "Airline": "G8",
+          "FareBasisCode": "KO9RBINF",
+          "FareRuleDetail": " 1. All Guests, including children and infants, must present valid identification at check-in. It is your responsibility to ensure you have the appropriate travel documents at all times.\n \n2. Rescheduling -Rs. 950 per pax per segment plus difference of fare.\n \n3. Check-in starts \"2 hours\" before scheduled departure, and closes 45 minutes prior to the scheduled departure time. Guests are requested to report at least 2 hours prior to departure time, at Go Air Check-in counters.\n \n4. Cancellation / Changes within \"2 hours\" of departure or failure to check-in for a Go Air flight at least 45 minutes prior to the scheduled departure time will result in the fare being forfeited. We require the request atleast 4 hours prior to departure, After that ticket will be count as a No show.\n \n5. Cancellation-Rs. 950 per pax per segment plus difference of fare.\n \n6. Schedule is subject to change and regulatory authority approvals. <br/> <br/>",
+          "FareRestriction": "",
+          "FareFamilyCode": "",
+          "FareRuleIndex": ""
+        }
+      ],
+      "Status": 5,
+      "InvoiceAmount": 91872,
+      "InvoiceNo": "IW/1920/1179",
+      "InvoiceStatus": 3,
+      "InvoiceCreatedOn": "2019-05-02T17:58:43",
+      "Remarks": ""
+    }
+  }
+}

@@ -1,0 +1,560 @@
+﻿@using System.Security.Claims
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @{
+        var seoData = new SeoDetailViewModel();
+        string metaDescription = string.Empty, metaKeyword = string.Empty, title = string.Empty, headerMetaCode = string.Empty, schema = string.Empty;
+        using (var client = new System.Net.WebClient())
+        {
+            string urlPath = ViewContext.HttpContext.Request.Path.HasValue ? ViewContext.HttpContext.Request.Path.Value : string.Empty;
+            string dealPath = urlPath.Split('/').ToList().LastOrDefault();
+            var response = client.DownloadString(ViewContext.HttpContext.Request.Scheme + "://" + ViewContext.HttpContext.Request.Host + "/selectlist/GetSeoDetail?url=" + dealPath);
+            seoData = JsonConvert.DeserializeObject<SeoDetailViewModel>(response);
+            if (seoData != null)
+            {
+                metaDescription = seoData.MetaDescription;
+                metaKeyword = seoData.MetaKeyword;
+                title = seoData.Title;
+                headerMetaCode = seoData.HeaderMetaCode;
+                schema = seoData.Schema;
+
+            }
+        }
+
+        //if (ViewData["Title"] != null && !string.IsNullOrEmpty(ViewData["Title"].ToString()))
+        //{
+        //    title = ViewData["Title"].ToString() + " - Luxury Travel Deals";
+        //}
+    }
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="@metaDescription">
+    <meta name="keywords" content="@metaKeyword" />
+    <meta name="author" content="">
+    <meta name="google-site-verification" content="3USrElEbNU5dhTFzs_gIeOnvuVAKco65poskMLkogmQ" />
+    <meta name="msvalidate.01" content="B2CD1A65D4DF01A64F7DB93393684DCD" />
+    <link rel="alternate" href="https://www.luxurytravel.deals/" hreflang="en-in" />
+    <link rel="icon" href="~/images/favicon.png" />
+    <title>@(string.IsNullOrEmpty(title) ? "Welcome to Luxury Travel Deals" : title)</title>
+    <link asp-append-version="true" href="https://fonts.googleapis.com/css?family=Abhaya+Libre:400,500,600,700|IBM+Plex+Sans:400,500,600,700" rel="stylesheet" type='text/css'>
+    
+    <environment include="Development">
+        @*BELOW TOOLS CSS*@
+        <link asp-append-version="true" href="~/css/bootstrap.min.css" rel="stylesheet" />
+        <link asp-append-version="true" href="~/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+        
+        <link asp-append-version="true" href="~/content/plugins/waitme/waitMe.css" rel="stylesheet" />
+        <link asp-append-version="true" href="~/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link asp-append-version="true" href="~/css/carousel.css" rel="stylesheet" />
+        <link asp-append-version="true" href="~/content/plugins/sweetalert2/dist/sweetalert2.css" rel="stylesheet" />
+        <link asp-append-version="true" href="/css/jquery.typeahead.css" rel="stylesheet">
+
+        <link asp-append-version="true" rel="stylesheet" href="~/content/bower/select2/dist/css/select2.min.css">
+        <link asp-append-version="true" rel="stylesheet" href="~/content/bower/bootstrap-daterangepicker/daterangepicker.css">
+        <link asp-append-version="true" rel="stylesheet" href="~/content/bower/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+        @*<link asp-append-version="true" rel="stylesheet" href="~/content/plugins/iCheck/all.css">*@
+        <link asp-append-version="true" rel="stylesheet" type="text/css" href="/slick/slick.css">
+        <link asp-append-version="true" rel="stylesheet" type="text/css" href="/slick/slick-theme.css">
+        @*<link href="~/css/intlTelInput.css" rel="stylesheet" />*@
+        <link asp-append-version="true" href="/css/bootstrap-multiselect.css" rel="stylesheet" />
+        <link asp-append-version="true" href="/css/bootstrap-slider.css" rel="stylesheet" />
+
+
+
+        @*BELOW CUSTOM CSS*@
+        <link asp-append-version="true" href="/css/style.css" rel="stylesheet" type="text/css" />
+        <link asp-append-version="true" href="/css/frontend.developer.css" rel="stylesheet" />
+        <link asp-append-version="true" href="/Styles/main.css" rel="stylesheet" type="text/css" />
+        <link asp-append-version="true" href="/Styles/product.css" rel="stylesheet" type="text/css" />
+        <link asp-append-version="true" href="/Styles/Calender.css" rel="stylesheet" type="text/css" />
+        <link asp-append-version="true" href="/Styles/search.css" rel="stylesheet" type="text/css" />
+        <link asp-append-version="true" href="/Styles/Booking.css" rel="stylesheet" type="text/css" />
+        <link asp-append-version="true" href="/Styles/helperstyles.css" rel="stylesheet" type="text/css" />
+
+    </environment>
+    <environment exclude="Development">
+        <link asp-append-version="true" href="~/resource/style.product.min.css" rel="stylesheet" type="text/css" />
+    </environment>
+
+
+
+
+    @*@Html.Raw(headerMetaCode)
+        @Html.Raw(schema)*@
+    <script>
+        /**/
+        var year = @(DateTime.UtcNow.Year);
+        /**/
+        /**/
+        var month = @(DateTime.UtcNow.Month - 1);
+        /**/
+        /**/
+        var day = @(DateTime.UtcNow.Day);
+        /**/
+        /**/
+        var altTag = '@ViewBag.AltTag';
+        /**/
+    </script>
+
+    <!-- Google Tag Manager -->
+
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+
+        })(window, document, 'script', 'dataLayer', 'GTM-WKKD44N');</script>
+
+    <!-- End Google Tag Manager -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117681746-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-117681746-1');
+    </script>
+
+    <!-- DO NOT MODIFY -->
+
+
+    <script src='//tw.netcore.co.in/smartechclient.js'></script>
+
+    <script>
+        /**/
+        var email = '@(this.User.Identity.IsAuthenticated ? this.User.Claims.FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Email).Value : string.Empty)';
+        /**/
+        smartech('create', 'ADGMOT35CHFLVDHBJNIG50K969M2CP4N22UB4JPT4SRLRK91B7CG');
+        smartech('register', '7118711369bb8028c468d27da6066644');
+        smartech('identify', email);
+        smartech('dispatch', 1, {});
+    </script>
+
+</head>
+
+@*<body oncontextmenu="return false;">*@
+<body>
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKKD44N"
+                height="0" width="0"
+                style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    @{
+        var claims = this.User.Claims;
+        var userid = Guid.Empty.ToString();
+        if (this.User.Identity.IsAuthenticated && this.User.Identities.FirstOrDefault().AuthenticationType == Constants.ApplicationCookies)
+        {
+            userid = claims.FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Sid).Value;
+            this.ViewBag.IsAuthenticated = true;
+        }
+        else
+        {
+            this.ViewBag.IsAuthenticated = false;
+            userid = string.Empty;
+        }
+    }
+
+    <input type="hidden" name="_UserId_" value="@userid" />
+    <div data-sweetalert="" data-message="@this.TempData["Message"]" data-message-type="@this.TempData["MessageType"]"></div>
+    <div id="dvLoading"></div>
+    <!--Header-->
+    @this.Html.Partial("_ProductHeader")
+    @this.RenderBody()
+    <!--Footer-->
+    @this.Html.Partial("_ProductFooter")
+    <environment exclude="Development">
+        <script asp-append-version="true" src="~/resource/script.product.min.js"></script>
+        <script asp-append-version="true" src="~/js/jquery.cookie.js"></script>
+        <script asp-append-version="true" src="~/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+        <script asp-append-version="true" src="/js/jquery.typeahead.js"></script>
+        <script asp-append-version="true" type="text/javascript" src="~/js/bootstrap-slider.js"></script>
+    </environment>
+    <environment include="Development">
+        <script asp-append-version="true" src="~/assets/js/ie-emulation-modes-warning.js"></script>
+        <script asp-append-version="true" src="~/js/jquery.min.js"></script>
+
+        @*<script>window.jQuery || document.write('<script asp-append-version="true" src="~/assets/js/vendor/jquery.min.js"><\/script>')</script>*@
+        <script asp-append-version="true" src="~/js/bootstrap.min.js"></script>
+        <script asp-append-version="true" src="~/content/bower/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script asp-append-version="true" src="~/content/bower/select2/dist/js/select2.full.min.js"></script>
+        <script asp-append-version="true" src="~/content/plugins/iCheck/icheck.min.js"></script>
+        <script asp-append-version="true" src="~/content/plugins/waitme/waitMe.js"></script>
+        @*<script asp-append-version="true" src="~/js/jquery.imgpreload.js"></script>*@
+        <script asp-append-version="true" src="~/js/jquery.imageloader.js"></script>
+        <script asp-append-version="true" src="~/content/js/custom/jquery.format.js"></script>
+        <script asp-append-version="true" src="~/content/js/custom/jquery.global.js"></script>
+        <script asp-append-version="true" src="~/content/js/custom/jquery.constants.js"></script>
+        <script asp-append-version="true" src="~/content/js/custom/jquery.pluggin.js"></script>
+        <script asp-append-version="true" src="~/assets/js/vendor/holder.min.js"></script>
+        <script asp-append-version="true" src="~/assets/js/ie10-viewport-bug-workaround.js"></script>
+        <script asp-append-version="true" src="~/js/bootstrap-growl.min.js"></script>
+        <script asp-append-version="true" src="~/content/plugins/sweetalert2/dist/sweetalert2.js"></script>
+    @*<script asp-append-version="true" src="~/js/jssor.slider-26.3.0.min.js"></script>*@
+        <script asp-append-version="true" src="~/js/jquery.cookie.js"></script>
+        <script asp-append-version="true" src="~/views/frontend.user.js"></script>
+        <script asp-append-version="true" src="~/content/js/jquery.validate.js"></script>
+        <script asp-append-version="true" src="~/content/js/jquery.validate.unobtrusive.js"></script>
+        <script asp-append-version="true" src="~/assets/js/my-account-accordion.js"></script>
+        <script asp-append-version="true" src="~/assets/js/jquery.jscroll.js"></script>
+        <script asp-append-version="true" src="~/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+        <script asp-append-version="true" src="/js/jquery.typeahead.js"></script>
+        @*<script asp-append-version="true" src="~/views/jquery.currentdeals.js"></script>*@
+        <script asp-append-version="true" src="~/views/jquery.deals.js"></script>
+        <script asp-append-version="true" src="~/js/custom-scripts.js"></script>
+        @*<script asp-append-version="true" src="~/js/intlTelInput.js"></script>*@
+        <script asp-append-version="true" src="~/js/jquery.footer.js"></script>
+        <script asp-append-version="true" type="text/javascript" src="~/js/bootstrap-multiselect.js"></script>
+        <script asp-append-version="true" type="text/javascript" src="~/js/bootstrap-slider.js"></script>
+        <script asp-append-version="true" type="text/javascript" src="~/js/bootstrap-touch-slider.js"></script>
+    </environment>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
+    @RenderSection("scripts", false)
+
+    <script type="text/javascript">
+
+        function initSlickSlider() {
+            $(".regular").each(function () {
+                var $element = $(this);
+                var slideCount = $element.data('afterimages') || 1;
+                var $images = $element.find("img");
+                if ($images.length > slideCount) {
+                    $element.slick({
+                        dots: true,
+                        infinite: true,
+                        slidesToShow: 3,
+                        centerMode: true,
+                        autoplay: true,
+                        responsive: [
+                            {
+                                breakpoint: 1024,
+                                settings: {
+                                    slidesToShow: 3,
+                                    slidesToScroll: 3,
+                                    infinite: true,
+                                    dots: true
+                                }
+                            },
+                            {
+                                breakpoint: 600,
+                                settings: {
+                                    slidesToShow: 2,
+                                    slidesToScroll: 2
+                                }
+                            },
+                            {
+                                breakpoint: 480,
+                                settings: {
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1
+                                }
+                            }
+                        ]
+                    });
+
+                }
+            })
+        }
+
+        ////$(function () {
+        ////    $('#carouselFade').carousel();
+        ////    $.scrollSpeed(100, 800);
+        ////});
+    </script>
+
+    <script>
+        $(function () {
+            $('.NavCustomize button.navbar-toggle').on('click', function (e) {
+                $('.customizeNavCollapse').removeClass('collapse');
+            });
+            $('.close-btn.navbar-toggle img').on('click', function (e) {
+                $('.customizeNavCollapse').addClass('collapse');
+            });
+            $('.ClientCallClick').click(function () {
+                smartech('create', 'ADGMOT35CHFLVDHBJNIG50K969M2CP4N22UB4JPT4SRLRK91B7CG');
+                smartech('register', '7118711369bb8028c468d27da6066644');
+                smartech('identify', '@( this.User.Identity.IsAuthenticated?this.User.Claims.FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Email).Value:string.Empty)');
+                smartech('dispatch', 101, {
+                    "s^SOURCE": ""
+                });
+            })
+            $('[data-dismiss="modal"]').on("click", function () {
+                $(this).parents(".modal-content").find(".modal-body form")[0].reset()
+            })
+            $('input[type="text"]').keyup(function (evt) {
+
+                var cp_value = ucfirst($(this).val(), true);
+
+                $(this).val(cp_value);
+
+            });
+            function ucfirst(str, force) {
+                str = force ? str.toLowerCase() : str;
+                return str.replace(/(\b)([a-zA-Z])/,
+                    function (firstLetter) {
+                        return firstLetter.toUpperCase();
+                    });
+            }
+            $(document).on('click', '#loginModal .nav .pill', function (e) {
+                $('#loginModal .nav .pill').removeClass('active');
+                $(this).addClass('active');
+                $('#loginModal .tab-content .tab-pane').removeClass('active');
+                $($(this).data('target')).addClass('active');
+            });
+            $(document).on('focus', '#loginModal input', function (e) {
+                $(this).parent().addClass('focused');
+            });
+            $(document).on('blur', '#loginModal input', function (e) {
+                $(this).parent().removeClass('focused');
+            });
+            //Dropdown on hover start
+            $('.dropdown-list-icon').hover(function () {
+                $(this).find('.dropdown-deal-custom-style').stop(true, true).delay(200).fadeIn(500);
+            }, function () {
+                $(this).find('.dropdown-deal-custom-style').stop(true, true).delay(200).fadeOut(500);
+            });
+            $(document).on('click', '.custom_recent_dropdown .recent_dropdown_list', function (e) {
+                var url = $(this).data('url');
+                window.open(url, "_blank");
+            });
+            $('.dropdown-list-icon').hover(function () {
+                $(this).find('.dropdown-recent-view-custom-style').stop(true, true).delay(200).fadeIn(500);
+            }, function () {
+                $(this).find('.dropdown-recent-view-custom-style').stop(true, true).delay(200).fadeOut(500);
+            });
+             //Dropdown on hover end
+        });
+        function SignInSignUp(mode)
+        {
+            debugger;
+            var url = '/User/Welcome';
+            if (mode != null && mode != '')
+            {
+                $("#loginModal").modal();
+                $("#loginModal .modal-body").html(overlayTemplate);
+                $.get(url, { 'mode': mode }, function (html) {
+                    $("#loginModal .modal-body").html(html);
+                });
+            }
+        }
+        function checkForMobileView() {
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        $(document).on('click', '.interests_lists li,.interests_list .footer_list li', function (e) {
+            var value = $(this).data('value');
+            var text = $(this).data('text');
+            if (value !== null && value !== '') {
+                var data = {
+                    'startDate': null,
+                    'endDate': null,
+                    'adults': 1,
+                    'kids': 0,
+                    'infants': 0,
+                    'rooms': 1,
+                    'searchTerm': text,
+                    'showSearchTerm': false,
+                    'searchType': 5, //// Enums.SearchType
+                    'value': value
+                };
+                window.location = '/Search?' + $.param(data);
+            }
+        });
+    </script>
+    <script src='//tw.netcore.co.in/smartechclient.js'></script>
+
+    <script type="text/javascript">
+
+        var $zoho = $zoho || {}; $zoho.salesiq = $zoho.salesiq || { widgetcode: "bc6ca30849ff692a3a5a06eac263cecba24d8121e9e14a9b357e941a6217e07a2fbe8e5a7740cd8777d3337cc0acdd48", values: {}, ready: function () { } }; var d = document; s = d.createElement("script"); s.type = "text/javascript"; s.id = "zsiqscript"; s.defer = true; s.src = "https://salesiq.zoho.com/widget"; t = d.getElementsByTagName("script")[0]; t.parentNode.insertBefore(s, t); d.write("<div id='zsiqwidget'></div>");
+    </script>
+
+    <div class="requestCallback">
+        <!-- Modal -->
+        @Html.Partial("_RequestCallBack", new RequestCallBackViewModel
+        {
+            PageUrl = string.Format("{0}://{1}{2}{3}", Context.Request.Scheme, Context.Request.Host, Context.Request.Path, Context.Request.QueryString)
+        })
+    </div>
+
+    <div class="bookingPopup">
+        <!-- Modal -->
+        <div class="modal fade" id="dvLoginModal" role="dialog" style="background: rgba(0,0,0,0.2);">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <center>
+                            <img src="/images/luxury.png" alt="" title="">
+                        </center>
+                        <p class="fill-text2">Become a member for Free to view the Deal.</p>
+                        <p class="fill-text">
+                            Save up to 70% on luxury hotels and holidays.
+                        </p>
+                        @*<p class="fill-text">Gain access for FREE book our deals using just your email.</p>*@
+                        <form id="frmLogin" action="/user" method="post" novalidate="novalidate">
+
+                            <div class="form-group">
+                                <label>Email</label>
+
+                                @if (this.User.Identity.IsAuthenticated && (User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Actor) == null || User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Actor).Value == string.Empty))
+                                {
+                                    <input type="hidden" name="UserLoggedIn" value="" />
+                                }
+                                <input type="hidden" name="ReturnUrl" value="" />
+                                <input type="hidden" value="xyz" data-val="true" data-val-length="The field Password must be a string with a maximum length of 50." data-val-length-max="50" data-val-required="The Password field is required." id="Password" name="Password" maxlength="50">
+                                <input type="email" placeholder="Email" style="margin-bottom:10px" class="form-control" data-val="true" data-val-email="Email Address is not valid" data-val-length="The field Email Id must be a string with a maximum length of 50." data-val-length-max="50" data-val-required="The Email Id field is required." id="Email" name="Email" value="" maxlength="50">
+                                <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                                <input type="text" placeholder="First Name" style="margin-bottom:10px" class="form-control hide" data-val="true" data-val-length="The field First Name must be a string with a maximum length of 50." data-val-length-max="50" id="FirstName" name="FirstName" value="" maxlength="50">
+                                <span class="field-validation-valid" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
+                                <input type="text" placeholder="Last Name" style="margin-bottom:10px" class="form-control hide" data-val="true" data-val-length="The field Last Name must be a string with a maximum length of 50." data-val-length-max="50" id="LastName" name="LastName" value="" maxlength="50">
+                                <span class="field-validation-valid" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
+                                <input type="text" placeholder="Mobile Number" style="margin-bottom:10px" class="form-control hide" data-val="true" data-val-length="The field Mobile Number must be a string with a maximum length of 10." data-val-length-max="10" id="MobileNo" name="MobileNo" value="" maxlength="10">
+                                <span class="field-validation-valid" data-valmsg-for="MobileNo" data-valmsg-replace="true"></span>
+                            </div>
+
+                            <div class="callbtn">
+                                <button type="submit" class="btn btn-default">View Deal</button>
+                            </div>
+                        </form>
+                        @*<form>
+                                <div class="form-group">
+                                    <label for="email">Name</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Name" name="email">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Phone">Phone<sup>*</sup></label>
+                                    <input type="" class="form-control" id="phone" placeholder="Phone" name="email">
+                                </div>
+
+                                <div class="callbtn">
+                                    <button type="submit" class="btn btn-default">Book Now</button>
+                                </div>
+                            </form>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalThankYou" role="dialog">
+            <div class="modal-dialog" style="max-width:410px;">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+
+                    <div class="modal-body">
+                        <center>
+                            <img src="/images/luxury.png" alt="" title="" style="margin-top:20px" />
+                        </center>
+                        <p class="fill-text2 fill-text3">Thank You.</p>
+                        <p class="fill-text">Our travel specialists will get in touch with you shortly</p>
+
+                        <div class="callbtn">
+                            <button type="button" data-dismiss="modal" class="btn btn-default">Ok</button>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="loginModal" class="modal fade sign-in-modal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><img src="~/images/Close_Icon.svg" alt="close_icon" style="width:24px; height:24px;" /></button>
+                    <h4 class="modal-title">Hello There!</h4>
+                    @*<div style="height: 4px;border: none; width:75px; background-color: #FCA32B;margin:0 auto;"></div>*@
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return sParameterName[1] === undefined ? true : sParameterName[1];
+                }
+            }
+        };
+        var param = getUrlParameter('ThankYoupopup');
+        if (param) {
+            window.history.pushState('', '', window.location.pathname)
+            setTimeout(function () { $("#modalThankYou").modal('show'); }, 1000);
+        }
+
+
+    </script>
+
+
+    <!-- Facebook Pixel Code -->
+    @*<script>
+
+            !function (f, b, e, v, n, t, s) {
+                if (f.fbq) return; n = f.fbq = function () {
+                    n.callMethod ?
+
+                        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                };
+
+                if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+
+                n.queue = []; t = b.createElement; t.async = !0;
+
+                t.src = v; s = b.getElementsByTagName[0];
+
+                s.parentNode.insertBefore(t, s)
+            }(window, document, 'script',
+
+                'https://connect.facebook.net/en_US/fbevents.js');
+
+            fbq('init', '1649551705162332');
+
+            fbq('track', 'PageView');
+        </script>
+
+        <noscript>
+            <img height="1" width="1" style="display:none"
+                 src="https://www.facebook.com/tr?id=1649551705162332&ev=PageView&noscript=1" />
+        </noscript>*@
+
+    <!-- End Facebook Pixel Code -->
+</body>
+</html>

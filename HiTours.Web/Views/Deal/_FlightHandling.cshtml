@@ -1,0 +1,52 @@
+﻿@using HtmlHelpers.BeginCollectionItemCore
+@model DealsFlightViewModel
+@try
+{
+        <div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 flight-container no-padding-left-right hidden">
+                <div class="flights-details row">
+                    <div class="loc col-sm-5 col-md-5 col-lg-5">
+                        <div class="col-xs-5 col-sm-5 col-md-5 leftbox">
+                            <h1 class="origin-port">@Model.Origin</h1>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 padding-left-right-10">
+                            <span><img src="~/images/Return_Icon.svg" alt="return Icon" class="return" /></span>
+                        </div>
+                        <div class="col-xs-5 col-sm-5 col-md-5 rightbox">
+                            <h1>@Model.Destination</h1>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 leftbox">
+                            <h2 class="origin-location">@Model.OriginName</h2>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 rightbox">
+                            <h2>@Model.DestinationName</h2>
+                        </div>
+                    </div>
+                    <div class="journey-date col-sm-5 col-md-5 col-lg-5">
+                        <div class="col-xs-6 col-sm-6 col-md-6 leftbox">
+                            <h3>ONWARD JOURNEY</h3>
+                            <h4 class="onward_date">@DateTime.Now.ToString("dd MMMM, yyyy")</h4>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 rightbox">
+                            <h3>RETURN JOURNEY</h3>
+                            <h4 class="return_date">@DateTime.Now.AddDays(5).ToString("dd MMMM, yyyy")</h4>
+                        </div>
+                    </div>
+                    <div class="passengers col-sm-2 col-md-2 col-lg-2">
+                        <span class="title">TRAVELERS</span><span class="quantity"><span class="number">7</span>&nbsp;<img class="number-hint" src="~/images/Info_Icon.svg" alt="Info Icon"></span>
+                    </div>
+                </div>
+                
+                <div id="flightSearchResults"></div>
+            </div>
+        </div>
+}
+catch (Exception ex)
+{
+    string error = ex.Message;
+}
+
+
+
+
+

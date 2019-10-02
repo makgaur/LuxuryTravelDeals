@@ -1,0 +1,151 @@
+﻿@model  Passengers
+@using HtmlHelpers.BeginCollectionItemCore
+<div class="segments-item section-row">
+    @using (this.Html.BeginCollectionItem("Passenger"))
+    {
+        <div class="form-group col-sm-3">
+            <label asp-for="Title" class="control-label"></label>
+            <select asp-for="Title" class="form-control" asp-items="Html.EnumSelectList<Salutation>(true,false)"></select>
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="FirstName" class="control-label"></label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="LastName" class="control-label"></label>
+            <input asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="PaxType" class="control-label"></label>
+            <input asp-for="PaxType" class="form-control" />
+            <span asp-validation-for="PaxType" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="DateOfBirth" class="control-label"></label>
+            <input asp-for="DateOfBirth" type="text" class="form-control dob" />
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="Gender" class="control-label"></label>
+            <select asp-for="Gender" class="form-control" asp-items="Html.GetEnumSelectList<Gender>()"></select>
+            <span asp-validation-for="Gender" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="PassportNo" class="control-label"></label>
+            <input asp-for="PassportNo" class="form-control" />
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="PassportExpiry" class="control-label"></label>
+            <input asp-for="PassportExpiry" type="text" class="form-control dob" />
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="AddressLine1" class="control-label"></label>
+            <input asp-for="AddressLine1" class="form-control" />
+            <span asp-validation-for="AddressLine1" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="AddressLine2" class="control-label"></label>
+            <input asp-for="AddressLine2" class="form-control" />
+        </div>
+
+        @if (Model.Fare != null)
+        {
+            <input type="hidden" asp-for="Fare.Currency" />
+            <input type="hidden" asp-for="Fare.BaseFare" />
+            <input type="hidden" asp-for="Fare.Tax" />
+            <input type="hidden" asp-for="Fare.YQTax" />
+            <input type="hidden" asp-for="Fare.AdditionalTxnFeePub" />
+            <input type="hidden" asp-for="Fare.AdditionalTxnFeeOfrd" />
+            @*<input type="hidden" asp-for="Fare.OtherCharges" />
+            <input type="hidden" asp-for="Fare.Discount" />
+            <input type="hidden" asp-for="Fare.PublishedFare" />
+            <input type="hidden" asp-for="Fare.OfferedFare" />
+            <input type="hidden" asp-for="Fare.TdsOnCommission" />
+            <input type="hidden" asp-for="Fare.TdsOnPLB" />
+            <input type="hidden" asp-for="Fare.TdsOnIncentive" />
+            <input type="hidden" asp-for="Fare.ServiceFee" />*@
+        }
+
+        @if (Model.FareBreakdown != null)
+        {
+            foreach (var fareBreakdown in Model.FareBreakdown)
+            {
+                @Html.Partial("_FareBreakdown", fareBreakdown)
+            }
+
+
+        }
+
+        <div class="form-group col-sm-3">
+            <label asp-for="City" class="control-label"></label>
+            <input asp-for="City" class="form-control" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="CountryCode" class="control-label"></label>
+            <input asp-for="CountryCode" class="form-control" />
+            <span asp-validation-for="CountryCode" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="CountryName" class="control-label"></label>
+            <input asp-for="CountryName" class="form-control" />
+            <span asp-validation-for="CountryName" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="ContactNo" class="control-label"></label>
+            <input asp-for="ContactNo" class="form-control" maxlength="10" />
+            <span asp-validation-for="ContactNo" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="IsLeadPax"></label>
+            <div class="form-control ">
+                <div class="radiobtn-group">
+                    <label class="">Yes</label>
+                    @this.Html.RadioButtonFor(model => model.IsLeadPax, "true")
+                </div>
+                <div class="radiobtn-group">
+                    <label class="">No</label>
+                    @this.Html.RadioButtonFor(model => model.IsLeadPax, "false")
+                </div>
+            </div>
+            <span asp-validation-for="IsLeadPax" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-sm-3">
+            <label asp-for="GSTCompanyAddress" class="control-label"></label>
+            <input asp-for="GSTCompanyAddress" class="form-control" />
+            <span asp-validation-for="GSTCompanyAddress" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="GSTCompanyContactNumber" class="control-label"></label>
+            <input asp-for="GSTCompanyContactNumber" class="form-control numericOnly" />
+            <span asp-validation-for="GSTCompanyContactNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="GSTCompanyName" class="control-label"></label>
+            <input asp-for="GSTCompanyName" class="form-control" />
+            <span asp-validation-for="GSTCompanyName" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="GSTNumber" class="control-label"></label>
+            <input asp-for="GSTNumber" class="form-control" />
+            <span asp-validation-for="GSTNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="GSTCompanyEmail" class="control-label"></label>
+            <input asp-for="GSTCompanyEmail" class="form-control" />
+            <span asp-validation-for="GSTCompanyEmail" class="text-danger"></span>
+        </div>
+
+
+
+
+    }
+</div>

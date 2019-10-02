@@ -1,0 +1,66 @@
+﻿@model IEnumerable<RecentViewModel>
+@if (Model != null && Model.Count() > 0)
+{
+    <div class="container">
+        <div class="recentlyViewedSales">
+            <h3 class="recently-viewed__text">You recently viewed</h3>
+            @foreach (var item in Model.Take(5))
+            {
+                var redirectController = item.Type == Enums.CurrentDealType.Package ? Constants.Package : Constants.Deal;
+                var ispackage = item.Type == Enums.CurrentDealType.Package;
+                <div class="recentlyViewedSale recently-viewed__sale">
+                    <a href="/@(redirectController)/details/@(ispackage?item.UrlTitle.ToLower() : item.Id + "/" + SpecialChars.Remove(item.PackageName))">
+                        <img class="recently-viewed__img" src="/packages/@item.ImageName" width="105" height="73" alt="recent-view-image">
+                        <p class="recently-viewed__title"> @item.PackageName</p>
+                    </a>
+                </div>
+            }
+        </div>
+        @*<div class="recently-view-box">
+                <div class="recently">Recently Viewed</div>
+                <div class="view-hotel">
+                    <div class="set-paddind">
+                        <section class="regular slider" data-afterimages="3">
+                            @foreach (var item in Model)
+                    {
+                                <div class="deal-recent-view-box-slider">
+                                    <a href="/deal/details/@item.Id/@SpecialChars.Remove(item.PackageName)">
+                                        <div class="hotel-img">
+
+                                            <img src="/packages/@item.ImageName" class="img-responsive"
+                                                 auto-resize="true" width="300" height="193" mode="Stretch" asp-append-version="true" is-src="true" />
+                                            <div class="hotel-text"><h5>@item.HotelName</h5><p>@item.CityName</p></div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            }
+                        </section>
+                    </div>
+                </div>
+
+                <div class="mobile-slider-box">
+                    <div class="view-hotel">
+                        <div class="set-paddind">
+                            <section class="regular slider" data-afterimages="1">
+                                @foreach (var item in Model)
+                    {
+                                    <div class="deal-recent-view-box-slider">
+                                        <a href="/deal/details/@item.Id/@SpecialChars.Remove(item.PackageName)">
+                                            <div class="hotel-img">
+
+                                                <img src="/packages/@item.ImageName" class="img-responsive"
+                                                     auto-resize="true" width="300" height="193" mode="Stretch" asp-append-version="true" is-src="true" />
+                                                <div class="hotel-text"><h5>@item.HotelName</h5><p>@item.CityName</p></div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                            }
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+}

@@ -1,0 +1,55 @@
+﻿@model DealVisaViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+<tr id="visa_tr">
+    @using (this.Html.BeginCollectionItem("model"))
+    {
+    <td>
+        <div class="field-col">
+            <select asp-for="CountryId" selected="@Model.CountryId" class="form-control" id="CountryId" asp-items="Model.CountriesItems"
+                    select2-value="@Model.CountryId" select2-Url="/selectlist/GetCountryList" onchange="GetVisaDetail(this)"></select>
+            <span asp-validation-for="CountryId"></span>
+        </div>
+    </td>
+    <td>
+        <div class="field-col">
+            <select asp-for="VendorId" selected="@Model.VendorId" class="form-control" id="VendorId_@Model.RowCount" asp-items="Model.VendorItems"
+                    select2-value="@Model.VendorId" select2-Url="/selectlist/GetVendorForVisa"></select>
+            <span asp-validation-for="VendorId"></span>
+        </div>
+    </td>
+    <td>
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="UpdatedBy" />
+        <input type="hidden" asp-for="UpdatedDate" />
+        <input type="hidden" asp-for="CreatedBy" />
+        <input type="hidden" asp-for="CreatedDate" />
+        <input type="hidden" asp-for="PackageId" />
+        <input type="hidden" asp-for="IsActive" />
+        <input type="hidden" asp-for="DocumentsRequired" />
+        <input type="hidden" asp-for="GeneralPolicy" />
+        <input type="hidden" asp-for="Markup" />
+        <input type="hidden" asp-for="PhotoSpecification" />
+        <input type="hidden" asp-for="ProcessingTime" />
+        <input type="hidden" asp-for="IsDeleted" class="delete_row" />
+        <div class="field-col">
+            <input class="form-control disabled" asp-for="AdultPrice" placeholder="Adult Price" readonly="readonly" />
+            <span asp-validation-for="AdultPrice"></span>
+        </div>
+    </td>
+    <td>
+        <div class="field-col">
+            <input class="form-control" asp-for="ChildPrice" placeholder="Child Price" readonly="readonly" />
+            <span asp-validation-for="ChildPrice"></span>
+        </div>
+    </td>
+    <td>
+        <div class="field-col">
+            <input class="form-control" asp-for="BufferDays" placeholder="Buffer Days" readonly="readonly" />
+            <span asp-validation-for="BufferDays"></span>
+        </div>
+    </td>
+    <td valign="middle">
+        <a class="delete-item-row btn btn-block btn-danger" href="javaScript:void(0)"><i class="fa fa-trash-o"></i></a>
+    </td>
+    }
+</tr>

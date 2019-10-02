@@ -1,0 +1,38 @@
+﻿@model DealsItineraryViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+@using (this.Html.BeginCollectionItem("DealsItineraries"))
+{
+
+
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="NightId" />
+    <input type="hidden" asp-for="Nights" />
+    <input type="hidden" asp-for="Days" />
+    <input type="hidden" asp-for="Title" />
+    <input type="hidden" asp-for="StartDay" />
+    <input type="hidden" asp-for="StartDay" />
+    <input type="hidden" asp-for="UpdatedBy" />
+    <input type="hidden" asp-for="UpdatedDate" />
+    <input type="hidden" asp-for="CreatedBy" />
+    <input type="hidden" asp-for="CreatedDate" />
+
+    <div class="form-group col-md-12">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="tinymceTextarea" placeholder="Place some text here"
+                  style="width: 100%; height: 50px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+        <span asp-validation-for="Description"></span>
+    </div>
+
+    <div class="row"></div>
+    <div class="panel-group" id="sub-accordion">
+        @for (int i = 0; i < Model.InclusionModels.Count; i++)
+        {
+            @for (int k = 0; k < Model.InclusionModels[i].AddOnViewModels.Count; k++)
+            {
+               @Html.Partial("_AddAddOnsContent", Model.InclusionModels[i].AddOnViewModels[k])
+            }
+
+        }
+    </div>
+
+}

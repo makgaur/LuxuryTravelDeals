@@ -1,0 +1,18 @@
+﻿@model TourPackageTravelStyleViewModel
+@using HtmlHelpers.BeginCollectionItemCore
+
+@using HtmlHelpers.BeginCollectionItemCore
+@{
+    var newguid = Guid.NewGuid().ToString();
+}
+@if (this.Layout == null)
+{
+        @using (this.Html.BeginCollectionItem("TourPackageTravelStyle"))
+        {
+
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="TourPackageId" />
+            <input type="hidden" asp-for="TravelStyleId" />
+        }
+
+}

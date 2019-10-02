@@ -1,0 +1,29 @@
+﻿@{
+    var routeData = this.ViewContext.RouteData.Values;
+    var nextView = this.TempData["nextview"] != null ? this.TempData["nextview"].ToString() : "#package-inventory";
+}
+<div class="nav-tabs-custom">
+    <input type="hidden" name="tabs" data-default="@nextView" value="@nextView" />
+    <form class="hide">
+        @foreach (var key in routeData.Keys)
+        {
+            <input type="hidden" name="@key" value="@(routeData[key])" />
+        }
+        <input type="hidden" name="Id" value="@(this.ViewBag.TourPackageId)" />
+        <input type="hidden" name="tourpackagetype" value="@this.ViewBag.TourPackageType" />
+        <input type="hidden" name="RowIdentifier" value="" />
+    </form>
+    <ul class="nav nav-tabs pull-right">
+        <li class=""><a href="#add-inventory" class="replaceAdd" data-toggle="tab" data-href="@Url.Action("AddPackageRoomInventory","Inventory",new {@area="Admin", @packageId=this.ViewBag.TourPackageId })"><i class="fa fa-plus"></i> Add Inventory</a></li>
+        <li class=""><a href="#view-inventory" class="replaceView" data-toggle="tab" data-href="@Url.Action("PackageInventoryGridView","Inventory",new {@area="Admin", @packageId=this.ViewBag.TourPackageId })"><i class="fa fa-list"></i> View List</a></li>
+    </ul>
+    <div class="tab-content hotel-tabs">
+        <div class="tab-pane" id="add-inventory"></div>
+        <div class="tab-pane" id="view-inventory"></div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.replaceView').click();
+    });
+</script>

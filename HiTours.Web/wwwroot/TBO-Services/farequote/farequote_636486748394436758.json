@@ -1,0 +1,264 @@
+//-- farequote Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "b3a35706-f724-4c31-ba07-a82c0ba8cbd9",
+  "TraceId": "498da11a-2dc4-4ae3-9ac6-d6f2b7235edf",
+  "ResultIndex": "OB11",
+  "IsLCC": false
+}
+//-- farequote Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 0,
+      "ErrorMessage": ""
+    },
+    "IsPriceChanged": false,
+    "ResponseStatus": 1,
+    "Results": {
+      "ResultIndex": "OB11",
+      "Source": 4,
+      "IsLCC": false,
+      "IsRefundable": false,
+      "GSTAllowed": true,
+      "IsHoldAllowed": true,
+      "AirlineRemark": "this is 9w.",
+      "Fare": {
+        "Currency": "INR",
+        "BaseFare": 35180,
+        "Tax": 12480,
+        "TaxBreakup": [
+          {
+            "key": "YQTax",
+            "value": 7200
+          },
+          {
+            "key": "YR",
+            "value": 1250
+          },
+          {
+            "key": "PSF",
+            "value": 0
+          },
+          {
+            "key": "UDF",
+            "value": 0
+          },
+          {
+            "key": "JNTax",
+            "value": 0
+          },
+          {
+            "key": "INTax",
+            "value": 0
+          },
+          {
+            "key": "TransactionFee",
+            "value": 0
+          },
+          {
+            "key": "OtherTaxes",
+            "value": 0
+          }
+        ],
+        "YQTax": 7200,
+        "AdditionalTxnFeeOfrd": 0,
+        "AdditionalTxnFeePub": 0,
+        "PGCharge": 0,
+        "OtherCharges": 600,
+        "ChargeBU": [
+          {
+            "key": "TBOMARKUP",
+            "value": 0
+          },
+          {
+            "key": "CONVENIENCECHARGE",
+            "value": 0
+          },
+          {
+            "key": "OTHERCHARGE",
+            "value": 600
+          }
+        ],
+        "Discount": 0,
+        "PublishedFare": 48260,
+        "CommissionEarned": 276.42,
+        "PLBEarned": 0,
+        "IncentiveEarned": 0,
+        "OfferedFare": 47983.58,
+        "TdsOnCommission": 55.28,
+        "TdsOnPLB": 0,
+        "TdsOnIncentive": 0,
+        "ServiceFee": 0,
+        "TotalBaggageCharges": 0,
+        "TotalMealCharges": 0,
+        "TotalSeatCharges": 0,
+        "TotalSpecialServiceCharges": 0
+      },
+      "FareBreakdown": [
+        {
+          "Currency": "INR",
+          "PassengerType": 1,
+          "PassengerCount": 2,
+          "BaseFare": 16260,
+          "Tax": 6042,
+          "YQTax": 3600,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0
+        },
+        {
+          "Currency": "INR",
+          "PassengerType": 2,
+          "PassengerCount": 2,
+          "BaseFare": 16260,
+          "Tax": 6042,
+          "YQTax": 3600,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0
+        },
+        {
+          "Currency": "INR",
+          "PassengerType": 3,
+          "PassengerCount": 1,
+          "BaseFare": 2660,
+          "Tax": 396,
+          "YQTax": 0,
+          "AdditionalTxnFeeOfrd": 0,
+          "AdditionalTxnFeePub": 0,
+          "PGCharge": 0
+        }
+      ],
+      "Segments": [
+        [
+          {
+            "Baggage": "15 KG",
+            "CabinBaggage": null,
+            "TripIndicator": 1,
+            "SegmentIndicator": 1,
+            "Airline": {
+              "AirlineCode": "9W",
+              "AirlineName": "Jet Airways",
+              "FlightNumber": "316",
+              "FareClass": "K",
+              "OperatingCarrier": "9W"
+            },
+            "Origin": {
+              "Airport": {
+                "AirportCode": "DEL",
+                "AirportName": "Indira Gandhi Airport",
+                "Terminal": "3",
+                "CityCode": "DEL",
+                "CityName": "Delhi",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "DepTime": "2017-12-13T11:30:00"
+            },
+            "Destination": {
+              "Airport": {
+                "AirportCode": "BOM",
+                "AirportName": "Mumbai",
+                "Terminal": "2",
+                "CityCode": "BOM",
+                "CityName": "Mumbai",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "ArrTime": "2017-12-13T13:40:00"
+            },
+            "AccumulatedDuration": 130,
+            "Duration": 130,
+            "GroundTime": 0,
+            "Mile": 0,
+            "StopOver": false,
+            "StopPoint": "",
+            "StopPointArrivalTime": "2017-12-13T13:40:00",
+            "StopPointDepartureTime": "2017-12-13T11:30:00",
+            "Craft": "738",
+            "Remark": null,
+            "IsETicketEligible": true,
+            "FlightStatus": "Confirmed",
+            "Status": ""
+          }
+        ],
+        [
+          {
+            "Baggage": "15 KG",
+            "CabinBaggage": null,
+            "TripIndicator": 2,
+            "SegmentIndicator": 1,
+            "Airline": {
+              "AirlineCode": "9W",
+              "AirlineName": "Jet Airways",
+              "FlightNumber": "839",
+              "FareClass": "W",
+              "OperatingCarrier": "9W"
+            },
+            "Origin": {
+              "Airport": {
+                "AirportCode": "BOM",
+                "AirportName": "Mumbai",
+                "Terminal": "2",
+                "CityCode": "BOM",
+                "CityName": "Mumbai",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "DepTime": "2017-12-14T09:00:00"
+            },
+            "Destination": {
+              "Airport": {
+                "AirportCode": "DEL",
+                "AirportName": "Indira Gandhi Airport",
+                "Terminal": "3",
+                "CityCode": "DEL",
+                "CityName": "Delhi",
+                "CountryCode": "IN",
+                "CountryName": "India"
+              },
+              "ArrTime": "2017-12-14T11:10:00"
+            },
+            "AccumulatedDuration": 130,
+            "Duration": 130,
+            "GroundTime": 0,
+            "Mile": 0,
+            "StopOver": false,
+            "StopPoint": "",
+            "StopPointArrivalTime": "2017-12-14T11:10:00",
+            "StopPointDepartureTime": "2017-12-14T09:00:00",
+            "Craft": "739",
+            "Remark": null,
+            "IsETicketEligible": true,
+            "FlightStatus": "Confirmed",
+            "Status": ""
+          }
+        ]
+      ],
+      "LastTicketDate": "12DEC17",
+      "TicketAdvisory": "TICKETS ARE NON-REFUNDABLE \nLAST TKT DTE 12DEC17  - SEE ADV PURCHASE \n",
+      "FareRules": [
+        {
+          "Origin": "DEL",
+          "Destination": "BOM",
+          "Airline": "9W",
+          "FareBasisCode": "K2IPO",
+          "FareRuleDetail": "",
+          "FareRestriction": "Y"
+        },
+        {
+          "Origin": "BOM",
+          "Destination": "DEL",
+          "Airline": "9W",
+          "FareBasisCode": "W2IPOA",
+          "FareRuleDetail": "",
+          "FareRestriction": "Y"
+        }
+      ],
+      "AirlineCode": "9W",
+      "ValidatingAirline": "9W"
+    },
+    "TraceId": "498da11a-2dc4-4ae3-9ac6-d6f2b7235edf"
+  }
+}

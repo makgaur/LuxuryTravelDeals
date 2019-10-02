@@ -1,0 +1,233 @@
+﻿@using System.Globalization
+@model DealCalendarViewModel
+
+@if (Model.DealsRatePlanViewModels.Count > 0)
+{
+    DateTime minDate = Model.DealsRatePlanViewModels.Select(x => x.ValidFrom).Min();
+    DateTime maxDate = Model.DealsRatePlanViewModels.Select(x => x.ValidTo).Max();
+    minDate = minDate < DateTime.Now ? DateTime.Now : minDate;
+    var calendarMonths = GetCalendarMonths(minDate, maxDate);
+    var culture = new CultureInfo("en-IN");
+    var dateTimeFormat = culture.DateTimeFormat;
+    string[] formats = { "d/M/yyyy hh:mm", "dd/MM/yyyy hh:mm", "dd/M/yyyy hh:mm" };
+    var startDays = 0;
+    var index = 0;
+    var daySequence = 1;
+    int calDateIndex = 1;
+    <div class="calender-mobile-container product-calendar">
+        @*<div class="hidden-sm hidden-md hidden-lg col-xs-12 calendar-xs-head">
+            <span class="back-nav"><img src="/images/left_arrow.svg" alt="left-arrow"></span>
+            <span class="banner-xs-title-container">
+                <span class="banner-xs-title">CHECK IN – CHECK OUT</span>
+            </span>
+        </div>*@
+        <div class="sub-header">
+            <span>SELECT BOOKING DATES (CHECK IN – CHECK OUT)</span>
+            <hr style="width:100%;height:1px;margin:5px 0;"/>
+        </div>
+        <div class="calendar" data-calendar-type="product">
+            <input type="hidden" asp-for="DealType" class="deal-type" />
+            <input type="hidden" asp-for="MinDays" class="min-days" />
+
+            @foreach (var month in calendarMonths)
+            {
+                index++;
+                <div class="month">
+                    <div class="month-name-container">
+                        <span class="month-name">@month.MonthName @month.Year</span>
+                    </div>
+
+                    <div class="weekHeader">
+                        @foreach (var item in dateTimeFormat.AbbreviatedDayNames)
+                        {
+                            string dayOfweek = item.Substring(0, 1);
+                            <div class="weekDay @(dayOfweek == "S" || dayOfweek == "F" ? "color-calender-ascent" : string.Empty)">@dayOfweek</div>
+                        }
+                    </div>
+                    @for (int week = 1; week <= month.TotalWeeks; week++)
+                    {
+                        <div class="week">
+                            @for (int indexDays = (week - 1) * 7; indexDays < (week * 7); indexDays++)
+                            {
+                                var day = (indexDays + 1) - startDays;
+                                if (day == 31)
+                                {
+
+                                }
+                                //var date = new DateTime(month.Year, month.Month, day);
+                                var date = DateTime.ParseExact(day + "/" + month.Month + "/" + month.Year + " " + "00:00", formats, culture);
+                                bool hidePrice = !(Model.DealsRatePlanViewModels.Any(x => x.ValidFrom <= date && x.ValidTo >= date));
+                                if (date < DateTime.Now.AddDays(Model.BufferDays))
+                                {
+                                    hidePrice = true;
+                                }
+
+                                if (Model.DealsRatePlanViewModels.SelectMany(x => x.DealInventoryModels.Where(y => y.Date.Date == date.Date)).All(x => x.BlackOut) || Model.DealsRatePlanViewModels.SelectMany(x => x.DealInventoryModels.Where(y => y.Date.Date == date.Date)).All(x => x.Inventory == 0))
+                                {
+                                    hidePrice = true;
+                                }
+
+                                //var hidePrice = !(date <= Model.ValidityTo && date >= Model.ValidityFrom);
+                                var disabled = date < DateTime.UtcNow;
+
+                                var classes = new List<string> { "calendar-day" };
+
+                                if (hidePrice)
+                                {
+                                    classes = new List<string> { "calendar-day", "notAvailable" };
+                                }
+                                if (indexDays >= ((int)month.DayOfWeek))
+                                {
+                                    if (day == 1)
+                                    {
+                                        classes.Add("month-start");
+                                    }
+                                    if (day == month.TotalDays)
+                                    {
+                                        classes.Add("month-end");
+                                    }
+                                    if ((date.DayOfWeek == DayOfWeek.Saturday) || (date.DayOfWeek == DayOfWeek.Sunday))
+                                    {
+                                        classes.Add("weekend");
+                                    }
+                                    if (Model.SearchStartDate != DateTime.MinValue && Model.SearchEndDate != DateTime.MinValue)
+                                    {
+                                        DateTime searchStartDate = Convert.ToDateTime(Model.SearchStartDate);
+                                        DateTime searchEndDate = Convert.ToDateTime(Model.SearchEndDate);
+                                        if ((searchEndDate - searchStartDate).TotalDays >= Model.MinDays)
+                                        {
+                                            if (searchStartDate == date)
+                                            {
+                                                classes.Add("selected-start");
+                                            }
+                                            if (searchEndDate == date)
+                                            {
+                                                classes.Add("selected-end");
+                                            }
+                                            if (date > searchStartDate && date < searchEndDate)
+                                            {
+                                                classes.Add("hover-mid");
+                                            }
+                                        }
+
+                                    }
+                                    <div class="@(string.Join(" ", classes))"
+                                         data-cal-date-index="@calDateIndex"
+                                         data-date="@date.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)"
+                                         data-month="@date.Month"
+                                         data-year="@date.Year"
+                                         data-day="@date.Day"
+                                         data-price="@Model.DealsRatePlanViewModels.Where(x => x.ValidFrom <= date && x.ValidTo >= date).Select(x => x.Price).FirstOrDefault()"
+                                         data-month-name="@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(date.Month)">
+                                        <span>@(day)</span>
+                                    </div>
+                                    calDateIndex++;
+                                    daySequence++;
+                                }
+                                else
+                                {
+
+                                    <div class="padDay">&nbsp;</div>
+                                    startDays++;
+                                }
+                                if (day == month.TotalDays)
+                                {
+                                    startDays = 0;
+                                    break;
+                                }
+
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+}
+
+@functions{
+
+    public static int Weeks(int year, int month)
+    {
+        DateTime startDate = new DateTime(year, month, 1);
+        DayOfWeek wkstart = startDate.DayOfWeek;
+
+        int firstwkday = (int)startDate.DayOfWeek;
+        int otherwkday = (int)wkstart;
+
+        int offset = ((otherwkday + 7) - firstwkday) % 7;
+
+        double weeks = (double)(DateTime.DaysInMonth(year, month) - offset) / 7d;
+
+        return (int)Math.Ceiling(weeks);
+    }
+
+    public static IEnumerable<calendarMonths> GetCalendarMonths(DateTime startDate, DateTime endDate)
+    {
+        var monthList = new List<calendarMonths>();
+
+        DateTime iterator;
+        DateTime limit;
+
+        if (endDate > startDate)
+        {
+            iterator = new DateTime(startDate.Year, startDate.Month, 1);
+            limit = endDate;
+        }
+        else
+        {
+            iterator = new DateTime(endDate.Year, endDate.Month, 1);
+            limit = startDate;
+        }
+
+        while (iterator <= limit)
+        {
+
+            var viewModel = new calendarMonths();
+            viewModel.Year = iterator.Year;
+            viewModel.Month = iterator.Month;
+            viewModel.MonthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(iterator.Month);
+            viewModel.TotalDays = CultureInfo.CurrentCulture.Calendar.GetDaysInMonth(iterator.Year, iterator.Month);
+
+            DateTime monthStartDate = new DateTime(iterator.Year, iterator.Month, 1);
+            DayOfWeek wkstart = monthStartDate.DayOfWeek;
+            viewModel.DayOfWeek = monthStartDate.DayOfWeek;
+
+            int firstwkday = (int)monthStartDate.DayOfWeek;
+            int otherwkday = (int)wkstart;
+            int offset = ((otherwkday + 7) - firstwkday) % 7;
+            var weeks = (viewModel.TotalDays + (int)viewModel.DayOfWeek) / 7.00M;
+            ////double weeks = (double)(DateTime.DaysInMonth(iterator.Year, iterator.Month) - offset) / 7d;
+            viewModel.TotalWeeks = (int)Math.Ceiling(weeks);
+            monthList.Add(viewModel);
+
+            iterator = iterator.AddMonths(1);
+        }
+
+        return monthList;
+    }
+
+    public static string GetAbbreviatedFromFullName(string fullname)
+    {
+        string[] names = DateTimeFormatInfo.CurrentInfo.MonthNames;
+        foreach (var item in names)
+        {
+            if (item == fullname)
+            {
+                return DateTime.ParseExact(item, "MMMM", CultureInfo.CurrentCulture).ToString("MMM");
+            }
+        }
+        return string.Empty;
+    }
+
+    public class calendarMonths
+    {
+        public int Year { get; set; }
+        public int Month { get; set; }
+        public string MonthName { get; set; }
+        public int TotalWeeks { get; set; }
+        public DayOfWeek DayOfWeek { get; set; }
+        public int TotalDays { get; set; }
+    }
+}

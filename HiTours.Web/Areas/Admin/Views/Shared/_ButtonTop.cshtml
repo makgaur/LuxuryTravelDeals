@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Button>
+@{
+    var list = this.Model;
+    var grouped = this.Model.Where(x => x.Group && x.Visible);
+    var unGrouped = this.Model.Where(x => !x.Group && x.Visible);
+}
+
+@foreach (var item in unGrouped)
+{
+    var attribute = item.Type.ToButtonAttribute();
+    <a id="anchor@(item.Type)" href="@item.RedirectUrl" class="form-control btn-form-control btn-form-control-sm btn-has-count @((string.IsNullOrEmpty(item.Class) ? " btn-primary" : item.Class))">
+        <i class="@(attribute.Icon)"></i>&nbsp;
+        @(string.IsNullOrEmpty(item.Text) ? attribute.Text : item.Text)
+    </a>
+
+}
+
+@if (grouped.Count() > 0)
+{
+    <div class="btn-group">
+        <button type="button" class="btn btn-grey">Action</button>
+        <button type="button" data-toggle="dropdown" class="btn btn-grey dropdown-toggle">
+            <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul role="menu" class="dropdown-menu">
+            @foreach (var item in grouped)
+            {
+                var attribute = item.Type.ToButtonAttribute();
+                <li>
+                    <a id="anchor@(item.Type)" href="@(string.IsNullOrEmpty(item.RedirectUrl) ?"javascript:;":item.RedirectUrl)" class="@item.Class">
+                        @(string.IsNullOrEmpty(item.Text) ? attribute.Text : item.Text)
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+}

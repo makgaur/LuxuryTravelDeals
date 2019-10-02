@@ -1,0 +1,88 @@
+﻿@this.Html.Partial("_DataTableGrid")
+<script>
+        $(function () {
+            BindGrid({
+                url: "@Url.Action("ReviewsGridData", new { @hotelId=this.ViewBag.HotelId })",
+                columns: [
+                    { "data": "FullName", "title": "Name", "type": "string" },
+
+                    { "data": "Rating", "title": "Overall Rating", "type": "string" },
+                    { "data": "Comment", "title": "Comment", "type": "string" },
+                    //{ "data": "Rating_Cleanliness", "title": "Rating Cleanliness", "type": "string" },
+                    //{ "data": "Rating_Comfort", "title": "Rating Comfort", "type": "string" },
+                    //{ "data": "Rating_Location", "title": "Rating Location", "type": "string" },
+                    //{ "data": "Rating_Value", "title": "Rating Value", "type": "string" },
+                    { "data": "UserRecommend", "title": "Recommended", "type": "string" },
+                    {
+                        "data": "IsActive",
+                        "title": " Active Status",
+                        "class": "text-center",
+                        "type": "bool", "width": '15%', mRender: function (data, type, record) {
+                            var url = '@Url.GetAdminUrl("Hotelier", "ChangeReviewActiveStatus")/' + record.Id;
+                            return appendToggleCheckBox(url, record.IsActive, 'Successfully Activated', 'Successfully DeActivated')
+                        }
+                    },
+                    {
+                        "data": null, "title": "Action",
+                        "targets": -1,
+                        "width": '15%',
+                        "class": "column-action text-center",
+                        "shorting": false,
+                        "orderable": false,
+                        "mRender": function (data, type, record) {
+                            var action = "";
+                            action += '<a class="form-control btn-success" href="javascript:;" onclick="EditRating(' + record.Id + ')"><i class="fa fa-edit"></i>&nbsp;</a>';
+                            action += '<a class="form-control btn-danger delete-row" data-delete href="@Url.GetAdminUrl("Hotelier", "DeleteReview")/' + record.Id+ '"><i class="fa fa-trash-o"></i>&nbsp;</a>';
+                            return action;
+                        }
+                    }]
+            });
+        });
+        function EditRating(id) {
+            var $modal = $('#application-modal');
+            var url = '@Url.Action("ReviewAdd","Hotelier")';
+            if ($modal) {
+                $modal.find(".modal-title").html("Edit Review");
+                $modal.find('.modal-body').html(overlayTemplate);
+                $modal.modal({ keyboard: false, backdrop: false }).show();
+                $.ajax({
+                    url: url,
+                    data: { 'id': id,'hotelId': @this.ViewBag.HotelId},
+                    method: 'get',
+                    dataType: 'html',
+                    success: function (html) {
+                        $modal.find('.modal-body').html(html);
+                        initSelect2();
+                        var _form = $("#btnSaveandReload").parents('form');
+                        if ($.validator.unobtrusive != undefined) {
+                            $.validator.unobtrusive.parse(_form);
+                        }
+                        var $divPartial = $('#application-modal');
+                        $divPartial.find("#btnSaveandReload").on("click", function () {
+                            if ($(_form).valid()) {
+                                _form.append('<input name="method" type="hidden" value="ajax" />');
+                                $.ajax({
+                                    type: "POST",
+                                    dataType: 'json',
+                                    url: _form.attr('action'),
+                                    data: _form.serialize(),
+                                    success: function (json) {
+                                        $modal.toggle();
+                                        if (json == 'update') {
+
+                                            swal('', 'Successfully Updated', 'success');
+                                        }
+                                        return false;
+                                    },
+                                    error: function (response) {
+                                    },
+                                });
+                            }
+                            return false;
+                        });
+                    },
+                    error: function (xhr, request, error) { }
+                });
+            }
+        }
+</script>

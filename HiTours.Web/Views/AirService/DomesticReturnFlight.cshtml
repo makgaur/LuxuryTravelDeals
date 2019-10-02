@@ -1,0 +1,95 @@
+﻿@model AirSearchResult
+@if (Model != null)
+{
+    var flight = Model;
+    var segments = Model.Segments.FirstOrDefault();
+    var isMultiCarrier = segments.Select(x => x.Airline.AirlineCode).Distinct().Count() > 1;
+    var airlineIcon = isMultiCarrier ? "af" : $"go_{segments.FirstOrDefault().Airline.AirlineCode}";
+    var airlineName = string.Join(", ", segments.Select(x => x.Airline.AirlineName).Distinct());
+    var airlineCode = string.Join(" | ", segments.Select(x => x.Airline.AirlineCode + x.Airline.FlightNumber).Distinct());
+    var originSegment = segments.FirstOrDefault();
+    var destinationSegment = segments.LastOrDefault();
+    var stopPointDepartureTime = string.Format("{0:HH:mm}", originSegment.StopPointDepartureTime);
+    var stopPointArrivalTime = string.Format("{0:HH:mm}", destinationSegment.StopPointArrivalTime);
+
+    TimeSpan duration = TimeSpan.FromMinutes(segments.Sum(x => x.Duration));
+
+    <li class="result_flight"
+        data-price="@flight.TotalAmount.ToAmount()">
+        <input type="hidden" class="resultindex" name="ibflightindex" value="@flight.ResultIndex" />
+
+        <ul class="airline_details_card">
+            <li class="airline_details">
+                <i class="flightImagesNewdib flight-carrier-sprite @(airlineIcon)"></i>
+            </li>
+            <li class="airline_details__name">
+                <span>@airlineName</span>
+                <span class="airline_code">
+                    <span>@airlineCode</span>
+                </span>
+            </li>
+        </ul>
+        <div class="result_flight__departure_and_stops">
+            <span class="result_flight__departure_and_stops__departure min_height_66">
+                @(stopPointDepartureTime)
+            </span>
+        </div>
+        <div class="result_flight__arrival">
+            <span class="result_flight__arrival__wrapper min_height_66">
+                <span class="arrival">
+                    @(stopPointArrivalTime)
+                </span>
+            </span>
+        </div>
+        <div class="result_flight__duration">
+            <div class="duration_stops_wrapper">
+                <span class="result_flight__duration__wrapper">
+                    @($"{duration.ToString("hh")}h {duration.ToString("mm")}m")
+                    <span class="result_flight__layover">
+                        <span>
+                            <i class="gm gm-layover icon material-icons mtop_8"></i>
+                        </span>
+                    </span>
+                </span>
+                <span class="number_of_stops">
+                    <span>@*1 Stop*@</span>
+                </span>
+            </div>
+            <div class="duration_stops_wrapper"></div>
+        </div>
+
+        <div class="result_flight__price shift_down_40 skip-html">
+            <span class=""> ₹ @flight.TotalAmount.ToAmount()</span>@*@(flight.IsRefundable ? "Refundable" : "Non-refundable")*@<br>
+            <a class="result_flight__details_button" style="display:none">Flight details</a>
+        </div>
+        <div class="result_flight__book_now earn-points skip-html">
+            <div class="flight_book_btn_wrapper">
+                @if (flight.JourneyType == (int)JourneyType.OneWay)
+                {
+                    <button type="button" class="button_search_panel_new" data-flight="book" data-result-index="@flight.ResultIndex">Book</button>
+                }
+                else if (flight.JourneyType == (int)JourneyType.Return)
+                {
+                    <div class="funkyradio">
+                        <label class="radio inline">
+                            <input type="radio"
+                                   data-index="@flight.ResultIndex"
+                                   data-icon="@airlineIcon"
+                                   data-airlinecode="@airlineCode"
+                                   data-airlinename="@airlineName"
+                                   data-departuretime="@stopPointDepartureTime"
+                                   data-arrivaltime="@stopPointArrivalTime"
+                                   data-price="@flight.TotalAmount"
+                                   class="selectflight"
+                                   name="@(string.Join("",flight.ResultIndex.ToList().Take(2)))" value="@(flight.ResultIndex)">
+                            <span>  </span>
+                        </label>
+                    </div>
+
+
+                }
+            </div>
+        </div>
+        @Html.Partial("FlightDetails", flight)
+    </li>
+}

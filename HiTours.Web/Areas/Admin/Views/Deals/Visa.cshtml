@@ -1,0 +1,82 @@
+﻿@model List<DealVisaViewModel>
+
+<form asp-antiforgery="true" id="formVisa" action="@Url.Action("Visa", "Deals")" method="post" enctype="multipart/form-data">
+    <div class="col-sm-12 col-xs-12">
+        <div class="form-group">
+            <div class="tax-tabel-wrap">
+                <div class="table-responsive">
+                    <table id="tpimages" class="table table-standard table-bordered invoice-tabel-2">
+                        <thead>
+                            <tr>
+                                <th style="width:250px;">Country</th>
+                                <th style="width:250px;">Vendor</th>
+                                <th>Adult Price</th>
+                                <th>Child Price</th>
+                                <th>Buffer Days</th>
+                                <th><i class="fa fa-trash-o"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (this.Model != null && this.Model.Count > 0)
+                            {
+                                @foreach (var file in Model)
+                                {
+                                    @this.Html.Partial("_AddVisaRow", file)
+                                }
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" style="text-align:left"><a href="javascript:void(0);" class="btn btn-primary add_button" onclick="ImportVisaFromDestination(@this.ViewBag.PackageId)">Import Visa From Destination</a></td>
+                                <td colspan="6" style="text-align:right"><a href="javascript:void(0);" class="btn btn-primary add_button">+ Add Visa</a></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    @this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })
+    @*@this.Html.ButtonBottom(new[] { new Button(Enums.ButtonType.SaveandReload) })*@
+</form>
+<script>
+    $(document).ready(function (e) {
+        BindVendor();
+    });
+
+    $(document).on('click', '.add_button', function (e) {
+        $.get('@Url.Action("AddVisaRow", "Deals", new { @area="Admin"})', { 'packageId': @this.ViewBag.PackageId, 'rowcount': $('#tpimages tbody tr').length }, function (result)
+        {
+            $("#formVisa table tbody").append(result);
+            initSelect2();
+            BindValidation();
+            BindVendor($('#tpimages tbody tr').length);
+        });
+        
+    });
+    function BindValidation() {
+        var form = $('#formVisa');
+        form.removeData('validator');
+        form.removeData('unobtrusiveValidation');
+        $.validator.unobtrusive.parse(form);
+    }
+    function BindVendor(id) {
+        $.get('@Url.Action("GetVendorForVisa", "SelectList", new { @area = "" })', function (result)
+        {
+            var startindex = (id != undefined ? (id - 1) : 0);
+            for (var i = startindex; i < $('#tpimages tbody tr').length; i++) {
+                var mySelect = $('#VendorId_' + i);
+                $.each(result.results, function (i, item) {
+                    mySelect.append(
+                        $('<option></option>').val(item.id).html(item.text)
+                    );
+                });
+            }
+
+            if (id != undefined) {
+                $('#VendorId_' + startindex).select2('val', [null]);
+            }            
+        });
+    }
+
+</script>

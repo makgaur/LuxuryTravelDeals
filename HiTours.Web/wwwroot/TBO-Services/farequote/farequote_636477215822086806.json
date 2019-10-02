@@ -1,0 +1,19 @@
+//-- farequote Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "2d627a31-b3e8-4e6a-b0eb-82d9ff6b386c",
+  "TraceId": "659df524-94c1-4971-bfd5-913c93387b1a",
+  "ResultIndex": "OB7"
+}
+//-- farequote Api Response --
+{
+  "Response": {
+    "Error": {
+      "ErrorCode": 2,
+      "ErrorMessage": "Fare Quote failed from the Supplier end. Please try again."
+    },
+    "IsPriceChanged": false,
+    "ResponseStatus": 2,
+    "TraceId": "659df524-94c1-4971-bfd5-913c93387b1a"
+  }
+}

@@ -1,0 +1,35 @@
+//-- search Api Request --
+{
+  "EndUserIp": "192.168.10.36",
+  "TokenId": "37076e3f-7f35-4a05-a8d5-c0ffb1311332",
+  "AdultCount": 2,
+  "ChildCount": 2,
+  "InfantCount": 2,
+  "DirectFlight": false,
+  "OneStopFlight": false,
+  "JourneyType": 1,
+  "PreferredAirlines": [
+    "Ai"
+  ],
+  "Segments": [
+    {
+      "Origin": "DEL",
+      "Destination": "JAI",
+      "FlightCabinClass": 1,
+      "PreferredDepartureTime": "2017-12-01T00:00:00",
+      "PreferredArrivalTime": "2017-12-01T00:00:00"
+    }
+  ],
+  "Sources": null
+}
+//-- search Api Response --
+{
+  "Response": {
+    "ResponseStatus": 3,
+    "Error": {
+      "ErrorCode": 3,
+      "ErrorMessage": "InValid Session"
+    },
+    "TraceId": "5074edd8-fca8-44f3-972a-605797f88400"
+  }
+}

@@ -1,0 +1,108 @@
+﻿@using HiTours.TBO.Models
+@model AirSearch
+@{
+    Layout = null;
+    var segments = Model.Segments;
+    var isReturnFlight = segments.Length == 2;
+    var outBondFlight = segments.FirstOrDefault();
+    var inBondFlight = segments.LastOrDefault();
+
+
+}
+
+<div class="modify_search_new">
+    <input type="hidden" name="obTo" value="@outBondFlight.Destination" />
+    <input type="hidden" name="ibTo" value="@inBondFlight.Destination" />
+    <div class="box_col_input">
+        <label class="textfield_label">From</label>
+        <div class="mainInput">
+            <select name="OB-From"
+                    data-index="0"
+                    data-origin=""
+                    asp-items="outBondFlight.OriginList"
+                    class="mdl-textfield__input"
+                    data-flight="location"
+                    data-placeholder="From : City or Airport"></select>
+        </div>
+    </div>
+    <div class="box_col_input">
+        <label class="textfield_label">To</label>
+        <div class="mainInput">
+            <input value="@outBondFlight.DisplayDestination" class="mdl-textfield__input" type="text" readonly>
+        </div>
+    </div>
+
+
+
+    <div class="box_col_input">
+        <label class="textfield_label">From</label>
+        <div class="mainInput">
+            <select name="IB-From"
+                    data-index="1"
+                    data-destination=""
+                    asp-items="inBondFlight.OriginList"
+                    class="mdl-textfield__input"
+                    data-flight="location"
+                    data-placeholder="From : City or Airport"></select>
+        </div>
+    </div>
+    <div class="box_col_input">
+        <label class="textfield_label">To</label>
+        <div class="mainInput">
+            <input value="@inBondFlight.DisplayDestination" class="mdl-textfield__input" type="text" readonly>
+        </div>
+    </div>
+    <div class="box_col_input">
+        <label class="textfield_label">Cabin Class</label>
+        <div class="mainInput">
+            <select class="skip-select2 mdl-textfield__input change-cabin" asp-for="FlightCabinClass" asp-items="@Html.EnumSelectList<FlightCabin>()"></select>
+        </div>
+    </div>
+
+    <div class="flex pull-right">
+        <div class="modify_search_panel_btn">
+            <button type="button" class="button_search_panel_new" data-flight="search-newdata">
+                SEARCH
+                <span class="mdl-button__ripple-container">
+                    <span class="mdl-ripple">
+                    </span>
+                </span>
+            </button>
+        </div>
+        <div class="modify_search_panel_cancel_btn">
+            <button type="button" class="button_search_panel_new" data-flight="search-cancle">
+                CANCEL
+                <span class="mdl-button__ripple-container">
+                    <span class="mdl-ripple"></span>
+                </span>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .select2-container {
+        z-index: 9999999999;
+        width: 100% !important;
+    }
+
+    span.select2-dropdown {
+        width: 355px !important;
+    }
+
+    .select2-container--default .select2-selection--single {
+        background: none;
+        border: none;
+        border-radius: 0px;
+        border-bottom: 1px solid #660866;
+    }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            display: none;
+        }
+
+    .blank-origin .select2-container--default .select2-selection--single {
+        border-bottom: 1px solid red !important;
+    }
+</style>

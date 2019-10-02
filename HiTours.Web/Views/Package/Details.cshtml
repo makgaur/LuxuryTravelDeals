@@ -1,0 +1,639 @@
+﻿@model TourPackageDetailViewModel
+@{
+    var tourPackage = Model.TourPackage ?? new TourPackageViewModel();
+    var tourPackageImage = tourPackage.TourPackageImage.ToList() ?? new List<TourPackageImageViewModel>();
+    var tourPackageNights = Model.TourPackageNights.ToList() ?? new List<TourPackageNightViewModel>();
+    var packageNight = tourPackageNights.OrderBy(x => x.NoOfNights).FirstOrDefault() ?? new TourPackageNightViewModel();
+    tourPackage.TourPackageTravelStyle = tourPackage.TourPackageTravelStyle ?? new List<TourPackageTravelStyleViewModel>();
+    var tourPackageTravelStyle = tourPackage.TourPackageTravelStyle.FirstOrDefault() ?? new TourPackageTravelStyleViewModel();
+    var travelStyle = tourPackageTravelStyle.TravelStyle ?? new PackageTravelStyleViewModel();
+    var dealEndTime = (Model.ValidTo - DateTime.Now);
+    var dealStartTime = (Model.ValidFrom - DateTime.Now);
+
+    this.ViewBag.HeaderWithoutIcons = true;
+    ////var recommendedDeals = (TempData["recommended"] ?? new List<UpComingDealsViewModel>()) as IEnumerable<UpComingDealsViewModel>;
+
+    var dealType = Model.DealType.Split(',');
+    var dealTypeFirst = dealType.Length > 0 ? dealType[0] : string.Empty;
+    var dealTypeSecond = dealType.Length == 2 ? dealType[1] : string.Empty;
+
+}
+<input type="hidden" asp-for="TourPackage.Id" />
+<input type="hidden" name="PackageId" value="@(tourPackage.Id)" />
+<input type="hidden" name="TravelStyleName" value="@(travelStyle.Name)" />
+<div class="wrapper">
+    <section class="deals-page">
+        <div id="package-recently-view-box"></div>
+        <div class="light-gray-bg">
+            <div class="container">
+                <div class="banner-field-set">
+                    <div class="packagesMap">
+                        <a href="#" class="map-cross"><i class="fa fa-times" aria-hidden="true"></i></a>
+                        @Html.Raw(tourPackage.MapScript)
+                    </div>
+                    <div class="deal-hotel-box-banner">
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                @{ var i = 0;
+                                    var imgSeq = tourPackageImage.OrderBy(x => x.SequenceNo);
+                                }
+                                @foreach (var item in imgSeq)
+                                {
+                                    <div class="item @(i==0?"active":string.Empty)">
+                                        @if (!string.IsNullOrEmpty(item.ImageDescription))
+                                        {
+                                            <p class="bannerTexthome">@item.ImageDescription </p>
+                                        }
+                                        <img class="first-slide" src="@("/packages/" + item.ImageName)" alt="First slide"
+                                             auto-resize="false" width="752" height="485" asp-append-version="true" />
+                                    </div>
+
+                                    i++;
+                                }
+                                @*<div class="item">
+                        <video class="video-fluid" auto-resize="true" width="752" height="485" asp-append-version="true" loop=loop controls=controls>
+                            <source src="~/packages/forest.mp4" type="video/mp4" />
+                        </video>
+                    </div>*@
+
+                                <!-- Left and right controls -->
+                                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"><img src="/images/left-arrow.png" alt="right-arrow" /></span>
+                                </a>
+                                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"><img src="/images/right-arrow.png" alt="right-arrow" /></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (packageNight.Discount > 0)
+                    {
+                        <div class="left-offer">
+                            <div class="upto-off">
+                                Up to
+                                <p> @packageNight.Discount.ToAmount(true)% <span>off</span> </p>
+                            </div>
+                        </div>
+                    }
+
+                        <div class="tour-info1 box_contant">
+
+                            <h3 id="hPackageName" data-name="@tourPackage.PackageName">@tourPackage.PackageName </h3>
+                            <h4 class="capitalize"><strong>@Model.CityName.ToLower(), @Model.CountryName.ToLower()</strong></h4>
+                            <p id="longtext">@tourPackage.Quote</p>
+                            @if (!Model.IsUpCommingDeal && Model.IsDealStarted)
+                            {
+                            
+                            <div class="tour_price">
+                                <span class="packageEntity"><span id="spNoOfNights" class="packageEntity"></span> From </span><span class="color1"><i class="fa fa-inr" aria-hidden="true"></i> <span data-ishotel="@Model.TourPackage.IsHotelOnly" id="spnPackageDiscountPrice"></span></span>
+                                <span class="texture-sec">
+                                    <i class="fa fa-inr" aria-hidden="true"></i>
+                                    <span id="spnPackagePrice" data-ishotel="@Model.TourPackage.IsHotelOnly"></span>
+                                </span>
+                                <span class="packageEntity">/ @(Model.TourPackage.IsHotelOnly ? "Room " : "Person ")</span>
+                                @*<span id="spNoOfNights"></span>*@
+                                <div data-action="book" class="depositDetails" style="display:none;" id="infoBar">
+                                    <p class="depositTag">Deposit </p>
+                                    <div class="fromPrice"> <i class="fa fa-inr" aria-hidden="true"></i><span id="spnDepositAmount">@(packageNight.DepositAmount.ToAmount())</span> </div>
+                                </div>
+                                @if (!string.IsNullOrEmpty(tourPackage.PackageDescription))
+                                {
+                                    <div class="inclusions">
+                                        @this.Html.Raw(tourPackage.PackageDescription)
+                                    </div>
+                                }
+
+                                @*@if (tourPackage.IsHotelOnly)
+                                {*@
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div>
+                                                <a href="javascript:;" data-action="book" class="book_btn">Book</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                @*}
+                                else
+                                {
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div>
+                                                <a href="javascript:;" data-action="enquire" data-toggle="modal" data-target="#myModalrequestcallback" class="book_enquire">Enquire</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div>
+                                                <a href="javascript:;" data-action="book" class="book_btn">Book</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }*@
+
+
+                                @if (tourPackage.IsFlightIncluded)
+                                {
+                                    <div class="add-flight-box">
+                                        <label><img src="/images/flightHi.png" alt="" /></label>
+                                        <a href="javascript:;">
+                                            Want to add Flights?
+                                            <span>Just select your dates first</span>
+                                        </a>
+                                        <div class="clr"></div>
+                                    </div>
+                                }
+                                <div style="font-style:normal !important;text-align: center;">
+                                    @if (!Model.IsUpCommingDeal && Model.IsDealStarted)
+                                    {
+                                        <span class="abouttitle"><i class="fa fa-flash"></i> &nbsp; Flash Deals End In</span>
+                                        <div class="tour-time" style="float:none !important">
+                                            <div class='deal-countdown' data-seconds="@dealEndTime.TotalSeconds"></div>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <span class="abouttitle"><i class="fa fa-flash"></i> &nbsp; Flash Deal Start In</span>
+                                        <div class="tour-time" style="float:none !important">
+                                            <div class='deal-countdown' data-seconds="@dealStartTime.TotalSeconds"></div>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                            }
+                            else
+                            {
+                                <div>
+                                    <div style="display:block;margin-top: 20px;text-align: center;">
+                                        <a href="javascript:;" style="clear: both;padding: 10px;background: #fa8328;color: #fff;text-align: center;display:block;">Set Reminder</a>
+                                    </div>
+                                    <span class="time-remain">Deal Start In</span>
+                                    <div class="tour-time" style="float:none !important">
+                                        <div class='deal-countdown' data-upcoming="true" data-seconds="@dealStartTime.TotalSeconds"></div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-12" style="padding-left:0px !important;padding-right:0px !important;">
+                        <div class="tabs-wrapper tabbable tabs-top tabs-4">
+                            <ul class="nav nav-tabs">
+                                @if (tourPackage.IsHotelOnly != true)
+                                {
+                                    @*<li class="tab-1 active"><a href="#package-highlights" data-toggle="tab" aria-expanded="true">Summary</a></li>*@
+                                    <li class="tab-2 active"><a href="#package-details" data-toggle="tab" aria-expanded="false">Program</a></li>
+                                    <li class="tab-3"><a href="#menu2" data-toggle="tab">Details</a></li>
+                                    <li class="tab-4"><a href="#menu3" data-toggle="tab">Review</a></li>
+                                }
+                                else
+                                {
+                                    @*<li class="tab-1 active"><a href="#package-highlights" data-toggle="tab" aria-expanded="true">Summary</a></li>*@
+                                    <li class="tab-2 active"><a href="#package-details" data-toggle="tab" aria-expanded="false">Hotel</a></li>
+                                    <li class="tab-3"><a href="#menu2" data-toggle="tab">Details</a></li>
+                                    <li class="tab-4"><a href="#menu3" data-toggle="tab">Review</a></li>
+
+                                }
+                            </ul>
+                            <div class="tab-content listStyle">
+                                @*<div id="package-highlights" class="tab-pane fade active in highlight">
+            @Html.Raw(tourPackage.HighLights)
+        </div>*@
+
+                                <div id="package-details" class="tab-pane fade active in highlight">
+                                    <div class="collapse" id="package-collapse" aria-expanded="false">
+                                        @this.Html.Raw(tourPackage.Programs)
+                                    </div>
+                                    <a role="button" class="collapsed" data-toggle="collapse" href="#package-collapse" aria-expanded="false" aria-controls="package-collapse">
+                                    </a>
+                                </div>
+                                <div id="menu2" class="tab-pane fade">
+                                    @this.Html.Raw(tourPackage.HotelDescription)
+
+                                </div>
+                                <div id="menu3" class="tab-pane fade">
+                                    @this.Html.Raw(tourPackage.HotelReview)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @if (!Model.IsUpCommingDeal && Model.IsDealStarted)
+                {
+
+                    <div class="book-now-bg" id="durationsCall">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <h2 class="book-heading">Select package to view dates</h2>
+                                @if (!Model.IsUpCommingDeal && Model.IsDealStarted)
+                                {
+
+                                    <div class="durations-available showMobile">
+                                        <ul>
+                                            @{var totalNights = tourPackageNights.OrderBy(x => x.NoOfNights).ToList();}
+                                            @for (int index = 0; index < totalNights.Count; index++)
+                                            {
+                                                var night = totalNights[index];
+                                                <li class="package-nights @(index == 0 ? "active" : "")" data-nightid="@night.Id" data-packageid="@night.TourPackageId"
+                                                    data-night="@night.NoOfNights"
+                                                    data-deposit-amount="@(night.DepositAmount)"
+                                                    data-package-amount="@(night.PackagePrice)"
+                                                    data-package-discount="@(night.Discount)"
+                                                    data-package-disamount="@(night.PackageDiscountPrice)">
+                                                    @(night.NoOfNights)
+                                                    <span>Nights</span>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                }
+                                <div id="tourPackageValidities">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="time-remaining">
+                                    @if (!Model.IsUpCommingDeal && Model.IsDealStarted)
+                                    {
+                                    <h6 class="time-remain"><i class="fa fa-flash"></i> Flash Deal Ends In</h6>
+                                        <div class="timer">
+                                            <div class='deal-countdown' data-seconds="@dealEndTime.TotalSeconds"></div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <h6 class="time-remain"><i class="fa fa-flash"></i> Flash Deal Start In</h6>
+                                        <div class="timer">
+                                            <div class='deal-countdown' data-seconds="@dealStartTime.TotalSeconds"></div>
+                                        </div>
+                                    }
+                                </div>
+
+                                @if (!Model.IsUpCommingDeal && Model.IsDealStarted)
+                                {
+
+                                    <div class="durations-available hideMobile">
+                                        <ul>
+                                            @{var totalNights = tourPackageNights.OrderBy(x => x.NoOfNights).ToList();}
+                                            @for (int index = 0; index < totalNights.Count; index++)
+                                            {
+                                                var night = totalNights[index];
+                                                <li class="package-nights @(index == 0 ? "active" : "")" data-nightid="@night.Id" data-packageid="@night.TourPackageId"
+                                                    data-night="@night.NoOfNights"
+                                                    data-deposit-amount="@(night.DepositAmount)"
+                                                    data-package-amount="@(night.PackagePrice)"
+                                                    data-package-discount="@(night.Discount)"
+                                                    data-package-disamount="@(night.PackageDiscountPrice)">
+                                                    @(night.NoOfNights)
+                                                    <span>Nights</span>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+
+                                    <div class="calender-box">
+                                        <div class="price-calender">
+                                            <div id="eanContainer" class="calendar-container">
+                                                <span class="calendar-spinner hide">
+                                                    <i class="icon icon-refresh icon-spin calendar-spinner__gif"></i>
+                                                    <span class="calendar-spinner__text">Loading...</span>
+                                                </span>
+                                                <div id="loadingLayer" class="loading-layer"></div>
+                                                <div class="stepContainer checkIn ">
+                                                    <div class="ean contentContainer checkInContainer month-selection fixed-travel">
+
+                                                        <table class="table setWIDTHcal">
+                                                            <tr>
+                                                                <td>
+                                                                    <a id="checkInPreviousMonth" href="javascript:void(0)">
+                                                                        <span class="previous-month">
+                                                                            <i class="icon-angle-left"></i>
+                                                                        </span>
+                                                                    </a>
+                                                                </td>
+
+                                                                <td style="text-align:center;"><p id="checkInMonthText" class="checkin-month"></p></td>
+
+                                                                <td class="pull-right">
+                                                                    <a id="checkInFollowingMonth" href="javascript:void(0)">
+                                                                        <span class="next-month">
+                                                                            <i class="icon-angle-right"></i>
+                                                                        </span>
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <div id="moreCheckInMonths" class="monthsVisibility hide g-end availaibility-link">
+                                                            <a id="moreCheckInMonthsTrigger" class="offer--link">See full availability</a>
+                                                        </div>
+                                                        <div id="checkInCalendar" class=" checkInCalendar allocationCalendar">
+                                                        </div>
+                                                    </div>
+                                                    <div id="checkin-modal" style="display:none" class="css-modal" aria-hidden="true">
+                                                        <div id="flightSelectionModal" class="css-modal__content css-modal__content--xl extended-calendar padding-box--l m-is-full-screen">
+
+                                                            <div class="css-modal-header spacer-v">
+                                                                <a id="checkin-modal-close" class="css-modal__close inline-block"></a>
+                                                            </div>
+
+                                                            <div class="css-modal__scrollbar">
+                                                                <div id="moreCheckInAvailability" class="fixed-travel checkInCalendar allocationCalendar calendarPopUpContainer">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="stepContainer checkOut hide">
+                                                    <div class="contentContainer checkOutContainer month-selection" style="display: none">
+                                                        <div>
+                                                            <a id="checkOutPreviousMonth" href="javascript:void(0)"><span class="previous-month"><i class="icon-angle-left"></i></span></a>
+
+                                                            <p id="checkOutMonthText" class="checkout-month"></p>
+                                                            <a id="checkOutFollowingMonth" href="javascript:void(0)"><span class="next-month"><i class="icon-angle-right"></i></span></a>
+
+                                                            <p id="moreCheckOutMonths" class="monthsVisibility g-end availaibility-link hide">
+                                                                <a id="moreCheckOutMonthsTrigger" class="offer--link">See full availability</a>
+                                                            </p>
+                                                            <div id="checkOutCalendar" class="checkOutCalendar allocationCalendar"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="checkout-modal" style="display:none" class="css-modal" aria-hidden="true">
+                                                        <div id="flightSelectionModal" class="css-modal__content css-modal__content--xl extended-calendar padding-box--l m-is-full-screen">
+                                                            <div class="css-modal-header spacer-v">
+                                                                <a id="checkout-modal-close" class="css-modal__close inline-block"></a>
+                                                            </div>
+
+                                                            <div class="css-modal__scrollbar">
+                                                                <div id="moreCheckOutAvailability" class="fixed-travel checkOutCalendar allocationCalendar calendarPopUpContainer">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="summary" class="calendar-summary__container">
+                                                <div class="calendar-summary">
+                                                    <div class="calendar-summary__dates">
+                                                        <div class="inline-block" id="travelDatesContainer">
+                                                            <span id="checkIn" class="calendar-summary__checkin active">Check-in</span>
+                                                            <span class="dates__arrow dates__arrow__summary"></span>
+                                                            <span id="checkOut" class="calendar-summary__checkout">Check-out</span>
+                                                        </div>
+                                                        <div class="alert alert-warning hide" id="dvMandatoryDates" style="margin-bottom: 0px;">
+                                                            <strong>Warning! </strong> Please Select Booking Dates.
+                                                        </div>
+                                                        <span id="nightsLabel" class="calendar-summary__nights hide">
+                                                            <span id="nights" class="nights"></span>
+                                                        </span>
+
+                                                        <div class="col-sm-12 passengerType">
+                                                            <div id="divRoomDetail">
+                                                                @*@this.Html.Partial("_RoomDetails")*@
+                                                            </div>
+                                                            @*<div class="form-group col-md-12">
+                                                                    <label>Adult</label>
+                                                                    <select name="Adult" class="skip-select2 form-control persons">
+                                                                        @for (int counter = 1; counter <= 9; counter++)
+                                                                        {
+                                                                            <option value="@counter">@counter</option>
+                                                                        }
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group col-md-6 hide">
+                                                                    <label>Child</label>
+                                                                    <input type="number" name="Child" min="0" class="form-control persons" value="0" />
+                                                                </div>*@
+                                                            <div class="form-group col-md-6 hide">
+                                                                <label>Infant</label>
+                                                                <input type="number" name="Infant" min="0" class="form-control persons" value="0" />
+                                                            </div>
+                                                            @if (tourPackage.IsFlightIncluded)
+                                                            {
+                                                                <div class="form-group col-md-12 ">
+                                                                    <label class="radio-inline no-padding" for="chkAddFlight">
+                                                                        <input type="checkbox" name="Addflight" id="chkAddFlight" /> Want to see flights for this package ?
+                                                                    </label>
+                                                                </div>
+                                                            }
+                                                        </div>
+
+                                                        @*<div style="float: right;line-height: 27px;background: #f1f1f1;padding: 8px 27px;font-weight: bold;margin: 10px;padding-right: 5px;">
+                                                                Total Persons :
+                                                                <input type="text" name="TotalPersons" class="form-control pull-right" style="width: 50%;" />
+                                                                <input type="text" name="TotalPersons" class="form-control pull-right" style="width: 50%;" />
+                                                                <input type="text" name="TotalPersons" class="form-control pull-right" style="width: 50%;" />
+                                                            </div>*@
+
+                                                        <span id="selectedDateLabel" class="sumField hide">
+                                                            Selected day:&nbsp;<span id="selectedDate" class="selected-date"></span>
+                                                        </span>
+                                                        @*<span id="peopleLabel" class="calendar-summary__people hide">
+                                                                <br />
+                                                                <span id="people" class="people"></span>&nbsp;Rooms
+                                                            </span>*@
+                                                        <div id="clearButton" class="calendar-summary__clear" style="display:none"><a>Clear</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="checkinpart">
+                                            <div class="checkin-btn">
+                                                @*@{
+                var origin = "jaipur";
+                var destination = "delhi";
+                var dateDep = "10-03-2017";
+            }*@
+
+                                                @*data-toggle="modal" data-target="#fight-popup"*@
+
+                                                @*<a href="javascript:;" target="_blank" data-origin="jaipur" data-destination="@(Model.CityName)" data-flight="get" class="addFlights">Add Flight</a>*@
+                                                @*@if (!this.User.Identity.IsAuthenticated || (User.Claims.FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Actor) == null || User.Claims.FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Actor).Value != string.Empty))
+            {
+                <a href="javascript:;" id="guestbooking" data-packgaename="@tourPackage.PackageName" data-action="guestbook" class="active">Book as Guest</a>
+                <a href="javascript:;" id="booking" data-packgaename="@tourPackage.PackageName" data-action="book" class="active">Book </a>
+                <div id="guestModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Guest Detail</h4>
+                            </div>
+                            <div class="modal-body">
+                                @Html.Partial("_SignUp", new UserDetailViewModel())
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {*@
+                                                <a href="javascript:;" id="booking" data-packgaename="@tourPackage.PackageName" data-action="book" style="float:left;text-align:center;width:100%;" class="active">
+                                                    <span>Book</span>
+                                                </a>
+                                                @*}*@
+                                            </div>
+                                            @if (!Model.IsUpCommingDeal && Model.IsDealStarted)
+                                            {
+                                            <div style="text-align:center;">
+                                                <span class="abouttitle"><i class="fa fa-flash"></i> &nbsp; Flash Deals End In</span>
+                                                <div class="tour-time" style="float:none !important">
+                                                    <div class='deal-countdown' data-seconds="@dealEndTime.TotalSeconds"></div>
+                                                </div>
+                                            </div>
+                                            }
+                                            else
+                                            {
+                                            <div style="text-align:center;">
+                                                <span class="abouttitle"><i class="fa fa-flash"></i> &nbsp; Flash Deal Start In</span>
+                                                <div class="tour-time" style="float:none !important">
+                                                    <div class='deal-countdown' data-seconds="@dealStartTime.TotalSeconds"></div>
+                                                </div>
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="why-book-text">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h5>Why book with us?</h5>
+                        </div>
+                        <div class="col-sm-8">
+                            <ul>
+                                <li>The best hotel rates available online. That's guaranteed! </li>
+                                <li>Offers may include member perks such as treats on arrival</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="divRecommended"></div>
+    </section>
+</div>
+
+<div class="modal fade" id="fight-popup" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Make Your Selection</h4>
+            </div>
+            <div class="modal-body">
+                <div class="flight-input-box">
+                    <label>Depart From</label>
+                    <input type="text" value="" class="form-control" placeholder="Depart From" />
+                </div>
+
+                <div class="flight-input-box">
+                    <label>Travellers</label>
+                    <select class="form-control skip-select2">
+                        <option>Travellers</option>
+                        <option>Travellers</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loading-popup" data-dismiss="modal">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="modal fade" id="loading-popup" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <center>
+                        <img src="/images/flight-load.gif" alt="" />
+                        <h2>Checking all avilable flights</h2>
+                        <p style="margin-bottom:40px;">Our holidays with flights are ATOL protected</p>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>*@
+@section scripts{
+    <link href="~/content/css/timeTo.css" rel="stylesheet" />
+    <link asp-append-version="true" href="~/css/ui-datepicker.css" rel="stylesheet" />
+    <style>
+        .durations-available ul li {
+        cursor: pointer;
+        }
+
+        .durations-available ul li.active {
+        background: #ef7720;
+        color: #fff;
+        }
+
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+        opacity: 1;
+        }
+    </style>
+    <script asp-append-version="true" src="/js/jquery.plugin.js">
+    </script>
+    <script asp-append-version="true" src="/js/jquery.more.js">
+    </script>
+    <script src="~/content/js/jquery.time-to.js">
+    </script>
+    <script src="~/js/jssor.slider-26.3.0.min.js">
+    </script>
+    <script asp-append-version="true" src="~/js/jquery-ui.js">
+    </script>
+    <script asp-append-version="true" src="~/js/package-calendar.js">
+    </script>
+    <script src="~/js/custom-scripts.js">
+    </script>
+    <script>
+
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: '/package/getrecommendeddeals?dealid=@tourPackage.Id',
+                success: function (response) {
+                    $("#divRecommended").html(response);
+                    initSlickSlider();
+                }
+            });
+            RemoveLinksFromTripAdvisor();
+        });
+        function RemoveLinksFromTripAdvisor() {
+            $("#reviewContainer").find('a').attr('href', '#').removeAttr('target').removeAttr('onclick');
+        }
+
+               @*$("video").on("play", function (e) {
+        $("#myCarousel").carousel('pause');
+        });
+        $("video").on("pause", function (e) {
+        $("#myCarousel").carousel('cycle');
+        });*@
+
+        $(function () {
+            $('#longtext').more();
+            initSlickSlider();
+            $(".dealMap>a, .map-cross ").on("click", function () { $(".packagesMap").toggle() });
+            $("#EmailId").rules('remove', 'remote');
+        //divRecommended
+        });
+    </script>
+
+}
+
+
+

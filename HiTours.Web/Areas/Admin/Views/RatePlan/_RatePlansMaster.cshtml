@@ -1,0 +1,29 @@
+﻿@{
+    var routeData = this.ViewContext.RouteData.Values;
+    var nextView = this.TempData["nextview"] != null ? this.TempData["nextview"].ToString() : "#package-rateplan";
+}
+<div class="nav-tabs-custom">
+    <input type="hidden" name="tabs" data-default="@nextView" value="@nextView" />
+    <form class="hide">
+        @foreach (var key in routeData.Keys)
+        {
+            <input type="hidden" name="@key" value="@(routeData[key])" />
+        }
+        <input type="hidden" name="Id" value="@(this.ViewBag.TourPackageId)" />
+        <input type="hidden" name="tourpackagetype" value="@this.ViewBag.TourPackageType" />
+        <input type="hidden" name="RowIdentifier" value="" />
+    </form>
+    <ul class="nav nav-tabs pull-right">
+        <li class=""><a href="#add-rate-plan" class="replaceAdd" data-toggle="tab" data-href="@Url.Action("AddRatePlans","RatePlan",new {@area="Admin", @packageId=this.ViewBag.TourPackageId })"><i class="fa fa-plus"></i> Add Rate Plan</a></li>
+        <li class=""><a href="#view-rate-plan" class="replaceView" data-toggle="tab" data-href="@Url.Action("RatePlansGridView","RatePlan",new {@area="Admin", @packageId=this.ViewBag.TourPackageId })"><i class="fa fa-list"></i> View List</a></li>
+    </ul>
+    <div class="tab-content hotel-tabs">
+        <div class="tab-pane" id="add-rate-plan"></div>
+        <div class="tab-pane" id="view-rate-plan"></div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.replaceView').click();
+    });
+</script>
